@@ -1,0 +1,21 @@
+//
+//  DebugConfig.xcconfig
+//  Tipper
+//
+//  Created by Ryan Romanchuk on 3/10/15.
+//  Copyright (c) 2015 Ryan Romanchuk. All rights reserved.
+//
+#include "Pods/Target Support Files/Pods-Tipper/Pods-Tipper.debug.xcconfig"
+
+// Project settings
+BUNDLE_IDENTIFIER = com.ryanromanchuk.tipper.beta
+BUNDLE_DISPLAY_NAME = Tipper β
+PRODUCT_NAME = Tipper
+
+COGNITO_AUTH_ARN = arn:aws:iam::080383581145:role/Cognito_TipperAuth_DefaultRole
+COGNITO_UNAUTH_ARN = arn:aws:iam::080383581145:role/Cognito_TipperUnauth_DefaultRole
+COGNITO_POOL = ***REMOVED***
+
+AWS_ANALYTICS_ID = ***REMOVED***
+
+STRIPE_PUBLISHABLE = pk_test_Lvgpbd4xqmxMMVQ7NS39ye19

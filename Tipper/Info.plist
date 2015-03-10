@@ -2,12 +2,24 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AWS_ANALYTICS_ID</key>
+	<string>$(AWS_ANALYTICS_ID)</string>
+	<key>STRIPE_PUBLISHABLE</key>
+	<string>$(STRIPE_PUBLISHABLE)</string>
+	<key>COGNITO_AUTH_ARN</key>
+	<string>$(COGNITO_AUTH_ARN)</string>
+	<key>COGNITO_UNAUTH_ARN</key>
+	<string>$(COGNITO_UNAUTH_ARN)</string>
+	<key>COGNITO_POOL</key>
+	<string>$(COGNITO_POOL)</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>$(BUNDLE_DISPLAY_NAME)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.ryanromanchuk.$(PRODUCT_NAME:rfc1034identifier)</string>
+	<string>$(BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -15,13 +27,42 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>***REMOVED***</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+			<dict>
+				<key>KitInfo</key>
+				<dict>
+					<key>consumerKey</key>
+					<string>O3S9j8D3ZJQZCU6DcI1ABjinR</string>
+					<key>consumerSecret</key>
+					<string>DCL7zOahnqqH7DLAy6VMlCn5ZH866Nwylb5YYmInuue6MR510I</string>
+				</dict>
+				<key>KitName</key>
+				<string>Twitter</string>
+			</dict>
+		</array>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

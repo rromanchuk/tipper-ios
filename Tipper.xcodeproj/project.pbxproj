@@ -7,13 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		94AF29721AAEF2B600E16048 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AF29711AAEF2B600E16048 /* AppDelegate.swift */; };
+		2D117047CF53761110C03BE2 /* libPods-Tipper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5431BFF7D50CDB7444D8D96C /* libPods-Tipper.a */; };
+		941AA38A1AAFA34900CA9192 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA3891AAFA34900CA9192 /* Config.swift */; };
+		94416C0A1AAF989F00117AFC /* Alamofire-SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF51AAF989F00117AFC /* Alamofire-SwiftyJSON.swift */; };
+		94416C0B1AAF989F00117AFC /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF61AAF989F00117AFC /* Alamofire.swift */; };
+		94416C0C1AAF989F00117AFC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF71AAF989F00117AFC /* API.swift */; };
+		94416C0D1AAF989F00117AFC /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF81AAF989F00117AFC /* Router.swift */; };
+		94416C0E1AAF989F00117AFC /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF91AAF989F00117AFC /* SwiftyJSON.swift */; };
+		94416C0F1AAF989F00117AFC /* TwitterAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BFA1AAF989F00117AFC /* TwitterAuth.swift */; };
+		94416C101AAF989F00117AFC /* UserSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BFB1AAF989F00117AFC /* UserSync.swift */; };
+		94416C111AAF989F00117AFC /* CoreDataUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BFD1AAF989F00117AFC /* CoreDataUpdatable.swift */; };
+		94416C121AAF989F00117AFC /* CurrentUser+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BFE1AAF989F00117AFC /* CurrentUser+Extension.swift */; };
+		94416C131AAF989F00117AFC /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BFF1AAF989F00117AFC /* CurrentUser.swift */; };
+		94416C141AAF989F00117AFC /* NSManagedObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416C001AAF989F00117AFC /* NSManagedObject+Extension.swift */; };
+		94416C151AAF989F00117AFC /* NSManagedObjectContext+Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 94416C021AAF989F00117AFC /* NSManagedObjectContext+Base.m */; };
+		94416C161AAF989F00117AFC /* DynamoPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416C041AAF989F00117AFC /* DynamoPost.swift */; };
+		94416C171AAF989F00117AFC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416C061AAF989F00117AFC /* ViewController.swift */; };
+		94416C181AAF989F00117AFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416C081AAF989F00117AFC /* AppDelegate.swift */; };
+		94416C191AAF989F00117AFC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94416C091AAF989F00117AFC /* Images.xcassets */; };
 		94AF29751AAEF2B600E16048 /* Tipper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94AF29731AAEF2B600E16048 /* Tipper.xcdatamodeld */; };
-		94AF29771AAEF2B600E16048 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AF29761AAEF2B600E16048 /* ViewController.swift */; };
 		94AF297A1AAEF2B600E16048 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94AF29781AAEF2B600E16048 /* Main.storyboard */; };
-		94AF297C1AAEF2B600E16048 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94AF297B1AAEF2B600E16048 /* Images.xcassets */; };
 		94AF297F1AAEF2B600E16048 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AF297D1AAEF2B600E16048 /* LaunchScreen.xib */; };
 		94AF298B1AAEF2B600E16048 /* TipperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AF298A1AAEF2B600E16048 /* TipperTests.swift */; };
+		94AF29C11AAF04D000E16048 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94AF29BF1AAF04D000E16048 /* Crashlytics.framework */; };
+		94AF29C21AAF04D000E16048 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94AF29C01AAF04D000E16048 /* Fabric.framework */; };
+		94AF29C51AAF060000E16048 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94AF29C31AAF060000E16048 /* TwitterKit.framework */; };
+		94AF29C61AAF060000E16048 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 94AF29C41AAF060000E16048 /* TwitterKitResources.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,17 +46,42 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20CFF2D7F1C187F20E1EAFF3 /* Pods-Tipper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tipper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tipper/Pods-Tipper.debug.xcconfig"; sourceTree = "<group>"; };
+		5431BFF7D50CDB7444D8D96C /* libPods-Tipper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tipper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		941AA3891AAFA34900CA9192 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		94416BED1AAF94C700117AFC /* Tipper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Tipper.entitlements; sourceTree = "<group>"; };
+		94416BF51AAF989F00117AFC /* Alamofire-SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire-SwiftyJSON.swift"; sourceTree = "<group>"; };
+		94416BF61AAF989F00117AFC /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
+		94416BF71AAF989F00117AFC /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		94416BF81AAF989F00117AFC /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		94416BF91AAF989F00117AFC /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		94416BFA1AAF989F00117AFC /* TwitterAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterAuth.swift; sourceTree = "<group>"; };
+		94416BFB1AAF989F00117AFC /* UserSync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSync.swift; sourceTree = "<group>"; };
+		94416BFD1AAF989F00117AFC /* CoreDataUpdatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataUpdatable.swift; sourceTree = "<group>"; };
+		94416BFE1AAF989F00117AFC /* CurrentUser+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CurrentUser+Extension.swift"; sourceTree = "<group>"; };
+		94416BFF1AAF989F00117AFC /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
+		94416C001AAF989F00117AFC /* NSManagedObject+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Extension.swift"; sourceTree = "<group>"; };
+		94416C011AAF989F00117AFC /* NSManagedObjectContext+Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+Base.h"; sourceTree = "<group>"; };
+		94416C021AAF989F00117AFC /* NSManagedObjectContext+Base.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+Base.m"; sourceTree = "<group>"; };
+		94416C041AAF989F00117AFC /* DynamoPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoPost.swift; sourceTree = "<group>"; };
+		94416C061AAF989F00117AFC /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		94416C071AAF989F00117AFC /* Tipper-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tipper-Bridging-Header.h"; sourceTree = "<group>"; };
+		94416C081AAF989F00117AFC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		94416C091AAF989F00117AFC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		94AF296C1AAEF2B600E16048 /* Tipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94AF29701AAEF2B600E16048 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		94AF29711AAEF2B600E16048 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94AF29741AAEF2B600E16048 /* Tipper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tipper.xcdatamodel; sourceTree = "<group>"; };
-		94AF29761AAEF2B600E16048 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		94AF29791AAEF2B600E16048 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		94AF297B1AAEF2B600E16048 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		94AF297E1AAEF2B600E16048 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		94AF29841AAEF2B600E16048 /* TipperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94AF29891AAEF2B600E16048 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94AF298A1AAEF2B600E16048 /* TipperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipperTests.swift; sourceTree = "<group>"; };
+		94AF29BC1AAEFFA300E16048 /* DebugConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DebugConfig.xcconfig; sourceTree = "<group>"; };
+		94AF29BF1AAF04D000E16048 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		94AF29C01AAF04D000E16048 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		94AF29C31AAF060000E16048 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
+		94AF29C41AAF060000E16048 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
+		F2A514B5D5D900213DC63984 /* Pods-Tipper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tipper.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tipper/Pods-Tipper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +89,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94AF29C11AAF04D000E16048 /* Crashlytics.framework in Frameworks */,
+				2D117047CF53761110C03BE2 /* libPods-Tipper.a in Frameworks */,
+				94AF29C21AAF04D000E16048 /* Fabric.framework in Frameworks */,
+				94AF29C51AAF060000E16048 /* TwitterKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,12 +106,68 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33168C2B4F9E098E5903B705 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				20CFF2D7F1C187F20E1EAFF3 /* Pods-Tipper.debug.xcconfig */,
+				F2A514B5D5D900213DC63984 /* Pods-Tipper.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		94416BF41AAF989F00117AFC /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				941AA3891AAFA34900CA9192 /* Config.swift */,
+				94416BF51AAF989F00117AFC /* Alamofire-SwiftyJSON.swift */,
+				94416BF61AAF989F00117AFC /* Alamofire.swift */,
+				94416BF71AAF989F00117AFC /* API.swift */,
+				94416BF81AAF989F00117AFC /* Router.swift */,
+				94416BF91AAF989F00117AFC /* SwiftyJSON.swift */,
+				94416BFA1AAF989F00117AFC /* TwitterAuth.swift */,
+				94416BFB1AAF989F00117AFC /* UserSync.swift */,
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		94416BFC1AAF989F00117AFC /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				94416BFD1AAF989F00117AFC /* CoreDataUpdatable.swift */,
+				94416BFE1AAF989F00117AFC /* CurrentUser+Extension.swift */,
+				94416BFF1AAF989F00117AFC /* CurrentUser.swift */,
+				94416C001AAF989F00117AFC /* NSManagedObject+Extension.swift */,
+				94416C011AAF989F00117AFC /* NSManagedObjectContext+Base.h */,
+				94416C021AAF989F00117AFC /* NSManagedObjectContext+Base.m */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		94416C031AAF989F00117AFC /* Dynamo */ = {
+			isa = PBXGroup;
+			children = (
+				94416C041AAF989F00117AFC /* DynamoPost.swift */,
+			);
+			path = Dynamo;
+			sourceTree = "<group>";
+		};
+		94416C051AAF989F00117AFC /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				94416C061AAF989F00117AFC /* ViewController.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		94AF29631AAEF2B600E16048 = {
 			isa = PBXGroup;
 			children = (
+				94AF29BC1AAEFFA300E16048 /* DebugConfig.xcconfig */,
 				94AF296E1AAEF2B600E16048 /* Tipper */,
 				94AF29871AAEF2B600E16048 /* TipperTests */,
 				94AF296D1AAEF2B600E16048 /* Products */,
+				33168C2B4F9E098E5903B705 /* Pods */,
+				99548B7BBFFD4449A2DD2385 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,10 +183,15 @@
 		94AF296E1AAEF2B600E16048 /* Tipper */ = {
 			isa = PBXGroup;
 			children = (
-				94AF29711AAEF2B600E16048 /* AppDelegate.swift */,
-				94AF29761AAEF2B600E16048 /* ViewController.swift */,
+				94416BF41AAF989F00117AFC /* Libs */,
+				94416BFC1AAF989F00117AFC /* CoreData */,
+				94416C031AAF989F00117AFC /* Dynamo */,
+				94416C051AAF989F00117AFC /* Screens */,
+				94416C071AAF989F00117AFC /* Tipper-Bridging-Header.h */,
+				94416C081AAF989F00117AFC /* AppDelegate.swift */,
+				94416C091AAF989F00117AFC /* Images.xcassets */,
+				94416BED1AAF94C700117AFC /* Tipper.entitlements */,
 				94AF29781AAEF2B600E16048 /* Main.storyboard */,
-				94AF297B1AAEF2B600E16048 /* Images.xcassets */,
 				94AF297D1AAEF2B600E16048 /* LaunchScreen.xib */,
 				94AF29731AAEF2B600E16048 /* Tipper.xcdatamodeld */,
 				94AF296F1AAEF2B600E16048 /* Supporting Files */,
@@ -115,6 +224,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		99548B7BBFFD4449A2DD2385 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				94AF29C31AAF060000E16048 /* TwitterKit.framework */,
+				94AF29C41AAF060000E16048 /* TwitterKitResources.bundle */,
+				94AF29BF1AAF04D000E16048 /* Crashlytics.framework */,
+				94AF29C01AAF04D000E16048 /* Fabric.framework */,
+				5431BFF7D50CDB7444D8D96C /* libPods-Tipper.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,9 +243,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 94AF298E1AAEF2B600E16048 /* Build configuration list for PBXNativeTarget "Tipper" */;
 			buildPhases = (
+				4A8E3E1574F03FDE6EC51855 /* Check Pods Manifest.lock */,
 				94AF29681AAEF2B600E16048 /* Sources */,
 				94AF29691AAEF2B600E16048 /* Frameworks */,
 				94AF296A1AAEF2B600E16048 /* Resources */,
+				89D8CA061E9079FA926B2957 /* Copy Pods Resources */,
+				94AF29BD1AAF02A800E16048 /* Version Bump */,
+				94AF29BE1AAF032500E16048 /* Fabric */,
 			);
 			buildRules = (
 			);
@@ -164,6 +289,15 @@
 				TargetAttributes = {
 					94AF296B1AAEF2B600E16048 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = 42CWSV3Q78;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.OMC = {
+								enabled = 1;
+							};
+						};
 					};
 					94AF29831AAEF2B600E16048 = {
 						CreatedOnToolsVersion = 6.3;
@@ -196,8 +330,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				94AF297A1AAEF2B600E16048 /* Main.storyboard in Resources */,
+				94416C191AAF989F00117AFC /* Images.xcassets in Resources */,
 				94AF297F1AAEF2B600E16048 /* LaunchScreen.xib in Resources */,
-				94AF297C1AAEF2B600E16048 /* Images.xcassets in Resources */,
+				94AF29C61AAF060000E16048 /* TwitterKitResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,13 +345,88 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4A8E3E1574F03FDE6EC51855 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		89D8CA061E9079FA926B2957 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tipper/Pods-Tipper-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		94AF29BD1AAF02A800E16048 /* Version Bump */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Version Bump";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Set the build number to the count of Git commits\nbuildNumber=$(git rev-list HEAD | wc -l | tr -d ' ')\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
+		};
+		94AF29BE1AAF032500E16048 /* Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Fabric;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run ***REMOVED*** c639698419df54a6f2023c1a8805bf95dfd647c8af39fc327fe76fb6da7c24c4";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		94AF29681AAEF2B600E16048 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94AF29771AAEF2B600E16048 /* ViewController.swift in Sources */,
-				94AF29721AAEF2B600E16048 /* AppDelegate.swift in Sources */,
+				94416C171AAF989F00117AFC /* ViewController.swift in Sources */,
+				94416C0B1AAF989F00117AFC /* Alamofire.swift in Sources */,
+				94416C161AAF989F00117AFC /* DynamoPost.swift in Sources */,
+				94416C0A1AAF989F00117AFC /* Alamofire-SwiftyJSON.swift in Sources */,
+				941AA38A1AAFA34900CA9192 /* Config.swift in Sources */,
+				94416C131AAF989F00117AFC /* CurrentUser.swift in Sources */,
+				94416C141AAF989F00117AFC /* NSManagedObject+Extension.swift in Sources */,
+				94416C0D1AAF989F00117AFC /* Router.swift in Sources */,
+				94416C151AAF989F00117AFC /* NSManagedObjectContext+Base.m in Sources */,
+				94416C181AAF989F00117AFC /* AppDelegate.swift in Sources */,
+				94416C0E1AAF989F00117AFC /* SwiftyJSON.swift in Sources */,
+				94416C0F1AAF989F00117AFC /* TwitterAuth.swift in Sources */,
+				94416C101AAF989F00117AFC /* UserSync.swift in Sources */,
+				94416C121AAF989F00117AFC /* CurrentUser+Extension.swift in Sources */,
+				94416C111AAF989F00117AFC /* CoreDataUpdatable.swift in Sources */,
+				94416C0C1AAF989F00117AFC /* API.swift in Sources */,
 				94AF29751AAEF2B600E16048 /* Tipper.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,7 +488,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -344,21 +554,44 @@
 		};
 		94AF298F1AAEF2B600E16048 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94AF29BC1AAEFFA300E16048 /* DebugConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Tipper/Tipper.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Tipper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tipper/Tipper-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		94AF29901AAEF2B600E16048 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2A514B5D5D900213DC63984 /* Pods-Tipper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Tipper/Tipper.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Tipper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tipper/Tipper-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -415,6 +648,7 @@
 				94AF29901AAEF2B600E16048 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		94AF29911AAEF2B600E16048 /* Build configuration list for PBXNativeTarget "TipperTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +657,7 @@
 				94AF29931AAEF2B600E16048 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7527" systemVersion="14D87h" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="CurrentUser" representedClassName="Tipper.CurrentUser" syncable="YES">
+        <attribute name="amazonIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="amazonToken" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bitcoinAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="twitterAuthSecret" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="twitterAuthToken" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="twitterUserId" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="150"/>
+    </elements>
 </model>
