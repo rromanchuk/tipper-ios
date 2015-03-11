@@ -251,11 +251,11 @@
 			buildConfigurationList = 94AF298E1AAEF2B600E16048 /* Build configuration list for PBXNativeTarget "Tipper" */;
 			buildPhases = (
 				4A8E3E1574F03FDE6EC51855 /* Check Pods Manifest.lock */,
+				94AF29BD1AAF02A800E16048 /* Version Bump */,
 				94AF29681AAEF2B600E16048 /* Sources */,
 				94AF29691AAEF2B600E16048 /* Frameworks */,
 				94AF296A1AAEF2B600E16048 /* Resources */,
 				89D8CA061E9079FA926B2957 /* Copy Pods Resources */,
-				94AF29BD1AAF02A800E16048 /* Version Bump */,
 				94AF29BE1AAF032500E16048 /* Fabric */,
 			);
 			buildRules = (
@@ -584,6 +584,7 @@
 				INFOPLIST_FILE = Tipper/Info.plist;
 				INFOPLIST_OUTPUT_FORMAT = binary;
 				INFOPLIST_PREPROCESS = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PLIST_FILE_OUTPUT_FORMAT = binary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -615,6 +616,7 @@
 				INFOPLIST_FILE = Tipper/Info.plist;
 				INFOPLIST_OUTPUT_FORMAT = binary;
 				INFOPLIST_PREPROCESS = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PLIST_FILE_OUTPUT_FORMAT = binary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
