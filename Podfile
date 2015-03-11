@@ -5,6 +5,7 @@ target 'Tipper' do
     pod 'AWSiOSSDKv2/S3'
     pod 'AWSCognitoSync'
     pod 'Stripe'
+    pod 'Stripe/ApplePay'
 end
 
 target 'TipperTests' do

@@ -2,16 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>APPLE_PAY_MERCHANT</key>
+	<string>$(APPLE_PAY_MERCHANT)</string>
 	<key>AWS_ANALYTICS_ID</key>
 	<string>$(AWS_ANALYTICS_ID)</string>
-	<key>STRIPE_PUBLISHABLE</key>
-	<string>$(STRIPE_PUBLISHABLE)</string>
-	<key>COGNITO_AUTH_ARN</key>
-	<string>$(COGNITO_AUTH_ARN)</string>
-	<key>COGNITO_UNAUTH_ARN</key>
-	<string>$(COGNITO_UNAUTH_ARN)</string>
-	<key>COGNITO_POOL</key>
-	<string>$(COGNITO_POOL)</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -31,7 +25,15 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
+	<key>COGNITO_AUTH_ARN</key>
+	<string>$(COGNITO_AUTH_ARN)</string>
+	<key>COGNITO_POOL</key>
+	<string>$(COGNITO_POOL)</string>
+	<key>COGNITO_UNAUTH_ARN</key>
+	<string>$(COGNITO_UNAUTH_ARN)</string>
+	<key>Configuration</key>
+	<string>${CONFIGURATION}</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -59,6 +61,8 @@
 	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>STRIPE_PUBLISHABLE</key>
+	<string>$(STRIPE_PUBLISHABLE)</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

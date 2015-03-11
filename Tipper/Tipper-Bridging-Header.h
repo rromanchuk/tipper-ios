@@ -6,6 +6,9 @@
 #import "S3.h"
 #import "SNS.h"
 #import "DynamoDB.H"
+#import "Stripe.h"
+#import "Cognito.h"
+//#import "PTKView.h"
 
 #import "NSManagedObjectContext+Base.h"
 #import "Stripe.h"

@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 //        // Override point for customization after application launch.
+        Config.dump()
+
         Fabric.with([Crashlytics(), Twitter()])
         Stripe.setDefaultPublishableKey(Config.get("STRIPE_PUBLISHABLE"))
         currentUser = CurrentUser.currentUser(managedObjectContext!)
@@ -52,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let analytics = AWSMobileAnalytics(forAppId: Config.get("AWS_ANALYTICS_ID"), configuration: mobileAnalyticsConfiguration, completionBlock: nil)
 
 
-        let firstController = window?.rootViewController as! LoginController
+        let firstController = window?.rootViewController as! SplashViewController
         firstController.currentUser = currentUser
         firstController.provider = twitterAuth
 
