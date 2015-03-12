@@ -8,6 +8,7 @@
 
 import Foundation
 
+let APIRoot = Config.get("API_ROOT_URL")
 
 enum Router: URLRequestConvertible {
 
@@ -15,12 +16,15 @@ enum Router: URLRequestConvertible {
 
 
     case Register(String)
+    case Charge(String)
 
 
     var method: Method {
         switch self {
         case .Register:
             return .GET
+        case .Charge:
+            return .POST
         }
     }
 
@@ -28,7 +32,9 @@ enum Router: URLRequestConvertible {
     var URL: String {
         switch self {
         case .Register:
-            return "http://coinbit.tips/me"
+            return "\(APIRoot)/me"
+        case .Charge:
+            return "\(APIRoot)/charges"
         }
     }
 
@@ -37,6 +43,8 @@ enum Router: URLRequestConvertible {
         switch self {
         case .Register(let token):
             return ["token": token]
+        case .Charge(let token):
+            return ["stripeToken": token]
         default:
             return [String: String]()
         }
@@ -45,6 +53,8 @@ enum Router: URLRequestConvertible {
 
     var JSONparameters: [String: AnyObject] {
         switch self {
+        case .Charge(let token):
+            return ["stripeToken": token]
         default:
             return [String: AnyObject]()
         }
@@ -67,11 +77,11 @@ enum Router: URLRequestConvertible {
         default:
             println("")
             // Set authentication header
-//            let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//            let currentUser = CurrentUser.currentUser(delegate.managedObjectContext!)
-//            let authString = "\(currentUser.identifier):\(currentUser.token!)"
-//            let base64EncodedString = authString.dataUsingEncoding(NSUTF8StringEncoding)!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.allZeros)
-//            mutableURLRequest.setValue("Basic \(base64EncodedString)", forHTTPHeaderField: "Authorization")
+            let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let currentUser = CurrentUser.currentUser(delegate.managedObjectContext!)
+            let authString = "\(currentUser.twitterUserId):\(currentUser.twitterAuthToken!)"
+            let base64EncodedString = authString.dataUsingEncoding(NSUTF8StringEncoding)!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.allZeros)
+            mutableURLRequest.setValue("Basic \(base64EncodedString)", forHTTPHeaderField: "Authorization")
         }
 
         switch method {

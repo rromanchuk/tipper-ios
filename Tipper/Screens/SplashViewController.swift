@@ -36,6 +36,7 @@ class SplashViewController: UIViewController {
                 if (error != nil) {
                     self.currentUser?.twitterAuthenticationWithSession(session)
                     UserSync.sharedInstance.sync(self.currentUser!)
+                    self.performSegueWithIdentifier("SetupPay", sender: self)
                 }
 
             })

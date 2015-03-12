@@ -10,7 +10,7 @@ import Foundation
 
 public class API {
 
-    let APIRoot = "http://coinbit.tips"
+    
     let className = "API"
     public static let sharedInstance: API = API()
 
@@ -29,6 +29,7 @@ public class API {
         println("\(className)::\(__FUNCTION__) req:\(req)")
 
         req.validate().responseSwiftyJSON( { (request, response, JSON, error) -> Void in
+            println(TTTURLRequestFormatter.cURLCommandFromURLRequest(request))
             println("API Call: request:\(request), response:\(response), JSON:\(JSON), error:\(error)")
             if error != nil {
                 completion?(json: nil, error: error)
@@ -58,6 +59,10 @@ public class API {
 
     func register(token: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
         self.call(self.manager.request(Router.Register(token)), completion: completion)
+    }
+
+    func charge(token: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
+        self.call(self.manager.request(Router.Charge(token)), completion: completion)
     }
 
 

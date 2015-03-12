@@ -139,12 +139,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="addressLabel" destination="CX8-Sk-htj" id="Wtn-2U-VcZ"/>
                         <outlet property="payButton" destination="iBc-T6-fzV" id="b4T-6e-Qqg"/>
+                        <outlet property="phoneLabel" destination="jgz-hJ-Ajb" id="zun-bB-cwT"/>
+                        <outlet property="twitterIdLabel" destination="o7Q-Ff-4Hy" id="VWc-wy-o1t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="815" y="448"/>
+            <point key="canvasLocation" x="826" y="448"/>
         </scene>
     </scenes>
 </document>

@@ -36,6 +36,7 @@
 		94AF29C21AAF04D000E16048 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94AF29C01AAF04D000E16048 /* Fabric.framework */; };
 		94AF29C51AAF060000E16048 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94AF29C31AAF060000E16048 /* TwitterKit.framework */; };
 		94AF29C61AAF060000E16048 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 94AF29C41AAF060000E16048 /* TwitterKitResources.bundle */; };
+		94EE8CF61AB16E7E000593CD /* TTTURLRequestFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,8 @@
 		94AF29C01AAF04D000E16048 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		94AF29C31AAF060000E16048 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
 		94AF29C41AAF060000E16048 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
+		94EE8CF41AB16E7E000593CD /* TTTURLRequestFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTURLRequestFormatter.h; sourceTree = "<group>"; };
+		94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTURLRequestFormatter.m; sourceTree = "<group>"; };
 		F2A514B5D5D900213DC63984 /* Pods-Tipper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tipper.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tipper/Pods-Tipper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,6 +192,8 @@
 		94AF296E1AAEF2B600E16048 /* Tipper */ = {
 			isa = PBXGroup;
 			children = (
+				94EE8CF41AB16E7E000593CD /* TTTURLRequestFormatter.h */,
+				94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */,
 				941AA38F1AB0DA5400CA9192 /* DebugConfig.xcconfig */,
 				94416BF41AAF989F00117AFC /* Libs */,
 				94416BFC1AAF989F00117AFC /* CoreData */,
@@ -438,6 +443,7 @@
 				94416C111AAF989F00117AFC /* CoreDataUpdatable.swift in Sources */,
 				94416C0C1AAF989F00117AFC /* API.swift in Sources */,
 				94AF29751AAEF2B600E16048 /* Tipper.xcdatamodeld in Sources */,
+				94EE8CF61AB16E7E000593CD /* TTTURLRequestFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

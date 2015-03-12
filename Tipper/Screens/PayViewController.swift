@@ -51,7 +51,11 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
     var className = "ApplePayViewController"
     var managedObjectContext: NSManagedObjectContext?
 
+    @IBOutlet weak var twitterIdLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var payButton: UIButton!
+
     let SupportedPaymentNetworks = [PKPaymentNetworkVisa, PKPaymentNetworkMasterCard, PKPaymentNetworkAmex]
     let ApplePayMerchantID = Config.get("APPLE_PAY_MERCHANT")
 
@@ -59,6 +63,9 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
         super.viewDidLoad()
 
         //payButton!.enabled = PKPaymentAuthorizationViewController.canMakePaymentsUsingNetworks(SupportedPaymentNetworks)
+        self.twitterIdLabel.text = currentUser?.twitterUserId
+        self.phoneLabel.text = currentUser?.phone
+        self.addressLabel.text = currentUser?.bitcoinAddress
     }
 
     @IBAction func didTapPay(sender: UIButton) {
@@ -90,10 +97,12 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
         println("\(className)::\(__FUNCTION__)")
         STPAPIClient.sharedClient().createTokenWithPayment(payment, completion: { (token, error) -> Void in
             println("token:\(token) error:\(error)")
-
+            
             if error == nil {
                 //handle token to create charge in backend
-                completion(PKPaymentAuthorizationStatus.Success)
+               API.sharedInstance.charge(token.tokenId, completion: { (json, error) -> Void in
+                    completion(PKPaymentAuthorizationStatus.Success)
+               })
             } else {
                 completion(PKPaymentAuthorizationStatus.Failure)
             }
