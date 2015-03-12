@@ -64,7 +64,7 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
 
         //payButton!.enabled = PKPaymentAuthorizationViewController.canMakePaymentsUsingNetworks(SupportedPaymentNetworks)
         self.twitterIdLabel.text = currentUser?.twitterUserId
-        self.phoneLabel.text = currentUser?.phone
+        self.phoneLabel.text = currentUser?.twitterAuthToken
         self.addressLabel.text = currentUser?.bitcoinAddress
     }
 

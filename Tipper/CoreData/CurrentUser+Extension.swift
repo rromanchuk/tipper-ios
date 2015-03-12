@@ -53,6 +53,14 @@ extension CurrentUser: CoreDataUpdatable {
         self.twitterUserId = session.userID
     }
 
+    func twitterAuthenticationWithTKSession(session: TWTRSession) {
+        println("DigitsCallback")
+        self.twitterAuthToken = session.authToken
+        self.twitterAuthSecret = session.authTokenSecret
+        //self.phone = session.phoneNumber
+        self.twitterUserId = session.userID
+    }
+
 
     var isTwitterAuthenticated: Bool {
         get {

@@ -29,7 +29,7 @@ public class UserSync {
             userProfile.setString(bitcoinAddress, forKey: "BitcoinAddress")
         }
 
-        userProfile.setString(currentUser.phone, forKey: "Phone")
+        //userProfile.setString(currentUser.phone, forKey: "Phone")
         userProfile.setString(currentUser.twitterAuthToken, forKey: "TwitterAuthToken")
         userProfile.synchronize()
     }

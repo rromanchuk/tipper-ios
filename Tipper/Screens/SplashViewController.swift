@@ -24,25 +24,33 @@ class SplashViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if (currentUser!.isTwitterAuthenticated) {
-            //            self.container.hidden = false
-            //            self.twitterIdLabel.text = currentUser?.twitterUserId
-            //            self.phoneLabel.text = currentUser?.phone
-            //            self.bitcoinAdressLabel.text = ""
+
             performSegueWithIdentifier("SetupPay", sender: self)
         } else {
             //self.container.hidden = true
-            let authenticateButton = DGTAuthenticateButton(authenticationCompletion: {
-                (session: DGTSession!, error: NSError!) in
-                if (error != nil) {
-                    self.currentUser?.twitterAuthenticationWithSession(session)
-                    UserSync.sharedInstance.sync(self.currentUser!)
-                    self.performSegueWithIdentifier("SetupPay", sender: self)
-                }
-
+//            let authenticateButton = DGTAuthenticateButton(authenticationCompletion: {
+//                (session: DGTSession!, error: NSError!) in
+//                if (error != nil) {
+//                    self.currentUser?.twitterAuthenticationWithSession(session)
+//                    UserSync.sharedInstance.sync(self.currentUser!)
+//                    self.performSegueWithIdentifier("SetupPay", sender: self)
+//                }
+//
+//            })
+            let logInButton = TWTRLogInButton(logInCompletion:
+                { (session, error) in
+                    if (session != nil) {
+                        println("signed in as \(session.userName)");
+                        self.currentUser?.twitterAuthenticationWithTKSession(session)
+                        UserSync.sharedInstance.sync(self.currentUser!)
+                        self.performSegueWithIdentifier("SetupPay", sender: self)
+                    } else {
+                        println("error: \(error.localizedDescription)");
+                    }
             })
+            logInButton.center = self.view.center
+            self.view.addSubview(logInButton)
 
-            authenticateButton.center = self.view.center
-            self.view.addSubview(authenticateButton)
             
         }
 
