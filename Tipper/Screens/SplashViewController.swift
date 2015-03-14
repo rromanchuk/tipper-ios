@@ -11,38 +11,36 @@ import TwitterKit
 
 class SplashViewController: UIViewController {
     var provider: TwitterAuth?
-    var currentUser: CurrentUser?
+    var currentUser: CurrentUser!
     var className = "SplashViewController"
     var managedObjectContext: NSManagedObjectContext?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        println("\(className)::\(__FUNCTION__) \(managedObjectContext)")
 
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if (currentUser!.isTwitterAuthenticated) {
+        println("\(className)::\(__FUNCTION__)")
+        if (currentUser.isTwitterAuthenticated) {
 
             performSegueWithIdentifier("SetupPay", sender: self)
         } else {
-            //self.container.hidden = true
-//            let authenticateButton = DGTAuthenticateButton(authenticationCompletion: {
-//                (session: DGTSession!, error: NSError!) in
-//                if (error != nil) {
-//                    self.currentUser?.twitterAuthenticationWithSession(session)
-//                    UserSync.sharedInstance.sync(self.currentUser!)
-//                    self.performSegueWithIdentifier("SetupPay", sender: self)
-//                }
-//
-//            })
+
             let logInButton = TWTRLogInButton(logInCompletion:
                 { (session, error) in
                     if (session != nil) {
                         println("signed in as \(session.userName)");
-                        self.currentUser?.twitterAuthenticationWithTKSession(session)
-                        UserSync.sharedInstance.sync(self.currentUser!)
+                        self.currentUser.twitterAuthenticationWithTKSession(session)
+                        self.currentUser.writeToDisk()
+                        //UserSync.sharedInstance.sync(self.currentUser!)
+                        let types = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
+                        let notificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
+
+                        UIApplication.sharedApplication().registerForRemoteNotifications()
+                        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
                         self.performSegueWithIdentifier("SetupPay", sender: self)
                     } else {
                         println("error: \(error.localizedDescription)");
@@ -58,9 +56,9 @@ class SplashViewController: UIViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "SetupPay") {
-            let vc = segue.destinationViewController as! ApplePayViewController
-            vc.managedObjectContext = self.managedObjectContext
-            vc.currentUser = self.currentUser
+            let vc = segue.destinationViewController as! TipperTabBarController
+            vc.managedObjectContext = managedObjectContext
+            vc.currentUser = currentUser
 
         }
     }

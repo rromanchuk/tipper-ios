@@ -20,12 +20,9 @@
 		94416C0F1AAF989F00117AFC /* TwitterAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BFA1AAF989F00117AFC /* TwitterAuth.swift */; };
 		94416C101AAF989F00117AFC /* UserSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BFB1AAF989F00117AFC /* UserSync.swift */; };
 		94416C111AAF989F00117AFC /* CoreDataUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BFD1AAF989F00117AFC /* CoreDataUpdatable.swift */; };
-		94416C121AAF989F00117AFC /* CurrentUser+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BFE1AAF989F00117AFC /* CurrentUser+Extension.swift */; };
 		94416C131AAF989F00117AFC /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BFF1AAF989F00117AFC /* CurrentUser.swift */; };
 		94416C141AAF989F00117AFC /* NSManagedObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416C001AAF989F00117AFC /* NSManagedObject+Extension.swift */; };
 		94416C151AAF989F00117AFC /* NSManagedObjectContext+Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 94416C021AAF989F00117AFC /* NSManagedObjectContext+Base.m */; };
-		94416C161AAF989F00117AFC /* DynamoPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416C041AAF989F00117AFC /* DynamoPost.swift */; };
-		94416C171AAF989F00117AFC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416C061AAF989F00117AFC /* ViewController.swift */; };
 		94416C181AAF989F00117AFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416C081AAF989F00117AFC /* AppDelegate.swift */; };
 		94416C191AAF989F00117AFC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94416C091AAF989F00117AFC /* Images.xcassets */; };
 		94AF29751AAEF2B600E16048 /* Tipper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94AF29731AAEF2B600E16048 /* Tipper.xcdatamodeld */; };
@@ -37,6 +34,15 @@
 		94AF29C51AAF060000E16048 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94AF29C31AAF060000E16048 /* TwitterKit.framework */; };
 		94AF29C61AAF060000E16048 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 94AF29C41AAF060000E16048 /* TwitterKitResources.bundle */; };
 		94EE8CF61AB16E7E000593CD /* TTTURLRequestFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */; };
+		94FA97D71AB2E170005B0C83 /* TipperTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA97D61AB2E170005B0C83 /* TipperTabBarController.swift */; };
+		94FA97D91AB2E408005B0C83 /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA97D81AB2E408005B0C83 /* TransactionsViewController.swift */; };
+		94FA97DB1AB2E691005B0C83 /* DynamoFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA97DA1AB2E691005B0C83 /* DynamoFavorite.swift */; };
+		94FA97DD1AB2EB71005B0C83 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA97DC1AB2EB71005B0C83 /* Favorite.swift */; };
+		94FA97DF1AB356FB005B0C83 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA97DE1AB356FB005B0C83 /* FavoriteCell.swift */; };
+		94FDE9BD1AB42079006B6454 /* NSFetchedResultsControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FDE9BC1AB42079006B6454 /* NSFetchedResultsControllerExtension.swift */; };
+		94FDE9BF1AB4209B006B6454 /* SuperFetchedResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FDE9BE1AB4209B006B6454 /* SuperFetchedResultsControllerDelegate.swift */; };
+		94FDE9C11AB4BF6A006B6454 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FDE9C01AB4BF6A006B6454 /* Debug.swift */; };
+		94FDE9C31AB4EE5F006B6454 /* Favorite+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FDE9C21AB4EE5F006B6454 /* Favorite+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,13 +71,10 @@
 		94416BFA1AAF989F00117AFC /* TwitterAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterAuth.swift; sourceTree = "<group>"; };
 		94416BFB1AAF989F00117AFC /* UserSync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSync.swift; sourceTree = "<group>"; };
 		94416BFD1AAF989F00117AFC /* CoreDataUpdatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataUpdatable.swift; sourceTree = "<group>"; };
-		94416BFE1AAF989F00117AFC /* CurrentUser+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CurrentUser+Extension.swift"; sourceTree = "<group>"; };
 		94416BFF1AAF989F00117AFC /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		94416C001AAF989F00117AFC /* NSManagedObject+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Extension.swift"; sourceTree = "<group>"; };
 		94416C011AAF989F00117AFC /* NSManagedObjectContext+Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+Base.h"; sourceTree = "<group>"; };
 		94416C021AAF989F00117AFC /* NSManagedObjectContext+Base.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+Base.m"; sourceTree = "<group>"; };
-		94416C041AAF989F00117AFC /* DynamoPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoPost.swift; sourceTree = "<group>"; };
-		94416C061AAF989F00117AFC /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		94416C071AAF989F00117AFC /* Tipper-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tipper-Bridging-Header.h"; sourceTree = "<group>"; };
 		94416C081AAF989F00117AFC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94416C091AAF989F00117AFC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -89,6 +92,15 @@
 		94AF29C41AAF060000E16048 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
 		94EE8CF41AB16E7E000593CD /* TTTURLRequestFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTURLRequestFormatter.h; sourceTree = "<group>"; };
 		94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTURLRequestFormatter.m; sourceTree = "<group>"; };
+		94FA97D61AB2E170005B0C83 /* TipperTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipperTabBarController.swift; sourceTree = "<group>"; };
+		94FA97D81AB2E408005B0C83 /* TransactionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
+		94FA97DA1AB2E691005B0C83 /* DynamoFavorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoFavorite.swift; sourceTree = "<group>"; };
+		94FA97DC1AB2EB71005B0C83 /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
+		94FA97DE1AB356FB005B0C83 /* FavoriteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoriteCell.swift; path = Transactions/FavoriteCell.swift; sourceTree = "<group>"; };
+		94FDE9BC1AB42079006B6454 /* NSFetchedResultsControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFetchedResultsControllerExtension.swift; sourceTree = "<group>"; };
+		94FDE9BE1AB4209B006B6454 /* SuperFetchedResultsControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperFetchedResultsControllerDelegate.swift; sourceTree = "<group>"; };
+		94FDE9C01AB4BF6A006B6454 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
+		94FDE9C21AB4EE5F006B6454 /* Favorite+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Favorite+Extension.swift"; sourceTree = "<group>"; };
 		F2A514B5D5D900213DC63984 /* Pods-Tipper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tipper.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tipper/Pods-Tipper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +146,7 @@
 				94416BF91AAF989F00117AFC /* SwiftyJSON.swift */,
 				94416BFA1AAF989F00117AFC /* TwitterAuth.swift */,
 				94416BFB1AAF989F00117AFC /* UserSync.swift */,
+				94FDE9C01AB4BF6A006B6454 /* Debug.swift */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
@@ -142,11 +155,12 @@
 			isa = PBXGroup;
 			children = (
 				94416BFD1AAF989F00117AFC /* CoreDataUpdatable.swift */,
-				94416BFE1AAF989F00117AFC /* CurrentUser+Extension.swift */,
 				94416BFF1AAF989F00117AFC /* CurrentUser.swift */,
 				94416C001AAF989F00117AFC /* NSManagedObject+Extension.swift */,
 				94416C011AAF989F00117AFC /* NSManagedObjectContext+Base.h */,
 				94416C021AAF989F00117AFC /* NSManagedObjectContext+Base.m */,
+				94FA97DC1AB2EB71005B0C83 /* Favorite.swift */,
+				94FDE9C21AB4EE5F006B6454 /* Favorite+Extension.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -154,7 +168,7 @@
 		94416C031AAF989F00117AFC /* Dynamo */ = {
 			isa = PBXGroup;
 			children = (
-				94416C041AAF989F00117AFC /* DynamoPost.swift */,
+				94FA97DA1AB2E691005B0C83 /* DynamoFavorite.swift */,
 			);
 			path = Dynamo;
 			sourceTree = "<group>";
@@ -162,9 +176,10 @@
 		94416C051AAF989F00117AFC /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				94416C061AAF989F00117AFC /* ViewController.swift */,
+				94FA97D51AB2E0DA005B0C83 /* Transaction */,
 				941AA38B1AAFDCA000CA9192 /* PayViewController.swift */,
 				941AA38D1AB01EC000CA9192 /* SplashViewController.swift */,
+				94FA97D61AB2E170005B0C83 /* TipperTabBarController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -192,6 +207,7 @@
 		94AF296E1AAEF2B600E16048 /* Tipper */ = {
 			isa = PBXGroup;
 			children = (
+				94FDE9BB1AB41FE2006B6454 /* Base */,
 				94EE8CF41AB16E7E000593CD /* TTTURLRequestFormatter.h */,
 				94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */,
 				941AA38F1AB0DA5400CA9192 /* DebugConfig.xcconfig */,
@@ -234,6 +250,24 @@
 				94AF29891AAEF2B600E16048 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		94FA97D51AB2E0DA005B0C83 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				94FDE9BE1AB4209B006B6454 /* SuperFetchedResultsControllerDelegate.swift */,
+				94FDE9BC1AB42079006B6454 /* NSFetchedResultsControllerExtension.swift */,
+				94FA97D81AB2E408005B0C83 /* TransactionsViewController.swift */,
+				94FA97DE1AB356FB005B0C83 /* FavoriteCell.swift */,
+			);
+			name = Transaction;
+			sourceTree = "<group>";
+		};
+		94FDE9BB1AB41FE2006B6454 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Base;
 			sourceTree = "<group>";
 		};
 		99548B7BBFFD4449A2DD2385 /* Frameworks */ = {
@@ -424,24 +458,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94416C171AAF989F00117AFC /* ViewController.swift in Sources */,
+				94FDE9BF1AB4209B006B6454 /* SuperFetchedResultsControllerDelegate.swift in Sources */,
 				94416C0B1AAF989F00117AFC /* Alamofire.swift in Sources */,
-				94416C161AAF989F00117AFC /* DynamoPost.swift in Sources */,
 				94416C0A1AAF989F00117AFC /* Alamofire-SwiftyJSON.swift in Sources */,
+				94FDE9BD1AB42079006B6454 /* NSFetchedResultsControllerExtension.swift in Sources */,
+				94FA97DB1AB2E691005B0C83 /* DynamoFavorite.swift in Sources */,
 				941AA38A1AAFA34900CA9192 /* Config.swift in Sources */,
 				94416C131AAF989F00117AFC /* CurrentUser.swift in Sources */,
 				94416C141AAF989F00117AFC /* NSManagedObject+Extension.swift in Sources */,
 				94416C0D1AAF989F00117AFC /* Router.swift in Sources */,
 				94416C151AAF989F00117AFC /* NSManagedObjectContext+Base.m in Sources */,
+				94FA97D71AB2E170005B0C83 /* TipperTabBarController.swift in Sources */,
+				94FA97DD1AB2EB71005B0C83 /* Favorite.swift in Sources */,
 				94416C181AAF989F00117AFC /* AppDelegate.swift in Sources */,
+				94FDE9C31AB4EE5F006B6454 /* Favorite+Extension.swift in Sources */,
 				94416C0E1AAF989F00117AFC /* SwiftyJSON.swift in Sources */,
 				94416C0F1AAF989F00117AFC /* TwitterAuth.swift in Sources */,
 				94416C101AAF989F00117AFC /* UserSync.swift in Sources */,
+				94FA97D91AB2E408005B0C83 /* TransactionsViewController.swift in Sources */,
 				941AA38C1AAFDCA000CA9192 /* PayViewController.swift in Sources */,
+				94FDE9C11AB4BF6A006B6454 /* Debug.swift in Sources */,
 				941AA38E1AB01EC000CA9192 /* SplashViewController.swift in Sources */,
-				94416C121AAF989F00117AFC /* CurrentUser+Extension.swift in Sources */,
 				94416C111AAF989F00117AFC /* CoreDataUpdatable.swift in Sources */,
 				94416C0C1AAF989F00117AFC /* API.swift in Sources */,
+				94FA97DF1AB356FB005B0C83 /* FavoriteCell.swift in Sources */,
 				94AF29751AAEF2B600E16048 /* Tipper.xcdatamodeld in Sources */,
 				94EE8CF61AB16E7E000593CD /* TTTURLRequestFormatter.m in Sources */,
 			);

@@ -55,6 +55,7 @@ extension NSManagedObject  {
             return nil
         } else if (results?.count == 0) {
             let entityObj = self.create(entity, context: context)
+
             entityObj.updateEntityWithJSON(json)
             return entityObj
         } else {
@@ -63,6 +64,31 @@ extension NSManagedObject  {
             return entityObj
         }
     }
+
+    class func entityWithDYNAMO<T: NSManagedObject where T: CoreDataUpdatable>(entity: T.Type, model: DynamoUpdatable, context: NSManagedObjectContext) -> T? {
+        let request = NSFetchRequest(entityName: entity.className)
+        request.predicate = NSPredicate(format: "%K == %@", model.lookupProperty(), model.lookupValue())
+        var error: NSError? = nil
+        let results = context.executeFetchRequest(request, error: &error)
+        if let _error = error {
+            println("ERROR: \(_error)")
+        }
+
+        if (results == nil) {
+            return nil
+        } else if (results?.count == 0) {
+            let entityObj = self.create(entity, context: context)
+
+            entityObj.updateEntityWithDynamoModel(model)
+            return entityObj
+        } else {
+            let entityObj = results?.last as? T
+            entityObj?.updateEntityWithDynamoModel(model)
+            return entityObj
+        }
+    }
+
+
 
     class func entityWithUUID<T: NSManagedObject where T: CoreDataUpdatable>(entity: T.Type, uuid: String, context: NSManagedObjectContext) -> T? {
         let request = NSFetchRequest(entityName: entity.className)
@@ -83,6 +109,14 @@ extension NSManagedObject  {
         }
     }
 
+    var privateContext: NSManagedObjectContext {
+        get {
+            let privateContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
+            privateContext.parentContext = self.managedObjectContext
+            return privateContext
+        }
+    }
+
     func destroy() {
         println("NSManagedObject::\(__FUNCTION__)")
         self.managedObjectContext?.deleteObject(self)
@@ -100,4 +134,23 @@ extension NSManagedObject  {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.writeToDisk()
     }
+
+    class func appManagedObjectContext() -> NSManagedObjectContext {
+        return (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
+    }
+
+    func appManagedObjectContext() -> NSManagedObjectContext {
+        return (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
+    }
+}
+
+extension NSManagedObjectContext {
+    var privateContext: NSManagedObjectContext {
+        get {
+            let privateContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
+            privateContext.parentContext = self
+            return privateContext
+        }
+    }
+
 }

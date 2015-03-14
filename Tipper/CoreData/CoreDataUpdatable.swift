@@ -9,22 +9,27 @@
 import Foundation
 
 protocol CoreDataUpdatable {
-//    func updateEntityWithRestModel(restModel: Dictionary<String, AnyObject>)
+
     func updateEntityWithJSON(json: JSON)
-//    func updateEntityWithDynamoModel(dynamoModel: AWSDynamoDBObjectModel)
 
-    /// The CoreData column that should be used for lookup
+    // The CoreData column that should be used for lookup
     static var lookupProperty: String { get }
-//    static var restModelLookupValue: String { get }
 
-    /// Swift doesn't have very friendly introspection at the moment. NSManagedObject extension needs to ask itself what its entity string is
-    ///
-    /// :returns: String The NSManagedObject's entity name
+    // Swift doesn't have very friendly introspection at the moment. NSManagedObject extension needs to ask itself what its entity string is
+    //
+    // :returns: String The NSManagedObject's entity name
     static var className: String { get }
+    func updateEntityWithDynamoModel(dynamoObject: DynamoUpdatable)
 }
-//
-//protocol DynamoCoreDataUpdatable {
-//    /// The CoreData column that should be used for lookup
-//    var dynamoModelLookupValue: String { get }
-//
-//}
+
+protocol DynamoUpdatable {
+
+    // The CoreData column that should be used for lookup
+    static func lookupProperty() -> String
+    func lookupProperty() -> String
+    func lookupValue() -> String
+
+    // Swift doesn't have very friendly introspection at the moment. NSManagedObject extension needs to ask itself what its entity string is
+    //
+    // :returns: String The NSManagedObject's entity name
+}

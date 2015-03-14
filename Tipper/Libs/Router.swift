@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import TwitterKit
 
 let APIRoot = Config.get("API_ROOT_URL")
 
@@ -17,6 +18,7 @@ enum Router: URLRequestConvertible {
 
     case Register(String)
     case Charge(String)
+    case Favorites
 
 
     var method: Method {
@@ -25,6 +27,8 @@ enum Router: URLRequestConvertible {
             return .GET
         case .Charge:
             return .POST
+        case .Favorites:
+            return .GET
         }
     }
 
@@ -35,6 +39,8 @@ enum Router: URLRequestConvertible {
             return "\(APIRoot)/me"
         case .Charge:
             return "\(APIRoot)/charges"
+        case .Favorites:
+            return "https://api.twitter.com/1.1/favorites/list.json"
         }
     }
 
@@ -45,6 +51,8 @@ enum Router: URLRequestConvertible {
             return ["token": token]
         case .Charge(let token):
             return ["stripeToken": token]
+        case .Favorites:
+            return ["count": "5", "include_entities": "false"]
         default:
             return [String: String]()
         }
@@ -74,6 +82,8 @@ enum Router: URLRequestConvertible {
         case .Register:
             // Does't need authentication
             break
+        case .Favorites:
+            return Twitter.sharedInstance().APIClient.URLRequestWithMethod(method.rawValue, URL: URLString, parameters: URLParameters, error: nil)
         default:
             println("")
             // Set authentication header

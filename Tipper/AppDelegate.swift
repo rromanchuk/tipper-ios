@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let className = "AppDelegate"
     var privateWriterContext: NSManagedObjectContext?
     var currentUser: CurrentUser?
-    //var provider: AWSCognitoCredentialsProvider?
+    var provider: TwitterAuth?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 //        // Override point for customization after application launch.
@@ -37,10 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         println("\(className)::\(__FUNCTION__) currentUser:\([currentUser!])")
 
         AWSLogger.defaultLogger().logLevel = .Error
-        let twitterAuth = TwitterAuth(currentUser: currentUser!)
-        let credentialsProvider = AWSCognitoCredentialsProvider(regionType: AWSRegionType.USEast1, identityProvider: twitterAuth, unauthRoleArn: Config.get("COGNITO_UNAUTH_ARN"), authRoleArn: Config.get("COGNITO_AUTH_ARN"))
-
-        //let credentialsProvider = AWSCognitoCredentialsProvider.credentialsWithRegionType(.USEast1, accountId: nil, identityPoolId: "***REMOVED***", unauthRoleArn: "arn:aws:iam::080383581145:role/Cognito_TipperUnauth_DefaultRole", authRoleArn: "arn:aws:iam::080383581145:role/Cognito_TipperAuth_DefaultRole")
+        provider = TwitterAuth(currentUser: currentUser!)
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType: AWSRegionType.USEast1, identityProvider: provider, unauthRoleArn: Config.get("COGNITO_UNAUTH_ARN"), authRoleArn: Config.get("COGNITO_AUTH_ARN"))
 
         let defaultServiceConfiguration = AWSServiceConfiguration(
             region: AWSRegionType.USEast1,
@@ -56,13 +54,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let firstController = window?.rootViewController as! SplashViewController
         firstController.currentUser = currentUser
-        firstController.provider = twitterAuth
-
-        let types = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
-        let notificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
-
-        UIApplication.sharedApplication().registerForRemoteNotifications()
-        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        firstController.provider = provider
+        firstController.managedObjectContext = managedObjectContext
+       
 
         return true
     }
@@ -70,12 +64,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-
+         println("\(className)::\(__FUNCTION__)")
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        println("\(className)::\(__FUNCTION__)")
         writeToDisk()
     }
 
@@ -93,27 +88,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
     }
 
-//    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-//        let deviceTokenString = "\(deviceToken)"
-//            .stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString:"<>"))
-//            .stringByReplacingOccurrencesOfString(" ", withString: "")
-//        println("deviceTokenString: \(deviceTokenString)")
-//
-//        let sns = AWSSNS.defaultSNS()
-//        let request = AWSSNSCreatePlatformEndpointInput()
-//        request.token = deviceTokenString
-//        request.platformApplicationArn = "arn:aws:sns:us-east-1:080383581145:app/APNS_SANDBOX/TipperBeta"
-//        sns.createPlatformEndpoint(request).continueWithBlock { (task: BFTask!) -> AnyObject! in
-//            if task.error != nil {
-//                println("Error: \(task.error)")
-//            } else {
-//                let createEndpointResponse = task.result as! AWSSNSCreateEndpointResponse
-//                println("endpointArn: \(createEndpointResponse.endpointArn)")
-//            }
-//            
-//            return nil
-//        }
-//    }
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        println("\(className)::\(__FUNCTION__)")
+        let deviceTokenString = "\(deviceToken)"
+            .stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString:"<>"))
+            .stringByReplacingOccurrencesOfString(" ", withString: "")
+        println("deviceTokenString: \(deviceTokenString)")
+
+        let sns = AWSSNS.defaultSNS()
+        let request = AWSSNSCreatePlatformEndpointInput()
+        request.token = deviceTokenString
+        request.platformApplicationArn = "arn:aws:sns:us-east-1:080383581145:app/APNS_SANDBOX/TipperBeta"
+        sns.createPlatformEndpoint(request).continueWithBlock { (task: BFTask!) -> AnyObject! in
+            if task.error != nil {
+                println("Error: \(task.error)")
+            } else {
+                let createEndpointResponse = task.result as! AWSSNSCreateEndpointResponse
+                println("endpointArn: \(createEndpointResponse.endpointArn)")
+            }
+            
+            return nil
+        }
+    }
 
     // MARK: - Core Data stack
 

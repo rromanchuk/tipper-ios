@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7527" systemVersion="14D87h" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7535.1" systemVersion="14D98g" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="CurrentUser" representedClassName="Tipper.CurrentUser" syncable="YES">
         <attribute name="amazonIdentifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="amazonToken" optional="YES" attributeType="String" syncable="YES"/>
@@ -8,8 +8,25 @@
         <attribute name="twitterAuthSecret" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="twitterAuthToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="twitterUserId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="twitterUsername" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="favorites" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favorite" inverseName="user" inverseEntity="Favorite" syncable="YES"/>
+    </entity>
+    <entity name="Favorite" representedClassName="Tipper.Favorite" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="favoriteId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="fromBitcoinAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fromTwitterId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fromUsername" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="toBitcoinAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="toTwitterId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="toUsername" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tweetText" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CurrentUser" inverseName="favorites" inverseEntity="CurrentUser" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="195"/>
+        <element name="Favorite" positionX="-63" positionY="54" width="128" height="210"/>
     </elements>
 </model>

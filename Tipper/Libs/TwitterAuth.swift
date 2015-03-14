@@ -13,6 +13,7 @@ public class TwitterAuth : AWSAbstractIdentityProvider {
     var newLogins: [ NSObject : AnyObject ]!
     var currentUser: CurrentUser
     var className = "TwitterAuth"
+
     init(currentUser: CurrentUser) {
         self.currentUser = currentUser
         super.init()
@@ -49,9 +50,10 @@ public class TwitterAuth : AWSAbstractIdentityProvider {
 
 
     override public func refresh() -> BFTask! {
-        println("\(className)::\(__FUNCTION__) ---------------------------------------------")
+        println("\(className)::\(__FUNCTION__) \(currentUser) ---------------------------------------------")
         let task = BFTaskCompletionSource()
         if currentUser.isTwitterAuthenticated {
+             println("is authenticated")
             currentUser.authenticate(self, completion: { () -> Void in
                 task.setResult(self.identityId)
                 //UserSync.sharedInstance.sync(self.currentUser)

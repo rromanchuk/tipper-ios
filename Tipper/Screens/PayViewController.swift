@@ -8,52 +8,29 @@
 
 import Foundation
 import PassKit
-//class StripePayViewController: PTKViewDelegate {
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        paymentView = PTKView(frame: CGRectMake(15, 20, 290, 55))
-//        paymentView?.center = view.center
-//        paymentView?.delegate = self
-//        view.addSubview(paymentView!)
-//
-//        payButton = UIBarButtonItem(title: "pay", style: UIBarButtonItemStyle.Plain, target: self, action: "createToken")
-//        payButton!.enabled = false
-//        navigationItem.rightBarButtonItem = payButton
-//    }
-//
-//
-//    func paymentView(paymentView: PTKView!, withCard card: PTKCard!, isValid valid: Bool) {
-//        payButton!.enabled = valid
-//    }
-//
-//    func createToken() {
-//        let card = STPCard()
-//        card.number = paymentView!.card.number
-//        card.expMonth = paymentView!.card.expMonth
-//        card.expYear = paymentView!.card.expYear
-//        card.cvc = paymentView!.card.cvc
-//
-//        Stripe.createTokenWithCard(card, completion: { (token: STPToken!, error: NSError!) -> Void in
-//            self.handleToken(token)
-//        })
-//    }
-//
-//    func handleToken(token: STPToken!) {
-//        //send token to backend and create charge
-//    }
-//}
+import TwitterKit
 
-class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewControllerDelegate {
-    var currentUser: CurrentUser?
-    var provider: TwitterAuth?
+class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewControllerDelegate, NSURLConnectionDelegate, NSURLConnectionDataDelegate {
     var className = "ApplePayViewController"
-    var managedObjectContext: NSManagedObjectContext?
 
-    @IBOutlet weak var twitterIdLabel: UILabel!
-    @IBOutlet weak var phoneLabel: UILabel!
+    var managedObjectContext: NSManagedObjectContext {
+        get {
+            return (tabBarController as! TipperTabBarController).managedObjectContext!
+        }
+    }
+
+    var currentUser: CurrentUser {
+        get {
+            return (tabBarController as! TipperTabBarController).currentUser!
+        }
+    }
+
+
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var tokenLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var balanceLabel: UILabel!
+
     @IBOutlet weak var payButton: UIButton!
 
     let SupportedPaymentNetworks = [PKPaymentNetworkVisa, PKPaymentNetworkMasterCard, PKPaymentNetworkAmex]
@@ -61,12 +38,28 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        println("\(className)::\(__FUNCTION__) \(managedObjectContext)")
 
         //payButton!.enabled = PKPaymentAuthorizationViewController.canMakePaymentsUsingNetworks(SupportedPaymentNetworks)
-        self.twitterIdLabel.text = currentUser?.twitterUserId
-        self.phoneLabel.text = currentUser?.twitterAuthToken
-        self.addressLabel.text = currentUser?.bitcoinAddress
+        self.usernameLabel.text = currentUser.twitterUsername
+        self.tokenLabel.text = currentUser.twitterAuthToken
+        self.addressLabel.text = currentUser.bitcoinAddress
+
+        //let request = Twitter.sharedInstance().APIClient.URLRequestWithMethod("GET", URL: "https://userstream.twitter.com/1.1/user.json", parameters: ["with": "favorite"], error: nil)
+
+        //let connection = NSURLConnection(request: request, delegate: self)
+        //connection?.start()
     }
+
+    func connection(connection: NSURLConnection, didReceiveData data: NSData) {
+        let response: String = NSString(data: data, encoding: NSUTF8StringEncoding) as! String
+        println(response)
+    }
+
+    func connection(connection: NSURLConnection, didFailWithError error: NSError) {
+        //println(
+    }
+
 
     @IBAction func didTapPay(sender: UIButton) {
         let request = PKPaymentRequest()
@@ -75,7 +68,7 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
         request.merchantCapabilities = PKMerchantCapability.Capability3DS
         request.countryCode = "US"
         request.currencyCode = "USD"
-        request.paymentSummaryItems = [PKPaymentSummaryItem(label: "CHARGE_NAME_HERE", amount: NSDecimalNumber(double: 10))]
+        request.paymentSummaryItems = [PKPaymentSummaryItem(label: "Тipper ", amount: NSDecimalNumber(double: 10))]
         if Stripe.canSubmitPaymentRequest(request) {
             #if DEBUG
                 let applePayController = STPTestPaymentAuthorizationViewController(paymentRequest: request)
