@@ -10,7 +10,7 @@ import Foundation
 import TwitterKit
 
 class SplashViewController: UIViewController {
-    var provider: TwitterAuth?
+    var provider: TwitterAuth!
     var currentUser: CurrentUser!
     var className = "SplashViewController"
     var managedObjectContext: NSManagedObjectContext?
@@ -35,13 +35,15 @@ class SplashViewController: UIViewController {
                         println("signed in as \(session.userName)");
                         self.currentUser.twitterAuthenticationWithTKSession(session)
                         self.currentUser.writeToDisk()
-                        //UserSync.sharedInstance.sync(self.currentUser!)
-                        let types = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
-                        let notificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
+                        self.currentUser.authenticate(self.provider, completion: { () -> Void in
+                            UserSync.sharedInstance.sync(self.currentUser)
+                            let types = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
+                            let notificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
 
-                        UIApplication.sharedApplication().registerForRemoteNotifications()
-                        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
-                        self.performSegueWithIdentifier("SetupPay", sender: self)
+                            UIApplication.sharedApplication().registerForRemoteNotifications()
+                            UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+                            self.performSegueWithIdentifier("SetupPay", sender: self)
+                        })
                     } else {
                         println("error: \(error.localizedDescription)");
                     }

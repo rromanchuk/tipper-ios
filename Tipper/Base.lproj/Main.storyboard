@@ -144,6 +144,9 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Tj-ah-f3Z">
+                                <rect key="frame" x="67" y="309" width="240" height="209"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -153,6 +156,7 @@
                         <outlet property="addressLabel" destination="nm8-cI-yQz" id="XIc-La-WRO"/>
                         <outlet property="balanceLabel" destination="oMx-VA-Mvh" id="pNv-Cz-Wg2"/>
                         <outlet property="payButton" destination="uWf-Rq-e15" id="LCS-f5-Ph6"/>
+                        <outlet property="qrImage" destination="5Tj-ah-f3Z" id="Yh9-m4-gcU"/>
                         <outlet property="tokenLabel" destination="4kJ-py-8ib" id="Gup-Be-f34"/>
                         <outlet property="usernameLabel" destination="sEH-tR-L12" id="F27-hU-o2h"/>
                     </connections>
@@ -165,7 +169,7 @@
         <scene sceneID="bio-Qd-gvM">
             <objects>
                 <tabBarController title="Tipper" id="yuf-em-ft4" customClass="TipperTabBarController" customModule="Tipper" customModuleProvider="target" sceneMemberID="viewController">
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="SZO-4p-lDW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>

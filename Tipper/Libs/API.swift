@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Alamofire
+import SwiftyJSON
 
 public class API {
 
@@ -57,8 +59,8 @@ public class API {
 ////        }
 //    }
 
-    func register(token: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
-        self.call(self.manager.request(Router.Register(token)), completion: completion)
+    func register(username: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
+        self.call(self.manager.request(Router.Register(username)), completion: completion)
     }
 
     func charge(token: String, completion: ((json: JSON, error: NSError?) -> Void)!) {

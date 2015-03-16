@@ -8,6 +8,7 @@
 
 import Foundation
 import TwitterKit
+import SwiftyJSON
 
 class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
     var FromTwitterUserID: String?

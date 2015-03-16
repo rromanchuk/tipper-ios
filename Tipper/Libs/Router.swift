@@ -8,6 +8,8 @@
 
 import Foundation
 import TwitterKit
+import SwiftyJSON
+import Alamofire
 
 let APIRoot = Config.get("API_ROOT_URL")
 
@@ -21,10 +23,10 @@ enum Router: URLRequestConvertible {
     case Favorites
 
 
-    var method: Method {
+    var method: Alamofire.Method {
         switch self {
         case .Register:
-            return .GET
+            return .POST
         case .Charge:
             return .POST
         case .Favorites:
@@ -47,12 +49,12 @@ enum Router: URLRequestConvertible {
 
     var URLParameters: [String: String] {
         switch self {
-        case .Register(let token):
-            return ["token": token]
+        case .Register(let username):
+            return ["username": username]
         case .Charge(let token):
             return ["stripeToken": token]
         case .Favorites:
-            return ["count": "5", "include_entities": "false"]
+            return ["count": "200", "include_entities": "false"]
         default:
             return [String: String]()
         }
@@ -61,6 +63,8 @@ enum Router: URLRequestConvertible {
 
     var JSONparameters: [String: AnyObject] {
         switch self {
+        case .Register(let username):
+            return ["username": username]
         case .Charge(let token):
             return ["stripeToken": token]
         default:

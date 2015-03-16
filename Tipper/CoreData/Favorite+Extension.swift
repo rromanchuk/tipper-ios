@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 let TwitterDateFormatter: NSDateFormatter = {
     let df = NSDateFormatter()

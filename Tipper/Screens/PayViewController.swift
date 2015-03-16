@@ -9,6 +9,7 @@
 import Foundation
 import PassKit
 import TwitterKit
+import QRCode
 
 class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewControllerDelegate, NSURLConnectionDelegate, NSURLConnectionDataDelegate {
     var className = "ApplePayViewController"
@@ -30,6 +31,7 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
     @IBOutlet weak var tokenLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
+    @IBOutlet weak var qrImage: UIImageView!
 
     @IBOutlet weak var payButton: UIButton!
 
@@ -44,6 +46,10 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
         self.usernameLabel.text = currentUser.twitterUsername
         self.tokenLabel.text = currentUser.twitterAuthToken
         self.addressLabel.text = currentUser.bitcoinAddress
+        self.balanceLabel.text = "\(currentUser.satoshi!)Satoshi"
+        let qrCode = QRCode(currentUser.bitcoinAddress!)
+        qrImage.image = qrCode?.image
+
 
         //let request = Twitter.sharedInstance().APIClient.URLRequestWithMethod("GET", URL: "https://userstream.twitter.com/1.1/user.json", parameters: ["with": "favorite"], error: nil)
 

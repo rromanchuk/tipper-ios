@@ -5,6 +5,7 @@
         <attribute name="amazonToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="bitcoinAddress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="satoshi" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="twitterAuthSecret" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="twitterAuthToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="twitterUserId" optional="YES" attributeType="String" syncable="YES"/>
@@ -26,7 +27,7 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CurrentUser" inverseName="favorites" inverseEntity="CurrentUser" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="195"/>
+        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="210"/>
         <element name="Favorite" positionX="-63" positionY="54" width="128" height="210"/>
     </elements>
 </model>

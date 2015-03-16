@@ -7,16 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D117047CF53761110C03BE2 /* libPods-Tipper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5431BFF7D50CDB7444D8D96C /* libPods-Tipper.a */; };
+		3B6E9F44501E44BF73C99834 /* libPods-Tipper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E57F9EB756EFF49AEA100E /* libPods-Tipper.a */; };
 		941AA38A1AAFA34900CA9192 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA3891AAFA34900CA9192 /* Config.swift */; };
 		941AA38C1AAFDCA000CA9192 /* PayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA38B1AAFDCA000CA9192 /* PayViewController.swift */; };
 		941AA38E1AB01EC000CA9192 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA38D1AB01EC000CA9192 /* SplashViewController.swift */; };
 		941AA3901AB0DA5400CA9192 /* DebugConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 941AA38F1AB0DA5400CA9192 /* DebugConfig.xcconfig */; };
 		94416C0A1AAF989F00117AFC /* Alamofire-SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF51AAF989F00117AFC /* Alamofire-SwiftyJSON.swift */; };
-		94416C0B1AAF989F00117AFC /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF61AAF989F00117AFC /* Alamofire.swift */; };
 		94416C0C1AAF989F00117AFC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF71AAF989F00117AFC /* API.swift */; };
 		94416C0D1AAF989F00117AFC /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF81AAF989F00117AFC /* Router.swift */; };
-		94416C0E1AAF989F00117AFC /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF91AAF989F00117AFC /* SwiftyJSON.swift */; };
 		94416C0F1AAF989F00117AFC /* TwitterAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BFA1AAF989F00117AFC /* TwitterAuth.swift */; };
 		94416C101AAF989F00117AFC /* UserSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BFB1AAF989F00117AFC /* UserSync.swift */; };
 		94416C111AAF989F00117AFC /* CoreDataUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BFD1AAF989F00117AFC /* CoreDataUpdatable.swift */; };
@@ -25,6 +23,9 @@
 		94416C151AAF989F00117AFC /* NSManagedObjectContext+Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 94416C021AAF989F00117AFC /* NSManagedObjectContext+Base.m */; };
 		94416C181AAF989F00117AFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416C081AAF989F00117AFC /* AppDelegate.swift */; };
 		94416C191AAF989F00117AFC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94416C091AAF989F00117AFC /* Images.xcassets */; };
+		948418571AB6525E001C633E /* QRCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9484183A1AB61396001C633E /* QRCode.framework */; };
+		9484185A1AB6525F001C633E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 948418581AB6525F001C633E /* Alamofire.framework */; };
+		9484185B1AB6525F001C633E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 948418591AB6525F001C633E /* SwiftyJSON.framework */; };
 		94AF29751AAEF2B600E16048 /* Tipper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94AF29731AAEF2B600E16048 /* Tipper.xcdatamodeld */; };
 		94AF297A1AAEF2B600E16048 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94AF29781AAEF2B600E16048 /* Main.storyboard */; };
 		94AF297F1AAEF2B600E16048 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AF297D1AAEF2B600E16048 /* LaunchScreen.xib */; };
@@ -57,17 +58,15 @@
 
 /* Begin PBXFileReference section */
 		20CFF2D7F1C187F20E1EAFF3 /* Pods-Tipper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tipper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tipper/Pods-Tipper.debug.xcconfig"; sourceTree = "<group>"; };
-		5431BFF7D50CDB7444D8D96C /* libPods-Tipper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tipper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		74E57F9EB756EFF49AEA100E /* libPods-Tipper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tipper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		941AA3891AAFA34900CA9192 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		941AA38B1AAFDCA000CA9192 /* PayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayViewController.swift; sourceTree = "<group>"; };
 		941AA38D1AB01EC000CA9192 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		941AA38F1AB0DA5400CA9192 /* DebugConfig.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = DebugConfig.xcconfig; sourceTree = "<group>"; };
 		94416BED1AAF94C700117AFC /* Tipper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Tipper.entitlements; sourceTree = "<group>"; };
 		94416BF51AAF989F00117AFC /* Alamofire-SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire-SwiftyJSON.swift"; sourceTree = "<group>"; };
-		94416BF61AAF989F00117AFC /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
 		94416BF71AAF989F00117AFC /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		94416BF81AAF989F00117AFC /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		94416BF91AAF989F00117AFC /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		94416BFA1AAF989F00117AFC /* TwitterAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterAuth.swift; sourceTree = "<group>"; };
 		94416BFB1AAF989F00117AFC /* UserSync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSync.swift; sourceTree = "<group>"; };
 		94416BFD1AAF989F00117AFC /* CoreDataUpdatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataUpdatable.swift; sourceTree = "<group>"; };
@@ -78,6 +77,10 @@
 		94416C071AAF989F00117AFC /* Tipper-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tipper-Bridging-Header.h"; sourceTree = "<group>"; };
 		94416C081AAF989F00117AFC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94416C091AAF989F00117AFC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		948418381AB612EC001C633E /* QRCode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRCode.framework; path = "Pods/../build/Debug-iphoneos/Pods-Tipper/QRCode.framework"; sourceTree = "<group>"; };
+		9484183A1AB61396001C633E /* QRCode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRCode.framework; path = Carthage/Build/iOS/QRCode.framework; sourceTree = "<group>"; };
+		948418581AB6525F001C633E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		948418591AB6525F001C633E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		94AF296C1AAEF2B600E16048 /* Tipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94AF29701AAEF2B600E16048 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94AF29741AAEF2B600E16048 /* Tipper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tipper.xcdatamodel; sourceTree = "<group>"; };
@@ -109,10 +112,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9484185A1AB6525F001C633E /* Alamofire.framework in Frameworks */,
+				9484185B1AB6525F001C633E /* SwiftyJSON.framework in Frameworks */,
+				948418571AB6525E001C633E /* QRCode.framework in Frameworks */,
 				94AF29C11AAF04D000E16048 /* Crashlytics.framework in Frameworks */,
-				2D117047CF53761110C03BE2 /* libPods-Tipper.a in Frameworks */,
 				94AF29C21AAF04D000E16048 /* Fabric.framework in Frameworks */,
 				94AF29C51AAF060000E16048 /* TwitterKit.framework in Frameworks */,
+				3B6E9F44501E44BF73C99834 /* libPods-Tipper.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,10 +146,8 @@
 			children = (
 				941AA3891AAFA34900CA9192 /* Config.swift */,
 				94416BF51AAF989F00117AFC /* Alamofire-SwiftyJSON.swift */,
-				94416BF61AAF989F00117AFC /* Alamofire.swift */,
 				94416BF71AAF989F00117AFC /* API.swift */,
 				94416BF81AAF989F00117AFC /* Router.swift */,
-				94416BF91AAF989F00117AFC /* SwiftyJSON.swift */,
 				94416BFA1AAF989F00117AFC /* TwitterAuth.swift */,
 				94416BFB1AAF989F00117AFC /* UserSync.swift */,
 				94FDE9C01AB4BF6A006B6454 /* Debug.swift */,
@@ -207,22 +211,22 @@
 		94AF296E1AAEF2B600E16048 /* Tipper */ = {
 			isa = PBXGroup;
 			children = (
-				94FDE9BB1AB41FE2006B6454 /* Base */,
+				94416BED1AAF94C700117AFC /* Tipper.entitlements */,
+				94416C071AAF989F00117AFC /* Tipper-Bridging-Header.h */,
 				94EE8CF41AB16E7E000593CD /* TTTURLRequestFormatter.h */,
 				94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */,
-				941AA38F1AB0DA5400CA9192 /* DebugConfig.xcconfig */,
-				94416BF41AAF989F00117AFC /* Libs */,
-				94416BFC1AAF989F00117AFC /* CoreData */,
-				94416C031AAF989F00117AFC /* Dynamo */,
-				94416C051AAF989F00117AFC /* Screens */,
-				94416C071AAF989F00117AFC /* Tipper-Bridging-Header.h */,
 				94416C081AAF989F00117AFC /* AppDelegate.swift */,
 				94416C091AAF989F00117AFC /* Images.xcassets */,
-				94416BED1AAF94C700117AFC /* Tipper.entitlements */,
-				94AF29781AAEF2B600E16048 /* Main.storyboard */,
+				941AA38F1AB0DA5400CA9192 /* DebugConfig.xcconfig */,
+				94FDE9BB1AB41FE2006B6454 /* Base */,
+				94416BFC1AAF989F00117AFC /* CoreData */,
+				94416C031AAF989F00117AFC /* Dynamo */,
 				94AF297D1AAEF2B600E16048 /* LaunchScreen.xib */,
-				94AF29731AAEF2B600E16048 /* Tipper.xcdatamodeld */,
+				94416BF41AAF989F00117AFC /* Libs */,
+				94AF29781AAEF2B600E16048 /* Main.storyboard */,
+				94416C051AAF989F00117AFC /* Screens */,
 				94AF296F1AAEF2B600E16048 /* Supporting Files */,
+				94AF29731AAEF2B600E16048 /* Tipper.xcdatamodeld */,
 			);
 			path = Tipper;
 			sourceTree = "<group>";
@@ -273,11 +277,15 @@
 		99548B7BBFFD4449A2DD2385 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				948418581AB6525F001C633E /* Alamofire.framework */,
+				948418591AB6525F001C633E /* SwiftyJSON.framework */,
+				9484183A1AB61396001C633E /* QRCode.framework */,
+				948418381AB612EC001C633E /* QRCode.framework */,
 				94AF29C31AAF060000E16048 /* TwitterKit.framework */,
 				94AF29C41AAF060000E16048 /* TwitterKitResources.bundle */,
 				94AF29BF1AAF04D000E16048 /* Crashlytics.framework */,
 				94AF29C01AAF04D000E16048 /* Fabric.framework */,
-				5431BFF7D50CDB7444D8D96C /* libPods-Tipper.a */,
+				74E57F9EB756EFF49AEA100E /* libPods-Tipper.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -296,6 +304,7 @@
 				94AF296A1AAEF2B600E16048 /* Resources */,
 				89D8CA061E9079FA926B2957 /* Copy Pods Resources */,
 				94AF29BE1AAF032500E16048 /* Fabric */,
+				9484185C1AB65411001C633E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -423,6 +432,22 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tipper/Pods-Tipper-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9484185C1AB65411001C633E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/QRCode.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 		94AF29BD1AAF02A800E16048 /* Version Bump */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -459,7 +484,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				94FDE9BF1AB4209B006B6454 /* SuperFetchedResultsControllerDelegate.swift in Sources */,
-				94416C0B1AAF989F00117AFC /* Alamofire.swift in Sources */,
 				94416C0A1AAF989F00117AFC /* Alamofire-SwiftyJSON.swift in Sources */,
 				94FDE9BD1AB42079006B6454 /* NSFetchedResultsControllerExtension.swift in Sources */,
 				94FA97DB1AB2E691005B0C83 /* DynamoFavorite.swift in Sources */,
@@ -472,7 +496,6 @@
 				94FA97DD1AB2EB71005B0C83 /* Favorite.swift in Sources */,
 				94416C181AAF989F00117AFC /* AppDelegate.swift in Sources */,
 				94FDE9C31AB4EE5F006B6454 /* Favorite+Extension.swift in Sources */,
-				94416C0E1AAF989F00117AFC /* SwiftyJSON.swift in Sources */,
 				94416C0F1AAF989F00117AFC /* TwitterAuth.swift in Sources */,
 				94416C101AAF989F00117AFC /* UserSync.swift in Sources */,
 				94FA97D91AB2E408005B0C83 /* TransactionsViewController.swift in Sources */,
@@ -621,6 +644,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Pods-Tipper",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -630,7 +655,7 @@
 				INFOPLIST_FILE = Tipper/Info.plist;
 				INFOPLIST_OUTPUT_FORMAT = binary;
 				INFOPLIST_PREPROCESS = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PLIST_FILE_OUTPUT_FORMAT = binary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -653,6 +678,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Pods-Tipper",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -662,7 +689,7 @@
 				INFOPLIST_FILE = Tipper/Info.plist;
 				INFOPLIST_OUTPUT_FORMAT = binary;
 				INFOPLIST_PREPROCESS = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PLIST_FILE_OUTPUT_FORMAT = binary;
 				PRODUCT_NAME = "$(TARGET_NAME)";

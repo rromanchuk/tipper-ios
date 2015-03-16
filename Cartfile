@@ -1,0 +1,3 @@
+github "rromanchuk/QRCode" "swift1.2"
+github "rromanchuk/SwiftyJSON" "forked-swift"
+github "Alamofire/Alamofire" "xcode-6.3"

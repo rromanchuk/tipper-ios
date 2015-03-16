@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 import TwitterKit
+import SwiftyJSON
 
 class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
@@ -19,6 +20,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     @NSManaged var twitterUsername: String
     @NSManaged var amazonToken: String
     @NSManaged var bitcoinAddress: String?
+    @NSManaged var satoshi: NSNumber?
     @NSManaged var phone: String
 
     class func currentUser(context: NSManagedObjectContext) -> CurrentUser {
@@ -33,10 +35,12 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
     func authenticate(provider: TwitterAuth, completion: (() ->Void))  {
         println("\(className)::\(__FUNCTION__)")
-        API.sharedInstance.register(self.twitterUserId!, completion: { (json, error) -> Void in
+        API.sharedInstance.register(self.twitterUsername, completion: { (json, error) -> Void in
             println("\(json)")
-            self.amazonIdentifier = json["identity_id"].string!
-            self.amazonToken = json["token"].string!
+            self.amazonIdentifier = json["identity_id"].stringValue
+            self.amazonToken = json["token"].stringValue
+            self.bitcoinAddress = json["bitcoin_address"].stringValue
+            self.satoshi = json["bitcoin_balance"]["satoshi"].intValue
             self.writeToDisk()
             provider.identityId = self.amazonIdentifier
             provider.token = self.amazonToken
@@ -45,24 +49,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
     }
 
-    func twitterAuthentication() {
-        println("\(className)::\(__FUNCTION__)")
-        Digits.sharedInstance().authenticateWithCompletion { (session, error) -> Void in
-            println("DigitsCallback")
-            self.twitterAuthToken = session.authToken
-            self.twitterAuthSecret = session.authTokenSecret
-            self.phone = session.phoneNumber
-            self.twitterUserId = session.userID
-        }
-    }
-
-    func twitterAuthenticationWithSession(session: DGTSession) {
-        println("DigitsCallback")
-        self.twitterAuthToken = session.authToken
-        self.twitterAuthSecret = session.authTokenSecret
-        self.phone = session.phoneNumber
-
-    }
 
     func twitterAuthenticationWithTKSession(session: TWTRSession) {
         self.twitterAuthToken = session.authToken

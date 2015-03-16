@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import SwiftyJSON
 
 extension NSManagedObject  {
     class func create<T: NSManagedObject where T: CoreDataUpdatable>(entity: T.Type, context: NSManagedObjectContext) -> T {
