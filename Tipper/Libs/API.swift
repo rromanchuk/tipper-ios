@@ -28,11 +28,11 @@ public class API {
     }()
 
     func call(req: Request, completion: ((json: JSON, error: NSError?) -> Void)?) {
-        //println("\(className)::\(__FUNCTION__) req:\(req)")
+        println("\(className)::\(__FUNCTION__) req:\(req)")
 
         req.validate().responseSwiftyJSON( { (request, response, JSON, error) -> Void in
-            //println(TTTURLRequestFormatter.cURLCommandFromURLRequest(request))
-            //println("API Call: request:\(request), response:\(response), JSON:\(JSON), error:\(error)")
+            println(TTTURLRequestFormatter.cURLCommandFromURLRequest(request))
+            println("API Call: request:\(request), response:\(response), JSON:\(JSON), error:\(error)")
             if error != nil {
                 completion?(json: nil, error: error)
             } else {
@@ -59,8 +59,8 @@ public class API {
 ////        }
 //    }
 
-    func register(username: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
-        self.call(self.manager.request(Router.Register(username)), completion: completion)
+    func register(username: String, twitterId: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
+        self.call(self.manager.request(Router.Register(username, twitterId)), completion: completion)
     }
 
     func charge(token: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
@@ -69,6 +69,10 @@ public class API {
 
     func favorites(completion: ((json: JSON, error: NSError?) -> Void)!) {
         self.call(self.manager.request(Router.Favorites), completion: completion)
+    }
+
+    func me(completion: ((json: JSON, error: NSError?) -> Void)!) {
+        self.call(self.manager.request(Router.Me), completion: completion)
     }
 
 

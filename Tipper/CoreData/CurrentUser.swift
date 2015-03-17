@@ -22,6 +22,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     @NSManaged var bitcoinAddress: String?
     @NSManaged var satoshi: NSNumber?
     @NSManaged var phone: String
+    @NSManaged var token: String?
 
     class func currentUser(context: NSManagedObjectContext) -> CurrentUser {
         if let _currentUser = CurrentUser.first(CurrentUser.self, context: context) {
@@ -35,18 +36,20 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
     func authenticate(provider: TwitterAuth, completion: (() ->Void))  {
         println("\(className)::\(__FUNCTION__)")
-        API.sharedInstance.register(self.twitterUsername, completion: { (json, error) -> Void in
+        API.sharedInstance.register(self.twitterUsername, twitterId: self.twitterUserId!, completion: { (json, error) -> Void in
             println("\(json)")
-            self.amazonIdentifier = json["identity_id"].stringValue
-            self.amazonToken = json["token"].stringValue
-            self.bitcoinAddress = json["bitcoin_address"].stringValue
-            self.satoshi = json["bitcoin_balance"]["satoshi"].intValue
-            self.writeToDisk()
-            provider.identityId = self.amazonIdentifier
-            provider.token = self.amazonToken
-            completion()
+            if (error == nil) {
+                self.amazonIdentifier = json["identity_id"].stringValue
+                self.amazonToken = json["token"].stringValue
+                self.bitcoinAddress = json["bitcoin_address"].stringValue
+                self.satoshi = json["bitcoin_balance"]["satoshi"].intValue
+                self.token = json["authentication_token"].stringValue
+                self.writeToDisk()
+                provider.identityId = self.amazonIdentifier
+                provider.token = self.amazonToken
+                completion()
+            }
         })
-
     }
 
 
@@ -60,7 +63,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
     var isTwitterAuthenticated: Bool {
         get {
-            return self.twitterUserId != nil
+            return self.twitterUserId != nil && self.token != nil
         }
     }
 
@@ -73,7 +76,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
     static var lookupProperty: String {
         get {
-            return "uuid"
+            return "twitterUserId"
         }
     }
 

@@ -6,9 +6,10 @@
         <attribute name="bitcoinAddress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="satoshi" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="token" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="twitterAuthSecret" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="twitterAuthToken" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="twitterUserId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="twitterUserId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="twitterUsername" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="favorites" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favorite" inverseName="user" inverseEntity="Favorite" syncable="YES"/>
@@ -27,7 +28,7 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CurrentUser" inverseName="favorites" inverseEntity="CurrentUser" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="210"/>
+        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="225"/>
         <element name="Favorite" positionX="-63" positionY="54" width="128" height="210"/>
     </elements>
 </model>

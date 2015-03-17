@@ -55,6 +55,10 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
 
         //let connection = NSURLConnection(request: request, delegate: self)
         //connection?.start()
+
+        API.sharedInstance.me { (json, error) -> Void in
+
+        }
     }
 
     func connection(connection: NSURLConnection, didReceiveData data: NSData) {

@@ -26,6 +26,7 @@
 		948418571AB6525E001C633E /* QRCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9484183A1AB61396001C633E /* QRCode.framework */; };
 		9484185A1AB6525F001C633E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 948418581AB6525F001C633E /* Alamofire.framework */; };
 		9484185B1AB6525F001C633E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 948418591AB6525F001C633E /* SwiftyJSON.framework */; };
+		9484185E1AB6B2B8001C633E /* DynamoUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9484185D1AB6B2B8001C633E /* DynamoUser.swift */; };
 		94AF29751AAEF2B600E16048 /* Tipper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94AF29731AAEF2B600E16048 /* Tipper.xcdatamodeld */; };
 		94AF297A1AAEF2B600E16048 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94AF29781AAEF2B600E16048 /* Main.storyboard */; };
 		94AF297F1AAEF2B600E16048 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AF297D1AAEF2B600E16048 /* LaunchScreen.xib */; };
@@ -81,6 +82,7 @@
 		9484183A1AB61396001C633E /* QRCode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRCode.framework; path = Carthage/Build/iOS/QRCode.framework; sourceTree = "<group>"; };
 		948418581AB6525F001C633E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		948418591AB6525F001C633E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		9484185D1AB6B2B8001C633E /* DynamoUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoUser.swift; sourceTree = "<group>"; };
 		94AF296C1AAEF2B600E16048 /* Tipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94AF29701AAEF2B600E16048 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94AF29741AAEF2B600E16048 /* Tipper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tipper.xcdatamodel; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				94FA97DA1AB2E691005B0C83 /* DynamoFavorite.swift */,
+				9484185D1AB6B2B8001C633E /* DynamoUser.swift */,
 			);
 			path = Dynamo;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				94416C111AAF989F00117AFC /* CoreDataUpdatable.swift in Sources */,
 				94416C0C1AAF989F00117AFC /* API.swift in Sources */,
 				94FA97DF1AB356FB005B0C83 /* FavoriteCell.swift in Sources */,
+				9484185E1AB6B2B8001C633E /* DynamoUser.swift in Sources */,
 				94AF29751AAEF2B600E16048 /* Tipper.xcdatamodeld in Sources */,
 				94EE8CF61AB16E7E000593CD /* TTTURLRequestFormatter.m in Sources */,
 			);

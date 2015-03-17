@@ -89,6 +89,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         API.sharedInstance.favorites { (json, error) -> Void in
             //println("json: \(json) error:\(error)")
+
             Debug.isBlocking()
             if let array = json.array {
                 for favorite in array {
@@ -108,8 +109,10 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
 
                         println(task.error)
                         println(task.result)
-                        context.performBlock({ () -> Void in
-                            Favorite.entityWithDYNAMO(Favorite.self, model: favoriteModel, context: context)
+                        let privateContext = context.privateContext
+                        privateContext.performBlock({ () -> Void in
+                            Favorite.entityWithDYNAMO(Favorite.self, model: favoriteModel, context: privateContext)
+                            privateContext.saveMoc()
                         })
 
 
