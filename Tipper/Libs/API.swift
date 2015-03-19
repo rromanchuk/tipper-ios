@@ -60,18 +60,22 @@ public class API {
 //    }
 
     func register(username: String, twitterId: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
+        println("\(className)::\(__FUNCTION__)")
         self.call(self.manager.request(Router.Register(username, twitterId)), completion: completion)
     }
 
-    func charge(token: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
-        self.call(self.manager.request(Router.Charge(token)), completion: completion)
+    func charge(token: String, bitcoinAddress: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
+        println("\(className)::\(__FUNCTION__)")
+        self.call(self.manager.request(Router.Charge(token, bitcoinAddress)), completion: completion)
     }
 
     func favorites(completion: ((json: JSON, error: NSError?) -> Void)!) {
+        println("\(className)::\(__FUNCTION__)")
         self.call(self.manager.request(Router.Favorites), completion: completion)
     }
 
     func me(completion: ((json: JSON, error: NSError?) -> Void)!) {
+        println("\(className)::\(__FUNCTION__)")
         self.call(self.manager.request(Router.Me), completion: completion)
     }
 

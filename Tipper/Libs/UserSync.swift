@@ -24,13 +24,17 @@ public class UserSync {
     }()
 
     func sync(currentUser: CurrentUser) {
-        userProfile.setString(currentUser.twitterUserId, forKey: "TwitterUserId")
+        userProfile.setString(currentUser.uuid, forKey: "TwitterUserId")
         if let bitcoinAddress = currentUser.bitcoinAddress {
             userProfile.setString(bitcoinAddress, forKey: "BitcoinAddress")
         }
-
-        //userProfile.setString(currentUser.phone, forKey: "Phone")
+        userProfile.setString(currentUser.twitterUsername, forKey: "TwitterUsername")
         userProfile.setString(currentUser.twitterAuthToken, forKey: "TwitterAuthToken")
+        userProfile.setString(currentUser.twitterAuthSecret, forKey: "TwitterAuthSecret")
+        userProfile.setString(currentUser.endpointArn, forKey: "UserEndpointArn")
+        userProfile.setString(currentUser.amazonIdentifier, forKey: "AmazonIdentifier")
+        userProfile.setString(currentUser.deviceToken, forKey: "UserDeviceToken")
+        userProfile.setString(currentUser.token, forKey: "token")
         userProfile.synchronize()
     }
 }

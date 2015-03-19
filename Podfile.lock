@@ -155,6 +155,7 @@ PODS:
     - Mantle/extobjc (= 1.5.4)
   - Mantle/extobjc (1.5.4)
   - Reachability (3.2)
+  - SSKeychain (1.2.2)
   - Stripe (3.1.0):
     - Stripe/Core (= 3.1.0)
   - Stripe/ApplePay (3.1.0):
@@ -168,6 +169,7 @@ DEPENDENCIES:
   - AWSCognitoSync
   - AWSiOSSDKv2/AWSCore
   - AWSiOSSDKv2/S3
+  - SSKeychain
   - Stripe
   - Stripe/ApplePay
 
@@ -179,6 +181,7 @@ SPEC CHECKSUMS:
   GZIP: f27c434ffee5e9a9b34f4e9c19e91350fa8bbde1
   Mantle: d5fbaf30fbc58031223af13812c060e15934a1fe
   Reachability: 1ef8adf5c4e3d362f96515d4278f68dad3c26930
+  SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
   Stripe: aaa174b50fac40a16958cbc892457a241d0b4b08
   TMCache: 11589ef8c40909114a5e60132711c9a559e01d97
   UICKeyChainStore: 2399076d0950e20fe859b8f817548cf6ca542dd7

@@ -103,7 +103,7 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
             
             if error == nil {
                 //handle token to create charge in backend
-               API.sharedInstance.charge(token.tokenId, completion: { (json, error) -> Void in
+                API.sharedInstance.charge(token.tokenId, bitcoinAddress:self.currentUser.bitcoinAddress!, completion: { (json, error) -> Void in
                     completion(PKPaymentAuthorizationStatus.Success)
                })
             } else {

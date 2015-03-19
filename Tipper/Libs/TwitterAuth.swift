@@ -56,7 +56,7 @@ public class TwitterAuth : AWSAbstractIdentityProvider {
              println("is authenticated")
             currentUser.authenticate(self, completion: { () -> Void in
                 task.setResult(self.identityId)
-                //UserSync.sharedInstance.sync(self.currentUser)
+                UserSync.sharedInstance.sync(self.currentUser)
             })
         } else {
             task.setError(nil)

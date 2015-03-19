@@ -355,6 +355,9 @@
 							com.apple.OMC = {
 								enabled = 1;
 							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
 						};
 					};
 					94AF29831AAEF2B600E16048 = {

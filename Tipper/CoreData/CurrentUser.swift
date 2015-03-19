@@ -11,9 +11,15 @@ import CoreData
 import TwitterKit
 import SwiftyJSON
 
-class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
-    @NSManaged var twitterUserId: String?
+
+class CurrentUser: NSManagedObject, CoreDataUpdatable {
+    let KeychainAccount: String = "tips.coinbit.tipper"
+    let KeychainUserAccount: String = "tips.coinbit.tipper.user"
+    let KeychainTokenAccount: String = "tips.coinbit.tipper.token"
+
+
+    //@NSManaged var twitterUserId: String?
     @NSManaged var twitterAuthToken: String?
     @NSManaged var twitterAuthSecret: String?
     @NSManaged var amazonIdentifier: String
@@ -22,7 +28,9 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     @NSManaged var bitcoinAddress: String?
     @NSManaged var satoshi: NSNumber?
     @NSManaged var phone: String
-    @NSManaged var token: String?
+    //@NSManaged var token: String?
+    @NSManaged var endpointArn: String?
+    @NSManaged var deviceToken: String?
 
     class func currentUser(context: NSManagedObjectContext) -> CurrentUser {
         if let _currentUser = CurrentUser.first(CurrentUser.self, context: context) {
@@ -33,6 +41,67 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
             return _currentUser
         }
     }
+
+    /// This should not be visible the outside world. We don't want anyone outside this class modifying the uuid
+    private var twitterUserId: String? {
+        get {
+            self.willAccessValueForKey("twitterUserId")
+            if let _twitterUserId = self.primitiveValueForKey("twitterUserId") as! String? {
+                return _twitterUserId
+            } else {
+                if let _twitterUserId = SSKeychain.passwordForService(KeychainUserAccount, account:KeychainAccount) {
+                    self.twitterUserId = _twitterUserId
+                    return _twitterUserId
+                } else if let _twitterUserId = NSUbiquitousKeyValueStore.defaultStore().stringForKey(KeychainUserAccount) {
+                    self.twitterUserId = _twitterUserId
+                    return _twitterUserId
+                } else {
+                    return nil
+                }
+            }
+        }
+        set {
+            self.willChangeValueForKey("twitterUserId")
+            self.setPrimitiveValue(newValue, forKey: "twitterUserId")
+            self.didChangeValueForKey("twitterUserId")
+            SSKeychain.setPassword(newValue, forService: KeychainUserAccount, account: KeychainAccount)
+            NSUbiquitousKeyValueStore.defaultStore().setString(newValue, forKey: KeychainUserAccount)
+        }
+    }
+
+    var uuid: String? {
+        get {
+            return twitterUserId!
+        }
+    }
+
+    var token: String? {
+        get {
+            self.willAccessValueForKey("token")
+            if let _token = self.primitiveValueForKey("token") as! String? {
+                return _token
+            } else {
+                if let _token = SSKeychain.passwordForService(KeychainUserAccount, account:KeychainTokenAccount) {
+                    self.twitterUserId = _token
+                    return _token
+                } else if let _token = NSUbiquitousKeyValueStore.defaultStore().stringForKey(KeychainTokenAccount) {
+                    self.token = _token
+                    return _token
+                } else {
+                    return nil
+                }
+            }
+        }
+        set {
+            self.willChangeValueForKey("token")
+            self.setPrimitiveValue(newValue, forKey: "token")
+            self.didChangeValueForKey("token")
+            SSKeychain.setPassword(newValue, forService: KeychainUserAccount, account: KeychainTokenAccount)
+            NSUbiquitousKeyValueStore.defaultStore().setString(newValue, forKey: KeychainTokenAccount)
+        }
+    }
+
+
 
     func authenticate(provider: TwitterAuth, completion: (() ->Void))  {
         println("\(className)::\(__FUNCTION__)")

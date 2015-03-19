@@ -47,7 +47,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         println("DynamoFavorite::\(__FUNCTION__)")
         let cond = AWSDynamoDBCondition()
         let v1    = AWSDynamoDBAttributeValue();
-        v1.S = currentUser.twitterUserId
+        v1.S = currentUser.uuid
         cond.comparisonOperator = AWSDynamoDBComparisonOperator.EQ
         cond.attributeValueList = [ v1 ]
         let c = [ "FromTwitterID" : cond ]
@@ -56,13 +56,13 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
 
         let exp = AWSDynamoDBQueryExpression()
 
-        exp.hashKeyValues      = currentUser.twitterUserId
+        exp.hashKeyValues      = currentUser.uuid
         //exp.hashValue = currentUser.twitterUserId
         //exp.rangeKeyConditions = c
         exp.indexName = "FromTwitterUserID-index"
 
         mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: "FromTwitterUserID").continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-            println("Result: \(task.result) Error \(task.error)")
+            //println("Result: \(task.result) Error \(task.error)")
 
             let results = task.result as! AWSDynamoDBPaginatedOutput
             for result in results.items as! [DynamoFavorite] {
@@ -100,15 +100,15 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
                         favoriteModel.ToTwitterUserID =  user["id_str"]!.string
                     }
                     favoriteModel.FromUsername = currentUser.twitterUsername
-                    favoriteModel.FromTwitterUserID = currentUser.twitterUserId
+                    favoriteModel.FromTwitterUserID = currentUser.uuid
                     favoriteModel.FavoriteID = favorite["id"].stringValue
                     favoriteModel.TweetText = favorite["text"].stringValue
                     favoriteModel.CreatedAt = (Favorite.dateForTwitterDate(favorite["created_at"].stringValue) as NSDate).timeIntervalSince1970
 
                     mapper.save(favoriteModel).continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
 
-                        println(task.error)
-                        println(task.result)
+                        //println(task.error)
+                        //println(task.result)
                         let privateContext = context.privateContext
                         privateContext.performBlock({ () -> Void in
                             Favorite.entityWithDYNAMO(Favorite.self, model: favoriteModel, context: privateContext)

@@ -28,6 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Config.dump()
 
         Fabric.with([Crashlytics(), Twitter()])
+        NSUbiquitousKeyValueStore.defaultStore().synchronize()
+        
+
         Stripe.setDefaultPublishableKey(Config.get("STRIPE_PUBLISHABLE"))
         currentUser = CurrentUser.currentUser(managedObjectContext!)
         
@@ -94,6 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString:"<>"))
             .stringByReplacingOccurrencesOfString(" ", withString: "")
         println("deviceTokenString: \(deviceTokenString)")
+        currentUser?.deviceToken = deviceTokenString
 
         let sns = AWSSNS.defaultSNS()
         let request = AWSSNSCreatePlatformEndpointInput()
@@ -105,6 +109,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 let createEndpointResponse = task.result as! AWSSNSCreateEndpointResponse
                 println("endpointArn: \(createEndpointResponse.endpointArn)")
+                self.currentUser?.endpointArn = createEndpointResponse.endpointArn
+
             }
             
             return nil

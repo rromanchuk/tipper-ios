@@ -19,7 +19,7 @@ enum Router: URLRequestConvertible {
 
 
     case Register(String, String)
-    case Charge(String)
+    case Charge(String, String)
     case Favorites
     case Me
 
@@ -52,8 +52,8 @@ enum Router: URLRequestConvertible {
         switch self {
         case .Register(let username, let twitterId):
             return ["username": username, "twitter_id": twitterId]
-        case .Charge(let token):
-            return ["stripeToken": token]
+        case .Charge(let token, let bitcoinAddress):
+            return ["stripeToken": token, "bitcoin_address": bitcoinAddress]
         case .Favorites:
             return ["count": "200", "include_entities": "false"]
         default:
@@ -66,8 +66,8 @@ enum Router: URLRequestConvertible {
         switch self {
         case .Register(let username, let twitterId):
             return ["username": username, "twitter_id": twitterId]
-        case .Charge(let token):
-            return ["stripeToken": token]
+        case .Charge(let token, let bitcoinAddress):
+            return ["stripeToken": token, "bitcoin_address": bitcoinAddress]
         default:
             return [String: AnyObject]()
         }
@@ -94,7 +94,7 @@ enum Router: URLRequestConvertible {
             // Set authentication header
             let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let currentUser = CurrentUser.currentUser(delegate.managedObjectContext!)
-            let authString = "\(currentUser.twitterUserId!):\(currentUser.token!)"
+            let authString = "\(currentUser.uuid!):\(currentUser.token!)"
             let base64EncodedString = authString.dataUsingEncoding(NSUTF8StringEncoding)!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.allZeros)
             mutableURLRequest.setValue("Basic \(base64EncodedString)", forHTTPHeaderField: "Authorization")
         }
