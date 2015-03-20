@@ -20,11 +20,21 @@ import SwiftyJSON
 
 class DynamoUser: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
     var TwitterUserID: String?
+    var TwitterUsername: String?
+    var BitcoinAddress: String?
     var CreatedAt: NSNumber?
     var token: String?
+    var CognityIdentity: String?
+    var TwitterAuthToken: String?
+    var TwitterAuthSecret: String?
+    var EndpointArn: String?
+    var DeviceToken: String?
+    var BitcoinBalanceSatoshi: NSNumber?
+    var BitcoinBalanceMBTC: NSNumber?
+    var BitcoinBalanceBTC: NSNumber?
 
     static func dynamoDBTableName() -> String! {
-        return "TipperUsers"
+        return "TipperBitcoinAccounts"
     }
 
     static func hashKeyAttribute() -> String! {

@@ -43,12 +43,6 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
         println("\(className)::\(__FUNCTION__) \(managedObjectContext)")
 
         //payButton!.enabled = PKPaymentAuthorizationViewController.canMakePaymentsUsingNetworks(SupportedPaymentNetworks)
-        self.usernameLabel.text = currentUser.twitterUsername
-        self.tokenLabel.text = currentUser.twitterAuthToken
-        self.addressLabel.text = currentUser.bitcoinAddress
-        self.balanceLabel.text = "\(currentUser.satoshi!)Satoshi"
-        let qrCode = QRCode(currentUser.bitcoinAddress!)
-        qrImage.image = qrCode?.image
 
 
         //let request = Twitter.sharedInstance().APIClient.URLRequestWithMethod("GET", URL: "https://userstream.twitter.com/1.1/user.json", parameters: ["with": "favorite"], error: nil)
@@ -56,9 +50,17 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
         //let connection = NSURLConnection(request: request, delegate: self)
         //connection?.start()
 
-        API.sharedInstance.me { (json, error) -> Void in
+    }
 
-        }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.usernameLabel.text = currentUser.twitterUsername
+        self.tokenLabel.text = currentUser.twitterAuthToken
+        self.addressLabel.text = currentUser.bitcoinAddress
+        self.balanceLabel.text = "\(currentUser.bitcoinBalanceSatoshi!)Satoshi"
+        let qrCode = QRCode(currentUser.bitcoinAddress!)
+        qrImage.image = qrCode?.image
+
     }
 
     func connection(connection: NSURLConnection, didReceiveData data: NSData) {

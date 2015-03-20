@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7535.1" systemVersion="14D105g" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="CurrentUser" representedClassName="Tipper.CurrentUser" syncable="YES">
-        <attribute name="amazonIdentifier" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="amazonToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="bitcoinAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bitcoinBalanceBTC" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="bitcoinBalanceMBTC" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="bitcoinBalanceSatoshi" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="cognitoIdentity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cognitoToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="deviceToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endpointArn" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="satoshi" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="token" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="twitterAuthSecret" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="twitterAuthToken" optional="YES" attributeType="String" syncable="YES"/>
@@ -29,7 +31,7 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CurrentUser" inverseName="favorites" inverseEntity="CurrentUser" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="240"/>
+        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="270"/>
         <element name="Favorite" positionX="-63" positionY="54" width="128" height="210"/>
     </elements>
 </model>

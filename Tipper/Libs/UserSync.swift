@@ -32,7 +32,7 @@ public class UserSync {
         userProfile.setString(currentUser.twitterAuthToken, forKey: "TwitterAuthToken")
         userProfile.setString(currentUser.twitterAuthSecret, forKey: "TwitterAuthSecret")
         userProfile.setString(currentUser.endpointArn, forKey: "UserEndpointArn")
-        userProfile.setString(currentUser.amazonIdentifier, forKey: "AmazonIdentifier")
+        userProfile.setString(currentUser.cognitoToken, forKey: "AmazonIdentifier")
         userProfile.setString(currentUser.deviceToken, forKey: "UserDeviceToken")
         userProfile.setString(currentUser.token, forKey: "token")
         userProfile.synchronize()
