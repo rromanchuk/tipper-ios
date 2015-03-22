@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let className = "AppDelegate"
     var privateWriterContext: NSManagedObjectContext?
-    var currentUser: CurrentUser?
+    var currentUser: CurrentUser!
     var provider: TwitterAuth?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -35,12 +35,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         currentUser = CurrentUser.currentUser(managedObjectContext!)
         
 
-        currentUser?.writeToDisk()
+        currentUser.writeToDisk()
 
-        println("\(className)::\(__FUNCTION__) currentUser:\([currentUser!])")
+        println("\(className)::\(__FUNCTION__) currentUser:\([currentUser])")
 
         AWSLogger.defaultLogger().logLevel = .Error
-        provider = TwitterAuth(currentUser: currentUser!)
+        provider = TwitterAuth(currentUser: currentUser)
         let credentialsProvider = AWSCognitoCredentialsProvider(regionType: AWSRegionType.USEast1, identityProvider: provider, unauthRoleArn: Config.get("COGNITO_UNAUTH_ARN"), authRoleArn: Config.get("COGNITO_AUTH_ARN"))
 
         let defaultServiceConfiguration = AWSServiceConfiguration(
@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         firstController.provider = provider
         firstController.managedObjectContext = managedObjectContext
        
-
+        provider?.refresh()
         return true
     }
 
@@ -78,10 +78,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
-        if currentUser!.isTwitterAuthenticated {
-            currentUser!.updateTwitterAuthentication()
-            //currentUser!.refreshWithDynamo()
+        if currentUser.isTwitterAuthenticated {
+            currentUser.updateTwitterAuthentication()
+            currentUser.refreshWithDynamo()
+            currentUser.registerForRemoteNotificationsIfNeeded()
+            API.sharedInstance.me({ (json, error) -> Void in
+                if (error == nil) {
+                    self.currentUser.updateEntityWithJSON(json)
+                    self.currentUser.save()
+                }
+            })
         }
+
+        
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
 

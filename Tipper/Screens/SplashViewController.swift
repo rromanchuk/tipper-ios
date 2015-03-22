@@ -37,11 +37,7 @@ class SplashViewController: UIViewController {
                         self.currentUser.writeToDisk()
                         self.currentUser.authenticate(self.provider, completion: { () -> Void in
                             UserSync.sharedInstance.sync(self.currentUser)
-                            let types = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
-                            let notificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
-
-                            UIApplication.sharedApplication().registerForRemoteNotifications()
-                            UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+                            self.currentUser.registerForRemoteNotificationsIfNeeded()
                             self.performSegueWithIdentifier("SetupPay", sender: self)
                         })
                     } else {

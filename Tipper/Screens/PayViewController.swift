@@ -57,7 +57,7 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
         self.usernameLabel.text = currentUser.twitterUsername
         self.tokenLabel.text = currentUser.twitterAuthToken
         self.addressLabel.text = currentUser.bitcoinAddress
-        self.balanceLabel.text = "\(currentUser.bitcoinBalanceSatoshi!)Satoshi"
+        self.balanceLabel.text = "\(currentUser.bitcoinBalanceSatoshi!) Satoshi"
         let qrCode = QRCode(currentUser.bitcoinAddress!)
         qrImage.image = qrCode?.image
 

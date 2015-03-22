@@ -54,7 +54,7 @@ public class TwitterAuth : AWSAbstractIdentityProvider {
         let task = BFTaskCompletionSource()
         if currentUser.isTwitterAuthenticated {
              println("is authenticated")
-            currentUser.authenticate(self, completion: { () -> Void in
+            currentUser.updateCognitoIdentity(self, completion: { () -> Void in
                 task.setResult(self.identityId)
                 UserSync.sharedInstance.sync(self.currentUser)
             })

@@ -19,6 +19,7 @@ enum Router: URLRequestConvertible {
 
 
     case Register(String, String, String, String)
+    case Cognito(String, String)
     case Charge(String, String)
     case Favorites
     case Me
@@ -27,6 +28,8 @@ enum Router: URLRequestConvertible {
     var method: Alamofire.Method {
         switch self {
         case .Register:
+            return .POST
+        case .Cognito:
             return .POST
         case .Charge:
             return .POST
@@ -42,6 +45,8 @@ enum Router: URLRequestConvertible {
             return "\(APIRoot)/me"
         case .Charge:
             return "\(APIRoot)/charges"
+        case .Cognito:
+            return "\(APIRoot)/cognito"
         case .Favorites:
             return "https://api.twitter.com/1.1/favorites/list.json"
         }
@@ -52,6 +57,8 @@ enum Router: URLRequestConvertible {
         switch self {
         case .Register(let username, let twitterId, let twitterAuth, let twitterSecret):
             return ["username": username, "twitter_id": twitterId, "twitter_auth_token": twitterAuth, "twitter_auth_secret": twitterSecret]
+        case .Cognito(let username, let twitterId):
+            return ["username": username, "twitter_id": twitterId]
         case .Charge(let token, let bitcoinAddress):
             return ["stripeToken": token, "bitcoin_address": bitcoinAddress]
         case .Favorites:
@@ -66,6 +73,8 @@ enum Router: URLRequestConvertible {
         switch self {
         case .Register(let username, let twitterId, let twitterAuth, let twitterSecret):
             return ["username": username, "twitter_id": twitterId, "twitter_auth_token": twitterAuth, "twitter_auth_secret": twitterSecret]
+        case .Cognito(let username, let twitterId):
+            return ["username": username, "twitter_id": twitterId]
         case .Charge(let token, let bitcoinAddress):
             return ["stripeToken": token, "bitcoin_address": bitcoinAddress]
         default:

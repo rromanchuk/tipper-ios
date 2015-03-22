@@ -119,6 +119,28 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         })
     }
 
+    func registerForRemoteNotificationsIfNeeded() {
+        if deviceToken == nil {
+            let types = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
+            let notificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
+
+            UIApplication.sharedApplication().registerForRemoteNotifications()
+            UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        }
+    }
+
+    func updateCognitoIdentity(provider: TwitterAuth, completion: (() ->Void))  {
+        API.sharedInstance.cognito(self.twitterUsername, twitterId: self.twitterUserId!) { (json, error) -> Void in
+            if (error == nil) {
+                self.updateEntityWithJSON(json)
+                provider.identityId = self.cognitoIdentity
+                provider.token = self.cognitoToken!
+                completion()
+            }
+
+        }
+    }
+
     func twitterAuthenticationWithTKSession(session: TWTRSession) {
         self.twitterAuthToken = session.authToken
         self.twitterAuthSecret = session.authTokenSecret

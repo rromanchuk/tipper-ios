@@ -79,6 +79,11 @@ public class API {
         self.call(self.manager.request(Router.Me), completion: completion)
     }
 
+    func cognito(username: String, twitterId: String,  completion: ((json: JSON, error: NSError?) -> Void)!) {
+        println("\(className)::\(__FUNCTION__)")
+        self.call(self.manager.request(Router.Cognito(username, twitterId)), completion: completion)
+    }
+
 
 
 }
