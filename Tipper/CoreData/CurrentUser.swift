@@ -17,6 +17,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     let KeychainAccount: String = "tips.coinbit.tipper"
     let KeychainUserAccount: String = "tips.coinbit.tipper.user"
     let KeychainTokenAccount: String = "tips.coinbit.tipper.token"
+    let KeychainBitcoinAccount: String = "tips.coinbit.tipper.bitcoinaddress"
     lazy var mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
 
 
@@ -27,7 +28,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     @NSManaged var cognitoIdentity: String?
     @NSManaged var cognitoToken: String?
 
-    @NSManaged var bitcoinAddress: String?
+    //@NSManaged var bitcoinAddress: String?
     @NSManaged var bitcoinBalanceSatoshi: NSNumber?
     @NSManaged var bitcoinBalanceMBTC: NSNumber?
     @NSManaged var bitcoinBalanceBTC: NSNumber?
@@ -84,8 +85,8 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
             if let _token = self.primitiveValueForKey("token") as! String? {
                 return _token
             } else {
-                if let _token = SSKeychain.passwordForService(KeychainUserAccount, account:KeychainTokenAccount) {
-                    self.twitterUserId = _token
+                if let _token = SSKeychain.passwordForService(KeychainTokenAccount, account:KeychainAccount) {
+                    self.token = _token
                     return _token
                 } else if let _token = NSUbiquitousKeyValueStore.defaultStore().stringForKey(KeychainTokenAccount) {
                     self.token = _token
@@ -99,10 +100,37 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
             self.willChangeValueForKey("token")
             self.setPrimitiveValue(newValue, forKey: "token")
             self.didChangeValueForKey("token")
-            SSKeychain.setPassword(newValue, forService: KeychainUserAccount, account: KeychainTokenAccount)
+            SSKeychain.setPassword(newValue, forService: KeychainTokenAccount, account: KeychainAccount)
             NSUbiquitousKeyValueStore.defaultStore().setString(newValue, forKey: KeychainTokenAccount)
         }
     }
+
+    var bitcoinAddress: String? {
+        get {
+            self.willAccessValueForKey("bitcoinAddress")
+            if let _bitcoinAddress = self.primitiveValueForKey("bitcoinAddress") as! String? {
+                return _bitcoinAddress
+            } else {
+                if let _bitcoinAddress = SSKeychain.passwordForService(KeychainBitcoinAccount, account:KeychainAccount) {
+                    self.bitcoinAddress = _bitcoinAddress
+                    return _bitcoinAddress
+                } else if let _bitcoinAddress = NSUbiquitousKeyValueStore.defaultStore().stringForKey(KeychainBitcoinAccount) {
+                    self.bitcoinAddress = _bitcoinAddress
+                    return _bitcoinAddress
+                } else {
+                    return nil
+                }
+            }
+        }
+        set {
+            self.willChangeValueForKey("bitcoinAddress")
+            self.setPrimitiveValue(newValue, forKey: "bitcoinAddress")
+            self.didChangeValueForKey("bitcoinAddress")
+            SSKeychain.setPassword(newValue, forService: KeychainBitcoinAccount, account: KeychainAccount)
+            NSUbiquitousKeyValueStore.defaultStore().setString(newValue, forKey: KeychainBitcoinAccount)
+        }
+    }
+
 
 
 

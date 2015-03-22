@@ -50,17 +50,25 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
         //let connection = NSURLConnection(request: request, delegate: self)
         //connection?.start()
 
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillResignActive:", name: UIApplicationWillResignActiveNotification, object: UIApplication.sharedApplication())
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidEnterBackground:", name: UIApplicationDidEnterBackgroundNotification, object: UIApplication.sharedApplication())
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidBecomeActive:", name: UIApplicationDidBecomeActiveNotification, object: UIApplication.sharedApplication())
+
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        refreshUI()
+
+    }
+
+    func refreshUI() {
         self.usernameLabel.text = currentUser.twitterUsername
         self.tokenLabel.text = currentUser.twitterAuthToken
         self.addressLabel.text = currentUser.bitcoinAddress
         self.balanceLabel.text = "\(currentUser.bitcoinBalanceSatoshi!) Satoshi"
         let qrCode = QRCode(currentUser.bitcoinAddress!)
         qrImage.image = qrCode?.image
-
     }
 
     func connection(connection: NSURLConnection, didReceiveData data: NSData) {
@@ -120,6 +128,23 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
         controller.dismissViewControllerAnimated(true, completion: nil)
         //dismisses ApplePay ViewController
     }
+
+    // MARK: Application lifecycle
+
+    func applicationWillResignActive(aNotification: NSNotification) {
+        println("\(className)::\(__FUNCTION__)")
+    }
+
+    func applicationDidEnterBackground(aNotification: NSNotification) {
+        println("\(className)::\(__FUNCTION__)")
+
+    }
+
+    func applicationDidBecomeActive(aNotification: NSNotification) {
+        println("\(className)::\(__FUNCTION__)")
+        refreshUI()
+    }
+
 
 
 }

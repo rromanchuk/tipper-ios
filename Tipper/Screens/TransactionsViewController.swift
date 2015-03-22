@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import TwitterKit
+import Alamofire
 
-class TransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TWTRTweetViewDelegate {
     //var currentUser: CurrentUser?
     var provider: TwitterAuth?
     var className = "TransactionsViewController"
-
+    let tweetTableReuseIdentifier = "TweetCell"
+    var tweets = Set<TWTRTweet>()
 
     var managedObjectContext: NSManagedObjectContext {
         get {
@@ -53,11 +56,37 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        DynamoFavorite.fetch(currentUser, context: managedObjectContext)
+        tableView.registerClass(TWTRTweetTableViewCell.self, forCellReuseIdentifier: tweetTableReuseIdentifier)
+        tableView.estimatedRowHeight = 150
+        tableView.rowHeight = UITableViewAutomaticDimension // Explicitly set on iOS 8 if using automatic row height calculation
+        tableView.allowsSelection = false
+        tableView.delegate = self
+
+
+
+        let req = Twitter.sharedInstance().APIClient.URLRequestWithMethod("GET", URL: "https://api.twitter.com/1.1/favorites/list.json", parameters: nil, error: nil)
+
+
+        Alamofire.Manager.sharedInstance.request(req).responseJSON(options: nil) { (request, response, json, error) -> Void in
+            println("json: \(json)")
+            //TWTRTweet(JSONDictionary: json as! [NSObject : AnyObject])
+            let tweets = TWTRTweet.tweetsWithJSONArray(json as! [AnyObject])
+            for tweet in tweets {
+                self.tweets.insert(tweet as! TWTRTweet)
+                Favorite.entityWithTWTR(tweet as! TWTRTweet, context: self.managedObjectContext)
+            }
+        }
+
+        //DynamoFavorite.fetch(currentUser, context: managedObjectContext)
         //DynamoFavorite.fetchFromAWS(currentUser, context: managedObjectContext)
-        fetchedResultsController.performFetch(nil)
+        //fetchedResultsController.performFetch(nil)
         // Do any additional setup after loading the view.
 
+    }
+
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let twt = tweets.first
+        return TWTRTweetTableViewCell.heightForTweet(twt, width: CGRectGetWidth(self.view.bounds))
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,9 +98,13 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let favorite = fetchedResultsController.objectAtIndexPath(indexPath) as! Favorite
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("TransactionCell", forIndexPath: indexPath) as! UITableViewCell
+        let twt = tweets.first
+        println(twt)
+
+        let cell = tableView.dequeueReusableCellWithIdentifier(tweetTableReuseIdentifier, forIndexPath: indexPath) as! TWTRTweetTableViewCell
+        cell.tweetView.delegate = self
+        cell.configureWithTweet(twt)
         println("favorite: \(favorite)")
-        cell.textLabel?.text = favorite.tweetText
 
 
         return cell

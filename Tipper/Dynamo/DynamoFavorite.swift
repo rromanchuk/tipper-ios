@@ -20,6 +20,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     var FavoriteID: String?
     var CreatedAt: NSNumber?
     var TweetText: String?
+    var TweetJSON: NSData?
 
 
    
@@ -79,50 +80,50 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
             return nil
         })
 
-        //exp.rangeKeyConditions = keyConditions
 
-        //return mapper.query(Item.self, expression: exp)
     }
 
     class func fetch(currentUser: CurrentUser, context: NSManagedObjectContext) {
         println("DynamoFavorite::\(__FUNCTION__)")
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         API.sharedInstance.favorites { (json, error) -> Void in
-            //println("json: \(json) error:\(error)")
-
-            Debug.isBlocking()
-            if let array = json.array {
-                for favorite in array {
-                    let favoriteModel = DynamoFavorite.new()
-                    if let user = favorite["user"].dictionary {
-                        favoriteModel.FavoriteID = user["id_str"]!.string
-                        favoriteModel.ToUsername =  user["screen_name"]!.string
-                        favoriteModel.ToTwitterUserID =  user["id_str"]!.string
-                    }
-                    favoriteModel.FromUsername = currentUser.twitterUsername
-                    favoriteModel.FromTwitterUserID = currentUser.uuid
-                    favoriteModel.FavoriteID = favorite["id"].stringValue
-                    favoriteModel.TweetText = favorite["text"].stringValue
-                    favoriteModel.CreatedAt = (Favorite.dateForTwitterDate(favorite["created_at"].stringValue) as NSDate).timeIntervalSince1970
-
-                    mapper.save(favoriteModel).continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-
-                        //println(task.error)
-                        //println(task.result)
-                        let privateContext = context.privateContext
-                        privateContext.performBlock({ () -> Void in
-                            Favorite.entityWithDYNAMO(Favorite.self, model: favoriteModel, context: privateContext)
-                            privateContext.saveMoc()
-                        })
-
-
-                        return nil
-                    })
-
-
-
-                }
-            }
+            Favorite.entityWithJSON(Favorite.self, json: json, context: context)
+//            //println("json: \(json) error:\(error)")
+//
+//            Debug.isBlocking()
+//            if let array = json.array {
+//                for favorite in array {
+//                    let favoriteModel = DynamoFavorite.new()
+//                    if let user = favorite["user"].dictionary {
+//                        favoriteModel.FavoriteID = user["id_str"]!.string
+//                        favoriteModel.ToUsername =  user["screen_name"]!.string
+//                        favoriteModel.ToTwitterUserID =  user["id_str"]!.string
+//                    }
+//                    //favoriteModel.TweetJSON = favorite.tw
+//                    favoriteModel.FromUsername = currentUser.twitterUsername
+//                    favoriteModel.FromTwitterUserID = currentUser.uuid
+//                    favoriteModel.FavoriteID = favorite["id"].stringValue
+//                    favoriteModel.TweetText = favorite["text"].stringValue
+//                    favoriteModel.CreatedAt = (Favorite.dateForTwitterDate(favorite["created_at"].stringValue) as NSDate).timeIntervalSince1970
+//
+//                    mapper.save(favoriteModel).continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+//
+//                        //println(task.error)
+//                        //println(task.result)
+//                        let privateContext = context.privateContext
+//                        privateContext.performBlock({ () -> Void in
+//                            Favorite.entityWithDYNAMO(Favorite.self, model: favoriteModel, context: privateContext)
+//                            privateContext.saveMoc()
+//                        })
+//
+//
+//                        return nil
+//                    })
+//
+//
+//
+//                }
+//            }
         }
         
     }

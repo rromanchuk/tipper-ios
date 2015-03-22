@@ -44,7 +44,6 @@
 		94FDE9BD1AB42079006B6454 /* NSFetchedResultsControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FDE9BC1AB42079006B6454 /* NSFetchedResultsControllerExtension.swift */; };
 		94FDE9BF1AB4209B006B6454 /* SuperFetchedResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FDE9BE1AB4209B006B6454 /* SuperFetchedResultsControllerDelegate.swift */; };
 		94FDE9C11AB4BF6A006B6454 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FDE9C01AB4BF6A006B6454 /* Debug.swift */; };
-		94FDE9C31AB4EE5F006B6454 /* Favorite+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FDE9C21AB4EE5F006B6454 /* Favorite+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,7 +104,6 @@
 		94FDE9BC1AB42079006B6454 /* NSFetchedResultsControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFetchedResultsControllerExtension.swift; sourceTree = "<group>"; };
 		94FDE9BE1AB4209B006B6454 /* SuperFetchedResultsControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperFetchedResultsControllerDelegate.swift; sourceTree = "<group>"; };
 		94FDE9C01AB4BF6A006B6454 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
-		94FDE9C21AB4EE5F006B6454 /* Favorite+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Favorite+Extension.swift"; sourceTree = "<group>"; };
 		F2A514B5D5D900213DC63984 /* Pods-Tipper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tipper.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tipper/Pods-Tipper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,7 +164,6 @@
 				94416C011AAF989F00117AFC /* NSManagedObjectContext+Base.h */,
 				94416C021AAF989F00117AFC /* NSManagedObjectContext+Base.m */,
 				94FA97DC1AB2EB71005B0C83 /* Favorite.swift */,
-				94FDE9C21AB4EE5F006B6454 /* Favorite+Extension.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -501,7 +498,6 @@
 				94FA97D71AB2E170005B0C83 /* TipperTabBarController.swift in Sources */,
 				94FA97DD1AB2EB71005B0C83 /* Favorite.swift in Sources */,
 				94416C181AAF989F00117AFC /* AppDelegate.swift in Sources */,
-				94FDE9C31AB4EE5F006B6454 /* Favorite+Extension.swift in Sources */,
 				94416C0F1AAF989F00117AFC /* TwitterAuth.swift in Sources */,
 				94416C101AAF989F00117AFC /* UserSync.swift in Sources */,
 				94FA97D91AB2E408005B0C83 /* TransactionsViewController.swift in Sources */,
