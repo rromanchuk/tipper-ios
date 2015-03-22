@@ -17,6 +17,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     let KeychainAccount: String = "tips.coinbit.tipper"
     let KeychainUserAccount: String = "tips.coinbit.tipper.user"
     let KeychainTokenAccount: String = "tips.coinbit.tipper.token"
+    lazy var mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
 
 
     //@NSManaged var twitterUserId: String?
@@ -107,7 +108,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
     func authenticate(provider: TwitterAuth, completion: (() ->Void))  {
         println("\(className)::\(__FUNCTION__)")
-        API.sharedInstance.register(self.twitterUsername, twitterId: self.twitterUserId!, completion: { (json, error) -> Void in
+        API.sharedInstance.register(self.twitterUsername, twitterId: self.twitterUserId!, twitterAuth: self.twitterAuthToken!, twitterSecret: self.twitterAuthSecret!, completion: { (json, error) -> Void in
             println("\(json)")
             if (error == nil) {
                 self.updateEntityWithJSON(json)
@@ -118,14 +119,12 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         })
     }
 
-
     func twitterAuthenticationWithTKSession(session: TWTRSession) {
         self.twitterAuthToken = session.authToken
         self.twitterAuthSecret = session.authTokenSecret
         self.twitterUserId = session.userID
         self.twitterUsername = session.userName
     }
-
 
     var isTwitterAuthenticated: Bool {
         get {
@@ -146,11 +145,9 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         }
     }
 
-
     var className: String {
         return CurrentUser.className
     }
-
 
     func updateEntityWithJSON(json: JSON) {
         println("\(className)::\(__FUNCTION__) json:\(json)")
@@ -159,10 +156,20 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         self.bitcoinAddress = json["BitcoinAddress"].string
         self.cognitoIdentity = json["CognityIdentity"].string
         self.cognitoToken = json["CognitoToken"].string
+        self.bitcoinBalanceBTC = json["BitcoinBalanceBTC"].numberValue
         self.bitcoinBalanceSatoshi = json["BitcoinBalanceSatoshi"].numberValue
         self.bitcoinBalanceMBTC = json["BitcoinBalanceMBTC"].numberValue
-        self.bitcoinBalanceBTC = json["BitcoinBalanceBTC"].numberValue
         self.token = json["token"].stringValue
+    }
+
+    func pushToDynamo() {
+        println("\(className)::\(__FUNCTION__)")
+        mapper.load(DynamoUser.self, hashKey: self.twitterUserId, rangeKey: nil).continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+            println("error \(task.error)")
+            let dynamoUser: DynamoUser = task.result as! DynamoUser
+            self.updateEntityWithDynamoModel(dynamoUser)
+            return nil
+        })
     }
 
     func refreshWithDynamo() {
@@ -176,6 +183,21 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         })
     }
 
+    func updateTwitterAuthentication() {
+        println("\(className)::\(__FUNCTION__)")
+        let user = DynamoUser.new()
+        user.TwitterUserID = twitterUserId
+        user.TwitterAuthToken = twitterAuthToken
+        user.TwitterAuthSecret = twitterAuthSecret
+        mapper.save(user, configuration: defaultDynamoConfiguration)
+    }
+
+    lazy var defaultDynamoConfiguration: AWSDynamoDBObjectMapperConfiguration = {
+        let config = AWSDynamoDBObjectMapperConfiguration()
+        config.saveBehavior = .UpdateSkipNullAttributes
+        return config
+    }()
+
     func updateEntityWithDynamoModel(dynamoModel: DynamoUpdatable) {
         println("\(className)::\(__FUNCTION__) model:\(dynamoModel)")
         let user = dynamoModel as! DynamoUser
@@ -184,9 +206,9 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         self.twitterAuthToken = user.TwitterAuthToken
         self.twitterAuthSecret = user.TwitterAuthSecret
         self.bitcoinAddress = user.BitcoinAddress
+        self.bitcoinBalanceBTC  = user.BitcoinBalanceBTC
         self.bitcoinBalanceSatoshi = user.BitcoinBalanceSatoshi
         self.bitcoinBalanceMBTC = user.BitcoinBalanceMBTC
-        self.bitcoinBalanceBTC  = user.BitcoinBalanceBTC
 
         if let endpoint = user.EndpointArn {
              self.endpointArn = endpoint

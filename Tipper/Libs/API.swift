@@ -59,9 +59,9 @@ public class API {
 ////        }
 //    }
 
-    func register(username: String, twitterId: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
+    func register(username: String, twitterId: String, twitterAuth: String, twitterSecret: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
         println("\(className)::\(__FUNCTION__)")
-        self.call(self.manager.request(Router.Register(username, twitterId)), completion: completion)
+        self.call(self.manager.request(Router.Register(username, twitterId, twitterAuth, twitterSecret)), completion: completion)
     }
 
     func charge(token: String, bitcoinAddress: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
