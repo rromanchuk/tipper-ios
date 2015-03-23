@@ -13,7 +13,7 @@ class TipperTabBarController: UITabBarController {
     var provider: TwitterAuth?
     var className = "TipperTabBarController"
     var managedObjectContext: NSManagedObjectContext?
-
+    var market: Market?
     
     override func viewDidLoad() {
         super.viewDidLoad()

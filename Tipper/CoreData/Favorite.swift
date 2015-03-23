@@ -30,7 +30,7 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
     @NSManaged var toBitcoinAddress: String?
     @NSManaged var tweetText: String?
     @NSManaged var createdAt: NSDate
-    @NSManaged var twitterJSON :TWTRTweet?
+    @NSManaged var twitterJSON: [String: AnyObject]?
 
     class var className: String {
         get {
@@ -85,7 +85,8 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
 
     func updateEntityWithJSON(json: JSON) {
         println("\(className)::\(__FUNCTION__) \(json)")
-
+        self.favoriteId = json["id_str"].stringValue
+        self.twitterJSON = json.dictionaryObject
     }
 
     func updateEntityWithTWTR(tweet: TWTRTweet) {

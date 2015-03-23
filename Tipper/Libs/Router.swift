@@ -19,10 +19,11 @@ enum Router: URLRequestConvertible {
 
 
     case Register(String, String, String, String)
-    case Cognito(String, String)
+    case Cognito(String)
     case Charge(String, String)
     case Favorites
     case Me
+    case MarketPrice
 
 
     var method: Alamofire.Method {
@@ -34,6 +35,8 @@ enum Router: URLRequestConvertible {
         case .Charge:
             return .POST
         case .Favorites,.Me:
+            return .GET
+        case .MarketPrice:
             return .GET
         }
     }
@@ -49,6 +52,8 @@ enum Router: URLRequestConvertible {
             return "\(APIRoot)/cognito"
         case .Favorites:
             return "https://api.twitter.com/1.1/favorites/list.json"
+        case .MarketPrice:
+            return "https://api.coinbase.com/v1/prices/buy?qty=0.02&currency=USD"
         }
     }
 
@@ -57,12 +62,14 @@ enum Router: URLRequestConvertible {
         switch self {
         case .Register(let username, let twitterId, let twitterAuth, let twitterSecret):
             return ["username": username, "twitter_id": twitterId, "twitter_auth_token": twitterAuth, "twitter_auth_secret": twitterSecret]
-        case .Cognito(let username, let twitterId):
-            return ["username": username, "twitter_id": twitterId]
+        case .Cognito(let twitterId):
+            return ["twitter_id": twitterId]
         case .Charge(let token, let bitcoinAddress):
             return ["stripeToken": token, "bitcoin_address": bitcoinAddress]
         case .Favorites:
             return ["count": "200", "include_entities": "false"]
+        case .MarketPrice:
+            return ["qty": "0.02"]
         default:
             return [String: String]()
         }
@@ -73,10 +80,12 @@ enum Router: URLRequestConvertible {
         switch self {
         case .Register(let username, let twitterId, let twitterAuth, let twitterSecret):
             return ["username": username, "twitter_id": twitterId, "twitter_auth_token": twitterAuth, "twitter_auth_secret": twitterSecret]
-        case .Cognito(let username, let twitterId):
-            return ["username": username, "twitter_id": twitterId]
+        case .Cognito(let twitterId):
+            return ["twitter_id": twitterId]
         case .Charge(let token, let bitcoinAddress):
             return ["stripeToken": token, "bitcoin_address": bitcoinAddress]
+        case .MarketPrice:
+            return ["qty": "0.02"]
         default:
             return [String: AnyObject]()
         }
@@ -93,7 +102,7 @@ enum Router: URLRequestConvertible {
         mutableURLRequest.HTTPMethod = method.rawValue
 
         switch self {
-        case .Register:
+        case .Register, .MarketPrice:
             // Does't need authentication
             break
         case .Favorites:

@@ -14,6 +14,7 @@ class SplashViewController: UIViewController {
     var currentUser: CurrentUser!
     var className = "SplashViewController"
     var managedObjectContext: NSManagedObjectContext?
+    var market: Market?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +58,7 @@ class SplashViewController: UIViewController {
             let vc = segue.destinationViewController as! TipperTabBarController
             vc.managedObjectContext = managedObjectContext
             vc.currentUser = currentUser
+            vc.market = market
 
         }
     }

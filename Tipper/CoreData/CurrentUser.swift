@@ -29,9 +29,9 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     @NSManaged var cognitoToken: String?
 
     //@NSManaged var bitcoinAddress: String?
-    @NSManaged var bitcoinBalanceSatoshi: NSNumber?
-    @NSManaged var bitcoinBalanceMBTC: NSNumber?
-    @NSManaged var bitcoinBalanceBTC: NSNumber?
+    @NSManaged var bitcoinBalanceSatoshi: NSNumber
+    @NSManaged var bitcoinBalanceMBTC: NSNumber
+    @NSManaged var bitcoinBalanceBTC: NSNumber
 
     @NSManaged var endpointArn: String?
     @NSManaged var deviceToken: String?
@@ -158,7 +158,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     }
 
     func updateCognitoIdentity(provider: TwitterAuth, completion: (() ->Void))  {
-        API.sharedInstance.cognito(self.twitterUsername, twitterId: self.twitterUserId!) { (json, error) -> Void in
+        API.sharedInstance.cognito(self.twitterUserId!) { (json, error) -> Void in
             if (error == nil) {
                 self.updateEntityWithJSON(json)
                 provider.identityId = self.cognitoIdentity
@@ -256,9 +256,9 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         self.twitterAuthToken = user.TwitterAuthToken
         self.twitterAuthSecret = user.TwitterAuthSecret
         self.bitcoinAddress = user.BitcoinAddress
-        self.bitcoinBalanceBTC  = user.BitcoinBalanceBTC
-        self.bitcoinBalanceSatoshi = user.BitcoinBalanceSatoshi
-        self.bitcoinBalanceMBTC = user.BitcoinBalanceMBTC
+        self.bitcoinBalanceBTC  = user.BitcoinBalanceBTC!
+        self.bitcoinBalanceSatoshi = user.BitcoinBalanceSatoshi!
+        self.bitcoinBalanceMBTC = user.BitcoinBalanceMBTC!
 
         if let endpoint = user.EndpointArn {
              self.endpointArn = endpoint

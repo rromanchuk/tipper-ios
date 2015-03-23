@@ -26,11 +26,15 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
         }
     }
 
+    var market: Market {
+        get {
+            return (tabBarController as! TipperTabBarController).market!
+        }
+    }
 
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var tokenLabel: UILabel!
+    @IBOutlet weak var welcomeLabel: UILabel!
+
     @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var qrImage: UIImageView!
 
     @IBOutlet weak var payButton: UIButton!
@@ -54,6 +58,12 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidEnterBackground:", name: UIApplicationDidEnterBackgroundNotification, object: UIApplication.sharedApplication())
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidBecomeActive:", name: UIApplicationDidBecomeActiveNotification, object: UIApplication.sharedApplication())
 
+        API.sharedInstance.market { (json, error) -> Void in
+            Debug.isBlocking()
+            self.market.amount = json["amount"].stringValue
+            self.market.updatedAt = NSDate()
+            self.refreshUI()
+        }
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -63,10 +73,13 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
     }
 
     func refreshUI() {
-        self.usernameLabel.text = currentUser.twitterUsername
-        self.tokenLabel.text = currentUser.twitterAuthToken
+        var marketString: String = ""
+        if let amount = market.amount {
+            marketString = "You can buy 0.002BTC for $\(amount)."
+        }
+        welcomeLabel.text = "Hi, @\(currentUser.twitterUsername)! You currently have \(currentUser.bitcoinBalanceBTC)BTC in your account. \(marketString)"
+        
         self.addressLabel.text = currentUser.bitcoinAddress
-        self.balanceLabel.text = "\(currentUser.bitcoinBalanceSatoshi!) Satoshi"
         let qrCode = QRCode(currentUser.bitcoinAddress!)
         qrImage.image = qrCode?.image
     }

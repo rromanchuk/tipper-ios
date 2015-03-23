@@ -35,6 +35,7 @@
 		94AF29C21AAF04D000E16048 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94AF29C01AAF04D000E16048 /* Fabric.framework */; };
 		94AF29C51AAF060000E16048 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94AF29C31AAF060000E16048 /* TwitterKit.framework */; };
 		94AF29C61AAF060000E16048 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 94AF29C41AAF060000E16048 /* TwitterKitResources.bundle */; };
+		94C5C0D31ABFF47A009E4B05 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C5C0D21ABFF47A009E4B05 /* Market.swift */; };
 		94EE8CF61AB16E7E000593CD /* TTTURLRequestFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */; };
 		94FA97D71AB2E170005B0C83 /* TipperTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA97D61AB2E170005B0C83 /* TipperTabBarController.swift */; };
 		94FA97D91AB2E408005B0C83 /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA97D81AB2E408005B0C83 /* TransactionsViewController.swift */; };
@@ -94,6 +95,7 @@
 		94AF29C01AAF04D000E16048 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		94AF29C31AAF060000E16048 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
 		94AF29C41AAF060000E16048 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
+		94C5C0D21ABFF47A009E4B05 /* Market.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		94EE8CF41AB16E7E000593CD /* TTTURLRequestFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTURLRequestFormatter.h; sourceTree = "<group>"; };
 		94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTURLRequestFormatter.m; sourceTree = "<group>"; };
 		94FA97D61AB2E170005B0C83 /* TipperTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipperTabBarController.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				94416C011AAF989F00117AFC /* NSManagedObjectContext+Base.h */,
 				94416C021AAF989F00117AFC /* NSManagedObjectContext+Base.m */,
 				94FA97DC1AB2EB71005B0C83 /* Favorite.swift */,
+				94C5C0D21ABFF47A009E4B05 /* Market.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94FDE9BF1AB4209B006B6454 /* SuperFetchedResultsControllerDelegate.swift in Sources */,
+				94C5C0D31ABFF47A009E4B05 /* Market.swift in Sources */,
 				94416C0A1AAF989F00117AFC /* Alamofire-SwiftyJSON.swift in Sources */,
 				94FDE9BD1AB42079006B6454 /* NSFetchedResultsControllerExtension.swift in Sources */,
 				94FA97DB1AB2E691005B0C83 /* DynamoFavorite.swift in Sources */,

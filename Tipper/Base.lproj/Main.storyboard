@@ -53,7 +53,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="61" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ia5-hC-g2o">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="61" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ia5-hC-g2o">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -63,8 +63,14 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Ia5-hC-g2o" secondAttribute="bottom" id="8WP-Jo-lr7"/>
+                            <constraint firstItem="Ia5-hC-g2o" firstAttribute="leading" secondItem="URj-Jz-obo" secondAttribute="leading" id="HMw-EU-WBW"/>
+                            <constraint firstItem="Ia5-hC-g2o" firstAttribute="top" secondItem="URj-Jz-obo" secondAttribute="top" id="TpR-of-weD"/>
+                            <constraint firstAttribute="trailing" secondItem="Ia5-hC-g2o" secondAttribute="trailing" id="vXb-3G-rHC"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Tips Sent" id="Up6-Qe-2UM"/>
+                    <tabBarItem key="tabBarItem" title="Tips Sent" image="tips" id="Up6-Qe-2UM"/>
                     <connections>
                         <outlet property="tableView" destination="Ia5-hC-g2o" id="ebt-fK-dan"/>
                     </connections>
@@ -85,79 +91,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" fixedFrame="YES" text="TwitterId:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZyD-LQ-sdX">
-                                <rect key="frame" x="24" y="28" width="170" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1KsmT6Bs52f4817kzzJ4u85Fh3PioWvoHX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000027" translatesAutoresizingMaskIntoConstraints="NO" id="nm8-cI-yQz">
+                                <rect key="frame" x="16" y="577" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEH-tR-L12">
-                                <rect key="frame" x="202" y="28" width="157" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Tj-ah-f3Z">
+                                <rect key="frame" x="67" y="319" width="240" height="240"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi, @rromanchuk! You currently have 0.0034BTC in your account." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B58-kx-ec8">
+                                <rect key="frame" x="16" y="20" width="343" height="161"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="161" id="Y2D-M1-VBR"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Twitter token" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qO-9m-pzc">
-                                <rect key="frame" x="24" y="57" width="170" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMx-VA-Mvh">
-                                <rect key="frame" x="202" y="115" width="157" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" fixedFrame="YES" text="Bitcoin Balance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="De3-wy-d5M">
-                                <rect key="frame" x="24" y="115" width="170" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nm8-cI-yQz">
-                                <rect key="frame" x="202" y="86" width="157" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" fixedFrame="YES" text="Bitcoin Address:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rey-ap-zpM">
-                                <rect key="frame" x="24" y="86" width="170" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWf-Rq-e15">
-                                <rect key="frame" x="16" y="181" width="343" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Fund Account">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWf-Rq-e15">
+                                <rect key="frame" x="90" y="196" width="194" height="64"/>
+                                <state key="normal" image="apple-pay">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="didTapPay:" destination="Hg2-j9-R4f" eventType="touchUpInside" id="YhZ-QG-KNj"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000000000000009" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4kJ-py-8ib">
-                                <rect key="frame" x="202" y="57" width="157" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Tj-ah-f3Z">
-                                <rect key="frame" x="67" y="309" width="240" height="209"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uWf-Rq-e15" firstAttribute="top" secondItem="B58-kx-ec8" secondAttribute="bottom" constant="15" id="3p2-ro-cNM"/>
+                            <constraint firstItem="uWf-Rq-e15" firstAttribute="centerX" secondItem="B58-kx-ec8" secondAttribute="centerX" id="Dng-mF-asR"/>
+                            <constraint firstItem="5Tj-ah-f3Z" firstAttribute="centerX" secondItem="nm8-cI-yQz" secondAttribute="centerX" id="Mgh-D1-Sh5"/>
+                            <constraint firstItem="5Tj-ah-f3Z" firstAttribute="top" secondItem="uWf-Rq-e15" secondAttribute="bottom" constant="59" id="PeC-TJ-1aS"/>
+                            <constraint firstItem="nm8-cI-yQz" firstAttribute="trailing" secondItem="B58-kx-ec8" secondAttribute="trailing" id="RzA-LS-qEM"/>
+                            <constraint firstItem="nm8-cI-yQz" firstAttribute="leading" secondItem="B58-kx-ec8" secondAttribute="leading" id="SbJ-Eg-Par"/>
+                            <constraint firstItem="2SL-Bo-vXF" firstAttribute="top" secondItem="nm8-cI-yQz" secondAttribute="bottom" constant="20" id="ZsD-In-ZZO"/>
+                            <constraint firstItem="B58-kx-ec8" firstAttribute="leading" secondItem="DCj-U8-byb" secondAttribute="leadingMargin" id="guD-re-RQQ"/>
+                            <constraint firstItem="nm8-cI-yQz" firstAttribute="trailing" secondItem="DCj-U8-byb" secondAttribute="trailingMargin" id="kaH-wY-nN0"/>
+                            <constraint firstItem="nm8-cI-yQz" firstAttribute="top" secondItem="5Tj-ah-f3Z" secondAttribute="bottom" constant="18" id="rP3-ve-7qh"/>
+                            <constraint firstItem="5Tj-ah-f3Z" firstAttribute="leading" secondItem="DCj-U8-byb" secondAttribute="leadingMargin" constant="51" id="xF4-8f-WKY"/>
+                            <constraint firstItem="B58-kx-ec8" firstAttribute="top" secondItem="aAS-oW-bfv" secondAttribute="bottom" id="xym-mf-zQB"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Me" id="Pdg-5U-zOc"/>
+                    <tabBarItem key="tabBarItem" title="Me" image="me" id="Pdg-5U-zOc"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="addressLabel" destination="nm8-cI-yQz" id="XIc-La-WRO"/>
-                        <outlet property="balanceLabel" destination="oMx-VA-Mvh" id="pNv-Cz-Wg2"/>
                         <outlet property="payButton" destination="uWf-Rq-e15" id="LCS-f5-Ph6"/>
                         <outlet property="qrImage" destination="5Tj-ah-f3Z" id="Yh9-m4-gcU"/>
-                        <outlet property="tokenLabel" destination="4kJ-py-8ib" id="Gup-Be-f34"/>
-                        <outlet property="usernameLabel" destination="sEH-tR-L12" id="F27-hU-o2h"/>
+                        <outlet property="welcomeLabel" destination="B58-kx-ec8" id="URI-cX-5eb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ane-Lo-OI9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -185,4 +169,9 @@
             <point key="canvasLocation" x="29" y="1492"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="apple-pay" width="194" height="64"/>
+        <image name="me" width="25" height="25"/>
+        <image name="tips" width="25" height="25"/>
+    </resources>
 </document>
