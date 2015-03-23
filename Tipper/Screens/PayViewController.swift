@@ -33,10 +33,8 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
     }
 
     @IBOutlet weak var welcomeLabel: UILabel!
-
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var qrImage: UIImageView!
-
     @IBOutlet weak var payButton: UIButton!
 
     let SupportedPaymentNetworks = [PKPaymentNetworkVisa, PKPaymentNetworkMasterCard, PKPaymentNetworkAmex]
@@ -73,11 +71,12 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
     }
 
     func refreshUI() {
+        println("\(className)::\(__FUNCTION__)")
         var marketString: String = ""
-        if let amount = market.amount {
-            marketString = "You can buy 0.002BTC for $\(amount)."
+        if let amount = market.amount, balance =  currentUser.bitcoinBalanceBTC {
+            welcomeLabel.text = "Hi, @\(currentUser.twitterUsername)!  You currently have \(balance)BTC in your account. You can buy 0.002BTC for $\(amount)."
         }
-        welcomeLabel.text = "Hi, @\(currentUser.twitterUsername)! You currently have \(currentUser.bitcoinBalanceBTC)BTC in your account. \(marketString)"
+
         
         self.addressLabel.text = currentUser.bitcoinAddress
         let qrCode = QRCode(currentUser.bitcoinAddress!)
@@ -155,7 +154,15 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
 
     func applicationDidBecomeActive(aNotification: NSNotification) {
         println("\(className)::\(__FUNCTION__)")
-        refreshUI()
+        API.sharedInstance.me({ (json, error) -> Void in
+            if (error == nil) {
+                self.currentUser.updateEntityWithJSON(json)
+                self.currentUser.writeToDisk()
+                println("new currentuser \(self.currentUser)")
+                self.refreshUI()
+            }
+        })
+
     }
 
 

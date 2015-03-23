@@ -29,9 +29,9 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     @NSManaged var cognitoToken: String?
 
     //@NSManaged var bitcoinAddress: String?
-    @NSManaged var bitcoinBalanceSatoshi: NSNumber
-    @NSManaged var bitcoinBalanceMBTC: NSNumber
-    @NSManaged var bitcoinBalanceBTC: NSNumber
+    @NSManaged var bitcoinBalanceSatoshi: String?
+    @NSManaged var bitcoinBalanceMBTC: String?
+    @NSManaged var bitcoinBalanceBTC: String?
 
     @NSManaged var endpointArn: String?
     @NSManaged var deviceToken: String?
@@ -206,11 +206,39 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         self.bitcoinAddress = json["BitcoinAddress"].string
         self.cognitoIdentity = json["CognityIdentity"].string
         self.cognitoToken = json["CognitoToken"].string
-        self.bitcoinBalanceBTC = json["BitcoinBalanceBTC"].numberValue
-        self.bitcoinBalanceSatoshi = json["BitcoinBalanceSatoshi"].numberValue
-        self.bitcoinBalanceMBTC = json["BitcoinBalanceMBTC"].numberValue
+        self.bitcoinBalanceBTC = json["BitcoinBalanceBTC"].stringValue
+        self.bitcoinBalanceSatoshi = json["BitcoinBalanceSatoshi"].stringValue
+        self.bitcoinBalanceMBTC =  json["BitcoinBalanceMBTC"].stringValue
         self.token = json["token"].stringValue
     }
+
+//    "BitcoinBalanceMBTC" : "0.2",
+//    "CognitoToken" : "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXUyIsImtpZCI6InVzLWVhc3QtMTEifQ.eyJleHAiOjE0MjcxMDAyNDEsInN1YiI6InVzLWVhc3QtMTplNzk1ZmQyZS03OWEwLTRhODktODBlYS0yNDg1MDk0MzA4NTUiLCJhdWQiOiJ1cy1lYXN0LTE6NzE0NTBlYzQtODk0Yi00ZTUxLWJmYmItMzVhMDEyYjViNTE0IiwiaXNzIjoiaHR0cHM6Ly9jb2duaXRvLWlkZW50aXR5LmFtYXpvbmF3cy5jb20iLCJpYXQiOjE0MjcxMDAyNDAsImFtciI6WyJhdXRoZW50aWNhdGVkIiwiY29tLnJ5YW5yb21hbmNodWsudGlwcGVyIl19.H4pinw3UamFDG0X6GcIQGVEiCfa4NbwqH3QIVyOSO_qCmIEoOfFc_csnbDUxm2VgQjDiJ6UCUTg5ydSTP1g9FAQUrwN0AxNuBy2QNYwfDVCXMfJLNDApxml0KqIj24cnqt3gLBPZ27EqM4tYzYV43LFZiruStqyMOoQvsIo1GgI6jKe_7vAbA9Enxw1CVWAf9iUCTP4YWIFrGRFAQYNJQ5cgk8z2Uu0fHBJ8tY6t5h0wL5WfqV9RJWvUxHzWzCiRq5qmdSqKawLgHhqHQijiPIGZGlfEG4697Wfqb1twNfSr8yzO9N9aIOrGlLJvMp0ehXPNvLIfbgO9pk7IkDhwfw",
+//    "TwitterUserID" : "14078827",
+//    "CognityIdentity" : "us-east-1:e795fd2e-79a0-4a89-80ea-248509430855",
+//    "TwitterUsername" : "rromanchuk",
+//    "BitcoinAddress" : "1CBW5czKBnEXA3wLm6tXYdSsfjDBCnxH26",
+//    "token" : "***REMOVED***",
+//    "CognitoIdentity" : "us-east-1:e795fd2e-79a0-4a89-80ea-248509430855",
+//    "BitcoinBalanceBTC" : "0.0002",
+//    "TwitterAuthToken" : "14078827-eiOSkBVx89wUs1HHw4tvVxLTacJ8aKtCowVEwYjvH",
+//    "TwitterAuthSecret" : "ciojmNsGDVSMHzLfHghvN1p7DWGSEOGfEy8qoHXOrqflR",
+//    "BitcoinBalanceSatoshi" : "20000.0"
+//}, error:nil
+//CurrentUser::updateEntityWithJSON json:{
+//    "BitcoinBalanceMBTC" : "0.2",
+//    "CognitoToken" : "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXUyIsImtpZCI6InVzLWVhc3QtMTEifQ.eyJleHAiOjE0MjcxMDAyNDEsInN1YiI6InVzLWVhc3QtMTplNzk1ZmQyZS03OWEwLTRhODktODBlYS0yNDg1MDk0MzA4NTUiLCJhdWQiOiJ1cy1lYXN0LTE6NzE0NTBlYzQtODk0Yi00ZTUxLWJmYmItMzVhMDEyYjViNTE0IiwiaXNzIjoiaHR0cHM6Ly9jb2duaXRvLWlkZW50aXR5LmFtYXpvbmF3cy5jb20iLCJpYXQiOjE0MjcxMDAyNDAsImFtciI6WyJhdXRoZW50aWNhdGVkIiwiY29tLnJ5YW5yb21hbmNodWsudGlwcGVyIl19.H4pinw3UamFDG0X6GcIQGVEiCfa4NbwqH3QIVyOSO_qCmIEoOfFc_csnbDUxm2VgQjDiJ6UCUTg5ydSTP1g9FAQUrwN0AxNuBy2QNYwfDVCXMfJLNDApxml0KqIj24cnqt3gLBPZ27EqM4tYzYV43LFZiruStqyMOoQvsIo1GgI6jKe_7vAbA9Enxw1CVWAf9iUCTP4YWIFrGRFAQYNJQ5cgk8z2Uu0fHBJ8tY6t5h0wL5WfqV9RJWvUxHzWzCiRq5qmdSqKawLgHhqHQijiPIGZGlfEG4697Wfqb1twNfSr8yzO9N9aIOrGlLJvMp0ehXPNvLIfbgO9pk7IkDhwfw",
+//    "TwitterUserID" : "14078827",
+//    "CognityIdentity" : "us-east-1:e795fd2e-79a0-4a89-80ea-248509430855",
+//    "TwitterUsername" : "rromanchuk",
+//    "BitcoinAddress" : "1CBW5czKBnEXA3wLm6tXYdSsfjDBCnxH26",
+//    "token" : "***REMOVED***",
+//    "CognitoIdentity" : "us-east-1:e795fd2e-79a0-4a89-80ea-248509430855",
+//    "BitcoinBalanceBTC" : "0.0002",
+//    "TwitterAuthToken" : "14078827-eiOSkBVx89wUs1HHw4tvVxLTacJ8aKtCowVEwYjvH",
+//    "TwitterAuthSecret" : "ciojmNsGDVSMHzLfHghvN1p7DWGSEOGfEy8qoHXOrqflR",
+//    "BitcoinBalanceSatoshi" : "20000.0"
+//}
 
     func pushToDynamo() {
         println("\(className)::\(__FUNCTION__)")
@@ -256,9 +284,9 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         self.twitterAuthToken = user.TwitterAuthToken
         self.twitterAuthSecret = user.TwitterAuthSecret
         self.bitcoinAddress = user.BitcoinAddress
-        self.bitcoinBalanceBTC  = user.BitcoinBalanceBTC!
-        self.bitcoinBalanceSatoshi = user.BitcoinBalanceSatoshi!
-        self.bitcoinBalanceMBTC = user.BitcoinBalanceMBTC!
+       // self.bitcoinBalanceBTC  = user.BitcoinBalanceBTC!
+        //self.bitcoinBalanceSatoshi = user.BitcoinBalanceSatoshi!
+        //self.bitcoinBalanceMBTC = user.BitcoinBalanceMBTC!
 
         if let endpoint = user.EndpointArn {
              self.endpointArn = endpoint

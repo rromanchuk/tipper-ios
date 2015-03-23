@@ -86,12 +86,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             currentUser.updateTwitterAuthentication()
             currentUser.refreshWithDynamo()
             currentUser.registerForRemoteNotificationsIfNeeded()
-            API.sharedInstance.me({ (json, error) -> Void in
-                if (error == nil) {
-                    self.currentUser.updateEntityWithJSON(json)
-                    self.currentUser.save()
-                }
-            })
         }        
     }
 
