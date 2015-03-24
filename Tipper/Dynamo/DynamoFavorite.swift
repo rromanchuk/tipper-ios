@@ -11,25 +11,18 @@ import TwitterKit
 import SwiftyJSON
 
 class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
-    var FromTwitterUserID: String?
-    var ToTwitterUserID: String?
-    var FromUsername: String?
-    var ToUsername: String?
-    var FromBitcoinAddress: String?
-    var ToBitcoinAddress: String?
     var FavoriteID: String?
+    var TweetJSON: String?
+    var TipperUserID: String?
     var CreatedAt: NSNumber?
-    var TweetText: String?
-    var TweetJSON: NSData?
-
 
    
     static func dynamoDBTableName() -> String! {
-        return "TipperFavorites"
+        return "TipperTwitterFavorites"
     }
 
     static func hashKeyAttribute() -> String! {
-        return "FavoriteID"
+        return "TweetID"
     }
 
     func lookupProperty() -> String {
@@ -46,86 +39,26 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
 
     class func fetchFromAWS(currentUser: CurrentUser, context: NSManagedObjectContext) {
         println("DynamoFavorite::\(__FUNCTION__)")
-        let cond = AWSDynamoDBCondition()
-        let v1    = AWSDynamoDBAttributeValue();
-        v1.S = currentUser.uuid
-        cond.comparisonOperator = AWSDynamoDBComparisonOperator.EQ
-        cond.attributeValueList = [ v1 ]
-        let c = [ "FromTwitterID" : cond ]
 
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
-
         let exp = AWSDynamoDBQueryExpression()
-
         exp.hashKeyValues      = currentUser.uuid
-        //exp.hashValue = currentUser.twitterUserId
-        //exp.rangeKeyConditions = c
-        exp.indexName = "FromTwitterUserID-index"
+        exp.indexName = "TipperUserID-index"
+        exp.limit = 3000
 
-        mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: "FromTwitterUserID").continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+        mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: "TipperUserID").continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             //println("Result: \(task.result) Error \(task.error)")
-
             let results = task.result as! AWSDynamoDBPaginatedOutput
             for result in results.items as! [DynamoFavorite] {
                 println("result from query \(result)")
                 let json = JSON(result)
                 context.performBlock({ () -> Void in
                     Favorite.entityWithDYNAMO(Favorite.self, model: result, context: context)
-                    return
                 })
-
-
             }
             context.saveMoc()
             return nil
         })
-
-
-    }
-
-    class func fetch(currentUser: CurrentUser, context: NSManagedObjectContext) {
-        println("DynamoFavorite::\(__FUNCTION__)")
-        let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
-        API.sharedInstance.favorites { (json, error) -> Void in
-            Favorite.entityWithJSON(Favorite.self, json: json, context: context)
-//            //println("json: \(json) error:\(error)")
-//
-//            Debug.isBlocking()
-//            if let array = json.array {
-//                for favorite in array {
-//                    let favoriteModel = DynamoFavorite.new()
-//                    if let user = favorite["user"].dictionary {
-//                        favoriteModel.FavoriteID = user["id_str"]!.string
-//                        favoriteModel.ToUsername =  user["screen_name"]!.string
-//                        favoriteModel.ToTwitterUserID =  user["id_str"]!.string
-//                    }
-//                    //favoriteModel.TweetJSON = favorite.tw
-//                    favoriteModel.FromUsername = currentUser.twitterUsername
-//                    favoriteModel.FromTwitterUserID = currentUser.uuid
-//                    favoriteModel.FavoriteID = favorite["id"].stringValue
-//                    favoriteModel.TweetText = favorite["text"].stringValue
-//                    favoriteModel.CreatedAt = (Favorite.dateForTwitterDate(favorite["created_at"].stringValue) as NSDate).timeIntervalSince1970
-//
-//                    mapper.save(favoriteModel).continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-//
-//                        //println(task.error)
-//                        //println(task.result)
-//                        let privateContext = context.privateContext
-//                        privateContext.performBlock({ () -> Void in
-//                            Favorite.entityWithDYNAMO(Favorite.self, model: favoriteModel, context: privateContext)
-//                            privateContext.saveMoc()
-//                        })
-//
-//
-//                        return nil
-//                    })
-//
-//
-//
-//                }
-//            }
-        }
-        
     }
 
     override func isEqual(anObject: AnyObject?) -> Bool {

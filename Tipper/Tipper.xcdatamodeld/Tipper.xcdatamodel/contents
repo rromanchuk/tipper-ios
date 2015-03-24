@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7535.1" systemVersion="14D105g" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7535.1" systemVersion="14D113c" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="CurrentUser" representedClassName="Tipper.CurrentUser" syncable="YES">
         <attribute name="bitcoinAddress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="bitcoinBalanceBTC" optional="YES" attributeType="String" syncable="YES"/>
@@ -20,14 +20,7 @@
     <entity name="Favorite" representedClassName="Tipper.Favorite" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="favoriteId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
-        <attribute name="fromBitcoinAddress" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fromTwitterId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fromUsername" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="toBitcoinAddress" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="toTwitterId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="toUsername" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="tweetText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tipperUserId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="twitterJSON" optional="YES" attributeType="Transformable" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CurrentUser" inverseName="favorites" inverseEntity="CurrentUser" syncable="YES"/>
     </entity>
@@ -37,7 +30,7 @@
     </entity>
     <elements>
         <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="270"/>
-        <element name="Favorite" positionX="-63" positionY="54" width="128" height="225"/>
+        <element name="Favorite" positionX="-63" positionY="54" width="128" height="120"/>
         <element name="Market" positionX="-54" positionY="117" width="128" height="75"/>
     </elements>
 </model>

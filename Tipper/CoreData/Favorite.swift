@@ -22,15 +22,9 @@ let TwitterDateFormatter: NSDateFormatter = {
 class Favorite: NSManagedObject, CoreDataUpdatable {
 
     @NSManaged var favoriteId: String
-    @NSManaged var fromUsername: String
-    @NSManaged var toUsername: String
-    @NSManaged var toTwitterId: String
-    @NSManaged var fromTwitterId: String
-    @NSManaged var fromBitcoinAddress: String?
-    @NSManaged var toBitcoinAddress: String?
-    @NSManaged var tweetText: String?
     @NSManaged var createdAt: NSDate
     @NSManaged var twitterJSON: [String: AnyObject]?
+
 
     class var className: String {
         get {
@@ -54,34 +48,9 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
         }
     }
 
-
     class func dateForTwitterDate(date: String) -> NSDate {
         return TwitterDateFormatter.dateFromString(date)!
     }
-
-    class func entityWithTWTR(tweet: TWTRTweet, context: NSManagedObjectContext) -> Favorite? {
-        let request = NSFetchRequest(entityName: "Favorite")
-        request.predicate = NSPredicate(format: "favoriteId == %@", tweet.tweetID)
-        var error: NSError? = nil
-        let results = context.executeFetchRequest(request, error: &error)
-        if let _error = error {
-            println("ERROR: \(_error)")
-        }
-
-        if (results == nil) {
-            return nil
-        } else if (results?.count == 0) {
-            let entityObj = Favorite.create(Favorite.self, context: context)
-
-            entityObj.updateEntityWithTWTR(tweet)
-            return entityObj
-        } else {
-            let entityObj = results?.last as? Favorite
-            entityObj?.updateEntityWithTWTR(tweet)
-            return entityObj
-        }
-    }
-
 
     func updateEntityWithJSON(json: JSON) {
         println("\(className)::\(__FUNCTION__) \(json)")
@@ -100,13 +69,12 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
         println("\(className)::\(__FUNCTION__) ")
         let dynamoFavorite = dynamoObject as! DynamoFavorite
         self.favoriteId = dynamoFavorite.FavoriteID!
-        self.fromUsername = dynamoFavorite.FromUsername!
-        self.toUsername = dynamoFavorite.ToUsername!
-        self.fromTwitterId = dynamoFavorite.FromTwitterUserID!
-        self.toTwitterId = dynamoFavorite.ToTwitterUserID!
-        self.fromBitcoinAddress = dynamoFavorite.FromBitcoinAddress
-        self.toBitcoinAddress = dynamoFavorite.ToBitcoinAddress
-        self.tweetText = dynamoFavorite.TweetText
+        self.createdAt = NSDate(timeIntervalSince1970: NSTimeInterval(dynamoFavorite.CreatedAt!.doubleValue))
+        if let jsonString =   dynamoFavorite.TweetJSON, data = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true) {
+            let json = JSON(data: data)
+            self.favoriteId = json["id"].stringValue
+            self.twitterJSON = json.dictionaryObject
+        }
         
     }
 
