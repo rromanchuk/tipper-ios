@@ -23,12 +23,10 @@ class AddressController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.addressLabel.text = currentUser.bitcoinAddress
         let qrCode = QRCode(currentUser.bitcoinAddress!)
         qrImageView.image = qrCode?.image
-
-
+        addressLabel.text = currentUser.bitcoinAddress
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,6 +45,10 @@ class AddressController: UIViewController {
     }
     */
 
+    @IBAction func didCopy(sender: UIButton) {
+        let pb = UIPasteboard.generalPasteboard()
+        pb.string = currentUser.bitcoinAddress!
+    }
     @IBAction func didClose(sender: UIButton) {
         performSegueWithIdentifier("AddressDone", sender: self)
     }

@@ -134,8 +134,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     }
 
 
-
-
     func authenticate(provider: TwitterAuth, completion: (() ->Void))  {
         println("\(className)::\(__FUNCTION__)")
         API.sharedInstance.register(self.twitterUsername, twitterId: self.twitterUserId!, twitterAuth: self.twitterAuthToken!, twitterSecret: self.twitterAuthSecret!, completion: { (json, error) -> Void in

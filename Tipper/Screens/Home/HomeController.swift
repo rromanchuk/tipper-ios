@@ -11,12 +11,15 @@ import PassKit
 import TwitterKit
 
 class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDelegate {
-    var managedObjectContext: NSManagedObjectContext?
+    var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
     var market: Market!
+    let tweetTableReuseIdentifier = "TweetCell"
+
 
     var className = "HomeController"
 
+    @IBOutlet weak var tableView: UITableView!
 
     @IBOutlet weak var applePayButton: UIButton!
     @IBOutlet weak var withdrawButton: UIButton!
@@ -26,8 +29,33 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
     let ApplePayMerchantID = Config.get("APPLE_PAY_MERCHANT")
     let SupportedPaymentNetworks = [PKPaymentNetworkVisa, PKPaymentNetworkMasterCard, PKPaymentNetworkAmex]
 
+    lazy var fetchedResultsController: NSFetchedResultsController = NSFetchedResultsController.superFetchedResultsController("Favorite", sectionNameKeyPath: nil, sortDescriptors: self.sortDescriptors, predicate: self.predicate, tableView: self.tableView, context: self.managedObjectContext)
+
+    lazy var predicate: NSPredicate? = {
+        let now = NSDate()
+        let hourAgo = now.dateByAddingTimeInterval(-(60 * 60) * 24)
+        return nil
+    }()
+
+    lazy var sortDescriptors: [AnyObject] = {
+        return [NSSortDescriptor(key: "createdAt", ascending: true)]
+    }()
+
+    lazy var fetchRequest: NSFetchRequest = {
+        let request = NSFetchRequest(entityName: "Favorite")
+        request.predicate = self.predicate
+        request.sortDescriptors = self.sortDescriptors
+        return request
+    }()
+
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        tableView.estimatedRowHeight = 150
+        tableView.rowHeight = UITableViewAutomaticDimension // Explicitly set on iOS 8 if using automatic row height calculation
+
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillResignActive:", name: UIApplicationWillResignActiveNotification, object: UIApplication.sharedApplication())
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidEnterBackground:", name: UIApplicationDidEnterBackgroundNotification, object: UIApplication.sharedApplication())
@@ -38,6 +66,16 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
         }
         currentUser.updateBalanceUSD { () -> Void in
             self.refreshUI()
+        }
+
+        API.sharedInstance.favorites { (json, error) -> Void in
+            let privateContext = self.managedObjectContext.privateContext
+            privateContext.performBlock({ () -> Void in
+                for tweet in json.arrayValue {
+                    let fav = Favorite.entityWithJSON(Favorite.self, json: tweet, context: privateContext)!
+                    fav.save()
+                }
+            })
         }
     }
 
@@ -64,7 +102,6 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
         // Dispose of any resources that can be recreated.
     }
     
-
 
     @IBAction func didTapWithdraw(sender: UIButton) {
 
@@ -123,7 +160,6 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
     }
 
 
-
     // MARK: Application lifecycle
 
     func applicationWillResignActive(aNotification: NSNotification) {
@@ -161,6 +197,34 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
         
     }
 
+
+    // MARK: UICollectionViewDataSource
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let favorite = fetchedResultsController.objectAtIndexPath(indexPath) as! Favorite
+        let twt = TWTRTweet(JSONDictionary: favorite.twitterJSON)
+
+        let cell = tableView.dequeueReusableCellWithIdentifier(tweetTableReuseIdentifier, forIndexPath: indexPath) as! TweetCell
+        cell.tweetView.configureWithTweet(twt)
+        //cell.tweetView.delegate = self
+        //cell.configureWithTweet(twt)
+
+        return cell
+    }
+
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        let favorite = fetchedResultsController.objectAtIndexPath(indexPath) as! Favorite
+//        let twt = TWTRTweet(JSONDictionary: favorite.twitterJSON)
+//        return TWTRTweetTableViewCell.heightForTweet(twt, width: 288.0)
+//    }
+
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return fetchedResultsController.sections!.count
+    }
+
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return fetchedResultsController.sections![section].numberOfObjects!
+    }
 
 
 }

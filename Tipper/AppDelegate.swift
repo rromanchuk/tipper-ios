@@ -27,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 //        // Override point for customization after application launch.
         Config.dump()
+        TWTRTweetView.appearance().primaryTextColor = UIColor.whiteColor()
+        TWTRTweetView.appearance().backgroundColor = UIColor.colorWithRGB(0xC1DBCE, alpha: 1.0)
+
 
         Fabric.with([Crashlytics(), Twitter()])
         NSUbiquitousKeyValueStore.defaultStore().synchronize()

@@ -11,6 +11,8 @@
 		9416317D1AC3BCB9002016FD /* ApplePayBTN_63pt__white_logo_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9416317C1AC3BCB9002016FD /* ApplePayBTN_63pt__white_logo_@2x.png */; };
 		9416317F1AC3C1EC002016FD /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9416317E1AC3C1EC002016FD /* HomeController.swift */; };
 		941631831AC3CC5E002016FD /* AddressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941631821AC3CC5E002016FD /* AddressController.swift */; };
+		941631851AC3FAB4002016FD /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941631841AC3FAB4002016FD /* TweetCell.swift */; };
+		941631881AC404A7002016FD /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941631871AC404A7002016FD /* UIColor.swift */; };
 		941AA38A1AAFA34900CA9192 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA3891AAFA34900CA9192 /* Config.swift */; };
 		941AA38C1AAFDCA000CA9192 /* PayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA38B1AAFDCA000CA9192 /* PayViewController.swift */; };
 		941AA38E1AB01EC000CA9192 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA38D1AB01EC000CA9192 /* SplashViewController.swift */; };
@@ -40,7 +42,6 @@
 		94AF29C61AAF060000E16048 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 94AF29C41AAF060000E16048 /* TwitterKitResources.bundle */; };
 		94C5C0D31ABFF47A009E4B05 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C5C0D21ABFF47A009E4B05 /* Market.swift */; };
 		94EE8CF61AB16E7E000593CD /* TTTURLRequestFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */; };
-		94FA97D71AB2E170005B0C83 /* TipperTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA97D61AB2E170005B0C83 /* TipperTabBarController.swift */; };
 		94FA97D91AB2E408005B0C83 /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA97D81AB2E408005B0C83 /* TransactionsViewController.swift */; };
 		94FA97DB1AB2E691005B0C83 /* DynamoFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA97DA1AB2E691005B0C83 /* DynamoFavorite.swift */; };
 		94FA97DD1AB2EB71005B0C83 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA97DC1AB2EB71005B0C83 /* Favorite.swift */; };
@@ -66,6 +67,8 @@
 		9416317C1AC3BCB9002016FD /* ApplePayBTN_63pt__white_logo_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ApplePayBTN_63pt__white_logo_@2x.png"; sourceTree = "<group>"; };
 		9416317E1AC3C1EC002016FD /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeController.swift; path = Home/HomeController.swift; sourceTree = "<group>"; };
 		941631821AC3CC5E002016FD /* AddressController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressController.swift; path = Address/AddressController.swift; sourceTree = "<group>"; };
+		941631841AC3FAB4002016FD /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TweetCell.swift; path = Home/TweetCell.swift; sourceTree = "<group>"; };
+		941631871AC404A7002016FD /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = Extensions/UIColor.swift; sourceTree = "<group>"; };
 		941AA3891AAFA34900CA9192 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		941AA38B1AAFDCA000CA9192 /* PayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayViewController.swift; sourceTree = "<group>"; };
 		941AA38D1AB01EC000CA9192 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -104,7 +107,6 @@
 		94C5C0D21ABFF47A009E4B05 /* Market.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		94EE8CF41AB16E7E000593CD /* TTTURLRequestFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTURLRequestFormatter.h; sourceTree = "<group>"; };
 		94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTURLRequestFormatter.m; sourceTree = "<group>"; };
-		94FA97D61AB2E170005B0C83 /* TipperTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipperTabBarController.swift; sourceTree = "<group>"; };
 		94FA97D81AB2E408005B0C83 /* TransactionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
 		94FA97DA1AB2E691005B0C83 /* DynamoFavorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoFavorite.swift; sourceTree = "<group>"; };
 		94FA97DC1AB2EB71005B0C83 /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				9416317E1AC3C1EC002016FD /* HomeController.swift */,
+				941631841AC3FAB4002016FD /* TweetCell.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -165,16 +168,24 @@
 			name = Address;
 			sourceTree = "<group>";
 		};
+		941631861AC40482002016FD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				941631871AC404A7002016FD /* UIColor.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		94416BF41AAF989F00117AFC /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				941AA3891AAFA34900CA9192 /* Config.swift */,
 				94416BF51AAF989F00117AFC /* Alamofire-SwiftyJSON.swift */,
 				94416BF71AAF989F00117AFC /* API.swift */,
+				941AA3891AAFA34900CA9192 /* Config.swift */,
+				94FDE9C01AB4BF6A006B6454 /* Debug.swift */,
 				94416BF81AAF989F00117AFC /* Router.swift */,
 				94416BFA1AAF989F00117AFC /* TwitterAuth.swift */,
 				94416BFB1AAF989F00117AFC /* UserSync.swift */,
-				94FDE9C01AB4BF6A006B6454 /* Debug.swift */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
@@ -184,11 +195,11 @@
 			children = (
 				94416BFD1AAF989F00117AFC /* CoreDataUpdatable.swift */,
 				94416BFF1AAF989F00117AFC /* CurrentUser.swift */,
+				94FA97DC1AB2EB71005B0C83 /* Favorite.swift */,
+				94C5C0D21ABFF47A009E4B05 /* Market.swift */,
 				94416C001AAF989F00117AFC /* NSManagedObject+Extension.swift */,
 				94416C011AAF989F00117AFC /* NSManagedObjectContext+Base.h */,
 				94416C021AAF989F00117AFC /* NSManagedObjectContext+Base.m */,
-				94FA97DC1AB2EB71005B0C83 /* Favorite.swift */,
-				94C5C0D21ABFF47A009E4B05 /* Market.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -210,7 +221,6 @@
 				94FA97D51AB2E0DA005B0C83 /* Transaction */,
 				941AA38B1AAFDCA000CA9192 /* PayViewController.swift */,
 				941AA38D1AB01EC000CA9192 /* SplashViewController.swift */,
-				94FA97D61AB2E170005B0C83 /* TipperTabBarController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -238,6 +248,7 @@
 		94AF296E1AAEF2B600E16048 /* Tipper */ = {
 			isa = PBXGroup;
 			children = (
+				941631861AC40482002016FD /* Extensions */,
 				9416317C1AC3BCB9002016FD /* ApplePayBTN_63pt__white_logo_@2x.png */,
 				94416BED1AAF94C700117AFC /* Tipper.entitlements */,
 				94416C071AAF989F00117AFC /* Tipper-Bridging-Header.h */,
@@ -516,6 +527,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94FDE9BF1AB4209B006B6454 /* SuperFetchedResultsControllerDelegate.swift in Sources */,
+				941631881AC404A7002016FD /* UIColor.swift in Sources */,
 				94C5C0D31ABFF47A009E4B05 /* Market.swift in Sources */,
 				94416C0A1AAF989F00117AFC /* Alamofire-SwiftyJSON.swift in Sources */,
 				94FDE9BD1AB42079006B6454 /* NSFetchedResultsControllerExtension.swift in Sources */,
@@ -527,7 +539,7 @@
 				94416C141AAF989F00117AFC /* NSManagedObject+Extension.swift in Sources */,
 				94416C0D1AAF989F00117AFC /* Router.swift in Sources */,
 				94416C151AAF989F00117AFC /* NSManagedObjectContext+Base.m in Sources */,
-				94FA97D71AB2E170005B0C83 /* TipperTabBarController.swift in Sources */,
+				941631851AC3FAB4002016FD /* TweetCell.swift in Sources */,
 				94FA97DD1AB2EB71005B0C83 /* Favorite.swift in Sources */,
 				94416C181AAF989F00117AFC /* AppDelegate.swift in Sources */,
 				94416C0F1AAF989F00117AFC /* TwitterAuth.swift in Sources */,
