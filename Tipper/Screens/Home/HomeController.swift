@@ -1,52 +1,33 @@
 //
-//  PayViewController.swift
+//  HomeController.swift
 //  Tipper
 //
-//  Created by Ryan Romanchuk on 3/10/15.
+//  Created by Ryan Romanchuk on 3/25/15.
 //  Copyright (c) 2015 Ryan Romanchuk. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import PassKit
 import TwitterKit
-import QRCode
 
-class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewControllerDelegate, NSURLConnectionDataDelegate {
-    var className = "ApplePayViewController"
+class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDelegate {
+    var managedObjectContext: NSManagedObjectContext?
+    var currentUser: CurrentUser!
+    var market: Market!
 
-    var managedObjectContext: NSManagedObjectContext {
-        get {
-            return (tabBarController as! TipperTabBarController).managedObjectContext!
-        }
-    }
+    var className = "HomeController"
 
-    var currentUser: CurrentUser {
-        get {
-            return (tabBarController as! TipperTabBarController).currentUser!
-        }
-    }
 
-    var market: Market {
-        get {
-            return (tabBarController as! TipperTabBarController).market!
-        }
-    }
+    @IBOutlet weak var applePayButton: UIButton!
+    @IBOutlet weak var withdrawButton: UIButton!
+    @IBOutlet weak var addressButton: UIButton!
+    @IBOutlet weak var balanceLabel: UILabel!
 
-    @IBOutlet weak var welcomeLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var qrImage: UIImageView!
-    @IBOutlet weak var payButton: UIButton!
-
-    let SupportedPaymentNetworks = [PKPaymentNetworkVisa, PKPaymentNetworkMasterCard, PKPaymentNetworkAmex]
     let ApplePayMerchantID = Config.get("APPLE_PAY_MERCHANT")
+    let SupportedPaymentNetworks = [PKPaymentNetworkVisa, PKPaymentNetworkMasterCard, PKPaymentNetworkAmex]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("\(className)::\(__FUNCTION__) \(managedObjectContext)")
-
-        //payButton!.enabled = PKPaymentAuthorizationViewController.canMakePaymentsUsingNetworks(SupportedPaymentNetworks)
-
-
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillResignActive:", name: UIApplicationWillResignActiveNotification, object: UIApplication.sharedApplication())
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidEnterBackground:", name: UIApplicationDidEnterBackgroundNotification, object: UIApplication.sharedApplication())
@@ -55,27 +36,39 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
         market.update { () -> Void in
             self.refreshUI()
         }
-    }
-
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        refreshUI()
-
+        currentUser.updateBalanceUSD { () -> Void in
+            self.refreshUI()
+        }
     }
 
     func refreshUI() {
-        println("\(className)::\(__FUNCTION__)")
-        var marketString: String = ""
-        if let amount = market.amount, balance =  currentUser.bitcoinBalanceBTC {
-            welcomeLabel.text = "Hi, @\(currentUser.twitterUsername)!  You currently have \(balance)BTC in your account. You can buy 0.002BTC for $\(amount)."
+//        println("\(className)::\(__FUNCTION__)")
+//        var marketString: String = ""
+//        if let amount = market.amount, balance =  currentUser.bitcoinBalanceBTC {
+//            welcomeLabel.text = "Hi, @\(currentUser.twitterUsername)!  You currently have \(balance)BTC in your account. You can buy 0.002BTC for $\(amount)."
+//        }
+//
+//
+//        self.addressLabel.text = currentUser.bitcoinAddress
+//        let qrCode = QRCode(currentUser.bitcoinAddress!)
+//        qrImage.image = qrCode?.image
+        if let marketValue = currentUser.marketValue, subtotalAmount = marketValue.subtotalAmount, btc = currentUser.bitcoinBalanceBTC {
+            balanceLabel.text = "$\(subtotalAmount) / Ƀ\(btc)"
         }
 
-        
-        self.addressLabel.text = currentUser.bitcoinAddress
-        let qrCode = QRCode(currentUser.bitcoinAddress!)
-        qrImage.image = qrCode?.image
     }
 
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
+
+    @IBAction func didTapWithdraw(sender: UIButton) {
+
+    }
 
     @IBAction func didTapPay(sender: UIButton) {
         let request = PKPaymentRequest()
@@ -101,17 +94,16 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
 
     }
 
-
     func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController!, didAuthorizePayment payment: PKPayment!, completion: ((PKPaymentAuthorizationStatus) -> Void)!) {
         println("\(className)::\(__FUNCTION__)")
         STPAPIClient.sharedClient().createTokenWithPayment(payment, completion: { (token, error) -> Void in
             println("token:\(token) error:\(error)")
-            
+
             if error == nil {
                 //handle token to create charge in backend
                 API.sharedInstance.charge(token.tokenId, bitcoinAddress:self.currentUser.bitcoinAddress!, completion: { (json, error) -> Void in
                     completion(PKPaymentAuthorizationStatus.Success)
-               })
+                })
             } else {
                 completion(PKPaymentAuthorizationStatus.Failure)
             }
@@ -124,6 +116,13 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
         controller.dismissViewControllerAnimated(true, completion: nil)
         //dismisses ApplePay ViewController
     }
+
+
+    @IBAction func didTapAddress(sender: UIButton) {
+        performSegueWithIdentifier("Address", sender: self)
+    }
+
+
 
     // MARK: Application lifecycle
 
@@ -146,7 +145,20 @@ class ApplePayViewController: UIViewController, PKPaymentAuthorizationViewContro
                 self.refreshUI()
             }
         })
+        
+    }
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "Address" {
+            let vc = segue.destinationViewController as! AddressController
+            vc.managedObjectContext = managedObjectContext
+            vc.currentUser = currentUser
+            vc.market = market
+        }
+    }
+
+    @IBAction func done(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
     }
 
 

@@ -23,7 +23,7 @@ enum Router: URLRequestConvertible {
     case Charge(String, String)
     case Favorites
     case Me
-    case MarketPrice
+    case MarketPrice(String)
 
 
     var method: Alamofire.Method {
@@ -53,7 +53,7 @@ enum Router: URLRequestConvertible {
         case .Favorites:
             return "https://api.twitter.com/1.1/favorites/list.json"
         case .MarketPrice:
-            return "https://api.coinbase.com/v1/prices/buy?qty=0.02&currency=USD"
+            return "https://api.coinbase.com/v1/prices/buy"
         }
     }
 
@@ -68,8 +68,8 @@ enum Router: URLRequestConvertible {
             return ["stripeToken": token, "bitcoin_address": bitcoinAddress]
         case .Favorites:
             return ["count": "200", "include_entities": "false"]
-        case .MarketPrice:
-            return ["qty": "0.02"]
+        case .MarketPrice(let btc):
+            return ["qty": btc]
         default:
             return [String: String]()
         }
@@ -84,8 +84,8 @@ enum Router: URLRequestConvertible {
             return ["twitter_id": twitterId]
         case .Charge(let token, let bitcoinAddress):
             return ["stripeToken": token, "bitcoin_address": bitcoinAddress]
-        case .MarketPrice:
-            return ["qty": "0.02"]
+        case .MarketPrice(let btc):
+            return ["qty": btc]
         default:
             return [String: AnyObject]()
         }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7535.1" systemVersion="14D113c" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7541.6" systemVersion="14D113c" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="CurrentUser" representedClassName="Tipper.CurrentUser" syncable="YES">
         <attribute name="bitcoinAddress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="bitcoinBalanceBTC" optional="YES" attributeType="String" syncable="YES"/>
@@ -16,6 +16,7 @@
         <attribute name="twitterUsername" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="favorites" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favorite" inverseName="user" inverseEntity="Favorite" syncable="YES"/>
+        <relationship name="marketValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Market" inverseName="userBalance" inverseEntity="Market" syncable="YES"/>
     </entity>
     <entity name="Favorite" representedClassName="Tipper.Favorite" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
@@ -26,11 +27,14 @@
     </entity>
     <entity name="Market" representedClassName="Tipper.Market" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="btc" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="subtotalAmount" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="userBalance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CurrentUser" inverseName="marketValue" inverseEntity="CurrentUser" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="270"/>
+        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="285"/>
         <element name="Favorite" positionX="-63" positionY="54" width="128" height="120"/>
-        <element name="Market" positionX="-54" positionY="117" width="128" height="75"/>
+        <element name="Market" positionX="-54" positionY="117" width="128" height="120"/>
     </elements>
 </model>

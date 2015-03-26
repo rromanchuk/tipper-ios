@@ -27,7 +27,7 @@ class SplashViewController: UIViewController {
         println("\(className)::\(__FUNCTION__)")
         if (currentUser.isTwitterAuthenticated) {
 
-            performSegueWithIdentifier("SetupPay", sender: self)
+            performSegueWithIdentifier("Home", sender: self)
         } else {
 
             let logInButton = TWTRLogInButton(logInCompletion:
@@ -39,7 +39,7 @@ class SplashViewController: UIViewController {
                         self.currentUser.authenticate(self.provider, completion: { () -> Void in
                             UserSync.sharedInstance.sync(self.currentUser)
                             self.currentUser.registerForRemoteNotificationsIfNeeded()
-                            self.performSegueWithIdentifier("SetupPay", sender: self)
+                            self.performSegueWithIdentifier("Home", sender: self)
                         })
                     } else {
                         println("error: \(error.localizedDescription)");
@@ -54,8 +54,8 @@ class SplashViewController: UIViewController {
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "SetupPay") {
-            let vc = segue.destinationViewController as! TipperTabBarController
+        if (segue.identifier == "Home") {
+            let vc = segue.destinationViewController as! HomeController
             vc.managedObjectContext = managedObjectContext
             vc.currentUser = currentUser
             vc.market = market

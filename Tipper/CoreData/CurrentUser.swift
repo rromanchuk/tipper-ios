@@ -36,6 +36,8 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     @NSManaged var endpointArn: String?
     @NSManaged var deviceToken: String?
 
+    @NSManaged var marketValue: Tipper.Market?
+
     class func currentUser(context: NSManagedObjectContext) -> CurrentUser {
         if let _currentUser = CurrentUser.first(CurrentUser.self, context: context) {
             return _currentUser
@@ -212,33 +214,13 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         self.token = json["token"].stringValue
     }
 
-//    "BitcoinBalanceMBTC" : "0.2",
-//    "CognitoToken" : "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXUyIsImtpZCI6InVzLWVhc3QtMTEifQ.eyJleHAiOjE0MjcxMDAyNDEsInN1YiI6InVzLWVhc3QtMTplNzk1ZmQyZS03OWEwLTRhODktODBlYS0yNDg1MDk0MzA4NTUiLCJhdWQiOiJ1cy1lYXN0LTE6NzE0NTBlYzQtODk0Yi00ZTUxLWJmYmItMzVhMDEyYjViNTE0IiwiaXNzIjoiaHR0cHM6Ly9jb2duaXRvLWlkZW50aXR5LmFtYXpvbmF3cy5jb20iLCJpYXQiOjE0MjcxMDAyNDAsImFtciI6WyJhdXRoZW50aWNhdGVkIiwiY29tLnJ5YW5yb21hbmNodWsudGlwcGVyIl19.H4pinw3UamFDG0X6GcIQGVEiCfa4NbwqH3QIVyOSO_qCmIEoOfFc_csnbDUxm2VgQjDiJ6UCUTg5ydSTP1g9FAQUrwN0AxNuBy2QNYwfDVCXMfJLNDApxml0KqIj24cnqt3gLBPZ27EqM4tYzYV43LFZiruStqyMOoQvsIo1GgI6jKe_7vAbA9Enxw1CVWAf9iUCTP4YWIFrGRFAQYNJQ5cgk8z2Uu0fHBJ8tY6t5h0wL5WfqV9RJWvUxHzWzCiRq5qmdSqKawLgHhqHQijiPIGZGlfEG4697Wfqb1twNfSr8yzO9N9aIOrGlLJvMp0ehXPNvLIfbgO9pk7IkDhwfw",
-//    "TwitterUserID" : "14078827",
-//    "CognityIdentity" : "us-east-1:e795fd2e-79a0-4a89-80ea-248509430855",
-//    "TwitterUsername" : "rromanchuk",
-//    "BitcoinAddress" : "1CBW5czKBnEXA3wLm6tXYdSsfjDBCnxH26",
-//    "token" : "***REMOVED***",
-//    "CognitoIdentity" : "us-east-1:e795fd2e-79a0-4a89-80ea-248509430855",
-//    "BitcoinBalanceBTC" : "0.0002",
-//    "TwitterAuthToken" : "14078827-eiOSkBVx89wUs1HHw4tvVxLTacJ8aKtCowVEwYjvH",
-//    "TwitterAuthSecret" : "ciojmNsGDVSMHzLfHghvN1p7DWGSEOGfEy8qoHXOrqflR",
-//    "BitcoinBalanceSatoshi" : "20000.0"
-//}, error:nil
-//CurrentUser::updateEntityWithJSON json:{
-//    "BitcoinBalanceMBTC" : "0.2",
-//    "CognitoToken" : "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXUyIsImtpZCI6InVzLWVhc3QtMTEifQ.eyJleHAiOjE0MjcxMDAyNDEsInN1YiI6InVzLWVhc3QtMTplNzk1ZmQyZS03OWEwLTRhODktODBlYS0yNDg1MDk0MzA4NTUiLCJhdWQiOiJ1cy1lYXN0LTE6NzE0NTBlYzQtODk0Yi00ZTUxLWJmYmItMzVhMDEyYjViNTE0IiwiaXNzIjoiaHR0cHM6Ly9jb2duaXRvLWlkZW50aXR5LmFtYXpvbmF3cy5jb20iLCJpYXQiOjE0MjcxMDAyNDAsImFtciI6WyJhdXRoZW50aWNhdGVkIiwiY29tLnJ5YW5yb21hbmNodWsudGlwcGVyIl19.H4pinw3UamFDG0X6GcIQGVEiCfa4NbwqH3QIVyOSO_qCmIEoOfFc_csnbDUxm2VgQjDiJ6UCUTg5ydSTP1g9FAQUrwN0AxNuBy2QNYwfDVCXMfJLNDApxml0KqIj24cnqt3gLBPZ27EqM4tYzYV43LFZiruStqyMOoQvsIo1GgI6jKe_7vAbA9Enxw1CVWAf9iUCTP4YWIFrGRFAQYNJQ5cgk8z2Uu0fHBJ8tY6t5h0wL5WfqV9RJWvUxHzWzCiRq5qmdSqKawLgHhqHQijiPIGZGlfEG4697Wfqb1twNfSr8yzO9N9aIOrGlLJvMp0ehXPNvLIfbgO9pk7IkDhwfw",
-//    "TwitterUserID" : "14078827",
-//    "CognityIdentity" : "us-east-1:e795fd2e-79a0-4a89-80ea-248509430855",
-//    "TwitterUsername" : "rromanchuk",
-//    "BitcoinAddress" : "1CBW5czKBnEXA3wLm6tXYdSsfjDBCnxH26",
-//    "token" : "***REMOVED***",
-//    "CognitoIdentity" : "us-east-1:e795fd2e-79a0-4a89-80ea-248509430855",
-//    "BitcoinBalanceBTC" : "0.0002",
-//    "TwitterAuthToken" : "14078827-eiOSkBVx89wUs1HHw4tvVxLTacJ8aKtCowVEwYjvH",
-//    "TwitterAuthSecret" : "ciojmNsGDVSMHzLfHghvN1p7DWGSEOGfEy8qoHXOrqflR",
-//    "BitcoinBalanceSatoshi" : "20000.0"
-//}
+
+    func updateBalanceUSD(completion: () ->Void) {
+        API.sharedInstance.market("\(bitcoinBalanceBTC)", completion: { (json, error) -> Void in
+            self.marketValue = Market.entityWithJSON(Market.self, json: json, context: self.managedObjectContext!)!
+            completion()
+        })
+    }
 
     func pushToDynamo() {
         println("\(className)::\(__FUNCTION__)")
