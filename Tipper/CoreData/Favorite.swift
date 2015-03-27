@@ -21,7 +21,7 @@ let TwitterDateFormatter: NSDateFormatter = {
 
 class Favorite: NSManagedObject, CoreDataUpdatable {
 
-    @NSManaged var favoriteId: String
+    @NSManaged var tweetId: String
     @NSManaged var createdAt: NSDate
     @NSManaged var twitterJSON: [String: AnyObject]?
 
@@ -38,13 +38,13 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
 
     static var lookupProperty: String {
         get {
-            return "favoriteId"
+            return "tweetId"
         }
     }
 
     var lookupValue: String {
         get {
-            return self.favoriteId
+            return self.tweetId
         }
     }
 
@@ -54,25 +54,24 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
 
     func updateEntityWithJSON(json: JSON) {
         println("\(className)::\(__FUNCTION__) \(json)")
-        self.favoriteId = json["id_str"].stringValue
+        self.tweetId = json["id_str"].stringValue
         self.twitterJSON = json.dictionaryObject
     }
 
     func updateEntityWithTWTR(tweet: TWTRTweet) {
         println("\(className)::\(__FUNCTION__) \(tweet)")
         //self.twitterJSON = tweet
-        self.favoriteId = tweet.tweetID
+        self.tweetId = tweet.tweetID
     }
-
 
     func updateEntityWithDynamoModel(dynamoObject: DynamoUpdatable) {
         println("\(className)::\(__FUNCTION__) ")
         let dynamoFavorite = dynamoObject as! DynamoFavorite
-        self.favoriteId = dynamoFavorite.FavoriteID!
+        self.tweetId = dynamoFavorite.TweetID!
         self.createdAt = NSDate(timeIntervalSince1970: NSTimeInterval(dynamoFavorite.CreatedAt!.doubleValue))
         if let jsonString =   dynamoFavorite.TweetJSON, data = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true) {
             let json = JSON(data: data)
-            self.favoriteId = json["id"].stringValue
+            self.tweetId = json["id"].stringValue
             self.twitterJSON = json.dictionaryObject
         }
         

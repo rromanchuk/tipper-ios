@@ -19,6 +19,7 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
 
     var className = "HomeController"
 
+    @IBOutlet weak var addFundsLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
 
     @IBOutlet weak var applePayButton: UIButton!
@@ -38,7 +39,7 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
     }()
 
     lazy var sortDescriptors: [AnyObject] = {
-        return [NSSortDescriptor(key: "createdAt", ascending: true)]
+        return [NSSortDescriptor(key: "createdAt", ascending: false)]
     }()
 
     lazy var fetchRequest: NSFetchRequest = {
@@ -49,49 +50,39 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
     }()
 
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableViewAutomaticDimension // Explicitly set on iOS 8 if using automatic row height calculation
 
-
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillResignActive:", name: UIApplicationWillResignActiveNotification, object: UIApplication.sharedApplication())
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidEnterBackground:", name: UIApplicationDidEnterBackgroundNotification, object: UIApplication.sharedApplication())
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidBecomeActive:", name: UIApplicationDidBecomeActiveNotification, object: UIApplication.sharedApplication())
 
+        updateMarkets()
+        DynamoFavorite.fetchFromAWS(currentUser, context: managedObjectContext)
+
+    }
+
+    func refreshUI() {
+        Debug.isBlocking()
+        if let marketValue = currentUser.marketValue, subtotalAmount = marketValue.subtotalAmount, btc = currentUser.bitcoinBalanceBTC {
+            balanceLabel.text = "$\(subtotalAmount) / Ƀ\(btc)"
+        }
+
+        if let marketValue = market.amount {
+            addFundsLabel.text = "ADD FUNDS (Ƀ0.002 for $\(marketValue))"
+        }
+
+    }
+
+    func updateMarkets() {
         market.update { () -> Void in
             self.refreshUI()
         }
         currentUser.updateBalanceUSD { () -> Void in
             self.refreshUI()
-        }
-
-        API.sharedInstance.favorites { (json, error) -> Void in
-            let privateContext = self.managedObjectContext.privateContext
-            privateContext.performBlock({ () -> Void in
-                for tweet in json.arrayValue {
-                    let fav = Favorite.entityWithJSON(Favorite.self, json: tweet, context: privateContext)!
-                    fav.save()
-                }
-            })
-        }
-    }
-
-    func refreshUI() {
-//        println("\(className)::\(__FUNCTION__)")
-//        var marketString: String = ""
-//        if let amount = market.amount, balance =  currentUser.bitcoinBalanceBTC {
-//            welcomeLabel.text = "Hi, @\(currentUser.twitterUsername)!  You currently have \(balance)BTC in your account. You can buy 0.002BTC for $\(amount)."
-//        }
-//
-//
-//        self.addressLabel.text = currentUser.bitcoinAddress
-//        let qrCode = QRCode(currentUser.bitcoinAddress!)
-//        qrImage.image = qrCode?.image
-        if let marketValue = currentUser.marketValue, subtotalAmount = marketValue.subtotalAmount, btc = currentUser.bitcoinBalanceBTC {
-            balanceLabel.text = "$\(subtotalAmount) / Ƀ\(btc)"
         }
 
     }
@@ -173,6 +164,7 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
 
     func applicationDidBecomeActive(aNotification: NSNotification) {
         println("\(className)::\(__FUNCTION__)")
+        updateMarkets()
         API.sharedInstance.me({ (json, error) -> Void in
             if (error == nil) {
                 self.currentUser.updateEntityWithJSON(json)

@@ -70,6 +70,7 @@ extension NSManagedObject  {
 
 
     class func entityWithDYNAMO<T: NSManagedObject where T: CoreDataUpdatable>(entity: T.Type, model: DynamoUpdatable, context: NSManagedObjectContext) -> T? {
+        println("\(entity.className) \(model.lookupProperty()) \(model.lookupValue())")
         let request = NSFetchRequest(entityName: entity.className)
         request.predicate = NSPredicate(format: "%K == %@", model.lookupProperty(), model.lookupValue())
         var error: NSError? = nil

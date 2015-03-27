@@ -182,7 +182,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         }
     }
 
-
     // MARK: CoreDataUpdatable
 
     class var className: String {
@@ -214,10 +213,12 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
 
     func updateBalanceUSD(completion: () ->Void) {
-        API.sharedInstance.market("\(bitcoinBalanceBTC)", completion: { (json, error) -> Void in
-            self.marketValue = Market.entityWithJSON(Market.self, json: json, context: self.managedObjectContext!)!
-            completion()
-        })
+        if let btc = bitcoinBalanceBTC {
+            API.sharedInstance.market("\(btc)", completion: { (json, error) -> Void in
+                self.marketValue = Market.entityWithJSON(Market.self, json: json, context: self.managedObjectContext!)!
+                completion()
+            })
+        }
     }
 
     func pushToDynamo() {

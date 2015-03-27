@@ -11,7 +11,7 @@ import TwitterKit
 import SwiftyJSON
 
 class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
-    var FavoriteID: String?
+    var TweetID: String?
     var TweetJSON: String?
     var TipperUserID: String?
     var CreatedAt: NSNumber?
@@ -30,11 +30,11 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     }
 
     class func lookupProperty() -> String {
-        return "favoriteId"
+        return "tweetId"
     }
 
     func lookupValue() -> String {
-        return self.FavoriteID!
+        return self.TweetID!
     }
 
     class func fetchFromAWS(currentUser: CurrentUser, context: NSManagedObjectContext) {
@@ -49,14 +49,19 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: "TipperUserID").continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             //println("Result: \(task.result) Error \(task.error)")
             let results = task.result as! AWSDynamoDBPaginatedOutput
-            for result in results.items as! [DynamoFavorite] {
-                println("result from query \(result)")
-                let json = JSON(result)
-                context.performBlock({ () -> Void in
-                    Favorite.entityWithDYNAMO(Favorite.self, model: result, context: context)
-                })
-            }
-            context.saveMoc()
+            let privateContext = context.privateContext
+            privateContext.performBlock({ () -> Void in
+                for result in results.items as! [DynamoFavorite] {
+                    autoreleasepool({ () -> () in
+                        //println("result from query \(result)")
+                        let json = JSON(result)
+                        println("in private context")
+                        Favorite.entityWithDYNAMO(Favorite.self, model: result, context: privateContext)
+                        privateContext.saveMoc()
+                    })
+                }
+            })
+
             return nil
         })
     }

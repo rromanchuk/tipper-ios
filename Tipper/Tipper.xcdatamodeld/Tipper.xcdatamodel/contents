@@ -20,8 +20,8 @@
     </entity>
     <entity name="Favorite" representedClassName="Tipper.Favorite" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="favoriteId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="tipperUserId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tweetId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="twitterJSON" optional="YES" attributeType="Transformable" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CurrentUser" inverseName="favorites" inverseEntity="CurrentUser" syncable="YES"/>
     </entity>
