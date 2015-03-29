@@ -87,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(application: UIApplication) {
         if currentUser.isTwitterAuthenticated {
             currentUser.updateTwitterAuthentication()
-            currentUser.refreshWithDynamo()
+            //currentUser.refreshWithDynamo()
             currentUser.registerForRemoteNotificationsIfNeeded()
         }        
     }

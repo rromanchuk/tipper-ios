@@ -105,6 +105,7 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
         request.merchantCapabilities = PKMerchantCapability.Capability3DS
         request.countryCode = "US"
         request.currencyCode = "USD"
+        let amount = (market.amount! as NSString).doubleValue
         request.paymentSummaryItems = [PKPaymentSummaryItem(label: "Тipper ", amount: NSDecimalNumber(double: 10))]
         if Stripe.canSubmitPaymentRequest(request) {
             #if DEBUG

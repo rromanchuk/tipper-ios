@@ -248,6 +248,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         user.TwitterUserID = twitterUserId
         user.TwitterAuthToken = twitterAuthToken
         user.TwitterAuthSecret = twitterAuthSecret
+        user.EndpointArn = endpointArn
         mapper.save(user, configuration: defaultDynamoConfiguration)
     }
 
