@@ -27,6 +27,7 @@
     </entity>
     <entity name="Market" representedClassName="Tipper.Market" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="amountCents" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="btc" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="subtotalAmount" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
@@ -35,6 +36,6 @@
     <elements>
         <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="285"/>
         <element name="Favorite" positionX="-63" positionY="54" width="128" height="120"/>
-        <element name="Market" positionX="-54" positionY="117" width="128" height="120"/>
+        <element name="Market" positionX="-54" positionY="117" width="128" height="135"/>
     </elements>
 </model>

@@ -84,7 +84,6 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
         currentUser.updateBalanceUSD { () -> Void in
             self.refreshUI()
         }
-
     }
 
 
@@ -106,7 +105,7 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
         request.countryCode = "US"
         request.currencyCode = "USD"
         let amount = (market.amount! as NSString).doubleValue
-        request.paymentSummaryItems = [PKPaymentSummaryItem(label: "Тipper ", amount: NSDecimalNumber(double: 10))]
+        request.paymentSummaryItems = [PKPaymentSummaryItem(label: "Тipper ", amount: NSDecimalNumber(double: amount))]
         if Stripe.canSubmitPaymentRequest(request) {
             #if DEBUG
                 let applePayController = STPTestPaymentAuthorizationViewController(paymentRequest: request)
@@ -130,13 +129,12 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
 
             if error == nil {
                 //handle token to create charge in backend
-                API.sharedInstance.charge(token.tokenId, bitcoinAddress:self.currentUser.bitcoinAddress!, completion: { (json, error) -> Void in
+                API.sharedInstance.charge(token.tokenId, amount:self.market.amount!, completion: { (json, error) -> Void in
                     completion(PKPaymentAuthorizationStatus.Success)
                 })
             } else {
                 completion(PKPaymentAuthorizationStatus.Failure)
             }
-
         })
 
     }
@@ -170,7 +168,6 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
             if (error == nil) {
                 self.currentUser.updateEntityWithJSON(json)
                 self.currentUser.writeToDisk()
-                println("new currentuser \(self.currentUser)")
                 self.refreshUI()
             }
         })

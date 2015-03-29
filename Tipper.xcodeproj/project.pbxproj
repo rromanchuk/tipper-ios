@@ -16,7 +16,6 @@
 		941AA38A1AAFA34900CA9192 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA3891AAFA34900CA9192 /* Config.swift */; };
 		941AA38C1AAFDCA000CA9192 /* PayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA38B1AAFDCA000CA9192 /* PayViewController.swift */; };
 		941AA38E1AB01EC000CA9192 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA38D1AB01EC000CA9192 /* SplashViewController.swift */; };
-		941AA3901AB0DA5400CA9192 /* DebugConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 941AA38F1AB0DA5400CA9192 /* DebugConfig.xcconfig */; };
 		94416C0A1AAF989F00117AFC /* Alamofire-SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF51AAF989F00117AFC /* Alamofire-SwiftyJSON.swift */; };
 		94416C0C1AAF989F00117AFC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF71AAF989F00117AFC /* API.swift */; };
 		94416C0D1AAF989F00117AFC /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF81AAF989F00117AFC /* Router.swift */; };
@@ -72,7 +71,6 @@
 		941AA3891AAFA34900CA9192 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		941AA38B1AAFDCA000CA9192 /* PayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayViewController.swift; sourceTree = "<group>"; };
 		941AA38D1AB01EC000CA9192 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
-		941AA38F1AB0DA5400CA9192 /* DebugConfig.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = DebugConfig.xcconfig; sourceTree = "<group>"; };
 		94416BED1AAF94C700117AFC /* Tipper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Tipper.entitlements; sourceTree = "<group>"; };
 		94416BF51AAF989F00117AFC /* Alamofire-SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire-SwiftyJSON.swift"; sourceTree = "<group>"; };
 		94416BF71AAF989F00117AFC /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -256,7 +254,6 @@
 				94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */,
 				94416C081AAF989F00117AFC /* AppDelegate.swift */,
 				94416C091AAF989F00117AFC /* Images.xcassets */,
-				941AA38F1AB0DA5400CA9192 /* DebugConfig.xcconfig */,
 				94FDE9BB1AB41FE2006B6454 /* Base */,
 				94416BFC1AAF989F00117AFC /* CoreData */,
 				94416C031AAF989F00117AFC /* Dynamo */,
@@ -431,7 +428,6 @@
 				94AF297F1AAEF2B600E16048 /* LaunchScreen.xib in Resources */,
 				94AF29C61AAF060000E16048 /* TwitterKitResources.bundle in Resources */,
 				9416317D1AC3BCB9002016FD /* ApplePayBTN_63pt__white_logo_@2x.png in Resources */,
-				941AA3901AB0DA5400CA9192 /* DebugConfig.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -680,14 +676,21 @@
 		};
 		94AF298F1AAEF2B600E16048 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 941AA38F1AB0DA5400CA9192 /* DebugConfig.xcconfig */;
+			baseConfigurationReference = 20CFF2D7F1C187F20E1EAFF3 /* Pods-Tipper.debug.xcconfig */;
 			buildSettings = {
+				APPLE_PAY_MERCHANT = ***REMOVED***;
 				APPLY_RULES_IN_COPY_FILES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				AWS_ANALYTICS_ID = ***REMOVED***;
+				BUNDLE_DISPLAY_NAME = "Tipper β";
+				BUNDLE_IDENTIFIER = com.ryanromanchuk.tipper.beta;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Tipper/Tipper.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COGNITO_AUTH_ARN = "arn:aws:iam::080383581145:role/Cognito_TipperAuth_DefaultRole";
+				COGNITO_POOL = "***REMOVED***";
+				COGNITO_UNAUTH_ARN = "arn:aws:iam::080383581145:role/Cognito_TipperUnauth_DefaultRole";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -707,6 +710,7 @@
 				PLIST_FILE_OUTPUT_FORMAT = binary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				STRIPE_PUBLISHABLE = ***REMOVED***;
 				SWIFT_OBJC_BRIDGING_HEADER = "Tipper/Tipper-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -716,12 +720,19 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F2A514B5D5D900213DC63984 /* Pods-Tipper.release.xcconfig */;
 			buildSettings = {
+				APPLE_PAY_MERCHANT = ***REMOVED***;
 				APPLY_RULES_IN_COPY_FILES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				AWS_ANALYTICS_ID = ***REMOVED***;
+				BUNDLE_DISPLAY_NAME = Tipper;
+				BUNDLE_IDENTIFIER = com.ryanromanchuk.tipper;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Tipper/Tipper.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COGNITO_AUTH_ARN = "arn:aws:iam::080383581145:role/Cognito_TipperAuth_DefaultRole";
+				COGNITO_POOL = "***REMOVED***";
+				COGNITO_UNAUTH_ARN = "arn:aws:iam::080383581145:role/Cognito_TipperUnauth_DefaultRole";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -741,6 +752,7 @@
 				PLIST_FILE_OUTPUT_FORMAT = binary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				STRIPE_PUBLISHABLE = ***REMOVED***;
 				SWIFT_OBJC_BRIDGING_HEADER = "Tipper/Tipper-Bridging-Header.h";
 			};
 			name = Release;

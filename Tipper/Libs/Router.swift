@@ -64,8 +64,8 @@ enum Router: URLRequestConvertible {
             return ["username": username, "twitter_id": twitterId, "twitter_auth_token": twitterAuth, "twitter_auth_secret": twitterSecret]
         case .Cognito(let twitterId):
             return ["twitter_id": twitterId]
-        case .Charge(let token, let bitcoinAddress):
-            return ["stripeToken": token, "bitcoin_address": bitcoinAddress]
+        case .Charge(let token, let amount):
+            return ["stripeToken": token, "amount": amount]
         case .Favorites:
             return ["count": "200", "include_entities": "false"]
         case .MarketPrice(let btc):
@@ -82,8 +82,8 @@ enum Router: URLRequestConvertible {
             return ["username": username, "twitter_id": twitterId, "twitter_auth_token": twitterAuth, "twitter_auth_secret": twitterSecret]
         case .Cognito(let twitterId):
             return ["twitter_id": twitterId]
-        case .Charge(let token, let bitcoinAddress):
-            return ["stripeToken": token, "bitcoin_address": bitcoinAddress]
+        case .Charge(let token, let amount):
+            return ["stripeToken": token, "amount": amount]
         case .MarketPrice(let btc):
             return ["qty": btc]
         default:

@@ -56,12 +56,10 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RZK-c9-5JT">
                                 <rect key="frame" x="20" y="227" width="374" height="509"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.75686274509999996" green="0.85882352939999995" blue="0.80784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="509" id="n8b-kv-73f"/>
                                 </constraints>
-                                <color key="sectionIndexBackgroundColor" red="0.75686274509803919" green="0.85882352941176465" blue="0.80784313725490198" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="sectionIndexTrackingBackgroundColor" red="0.75686274509999996" green="0.85882352939999995" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TweetCell" rowHeight="145" id="adt-yG-bPN" customClass="TweetCell" customModule="Tipper" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>

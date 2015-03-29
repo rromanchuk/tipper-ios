@@ -6,6 +6,7 @@ import SwiftyJSON
 class Market: NSManagedObject, CoreDataUpdatable {
 
     @NSManaged var amount: String?
+    @NSManaged var amountCents: String?
     @NSManaged var subtotalAmount: String?
     @NSManaged var btc: String?
     @NSManaged var updatedAt: NSDate
@@ -49,7 +50,7 @@ class Market: NSManagedObject, CoreDataUpdatable {
     }
 
     func update(completion: () ->Void) {
-        API.sharedInstance.market("0.002") { (json, error) -> Void in
+        API.sharedInstance.market("0.02") { (json, error) -> Void in
             self.updateEntityWithJSON(json)
             self.writeToDisk()
             completion()

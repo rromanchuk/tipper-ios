@@ -19,7 +19,6 @@ public class API {
     let manager: Manager = {
         var headers = Manager.defaultHTTPHeaders
         headers["Accept"] = "application/json"
-        //headers["User-Agent"] = "\(Device.bundleName)/\(Device.appVersion).\(Device.bundleVersion) (iOS \(Device.osVersion))" // Today/1.5.0.3945 (iOS 8.3)
 
         let configuration: NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
         configuration.HTTPAdditionalHeaders = headers
@@ -64,9 +63,9 @@ public class API {
         self.call(self.manager.request(Router.Register(username, twitterId, twitterAuth, twitterSecret)), completion: completion)
     }
 
-    func charge(token: String, bitcoinAddress: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
+    func charge(token: String, amount: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
         println("\(className)::\(__FUNCTION__)")
-        self.call(self.manager.request(Router.Charge(token, bitcoinAddress)), completion: completion)
+        self.call(self.manager.request(Router.Charge(token, amount)), completion: completion)
     }
 
     func favorites(completion: ((json: JSON, error: NSError?) -> Void)!) {
