@@ -168,6 +168,7 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
             if (error == nil) {
                 self.currentUser.updateEntityWithJSON(json)
                 self.currentUser.writeToDisk()
+                self.updateMarkets()
                 self.refreshUI()
             }
         })

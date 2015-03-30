@@ -6,6 +6,7 @@ target 'Tipper' do
     pod 'Stripe'
     pod 'Stripe/ApplePay'
     pod 'SSKeychain'
+    pod 'SDCAlertView'
 end
 
 target 'TipperTests' do
