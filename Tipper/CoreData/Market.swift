@@ -51,8 +51,10 @@ class Market: NSManagedObject, CoreDataUpdatable {
 
     func update(completion: () ->Void) {
         API.sharedInstance.market("0.02") { (json, error) -> Void in
-            self.updateEntityWithJSON(json)
-            self.writeToDisk()
+            if error == nil {
+                self.updateEntityWithJSON(json)
+                self.writeToDisk()
+            }
             completion()
         }
     }

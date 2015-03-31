@@ -55,13 +55,14 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
 
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableViewAutomaticDimension // Explicitly set on iOS 8 if using automatic row height calculation
+        tableView.layer.cornerRadius = 2.0
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillResignActive:", name: UIApplicationWillResignActiveNotification, object: UIApplication.sharedApplication())
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidEnterBackground:", name: UIApplicationDidEnterBackgroundNotification, object: UIApplication.sharedApplication())
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidBecomeActive:", name: UIApplicationDidBecomeActiveNotification, object: UIApplication.sharedApplication())
 
         updateMarkets()
-        DynamoFavorite.fetchFromAWS(currentUser, context: managedObjectContext)
+        //DynamoFavorite.fetchFromAWS(currentUser, context: managedObjectContext)
 
     }
 
@@ -94,7 +95,7 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
     
 
     @IBAction func didTapWithdraw(sender: UIButton) {
-
+        performSegueWithIdentifier("Withdraw", sender: self)
     }
 
     @IBAction func didTapPay(sender: UIButton) {
@@ -178,6 +179,11 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "Address" {
             let vc = segue.destinationViewController as! AddressController
+            vc.managedObjectContext = managedObjectContext
+            vc.currentUser = currentUser
+            vc.market = market
+        } else if segue.identifier == "Withdraw" {
+            let vc = segue.destinationViewController as! WithdrawController
             vc.managedObjectContext = managedObjectContext
             vc.currentUser = currentUser
             vc.market = market

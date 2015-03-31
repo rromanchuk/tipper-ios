@@ -11,7 +11,7 @@ import CoreData
 import Fabric
 import Crashlytics
 import TwitterKit
-
+import SwiftyJSON
 
 @UIApplicationMain
 
@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Stripe.setDefaultPublishableKey(Config.get("STRIPE_PUBLISHABLE"))
         currentUser = CurrentUser.currentUser(managedObjectContext!)
-        
+
 
         currentUser.writeToDisk()
 
@@ -124,6 +124,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
             return nil
+        }
+    }
+
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject: AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+
+        println("\(className)::\(__FUNCTION__) userInfo:\(userInfo)")
+
+        if let favorite = userInfo["favorite"] as? [String: AnyObject],
+            currentUser = currentUser {
+            let favorite = Favorite.entityWithJSON(Favorite.self, json: JSON(favorite), context: managedObjectContext!)
+            completionHandler(.NewData)
+        } else {
+            completionHandler(.NoData)
         }
     }
 

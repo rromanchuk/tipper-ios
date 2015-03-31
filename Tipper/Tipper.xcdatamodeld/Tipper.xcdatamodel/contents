@@ -14,7 +14,6 @@
         <attribute name="twitterAuthToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="twitterUserId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="twitterUsername" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="favorites" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favorite" inverseName="user" inverseEntity="Favorite" syncable="YES"/>
         <relationship name="marketValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Market" inverseName="userBalance" inverseEntity="Market" syncable="YES"/>
     </entity>
@@ -34,7 +33,7 @@
         <relationship name="userBalance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CurrentUser" inverseName="marketValue" inverseEntity="CurrentUser" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="285"/>
+        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="270"/>
         <element name="Favorite" positionX="-63" positionY="54" width="128" height="120"/>
         <element name="Market" positionX="-54" positionY="117" width="128" height="135"/>
     </elements>

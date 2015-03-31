@@ -31,6 +31,8 @@
 		9484185A1AB6525F001C633E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 948418581AB6525F001C633E /* Alamofire.framework */; };
 		9484185B1AB6525F001C633E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 948418591AB6525F001C633E /* SwiftyJSON.framework */; };
 		9484185E1AB6B2B8001C633E /* DynamoUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9484185D1AB6B2B8001C633E /* DynamoUser.swift */; };
+		94AB27901ACA22B1005A433F /* WithdrawController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AB278F1ACA22B1005A433F /* WithdrawController.swift */; };
+		94AB27931ACA3D2B005A433F /* TintedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AB27921ACA3D2B005A433F /* TintedButton.swift */; };
 		94AF29751AAEF2B600E16048 /* Tipper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94AF29731AAEF2B600E16048 /* Tipper.xcdatamodeld */; };
 		94AF297A1AAEF2B600E16048 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94AF29781AAEF2B600E16048 /* Main.storyboard */; };
 		94AF297F1AAEF2B600E16048 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AF297D1AAEF2B600E16048 /* LaunchScreen.xib */; };
@@ -90,6 +92,8 @@
 		948418581AB6525F001C633E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		948418591AB6525F001C633E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		9484185D1AB6B2B8001C633E /* DynamoUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoUser.swift; sourceTree = "<group>"; };
+		94AB278F1ACA22B1005A433F /* WithdrawController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WithdrawController.swift; path = Withdraw/WithdrawController.swift; sourceTree = "<group>"; };
+		94AB27921ACA3D2B005A433F /* TintedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TintedButton.swift; path = Views/TintedButton.swift; sourceTree = "<group>"; };
 		94AF296C1AAEF2B600E16048 /* Tipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94AF29701AAEF2B600E16048 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94AF29741AAEF2B600E16048 /* Tipper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tipper.xcdatamodel; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 		94416C051AAF989F00117AFC /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				94AB278E1ACA228A005A433F /* Withdraw */,
 				941631811AC3CBEA002016FD /* Address */,
 				941631801AC3CBE2002016FD /* Home */,
 				94FA97D51AB2E0DA005B0C83 /* Transaction */,
@@ -221,6 +226,22 @@
 				941AA38D1AB01EC000CA9192 /* SplashViewController.swift */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		94AB278E1ACA228A005A433F /* Withdraw */ = {
+			isa = PBXGroup;
+			children = (
+				94AB278F1ACA22B1005A433F /* WithdrawController.swift */,
+			);
+			name = Withdraw;
+			sourceTree = "<group>";
+		};
+		94AB27911ACA3CFD005A433F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				94AB27921ACA3D2B005A433F /* TintedButton.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		94AF29631AAEF2B600E16048 = {
@@ -246,23 +267,24 @@
 		94AF296E1AAEF2B600E16048 /* Tipper */ = {
 			isa = PBXGroup;
 			children = (
-				941631861AC40482002016FD /* Extensions */,
-				9416317C1AC3BCB9002016FD /* ApplePayBTN_63pt__white_logo_@2x.png */,
-				94416BED1AAF94C700117AFC /* Tipper.entitlements */,
-				94416C071AAF989F00117AFC /* Tipper-Bridging-Header.h */,
-				94EE8CF41AB16E7E000593CD /* TTTURLRequestFormatter.h */,
-				94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */,
 				94416C081AAF989F00117AFC /* AppDelegate.swift */,
-				94416C091AAF989F00117AFC /* Images.xcassets */,
+				9416317C1AC3BCB9002016FD /* ApplePayBTN_63pt__white_logo_@2x.png */,
 				94FDE9BB1AB41FE2006B6454 /* Base */,
 				94416BFC1AAF989F00117AFC /* CoreData */,
 				94416C031AAF989F00117AFC /* Dynamo */,
+				941631861AC40482002016FD /* Extensions */,
+				94416C091AAF989F00117AFC /* Images.xcassets */,
 				94AF297D1AAEF2B600E16048 /* LaunchScreen.xib */,
 				94416BF41AAF989F00117AFC /* Libs */,
 				94AF29781AAEF2B600E16048 /* Main.storyboard */,
 				94416C051AAF989F00117AFC /* Screens */,
 				94AF296F1AAEF2B600E16048 /* Supporting Files */,
+				94416C071AAF989F00117AFC /* Tipper-Bridging-Header.h */,
+				94416BED1AAF94C700117AFC /* Tipper.entitlements */,
 				94AF29731AAEF2B600E16048 /* Tipper.xcdatamodeld */,
+				94EE8CF41AB16E7E000593CD /* TTTURLRequestFormatter.h */,
+				94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */,
+				94AB27911ACA3CFD005A433F /* Views */,
 			);
 			path = Tipper;
 			sourceTree = "<group>";
@@ -531,6 +553,7 @@
 				941AA38A1AAFA34900CA9192 /* Config.swift in Sources */,
 				9416317F1AC3C1EC002016FD /* HomeController.swift in Sources */,
 				94416C131AAF989F00117AFC /* CurrentUser.swift in Sources */,
+				94AB27901ACA22B1005A433F /* WithdrawController.swift in Sources */,
 				941631831AC3CC5E002016FD /* AddressController.swift in Sources */,
 				94416C141AAF989F00117AFC /* NSManagedObject+Extension.swift in Sources */,
 				94416C0D1AAF989F00117AFC /* Router.swift in Sources */,
@@ -546,6 +569,7 @@
 				941AA38E1AB01EC000CA9192 /* SplashViewController.swift in Sources */,
 				94416C111AAF989F00117AFC /* CoreDataUpdatable.swift in Sources */,
 				94416C0C1AAF989F00117AFC /* API.swift in Sources */,
+				94AB27931ACA3D2B005A433F /* TintedButton.swift in Sources */,
 				94FA97DF1AB356FB005B0C83 /* FavoriteCell.swift in Sources */,
 				9484185E1AB6B2B8001C633E /* DynamoUser.swift in Sources */,
 				94AF29751AAEF2B600E16048 /* Tipper.xcdatamodeld in Sources */,

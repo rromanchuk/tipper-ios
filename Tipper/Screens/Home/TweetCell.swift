@@ -11,6 +11,8 @@ import TwitterKit
 
 class TweetCell: UITableViewCell {
 
+    @IBOutlet weak var tipConfirmedButton: UIButton!
+    @IBOutlet weak var tipButton: UIButton!
     @IBOutlet weak var tweetView: TWTRTweetView!
     override func awakeFromNib() {
         super.awakeFromNib()
