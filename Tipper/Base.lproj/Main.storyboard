@@ -74,11 +74,17 @@
                                                     <state key="normal" title="tip" backgroundImage="tip-button">
                                                         <color key="titleColor" red="0.23529411759999999" green="0.4941176471" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="userDidTip:" destination="adt-yG-bPN" eventType="touchUpInside" id="4WT-AD-hRk"/>
+                                                    </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tips-confirmed" translatesAutoresizingMaskIntoConstraints="NO" id="Gl3-ty-yYL">
-                                                    <rect key="frame" x="325" y="58" width="30" height="30"/>
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPl-hd-foz" customClass="TintedButton" customModule="Tipper" customModuleProvider="target">
+                                                    <rect key="frame" x="313" y="58" width="30" height="30"/>
                                                     <color key="tintColor" red="0.23529411759999999" green="0.4941176471" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                </imageView>
+                                                    <state key="normal" image="tips-confirmed">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.75686274509999996" green="0.85882352939999995" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
@@ -93,6 +99,7 @@
                                         <color key="backgroundColor" red="0.75686274509999996" green="0.85882352939999995" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="tipButton" destination="3m0-sj-6kH" id="T02-xd-DNe"/>
+                                            <outlet property="tipConfirmedButton" destination="fPl-hd-foz" id="z9l-is-gb8"/>
                                             <outlet property="tweetView" destination="x7e-kq-1Zh" id="Irq-30-nUQ"/>
                                         </connections>
                                     </tableViewCell>

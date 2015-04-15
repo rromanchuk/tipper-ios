@@ -62,7 +62,7 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidBecomeActive:", name: UIApplicationDidBecomeActiveNotification, object: UIApplication.sharedApplication())
 
         updateMarkets()
-        //DynamoFavorite.fetchFromAWS(currentUser, context: managedObjectContext)
+        DynamoFavorite.fetchFromAWS(currentUser, context: managedObjectContext)
 
     }
 
@@ -209,11 +209,6 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
         return cell
     }
 
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        let favorite = fetchedResultsController.objectAtIndexPath(indexPath) as! Favorite
-//        let twt = TWTRTweet(JSONDictionary: favorite.twitterJSON)
-//        return TWTRTweetTableViewCell.heightForTweet(twt, width: 288.0)
-//    }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return fetchedResultsController.sections!.count

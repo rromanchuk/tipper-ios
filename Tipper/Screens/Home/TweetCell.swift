@@ -25,4 +25,8 @@ class TweetCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func userDidTip(sender: UIButton) {
+        let sqs = AWSSQS.defaultSQS()
+        //sqs.sen
+    }
 }

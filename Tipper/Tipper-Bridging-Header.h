@@ -8,6 +8,7 @@
 #import "DynamoDB.H"
 #import "Stripe.h"
 #import "Cognito.h"
+#import "SQS.h"
 //#import "PTKView.h"
 
 #import "NSManagedObjectContext+Base.h"
