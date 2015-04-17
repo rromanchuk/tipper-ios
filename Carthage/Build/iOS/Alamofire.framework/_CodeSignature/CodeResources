@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/Alamofire-Swift.h</key>
 		<data>
-		5S+au5bB9OI/FM5OnldVSZtD8BE=
+		bjU5Sfiag3LC7vhutAHHg2MXyrc=
 		</data>
 		<key>Headers/Alamofire.h</key>
 		<data>
@@ -14,23 +14,23 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		e10fpdwWARlzu4nZFkE5QSy0EBE=
+		fKrzh1R5nFjYe0D8WQCi6ZH/clw=
 		</data>
 		<key>Modules/Alamofire.swiftmodule/arm.swiftdoc</key>
 		<data>
-		NRwHYBjmbndNF2wPWtTG5uy3/YQ=
+		25PKGmWuzMbLzB+S7/uMcfSZih8=
 		</data>
 		<key>Modules/Alamofire.swiftmodule/arm.swiftmodule</key>
 		<data>
-		X6AEQ2lt75SOun8LK4DMa9fcVOk=
+		yAsu552hgYjv/NjvM2Q0i31CPuI=
 		</data>
 		<key>Modules/Alamofire.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		+mtkZRXuhKM6+5AHrI9ngZXYe4g=
+		ofKp6xaQOYDjrVEI/WxILwi8dKs=
 		</data>
 		<key>Modules/Alamofire.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		3KuSJf1dB1v2+VsbTlto5fVdLwo=
+		C3CR+wrUd/7FNbHbDhin0Z30Fnk=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -41,7 +41,7 @@
 	<dict>
 		<key>Headers/Alamofire-Swift.h</key>
 		<data>
-		5S+au5bB9OI/FM5OnldVSZtD8BE=
+		bjU5Sfiag3LC7vhutAHHg2MXyrc=
 		</data>
 		<key>Headers/Alamofire.h</key>
 		<data>
@@ -49,19 +49,19 @@
 		</data>
 		<key>Modules/Alamofire.swiftmodule/arm.swiftdoc</key>
 		<data>
-		NRwHYBjmbndNF2wPWtTG5uy3/YQ=
+		25PKGmWuzMbLzB+S7/uMcfSZih8=
 		</data>
 		<key>Modules/Alamofire.swiftmodule/arm.swiftmodule</key>
 		<data>
-		X6AEQ2lt75SOun8LK4DMa9fcVOk=
+		yAsu552hgYjv/NjvM2Q0i31CPuI=
 		</data>
 		<key>Modules/Alamofire.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		+mtkZRXuhKM6+5AHrI9ngZXYe4g=
+		ofKp6xaQOYDjrVEI/WxILwi8dKs=
 		</data>
 		<key>Modules/Alamofire.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		3KuSJf1dB1v2+VsbTlto5fVdLwo=
+		C3CR+wrUd/7FNbHbDhin0Z30Fnk=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
