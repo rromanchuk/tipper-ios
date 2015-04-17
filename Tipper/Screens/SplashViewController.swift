@@ -25,8 +25,6 @@ class SplashViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         println("\(className)::\(__FUNCTION__)")
-        performSegueWithIdentifier("Home", sender: self)
-        return
         if (currentUser.isTwitterAuthenticated) {
 
             performSegueWithIdentifier("Home", sender: self)
