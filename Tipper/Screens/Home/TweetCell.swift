@@ -42,6 +42,5 @@ class TweetCell: UITableViewCell {
         request.messageBody = json
         request.queueUrl = "***REMOVED***"
         sqs.sendMessage(request)
-        //sqs.sen
     }
 }

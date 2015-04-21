@@ -68,7 +68,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         firstController.managedObjectContext = managedObjectContext
         firstController.market = market
 
-       
+
+        let types = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
+        let notificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
+
+        UIApplication.sharedApplication().registerForRemoteNotifications()
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+
+
         return true
     }
 
