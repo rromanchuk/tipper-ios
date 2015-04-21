@@ -32,15 +32,20 @@ class TweetCell: UITableViewCell {
     @IBAction func userDidTip(sender: UIButton) {
         let sqs = AWSSQS.defaultSQS()
         let request = AWSSQSSendMessageRequest()
-        //sqs.send_message(queue_url: SQSQueues.new_tip, message_body: { "TweetID": object.target_object.id.to_s, "FromTwitterID": object.source.id.to_s, "ToTwitterID": object.target.id.to_s }.to_json )
 
+        println("favorite:\(favorite), currentUser:\(currentUser)")
         var tipDict = ["TweetID": favorite.tweetId, "FromTwitterID": currentUser.uuid!, "ToTwitterID": favorite.toTwitterId ]
         let jsonTipDict = NSJSONSerialization.dataWithJSONObject(tipDict, options: nil, error: nil)
         let json: String = NSString(data: jsonTipDict!, encoding: NSUTF8StringEncoding) as! String
 
 
         request.messageBody = json
-        request.queueUrl = "***REMOVED***"
-        sqs.sendMessage(request)
+        request.queueUrl = ***REMOVED***
+        sqs.sendMessage(request).continueWithBlock { (task) -> AnyObject! in
+            if (task.error != nil) {
+                println("ERROR: \(task.error)")
+            }
+            return nil
+        }
     }
 }

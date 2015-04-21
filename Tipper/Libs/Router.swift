@@ -108,11 +108,12 @@ enum Router: URLRequestConvertible {
         case .Favorites:
             return Twitter.sharedInstance().APIClient.URLRequestWithMethod(method.rawValue, URL: URLString, parameters: URLParameters, error: nil)
         default:
-            println("")
+
             // Set authentication header
             let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let currentUser = CurrentUser.currentUser(delegate.managedObjectContext!)
             let authString = "\(currentUser.uuid!):\(currentUser.token!)"
+            println("authString\(authString)")
             let base64EncodedString = authString.dataUsingEncoding(NSUTF8StringEncoding)!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.allZeros)
             mutableURLRequest.setValue("Basic \(base64EncodedString)", forHTTPHeaderField: "Authorization")
         }

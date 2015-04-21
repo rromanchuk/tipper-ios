@@ -32,7 +32,7 @@ public class API {
         req.validate().responseSwiftyJSON( { (request, response, JSON, error) -> Void in
             println(TTTURLRequestFormatter.cURLCommandFromURLRequest(request))
             println("API Call: request:\(request), response:\(response), JSON:\(JSON), error:\(error)")
-            if error != nil {
+            if let error = error {
                 completion?(json: nil, error: error)
             } else {
                 completion?(json: JSON, error: nil)

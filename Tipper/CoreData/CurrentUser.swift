@@ -286,4 +286,18 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         }
     }
 
+    func resetIdentifiers() {
+        self.twitterUserId = nil
+        self.token = nil
+        self.bitcoinAddress = nil
+        SSKeychain.deletePasswordForService(KeychainUserAccount, account: KeychainAccount)
+        SSKeychain.deletePasswordForService(KeychainTokenAccount, account: KeychainAccount)
+        SSKeychain.deletePasswordForService(KeychainBitcoinAccount, account: KeychainAccount)
+        NSUbiquitousKeyValueStore.defaultStore().removeObjectForKey(KeychainUserAccount)
+        NSUbiquitousKeyValueStore.defaultStore().removeObjectForKey(KeychainTokenAccount)
+        NSUbiquitousKeyValueStore.defaultStore().removeObjectForKey(KeychainBitcoinAccount)
+        NSUbiquitousKeyValueStore.defaultStore().synchronize()
+    }
+
+
 }

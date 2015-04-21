@@ -171,6 +171,9 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
                 self.currentUser.writeToDisk()
                 self.updateMarkets()
                 self.refreshUI()
+            } else if let error = error where error.code == 401 {
+                self.currentUser.resetIdentifiers()
+                self.performSegueWithIdentifier("BackToSplash", sender: self)
             }
         })
         
@@ -202,7 +205,10 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
         let twt = TWTRTweet(JSONDictionary: favorite.twitterJSON)
 
         let cell = tableView.dequeueReusableCellWithIdentifier(tweetTableReuseIdentifier, forIndexPath: indexPath) as! TweetCell
+        cell.currentUser = currentUser
+        cell.favorite = favorite
         cell.tweetView.configureWithTweet(twt)
+
         //cell.tweetView.delegate = self
         //cell.configureWithTweet(twt)
 

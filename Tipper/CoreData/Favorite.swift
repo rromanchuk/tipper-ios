@@ -86,13 +86,18 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
             self.twitterJSON = json.dictionaryObject
         }
 
-        if let toTwitterID = dynamoFavorite.ToTwitterID, toTwitterUsername = dynamoFavorite.ToTwitterUsername, fromTwitterID = dynamoFavorite.FromTwitterID, fromTwitterUsername = dynamoFavorite.FromTwitterUsername {
+        if let toTwitterID = dynamoFavorite.ToTwitterID, fromTwitterID = dynamoFavorite.FromTwitterID {
             self.toTwitterId = toTwitterID
-            self.toTwitterUsername = toTwitterUsername
             self.fromTwitterId = fromTwitterID
+        }
+
+        if let toTwitterUsername = dynamoFavorite.ToTwitterUsername {
+            self.toTwitterUsername = toTwitterUsername
+        }
+
+        if let fromTwitterUsername = dynamoFavorite.FromTwitterUsername {
             self.fromTwitterUsername = fromTwitterUsername
         }
-        
     }
 
 
