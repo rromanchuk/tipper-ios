@@ -2,13 +2,13 @@
 //  Use this file to import your target's public headers that you would like to expose to Swift.
 //
 
-#import "AWSCore.h"
-#import "S3.h"
-#import "SNS.h"
-#import "DynamoDB.H"
-#import "Stripe.h"
-#import "Cognito.h"
-#import "SQS.h"
+#import <AWSCore/AWSCore.h>
+#import <AWSS3/AWSS3.h>
+#import <AWSDynamoDB/AWSDynamoDB.h>
+#import <AWSSQS/AWSSQS.h>
+#import <AWSSNS/AWSSNS.h>
+#import <AWSCognito/AWSCognito.h>
+
 //#import "PTKView.h"
 
 #import "NSManagedObjectContext+Base.h"

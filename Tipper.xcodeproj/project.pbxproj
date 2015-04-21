@@ -87,7 +87,6 @@
 		94416C071AAF989F00117AFC /* Tipper-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tipper-Bridging-Header.h"; sourceTree = "<group>"; };
 		94416C081AAF989F00117AFC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94416C091AAF989F00117AFC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		948418381AB612EC001C633E /* QRCode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRCode.framework; path = "Pods/../build/Debug-iphoneos/Pods-Tipper/QRCode.framework"; sourceTree = "<group>"; };
 		9484183A1AB61396001C633E /* QRCode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRCode.framework; path = Carthage/Build/iOS/QRCode.framework; sourceTree = "<group>"; };
 		948418581AB6525F001C633E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		948418591AB6525F001C633E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -338,7 +337,6 @@
 				948418581AB6525F001C633E /* Alamofire.framework */,
 				948418591AB6525F001C633E /* SwiftyJSON.framework */,
 				9484183A1AB61396001C633E /* QRCode.framework */,
-				948418381AB612EC001C633E /* QRCode.framework */,
 				94AF29C31AAF060000E16048 /* TwitterKit.framework */,
 				94AF29C41AAF060000E16048 /* TwitterKitResources.bundle */,
 				94AF29BF1AAF04D000E16048 /* Crashlytics.framework */,
@@ -734,6 +732,7 @@
 				PLIST_FILE_OUTPUT_FORMAT = binary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SNS_ENDPOINT = "arn:aws:sns:us-east-1:080383581145:app/APNS_SANDBOX/TipperSandbox";
 				STRIPE_PUBLISHABLE = ***REMOVED***;
 				SWIFT_OBJC_BRIDGING_HEADER = "Tipper/Tipper-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -776,6 +775,7 @@
 				PLIST_FILE_OUTPUT_FORMAT = binary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SNS_ENDPOINT = ***REMOVED***;
 				STRIPE_PUBLISHABLE = ***REMOVED***;
 				SWIFT_OBJC_BRIDGING_HEADER = "Tipper/Tipper-Bridging-Header.h";
 			};

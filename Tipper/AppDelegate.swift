@@ -49,7 +49,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let defaultServiceConfiguration = AWSServiceConfiguration(
             region: AWSRegionType.USEast1,
             credentialsProvider: credentialsProvider)
-        AWSServiceManager.defaultServiceManager().setDefaultServiceConfiguration(defaultServiceConfiguration)
+
+        AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = defaultServiceConfiguration
+
 
 
         let mobileAnalyticsConfiguration = AWSMobileAnalyticsConfiguration()

@@ -22,8 +22,14 @@ let TwitterDateFormatter: NSDateFormatter = {
 class Favorite: NSManagedObject, CoreDataUpdatable {
 
     @NSManaged var tweetId: String
+    @NSManaged var toTwitterId: String
+    @NSManaged var toTwitterUsername: String
+    @NSManaged var fromTwitterId: String
+    @NSManaged var fromTwitterUsername: String
+    @NSManaged var txid: String
     @NSManaged var createdAt: NSDate
     @NSManaged var twitterJSON: [String: AnyObject]?
+    @NSManaged var didLeaveTip: Bool
 
 
     class var className: String {
@@ -56,6 +62,7 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
         println("\(className)::\(__FUNCTION__) \(json)")
         self.tweetId = json["id_str"].stringValue
         self.twitterJSON = json.dictionaryObject
+        self.didLeaveTip = json["DidLeaveTip"].boolValue
     }
 
     func updateEntityWithTWTR(tweet: TWTRTweet) {
@@ -68,11 +75,22 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
         println("\(className)::\(__FUNCTION__) ")
         let dynamoFavorite = dynamoObject as! DynamoFavorite
         self.tweetId = dynamoFavorite.TweetID!
+        if let didLeaveTip = dynamoFavorite.DidLeaveTip {
+            self.didLeaveTip = didLeaveTip
+        }
+
         self.createdAt = NSDate(timeIntervalSince1970: NSTimeInterval(dynamoFavorite.CreatedAt!.doubleValue))
         if let jsonString =   dynamoFavorite.TweetJSON, data = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true) {
             let json = JSON(data: data)
             self.tweetId = json["id"].stringValue
             self.twitterJSON = json.dictionaryObject
+        }
+
+        if let toTwitterID = dynamoFavorite.ToTwitterID, toTwitterUsername = dynamoFavorite.ToTwitterUsername, fromTwitterID = dynamoFavorite.FromTwitterID, fromTwitterUsername = dynamoFavorite.FromTwitterUsername {
+            self.toTwitterId = toTwitterID
+            self.toTwitterUsername = toTwitterUsername
+            self.fromTwitterId = fromTwitterID
+            self.fromTwitterUsername = fromTwitterUsername
         }
         
     }

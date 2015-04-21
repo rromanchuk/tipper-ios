@@ -12,10 +12,14 @@ import SwiftyJSON
 
 class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
     var TweetID: String?
+    var ToTwitterID: String?
+    var ToTwitterUsername: String?
+    var FromTwitterID: String?
+    var FromTwitterUsername: String?
     var TweetJSON: String?
     var TipperUserID: String?
     var CreatedAt: NSNumber?
-
+    var DidLeaveTip: Bool?
    
     static func dynamoDBTableName() -> String! {
         return "TipperTwitterFavorites"

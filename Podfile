@@ -1,8 +1,11 @@
 platform :ios, '8.0'
 target 'Tipper' do
-    pod 'AWSiOSSDKv2/AWSCore'
-    pod 'AWSiOSSDKv2/S3'
+    pod 'AWSCore'
+    pod 'AWSS3'
     pod 'AWSCognitoSync'
+    pod 'AWSDynamoDB'
+    pod 'AWSSQS'
+    pod 'AWSSNS'
     pod 'Stripe'
     pod 'Stripe/ApplePay'
     pod 'SSKeychain'
