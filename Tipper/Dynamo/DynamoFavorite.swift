@@ -22,11 +22,15 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     var DidLeaveTip: Bool?
    
     static func dynamoDBTableName() -> String! {
-        return "TipperTwitterFavorites"
+        return "TipperTwitterFavoritesTest"
     }
 
     static func hashKeyAttribute() -> String! {
         return "TweetID"
+    }
+
+    static func rangeKeyAttribute() -> String! {
+        return "FromTwitterID"
     }
 
     func lookupProperty() -> String {
@@ -47,10 +51,10 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let exp = AWSDynamoDBQueryExpression()
         exp.hashKeyValues      = currentUser.uuid
-        exp.indexName = "TipperUserID-index"
+        exp.indexName = "FromTwitterID-index"
         exp.limit = 3000
 
-        mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: "TipperUserID").continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+        mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: "FromTwitterID").continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             //println("Result: \(task.result) Error \(task.error)")
             let results = task.result as! AWSDynamoDBPaginatedOutput
             let privateContext = context.privateContext

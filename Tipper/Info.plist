@@ -27,7 +27,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>32</string>
+	<string>33</string>
 	<key>COGNITO_AUTH_ARN</key>
 	<string>$(COGNITO_AUTH_ARN)</string>
 	<key>COGNITO_POOL</key>
@@ -63,6 +63,8 @@
 	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>SNS_ENDPOINT</key>
+	<string>$(SNS_ENDPOINT)</string>
 	<key>STRIPE_PUBLISHABLE</key>
 	<string>$(STRIPE_PUBLISHABLE)</string>
 	<key>UIBackgroundModes</key>
