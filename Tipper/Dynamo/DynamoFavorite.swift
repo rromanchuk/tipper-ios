@@ -17,9 +17,8 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     var FromTwitterID: String?
     var FromTwitterUsername: String?
     var TweetJSON: String?
-    var TipperUserID: String?
     var CreatedAt: NSNumber?
-    var DidLeaveTip: Bool?
+    var DidLeaveTip: NSNumber?
    
     static func dynamoDBTableName() -> String! {
         return "TipperTwitterFavoritesTest"
@@ -63,7 +62,6 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
                     autoreleasepool({ () -> () in
                         //println("result from query \(result)")
                         let json = JSON(result)
-                        println("in private context")
                         Favorite.entityWithDYNAMO(Favorite.self, model: result, context: privateContext)
                         privateContext.saveMoc()
                     })

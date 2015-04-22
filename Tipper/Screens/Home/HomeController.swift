@@ -202,12 +202,15 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let favorite = fetchedResultsController.objectAtIndexPath(indexPath) as! Favorite
+        println("favorite -- \(favorite.didLeaveTip)")
         let twt = TWTRTweet(JSONDictionary: favorite.twitterJSON)
 
         let cell = tableView.dequeueReusableCellWithIdentifier(tweetTableReuseIdentifier, forIndexPath: indexPath) as! TweetCell
         cell.currentUser = currentUser
         cell.favorite = favorite
         cell.tweetView.configureWithTweet(twt)
+        cell.tipConfirmedButton.hidden = !favorite.didLeaveTip
+        cell.tipButton.hidden = favorite.didLeaveTip
 
         //cell.tweetView.delegate = self
         //cell.configureWithTweet(twt)

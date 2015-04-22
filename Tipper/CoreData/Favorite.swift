@@ -76,7 +76,7 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
         let dynamoFavorite = dynamoObject as! DynamoFavorite
         self.tweetId = dynamoFavorite.TweetID!
         if let didLeaveTip = dynamoFavorite.DidLeaveTip {
-            self.didLeaveTip = didLeaveTip
+            self.didLeaveTip = didLeaveTip.boolValue
         }
 
         self.createdAt = NSDate(timeIntervalSince1970: NSTimeInterval(dynamoFavorite.CreatedAt!.doubleValue))
