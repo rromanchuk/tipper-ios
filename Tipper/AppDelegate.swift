@@ -121,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let sns = AWSSNS.defaultSNS()
         let request = AWSSNSCreatePlatformEndpointInput()
         request.token = deviceTokenString
-        request.platformApplicationArn = "arn:aws:sns:us-east-1:080383581145:app/APNS_SANDBOX/TipperBeta"
+        request.platformApplicationArn = Config.get("SNS_ENDPOINT")
         sns.createPlatformEndpoint(request).continueWithBlock { (task: BFTask!) -> AnyObject! in
             if task.error != nil {
                 println("Error: \(task.error)")
