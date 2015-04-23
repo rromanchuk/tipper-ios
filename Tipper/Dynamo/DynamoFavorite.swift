@@ -18,7 +18,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     var FromTwitterUsername: String?
     var TweetJSON: String?
     var CreatedAt: NSNumber?
-    var DidLeaveTip: NSNumber?
+    var DidLeaveTip: String?
    
     static func dynamoDBTableName() -> String! {
         return "TipperTwitterFavoritesTest"
