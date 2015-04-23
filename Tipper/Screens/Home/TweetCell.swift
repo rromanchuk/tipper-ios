@@ -30,6 +30,10 @@ class TweetCell: UITableViewCell {
     }
 
     @IBAction func userDidTip(sender: UIButton) {
+        tipButton.hidden = true
+        tipConfirmedButton.hidden = false
+        favorite.didLeaveTip = true
+
         let sqs = AWSSQS.defaultSQS()
         let request = AWSSQSSendMessageRequest()
 
