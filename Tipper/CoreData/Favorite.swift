@@ -15,7 +15,7 @@ let TwitterDateFormatter: NSDateFormatter = {
     let df = NSDateFormatter()
     df.dateFormat = "eee, MMM dd HH:mm:ss ZZZZ yyyy"
     return df
-    }()
+}()
 
 
 
@@ -62,7 +62,6 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
         println("\(className)::\(__FUNCTION__) \(json)")
         self.tweetId = json["id_str"].stringValue
         self.twitterJSON = json.dictionaryObject
-        self.didLeaveTip = json["DidLeaveTip"].boolValue
     }
 
     func updateEntityWithTWTR(tweet: TWTRTweet) {

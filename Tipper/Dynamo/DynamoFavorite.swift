@@ -21,7 +21,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     var DidLeaveTip: String?
    
     static func dynamoDBTableName() -> String! {
-        return "TipperTwitterFavoritesTest"
+        return "TipperTwitterFavorites"
     }
 
     static func hashKeyAttribute() -> String! {
@@ -78,7 +78,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let exp = AWSDynamoDBQueryExpression()
         exp.hashKeyValues      = currentUser.uuid
-        exp.indexName = "ToTwitterID-index-copy"
+        exp.indexName = "ToTwitterID-index"
         exp.limit = 3000
 
         mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: "ToTwitterID").continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in

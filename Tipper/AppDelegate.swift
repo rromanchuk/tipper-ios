@@ -93,6 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
         if currentUser.isTwitterAuthenticated {
             currentUser.pushToDynamo()
             //currentUser.refreshWithDynamo()
