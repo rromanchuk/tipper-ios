@@ -33,8 +33,6 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
     lazy var fetchedResultsController: NSFetchedResultsController = NSFetchedResultsController.superFetchedResultsController("Favorite", sectionNameKeyPath: nil, sortDescriptors: self.sortDescriptors, predicate: self.predicate, tableView: self.tableView, context: self.managedObjectContext)
 
     lazy var predicate: NSPredicate? = {
-        let now = NSDate()
-        let hourAgo = now.dateByAddingTimeInterval(-(60 * 60) * 24)
         return nil
     }()
 
@@ -56,6 +54,7 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableViewAutomaticDimension // Explicitly set on iOS 8 if using automatic row height calculation
         tableView.layer.cornerRadius = 2.0
+        tableView.contentInset = UIEdgeInsetsMake(29, 0, 0, 0)
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillResignActive:", name: UIApplicationWillResignActiveNotification, object: UIApplication.sharedApplication())
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidEnterBackground:", name: UIApplicationDidEnterBackgroundNotification, object: UIApplication.sharedApplication())

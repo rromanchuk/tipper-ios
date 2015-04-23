@@ -230,12 +230,12 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
     func pushToDynamo() {
         println("\(className)::\(__FUNCTION__)")
-        mapper.load(DynamoUser.self, hashKey: self.twitterUserId, rangeKey: nil).continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-            println("error \(task.error)")
-            let dynamoUser: DynamoUser = task.result as! DynamoUser
-            self.updateEntityWithDynamoModel(dynamoUser)
-            return nil
-        })
+        let user = DynamoUser.new()
+        user.TwitterUserID = twitterUserId
+        user.TwitterAuthToken = twitterAuthToken
+        user.TwitterAuthSecret = twitterAuthSecret
+        user.EndpointArn = endpointArn
+        mapper.save(user, configuration: defaultDynamoConfiguration)
     }
 
     func refreshWithDynamo() {
@@ -247,16 +247,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
             self.updateEntityWithDynamoModel(dynamoUser)
             return nil
         })
-    }
-
-    func updateTwitterAuthentication() {
-        println("\(className)::\(__FUNCTION__)")
-        let user = DynamoUser.new()
-        user.TwitterUserID = twitterUserId
-        user.TwitterAuthToken = twitterAuthToken
-        user.TwitterAuthSecret = twitterAuthSecret
-        user.EndpointArn = endpointArn
-        mapper.save(user, configuration: defaultDynamoConfiguration)
     }
 
     lazy var defaultDynamoConfiguration: AWSDynamoDBObjectMapperConfiguration = {

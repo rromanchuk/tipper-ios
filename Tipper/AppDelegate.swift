@@ -94,7 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(application: UIApplication) {
         if currentUser.isTwitterAuthenticated {
-            currentUser.updateTwitterAuthentication()
+            currentUser.pushToDynamo()
             //currentUser.refreshWithDynamo()
             currentUser.registerForRemoteNotificationsIfNeeded()
         }        
@@ -129,7 +129,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let createEndpointResponse = task.result as! AWSSNSCreateEndpointResponse
                 println("endpointArn: \(createEndpointResponse.endpointArn)")
                 self.currentUser?.endpointArn = createEndpointResponse.endpointArn
-
+                self.currentUser?.pushToDynamo()
             }
             
             return nil

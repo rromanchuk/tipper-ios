@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J4X-Ps-uMP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J4X-Ps-uMP">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -53,23 +53,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RZK-c9-5JT">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RZK-c9-5JT">
                                 <rect key="frame" x="20" y="227" width="374" height="509"/>
                                 <color key="backgroundColor" red="0.75686274509999996" green="0.85882352939999995" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="509" id="n8b-kv-73f"/>
                                 </constraints>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="29" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TweetCell" rowHeight="145" id="adt-yG-bPN" customClass="TweetCell" customModule="Tipper" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="adt-yG-bPN" id="b4I-B5-Omn">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" verticalCompressionResistancePriority="769" translatesAutoresizingMaskIntoConstraints="NO" id="x7e-kq-1Zh" customClass="TWTRTweetView">
+                                                <view contentMode="scaleToFill" verticalCompressionResistancePriority="769" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x7e-kq-1Zh" customClass="TWTRTweetView">
                                                     <rect key="frame" x="0.0" y="0.0" width="288" height="145"/>
                                                     <color key="backgroundColor" red="0.75686274509803919" green="0.85882352941176465" blue="0.80784313725490198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3m0-sj-6kH">
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3m0-sj-6kH">
                                                     <rect key="frame" x="298" y="58" width="60" height="30"/>
                                                     <color key="tintColor" red="0.23529411759999999" green="0.4941176471" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <state key="normal" title="tip" backgroundImage="tip-button">
@@ -79,8 +80,12 @@
                                                         <action selector="userDidTip:" destination="adt-yG-bPN" eventType="touchUpInside" id="4WT-AD-hRk"/>
                                                     </connections>
                                                 </button>
-                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPl-hd-foz" customClass="TintedButton" customModule="Tipper" customModuleProvider="target">
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPl-hd-foz" customClass="TintedButton" customModule="Tipper" customModuleProvider="target">
                                                     <rect key="frame" x="313" y="58" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="Mma-oa-Tge"/>
+                                                        <constraint firstAttribute="width" constant="30" id="aSD-Pv-IgG"/>
+                                                    </constraints>
                                                     <color key="tintColor" red="0.23529411759999999" green="0.4941176471" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <state key="normal" image="tips-confirmed">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -92,7 +97,9 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="x7e-kq-1Zh" secondAttribute="trailing" constant="78" id="47M-hn-tgD"/>
                                                 <constraint firstItem="x7e-kq-1Zh" firstAttribute="leading" secondItem="b4I-B5-Omn" secondAttribute="leading" id="5oe-YK-sjT"/>
                                                 <constraint firstItem="x7e-kq-1Zh" firstAttribute="top" secondItem="b4I-B5-Omn" secondAttribute="top" id="CY2-1G-Zca"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="fPl-hd-foz" secondAttribute="trailing" constant="23" id="Dpp-fN-pvD"/>
                                                 <constraint firstAttribute="bottom" secondItem="x7e-kq-1Zh" secondAttribute="bottom" id="Gp9-CA-nzf"/>
+                                                <constraint firstAttribute="centerY" secondItem="fPl-hd-foz" secondAttribute="centerY" id="o5z-0G-Wu7"/>
                                                 <constraint firstAttribute="centerY" secondItem="3m0-sj-6kH" secondAttribute="centerY" constant="-0.5" id="tWG-lh-TPI"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="3m0-sj-6kH" secondAttribute="trailing" constant="8" id="tjq-QW-ai5"/>
                                             </constraints>
