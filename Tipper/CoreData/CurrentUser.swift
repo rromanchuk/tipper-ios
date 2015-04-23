@@ -230,12 +230,15 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
     func pushToDynamo() {
         println("\(className)::\(__FUNCTION__)")
-        let user = DynamoUser.new()
-        user.TwitterUserID = twitterUserId
-        user.TwitterAuthToken = twitterAuthToken
-        user.TwitterAuthSecret = twitterAuthSecret
-        user.EndpointArn = endpointArn
-        mapper.save(user, configuration: defaultDynamoConfiguration)
+        if isTwitterAuthenticated {
+            let user = DynamoUser.new()
+            user.TwitterUserID = twitterUserId
+            user.TwitterAuthToken = twitterAuthToken
+            user.TwitterAuthSecret = twitterAuthSecret
+            user.EndpointArn = endpointArn
+            mapper.save(user, configuration: defaultDynamoConfiguration)
+
+        }
     }
 
     func refreshWithDynamo() {

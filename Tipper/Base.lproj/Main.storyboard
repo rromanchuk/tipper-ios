@@ -124,6 +124,9 @@
                                     <segment title="Receive"/>
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="JsD-Be-PS1" eventType="valueChanged" id="BTx-Wb-u3G"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00 / Ƀ0.000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXc-JU-VTy">
                                 <rect key="frame" x="123" y="139" width="168" height="32"/>
@@ -221,6 +224,7 @@
                         <outlet property="addressButton" destination="cot-eT-evp" id="RTi-8I-Bzh"/>
                         <outlet property="applePayButton" destination="GT2-bs-ETJ" id="JRP-aH-JE1"/>
                         <outlet property="balanceLabel" destination="iXc-JU-VTy" id="uM1-FM-fUH"/>
+                        <outlet property="segmentControl" destination="zmw-Y4-Vvl" id="MId-Sy-3WU"/>
                         <outlet property="tableView" destination="RZK-c9-5JT" id="RTy-nC-ktx"/>
                         <outlet property="withdrawButton" destination="FAV-bz-KNC" id="ITT-ai-dAE"/>
                         <segue destination="mxW-TT-4K9" kind="presentation" identifier="Address" id="Af1-JR-eQG"/>

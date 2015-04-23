@@ -78,10 +78,10 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let exp = AWSDynamoDBQueryExpression()
         exp.hashKeyValues      = currentUser.uuid
-        exp.indexName = "FromTwitterID-index"
+        exp.indexName = "ToTwitterID-index-copy"
         exp.limit = 3000
 
-        mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: "FromTwitterID").continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+        mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: "ToTwitterID").continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             //println("Result: \(task.result) Error \(task.error)")
             let results = task.result as! AWSDynamoDBPaginatedOutput
             let privateContext = context.privateContext

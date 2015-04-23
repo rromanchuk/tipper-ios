@@ -19,6 +19,7 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
 
     var className = "HomeController"
 
+    @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var addFundsLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
 
@@ -33,7 +34,11 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
     lazy var fetchedResultsController: NSFetchedResultsController = NSFetchedResultsController.superFetchedResultsController("Favorite", sectionNameKeyPath: nil, sortDescriptors: self.sortDescriptors, predicate: self.predicate, tableView: self.tableView, context: self.managedObjectContext)
 
     lazy var predicate: NSPredicate? = {
-        return nil
+        return NSPredicate(format: "fromTwitterId = %@", self.currentUser.uuid!)
+    }()
+
+    lazy var receivedPredicate: NSPredicate? = {
+        return NSPredicate(format: "toTwitterId = %@", self.currentUser.uuid!)
     }()
 
     lazy var sortDescriptors: [AnyObject] = {
@@ -62,7 +67,7 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
 
         updateMarkets()
         DynamoFavorite.fetchFromAWS(currentUser, context: managedObjectContext)
-
+        DynamoFavorite.fetchReceivedFromAWS(currentUser, context: managedObjectContext)
     }
 
     func refreshUI() {
@@ -144,6 +149,19 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
         //dismisses ApplePay ViewController
     }
 
+    @IBAction func segmentChanged(sender: UISegmentedControl) {
+        println("\(className)::\(__FUNCTION__) selected:\(sender.selectedSegmentIndex)")
+        if sender.selectedSegmentIndex == 0 {
+            fetchedResultsController.fetchRequest.predicate = predicate
+            fetchedResultsController.performFetch(nil)
+            tableView.reloadData()
+
+        } else {
+            fetchedResultsController.fetchRequest.predicate = receivedPredicate
+            fetchedResultsController.performFetch(nil)
+            tableView.reloadData()
+        }
+    }
 
     @IBAction func didTapAddress(sender: UIButton) {
         performSegueWithIdentifier("Address", sender: self)
@@ -193,7 +211,7 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
     }
 
     @IBAction func done(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+
     }
 
 
@@ -228,3 +246,4 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
 
 
 }
+

@@ -129,7 +129,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let createEndpointResponse = task.result as! AWSSNSCreateEndpointResponse
                 println("endpointArn: \(createEndpointResponse.endpointArn)")
                 self.currentUser?.endpointArn = createEndpointResponse.endpointArn
-                self.currentUser?.pushToDynamo()
+                //self.currentUser?.pushToDynamo()
             }
             
             return nil
