@@ -101,6 +101,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }        
     }
 
+    func setApplicationBadgeNumber(number: UInt) {
+        UIApplication.sharedApplication().applicationIconBadgeNumber = Int(number)
+    }
+
+    func incrementApplicationtBadgeNumber() {
+        var num = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
+        setApplicationBadgeNumber(UInt(num))
+    }
+
+
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }

@@ -43,7 +43,6 @@
 		94AF29C61AAF060000E16048 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 94AF29C41AAF060000E16048 /* TwitterKitResources.bundle */; };
 		94C5C0D31ABFF47A009E4B05 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C5C0D21ABFF47A009E4B05 /* Market.swift */; };
 		94EE8CF61AB16E7E000593CD /* TTTURLRequestFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */; };
-		94FA97D91AB2E408005B0C83 /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA97D81AB2E408005B0C83 /* TransactionsViewController.swift */; };
 		94FA97DB1AB2E691005B0C83 /* DynamoFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA97DA1AB2E691005B0C83 /* DynamoFavorite.swift */; };
 		94FA97DD1AB2EB71005B0C83 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA97DC1AB2EB71005B0C83 /* Favorite.swift */; };
 		94FA97DF1AB356FB005B0C83 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA97DE1AB356FB005B0C83 /* FavoriteCell.swift */; };
@@ -108,7 +107,6 @@
 		94C5C0D21ABFF47A009E4B05 /* Market.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		94EE8CF41AB16E7E000593CD /* TTTURLRequestFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTURLRequestFormatter.h; sourceTree = "<group>"; };
 		94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTURLRequestFormatter.m; sourceTree = "<group>"; };
-		94FA97D81AB2E408005B0C83 /* TransactionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
 		94FA97DA1AB2E691005B0C83 /* DynamoFavorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoFavorite.swift; sourceTree = "<group>"; };
 		94FA97DC1AB2EB71005B0C83 /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		94FA97DE1AB356FB005B0C83 /* FavoriteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoriteCell.swift; path = Transactions/FavoriteCell.swift; sourceTree = "<group>"; };
@@ -318,7 +316,6 @@
 			children = (
 				94FDE9BE1AB4209B006B6454 /* SuperFetchedResultsControllerDelegate.swift */,
 				94FDE9BC1AB42079006B6454 /* NSFetchedResultsControllerExtension.swift */,
-				94FA97D81AB2E408005B0C83 /* TransactionsViewController.swift */,
 				94FA97DE1AB356FB005B0C83 /* FavoriteCell.swift */,
 			);
 			name = Transaction;
@@ -561,7 +558,6 @@
 				94416C181AAF989F00117AFC /* AppDelegate.swift in Sources */,
 				94416C0F1AAF989F00117AFC /* TwitterAuth.swift in Sources */,
 				94416C101AAF989F00117AFC /* UserSync.swift in Sources */,
-				94FA97D91AB2E408005B0C83 /* TransactionsViewController.swift in Sources */,
 				941AA38C1AAFDCA000CA9192 /* PayViewController.swift in Sources */,
 				94FDE9C11AB4BF6A006B6454 /* Debug.swift in Sources */,
 				941AA38E1AB01EC000CA9192 /* SplashViewController.swift in Sources */,

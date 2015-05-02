@@ -71,7 +71,7 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
     }
 
     func updateEntityWithDynamoModel(dynamoObject: DynamoUpdatable) {
-        println("\(className)::\(__FUNCTION__) ")
+        //println("\(className)::\(__FUNCTION__) ")
         let dynamoFavorite = dynamoObject as! DynamoFavorite
         self.tweetId = dynamoFavorite.TweetID!
         if let didLeaveTip = dynamoFavorite.DidLeaveTip {

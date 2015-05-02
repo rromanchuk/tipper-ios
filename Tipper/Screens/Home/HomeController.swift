@@ -226,8 +226,15 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
         cell.currentUser = currentUser
         cell.favorite = favorite
         cell.tweetView.configureWithTweet(twt)
-        cell.tipConfirmedButton.hidden = !favorite.didLeaveTip
-        cell.tipButton.hidden = favorite.didLeaveTip
+
+        if segmentControl.selectedSegmentIndex == 0 {
+            cell.tipConfirmedButton.hidden = !favorite.didLeaveTip
+            cell.tipButton.hidden = favorite.didLeaveTip
+        } else {
+            cell.tipConfirmedButton.hidden = true
+            cell.tipButton.hidden = true
+        }
+
 
         //cell.tweetView.delegate = self
         //cell.configureWithTweet(twt)

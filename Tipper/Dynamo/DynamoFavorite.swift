@@ -72,6 +72,11 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         })
     }
 
+    class func fech(tweetId:String, fromTwitterId:String) {
+        let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
+
+    }
+
     class func fetchReceivedFromAWS(currentUser: CurrentUser, context: NSManagedObjectContext) {
         println("DynamoFavorite::\(__FUNCTION__)")
 
