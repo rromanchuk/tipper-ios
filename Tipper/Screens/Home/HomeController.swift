@@ -77,7 +77,7 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
         }
 
         if let marketValue = market.amount {
-            addFundsLabel.text = "ADD FUNDS (Ƀ0.002 for $\(marketValue))"
+            addFundsLabel.text = "ADD FUNDS (Ƀ0.02 for $\(marketValue))"
         }
 
     }
