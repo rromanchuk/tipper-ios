@@ -55,17 +55,43 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
 
 
     @IBAction func didCopy(sender: UIButton) {
+        println("\(className)::\(__FUNCTION__)")
         let pb = UIPasteboard.generalPasteboard()
         pb.string = currentUser.bitcoinAddress!
     }
 
     @IBAction func didPaste(sender: UIButton) {
-        if (addressToPayTextField.text != nil) {
+        println("\(className)::\(__FUNCTION__)")
+        if (count(addressToPayTextField.text) == 0) {
             let pb = UIPasteboard.generalPasteboard()
             if let address = pb.string {
                 addressToPayTextField.text = address
                 pasteAddressFromClipboard.setTitle("Send", forState: .Normal)
+                pasteAddressFromClipboard.backgroundColor = UIColor.colorWithRGB(0x69C397, alpha: 1.0)
             }
+        } else {
+            currentUser.withdrawBalance(addressToPayTextField.text, completion: { (error) -> Void in
+                if error != nil {
+                    let alertController = UIAlertController(title: "There was a problem", message: "Please try again later", preferredStyle: .Alert)
+                    let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+                        // ...
+                    }
+                    alertController.addAction(OKAction)
+                    self.parentViewController!.presentViewController(alertController, animated: true) {
+                        // ...
+                    }
+                } else {
+                    let alertController = UIAlertController(title: "Success", message: "Withdraw in progress. Please wait a few moments for you balances to be updated", preferredStyle: .Alert)
+                    let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+                        // ...
+                    }
+                    alertController.addAction(OKAction)
+                    self.self.parentViewController!.presentViewController(alertController, animated: true) {
+                        // ...
+                    }
+
+                }
+            })
         }
 
 

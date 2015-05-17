@@ -15,7 +15,6 @@ class TweetCell: UITableViewCell {
     var currentUser: CurrentUser!
     var favorite: Favorite!
 
-    @IBOutlet weak var tipConfirmedButton: UIButton!
     @IBOutlet weak var tipButton: UIButton!
     @IBOutlet weak var tweetView: TWTRTweetView!
     override func awakeFromNib() {
@@ -30,9 +29,7 @@ class TweetCell: UITableViewCell {
     }
 
     @IBAction func userDidTip(sender: UIButton) {
-        tipButton.hidden = true
-        tipConfirmedButton.hidden = false
-        favorite.didLeaveTip = true
+        tipButton.backgroundColor = UIColor.grayColor()
 
         let sqs = AWSSQS.defaultSQS()
         let request = AWSSQSSendMessageRequest()

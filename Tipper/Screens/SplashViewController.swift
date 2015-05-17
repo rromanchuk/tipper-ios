@@ -16,10 +16,12 @@ class SplashViewController: UIViewController {
     var managedObjectContext: NSManagedObjectContext?
     var market: Market?
 
+    @IBOutlet weak var twitterLoginButton: TWTRLogInButton!
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         println("\(className)::\(__FUNCTION__) \(managedObjectContext)")
-
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -30,25 +32,22 @@ class SplashViewController: UIViewController {
             performSegueWithIdentifier("Home", sender: self)
         } else {
 
-            let logInButton = TWTRLogInButton(logInCompletion:
-                { (session, error) in
-                    if (session != nil) {
-                        println("signed in as \(session.userName)");
-                        self.currentUser.twitterAuthenticationWithTKSession(session)
-                        self.currentUser.writeToDisk()
-                        self.currentUser.authenticate(self.provider, completion: { () -> Void in
-                            UserSync.sharedInstance.sync(self.currentUser)
-                            self.currentUser.registerForRemoteNotificationsIfNeeded()
-                            self.performSegueWithIdentifier("Home", sender: self)
-                        })
-                    } else {
-                        println("error: \(error.localizedDescription)");
-                    }
-            })
-            logInButton.center = self.view.center
-            self.view.addSubview(logInButton)
+            twitterLoginButton.logInCompletion = { (session, error) in
+                if (session != nil) {
+                    println("signed in as \(session.userName)");
+                    self.currentUser.twitterAuthenticationWithTKSession(session)
+                    self.currentUser.writeToDisk()
+                    self.currentUser.authenticate(self.provider, completion: { () -> Void in
+                        UserSync.sharedInstance.sync(self.currentUser)
+                        self.currentUser.registerForRemoteNotificationsIfNeeded()
+                        self.performSegueWithIdentifier("Home", sender: self)
+                    })
+                } else {
+                    println("error: \(error.localizedDescription)");
+                }
 
-            
+            }
+
         }
 
     }

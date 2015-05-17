@@ -72,7 +72,6 @@ class HomeController: UIViewController {
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableViewAutomaticDimension // Explicitly set on iOS 8 if using automatic row height calculation
         tableView.layer.cornerRadius = 2.0
-        tableView.contentInset = UIEdgeInsetsMake(29, 0, 0, 0)
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillResignActive:", name: UIApplicationWillResignActiveNotification, object: UIApplication.sharedApplication())
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidEnterBackground:", name: UIApplicationDidEnterBackgroundNotification, object: UIApplication.sharedApplication())
@@ -87,9 +86,7 @@ class HomeController: UIViewController {
 
     func refreshUI() {
         Debug.isBlocking()
-        if let marketValue = currentUser.marketValue, subtotalAmount = marketValue.subtotalAmount, btc = currentUser.bitcoinBalanceBTC {
-            balanceLabel.text = "Ƀ\(btc)"
-        }
+        balanceLabel.text = "\(currentUser.mbtc) mBTC"
 
         if let marketValue = market.amount {
             //addFundsLabel.text = "ADD FUNDS (Ƀ0.02 for $\(marketValue))"
@@ -120,6 +117,9 @@ class HomeController: UIViewController {
         }
     }
 
+    @IBAction func didTapBalance(sender: UITapGestureRecognizer) {
+        println("\(className)::\(__FUNCTION__)")
+    }
 
     @IBAction func segmentChanged(sender: UISegmentedControl) {
         println("\(className)::\(__FUNCTION__) selected:\(sender.selectedSegmentIndex)")
@@ -192,12 +192,13 @@ class HomeController: UIViewController {
         cell.favorite = favorite
         cell.tweetView.configureWithTweet(twt)
 
-        if segmentControl.selectedSegmentIndex == 0 {
-            cell.tipConfirmedButton.hidden = !favorite.didLeaveTip
-            cell.tipButton.hidden = favorite.didLeaveTip
+        println("\(className)::\(__FUNCTION__) didLeaveTip: \(favorite.didLeaveTip)")
+        if favorite.didLeaveTip {
+            cell.tipButton.backgroundColor = UIColor.grayColor()
+            cell.tipButton.enabled = false
         } else {
-            cell.tipConfirmedButton.hidden = true
-            cell.tipButton.hidden = true
+            cell.tipButton.backgroundColor = UIColor.colorWithRGB(0x69C397, alpha: 1.0)
+            cell.tipButton.enabled = true
         }
 
 

@@ -165,7 +165,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 provider.token = self.cognitoToken!
                 completion()
             }
-
         }
     }
 
@@ -202,7 +201,19 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         get {
             if let btcBalance = self.bitcoinBalanceBTC {
                 let balanceFloat = (btcBalance as NSString).floatValue
-                let uBTCFloat = balanceFloat / 0.0001
+                let uBTCFloat = balanceFloat / 0.00000100
+                return "\(Int(uBTCFloat))"
+            } else {
+                return "0"
+            }
+        }
+    }
+
+    var mbtc:String {
+        get {
+            if let btcBalance = self.bitcoinBalanceBTC {
+                let balanceFloat = (btcBalance as NSString).floatValue
+                let uBTCFloat = balanceFloat / 0.00100000
                 return "\(Int(uBTCFloat))"
             } else {
                 return "0"
@@ -234,7 +245,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 completion()
             })
         } else {
-
             let json = JSON(["total": ["amount": "0.00"], "subtotal": ["amount": "0.00"], "btc": ["amount": "0.00"]])
             self.marketValue = Market.entityWithJSON(Market.self, json: json, context: self.managedObjectContext!)
             completion()
@@ -250,28 +260,32 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
             user.TwitterAuthSecret = twitterAuthSecret
             user.EndpointArn = endpointArn
             mapper.save(user, configuration: defaultDynamoConfiguration)
-
         }
     }
 
-    func withdrawBalance() {
-        let sqs = AWSSQS.defaultSQS()
-        let request = AWSSQSSendMessageRequest()
+    func withdrawBalance(toAddress: NSString, completion: (error: NSError?) -> Void) {
+        println("\(className)::\(__FUNCTION__)")
+        completion(error: nil)
 
-        var tipDict = ["TwitterUserID": self.uuid! ]
-        let jsonTipDict = NSJSONSerialization.dataWithJSONObject(tipDict, options: nil, error: nil)
-        let json: String = NSString(data: jsonTipDict!, encoding: NSUTF8StringEncoding) as! String
-
-
-        request.messageBody = json
-        request.queueUrl = ***REMOVED***
-        sqs.sendMessage(request).continueWithBlock { (task) -> AnyObject! in
-            if (task.error != nil) {
-                println("ERROR: \(task.error)")
-            }
-            return nil
-        }
-
+//        let sqs = AWSSQS.defaultSQS()
+//        let request = AWSSQSSendMessageRequest()
+//
+//        var tipDict = ["TwitterUserID": self.uuid!, "ToBitcoinAddress": toAddress ]
+//        let jsonTipDict = NSJSONSerialization.dataWithJSONObject(tipDict, options: nil, error: nil)
+//        let json: String = NSString(data: jsonTipDict!, encoding: NSUTF8StringEncoding) as! String
+//
+//
+//        request.messageBody = json
+//        request.queueUrl = "***REMOVED***e"
+//        sqs.sendMessage(request).continueWithBlock { (task) -> AnyObject! in
+//            if (task.error != nil) {
+//                println("ERROR: \(task.error)")
+//                completion(error: task.error)
+//            } else {
+//                completion(error: nil)
+//            }
+//            return nil
+//        }
     }
 
     func refreshWithDynamo() {

@@ -19,7 +19,7 @@ class WalletContainerController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        balanceLabel.text = currentUser.ubtc
+        balanceLabel.text = "\(currentUser.mbtc) mBTC"
 
         // Do any additional setup after loading the view.
     }
@@ -43,16 +43,7 @@ class WalletContainerController: UIViewController {
 
     @IBAction func closeTapped(sender: UIButton) {
         println("\(className)::\(__FUNCTION__)")
-        self.performSegueWithIdentifier("WalletClose", sender: self)
+        performSegueWithIdentifier("WalletClose", sender: self)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
