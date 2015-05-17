@@ -28,45 +28,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        // Override point for customization after application launch.
         Fabric.with([Crashlytics(), Twitter()])
         Config.dump()
-        TWTRTweetView.appearance().primaryTextColor = UIColor.whiteColor()
-        TWTRTweetView.appearance().backgroundColor = UIColor.colorWithRGB(0xC1DBCE, alpha: 1.0)
+        //TWTRTweetView.appearance().primaryTextColor = UIColor.whiteColor()
+        //TWTRTweetView.appearance().backgroundColor = UIColor.colorWithRGB(0xC1DBCE, alpha: 1.0)
 
         NSUbiquitousKeyValueStore.defaultStore().synchronize()
         
 
         Stripe.setDefaultPublishableKey(Config.get("STRIPE_PUBLISHABLE"))
-        currentUser = CurrentUser.currentUser(managedObjectContext!)
+        setupFirstController()
 
-
-        currentUser.writeToDisk()
 
         println("\(className)::\(__FUNCTION__) currentUser:\([currentUser])")
 
         AWSLogger.defaultLogger().logLevel = .Error
-        provider = TwitterAuth(currentUser: currentUser)
-        let credentialsProvider = AWSCognitoCredentialsProvider(regionType: AWSRegionType.USEast1, identityProvider: provider, unauthRoleArn: Config.get("COGNITO_UNAUTH_ARN"), authRoleArn: Config.get("COGNITO_AUTH_ARN"))
-
-        let defaultServiceConfiguration = AWSServiceConfiguration(
-            region: AWSRegionType.USEast1,
-            credentialsProvider: credentialsProvider)
-
-        AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = defaultServiceConfiguration
-
-
-
         let mobileAnalyticsConfiguration = AWSMobileAnalyticsConfiguration()
         mobileAnalyticsConfiguration.transmitOnWAN = true
-
         let analytics = AWSMobileAnalytics(forAppId: Config.get("AWS_ANALYTICS_ID"), configuration: mobileAnalyticsConfiguration, completionBlock: nil)
-
-        market = NSEntityDescription.insertNewObjectForEntityForName("Market", inManagedObjectContext: managedObjectContext!) as! Market
-        market.writeToDisk()
-
-        let firstController = window?.rootViewController as! SplashViewController
-        firstController.currentUser = currentUser
-        firstController.provider = provider
-        firstController.managedObjectContext = managedObjectContext
-        firstController.market = market
 
         if currentUser.isTwitterAuthenticated {
             let types = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
@@ -77,6 +54,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         return true
+    }
+
+    func setupFirstController() {
+        currentUser = CurrentUser.currentUser(managedObjectContext!)
+
+        println("\(className)::\(__FUNCTION__) currentUser:\([currentUser])")
+
+
+        provider = TwitterAuth(currentUser: currentUser)
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType: AWSRegionType.USEast1, identityProvider: provider, unauthRoleArn: Config.get("COGNITO_UNAUTH_ARN"), authRoleArn: Config.get("COGNITO_AUTH_ARN"))
+
+        let defaultServiceConfiguration = AWSServiceConfiguration(
+            region: AWSRegionType.USEast1,
+            credentialsProvider: credentialsProvider)
+
+        AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = defaultServiceConfiguration
+        market = NSEntityDescription.insertNewObjectForEntityForName("Market", inManagedObjectContext: managedObjectContext!) as! Market
+        writeToDisk()
+
+        let firstController = window?.rootViewController as! SplashViewController
+        firstController.currentUser = CurrentUser.currentUser(managedObjectContext!)
+        firstController.provider = provider
+        firstController.managedObjectContext = managedObjectContext
+        firstController.market = market
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -168,6 +169,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSFileManager.defaultManager().removeItemAtURL(storeURL, error: nil)
         persistentStoreCoordinator = nil
         managedObjectContext = nil
+        setupFirstController()
+        NSNotificationCenter.defaultCenter().postNotificationName("CoreDataReset", object: nil)
+
     }
 
     lazy var applicationDocumentsDirectory: NSURL = {

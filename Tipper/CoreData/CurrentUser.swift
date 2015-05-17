@@ -198,6 +198,19 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         return CurrentUser.className
     }
 
+    var ubtc:String {
+        get {
+            if let btcBalance = self.bitcoinBalanceBTC {
+                let balanceFloat = (btcBalance as NSString).floatValue
+                let uBTCFloat = balanceFloat / 0.0001
+                return "\(Int(uBTCFloat))"
+            } else {
+                return "0"
+            }
+
+        }
+    }
+
     func updateEntityWithJSON(json: JSON) {
         println("\(className)::\(__FUNCTION__) json:\(json)")
         self.twitterUserId = json["TwitterUserID"].stringValue
@@ -241,6 +254,26 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         }
     }
 
+    func withdrawBalance() {
+        let sqs = AWSSQS.defaultSQS()
+        let request = AWSSQSSendMessageRequest()
+
+        var tipDict = ["TwitterUserID": self.uuid! ]
+        let jsonTipDict = NSJSONSerialization.dataWithJSONObject(tipDict, options: nil, error: nil)
+        let json: String = NSString(data: jsonTipDict!, encoding: NSUTF8StringEncoding) as! String
+
+
+        request.messageBody = json
+        request.queueUrl = ***REMOVED***
+        sqs.sendMessage(request).continueWithBlock { (task) -> AnyObject! in
+            if (task.error != nil) {
+                println("ERROR: \(task.error)")
+            }
+            return nil
+        }
+
+    }
+
     func refreshWithDynamo() {
         println("\(className)::\(__FUNCTION__)")
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
@@ -280,9 +313,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     }
 
     func resetIdentifiers() {
-        self.twitterUserId = nil
-        self.token = nil
-        self.bitcoinAddress = nil
+        println("\(className)::\(__FUNCTION__)")
         SSKeychain.deletePasswordForService(KeychainUserAccount, account: KeychainAccount)
         SSKeychain.deletePasswordForService(KeychainTokenAccount, account: KeychainAccount)
         SSKeychain.deletePasswordForService(KeychainBitcoinAccount, account: KeychainAccount)
@@ -290,6 +321,8 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         NSUbiquitousKeyValueStore.defaultStore().removeObjectForKey(KeychainTokenAccount)
         NSUbiquitousKeyValueStore.defaultStore().removeObjectForKey(KeychainBitcoinAccount)
         NSUbiquitousKeyValueStore.defaultStore().synchronize()
+        self.destroy()
+        self.writeToDisk()
     }
 
 

@@ -37,7 +37,7 @@ class TweetCell: UITableViewCell {
         let sqs = AWSSQS.defaultSQS()
         let request = AWSSQSSendMessageRequest()
 
-        println("favorite:\(favorite), currentUser:\(currentUser)")
+        //println("favorite:\(favorite), currentUser:\(currentUser)")
         var tipDict = ["TweetID": favorite.tweetId, "FromTwitterID": currentUser.uuid!, "ToTwitterID": favorite.toTwitterId ]
         let jsonTipDict = NSJSONSerialization.dataWithJSONObject(tipDict, options: nil, error: nil)
         let json: String = NSString(data: jsonTipDict!, encoding: NSUTF8StringEncoding) as! String

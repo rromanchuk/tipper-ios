@@ -62,4 +62,9 @@ class SplashViewController: UIViewController {
 
         }
     }
+
+    @IBAction func done(segue: UIStoryboardSegue, sender: AnyObject?) {
+        println("\(className)::\(__FUNCTION__)")
+        (UIApplication.sharedApplication().delegate as! AppDelegate).setupFirstController()
+    }
 }

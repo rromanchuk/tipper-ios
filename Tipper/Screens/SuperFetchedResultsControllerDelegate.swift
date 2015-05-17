@@ -120,7 +120,7 @@ class SuperFetchedResultsControllerDelegate: NSObject, NSFetchedResultsControlle
 
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?)
     {
-        println("didChangeObject")
+        //println("didChangeObject")
         if(receiverType() == ReusableViewType.TableView){
             switch type {
             case NSFetchedResultsChangeType.Insert:

@@ -7,10 +7,9 @@
 //
 
 import UIKit
-import PassKit
 import TwitterKit
 
-class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDelegate {
+class HomeController: UIViewController {
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
     var market: Market!
@@ -20,12 +19,9 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
     var className = "HomeController"
 
     @IBOutlet weak var segmentControl: UISegmentedControl!
-    @IBOutlet weak var addFundsLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
 
-    @IBOutlet weak var applePayButton: UIButton!
-    @IBOutlet weak var withdrawButton: UIButton!
-    @IBOutlet weak var addressButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var balanceLabel: UILabel!
 
     let ApplePayMerchantID = Config.get("APPLE_PAY_MERCHANT")
@@ -52,6 +48,23 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
         return request
     }()
 
+    lazy var actionSheet: UIAlertController = {
+        let _actionController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+            println("\(self.className)::\(__FUNCTION__) cancelAction")
+        }
+        _actionController.addAction(cancelAction)
+
+        let destroyAction = UIAlertAction(title: "Logout", style: .Destructive) { (action) in
+            println("\(self.className)::\(__FUNCTION__) destroyAction")
+            self.currentUser.resetIdentifiers()
+            self.performSegueWithIdentifier("BackToSplash", sender: self)
+        }
+        _actionController.addAction(destroyAction)
+        return _actionController
+    }()
+
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,16 +81,18 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
         updateMarkets()
         DynamoFavorite.fetchFromAWS(currentUser, context: managedObjectContext)
         DynamoFavorite.fetchReceivedFromAWS(currentUser, context: managedObjectContext)
+
+
     }
 
     func refreshUI() {
         Debug.isBlocking()
         if let marketValue = currentUser.marketValue, subtotalAmount = marketValue.subtotalAmount, btc = currentUser.bitcoinBalanceBTC {
-            balanceLabel.text = "$\(subtotalAmount) / Ƀ\(btc)"
+            balanceLabel.text = "Ƀ\(btc)"
         }
 
         if let marketValue = market.amount {
-            addFundsLabel.text = "ADD FUNDS (Ƀ0.02 for $\(marketValue))"
+            //addFundsLabel.text = "ADD FUNDS (Ƀ0.02 for $\(marketValue))"
         }
 
     }
@@ -98,56 +113,13 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
     }
     
 
-    @IBAction func didTapWithdraw(sender: UIButton) {
-        performSegueWithIdentifier("Withdraw", sender: self)
-    }
 
-    @IBAction func didTapPay(sender: UIButton) {
-        let request = PKPaymentRequest()
-        request.merchantIdentifier = ApplePayMerchantID
-        request.supportedNetworks = SupportedPaymentNetworks
-        request.merchantCapabilities = PKMerchantCapability.Capability3DS
-        request.countryCode = "US"
-        request.currencyCode = "USD"
-        let amount = (market.amount! as NSString).doubleValue
-        request.paymentSummaryItems = [PKPaymentSummaryItem(label: "Тipper ", amount: NSDecimalNumber(double: amount))]
-        if Stripe.canSubmitPaymentRequest(request) {
-            #if DEBUG
-                let applePayController = STPTestPaymentAuthorizationViewController(paymentRequest: request)
-                applePayController.delegate = self
-                self.presentViewController(applePayController, animated: true, completion: nil)
-                #else
-                let applePayController = PKPaymentAuthorizationViewController(paymentRequest: request)
-                applePayController.delegate = self
-                self.presentViewController(applePayController, animated: true, completion: nil)
-            #endif
-        } else {
-            //default to Stripe's PaymentKit Form
+    @IBAction func didTapSettings(sender: UIButton) {
+        self.presentViewController(actionSheet, animated: true) {
+            // ...
         }
-
     }
 
-    func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController!, didAuthorizePayment payment: PKPayment!, completion: ((PKPaymentAuthorizationStatus) -> Void)!) {
-        println("\(className)::\(__FUNCTION__)")
-        STPAPIClient.sharedClient().createTokenWithPayment(payment, completion: { (token, error) -> Void in
-            println("token:\(token) error:\(error)")
-
-            if error == nil {
-                //handle token to create charge in backend
-                API.sharedInstance.charge(token.tokenId, amount:self.market.amount!, completion: { (json, error) -> Void in
-                    completion(PKPaymentAuthorizationStatus.Success)
-                })
-            } else {
-                completion(PKPaymentAuthorizationStatus.Failure)
-            }
-        })
-
-    }
-
-    func paymentAuthorizationViewControllerDidFinish(controller: PKPaymentAuthorizationViewController!) {
-        controller.dismissViewControllerAnimated(true, completion: nil)
-        //dismisses ApplePay ViewController
-    }
 
     @IBAction func segmentChanged(sender: UISegmentedControl) {
         println("\(className)::\(__FUNCTION__) selected:\(sender.selectedSegmentIndex)")
@@ -163,9 +135,6 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
         }
     }
 
-    @IBAction func didTapAddress(sender: UIButton) {
-        performSegueWithIdentifier("Address", sender: self)
-    }
 
 
     // MARK: Application lifecycle
@@ -197,13 +166,10 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "Address" {
-            let vc = segue.destinationViewController as! AddressController
-            vc.managedObjectContext = managedObjectContext
-            vc.currentUser = currentUser
-            vc.market = market
-        } else if segue.identifier == "Withdraw" {
-            let vc = segue.destinationViewController as! WithdrawController
+        println("\(className)::\(__FUNCTION__)")
+
+        if segue.identifier == "Wallet" {
+            let vc = segue.destinationViewController as! WalletContainerController
             vc.managedObjectContext = managedObjectContext
             vc.currentUser = currentUser
             vc.market = market
@@ -211,7 +177,7 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
     }
 
     @IBAction func done(segue: UIStoryboardSegue, sender: AnyObject?) {
-
+        println("\(className)::\(__FUNCTION__)")
     }
 
 
@@ -219,7 +185,6 @@ class HomeController: UIViewController, PKPaymentAuthorizationViewControllerDele
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let favorite = fetchedResultsController.objectAtIndexPath(indexPath) as! Favorite
-        println("favorite -- \(favorite.didLeaveTip)")
         let twt = TWTRTweet(JSONDictionary: favorite.twitterJSON)
 
         let cell = tableView.dequeueReusableCellWithIdentifier(tweetTableReuseIdentifier, forIndexPath: indexPath) as! TweetCell

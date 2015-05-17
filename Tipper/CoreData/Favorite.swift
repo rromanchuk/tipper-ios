@@ -59,13 +59,13 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
     }
 
     func updateEntityWithJSON(json: JSON) {
-        println("\(className)::\(__FUNCTION__) \(json)")
+        //println("\(className)::\(__FUNCTION__) \(json)")
         self.tweetId = json["id_str"].stringValue
         self.twitterJSON = json.dictionaryObject
     }
 
     func updateEntityWithTWTR(tweet: TWTRTweet) {
-        println("\(className)::\(__FUNCTION__) \(tweet)")
+        //println("\(className)::\(__FUNCTION__) \(tweet)")
         //self.twitterJSON = tweet
         self.tweetId = tweet.tweetID
     }
