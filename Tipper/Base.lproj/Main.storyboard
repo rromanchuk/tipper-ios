@@ -71,9 +71,12 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stack-of-coins" translatesAutoresizingMaskIntoConstraints="NO" id="6Wa-bK-0VZ">
                                 <rect key="frame" x="107" y="129" width="200" height="235"/>
                             </imageView>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="By creating your account you confirm that you've read the Terms Of Use. " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOy-ZY-rsY">
-                                <rect key="frame" x="60" y="503" width="294" height="47"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By creating your account you confirm that you've read the Terms Of Use. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOy-ZY-rsY">
+                                <rect key="frame" x="60" y="503" width="294" height="34"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="294" id="tCP-fQ-zLk"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -84,6 +87,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.41176470590000003" green="0.76470588240000004" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="YOy-ZY-rsY" firstAttribute="top" secondItem="dHj-ZJ-tNj" secondAttribute="bottom" constant="8" id="3tQ-R6-GiZ"/>
+                            <constraint firstAttribute="centerX" secondItem="YOy-ZY-rsY" secondAttribute="centerX" id="4pR-WE-v9p"/>
                             <constraint firstAttribute="centerX" secondItem="YWF-UR-7re" secondAttribute="centerX" id="7bu-b0-DkO"/>
                             <constraint firstAttribute="centerX" secondItem="YWF-UR-7re" secondAttribute="centerX" id="c7P-7h-CW1"/>
                             <constraint firstAttribute="centerX" secondItem="6Wa-bK-0VZ" secondAttribute="centerX" id="gV2-u8-luJ"/>

@@ -123,27 +123,12 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
 
 
     }
-    // MARK: Stripe 
 
-//    @IBAction func stripeCheckout(sender: UIButton) {
-//        println("\(className)::\(__FUNCTION__)")
-//        var options = STPCheckoutOptions()
-//        let amount = (market.amount! as NSString).doubleValue
-//        options.purchaseDescription = "Tipper credit of 0.02BTC";
-//        options.purchaseAmount = UInt(amount)
-//        let checkoutViewController = STPCheckoutViewController(options: options)
-//        checkoutViewController.checkoutDelegate = self
-//        self.parentViewController!.presentViewController(checkoutViewController, animated: true, completion: nil)
-//    }
-
+    // MARK: Stripe
     func checkoutController(controller: STPCheckoutViewController!, didCreateToken token: STPToken!, completion: STPTokenSubmissionHandler!) {
         println("\(className)::\(__FUNCTION__)")
         createBackendChargeWithToken(token, completion: completion)
     }
-
-//    func checkoutController(controller: STPCheckoutViewController!, didFinishWithStatus status: STPPaymentStatus, error: NSError!) {
-//        println("\(className)::\(__FUNCTION__)")
-//    }
 
     func paymentAuthorizationViewControllerDidFinish(controller: PKPaymentAuthorizationViewController!) {
         println("\(className)::\(__FUNCTION__)")
@@ -174,8 +159,8 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
         request.countryCode = "US"
         request.currencyCode = "USD"
         let amount = (market.amount! as NSString).doubleValue
-        request.paymentSummaryItems = [PKPaymentSummaryItem(label: "Тipper ", amount: NSDecimalNumber(double: amount))]
-        if false { //if Stripe.canSubmitPaymentRequest(request) {
+        request.paymentSummaryItems = [PKPaymentSummaryItem(label: "Tipper 0.02BTC deposit", amount: NSDecimalNumber(double: amount))]
+        if Stripe.canSubmitPaymentRequest(request) {
             #if DEBUG
                 let applePayController = STPTestPaymentAuthorizationViewController(paymentRequest: request)
                 applePayController.delegate = self
@@ -211,30 +196,6 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
         })
     }
 
-
-//    func paymentAuthorizationViewControllerDidFinish(controller: PKPaymentAuthorizationViewController!) {
-//        controller.dismissViewControllerAnimated(true, completion: nil)
-//        //dismisses ApplePay ViewController
-//    }
-
-    
-//    func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController!, didAuthorizePayment payment: PKPayment!, completion: ((PKPaymentAuthorizationStatus) -> Void)!) {
-//        println("\(className)::\(__FUNCTION__)")
-//        STPAPIClient.sharedClient().createTokenWithPayment(payment, completion: { (token, error) -> Void in
-//            println("token:\(token) error:\(error)")
-//
-//            if error == nil {
-//                //handle token to create charge in backend
-//                API.sharedInstance.charge(token.tokenId, amount:self.market.amount!, completion: { (json, error) -> Void in
-//                    completion(PKPaymentAuthorizationStatus.Success)
-//                })
-//            } else {
-//                completion(PKPaymentAuthorizationStatus.Failure)
-//            }
-//        })
-//
-//    }
-
     func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: ((PKPaymentAuthorizationStatus) -> Void)) {
         STPAPIClient.sharedClient().createTokenWithPayment(payment, completion: { (token, error) -> Void in
             if error != nil {
@@ -250,7 +211,6 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
             completion(PKPaymentAuthorizationStatus.Failure)
         })
     }
-
 
 
     @IBAction func textFieldChanged(sender: UITextField) {
