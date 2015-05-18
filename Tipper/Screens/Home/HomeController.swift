@@ -50,15 +50,15 @@ class HomeController: UIViewController {
 
     lazy var actionSheet: UIAlertController = {
         let _actionController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
-            println("\(self.className)::\(__FUNCTION__) cancelAction")
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { [weak self] (action) in
+            println("\(self?.className)::\(__FUNCTION__) cancelAction")
         }
         _actionController.addAction(cancelAction)
 
-        let destroyAction = UIAlertAction(title: "Logout", style: .Destructive) { (action) in
-            println("\(self.className)::\(__FUNCTION__) destroyAction")
-            self.currentUser.resetIdentifiers()
-            self.performSegueWithIdentifier("BackToSplash", sender: self)
+        let destroyAction = UIAlertAction(title: "Logout", style: .Destructive) { [weak self] (action) in
+            println("\(self?.className)::\(__FUNCTION__) destroyAction")
+            self?.currentUser.resetIdentifiers()
+            self?.performSegueWithIdentifier("BackToSplash", sender: self)
         }
         _actionController.addAction(destroyAction)
         return _actionController
@@ -87,6 +87,10 @@ class HomeController: UIViewController {
         refreshUI()
     }
 
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+
     func refreshUI() {
         println("\(className)::\(__FUNCTION__)")
         Debug.isBlocking()
@@ -97,11 +101,11 @@ class HomeController: UIViewController {
 
     func updateMarkets() {
         println("\(className)::\(__FUNCTION__)")
-        market.update { () -> Void in
-            self.refreshUI()
+        market.update { [weak self] () -> Void in
+            self?.refreshUI()
         }
-        currentUser.updateBalanceUSD { () -> Void in
-            self.refreshUI()
+        currentUser.updateBalanceUSD { [weak self] () -> Void in
+            self?.refreshUI()
         }
     }
 
@@ -151,13 +155,13 @@ class HomeController: UIViewController {
     func applicationDidBecomeActive(aNotification: NSNotification) {
         println("\(className)::\(__FUNCTION__)")
         updateMarkets()
-        currentUser.refreshWithServer { (error) -> Void in
+        currentUser.refreshWithServer { [weak self] (error) -> Void in
             if (error == nil) {
-                self.updateMarkets()
-                self.refreshUI()
+                self?.updateMarkets()
+                self?.refreshUI()
             } else if let error = error where error.code == 401 {
-                self.currentUser.resetIdentifiers()
-                self.performSegueWithIdentifier("BackToSplash", sender: self)
+                self?.currentUser.resetIdentifiers()
+                self?.performSegueWithIdentifier("BackToSplash", sender: self)
             }
         }
     }

@@ -17,15 +17,16 @@ public class TwitterAuth : AWSAbstractIdentityProvider {
     init(currentUser: CurrentUser) {
         self.currentUser = currentUser
         super.init()
+        self.token = nil
         var dict  = NSMutableDictionary()
         dict.setObject("temp", forKey: "com.checkthis.today")
         self.logins = dict as [NSObject : AnyObject]
 
     }
 
-    var newToken: String!
+    var newToken: String?
 
-    override public var token: String {
+    override public var token: String? {
         get {
             return newToken
         }
