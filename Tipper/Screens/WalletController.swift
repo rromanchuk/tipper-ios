@@ -27,6 +27,7 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
     @IBOutlet weak var usdExchangeLabel: UILabel!
     @IBOutlet weak var applePayButton: UIButton!
 
+    @IBOutlet weak var stripeButton: UIButton!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var copyToClipboardButton: UIButton!
 
@@ -46,13 +47,22 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
             usdExchangeLabel.text = "\(market.amount!)"
         }
 
+        let paymentRequest = Stripe.paymentRequestWithMerchantIdentifier(ApplePayMerchantID)
 
-        if PKPaymentAuthorizationViewController.canMakePaymentsUsingNetworks(SupportedPaymentNetworks) {
-            //self.applePayButton.hidden = false
+        if PKPaymentAuthorizationViewController.canMakePaymentsUsingNetworks(SupportedPaymentNetworks) && Stripe.canSubmitPaymentRequest(paymentRequest) {
+            self.applePayButton.hidden = false
         } else {
             self.applePayButton.hidden = true
         }
     }
+
+//    - (BOOL)applePayEnabled {
+//    if ([PKPaymentRequest class]) {
+//    PKPaymentRequest *paymentRequest = [Stripe paymentRequestWithMerchantIdentifier:AppleMerchantId];
+//    return [Stripe canSubmitPaymentRequest:paymentRequest];
+//    }
+//    return NO;
+//    }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -115,16 +125,16 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
     }
     // MARK: Stripe 
 
-    @IBAction func stripeCheckout(sender: UIButton) {
-        println("\(className)::\(__FUNCTION__)")
-        var options = STPCheckoutOptions()
-        let amount = (market.amount! as NSString).doubleValue
-        options.purchaseDescription = "Tipper credit of 0.02BTC";
-        options.purchaseAmount = UInt(amount)
-        let checkoutViewController = STPCheckoutViewController(options: options)
-        checkoutViewController.checkoutDelegate = self
-        self.parentViewController!.presentViewController(checkoutViewController, animated: true, completion: nil)
-    }
+//    @IBAction func stripeCheckout(sender: UIButton) {
+//        println("\(className)::\(__FUNCTION__)")
+//        var options = STPCheckoutOptions()
+//        let amount = (market.amount! as NSString).doubleValue
+//        options.purchaseDescription = "Tipper credit of 0.02BTC";
+//        options.purchaseAmount = UInt(amount)
+//        let checkoutViewController = STPCheckoutViewController(options: options)
+//        checkoutViewController.checkoutDelegate = self
+//        self.parentViewController!.presentViewController(checkoutViewController, animated: true, completion: nil)
+//    }
 
     func checkoutController(controller: STPCheckoutViewController!, didCreateToken token: STPToken!, completion: STPTokenSubmissionHandler!) {
         println("\(className)::\(__FUNCTION__)")
@@ -165,18 +175,27 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
         request.currencyCode = "USD"
         let amount = (market.amount! as NSString).doubleValue
         request.paymentSummaryItems = [PKPaymentSummaryItem(label: "Тipper ", amount: NSDecimalNumber(double: amount))]
-        if Stripe.canSubmitPaymentRequest(request) {
+        if false { //if Stripe.canSubmitPaymentRequest(request) {
             #if DEBUG
                 let applePayController = STPTestPaymentAuthorizationViewController(paymentRequest: request)
                 applePayController.delegate = self
-                self.presentViewController(applePayController, animated: true, completion: nil)
+                self.parentViewController!.presentViewController(applePayController, animated: true, completion: nil)
                 #else
                 let applePayController = PKPaymentAuthorizationViewController(paymentRequest: request)
                 applePayController.delegate = self
-                self.presentViewController(applePayController, animated: true, completion: nil)
+                self.parentViewController!.presentViewController(applePayController, animated: true, completion: nil)
             #endif
         } else {
             //default to Stripe's PaymentKit Form
+            var options = STPCheckoutOptions()
+            let amount = (market.amount! as NSString).doubleValue
+            options.purchaseDescription = "Tipper 0.02BTC deposit";
+            options.purchaseAmount = UInt(amount * 100)
+            options.companyName = "Tipper"
+            let checkoutViewController = STPCheckoutViewController(options: options)
+            checkoutViewController.checkoutDelegate = self
+            self.parentViewController!.presentViewController(checkoutViewController, animated: true, completion: nil)
+
         }
 
     }

@@ -62,6 +62,10 @@ class SplashViewController: UIViewController {
         }
     }
 
+    @IBAction func didTapTOS(sender: UITapGestureRecognizer) {
+        UIApplication.sharedApplication().openURL(NSURL(string:"https://www.coinbit.tips/privacy")!)
+    }
+
     @IBAction func done(segue: UIStoryboardSegue, sender: AnyObject?) {
         println("\(className)::\(__FUNCTION__)")
         (UIApplication.sharedApplication().delegate as! AppDelegate).setupFirstController()

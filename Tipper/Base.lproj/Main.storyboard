@@ -17,6 +17,9 @@
             <string>Bariol-Regular</string>
             <string>Bariol-Regular</string>
             <string>Bariol-Regular</string>
+            <string>Bariol-Regular</string>
+            <string>Bariol-Regular</string>
+            <string>Bariol-Regular</string>
         </mutableArray>
         <mutableArray key="Bariol_Bold.otf">
             <string>Bariol-Bold</string>
@@ -68,6 +71,16 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stack-of-coins" translatesAutoresizingMaskIntoConstraints="NO" id="6Wa-bK-0VZ">
                                 <rect key="frame" x="107" y="129" width="200" height="235"/>
                             </imageView>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="By creating your account you confirm that you've read the Terms Of Use. " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOy-ZY-rsY">
+                                <rect key="frame" x="60" y="503" width="294" height="47"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="foq-6c-Mjb" appends="YES" id="hfX-fa-8as"/>
+                                </connections>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.41176470590000003" green="0.76470588240000004" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -88,6 +101,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b7S-es-3hb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="hg3-He-cdC" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="foq-6c-Mjb">
+                    <connections>
+                        <action selector="didTapTOS:" destination="J4X-Ps-uMP" id="LJD-r5-cSf"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-157" y="498"/>
         </scene>
@@ -247,6 +265,7 @@
                                                 </label>
                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9DJ-2s-fVD" userLabel="ApplePay Button">
                                                     <rect key="frame" x="110" y="252" width="194" height="64"/>
+                                                    <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="18"/>
                                                     <state key="normal" image="apple-pay-black">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -261,7 +280,7 @@
                                                         <constraint firstAttribute="height" constant="1" id="hqn-h7-SQi"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Wd-76-ren">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Wd-76-ren">
                                                     <rect key="frame" x="57" y="463" width="300" height="48"/>
                                                     <color key="backgroundColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
@@ -345,14 +364,15 @@
                                                     <color key="textColor" red="0.41176470590000003" green="0.41176470590000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uug-ax-ABv">
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uug-ax-ABv">
                                                     <rect key="frame" x="111" y="252" width="194" height="64"/>
+                                                    <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
                                                     <state key="normal" title="Trade Now">
                                                         <color key="titleColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="stripeCheckout:" destination="UEU-XD-8Ny" eventType="touchUpInside" id="JyY-oG-M5A"/>
+                                                        <action selector="didTapPay:" destination="UEU-XD-8Ny" eventType="touchUpInside" id="oGT-Ur-7O1"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -448,6 +468,7 @@
                         <outlet property="copyToClipboardButton" destination="6Wd-76-ren" id="BtJ-hi-X0J"/>
                         <outlet property="pasteAddressFromClipboard" destination="Jm4-av-7oX" id="fJY-Kn-CMf"/>
                         <outlet property="qrCode" destination="uTM-ii-n9a" id="Y0t-yK-j7O"/>
+                        <outlet property="stripeButton" destination="Uug-ax-ABv" id="kZp-xc-f1h"/>
                         <outlet property="ubtcExchangeLabel" destination="WgK-yF-TQV" id="pFw-u9-2jD"/>
                         <outlet property="usdExchangeLabel" destination="3cn-W2-1Jv" id="srD-5m-8MC"/>
                     </connections>
