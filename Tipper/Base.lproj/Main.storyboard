@@ -245,7 +245,7 @@
                                                     <color key="textColor" red="0.41176470590000003" green="0.41176470590000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9DJ-2s-fVD" userLabel="ApplePay Button">
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9DJ-2s-fVD" userLabel="ApplePay Button">
                                                     <rect key="frame" x="110" y="252" width="194" height="64"/>
                                                     <state key="normal" image="apple-pay-black">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -335,6 +335,9 @@
                                                     <rect key="frame" x="27" y="1075" width="370" height="30"/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textFieldChanged:" destination="UEU-XD-8Ny" eventType="editingChanged" id="bBd-Lk-cwf"/>
+                                                    </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mBTC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GmB-7c-2pP">
                                                     <rect key="frame" x="176" y="180" width="44" height="17"/>
@@ -342,12 +345,23 @@
                                                     <color key="textColor" red="0.41176470590000003" green="0.41176470590000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uug-ax-ABv">
+                                                    <rect key="frame" x="111" y="252" width="194" height="64"/>
+                                                    <state key="normal" title="Trade Now">
+                                                        <color key="titleColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="stripeCheckout:" destination="UEU-XD-8Ny" eventType="touchUpInside" id="JyY-oG-M5A"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="3cn-W2-1Jv" firstAttribute="leading" secondItem="7MI-BW-rqR" secondAttribute="trailing" constant="80" id="0VE-6X-92N"/>
                                                 <constraint firstItem="3cn-W2-1Jv" firstAttribute="centerY" secondItem="5ix-8z-rrx" secondAttribute="centerY" constant="0.5" id="1Bh-iR-JI4"/>
                                                 <constraint firstAttribute="centerX" secondItem="uTM-ii-n9a" secondAttribute="centerX" id="2mb-Ok-GWS"/>
                                                 <constraint firstItem="3cn-W2-1Jv" firstAttribute="leading" secondItem="5ix-8z-rrx" secondAttribute="trailing" constant="5" id="4lX-5z-FNa"/>
+                                                <constraint firstItem="9DJ-2s-fVD" firstAttribute="leading" secondItem="Uug-ax-ABv" secondAttribute="leading" constant="-1" id="6Yu-0P-Tfh"/>
                                                 <constraint firstItem="3cn-W2-1Jv" firstAttribute="leading" secondItem="WgK-yF-TQV" secondAttribute="leading" id="6hJ-mP-ngg"/>
                                                 <constraint firstAttribute="centerX" secondItem="rP5-Rl-cgz" secondAttribute="centerX" id="9yi-Z9-WjF"/>
                                                 <constraint firstItem="kFk-hZ-4zT" firstAttribute="width" secondItem="uBa-1b-LJq" secondAttribute="width" id="ACG-Lo-HQy"/>
@@ -378,6 +392,7 @@
                                                 <constraint firstItem="WgK-yF-TQV" firstAttribute="centerX" secondItem="3iP-12-iHD" secondAttribute="centerX" constant="5" id="X5v-ip-PKM"/>
                                                 <constraint firstItem="3iP-12-iHD" firstAttribute="top" secondItem="WgK-yF-TQV" secondAttribute="bottom" constant="-4" id="YcL-9n-UbY"/>
                                                 <constraint firstItem="uTM-ii-n9a" firstAttribute="top" secondItem="u43-sd-Dvu" secondAttribute="bottom" constant="14" id="YjB-iM-pdG"/>
+                                                <constraint firstItem="9DJ-2s-fVD" firstAttribute="top" secondItem="Uug-ax-ABv" secondAttribute="top" id="Ysv-JQ-prz"/>
                                                 <constraint firstItem="AR8-pK-0TU" firstAttribute="top" secondItem="F7r-Gq-8mP" secondAttribute="bottom" constant="10" id="aQ8-eZ-Yyg"/>
                                                 <constraint firstItem="f0q-kf-Mol" firstAttribute="leading" secondItem="7MI-BW-rqR" secondAttribute="leading" constant="2" id="b4T-Az-VKb"/>
                                                 <constraint firstAttribute="centerX" secondItem="AR8-pK-0TU" secondAttribute="centerX" id="d5y-Je-Oqh"/>
@@ -391,6 +406,8 @@
                                                 <constraint firstItem="kAz-Ju-zso" firstAttribute="leading" secondItem="ryn-Zr-put" secondAttribute="leading" id="i6J-Ao-PzM"/>
                                                 <constraint firstItem="kFk-hZ-4zT" firstAttribute="top" secondItem="9DJ-2s-fVD" secondAttribute="bottom" constant="40" id="lgm-3z-cA1"/>
                                                 <constraint firstItem="WgK-yF-TQV" firstAttribute="leading" secondItem="YAV-5u-7mb" secondAttribute="trailing" constant="80" id="nkq-pr-Fzs"/>
+                                                <constraint firstItem="9DJ-2s-fVD" firstAttribute="width" secondItem="Uug-ax-ABv" secondAttribute="width" id="oDd-d4-Aj0"/>
+                                                <constraint firstItem="9DJ-2s-fVD" firstAttribute="height" secondItem="Uug-ax-ABv" secondAttribute="height" id="p1R-Ar-9q1"/>
                                                 <constraint firstItem="YAV-5u-7mb" firstAttribute="leading" secondItem="f0q-kf-Mol" secondAttribute="leading" constant="-2" id="pej-fY-din"/>
                                                 <constraint firstItem="Jm4-av-7oX" firstAttribute="top" secondItem="rP5-Rl-cgz" secondAttribute="bottom" constant="47" id="ptS-62-7sI"/>
                                                 <constraint firstItem="IAn-5m-NYd" firstAttribute="top" secondItem="rP5-Rl-cgz" secondAttribute="bottom" constant="13" id="r4x-tI-x97"/>

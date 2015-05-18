@@ -267,25 +267,36 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         println("\(className)::\(__FUNCTION__)")
         completion(error: nil)
 
-//        let sqs = AWSSQS.defaultSQS()
-//        let request = AWSSQSSendMessageRequest()
-//
-//        var tipDict = ["TwitterUserID": self.uuid!, "ToBitcoinAddress": toAddress ]
-//        let jsonTipDict = NSJSONSerialization.dataWithJSONObject(tipDict, options: nil, error: nil)
-//        let json: String = NSString(data: jsonTipDict!, encoding: NSUTF8StringEncoding) as! String
-//
-//
-//        request.messageBody = json
-//        request.queueUrl = "***REMOVED***e"
-//        sqs.sendMessage(request).continueWithBlock { (task) -> AnyObject! in
-//            if (task.error != nil) {
-//                println("ERROR: \(task.error)")
-//                completion(error: task.error)
-//            } else {
-//                completion(error: nil)
-//            }
-//            return nil
-//        }
+        let sqs = AWSSQS.defaultSQS()
+        let request = AWSSQSSendMessageRequest()
+
+        var tipDict = ["TwitterUserID": self.uuid!, "ToBitcoinAddress": toAddress ]
+        let jsonTipDict = NSJSONSerialization.dataWithJSONObject(tipDict, options: nil, error: nil)
+        let json: String = NSString(data: jsonTipDict!, encoding: NSUTF8StringEncoding) as! String
+
+
+        request.messageBody = json
+        request.queueUrl = "***REMOVED***e"
+        sqs.sendMessage(request).continueWithBlock { (task) -> AnyObject! in
+            if (task.error != nil) {
+                println("ERROR: \(task.error)")
+                completion(error: task.error)
+            } else {
+                completion(error: nil)
+            }
+            return nil
+        }
+    }
+
+
+    func refreshWithServer(completion: (error: NSError?) -> Void) {
+        API.sharedInstance.me({ (json, error) -> Void in
+            if (error == nil) {
+                self.updateEntityWithJSON(json)
+                self.writeToDisk()
+            }
+            completion(error: error)
+        })
     }
 
     func refreshWithDynamo() {

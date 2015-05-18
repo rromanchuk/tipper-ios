@@ -14,7 +14,6 @@
 		941631851AC3FAB4002016FD /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941631841AC3FAB4002016FD /* TweetCell.swift */; };
 		941631881AC404A7002016FD /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941631871AC404A7002016FD /* UIColor.swift */; };
 		941AA38A1AAFA34900CA9192 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA3891AAFA34900CA9192 /* Config.swift */; };
-		941AA38C1AAFDCA000CA9192 /* PayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA38B1AAFDCA000CA9192 /* PayViewController.swift */; };
 		941AA38E1AB01EC000CA9192 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA38D1AB01EC000CA9192 /* SplashViewController.swift */; };
 		943E93FD1B05C8DC007D98C7 /* WalletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943E93FC1B05C8DC007D98C7 /* WalletController.swift */; };
 		94416C0A1AAF989F00117AFC /* Alamofire-SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF51AAF989F00117AFC /* Alamofire-SwiftyJSON.swift */; };
@@ -74,7 +73,6 @@
 		941631841AC3FAB4002016FD /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TweetCell.swift; path = Home/TweetCell.swift; sourceTree = "<group>"; };
 		941631871AC404A7002016FD /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = Extensions/UIColor.swift; sourceTree = "<group>"; };
 		941AA3891AAFA34900CA9192 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		941AA38B1AAFDCA000CA9192 /* PayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayViewController.swift; sourceTree = "<group>"; };
 		941AA38D1AB01EC000CA9192 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		943E93FC1B05C8DC007D98C7 /* WalletController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletController.swift; sourceTree = "<group>"; };
 		94416BED1AAF94C700117AFC /* Tipper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Tipper.entitlements; sourceTree = "<group>"; };
@@ -236,7 +234,6 @@
 				941631811AC3CBEA002016FD /* Address */,
 				941631801AC3CBE2002016FD /* Home */,
 				94FA97D51AB2E0DA005B0C83 /* Transaction */,
-				941AA38B1AAFDCA000CA9192 /* PayViewController.swift */,
 				941AA38D1AB01EC000CA9192 /* SplashViewController.swift */,
 			);
 			path = Screens;
@@ -574,7 +571,6 @@
 				94416C0F1AAF989F00117AFC /* TwitterAuth.swift in Sources */,
 				943E93FD1B05C8DC007D98C7 /* WalletController.swift in Sources */,
 				94416C101AAF989F00117AFC /* UserSync.swift in Sources */,
-				941AA38C1AAFDCA000CA9192 /* PayViewController.swift in Sources */,
 				94FDE9C11AB4BF6A006B6454 /* Debug.swift in Sources */,
 				941AA38E1AB01EC000CA9192 /* SplashViewController.swift in Sources */,
 				94416C111AAF989F00117AFC /* CoreDataUpdatable.swift in Sources */,

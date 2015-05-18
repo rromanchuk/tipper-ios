@@ -151,7 +151,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject: AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
 
         println("\(className)::\(__FUNCTION__) userInfo:\(userInfo)")
-
         if let favorite = userInfo["favorite"] as? [String: AnyObject],
             currentUser = currentUser {
             let favorite = Favorite.entityWithJSON(Favorite.self, json: JSON(favorite), context: managedObjectContext!)

@@ -65,7 +65,6 @@ class HomeController: UIViewController {
     }()
 
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -81,20 +80,23 @@ class HomeController: UIViewController {
         DynamoFavorite.fetchFromAWS(currentUser, context: managedObjectContext)
         DynamoFavorite.fetchReceivedFromAWS(currentUser, context: managedObjectContext)
 
+    }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshUI()
     }
 
     func refreshUI() {
+        println("\(className)::\(__FUNCTION__)")
         Debug.isBlocking()
+
+        managedObjectContext.refreshObject(currentUser, mergeChanges: true)
         balanceLabel.text = "\(currentUser.mbtc) mBTC"
-
-        if let marketValue = market.amount {
-            //addFundsLabel.text = "ADD FUNDS (Ƀ0.02 for $\(marketValue))"
-        }
-
     }
 
     func updateMarkets() {
+        println("\(className)::\(__FUNCTION__)")
         market.update { () -> Void in
             self.refreshUI()
         }
@@ -108,10 +110,10 @@ class HomeController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
 
     @IBAction func didTapSettings(sender: UIButton) {
+        println("\(className)::\(__FUNCTION__)")
         self.presentViewController(actionSheet, animated: true) {
             // ...
         }
@@ -127,14 +129,12 @@ class HomeController: UIViewController {
             fetchedResultsController.fetchRequest.predicate = predicate
             fetchedResultsController.performFetch(nil)
             tableView.reloadData()
-
         } else {
             fetchedResultsController.fetchRequest.predicate = receivedPredicate
             fetchedResultsController.performFetch(nil)
             tableView.reloadData()
         }
     }
-
 
 
     // MARK: Application lifecycle
@@ -151,18 +151,15 @@ class HomeController: UIViewController {
     func applicationDidBecomeActive(aNotification: NSNotification) {
         println("\(className)::\(__FUNCTION__)")
         updateMarkets()
-        API.sharedInstance.me({ (json, error) -> Void in
+        currentUser.refreshWithServer { (error) -> Void in
             if (error == nil) {
-                self.currentUser.updateEntityWithJSON(json)
-                self.currentUser.writeToDisk()
                 self.updateMarkets()
                 self.refreshUI()
             } else if let error = error where error.code == 401 {
                 self.currentUser.resetIdentifiers()
                 self.performSegueWithIdentifier("BackToSplash", sender: self)
             }
-        })
-        
+        }
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -192,7 +189,7 @@ class HomeController: UIViewController {
         cell.favorite = favorite
         cell.tweetView.configureWithTweet(twt)
 
-        println("\(className)::\(__FUNCTION__) didLeaveTip: \(favorite.didLeaveTip)")
+        //println("\(className)::\(__FUNCTION__) didLeaveTip: \(favorite.didLeaveTip)")
         if favorite.didLeaveTip {
             cell.tipButton.backgroundColor = UIColor.grayColor()
             cell.tipButton.enabled = false
@@ -200,10 +197,6 @@ class HomeController: UIViewController {
             cell.tipButton.backgroundColor = UIColor.colorWithRGB(0x69C397, alpha: 1.0)
             cell.tipButton.enabled = true
         }
-
-
-        //cell.tweetView.delegate = self
-        //cell.configureWithTweet(twt)
 
         return cell
     }
