@@ -155,6 +155,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             currentUser = currentUser {
             let favorite = Favorite.entityWithJSON(Favorite.self, json: JSON(favorite), context: managedObjectContext!)
             completionHandler(.NewData)
+        } else if let user = userInfo["user"] as? [String: AnyObject]  {
+            currentUser.updateEntityWithJSON(JSON(user))
+            completionHandler(.NewData)
         } else {
             completionHandler(.NoData)
         }
