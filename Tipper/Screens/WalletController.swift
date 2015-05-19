@@ -38,7 +38,7 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("\(className)::\(__FUNCTION__) currentUser: \(currentUser)")
+        //println("\(className)::\(__FUNCTION__) currentUser: \(currentUser)")
 
         self.addressLabel.text = currentUser.bitcoinAddress
         qrCode.image = QRCode(currentUser.bitcoinAddress!)?.image
@@ -55,14 +55,6 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
             self.applePayButton.hidden = true
         }
     }
-
-//    - (BOOL)applePayEnabled {
-//    if ([PKPaymentRequest class]) {
-//    PKPaymentRequest *paymentRequest = [Stripe paymentRequestWithMerchantIdentifier:AppleMerchantId];
-//    return [Stripe canSubmitPaymentRequest:paymentRequest];
-//    }
-//    return NO;
-//    }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -98,25 +90,17 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
             alertController.addAction(OKAction)
             self.parentViewController!.presentViewController(alertController, animated: true, completion: nil)
         } else {
-            currentUser.withdrawBalance(addressToPayTextField.text, completion: { (error) -> Void in
+            currentUser.withdrawBalance(addressToPayTextField.text, completion: { [weak self] (error) -> Void in
                 if error != nil {
                     let alertController = UIAlertController(title: "There was a problem", message: "Please try again later", preferredStyle: .Alert)
-                    let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-                        // ...
-                    }
+                    let OKAction = UIAlertAction(title: "OK", style: .Default, handler:nil)
                     alertController.addAction(OKAction)
-                    self.parentViewController!.presentViewController(alertController, animated: true) {
-                        // ...
-                    }
+                    self?.parentViewController!.presentViewController(alertController, animated: true,  completion:nil)
                 } else {
                     let alertController = UIAlertController(title: "Success", message: "Withdraw in progress. Please wait a few moments for you balances to be updated", preferredStyle: .Alert)
-                    let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-                        // ...
-                    }
+                    let OKAction = UIAlertAction(title: "OK", style: .Default, handler:nil)
                     alertController.addAction(OKAction)
-                    self.parentViewController!.presentViewController(alertController, animated: true) {
-                        // ...
-                    }
+                    self?.parentViewController!.presentViewController(alertController, animated: true, completion:nil)
                 }
             })
         }
@@ -187,7 +171,7 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
 
 
     func createBackendChargeWithToken(token: STPToken, completion: STPTokenSubmissionHandler) {
-        API.sharedInstance.charge(token.tokenId, amount:self.market.amount!, completion: { (json, error) -> Void in
+        API.sharedInstance.charge(token.tokenId, amount:self.market.amount!, completion: { [weak self] (json, error) -> Void in
             if (error != nil) {
                 completion(STPBackendChargeResult.Failure, error)
             } else {
@@ -197,10 +181,10 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
     }
 
     func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: ((PKPaymentAuthorizationStatus) -> Void)) {
-        STPAPIClient.sharedClient().createTokenWithPayment(payment, completion: { (token, error) -> Void in
+        STPAPIClient.sharedClient().createTokenWithPayment(payment, completion: { [weak self] (token, error) -> Void in
             if error != nil {
                 if let token = token {
-                    self.createBackendChargeWithToken(token, completion: { (result, error) -> Void in
+                    self?.createBackendChargeWithToken(token, completion: { (result, error) -> Void in
                         if result == STPBackendChargeResult.Success {
                             completion(PKPaymentAuthorizationStatus.Success)
                             return

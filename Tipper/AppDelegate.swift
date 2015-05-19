@@ -170,7 +170,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         managedObjectContext = nil
         setupFirstController()
         NSNotificationCenter.defaultCenter().postNotificationName("CoreDataReset", object: nil)
-
     }
 
     lazy var applicationDocumentsDirectory: NSURL = {

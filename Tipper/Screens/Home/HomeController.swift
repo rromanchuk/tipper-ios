@@ -8,8 +8,9 @@
 
 import UIKit
 import TwitterKit
+import MessageUI
 
-class HomeController: UIViewController {
+class HomeController: UIViewController, MFMailComposeViewControllerDelegate {
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
     var market: Market!
@@ -60,9 +61,22 @@ class HomeController: UIViewController {
             self?.currentUser.resetIdentifiers()
             self?.performSegueWithIdentifier("BackToSplash", sender: self)
         }
+
+        let feedbackAction = UIAlertAction(title: "Feedback and Support", style: .Default, handler: { [weak self] (action) -> Void in
+            let mailComposer = MFMailComposeViewController()
+            mailComposer.mailComposeDelegate = self
+            mailComposer.setSubject("Feedback and Support")
+            mailComposer.setToRecipients(["support@coinbit.tips"])
+            self?.presentViewController(mailComposer, animated:true, completion: nil)
+        })
+        _actionController.addAction(feedbackAction)
         _actionController.addAction(destroyAction)
         return _actionController
     }()
+
+    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+        dismissViewControllerAnimated(true, completion:nil)
+    }
 
 
     override func viewDidLoad() {
