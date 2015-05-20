@@ -51,6 +51,13 @@ class HomeController: UIViewController, MFMailComposeViewControllerDelegate {
 
     lazy var actionSheet: UIAlertController = {
         let _actionController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        if let popoverController = _actionController.popoverPresentationController {
+            popoverController.sourceView = self.settingsButton
+            popoverController.sourceRect = self.settingsButton.bounds
+        }
+
+
+
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { [weak self] (action) in
             println("\(self?.className)::\(__FUNCTION__) cancelAction")
         }
