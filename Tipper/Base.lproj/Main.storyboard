@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14E17e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J4X-Ps-uMP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E17e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J4X-Ps-uMP">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -123,11 +123,11 @@
                         <viewControllerLayoutGuide type="bottom" id="ycM-k7-yOs"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xl9-h1-7Xu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TaF-SW-wW7">
-                                <rect key="frame" x="0.0" y="82" width="414" height="654"/>
+                                <rect key="frame" x="0.0" y="82" width="768" height="942"/>
                                 <connections>
                                     <segue destination="UEU-XD-8Ny" kind="embed" identifier="WalletEmbed" id="Dvg-yb-Xmy"/>
                                 </connections>
@@ -148,7 +148,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78x-8p-d70">
-                                <rect key="frame" x="146" y="29" width="122" height="42"/>
+                                <rect key="frame" x="323" y="29" width="122" height="42"/>
                                 <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="42"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -156,31 +156,61 @@
                         </subviews>
                         <color key="backgroundColor" red="0.41176470590000003" green="0.76470588240000004" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="TaF-SW-wW7" firstAttribute="top" secondItem="Wpm-Fc-fcZ" secondAttribute="bottom" constant="62" id="1po-hE-QlV"/>
+                            <constraint firstItem="TaF-SW-wW7" firstAttribute="leading" secondItem="xl9-h1-7Xu" secondAttribute="leadingMargin" id="7tA-29-D8g"/>
+                            <constraint firstItem="78x-8p-d70" firstAttribute="leading" secondItem="Vt0-Vm-6NX" secondAttribute="trailing" constant="96" id="9g3-QY-cHf"/>
                             <constraint firstItem="TaF-SW-wW7" firstAttribute="top" secondItem="Wpm-Fc-fcZ" secondAttribute="bottom" constant="62" id="9zd-PS-B11"/>
                             <constraint firstItem="ycM-k7-yOs" firstAttribute="top" secondItem="TaF-SW-wW7" secondAttribute="bottom" id="B7c-qc-bab"/>
+                            <constraint firstItem="Vt0-Vm-6NX" firstAttribute="leading" secondItem="xl9-h1-7Xu" secondAttribute="leading" id="BDI-D0-sig"/>
+                            <constraint firstAttribute="trailing" secondItem="TaF-SW-wW7" secondAttribute="trailing" id="Dxf-pL-Xcd"/>
+                            <constraint firstItem="TaF-SW-wW7" firstAttribute="leading" secondItem="xl9-h1-7Xu" secondAttribute="leading" id="Msm-kN-wLp"/>
+                            <constraint firstItem="TaF-SW-wW7" firstAttribute="leading" secondItem="xl9-h1-7Xu" secondAttribute="leadingMargin" id="N6W-ig-0aO"/>
+                            <constraint firstItem="ycM-k7-yOs" firstAttribute="top" secondItem="TaF-SW-wW7" secondAttribute="bottom" id="QFZ-YL-Z77"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TaF-SW-wW7" secondAttribute="trailing" id="W6q-af-kiB"/>
+                            <constraint firstItem="TaF-SW-wW7" firstAttribute="centerX" secondItem="78x-8p-d70" secondAttribute="centerX" id="X0k-Zi-zUy"/>
                             <constraint firstAttribute="centerX" secondItem="78x-8p-d70" secondAttribute="centerX" id="Zp8-vt-AhF"/>
                             <constraint firstItem="Vt0-Vm-6NX" firstAttribute="leading" secondItem="xl9-h1-7Xu" secondAttribute="leadingMargin" id="a0f-eS-7oh"/>
+                            <constraint firstAttribute="centerX" secondItem="78x-8p-d70" secondAttribute="centerX" id="d8t-2Q-rQX"/>
                             <constraint firstItem="78x-8p-d70" firstAttribute="centerY" secondItem="Vt0-Vm-6NX" secondAttribute="centerY" id="jcQ-vP-czH"/>
+                            <constraint firstItem="Vt0-Vm-6NX" firstAttribute="leading" secondItem="TaF-SW-wW7" secondAttribute="leading" id="jcS-PP-Lou"/>
                             <constraint firstItem="TaF-SW-wW7" firstAttribute="width" secondItem="xl9-h1-7Xu" secondAttribute="width" id="kDB-7F-gMA"/>
                             <constraint firstAttribute="centerY" secondItem="78x-8p-d70" secondAttribute="centerY" constant="323" id="nUW-Lg-ZdT"/>
                             <constraint firstItem="TaF-SW-wW7" firstAttribute="leading" secondItem="xl9-h1-7Xu" secondAttribute="leadingMargin" id="rAm-Cr-c4V"/>
+                            <constraint firstItem="TaF-SW-wW7" firstAttribute="top" secondItem="Vt0-Vm-6NX" secondAttribute="bottom" constant="7" id="s9E-df-u7h"/>
                             <constraint firstAttribute="centerX" secondItem="78x-8p-d70" secondAttribute="centerX" id="shr-Hr-CMm"/>
                             <constraint firstItem="TaF-SW-wW7" firstAttribute="leading" secondItem="xl9-h1-7Xu" secondAttribute="leadingMargin" constant="-16" id="szo-yn-aYM"/>
+                            <constraint firstItem="TaF-SW-wW7" firstAttribute="leading" secondItem="Vt0-Vm-6NX" secondAttribute="leading" id="t6x-ru-o5e"/>
                             <constraint firstItem="Vt0-Vm-6NX" firstAttribute="leading" secondItem="xl9-h1-7Xu" secondAttribute="leadingMargin" constant="-16" id="tTT-GD-gdg"/>
+                            <constraint firstItem="TaF-SW-wW7" firstAttribute="bottom" secondItem="ycM-k7-yOs" secondAttribute="top" id="tnk-f4-oyh"/>
                             <constraint firstItem="Vt0-Vm-6NX" firstAttribute="top" secondItem="Wpm-Fc-fcZ" secondAttribute="bottom" constant="5" id="tyA-kf-J72"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TaF-SW-wW7" secondAttribute="trailing" constant="-16" id="vuV-Nz-4W9"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="a0f-eS-7oh"/>
+                                <exclude reference="jcS-PP-Lou"/>
+                                <exclude reference="tTT-GD-gdg"/>
+                                <exclude reference="7tA-29-D8g"/>
+                                <exclude reference="9zd-PS-B11"/>
+                                <exclude reference="N6W-ig-0aO"/>
                                 <exclude reference="W6q-af-kiB"/>
+                                <exclude reference="X0k-Zi-zUy"/>
+                                <exclude reference="kDB-7F-gMA"/>
                                 <exclude reference="rAm-Cr-c4V"/>
+                                <exclude reference="s9E-df-u7h"/>
+                                <exclude reference="szo-yn-aYM"/>
+                                <exclude reference="t6x-ru-o5e"/>
+                                <exclude reference="tnk-f4-oyh"/>
+                                <exclude reference="vuV-Nz-4W9"/>
+                                <exclude reference="9g3-QY-cHf"/>
                                 <exclude reference="Zp8-vt-AhF"/>
                                 <exclude reference="nUW-Lg-ZdT"/>
+                                <exclude reference="shr-Hr-CMm"/>
+                                <exclude reference="B7c-qc-bab"/>
                             </mask>
                         </variation>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="balanceLabel" destination="78x-8p-d70" id="pnf-ok-DBx"/>
                         <outlet property="containerView" destination="TaF-SW-wW7" id="LSO-aI-lA1"/>
@@ -189,13 +219,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8OC-yB-Kxp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="910" y="-331"/>
+            <point key="canvasLocation" x="1044" y="-371"/>
         </scene>
         <!--Wallet Controller-->
         <scene sceneID="ehQ-m5-dqf">
             <objects>
                 <tableViewController id="UEU-XD-8Ny" customClass="WalletController" customModule="Tipper" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="2xd-ij-voR">
+                    <tableView key="view" clipsSubviews="YES" contentMode="redraw" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="2xd-ij-voR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -223,13 +253,13 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXCHANGE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7MI-BW-rqR" userLabel="Exchange label">
                                                     <rect key="frame" x="66" y="106" width="72" height="15"/>
                                                     <fontDescription key="fontDescription" name="Bariol-Bold" family="Bariol" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FOR" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAV-5u-7mb" userLabel="For label">
                                                     <rect key="frame" x="111" y="180" width="27" height="15"/>
                                                     <fontDescription key="fontDescription" name="Bariol-Bold" family="Bariol" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cn-W2-1Jv">
@@ -247,13 +277,13 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17uSiLUXUMKuQRNbdLQ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AR8-pK-0TU">
                                                     <rect key="frame" x="131" y="426" width="152" height="15"/>
                                                     <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEND TO MY ADDRESS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7r-Gq-8mP">
                                                     <rect key="frame" x="135" y="401" width="145" height="15"/>
                                                     <fontDescription key="fontDescription" name="Bariol-Bold" family="Bariol" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ix-8z-rrx">
@@ -317,7 +347,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEND TO MY QR CODE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u43-sd-Dvu">
                                                     <rect key="frame" x="136" y="577" width="143" height="15"/>
                                                     <fontDescription key="fontDescription" name="Bariol-Bold" family="Bariol" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WITHDRAW FUNDS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAz-Ju-zso">
@@ -336,7 +366,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEND TO MY ADDRESS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rP5-Rl-cgz">
                                                     <rect key="frame" x="135" y="1047" width="145" height="15"/>
                                                     <fontDescription key="fontDescription" name="Bariol-Bold" family="Bariol" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jm4-av-7oX">
@@ -388,6 +418,7 @@
                                                 <constraint firstItem="3cn-W2-1Jv" firstAttribute="leading" secondItem="5ix-8z-rrx" secondAttribute="trailing" constant="5" id="4lX-5z-FNa"/>
                                                 <constraint firstItem="9DJ-2s-fVD" firstAttribute="leading" secondItem="Uug-ax-ABv" secondAttribute="leading" constant="-1" id="6Yu-0P-Tfh"/>
                                                 <constraint firstItem="3cn-W2-1Jv" firstAttribute="leading" secondItem="WgK-yF-TQV" secondAttribute="leading" id="6hJ-mP-ngg"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Jm4-av-7oX" secondAttribute="bottom" constant="60" id="8dV-HB-wYx"/>
                                                 <constraint firstAttribute="centerX" secondItem="rP5-Rl-cgz" secondAttribute="centerX" id="9yi-Z9-WjF"/>
                                                 <constraint firstItem="kFk-hZ-4zT" firstAttribute="width" secondItem="uBa-1b-LJq" secondAttribute="width" id="ACG-Lo-HQy"/>
                                                 <constraint firstItem="9DJ-2s-fVD" firstAttribute="top" secondItem="3iP-12-iHD" secondAttribute="bottom" constant="32" id="AFz-Pt-1ho"/>
@@ -402,6 +433,7 @@
                                                 <constraint firstAttribute="centerX" secondItem="9DJ-2s-fVD" secondAttribute="centerX" id="JSA-6t-9sC"/>
                                                 <constraint firstItem="5ix-8z-rrx" firstAttribute="leading" secondItem="7MI-BW-rqR" secondAttribute="trailing" constant="20" id="KkM-hd-aIo"/>
                                                 <constraint firstItem="IAn-5m-NYd" firstAttribute="leading" secondItem="kAz-Ju-zso" secondAttribute="leading" id="LeL-Xr-z1j"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Jm4-av-7oX" secondAttribute="bottom" constant="122" id="MS7-gq-s8B"/>
                                                 <constraint firstAttribute="centerX" secondItem="IAn-5m-NYd" secondAttribute="centerX" id="MhX-j0-6cN"/>
                                                 <constraint firstAttribute="centerX" secondItem="Jm4-av-7oX" secondAttribute="centerX" id="ODA-8J-nlp"/>
                                                 <constraint firstItem="xD2-av-nLf" firstAttribute="top" secondItem="YEX-Sw-CQJ" secondAttribute="topMargin" constant="20" id="Pvh-Zn-c2C"/>
@@ -441,6 +473,7 @@
                                                 <constraint firstItem="uBa-1b-LJq" firstAttribute="top" secondItem="6Wd-76-ren" secondAttribute="bottom" constant="44" id="vLL-Ks-2qT"/>
                                                 <constraint firstItem="xD2-av-nLf" firstAttribute="leading" secondItem="kAz-Ju-zso" secondAttribute="leading" constant="-4" id="w0h-bp-joZ"/>
                                                 <constraint firstItem="xD2-av-nLf" firstAttribute="leading" secondItem="f0q-kf-Mol" secondAttribute="leading" id="wPJ-nD-BMQ"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Jm4-av-7oX" secondAttribute="bottom" constant="15" id="xNp-Ea-is6"/>
                                                 <constraint firstItem="3cn-W2-1Jv" firstAttribute="centerY" secondItem="7MI-BW-rqR" secondAttribute="centerY" constant="0.5" id="xox-QF-QR7"/>
                                                 <constraint firstAttribute="centerX" secondItem="6Wd-76-ren" secondAttribute="centerX" id="zDQ-CV-ijs"/>
                                             </constraints>
@@ -451,6 +484,8 @@
                                                     <exclude reference="KkM-hd-aIo"/>
                                                     <exclude reference="Wgr-pz-AsX"/>
                                                     <exclude reference="MhX-j0-6cN"/>
+                                                    <exclude reference="8dV-HB-wYx"/>
+                                                    <exclude reference="MS7-gq-s8B"/>
                                                     <exclude reference="ptS-62-7sI"/>
                                                 </mask>
                                             </variation>

@@ -39,6 +39,8 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
     override func viewDidLoad() {
         super.viewDidLoad()
         //println("\(className)::\(__FUNCTION__) currentUser: \(currentUser)")
+        self.tableView.estimatedRowHeight = 1300;
+        self.tableView.rowHeight = UITableViewAutomaticDimension;
 
         self.addressLabel.text = currentUser.bitcoinAddress
         qrCode.image = QRCode(currentUser.bitcoinAddress!)?.image
@@ -58,6 +60,11 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tableView.reloadData()
     }
 
     func addressValid() -> Bool {
@@ -208,5 +215,9 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
         }
 
 
+    }
+
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
 }
