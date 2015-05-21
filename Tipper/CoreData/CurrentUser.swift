@@ -348,6 +348,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         NSUbiquitousKeyValueStore.defaultStore().synchronize()
         self.destroy()
         self.writeToDisk()
+        Twitter.sharedInstance().logOut()
     }
 
 
