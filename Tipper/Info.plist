@@ -27,7 +27,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>51</string>
+	<string>55</string>
 	<key>COGNITO_AUTH_ARN</key>
 	<string>$(COGNITO_AUTH_ARN)</string>
 	<key>COGNITO_POOL</key>
@@ -58,6 +58,17 @@
 				</dict>
 				<key>KitName</key>
 				<string>Twitter</string>
+			</dict>
+			<dict>
+				<key>KitInfo</key>
+				<dict>
+					<key>consumerKey</key>
+					<string>***REMOVED***</string>
+					<key>consumerSecret</key>
+					<string>***REMOVED***</string>
+				</dict>
+				<key>KitName</key>
+				<string>Digits</string>
 			</dict>
 		</array>
 	</dict>

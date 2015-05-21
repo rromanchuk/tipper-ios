@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3B6E9F44501E44BF73C99834 /* libPods-Tipper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E57F9EB756EFF49AEA100E /* libPods-Tipper.a */; };
+		9411C9161B0D57E300569E4B /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9411C9131B0D57E300569E4B /* TwitterCore.framework */; };
+		9411C9171B0D57E300569E4B /* DigitsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9411C9141B0D57E300569E4B /* DigitsKit.framework */; };
+		9411C9181B0D57E300569E4B /* DigitsKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9411C9151B0D57E300569E4B /* DigitsKitResources.bundle */; };
 		9416317D1AC3BCB9002016FD /* ApplePayBTN_63pt__white_logo_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9416317C1AC3BCB9002016FD /* ApplePayBTN_63pt__white_logo_@2x.png */; };
 		9416317F1AC3C1EC002016FD /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9416317E1AC3C1EC002016FD /* HomeController.swift */; };
 		941631831AC3CC5E002016FD /* AddressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941631821AC3CC5E002016FD /* AddressController.swift */; };
@@ -67,6 +70,9 @@
 /* Begin PBXFileReference section */
 		20CFF2D7F1C187F20E1EAFF3 /* Pods-Tipper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tipper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tipper/Pods-Tipper.debug.xcconfig"; sourceTree = "<group>"; };
 		74E57F9EB756EFF49AEA100E /* libPods-Tipper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tipper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9411C9131B0D57E300569E4B /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
+		9411C9141B0D57E300569E4B /* DigitsKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DigitsKit.framework; sourceTree = "<group>"; };
+		9411C9151B0D57E300569E4B /* DigitsKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DigitsKitResources.bundle; path = DigitsKit.framework/Versions/A/Resources/DigitsKitResources.bundle; sourceTree = "<group>"; };
 		9416317C1AC3BCB9002016FD /* ApplePayBTN_63pt__white_logo_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ApplePayBTN_63pt__white_logo_@2x.png"; sourceTree = "<group>"; };
 		9416317E1AC3C1EC002016FD /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeController.swift; path = Home/HomeController.swift; sourceTree = "<group>"; };
 		941631821AC3CC5E002016FD /* AddressController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressController.swift; path = Address/AddressController.swift; sourceTree = "<group>"; };
@@ -127,11 +133,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9411C9171B0D57E300569E4B /* DigitsKit.framework in Frameworks */,
 				9484185A1AB6525F001C633E /* Alamofire.framework in Frameworks */,
 				9484185B1AB6525F001C633E /* SwiftyJSON.framework in Frameworks */,
 				948418571AB6525E001C633E /* QRCode.framework in Frameworks */,
 				94AF29C11AAF04D000E16048 /* Crashlytics.framework in Frameworks */,
 				94AF29C21AAF04D000E16048 /* Fabric.framework in Frameworks */,
+				9411C9161B0D57E300569E4B /* TwitterCore.framework in Frameworks */,
 				94AF29C51AAF060000E16048 /* TwitterKit.framework in Frameworks */,
 				3B6E9F44501E44BF73C99834 /* libPods-Tipper.a in Frameworks */,
 			);
@@ -340,6 +348,9 @@
 		99548B7BBFFD4449A2DD2385 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9411C9131B0D57E300569E4B /* TwitterCore.framework */,
+				9411C9141B0D57E300569E4B /* DigitsKit.framework */,
+				9411C9151B0D57E300569E4B /* DigitsKitResources.bundle */,
 				948418581AB6525F001C633E /* Alamofire.framework */,
 				948418591AB6525F001C633E /* SwiftyJSON.framework */,
 				9484183A1AB61396001C633E /* QRCode.framework */,
@@ -457,6 +468,7 @@
 				94AF29C61AAF060000E16048 /* TwitterKitResources.bundle in Resources */,
 				9416317D1AC3BCB9002016FD /* ApplePayBTN_63pt__white_logo_@2x.png in Resources */,
 				945065FD1B07CFB900AF34F6 /* Bariol.ttf in Resources */,
+				9411C9181B0D57E300569E4B /* DigitsKitResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
