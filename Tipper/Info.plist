@@ -23,11 +23,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.0</string>
+	<string>1.0.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>57</string>
+	<string>58</string>
 	<key>COGNITO_AUTH_ARN</key>
 	<string>$(COGNITO_AUTH_ARN)</string>
 	<key>COGNITO_POOL</key>
@@ -52,9 +52,9 @@
 				<key>KitInfo</key>
 				<dict>
 					<key>consumerKey</key>
-					<string>O3S9j8D3ZJQZCU6DcI1ABjinR</string>
+					<string>***REMOVED***</string>
 					<key>consumerSecret</key>
-					<string>DCL7zOahnqqH7DLAy6VMlCn5ZH866Nwylb5YYmInuue6MR510I</string>
+					<string>***REMOVED***</string>
 				</dict>
 				<key>KitName</key>
 				<string>Twitter</string>
