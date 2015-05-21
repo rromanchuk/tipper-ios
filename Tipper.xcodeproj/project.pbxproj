@@ -39,6 +39,11 @@
 		94AF297A1AAEF2B600E16048 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94AF29781AAEF2B600E16048 /* Main.storyboard */; };
 		94AF297F1AAEF2B600E16048 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AF297D1AAEF2B600E16048 /* LaunchScreen.xib */; };
 		94AF298B1AAEF2B600E16048 /* TipperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AF298A1AAEF2B600E16048 /* TipperTests.swift */; };
+		94C255131B0D825800A65B94 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C2550F1B0D825800A65B94 /* Fabric.framework */; };
+		94C255141B0D825800A65B94 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C255101B0D825800A65B94 /* TwitterKit.framework */; };
+		94C255151B0D825800A65B94 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C255111B0D825800A65B94 /* TwitterCore.framework */; };
+		94C255161B0D825800A65B94 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C255121B0D825800A65B94 /* Crashlytics.framework */; };
+		94C255181B0D829100A65B94 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 94C255171B0D829100A65B94 /* TwitterKitResources.bundle */; };
 		94C5C0D31ABFF47A009E4B05 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C5C0D21ABFF47A009E4B05 /* Market.swift */; };
 		94EE8CF61AB16E7E000593CD /* TTTURLRequestFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */; };
 		94F3FD951B08581900CD0261 /* WalletContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F3FD941B08581900CD0261 /* WalletContainerController.swift */; };
@@ -101,6 +106,11 @@
 		94AF29841AAEF2B600E16048 /* TipperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94AF29891AAEF2B600E16048 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94AF298A1AAEF2B600E16048 /* TipperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipperTests.swift; sourceTree = "<group>"; };
+		94C2550F1B0D825800A65B94 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		94C255101B0D825800A65B94 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
+		94C255111B0D825800A65B94 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
+		94C255121B0D825800A65B94 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		94C255171B0D829100A65B94 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
 		94C5C0D21ABFF47A009E4B05 /* Market.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		94EE8CF41AB16E7E000593CD /* TTTURLRequestFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTURLRequestFormatter.h; sourceTree = "<group>"; };
 		94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTURLRequestFormatter.m; sourceTree = "<group>"; };
@@ -120,9 +130,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9484185A1AB6525F001C633E /* Alamofire.framework in Frameworks */,
+				94C255131B0D825800A65B94 /* Fabric.framework in Frameworks */,
+				94C255161B0D825800A65B94 /* Crashlytics.framework in Frameworks */,
+				94C255151B0D825800A65B94 /* TwitterCore.framework in Frameworks */,
 				9484185B1AB6525F001C633E /* SwiftyJSON.framework in Frameworks */,
 				948418571AB6525E001C633E /* QRCode.framework in Frameworks */,
 				3B6E9F44501E44BF73C99834 /* libPods-Tipper.a in Frameworks */,
+				94C255141B0D825800A65B94 /* TwitterKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +343,11 @@
 		99548B7BBFFD4449A2DD2385 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				94C255171B0D829100A65B94 /* TwitterKitResources.bundle */,
+				94C2550F1B0D825800A65B94 /* Fabric.framework */,
+				94C255101B0D825800A65B94 /* TwitterKit.framework */,
+				94C255111B0D825800A65B94 /* TwitterCore.framework */,
+				94C255121B0D825800A65B94 /* Crashlytics.framework */,
 				948418581AB6525F001C633E /* Alamofire.framework */,
 				948418591AB6525F001C633E /* SwiftyJSON.framework */,
 				9484183A1AB61396001C633E /* QRCode.framework */,
@@ -434,6 +453,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94C255181B0D829100A65B94 /* TwitterKitResources.bundle in Resources */,
 				94AF297A1AAEF2B600E16048 /* Main.storyboard in Resources */,
 				945065FB1B07CFB900AF34F6 /* Bariol_Bold.otf in Resources */,
 				945065FC1B07CFB900AF34F6 /* Bariol_Light.otf in Resources */,
