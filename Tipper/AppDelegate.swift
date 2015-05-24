@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var currentUser: CurrentUser!
     var provider: TwitterAuth?
     var market: Market!
+    weak var notificationsDelegate: NotificationMessagesDelegate?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 //        // Override point for customization after application launch.
@@ -99,7 +100,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             currentUser.pushToDynamo()
             //currentUser.refreshWithDynamo()
             currentUser.registerForRemoteNotificationsIfNeeded()
+            //subscribeToTopics()
         }        
+    }
+
+    func subscribeToTopics() {
+        let sns = AWSSNS.defaultSNS()
+        let request = AWSSNSSubscribeInput()
+        request.topicArn = "***REMOVED***"
+        sns.subscribe(request).continueWithBlock { (task) -> AnyObject! in
+            println("\(task.result) \(task.error)")
+            return nil
+        }
+
     }
 
     func setApplicationBadgeNumber(number: UInt) {
@@ -142,6 +155,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 println("endpointArn: \(createEndpointResponse.endpointArn)")
                 self.currentUser?.endpointArn = createEndpointResponse.endpointArn
                 //self.currentUser?.pushToDynamo()
+                let request = AWSSNSSubscribeInput()
+                request.endpoint = createEndpointResponse.endpointArn
+                request.protocols = "application"
+                request.topicArn = "***REMOVED***"
+                sns.subscribe(request).continueWithBlock({ (task) -> AnyObject! in
+                    println("\(task.result) \(task.error)")
+                    return nil
+                })
             }
             
             return nil
@@ -158,6 +179,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else if let user = userInfo["user"] as? [String: AnyObject]  {
             currentUser.updateEntityWithJSON(JSON(user))
             completionHandler(.NewData)
+        } else if let testNotification = userInfo["test_message"] as? [String: AnyObject] {
+            println("Inside test message")
+            completionHandler(.NewData)
+            let json = JSON(testNotification)
+            let message = json["message"].stringValue
+            if application.applicationState == .Active {
+                println("app is active")
+                notificationsDelegate?.didReceiveNotificationAlert(message, type: .Error)
+            }
+
         } else {
             completionHandler(.NoData)
         }
@@ -244,5 +275,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+}
+
+protocol NotificationMessagesDelegate:class {
+    func didReceiveNotificationAlert(message: String, type: TSMessageNotificationType)
 }
 

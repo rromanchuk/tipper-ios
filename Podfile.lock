@@ -36,6 +36,7 @@ PODS:
     - Mantle (~> 1.4)
   - Bolts (1.1.4)
   - GZIP (1.0.3)
+  - HexColors (2.2.1)
   - Mantle (1.5.4):
     - Mantle/extobjc (= 1.5.4)
   - Mantle/extobjc (1.5.4)
@@ -52,6 +53,8 @@ PODS:
     - Stripe/Core
   - Stripe/Core (3.1.0)
   - TMCache (1.2.4)
+  - TSMessages (0.9.12):
+    - HexColors
   - UICKeyChainStore (2.0.4)
   - XMLDictionary (1.4)
 
@@ -66,6 +69,7 @@ DEPENDENCIES:
   - SSKeychain
   - Stripe
   - Stripe/ApplePay
+  - TSMessages
 
 SPEC CHECKSUMS:
   AWSCognito: c251f1f166c74343493451e238ca7157e1e33dda
@@ -77,6 +81,7 @@ SPEC CHECKSUMS:
   AWSSQS: bb6b810a5d9826b4b25ed520e344b71a90d6e48f
   Bolts: f8e2f94edbf9fec7bb8de5ecaaa3aa6b7de6f64e
   GZIP: f0863fda354e8f83316508c0a2c7bbe385e39129
+  HexColors: abfd172e329dab59888614ccba6f216cec59289d
   Mantle: 60acd0cd363e27d945bda0a6b8e90577112d28f3
   RBBAnimation: 4b2d66f6d993febce63cd564da934985313b9c59
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
@@ -85,7 +90,8 @@ SPEC CHECKSUMS:
   SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d
   Stripe: 8a456332f4db97bd0b8457fc8cce1e1a69ac0cd1
   TMCache: a93984b045a5ee84bd8941bd5e0b54296059cc52
+  TSMessages: 2a52642128d7ab15b46930c810b9c9403a2b58f3
   UICKeyChainStore: 69eb0c3a6f669bccf16ba88de3b9069b71501361
   XMLDictionary: f9f51601ba76678b594ab485f2b00ec1fed23724
 
-COCOAPODS: 0.36.3
+COCOAPODS: 0.37.1

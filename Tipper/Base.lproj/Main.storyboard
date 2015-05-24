@@ -17,9 +17,6 @@
             <string>Bariol-Regular</string>
             <string>Bariol-Regular</string>
             <string>Bariol-Regular</string>
-            <string>Bariol-Regular</string>
-            <string>Bariol-Regular</string>
-            <string>Bariol-Regular</string>
         </mutableArray>
         <mutableArray key="Bariol_Bold.otf">
             <string>Bariol-Bold</string>
@@ -36,6 +33,10 @@
             <string>Bariol-Light</string>
             <string>Bariol-Light</string>
             <string>Bariol-Light</string>
+        </mutableArray>
+        <mutableArray key="coiner.ttf">
+            <string>coiner</string>
+            <string>coiner</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -153,6 +154,12 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69d-CZ-FMV">
+                                <rect key="frame" x="288" y="31" width="45" height="37"/>
+                                <fontDescription key="fontDescription" name="coiner" family="coiner" pointSize="45"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.41176470590000003" green="0.76470588240000004" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -160,11 +167,13 @@
                             <constraint firstItem="TaF-SW-wW7" firstAttribute="leading" secondItem="xl9-h1-7Xu" secondAttribute="leadingMargin" id="7tA-29-D8g"/>
                             <constraint firstItem="78x-8p-d70" firstAttribute="leading" secondItem="Vt0-Vm-6NX" secondAttribute="trailing" constant="96" id="9g3-QY-cHf"/>
                             <constraint firstItem="TaF-SW-wW7" firstAttribute="top" secondItem="Wpm-Fc-fcZ" secondAttribute="bottom" constant="62" id="9zd-PS-B11"/>
+                            <constraint firstItem="69d-CZ-FMV" firstAttribute="centerY" secondItem="78x-8p-d70" secondAttribute="centerY" constant="-0.5" id="AHN-Wy-x9Y"/>
                             <constraint firstItem="ycM-k7-yOs" firstAttribute="top" secondItem="TaF-SW-wW7" secondAttribute="bottom" id="B7c-qc-bab"/>
                             <constraint firstItem="Vt0-Vm-6NX" firstAttribute="leading" secondItem="xl9-h1-7Xu" secondAttribute="leading" id="BDI-D0-sig"/>
                             <constraint firstAttribute="trailing" secondItem="TaF-SW-wW7" secondAttribute="trailing" id="Dxf-pL-Xcd"/>
                             <constraint firstItem="TaF-SW-wW7" firstAttribute="leading" secondItem="xl9-h1-7Xu" secondAttribute="leading" id="Msm-kN-wLp"/>
                             <constraint firstItem="TaF-SW-wW7" firstAttribute="leading" secondItem="xl9-h1-7Xu" secondAttribute="leadingMargin" id="N6W-ig-0aO"/>
+                            <constraint firstItem="78x-8p-d70" firstAttribute="leading" secondItem="69d-CZ-FMV" secondAttribute="trailing" constant="-10" id="OwE-ej-6sc"/>
                             <constraint firstItem="ycM-k7-yOs" firstAttribute="top" secondItem="TaF-SW-wW7" secondAttribute="bottom" id="QFZ-YL-Z77"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TaF-SW-wW7" secondAttribute="trailing" id="W6q-af-kiB"/>
                             <constraint firstItem="TaF-SW-wW7" firstAttribute="centerX" secondItem="78x-8p-d70" secondAttribute="centerX" id="X0k-Zi-zUy"/>
@@ -393,9 +402,9 @@
                                                         <action selector="textFieldChanged:" destination="UEU-XD-8Ny" eventType="editingChanged" id="bBd-Lk-cwf"/>
                                                     </connections>
                                                 </textField>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mBTC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GmB-7c-2pP">
-                                                    <rect key="frame" x="176" y="180" width="44" height="17"/>
-                                                    <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GmB-7c-2pP">
+                                                    <rect key="frame" x="191" y="176" width="29" height="24"/>
+                                                    <fontDescription key="fontDescription" name="coiner" family="coiner" pointSize="29"/>
                                                     <color key="textColor" red="0.41176470590000003" green="0.41176470590000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -530,7 +539,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RZK-c9-5JT">
-                                <rect key="frame" x="20" y="179" width="374" height="557"/>
+                                <rect key="frame" x="20" y="180" width="374" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="509" id="n8b-kv-73f"/>
@@ -547,16 +556,22 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="288" height="145"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="767" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3m0-sj-6kH">
-                                                    <rect key="frame" x="297" y="58" width="69" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="767" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3m0-sj-6kH">
+                                                    <rect key="frame" x="322" y="58" width="44" height="30"/>
                                                     <color key="backgroundColor" red="0.41176470590000003" green="0.76470588240000004" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="J7n-CC-GRA"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="18"/>
                                                     <inset key="contentEdgeInsets" minX="6" minY="0.0" maxX="6" maxY="0.0"/>
-                                                    <state key="normal" title="1 mBTC">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <state key="normal">
+                                                        <attributedString key="attributedTitle">
+                                                            <fragment content="a500">
+                                                                <attributes>
+                                                                    <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <font key="NSFont" metaFont="smallSystem"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
                                                     </state>
                                                     <connections>
                                                         <action selector="userDidTip:" destination="adt-yG-bPN" eventType="touchUpInside" id="4WT-AD-hRk"/>
@@ -591,7 +606,7 @@
                                 </connections>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zmw-Y4-Vvl">
-                                <rect key="frame" x="20" y="127" width="374" height="29"/>
+                                <rect key="frame" x="20" y="128" width="374" height="29"/>
                                 <segments>
                                     <segment title="Outbound"/>
                                     <segment title="Inbound"/>
@@ -602,7 +617,7 @@
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAV-bz-KNC" userLabel="Settings Button">
-                                <rect key="frame" x="289" y="49" width="50" height="50"/>
+                                <rect key="frame" x="291" y="49" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="7te-YJ-N5r"/>
                                     <constraint firstAttribute="width" constant="50" id="Chf-nK-nVU"/>
@@ -624,7 +639,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cot-eT-evp" userLabel="Address Button">
-                                <rect key="frame" x="75" y="49" width="50" height="50"/>
+                                <rect key="frame" x="73" y="49" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="87M-nG-Cji"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="VkI-ib-n3s"/>
@@ -645,11 +660,25 @@
                                     <segue destination="AQa-jZ-3mc" kind="presentation" identifier="Wallet" id="dPG-BQ-Zgz"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="767" text="Ƀ0.000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXc-JU-VTy">
-                                <rect key="frame" x="165" y="61" width="84" height="26"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="767" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXc-JU-VTy">
+                                <rect key="frame" x="163" y="61" width="88" height="27"/>
                                 <gestureRecognizers/>
-                                <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="26"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="a">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="26" name="coiner"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="truncatingTail" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="5000">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="26" name="Bariol-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="truncatingTail" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="7ra-5Y-CrU" appends="YES" id="VgC-3k-eNG"/>

@@ -44,6 +44,7 @@
 		94C255151B0D825800A65B94 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C255111B0D825800A65B94 /* TwitterCore.framework */; };
 		94C255161B0D825800A65B94 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C255121B0D825800A65B94 /* Crashlytics.framework */; };
 		94C255181B0D829100A65B94 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 94C255171B0D829100A65B94 /* TwitterKitResources.bundle */; };
+		94C2551E1B11540C00A65B94 /* coiner.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94C2551D1B10FDF800A65B94 /* coiner.ttf */; };
 		94C5C0D31ABFF47A009E4B05 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C5C0D21ABFF47A009E4B05 /* Market.swift */; };
 		94EE8CF61AB16E7E000593CD /* TTTURLRequestFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */; };
 		94F3FD951B08581900CD0261 /* WalletContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F3FD941B08581900CD0261 /* WalletContainerController.swift */; };
@@ -111,6 +112,7 @@
 		94C255111B0D825800A65B94 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
 		94C255121B0D825800A65B94 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		94C255171B0D829100A65B94 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
+		94C2551D1B10FDF800A65B94 /* coiner.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = coiner.ttf; sourceTree = "<group>"; };
 		94C5C0D21ABFF47A009E4B05 /* Market.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		94EE8CF41AB16E7E000593CD /* TTTURLRequestFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTURLRequestFormatter.h; sourceTree = "<group>"; };
 		94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTURLRequestFormatter.m; sourceTree = "<group>"; };
@@ -273,9 +275,7 @@
 		94AF296E1AAEF2B600E16048 /* Tipper */ = {
 			isa = PBXGroup;
 			children = (
-				945065F81B07CFB900AF34F6 /* Bariol_Bold.otf */,
-				945065F91B07CFB900AF34F6 /* Bariol_Light.otf */,
-				945065FA1B07CFB900AF34F6 /* Bariol.ttf */,
+				94C2551C1B10FDCB00A65B94 /* Resources */,
 				94416C081AAF989F00117AFC /* AppDelegate.swift */,
 				9416317C1AC3BCB9002016FD /* ApplePayBTN_63pt__white_logo_@2x.png */,
 				94FDE9BB1AB41FE2006B6454 /* Base */,
@@ -321,6 +321,17 @@
 				94AF29891AAEF2B600E16048 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		94C2551C1B10FDCB00A65B94 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				94C2551D1B10FDF800A65B94 /* coiner.ttf */,
+				945065F81B07CFB900AF34F6 /* Bariol_Bold.otf */,
+				945065F91B07CFB900AF34F6 /* Bariol_Light.otf */,
+				945065FA1B07CFB900AF34F6 /* Bariol.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		94FA97D51AB2E0DA005B0C83 /* Transaction */ = {
@@ -453,6 +464,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94C2551E1B11540C00A65B94 /* coiner.ttf in Resources */,
 				94C255181B0D829100A65B94 /* TwitterKitResources.bundle in Resources */,
 				94AF297A1AAEF2B600E16048 /* Main.storyboard in Resources */,
 				945065FB1B07CFB900AF34F6 /* Bariol_Bold.otf in Resources */,

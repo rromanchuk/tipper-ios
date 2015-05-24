@@ -197,7 +197,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         return CurrentUser.className
     }
 
-    var ubtc:String {
+    var balanceAsUBTC:String {
         get {
             if let btcBalance = self.bitcoinBalanceBTC {
                 let balanceFloat = (btcBalance as NSString).floatValue

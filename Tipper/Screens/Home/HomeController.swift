@@ -9,8 +9,9 @@
 import UIKit
 import TwitterKit
 import MessageUI
+import SwiftyJSON
 
-class HomeController: UIViewController, MFMailComposeViewControllerDelegate {
+class HomeController: UIViewController, MFMailComposeViewControllerDelegate, NotificationMessagesDelegate {
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
     var market: Market!
@@ -24,9 +25,6 @@ class HomeController: UIViewController, MFMailComposeViewControllerDelegate {
 
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var balanceLabel: UILabel!
-
-    let ApplePayMerchantID = Config.get("APPLE_PAY_MERCHANT")
-    let SupportedPaymentNetworks = [PKPaymentNetworkVisa, PKPaymentNetworkMasterCard, PKPaymentNetworkAmex]
 
     lazy var fetchedResultsController: NSFetchedResultsController = NSFetchedResultsController.superFetchedResultsController("Favorite", sectionNameKeyPath: nil, sortDescriptors: self.sortDescriptors, predicate: self.predicate, tableView: self.tableView, context: self.managedObjectContext)
 
@@ -97,14 +95,27 @@ class HomeController: UIViewController, MFMailComposeViewControllerDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidEnterBackground:", name: UIApplicationDidEnterBackgroundNotification, object: UIApplication.sharedApplication())
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidBecomeActive:", name: UIApplicationDidBecomeActiveNotification, object: UIApplication.sharedApplication())
 
+
         updateMarkets()
         DynamoFavorite.fetchFromAWS(currentUser, context: managedObjectContext)
         DynamoFavorite.fetchReceivedFromAWS(currentUser, context: managedObjectContext)
 
     }
 
+    func setBalance() {
+        let string = "a\(currentUser.balanceAsUBTC)"
+        let labelAttributes = NSMutableAttributedString(string: string)
+        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "coiner", size: 36.0)!, range: NSMakeRange(0,1))
+        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol", size: 36.0)!, range: NSMakeRange(1, count(string) - 1))
+        labelAttributes.addAttribute(NSKernAttributeName, value:-5.0, range: NSMakeRange(0, 1))
+
+        balanceLabel.attributedText = labelAttributes
+
+    }
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        (UIApplication.sharedApplication().delegate as! AppDelegate).notificationsDelegate = self
         refreshUI()
     }
 
@@ -117,7 +128,7 @@ class HomeController: UIViewController, MFMailComposeViewControllerDelegate {
         Debug.isBlocking()
 
         managedObjectContext.refreshObject(currentUser, mergeChanges: true)
-        balanceLabel.text = "\(currentUser.mbtc) mBTC"
+        setBalance()
     }
 
     func updateMarkets() {
@@ -187,6 +198,12 @@ class HomeController: UIViewController, MFMailComposeViewControllerDelegate {
         }
     }
 
+    func didReceiveNotificationAlert(message: String, type: TSMessageNotificationType) {
+        println("\(className)::\(__FUNCTION__)")
+        TSMessage.setDefaultViewController(self)
+        TSMessage.showNotificationWithTitle(message, type: type)
+    }
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         println("\(className)::\(__FUNCTION__)")
 
@@ -222,6 +239,8 @@ class HomeController: UIViewController, MFMailComposeViewControllerDelegate {
             cell.tipButton.backgroundColor = UIColor.colorWithRGB(0x69C397, alpha: 1.0)
             cell.tipButton.enabled = true
         }
+
+        cell.setupTipButton()
 
         return cell
     }

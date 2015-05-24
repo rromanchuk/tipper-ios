@@ -15,3 +15,4 @@
 #import "Stripe.h"
 #import "TTTURLRequestFormatter.h"
 #import "SSKeychain.h"
+#import <TSMessages/TSMessageView.h>

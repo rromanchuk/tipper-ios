@@ -27,7 +27,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>61</string>
+	<string>62</string>
 	<key>COGNITO_AUTH_ARN</key>
 	<string>$(COGNITO_AUTH_ARN)</string>
 	<key>COGNITO_POOL</key>
@@ -80,6 +80,7 @@
 	<string>$(STRIPE_PUBLISHABLE)</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>coiner.ttf</string>
 		<string>Bariol_Light.otf</string>
 		<string>Bariol_Bold.otf</string>
 		<string>Bariol.ttf</string>

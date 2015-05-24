@@ -19,7 +19,7 @@ class WalletContainerController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        balanceLabel.text = "\(currentUser.mbtc) mBTC"
+        balanceLabel.text = "\(currentUser.balanceAsUBTC)"
 
         // Do any additional setup after loading the view.
     }
@@ -44,6 +44,12 @@ class WalletContainerController: UIViewController {
     @IBAction func closeTapped(sender: UIButton) {
         println("\(className)::\(__FUNCTION__)")
         performSegueWithIdentifier("WalletClose", sender: self)
+    }
+
+    func setBalance() {
+        let labelAttributes = NSMutableAttributedString(string: "a\(currentUser.balanceAsUBTC)")
+        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "coiner", size: 14.0)!, range: NSMakeRange(0,1))
+
     }
 
 }
