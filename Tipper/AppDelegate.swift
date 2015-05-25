@@ -182,14 +182,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
 
-        if let favorite = userInfo["favorite"] as? [String: AnyObject], currentUser = currentUser {
-            let favorite = Favorite.entityWithJSON(Favorite.self, json: JSON(favorite), context: managedObjectContext!)
+        if let favorite = userInfo["favorite"] as? [String: AnyObject], let user = userInfo["user"] as? [String: AnyObject], currentUser = currentUser {
+            let favoriteObj = Favorite.entityWithJSON(Favorite.self, json: JSON(favorite), context: managedObjectContext!)
+            currentUser.updateEntityWithJSON(JSON(user))
             completionHandler(.NewData)
         } else if let user = userInfo["user"] as? [String: AnyObject]  {
             currentUser.updateEntityWithJSON(JSON(user))
-//            currentUser.refreshWithServer({ (error) -> Void in
-//                completionHandler(.NewData)
-//            })
         } else {
             completionHandler(.NoData)
         }
@@ -202,7 +200,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let subtitle = message["subtitle"].stringValue
         let type = message["type"].stringValue
 
-        //switch
         switch (type) {
         case "error":
             notificationsDelegate?.didReceiveNotificationAlert(title, subtitle:subtitle, type: .Error)
@@ -211,10 +208,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         default:
             break;
         }
-
-        notificationsDelegate?.didReceiveNotificationAlert(title, subtitle:subtitle, type: .Error)
-
-
     }
 
     // MARK: - Core Data stack

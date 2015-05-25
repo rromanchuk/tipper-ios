@@ -230,7 +230,7 @@ class HomeController: UIViewController, MFMailComposeViewControllerDelegate, Not
         cell.favorite = favorite
         cell.tweetView.configureWithTweet(twt)
 
-        //println("\(className)::\(__FUNCTION__) didLeaveTip: \(favorite.didLeaveTip)")
+        println("\(className)::\(__FUNCTION__) didLeaveTip: \(favorite.didLeaveTip)")
         if favorite.didLeaveTip {
             cell.tipButton.backgroundColor = UIColor.grayColor()
             cell.tipButton.enabled = false

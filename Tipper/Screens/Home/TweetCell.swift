@@ -35,6 +35,7 @@ class TweetCell: UITableViewCell {
 
     @IBAction func userDidTip(sender: UIButton) {
         tipButton.backgroundColor = UIColor.grayColor()
+        favorite.didLeaveTip = true
 
         let sqs = AWSSQS.defaultSQS()
         let request = AWSSQSSendMessageRequest()
