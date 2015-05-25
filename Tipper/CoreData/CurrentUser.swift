@@ -37,12 +37,16 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     @NSManaged var deviceToken: String?
 
     @NSManaged var marketValue: Tipper.Market?
+    @NSManaged var settings: Tipper.Settings?
 
     class func currentUser(context: NSManagedObjectContext) -> CurrentUser {
         if let _currentUser = CurrentUser.first(CurrentUser.self, context: context) {
             return _currentUser
         } else {
+
             let _currentUser = CurrentUser.create(CurrentUser.self, context: context)
+            let _settings = NSEntityDescription.insertNewObjectForEntityForName("Settings", inManagedObjectContext: context) as! Settings
+            _currentUser.settings = _settings
             _currentUser.writeToDisk()
             return _currentUser
         }

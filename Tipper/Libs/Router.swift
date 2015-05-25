@@ -23,6 +23,7 @@ enum Router: URLRequestConvertible {
     case Charge(String, String)
     case Favorites
     case Me
+    case Settings
     case MarketPrice(String)
 
 
@@ -37,6 +38,8 @@ enum Router: URLRequestConvertible {
         case .Favorites,.Me:
             return .GET
         case .MarketPrice:
+            return .GET
+        case .Settings:
             return .GET
         }
     }
@@ -54,6 +57,8 @@ enum Router: URLRequestConvertible {
             return "https://api.twitter.com/1.1/favorites/list.json"
         case .MarketPrice:
             return "https://api.coinbase.com/v1/prices/buy"
+        case .Settings:
+            return "\(APIRoot)/settings"
         }
     }
 
@@ -102,7 +107,7 @@ enum Router: URLRequestConvertible {
         mutableURLRequest.HTTPMethod = method.rawValue
 
         switch self {
-        case .Register, .MarketPrice:
+        case .Register, .MarketPrice, .Settings:
             // Does't need authentication
             break
         case .Favorites:

@@ -59,6 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func setupFirstController() {
         currentUser = CurrentUser.currentUser(managedObjectContext!)
+        currentUser.settings?.update()
 
         println("\(className)::\(__FUNCTION__) currentUser:\([currentUser])")
 
@@ -172,26 +173,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject: AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
 
         println("\(className)::\(__FUNCTION__) userInfo:\(userInfo)")
-        if let favorite = userInfo["favorite"] as? [String: AnyObject],
-            currentUser = currentUser {
+
+        if let message = userInfo["message"] as? [String: AnyObject]  {
+            if application.applicationState == .Active {
+                let messageJSON = JSON(message)
+                processMessage(messageJSON)
+            }
+        }
+
+
+        if let favorite = userInfo["favorite"] as? [String: AnyObject], currentUser = currentUser {
             let favorite = Favorite.entityWithJSON(Favorite.self, json: JSON(favorite), context: managedObjectContext!)
             completionHandler(.NewData)
         } else if let user = userInfo["user"] as? [String: AnyObject]  {
             currentUser.updateEntityWithJSON(JSON(user))
-            completionHandler(.NewData)
-        } else if let testNotification = userInfo["test_message"] as? [String: AnyObject] {
-            println("Inside test message")
-            completionHandler(.NewData)
-            let json = JSON(testNotification)
-            let message = json["message"].stringValue
-            if application.applicationState == .Active {
-                println("app is active")
-                notificationsDelegate?.didReceiveNotificationAlert(message, type: .Error)
-            }
-
+//            currentUser.refreshWithServer({ (error) -> Void in
+//                completionHandler(.NewData)
+//            })
         } else {
             completionHandler(.NoData)
         }
+    }
+
+    func processMessage(message:JSON) {
+        println("\(className)::\(__FUNCTION__)")
+
+        let title = message["title"].stringValue
+        let subtitle = message["subtitle"].stringValue
+        let type = message["type"].stringValue
+
+        //switch
+        switch (type) {
+        case "error":
+            notificationsDelegate?.didReceiveNotificationAlert(title, subtitle:subtitle, type: .Error)
+        case "success":
+            notificationsDelegate?.didReceiveNotificationAlert(title, subtitle:subtitle, type: .Success)
+        default:
+            break;
+        }
+
+        notificationsDelegate?.didReceiveNotificationAlert(title, subtitle:subtitle, type: .Error)
+
+
     }
 
     // MARK: - Core Data stack
@@ -278,6 +301,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 protocol NotificationMessagesDelegate:class {
-    func didReceiveNotificationAlert(message: String, type: TSMessageNotificationType)
+    func didReceiveNotificationAlert(message: String, subtitle: String, type: TSMessageNotificationType)
 }
 

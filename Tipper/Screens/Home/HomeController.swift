@@ -198,10 +198,9 @@ class HomeController: UIViewController, MFMailComposeViewControllerDelegate, Not
         }
     }
 
-    func didReceiveNotificationAlert(message: String, type: TSMessageNotificationType) {
+    func didReceiveNotificationAlert(message: String, subtitle: String, type: TSMessageNotificationType) {
         println("\(className)::\(__FUNCTION__)")
-        TSMessage.setDefaultViewController(self)
-        TSMessage.showNotificationWithTitle(message, type: type)
+        TSMessage.showNotificationInViewController(self, title: message, subtitle: subtitle, type: type, duration: 5.0)
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

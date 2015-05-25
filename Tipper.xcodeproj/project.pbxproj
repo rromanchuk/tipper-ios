@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3B6E9F44501E44BF73C99834 /* libPods-Tipper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E57F9EB756EFF49AEA100E /* libPods-Tipper.a */; };
-		9416317D1AC3BCB9002016FD /* ApplePayBTN_63pt__white_logo_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9416317C1AC3BCB9002016FD /* ApplePayBTN_63pt__white_logo_@2x.png */; };
 		9416317F1AC3C1EC002016FD /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9416317E1AC3C1EC002016FD /* HomeController.swift */; };
 		941631831AC3CC5E002016FD /* AddressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941631821AC3CC5E002016FD /* AddressController.swift */; };
 		941631851AC3FAB4002016FD /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941631841AC3FAB4002016FD /* TweetCell.swift */; };
@@ -45,6 +44,7 @@
 		94C255161B0D825800A65B94 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C255121B0D825800A65B94 /* Crashlytics.framework */; };
 		94C255181B0D829100A65B94 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 94C255171B0D829100A65B94 /* TwitterKitResources.bundle */; };
 		94C2551E1B11540C00A65B94 /* coiner.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94C2551D1B10FDF800A65B94 /* coiner.ttf */; };
+		94C255201B12798900A65B94 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C2551F1B12798900A65B94 /* Settings.swift */; };
 		94C5C0D31ABFF47A009E4B05 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C5C0D21ABFF47A009E4B05 /* Market.swift */; };
 		94EE8CF61AB16E7E000593CD /* TTTURLRequestFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */; };
 		94F3FD951B08581900CD0261 /* WalletContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F3FD941B08581900CD0261 /* WalletContainerController.swift */; };
@@ -69,7 +69,6 @@
 /* Begin PBXFileReference section */
 		20CFF2D7F1C187F20E1EAFF3 /* Pods-Tipper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tipper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tipper/Pods-Tipper.debug.xcconfig"; sourceTree = "<group>"; };
 		74E57F9EB756EFF49AEA100E /* libPods-Tipper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tipper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9416317C1AC3BCB9002016FD /* ApplePayBTN_63pt__white_logo_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ApplePayBTN_63pt__white_logo_@2x.png"; sourceTree = "<group>"; };
 		9416317E1AC3C1EC002016FD /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeController.swift; path = Home/HomeController.swift; sourceTree = "<group>"; };
 		941631821AC3CC5E002016FD /* AddressController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressController.swift; path = Address/AddressController.swift; sourceTree = "<group>"; };
 		941631841AC3FAB4002016FD /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TweetCell.swift; path = Home/TweetCell.swift; sourceTree = "<group>"; };
@@ -113,6 +112,7 @@
 		94C255121B0D825800A65B94 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		94C255171B0D829100A65B94 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
 		94C2551D1B10FDF800A65B94 /* coiner.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = coiner.ttf; sourceTree = "<group>"; };
+		94C2551F1B12798900A65B94 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		94C5C0D21ABFF47A009E4B05 /* Market.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		94EE8CF41AB16E7E000593CD /* TTTURLRequestFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTURLRequestFormatter.h; sourceTree = "<group>"; };
 		94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTURLRequestFormatter.m; sourceTree = "<group>"; };
@@ -219,6 +219,7 @@
 				94416C001AAF989F00117AFC /* NSManagedObject+Extension.swift */,
 				94416C011AAF989F00117AFC /* NSManagedObjectContext+Base.h */,
 				94416C021AAF989F00117AFC /* NSManagedObjectContext+Base.m */,
+				94C2551F1B12798900A65B94 /* Settings.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -235,11 +236,11 @@
 		94416C051AAF989F00117AFC /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				943E93FB1B05C8B3007D98C7 /* Wallet */,
+				94C255211B12B20600A65B94 /* Splash */,
 				941631811AC3CBEA002016FD /* Address */,
 				941631801AC3CBE2002016FD /* Home */,
 				94FA97D51AB2E0DA005B0C83 /* Transaction */,
-				941AA38D1AB01EC000CA9192 /* SplashViewController.swift */,
+				943E93FB1B05C8B3007D98C7 /* Wallet */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -277,8 +278,6 @@
 			children = (
 				94C2551C1B10FDCB00A65B94 /* Resources */,
 				94416C081AAF989F00117AFC /* AppDelegate.swift */,
-				9416317C1AC3BCB9002016FD /* ApplePayBTN_63pt__white_logo_@2x.png */,
-				94FDE9BB1AB41FE2006B6454 /* Base */,
 				94416BFC1AAF989F00117AFC /* CoreData */,
 				94416C031AAF989F00117AFC /* Dynamo */,
 				941631861AC40482002016FD /* Extensions */,
@@ -334,6 +333,14 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		94C255211B12B20600A65B94 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				941AA38D1AB01EC000CA9192 /* SplashViewController.swift */,
+			);
+			name = Splash;
+			sourceTree = "<group>";
+		};
 		94FA97D51AB2E0DA005B0C83 /* Transaction */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,13 +349,6 @@
 				94FA97DE1AB356FB005B0C83 /* FavoriteCell.swift */,
 			);
 			name = Transaction;
-			sourceTree = "<group>";
-		};
-		94FDE9BB1AB41FE2006B6454 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Base;
 			sourceTree = "<group>";
 		};
 		99548B7BBFFD4449A2DD2385 /* Frameworks */ = {
@@ -471,7 +471,6 @@
 				945065FC1B07CFB900AF34F6 /* Bariol_Light.otf in Resources */,
 				94416C191AAF989F00117AFC /* Images.xcassets in Resources */,
 				94AF297F1AAEF2B600E16048 /* LaunchScreen.xib in Resources */,
-				9416317D1AC3BCB9002016FD /* ApplePayBTN_63pt__white_logo_@2x.png in Resources */,
 				945065FD1B07CFB900AF34F6 /* Bariol.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -591,6 +590,7 @@
 				941AA38E1AB01EC000CA9192 /* SplashViewController.swift in Sources */,
 				94416C111AAF989F00117AFC /* CoreDataUpdatable.swift in Sources */,
 				94416C0C1AAF989F00117AFC /* API.swift in Sources */,
+				94C255201B12798900A65B94 /* Settings.swift in Sources */,
 				94AB27931ACA3D2B005A433F /* TintedButton.swift in Sources */,
 				94FA97DF1AB356FB005B0C83 /* FavoriteCell.swift in Sources */,
 				9484185E1AB6B2B8001C633E /* DynamoUser.swift in Sources */,

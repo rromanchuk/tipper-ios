@@ -19,8 +19,7 @@ class WalletContainerController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        balanceLabel.text = "\(currentUser.balanceAsUBTC)"
-
+        setBalance()
         // Do any additional setup after loading the view.
     }
 
@@ -47,9 +46,12 @@ class WalletContainerController: UIViewController {
     }
 
     func setBalance() {
-        let labelAttributes = NSMutableAttributedString(string: "a\(currentUser.balanceAsUBTC)")
-        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "coiner", size: 14.0)!, range: NSMakeRange(0,1))
-
+        let string = "a\(currentUser.balanceAsUBTC)"
+        let labelAttributes = NSMutableAttributedString(string: string)
+        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "coiner", size: 42.0)!, range: NSMakeRange(0,1))
+        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol", size: 42.0)!, range: NSMakeRange(1, count(string) - 1))
+        labelAttributes.addAttribute(NSKernAttributeName, value:-5.0, range: NSMakeRange(0, 1))
+        balanceLabel.attributedText = labelAttributes
     }
 
 }

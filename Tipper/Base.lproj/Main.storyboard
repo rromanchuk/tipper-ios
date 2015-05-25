@@ -32,10 +32,8 @@
             <string>Bariol-Light</string>
             <string>Bariol-Light</string>
             <string>Bariol-Light</string>
-            <string>Bariol-Light</string>
         </mutableArray>
         <mutableArray key="coiner.ttf">
-            <string>coiner</string>
             <string>coiner</string>
         </mutableArray>
     </customFonts>
@@ -148,16 +146,24 @@
                                     <action selector="closeTapped:" destination="AQa-jZ-3mc" eventType="touchUpInside" id="a6e-il-XoQ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78x-8p-d70">
-                                <rect key="frame" x="323" y="29" width="122" height="42"/>
-                                <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="42"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69d-CZ-FMV">
-                                <rect key="frame" x="288" y="31" width="45" height="37"/>
-                                <fontDescription key="fontDescription" name="coiner" family="coiner" pointSize="45"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78x-8p-d70">
+                                <rect key="frame" x="302" y="29" width="164" height="43"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="a">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="42" name="coiner"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="20000">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="42" name="Bariol-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -167,13 +173,11 @@
                             <constraint firstItem="TaF-SW-wW7" firstAttribute="leading" secondItem="xl9-h1-7Xu" secondAttribute="leadingMargin" id="7tA-29-D8g"/>
                             <constraint firstItem="78x-8p-d70" firstAttribute="leading" secondItem="Vt0-Vm-6NX" secondAttribute="trailing" constant="96" id="9g3-QY-cHf"/>
                             <constraint firstItem="TaF-SW-wW7" firstAttribute="top" secondItem="Wpm-Fc-fcZ" secondAttribute="bottom" constant="62" id="9zd-PS-B11"/>
-                            <constraint firstItem="69d-CZ-FMV" firstAttribute="centerY" secondItem="78x-8p-d70" secondAttribute="centerY" constant="-0.5" id="AHN-Wy-x9Y"/>
                             <constraint firstItem="ycM-k7-yOs" firstAttribute="top" secondItem="TaF-SW-wW7" secondAttribute="bottom" id="B7c-qc-bab"/>
                             <constraint firstItem="Vt0-Vm-6NX" firstAttribute="leading" secondItem="xl9-h1-7Xu" secondAttribute="leading" id="BDI-D0-sig"/>
                             <constraint firstAttribute="trailing" secondItem="TaF-SW-wW7" secondAttribute="trailing" id="Dxf-pL-Xcd"/>
                             <constraint firstItem="TaF-SW-wW7" firstAttribute="leading" secondItem="xl9-h1-7Xu" secondAttribute="leading" id="Msm-kN-wLp"/>
                             <constraint firstItem="TaF-SW-wW7" firstAttribute="leading" secondItem="xl9-h1-7Xu" secondAttribute="leadingMargin" id="N6W-ig-0aO"/>
-                            <constraint firstItem="78x-8p-d70" firstAttribute="leading" secondItem="69d-CZ-FMV" secondAttribute="trailing" constant="-10" id="OwE-ej-6sc"/>
                             <constraint firstItem="ycM-k7-yOs" firstAttribute="top" secondItem="TaF-SW-wW7" secondAttribute="bottom" id="QFZ-YL-Z77"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TaF-SW-wW7" secondAttribute="trailing" id="W6q-af-kiB"/>
                             <constraint firstItem="TaF-SW-wW7" firstAttribute="centerX" secondItem="78x-8p-d70" secondAttribute="centerX" id="X0k-Zi-zUy"/>
@@ -668,14 +672,14 @@
                                         <attributes>
                                             <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <font key="NSFont" size="26" name="coiner"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="truncatingTail" baseWritingDirection="natural"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="5000">
                                         <attributes>
                                             <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <font key="NSFont" size="26" name="Bariol-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="truncatingTail" baseWritingDirection="natural"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
