@@ -29,8 +29,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     @NSManaged var cognitoToken: String?
 
     //@NSManaged var bitcoinAddress: String?
-    @NSManaged var bitcoinBalanceSatoshi: String?
-    @NSManaged var bitcoinBalanceMBTC: String?
     @NSManaged var bitcoinBalanceBTC: String?
 
     @NSManaged var endpointArn: String?
@@ -234,8 +232,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         self.cognitoIdentity = json["CognityIdentity"].string
         self.cognitoToken = json["CognitoToken"].string
         self.bitcoinBalanceBTC = json["BitcoinBalanceBTC"].stringValue
-        self.bitcoinBalanceSatoshi = json["BitcoinBalanceSatoshi"].stringValue
-        self.bitcoinBalanceMBTC =  json["BitcoinBalanceMBTC"].stringValue
         self.token = json["token"].stringValue
     }
 

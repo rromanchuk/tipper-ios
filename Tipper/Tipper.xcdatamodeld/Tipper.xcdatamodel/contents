@@ -3,8 +3,6 @@
     <entity name="CurrentUser" representedClassName="Tipper.CurrentUser" syncable="YES">
         <attribute name="bitcoinAddress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="bitcoinBalanceBTC" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="bitcoinBalanceMBTC" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="bitcoinBalanceSatoshi" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cognitoIdentity" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cognitoToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="deviceToken" optional="YES" attributeType="String" syncable="YES"/>
@@ -45,7 +43,7 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CurrentUser" inverseName="settings" inverseEntity="CurrentUser" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="285"/>
+        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="255"/>
         <element name="Favorite" positionX="-63" positionY="54" width="128" height="195"/>
         <element name="Market" positionX="-54" positionY="117" width="128" height="135"/>
         <element name="Settings" positionX="-54" positionY="99" width="128" height="105"/>

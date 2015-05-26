@@ -72,9 +72,17 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         })
     }
 
-    class func fech(tweetId:String, fromTwitterId:String) {
+    class func fetch(tweetId:String, fromTwitterId:String, context: NSManagedObjectContext, completion: () -> Void) {
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
-
+        mapper.load(DynamoFavorite.self, hashKey: tweetId, rangeKey: fromTwitterId).continueWithBlock { (task) -> AnyObject! in
+            if (task.result != nil) {
+                let favorite: DynamoFavorite = task.result as! DynamoFavorite
+                Favorite.entityWithDYNAMO(Favorite.self, model: favorite, context: context)
+                //Do something with the result.
+                completion()
+            }
+            return nil
+        }
     }
 
     class func fetchReceivedFromAWS(currentUser: CurrentUser, context: NSManagedObjectContext) {
@@ -94,7 +102,6 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
                 for result in results.items as! [DynamoFavorite] {
                     autoreleasepool({ () -> () in
                         //println("result from query \(result)")
-                        let json = JSON(result)
                         Favorite.entityWithDYNAMO(Favorite.self, model: result, context: privateContext)
                         privateContext.saveMoc()
                     })

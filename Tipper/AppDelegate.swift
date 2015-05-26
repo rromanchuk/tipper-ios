@@ -181,11 +181,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
+        if let favorite = userInfo["favorite"] as? [String: AnyObject],
+            user = userInfo["user"] as? [String: AnyObject],
+            currentUser = currentUser {
+                let favoriteJSON = JSON(favorite)
+                let userJSON = JSON(user)
 
-        if let favorite = userInfo["favorite"] as? [String: AnyObject], let user = userInfo["user"] as? [String: AnyObject], currentUser = currentUser {
-            let favoriteObj = Favorite.entityWithJSON(Favorite.self, json: JSON(favorite), context: managedObjectContext!)
-            currentUser.updateEntityWithJSON(JSON(user))
-            completionHandler(.NewData)
+                if let tweetId = favoriteJSON["TweetID"].string,
+                    fromTwitterId = favoriteJSON["FromTwitterID"].string,
+                    bitcoinBalance = userJSON["BitcoinBalanceBTC"].string {
+                        currentUser.bitcoinBalanceBTC = bitcoinBalance
+                        DynamoFavorite.fetch(tweetId, fromTwitterId: fromTwitterId, context: managedObjectContext!, completion: { () -> Void in
+                            completionHandler(.NewData)
+                        })
+                } else {
+                    completionHandler(.NoData)
+                }
         } else if let user = userInfo["user"] as? [String: AnyObject]  {
             currentUser.updateEntityWithJSON(JSON(user))
         } else {

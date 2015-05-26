@@ -15,6 +15,7 @@ class HomeController: UIViewController, MFMailComposeViewControllerDelegate, Not
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
     var market: Market!
+    var showBalanceBTC = false
     let tweetTableReuseIdentifier = "TweetCell"
 
 
@@ -157,6 +158,7 @@ class HomeController: UIViewController, MFMailComposeViewControllerDelegate, Not
 
     @IBAction func didTapBalance(sender: UITapGestureRecognizer) {
         println("\(className)::\(__FUNCTION__)")
+
     }
 
     @IBAction func segmentChanged(sender: UISegmentedControl) {
@@ -230,7 +232,7 @@ class HomeController: UIViewController, MFMailComposeViewControllerDelegate, Not
         cell.favorite = favorite
         cell.tweetView.configureWithTweet(twt)
 
-        println("\(className)::\(__FUNCTION__) didLeaveTip: \(favorite.didLeaveTip)")
+        //println("\(className)::\(__FUNCTION__) didLeaveTip: \(favorite.didLeaveTip)")
         if favorite.didLeaveTip {
             cell.tipButton.backgroundColor = UIColor.grayColor()
             cell.tipButton.enabled = false
