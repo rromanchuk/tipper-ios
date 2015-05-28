@@ -198,7 +198,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     completionHandler(.NoData)
                 }
         } else if let user = userInfo["user"] as? [String: AnyObject]  {
-            currentUser.updateEntityWithJSON(JSON(user))
+            //currentUser.updateEntityWithJSON(JSON(user))
         } else {
             completionHandler(.NoData)
         }
