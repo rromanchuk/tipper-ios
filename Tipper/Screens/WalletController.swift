@@ -9,7 +9,7 @@
 import Foundation
 import PassKit
 import QRCode
-
+import SwiftyJSON
 
 class WalletController: UITableViewController, PKPaymentAuthorizationViewControllerDelegate, STPCheckoutViewControllerDelegate, UITextFieldDelegate, UINavigationControllerDelegate {
     var managedObjectContext: NSManagedObjectContext?
@@ -127,7 +127,7 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
     }
 
     func checkoutController(controller: STPCheckoutViewController, didFinishWithStatus status: STPPaymentStatus, error: NSError?) {
-        println("\(className)::\(__FUNCTION__)")
+        println("\(className)::\(__FUNCTION__) error:\(error)")
         self.parentViewController!.dismissViewControllerAnimated(true, completion: {
             switch(status) {
             case .UserCancelled:
@@ -143,6 +143,7 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
 
 
     @IBAction func didTapPay(sender: UIButton) {
+        println("\(className)::\(__FUNCTION__)")
         let request = PKPaymentRequest()
         request.merchantIdentifier = ApplePayMerchantID
         request.supportedNetworks = SupportedPaymentNetworks
@@ -178,20 +179,25 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
 
 
     func createBackendChargeWithToken(token: STPToken, completion: STPTokenSubmissionHandler) {
+        println("\(className)::\(__FUNCTION__)")
         API.sharedInstance.charge(token.tokenId, amount:self.market.amount!, completion: { [weak self] (json, error) -> Void in
             if (error != nil) {
                 completion(STPBackendChargeResult.Failure, error)
             } else {
+                self?.currentUser.updateEntityWithJSON(json)
                 completion(STPBackendChargeResult.Success, nil)
             }
         })
     }
 
     func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: ((PKPaymentAuthorizationStatus) -> Void)) {
+        println("\(className)::\(__FUNCTION__)")
         STPAPIClient.sharedClient().createTokenWithPayment(payment, completion: { [weak self] (token, error) -> Void in
-            if error != nil {
+            println("\(self!.className)::\(__FUNCTION__) error:\(error), token: \(token)")
+            if error == nil {
                 if let token = token {
                     self?.createBackendChargeWithToken(token, completion: { (result, error) -> Void in
+                        println("\(self!.className)::\(__FUNCTION__) error:\(error), result: \(result)")
                         if result == STPBackendChargeResult.Success {
                             completion(PKPaymentAuthorizationStatus.Success)
                             return
@@ -199,7 +205,10 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
                     })
                 }
             }
+
             completion(PKPaymentAuthorizationStatus.Failure)
+
+
         })
     }
 
