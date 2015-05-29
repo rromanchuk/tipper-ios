@@ -33,6 +33,11 @@ public class API {
             println(TTTURLRequestFormatter.cURLCommandFromURLRequest(request))
             //println("API Call: request:\(request), response:\(response), JSON:\(JSON), error:\(error)")
             if let error = error {
+                if let response = response where response == 401 {
+                    println("Received 401 UNAUTHORIZED FROM USER")
+                    NSNotificationCenter.defaultCenter().postNotificationName("UNAUTHORIZED_USER", object: nil)
+                }
+
                 completion?(json: nil, error: error)
             } else {
                 completion?(json: JSON, error: nil)

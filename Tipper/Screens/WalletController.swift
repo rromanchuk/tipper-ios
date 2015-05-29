@@ -184,7 +184,7 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
             if (error != nil) {
                 completion(STPBackendChargeResult.Failure, error)
             } else {
-                self?.currentUser.updateEntityWithJSON(json)
+                //self?.currentUser.updateEntityWithJSON(json)
                 completion(STPBackendChargeResult.Success, nil)
             }
         })

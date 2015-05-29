@@ -84,6 +84,11 @@ class HomeController: UIViewController, MFMailComposeViewControllerDelegate, Not
         dismissViewControllerAnimated(true, completion:nil)
     }
 
+    func logout() {
+        currentUser.resetIdentifiers()
+        performSegueWithIdentifier("BackToSplash", sender: self)
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,6 +105,8 @@ class HomeController: UIViewController, MFMailComposeViewControllerDelegate, Not
         updateMarkets()
         DynamoFavorite.fetchFromAWS(currentUser, context: managedObjectContext)
         DynamoFavorite.fetchReceivedFromAWS(currentUser, context: managedObjectContext)
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "logout", name: "UNAUTHORIZED_USER", object: nil)
 
     }
 

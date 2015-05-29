@@ -117,10 +117,12 @@ enum Router: URLRequestConvertible {
             // Set authentication header
             let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let currentUser = CurrentUser.currentUser(delegate.managedObjectContext!)
-            let authString = "\(currentUser.uuid!):\(currentUser.token!)"
-            println("authString\(authString)")
-            let base64EncodedString = authString.dataUsingEncoding(NSUTF8StringEncoding)!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.allZeros)
-            mutableURLRequest.setValue("Basic \(base64EncodedString)", forHTTPHeaderField: "Authorization")
+            if let uuid = currentUser.uuid, token = currentUser.token {
+                let authString = "\(uuid):\(token)"
+                println("authString\(authString)")
+                let base64EncodedString = authString.dataUsingEncoding(NSUTF8StringEncoding)!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.allZeros)
+                mutableURLRequest.setValue("Basic \(base64EncodedString)", forHTTPHeaderField: "Authorization")
+            }
         }
 
         switch method {
