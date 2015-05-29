@@ -173,11 +173,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject: AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
 
         println("\(className)::\(__FUNCTION__) userInfo:\(userInfo)")
+        var messageJSON: JSON?
 
         if let message = userInfo["message"] as? [String: AnyObject]  {
             if application.applicationState == .Active {
-                let messageJSON = JSON(message)
-                processMessage(messageJSON)
+                messageJSON = JSON(message)
+
             }
         }
 
@@ -194,30 +195,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         DynamoFavorite.fetch(tweetId, fromTwitterId: fromTwitterId, context: managedObjectContext!, completion: { () -> Void in
                             completionHandler(.NewData)
                         })
+                        processMessage(messageJSON)
                 } else {
                     completionHandler(.NoData)
                 }
         } else if let user = userInfo["user"] as? [String: AnyObject]  {
-            //currentUser.updateEntityWithJSON(JSON(user))
+            let userJSON = JSON(user)
+            if let bitcoinBalance = userJSON["BitcoinBalanceBTC"].string {
+                currentUser.bitcoinBalanceBTC = bitcoinBalance
+                processMessage(messageJSON)
+            }
+
         } else {
+            processMessage(messageJSON)
             completionHandler(.NoData)
         }
     }
 
-    func processMessage(message:JSON) {
+    func processMessage(message:JSON?) {
         println("\(className)::\(__FUNCTION__)")
+        if let message = message {
+            let title = message["title"].stringValue
+            let subtitle = message["subtitle"].stringValue
+            let type = message["type"].stringValue
 
-        let title = message["title"].stringValue
-        let subtitle = message["subtitle"].stringValue
-        let type = message["type"].stringValue
-
-        switch (type) {
-        case "error":
-            notificationsDelegate?.didReceiveNotificationAlert(title, subtitle:subtitle, type: .Error)
-        case "success":
-            notificationsDelegate?.didReceiveNotificationAlert(title, subtitle:subtitle, type: .Success)
-        default:
-            break;
+            switch (type) {
+            case "error":
+                notificationsDelegate?.didReceiveNotificationAlert(title, subtitle:subtitle, type: .Error)
+            case "success":
+                notificationsDelegate?.didReceiveNotificationAlert(title, subtitle:subtitle, type: .Success)
+            default:
+                break;
+            }
         }
     }
 

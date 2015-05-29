@@ -186,6 +186,7 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
             } else {
                 //self?.currentUser.updateEntityWithJSON(json)
                 completion(STPBackendChargeResult.Success, nil)
+                TSMessage.showNotificationInViewController(self?.parentViewController!, title: "Payment complete", subtitle: "Your bitcoin will arrive shortly.", type: .Success, duration: 5.0)
             }
         })
     }
@@ -204,10 +205,9 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
                         }
                     })
                 }
+            } else {
+                completion(PKPaymentAuthorizationStatus.Failure)
             }
-
-            completion(PKPaymentAuthorizationStatus.Failure)
-
 
         })
     }
