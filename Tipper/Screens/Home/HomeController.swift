@@ -113,8 +113,8 @@ class HomeController: UIViewController, MFMailComposeViewControllerDelegate, Not
     func setBalance() {
         let string = "a\(currentUser.balanceAsUBTC)"
         let labelAttributes = NSMutableAttributedString(string: string)
-        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "coiner", size: 36.0)!, range: NSMakeRange(0,1))
-        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol", size: 36.0)!, range: NSMakeRange(1, count(string) - 1))
+        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "coiner", size: 40.0)!, range: NSMakeRange(0,1))
+        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Regular", size: 40.0)!, range: NSMakeRange(1, count(string) - 1))
         labelAttributes.addAttribute(NSKernAttributeName, value:-5.0, range: NSMakeRange(0, 1))
 
         balanceLabel.attributedText = labelAttributes
