@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E17e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J4X-Ps-uMP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E26a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J4X-Ps-uMP">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -543,7 +543,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RZK-c9-5JT">
-                                <rect key="frame" x="20" y="180" width="374" height="556"/>
+                                <rect key="frame" x="0.0" y="158" width="414" height="578"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="509" id="n8b-kv-73f"/>
@@ -557,11 +557,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" verticalCompressionResistancePriority="769" translatesAutoresizingMaskIntoConstraints="NO" id="x7e-kq-1Zh" customClass="TWTRTweetView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="145"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="328" height="145"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="767" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3m0-sj-6kH">
-                                                    <rect key="frame" x="322" y="58" width="44" height="30"/>
+                                                    <rect key="frame" x="362" y="58" width="44" height="30"/>
                                                     <color key="backgroundColor" red="0.41176470590000003" green="0.76470588240000004" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="J7n-CC-GRA"/>
@@ -610,7 +610,7 @@
                                 </connections>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zmw-Y4-Vvl">
-                                <rect key="frame" x="20" y="128" width="374" height="29"/>
+                                <rect key="frame" x="16" y="106" width="382" height="29"/>
                                 <segments>
                                     <segment title="Outbound"/>
                                     <segment title="Inbound"/>
@@ -621,12 +621,12 @@
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAV-bz-KNC" userLabel="Settings Button">
-                                <rect key="frame" x="291" y="49" width="50" height="50"/>
+                                <rect key="frame" x="315" y="43" width="35" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="7te-YJ-N5r"/>
+                                    <constraint firstAttribute="height" constant="35" id="7te-YJ-N5r"/>
                                     <constraint firstAttribute="width" constant="50" id="Chf-nK-nVU"/>
                                     <constraint firstAttribute="width" secondItem="FAV-bz-KNC" secondAttribute="height" multiplier="1:1" id="GhT-Om-566"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="Y9X-U3-RE0"/>
+                                    <constraint firstAttribute="width" constant="35" id="Y9X-U3-RE0"/>
                                     <constraint firstAttribute="height" constant="50" id="lF8-4J-48U"/>
                                 </constraints>
                                 <state key="normal" image="settings">
@@ -635,6 +635,7 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="Chf-nK-nVU"/>
+                                        <exclude reference="GhT-Om-566"/>
                                         <exclude reference="lF8-4J-48U"/>
                                     </mask>
                                 </variation>
@@ -643,10 +644,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cot-eT-evp" userLabel="Address Button">
-                                <rect key="frame" x="73" y="49" width="50" height="50"/>
+                                <rect key="frame" x="63" y="43" width="37" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="87M-nG-Cji"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="VkI-ib-n3s"/>
+                                    <constraint firstAttribute="height" constant="35" id="87M-nG-Cji"/>
+                                    <constraint firstAttribute="width" constant="37" id="VkI-ib-n3s"/>
                                     <constraint firstAttribute="width" secondItem="cot-eT-evp" secondAttribute="height" multiplier="1:1" id="fRM-vG-riW"/>
                                     <constraint firstAttribute="height" constant="50" id="fyk-oy-dtB"/>
                                     <constraint firstAttribute="width" constant="50" id="qFU-aO-yIF"/>
@@ -656,6 +657,7 @@
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="fRM-vG-riW"/>
                                         <exclude reference="fyk-oy-dtB"/>
                                         <exclude reference="qFU-aO-yIF"/>
                                     </mask>
@@ -665,20 +667,20 @@
                                 </connections>
                             </button>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="767" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXc-JU-VTy">
-                                <rect key="frame" x="163" y="61" width="88" height="27"/>
+                                <rect key="frame" x="140" y="40" width="135" height="41"/>
                                 <gestureRecognizers/>
                                 <attributedString key="attributedText">
                                     <fragment content="a">
                                         <attributes>
                                             <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="26" name="coiner"/>
+                                            <font key="NSFont" size="40" name="coiner"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="5000">
                                         <attributes>
                                             <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="26" name="Bariol-Regular"/>
+                                            <font key="NSFont" size="40" name="Bariol-Regular"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
@@ -693,7 +695,10 @@
                         <constraints>
                             <constraint firstItem="Q64-ty-CaD" firstAttribute="top" secondItem="RZK-c9-5JT" secondAttribute="bottom" id="3V5-9t-uHI"/>
                             <constraint firstItem="FAV-bz-KNC" firstAttribute="centerY" secondItem="iXc-JU-VTy" secondAttribute="centerY" id="47T-bQ-V2d"/>
-                            <constraint firstItem="RZK-c9-5JT" firstAttribute="leading" secondItem="swy-dr-NMf" secondAttribute="leadingMargin" constant="4" id="AXo-t5-Dta"/>
+                            <constraint firstItem="RZK-c9-5JT" firstAttribute="leading" secondItem="swy-dr-NMf" secondAttribute="leadingMargin" constant="-16" id="5B4-qP-n0B"/>
+                            <constraint firstItem="zmw-Y4-Vvl" firstAttribute="leading" secondItem="swy-dr-NMf" secondAttribute="leadingMargin" id="6IB-b9-FUv"/>
+                            <constraint firstItem="RZK-c9-5JT" firstAttribute="leading" secondItem="swy-dr-NMf" secondAttribute="leadingMargin" id="AXo-t5-Dta"/>
+                            <constraint firstItem="zmw-Y4-Vvl" firstAttribute="trailing" secondItem="swy-dr-NMf" secondAttribute="trailingMargin" id="CUd-YZ-4C3"/>
                             <constraint firstAttribute="centerX" secondItem="iXc-JU-VTy" secondAttribute="centerX" id="JUa-n0-i17"/>
                             <constraint firstItem="zmw-Y4-Vvl" firstAttribute="top" secondItem="RZK-c9-5JT" secondAttribute="top" id="JXa-79-Bw1"/>
                             <constraint firstItem="FAV-bz-KNC" firstAttribute="leading" secondItem="iXc-JU-VTy" secondAttribute="trailing" constant="40" id="LEr-9D-4i1"/>
@@ -701,27 +706,31 @@
                             <constraint firstItem="cot-eT-evp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="swy-dr-NMf" secondAttribute="leadingMargin" constant="20" id="MJi-qY-drP"/>
                             <constraint firstItem="RZK-c9-5JT" firstAttribute="leading" secondItem="swy-dr-NMf" secondAttribute="leadingMargin" constant="4" id="NJK-ut-etf"/>
                             <constraint firstItem="zmw-Y4-Vvl" firstAttribute="leading" secondItem="RZK-c9-5JT" secondAttribute="leading" id="O6Y-2w-YzP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RZK-c9-5JT" secondAttribute="trailing" constant="-16" id="OSe-0d-7lh"/>
                             <constraint firstItem="RZK-c9-5JT" firstAttribute="width" secondItem="zmw-Y4-Vvl" secondAttribute="width" id="VsZ-Li-0n7"/>
                             <constraint firstItem="RZK-c9-5JT" firstAttribute="top" secondItem="zmw-Y4-Vvl" secondAttribute="bottom" constant="24" id="cty-ZR-Bj9"/>
                             <constraint firstItem="zmw-Y4-Vvl" firstAttribute="trailing" secondItem="RZK-c9-5JT" secondAttribute="trailing" id="dDl-L6-P2V"/>
                             <constraint firstItem="iXc-JU-VTy" firstAttribute="leading" secondItem="cot-eT-evp" secondAttribute="trailing" constant="40" id="efs-bl-hrX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RZK-c9-5JT" secondAttribute="trailing" constant="4" id="fSW-e3-RIp"/>
                             <constraint firstAttribute="centerX" secondItem="zmw-Y4-Vvl" secondAttribute="centerX" id="g5v-Rq-GrV"/>
-                            <constraint firstItem="iXc-JU-VTy" firstAttribute="top" secondItem="66p-ui-yt4" secondAttribute="bottom" constant="41" id="mHU-ov-2AS"/>
+                            <constraint firstItem="iXc-JU-VTy" firstAttribute="top" secondItem="66p-ui-yt4" secondAttribute="bottom" constant="20" id="mHU-ov-2AS"/>
                             <constraint firstAttribute="centerX" secondItem="RZK-c9-5JT" secondAttribute="centerX" id="mfg-uM-YuQ"/>
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="FAV-bz-KNC" secondAttribute="trailing" constant="20" id="pkZ-t6-Ur9"/>
-                            <constraint firstItem="zmw-Y4-Vvl" firstAttribute="top" secondItem="iXc-JU-VTy" secondAttribute="bottom" constant="40" id="q4b-WO-yFp"/>
+                            <constraint firstItem="zmw-Y4-Vvl" firstAttribute="top" secondItem="iXc-JU-VTy" secondAttribute="bottom" constant="25" id="q4b-WO-yFp"/>
                             <constraint firstItem="RZK-c9-5JT" firstAttribute="top" secondItem="66p-ui-yt4" secondAttribute="bottom" constant="207" id="ukA-mk-TA1"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="RZK-c9-5JT" secondAttribute="trailing" constant="4" id="xXF-D9-qU5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RZK-c9-5JT" secondAttribute="trailing" id="xXF-D9-qU5"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="JXa-79-Bw1"/>
                                 <exclude reference="O6Y-2w-YzP"/>
                                 <exclude reference="dDl-L6-P2V"/>
+                                <exclude reference="AXo-t5-Dta"/>
                                 <exclude reference="NJK-ut-etf"/>
+                                <exclude reference="VsZ-Li-0n7"/>
                                 <exclude reference="fSW-e3-RIp"/>
                                 <exclude reference="ukA-mk-TA1"/>
+                                <exclude reference="xXF-D9-qU5"/>
                             </mask>
                         </variation>
                     </view>
