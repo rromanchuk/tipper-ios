@@ -12,6 +12,7 @@ import MessageUI
 import SwiftyJSON
 
 class HomeController: UIViewController, MFMailComposeViewControllerDelegate, NotificationMessagesDelegate {
+    private var displayUSD = false
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
     var market: Market!
@@ -92,7 +93,7 @@ class HomeController: UIViewController, MFMailComposeViewControllerDelegate, Not
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        displayUSD = false
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableViewAutomaticDimension // Explicitly set on iOS 8 if using automatic row height calculation
         tableView.layer.cornerRadius = 2.0
@@ -111,13 +112,20 @@ class HomeController: UIViewController, MFMailComposeViewControllerDelegate, Not
     }
 
     func setBalance() {
-        let string = "a\(currentUser.balanceAsUBTC)"
-        let labelAttributes = NSMutableAttributedString(string: string)
-        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "coiner", size: 40.0)!, range: NSMakeRange(0,1))
-        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Regular", size: 40.0)!, range: NSMakeRange(1, count(string) - 1))
-        labelAttributes.addAttribute(NSKernAttributeName, value:-5.0, range: NSMakeRange(0, 1))
+        if let marketValue = currentUser.marketValue where displayUSD {
+            let string = "$\(marketValue.amount)"
+            let labelAttributes = NSMutableAttributedString(string: string)
+            labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Regular", size: 40.0)!, range: NSMakeRange(0, count(string)))
+            balanceLabel.attributedText = labelAttributes
+        } else {
+            let string = "a\(currentUser.balanceAsUBTC)"
+            let labelAttributes = NSMutableAttributedString(string: string)
+            labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "coiner", size: 40.0)!, range: NSMakeRange(0,1))
+            labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Regular", size: 40.0)!, range: NSMakeRange(1, count(string) - 1))
+            labelAttributes.addAttribute(NSKernAttributeName, value:-5.0, range: NSMakeRange(0, 1))
+            balanceLabel.attributedText = labelAttributes
+        }
 
-        balanceLabel.attributedText = labelAttributes
 
     }
 
@@ -165,6 +173,8 @@ class HomeController: UIViewController, MFMailComposeViewControllerDelegate, Not
 
     @IBAction func didTapBalance(sender: UITapGestureRecognizer) {
         println("\(className)::\(__FUNCTION__)")
+        displayUSD = !displayUSD
+        setBalance()
 
     }
 
