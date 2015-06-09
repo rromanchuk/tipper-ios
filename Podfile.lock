@@ -1,40 +1,45 @@
 PODS:
-  - AWSCognito (2.1.1):
-    - AWSCore (~> 2.1.1)
+  - AWSCognito (2.1.2):
+    - AWSCore (~> 2.1.2)
     - Bolts (~> 1.1.0)
     - Mantle (~> 1.4)
     - Reachability (~> 3.1)
     - UICKeyChainStore (~> 2.0)
-  - AWSCognitoSync (2.1.1):
-    - AWSCognito (= 2.1.1)
-    - AWSCore (~> 2.1.1)
+  - AWSCognitoSync (2.1.2):
+    - AWSCognito (= 2.1.2)
+    - AWSCore (~> 2.1.2)
     - Bolts (~> 1.1.0)
     - Mantle (~> 1.4)
-  - AWSCore (2.1.1):
+  - AWSCore (2.1.2):
     - Bolts (~> 1.1.0)
     - GZIP (~> 1.0.3)
     - Mantle (~> 1.4)
     - Reachability (~> 3.1)
     - UICKeyChainStore (~> 2.0)
     - XMLDictionary (~> 1.4.0)
-  - AWSDynamoDB (2.1.1):
-    - AWSCore (= 2.1.1)
+  - AWSDynamoDB (2.1.2):
+    - AWSCore (= 2.1.2)
     - Bolts (~> 1.1.0)
     - Mantle (~> 1.4)
-  - AWSS3 (2.1.1):
-    - AWSCore (= 2.1.1)
+  - AWSS3 (2.1.2):
+    - AWSCore (= 2.1.2)
     - Bolts (~> 1.1.0)
     - Mantle (~> 1.4)
     - TMCache (~> 1.2.1)
-  - AWSSNS (2.1.1):
-    - AWSCore (= 2.1.1)
+  - AWSSNS (2.1.2):
+    - AWSCore (= 2.1.2)
     - Bolts (~> 1.1.0)
     - Mantle (~> 1.4)
-  - AWSSQS (2.1.1):
-    - AWSCore (= 2.1.1)
+  - AWSSQS (2.1.2):
+    - AWSCore (= 2.1.2)
     - Bolts (~> 1.1.0)
     - Mantle (~> 1.4)
-  - Bolts (1.1.4)
+  - Bolts (1.1.5):
+    - Bolts/AppLinks (= 1.1.5)
+    - Bolts/Tasks (= 1.1.5)
+  - Bolts/AppLinks (1.1.5):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.1.5)
   - GZIP (1.0.3)
   - HexColors (2.2.1)
   - Mantle (1.5.4):
@@ -42,20 +47,23 @@ PODS:
   - Mantle/extobjc (1.5.4)
   - RBBAnimation (0.4.0)
   - Reachability (3.2)
-  - SDCAlertView (2.4.1):
+  - SDCAlertView (2.5.1):
     - RBBAnimation (~> 0.3)
     - SDCAutoLayout (~> 2.0)
   - SDCAutoLayout (2.0.3)
   - SSKeychain (1.2.3)
-  - Stripe (3.1.0):
-    - Stripe/Core (= 3.1.0)
-  - Stripe/ApplePay (3.1.0):
+  - Stripe (4.0.3):
+    - Stripe/Checkout (= 4.0.3)
+    - Stripe/Core (= 4.0.3)
+  - Stripe/ApplePay (4.0.3):
     - Stripe/Core
-  - Stripe/Core (3.1.0)
+  - Stripe/Checkout (4.0.3):
+    - Stripe/Core
+  - Stripe/Core (4.0.3)
   - TMCache (1.2.4)
   - TSMessages (0.9.12):
     - HexColors
-  - UICKeyChainStore (2.0.4)
+  - UICKeyChainStore (2.0.5)
   - XMLDictionary (1.4)
 
 DEPENDENCIES:
@@ -72,26 +80,26 @@ DEPENDENCIES:
   - TSMessages
 
 SPEC CHECKSUMS:
-  AWSCognito: c251f1f166c74343493451e238ca7157e1e33dda
-  AWSCognitoSync: b9dad0d509063f2faeb9302537cfa1d02a0b1762
-  AWSCore: 0e82eabc27a96d765b1e2ad4d30b96c1cd298300
-  AWSDynamoDB: 8afd8c76c9f19adfbd095abd3b6ca0cdb6a8c2e8
-  AWSS3: 891d269735be0f3c63eab5a2d1ee9d788f2c64ee
-  AWSSNS: 49d9144ec52c8650ba9207232fdd17c68289fac8
-  AWSSQS: bb6b810a5d9826b4b25ed520e344b71a90d6e48f
-  Bolts: f8e2f94edbf9fec7bb8de5ecaaa3aa6b7de6f64e
+  AWSCognito: 2c9dbdce4282a1070d644a82ae81ef20fbd0d7ce
+  AWSCognitoSync: 227b479e3d95273ac54499da959062c12a37afd5
+  AWSCore: c8f48b48a8d5ab3c35171908695cea9a17e6dc82
+  AWSDynamoDB: 1f137de42333fe090e3e6056faad4b6fe7c64496
+  AWSS3: 7cb2a3922bd4472f3e4d95a7788d0f2d72bb5e64
+  AWSSNS: c5f5bab85da604f937014ddedf2635244f6c382b
+  AWSSQS: a8981633c414d4083cebba2453cd9f2766a611cf
+  Bolts: aac24961496d504aa56fc267cde95162a71bac39
   GZIP: f0863fda354e8f83316508c0a2c7bbe385e39129
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
   Mantle: 60acd0cd363e27d945bda0a6b8e90577112d28f3
   RBBAnimation: 4b2d66f6d993febce63cd564da934985313b9c59
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  SDCAlertView: ff4c6c76ccdfcd0fa20e0ee5e044630f93fb3d12
+  SDCAlertView: afdedd7ff3edef6117abbcf3ff201f0f0b960b93
   SDCAutoLayout: e6885bb39ab8e2ec2ff84d158f38035f025f7420
   SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d
-  Stripe: 8a456332f4db97bd0b8457fc8cce1e1a69ac0cd1
+  Stripe: 43a4307dc789483a61668d187c4a917d1348b0b6
   TMCache: a93984b045a5ee84bd8941bd5e0b54296059cc52
   TSMessages: 2a52642128d7ab15b46930c810b9c9403a2b58f3
-  UICKeyChainStore: 69eb0c3a6f669bccf16ba88de3b9069b71501361
+  UICKeyChainStore: a389515ca090d4d49780fd563fec961571caa92b
   XMLDictionary: f9f51601ba76678b594ab485f2b00ec1fed23724
 
-COCOAPODS: 0.37.1
+COCOAPODS: 0.37.2
