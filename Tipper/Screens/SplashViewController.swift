@@ -35,6 +35,7 @@ class SplashViewController: UIViewController {
             twitterLoginButton.logInCompletion = { (session, error) in
                 if (session != nil) {
                     println("signed in as \(session.userName)");
+                    
                     self.currentUser.twitterAuthenticationWithTKSession(session)
                     self.currentUser.writeToDisk()
                     self.currentUser.authenticate(self.provider, completion: { () -> Void in

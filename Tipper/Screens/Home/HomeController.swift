@@ -17,7 +17,7 @@ class HomeController: UIViewController, MFMailComposeViewControllerDelegate, Not
     var currentUser: CurrentUser!
     var market: Market!
     var showBalanceBTC = false
-    let tweetTableReuseIdentifier = "TweetCell"
+    let tweetTableReuseIdentifier = "TipCell"
 
 
     var className = "HomeController"
@@ -230,6 +230,10 @@ class HomeController: UIViewController, MFMailComposeViewControllerDelegate, Not
             vc.managedObjectContext = managedObjectContext
             vc.currentUser = currentUser
             vc.market = market
+        } else if segue.identifier == "TipDetails" {
+            let vc = segue.destinationViewController as! TipDetailsViewController
+            vc.managedObjectContext = managedObjectContext
+            vc.currentUser = currentUser
         }
     }
 
@@ -244,10 +248,10 @@ class HomeController: UIViewController, MFMailComposeViewControllerDelegate, Not
         let favorite = fetchedResultsController.objectAtIndexPath(indexPath) as! Favorite
         let twt = TWTRTweet(JSONDictionary: favorite.twitterJSON)
 
-        let cell = tableView.dequeueReusableCellWithIdentifier(tweetTableReuseIdentifier, forIndexPath: indexPath) as! TweetCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(tweetTableReuseIdentifier, forIndexPath: indexPath) as! TipCell
         cell.currentUser = currentUser
         cell.favorite = favorite
-        cell.tweetView.configureWithTweet(twt)
+        //cell.tweetView.configureWithTweet(twt)
 
         //println("\(className)::\(__FUNCTION__) didLeaveTip: \(favorite.didLeaveTip)")
         if favorite.didLeaveTip {
@@ -258,10 +262,12 @@ class HomeController: UIViewController, MFMailComposeViewControllerDelegate, Not
             cell.tipButton.enabled = true
         }
 
-        cell.setupTipButton()
+        //cell.setupTipButton()
 
         return cell
     }
+
+    
 
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

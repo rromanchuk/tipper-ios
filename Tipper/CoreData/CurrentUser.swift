@@ -12,7 +12,6 @@ import TwitterKit
 import SwiftyJSON
 
 
-
 class CurrentUser: NSManagedObject, CoreDataUpdatable {
     let KeychainAccount: String = "tips.coinbit.tipper"
     let KeychainUserAccount: String = "tips.coinbit.tipper.user"
@@ -21,14 +20,13 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     lazy var mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
 
 
-    //@NSManaged var twitterUserId: String?
     @NSManaged var twitterAuthToken: String?
     @NSManaged var twitterAuthSecret: String?
     @NSManaged var twitterUsername: String!
     @NSManaged var cognitoIdentity: String?
     @NSManaged var cognitoToken: String?
+    @NSManaged var profileImage: String?
 
-    //@NSManaged var bitcoinAddress: String?
     @NSManaged var bitcoinBalanceBTC: String?
 
     @NSManaged var endpointArn: String?
@@ -175,6 +173,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         self.twitterAuthSecret = session.authTokenSecret
         self.twitterUserId = session.userID
         self.twitterUsername = session.userName
+        //self.profileImage = session.
     }
 
     var isTwitterAuthenticated: Bool {
@@ -331,9 +330,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         self.twitterAuthToken = user.TwitterAuthToken
         self.twitterAuthSecret = user.TwitterAuthSecret
         self.bitcoinAddress = user.BitcoinAddress
-       // self.bitcoinBalanceBTC  = user.BitcoinBalanceBTC!
-        //self.bitcoinBalanceSatoshi = user.BitcoinBalanceSatoshi!
-        //self.bitcoinBalanceMBTC = user.BitcoinBalanceMBTC!
+
 
         if let endpoint = user.EndpointArn {
              self.endpointArn = endpoint
