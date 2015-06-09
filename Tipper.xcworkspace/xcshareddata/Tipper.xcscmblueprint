@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C8602CB65CF92B170353A1AE0099AF58356C99A5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "72E8AEF8201D0465EAD5BE5475E77330EA7EC0CD" : 0,
+    "C8602CB65CF92B170353A1AE0099AF58356C99A5" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0C46E4F9-5F9C-456F-A514-BA584DE69164",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "72E8AEF8201D0465EAD5BE5475E77330EA7EC0CD" : "Swifter",
+    "C8602CB65CF92B170353A1AE0099AF58356C99A5" : "Tipper"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Tipper",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Tipper.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:mattdonnelly\/Swifter.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "72E8AEF8201D0465EAD5BE5475E77330EA7EC0CD"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:rromanchuk\/tipper-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C8602CB65CF92B170353A1AE0099AF58356C99A5"
+    }
+  ]
+}
