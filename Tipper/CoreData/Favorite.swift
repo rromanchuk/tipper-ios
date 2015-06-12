@@ -30,7 +30,7 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
     @NSManaged var createdAt: NSDate
     @NSManaged var twitterJSON: [String: AnyObject]?
     @NSManaged var didLeaveTip: Bool
-
+    @NSManaged var daySectionString: String
 
     class var className: String {
         get {
@@ -79,6 +79,25 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
         }
 
         self.createdAt = NSDate(timeIntervalSince1970: NSTimeInterval(dynamoFavorite.CreatedAt!.doubleValue))
+
+        /*
+        Sections are organized by month and year. Create the section identifier
+        as a string representing the number (year * 10000 + month * 100 + day);
+        this way they will be correctly ordered chronologically regardless of
+        the actual name of the month.
+        */
+        let calendar = NSCalendar.currentCalendar()
+        let unitFlags: NSCalendarUnit = .CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay
+        let components: NSDateComponents = calendar.components(unitFlags, fromDate: self.createdAt) //calendar.component(unitFlags, fromDate: self.createdAt)
+
+        //calendar.components((.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay),
+            //fromDate:self.createdAt)
+
+        self.daySectionString = "\(components.year * 1000 + components.month * 100 + components.day)"
+
+            //[NSString stringWithFormat:@"%d", [components year] * 10000 + [components month] * 100  + [components day]];
+
+
         if let jsonString =   dynamoFavorite.TweetJSON, data = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true) {
             let json = JSON(data: data)
             self.tweetId = json["id"].stringValue

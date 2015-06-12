@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E26a" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="15A178w" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="CurrentUser" representedClassName="Tipper.CurrentUser" syncable="YES">
         <attribute name="bitcoinAddress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="bitcoinBalanceBTC" optional="YES" attributeType="String" syncable="YES"/>
@@ -19,6 +19,7 @@
     </entity>
     <entity name="Favorite" representedClassName="Tipper.Favorite" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="daySectionString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="didLeaveTip" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="fromTwitterId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="fromTwitterUsername" optional="YES" attributeType="String" syncable="YES"/>
@@ -45,7 +46,7 @@
     </entity>
     <elements>
         <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="270"/>
-        <element name="Favorite" positionX="-63" positionY="54" width="128" height="195"/>
+        <element name="Favorite" positionX="-63" positionY="54" width="128" height="210"/>
         <element name="Market" positionX="-54" positionY="117" width="128" height="135"/>
         <element name="Settings" positionX="-54" positionY="99" width="128" height="105"/>
     </elements>

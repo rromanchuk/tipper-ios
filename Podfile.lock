@@ -5,11 +5,6 @@ PODS:
     - Mantle (~> 1.4)
     - Reachability (~> 3.1)
     - UICKeyChainStore (~> 2.0)
-  - AWSCognitoSync (2.1.2):
-    - AWSCognito (= 2.1.2)
-    - AWSCore (~> 2.1.2)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
   - AWSCore (2.1.2):
     - Bolts (~> 1.1.0)
     - GZIP (~> 1.0.3)
@@ -67,21 +62,49 @@ PODS:
   - XMLDictionary (1.4)
 
 DEPENDENCIES:
-  - AWSCognitoSync
-  - AWSCore
-  - AWSDynamoDB
-  - AWSS3
-  - AWSSNS
-  - AWSSQS
+  - AWSCognito
+  - AWSCore (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
+  - AWSDynamoDB (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
+  - AWSS3 (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
+  - AWSSNS (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
+  - AWSSQS (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
   - SDCAlertView
   - SSKeychain
   - Stripe
   - Stripe/ApplePay
   - TSMessages
 
+EXTERNAL SOURCES:
+  AWSCore:
+    :git: https://github.com/rromanchuk/aws-sdk-ios.git
+  AWSDynamoDB:
+    :git: https://github.com/rromanchuk/aws-sdk-ios.git
+  AWSS3:
+    :git: https://github.com/rromanchuk/aws-sdk-ios.git
+  AWSSNS:
+    :git: https://github.com/rromanchuk/aws-sdk-ios.git
+  AWSSQS:
+    :git: https://github.com/rromanchuk/aws-sdk-ios.git
+
+CHECKOUT OPTIONS:
+  AWSCore:
+    :commit: df8c178c66f91541db8a983ed5613b5a65d063fc
+    :git: https://github.com/rromanchuk/aws-sdk-ios.git
+  AWSDynamoDB:
+    :commit: df8c178c66f91541db8a983ed5613b5a65d063fc
+    :git: https://github.com/rromanchuk/aws-sdk-ios.git
+  AWSS3:
+    :commit: df8c178c66f91541db8a983ed5613b5a65d063fc
+    :git: https://github.com/rromanchuk/aws-sdk-ios.git
+  AWSSNS:
+    :commit: df8c178c66f91541db8a983ed5613b5a65d063fc
+    :git: https://github.com/rromanchuk/aws-sdk-ios.git
+  AWSSQS:
+    :commit: df8c178c66f91541db8a983ed5613b5a65d063fc
+    :git: https://github.com/rromanchuk/aws-sdk-ios.git
+
 SPEC CHECKSUMS:
   AWSCognito: 2c9dbdce4282a1070d644a82ae81ef20fbd0d7ce
-  AWSCognitoSync: 227b479e3d95273ac54499da959062c12a37afd5
   AWSCore: c8f48b48a8d5ab3c35171908695cea9a17e6dc82
   AWSDynamoDB: 1f137de42333fe090e3e6056faad4b6fe7c64496
   AWSS3: 7cb2a3922bd4472f3e4d95a7788d0f2d72bb5e64

@@ -11,13 +11,19 @@ import TwitterKit
 import MessageUI
 import SwiftyJSON
 
-class HomeController: UIViewController, MFMailComposeViewControllerDelegate, NotificationMessagesDelegate {
+class HomeController: UIViewController, MFMailComposeViewControllerDelegate, NotificationMessagesDelegate, UITableViewDelegate {
     private var displayUSD = false
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
     var market: Market!
     var showBalanceBTC = false
     let tweetTableReuseIdentifier = "TipCell"
+
+    lazy var headerDateFormatter: NSDateFormatter = {
+        let _formatter = NSDateFormatter()
+        _formatter.dateFormat = "cccc, MMM d, y"
+        return _formatter
+    }()
 
 
     var className = "HomeController"
@@ -28,7 +34,7 @@ class HomeController: UIViewController, MFMailComposeViewControllerDelegate, Not
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var balanceLabel: UILabel!
 
-    lazy var fetchedResultsController: NSFetchedResultsController = NSFetchedResultsController.superFetchedResultsController("Favorite", sectionNameKeyPath: nil, sortDescriptors: self.sortDescriptors, predicate: self.predicate, tableView: self.tableView, context: self.managedObjectContext)
+    lazy var fetchedResultsController: NSFetchedResultsController = NSFetchedResultsController.superFetchedResultsController("Favorite", sectionNameKeyPath: "daySectionString", sortDescriptors: self.sortDescriptors, predicate: self.predicate, tableView: self.tableView, context: self.managedObjectContext)
 
     lazy var predicate: NSPredicate? = {
         return NSPredicate(format: "fromTwitterId = %@", self.currentUser.uuid!)
@@ -94,7 +100,7 @@ class HomeController: UIViewController, MFMailComposeViewControllerDelegate, Not
     override func viewDidLoad() {
         super.viewDidLoad()
         displayUSD = false
-        tableView.estimatedRowHeight = 150
+        tableView.estimatedRowHeight = 70
         tableView.rowHeight = UITableViewAutomaticDimension // Explicitly set on iOS 8 if using automatic row height calculation
         tableView.layer.cornerRadius = 2.0
 
@@ -265,6 +271,38 @@ class HomeController: UIViewController, MFMailComposeViewControllerDelegate, Not
         //cell.setupTipButton()
 
         return cell
+    }
+
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String {
+        if let sections = fetchedResultsController.sections {
+            let currentSection = sections[section] as! NSFetchedResultsSectionInfo
+            if let name = currentSection.name, numericSection = name.toInt() {
+                let year = numericSection / 1000;
+                let month = (numericSection / 100) % 100;
+                let day = numericSection % 100;
+
+                let dateComponents: NSDateComponents =  NSDateComponents()
+                dateComponents.year = year
+                dateComponents.month = month
+                dateComponents.day = day
+
+                let date = NSCalendar.currentCalendar().dateFromComponents(dateComponents)
+                return headerDateFormatter.stringFromDate(date!)
+
+            }
+        }
+
+
+        return ""
+    }
+
+
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor.colorWithRGB(0x1D1D26, alpha: 0.03)
+
+        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+        header.textLabel.textColor = UIColor.colorWithRGB(0x1D1D26, alpha: 1.0)
+        header.textLabel.font = UIFont(name: "Bariol-Regular", size: 11.0)
     }
 
     

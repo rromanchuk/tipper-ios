@@ -18,7 +18,7 @@ enum Router: URLRequestConvertible {
     static var links = [String: String]()
 
 
-    case Register(String, String, String, String)
+    case Register(String, String, String, String, String)
     case Cognito(String)
     case Charge(String, String)
     case Favorites
@@ -65,7 +65,7 @@ enum Router: URLRequestConvertible {
 
     var URLParameters: [String: String] {
         switch self {
-        case .Register(let username, let twitterId, let twitterAuth, let twitterSecret):
+        case .Register(let username, let twitterId, let twitterAuth, let twitterSecret, let profileImage):
             return ["username": username, "twitter_id": twitterId, "twitter_auth_token": twitterAuth, "twitter_auth_secret": twitterSecret]
         case .Cognito(let twitterId):
             return ["twitter_id": twitterId]
@@ -83,8 +83,8 @@ enum Router: URLRequestConvertible {
 
     var JSONparameters: [String: AnyObject] {
         switch self {
-        case .Register(let username, let twitterId, let twitterAuth, let twitterSecret):
-            return ["username": username, "twitter_id": twitterId, "twitter_auth_token": twitterAuth, "twitter_auth_secret": twitterSecret]
+        case .Register(let username, let twitterId, let twitterAuth, let twitterSecret, let profileImage):
+            return ["username": username, "twitter_id": twitterId, "twitter_auth_token": twitterAuth, "twitter_auth_secret": twitterSecret, "profile_image" : profileImage]
         case .Cognito(let twitterId):
             return ["twitter_id": twitterId]
         case .Charge(let token, let amount):

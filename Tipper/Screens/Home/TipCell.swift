@@ -22,6 +22,12 @@ class TipCell: UITableViewCell {
     @IBOutlet weak var tipButton: UIButton!
 
     private var _favorite: Favorite?
+    lazy var formatter: NSDateFormatter = {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "hh:mm a"
+        return formatter
+    }()
+
     var currentUser: CurrentUser?
 
     
@@ -41,10 +47,12 @@ class TipCell: UITableViewCell {
             let twt = TWTRTweet(JSONDictionary: _favorite!.twitterJSON)
 
             setupTipAmount()
-            usernameLabel.text = _favorite?.toTwitterUsername
+            usernameLabel.text = "@\(_favorite!.toTwitterUsername)"
             tipAmountBTC.text = currentUser?.settings?.tipAmount
 
-            //userProfileImage.hnk_setImageFromURL(nil)
+            if let urlString = currentUser?.profileImage, url = NSURL(string: urlString) {
+                userProfileImage.hnk_setImageFromURL(url)
+            }
 
             if _favorite!.didLeaveTip {
                 tipActionLabel.text = "You tipped Marcus"
@@ -53,6 +61,7 @@ class TipCell: UITableViewCell {
                 tipActionLabel.text = "You favorited Marcus"
                 tipButton.hidden = false
             }
+            timeLabel.text = formatter.stringFromDate(_favorite!.createdAt)
         }
 
         get {
