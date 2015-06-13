@@ -42,6 +42,7 @@ PODS:
   - Mantle/extobjc (1.5.4)
   - RBBAnimation (0.4.0)
   - Reachability (3.2)
+  - Reveal-iOS-SDK (1.5.1)
   - SDCAlertView (2.5.1):
     - RBBAnimation (~> 0.3)
     - SDCAutoLayout (~> 2.0)
@@ -68,6 +69,7 @@ DEPENDENCIES:
   - AWSS3 (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
   - AWSSNS (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
   - AWSSQS (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
+  - Reveal-iOS-SDK
   - SDCAlertView
   - SSKeychain
   - Stripe
@@ -116,6 +118,7 @@ SPEC CHECKSUMS:
   Mantle: 60acd0cd363e27d945bda0a6b8e90577112d28f3
   RBBAnimation: 4b2d66f6d993febce63cd564da934985313b9c59
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  Reveal-iOS-SDK: c9c55cad2729c85f6ced415f1b21857c9a2d8ef9
   SDCAlertView: afdedd7ff3edef6117abbcf3ff201f0f0b960b93
   SDCAutoLayout: e6885bb39ab8e2ec2ff84d158f38035f025f7420
   SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d

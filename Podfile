@@ -11,6 +11,7 @@ target 'Tipper' do
     pod 'SSKeychain'
     pod 'SDCAlertView'
     pod 'TSMessages'
+    pod 'Reveal-iOS-SDK'
 end
 
 target 'TipperTests' do

@@ -25,7 +25,7 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
     @IBOutlet weak var btcConversionLabel: UILabel!
     @IBOutlet weak var ubtcExchangeLabel: UILabel!
     @IBOutlet weak var usdExchangeLabel: UILabel!
-    @IBOutlet weak var applePayButton: UIButton!
+    @IBOutlet weak var applePayButton: PKPaymentButton!
 
     @IBOutlet weak var stripeButton: UIButton!
     @IBOutlet weak var addressLabel: UILabel!
@@ -41,20 +41,29 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
         //println("\(className)::\(__FUNCTION__) currentUser: \(currentUser)")
         self.tableView.estimatedRowHeight = 1300;
         self.tableView.rowHeight = UITableViewAutomaticDimension;
+        //applePayButton = PKPaymentButton(type: .Buy, style: .Black)
 
         self.addressLabel.text = currentUser.bitcoinAddress
         qrCode.image = QRCode(currentUser.bitcoinAddress!)?.image
 
-        if let marketValue = currentUser.marketValue, subtotalAmount = marketValue.subtotalAmount, btc = currentUser.bitcoinBalanceBTC {
-            usdExchangeLabel.text = "\(market.amount!)"
+//        if let marketValue = currentUser.marketValue, subtotalAmount = marketValue.subtotalAmount, btc = currentUser.bitcoinBalanceBTC {
+//            usdExchangeLabel.text = "\(market.amount!)"
+//        }
+
+        if let amount = market.amount {
+            usdExchangeLabel.text = amount
         }
 
         let paymentRequest = Stripe.paymentRequestWithMerchantIdentifier(ApplePayMerchantID)
 
         if PKPaymentAuthorizationViewController.canMakePaymentsUsingNetworks(SupportedPaymentNetworks) && Stripe.canSubmitPaymentRequest(paymentRequest) {
+            print("ApplePay supported")
             self.applePayButton.hidden = false
+            self.stripeButton.hidden = true
         } else {
+            print("ApplePay not supported")
             self.applePayButton.hidden = true
+            self.stripeButton.hidden = false
         }
     }
 
