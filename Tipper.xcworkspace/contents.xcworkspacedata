@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Tipper/Screens/Home/HeaderContainer.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Tipper/Screens/TipDetails/HeaderDetailCell.swift">
+   </FileRef>
+   <FileRef
       location = "group:Tipper.xcodeproj">
    </FileRef>
    <FileRef

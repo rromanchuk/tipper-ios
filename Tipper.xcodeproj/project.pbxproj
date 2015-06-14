@@ -14,6 +14,7 @@
 		941631881AC404A7002016FD /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941631871AC404A7002016FD /* UIColor.swift */; };
 		941AA38A1AAFA34900CA9192 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA3891AAFA34900CA9192 /* Config.swift */; };
 		941AA38E1AB01EC000CA9192 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA38D1AB01EC000CA9192 /* SplashViewController.swift */; };
+		943243101B2D37FB00D1A1D6 /* HeaderContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9432430F1B2D37FA00D1A1D6 /* HeaderContainer.swift */; };
 		943A6FE21B21F6B300D50D8A /* TipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943A6FE11B21F6B300D50D8A /* TipCell.swift */; };
 		943E93FD1B05C8DC007D98C7 /* WalletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943E93FC1B05C8DC007D98C7 /* WalletController.swift */; };
 		94416C0A1AAF989F00117AFC /* Alamofire-SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF51AAF989F00117AFC /* Alamofire-SwiftyJSON.swift */; };
@@ -82,6 +83,7 @@
 		941631871AC404A7002016FD /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = Extensions/UIColor.swift; sourceTree = "<group>"; };
 		941AA3891AAFA34900CA9192 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		941AA38D1AB01EC000CA9192 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		9432430F1B2D37FA00D1A1D6 /* HeaderContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderContainer.swift; path = Home/HeaderContainer.swift; sourceTree = "<group>"; };
 		943A6FE11B21F6B300D50D8A /* TipCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipCell.swift; path = Home/TipCell.swift; sourceTree = "<group>"; };
 		943E93FC1B05C8DC007D98C7 /* WalletController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletController.swift; sourceTree = "<group>"; };
 		94416BED1AAF94C700117AFC /* Tipper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Tipper.entitlements; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 		941631801AC3CBE2002016FD /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				9432430F1B2D37FA00D1A1D6 /* HeaderContainer.swift */,
 				9416317E1AC3C1EC002016FD /* HomeController.swift */,
 				941631841AC3FAB4002016FD /* TweetCell.swift */,
 				943A6FE11B21F6B300D50D8A /* TipCell.swift */,
@@ -612,6 +615,7 @@
 				9416317F1AC3C1EC002016FD /* HomeController.swift in Sources */,
 				94416C131AAF989F00117AFC /* CurrentUser.swift in Sources */,
 				941631831AC3CC5E002016FD /* AddressController.swift in Sources */,
+				943243101B2D37FB00D1A1D6 /* HeaderContainer.swift in Sources */,
 				949842021B25FC590079082C /* TipDetailsViewController.swift in Sources */,
 				94F3FD951B08581900CD0261 /* WalletContainerController.swift in Sources */,
 				94416C141AAF989F00117AFC /* NSManagedObject+Extension.swift in Sources */,

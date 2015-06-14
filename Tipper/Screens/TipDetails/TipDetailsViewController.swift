@@ -9,12 +9,14 @@
 import UIKit
 
 class TipDetailsViewController: UIViewController {
+    let className = "TipDetailsViewController"
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
-
+    var favorite: Favorite!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        println("\(className)::\(__FUNCTION__)")
 
         // Do any additional setup after loading the view.
     }
@@ -34,5 +36,16 @@ class TipDetailsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        println("\(className)::\(__FUNCTION__)")
+
+        if segue.identifier == "TipDetailEmbed" {
+            let vc = segue.destinationViewController as! TipDetailContainer
+            vc.managedObjectContext = managedObjectContext
+            vc.currentUser = currentUser
+            vc.favorite = favorite
+        }
+    }
 
 }
