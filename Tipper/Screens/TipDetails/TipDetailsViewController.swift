@@ -13,7 +13,9 @@ class TipDetailsViewController: UIViewController {
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
     var favorite: Favorite!
-    
+    var market: Market!
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         println("\(className)::\(__FUNCTION__)")
@@ -45,6 +47,11 @@ class TipDetailsViewController: UIViewController {
             vc.managedObjectContext = managedObjectContext
             vc.currentUser = currentUser
             vc.favorite = favorite
+        } else if segue.identifier == "TipDetailsHeaderEmbed" {
+            let vc = segue.destinationViewController as! HeaderContainer
+            vc.managedObjectContext = managedObjectContext
+            vc.currentUser = currentUser
+            vc.market = market
         }
     }
 

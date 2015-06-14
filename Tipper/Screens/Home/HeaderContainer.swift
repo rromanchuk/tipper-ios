@@ -83,8 +83,8 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate {
     
 
     func setBalance() {
-        if let marketValue = currentUser.marketValue where displayUSD {
-            let string = "$\(marketValue.amount)"
+        if let marketValue = currentUser.marketValue, amount = marketValue.amount where displayUSD {
+            let string = "$\(amount)"
             let labelAttributes = NSMutableAttributedString(string: string)
             labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Regular", size: 40.0)!, range: NSMakeRange(0, count(string)))
             balanceLabel.attributedText = labelAttributes

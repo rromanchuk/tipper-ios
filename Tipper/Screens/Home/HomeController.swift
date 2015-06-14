@@ -16,6 +16,7 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
     var market: Market!
     var showBalanceBTC = false
     let tweetTableReuseIdentifier = "TipCell"
+    let transitionManager = TransitionManager()
 
     lazy var headerDateFormatter: NSDateFormatter = {
         let _formatter = NSDateFormatter()
@@ -104,11 +105,12 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
             let cell: TipCell = sender as! TipCell
             let indexPath = tableView.indexPathForCell(cell)
             let favorite: Favorite = fetchedResultsController.objectAtIndexPath(indexPath!) as! Favorite
-
             let vc = segue.destinationViewController as! TipDetailsViewController
+            vc.transitioningDelegate = self.transitionManager
             vc.managedObjectContext = managedObjectContext
             vc.currentUser = currentUser
             vc.favorite = favorite
+            vc.market = market
         } else if segue.identifier == "HomeHeaderEmbed" {
             let vc = segue.destinationViewController as! HeaderContainer
             vc.managedObjectContext = managedObjectContext

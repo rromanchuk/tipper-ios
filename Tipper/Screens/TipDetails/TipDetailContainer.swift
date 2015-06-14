@@ -17,9 +17,11 @@ class TipDetailContainer: UITableViewController {
     
     @IBOutlet weak var tweetView: TWTRTweetView!
 
+    @IBOutlet weak var tipLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTipAmount()
         println("\(className)::\(__FUNCTION__)")
         let twt = TWTRTweet(JSONDictionary: favorite.twitterJSON)
         tweetView.configureWithTweet(twt)
@@ -37,4 +39,19 @@ class TipDetailContainer: UITableViewController {
 
     // MARK: - Table view data source
 
+    @IBAction func didTapBack(sender: UIButton) {
+        self.performSegueWithIdentifier("ExitToHome", sender: self)
+    }
+
+    func setupTipAmount() {
+        if let currentUser = currentUser {
+            let string = "a\(currentUser.settings!.tipAmountUBTC)"
+            let labelAttributes = NSMutableAttributedString(string: string)
+            labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "coiner", size: 18.0)!, range: NSMakeRange(0,1))
+            labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol", size: 18.0)!, range: NSMakeRange(1, count(string) - 1))
+            labelAttributes.addAttribute(NSKernAttributeName, value:-5.0, range: NSMakeRange(0, 1))
+            labelAttributes.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSMakeRange(0, count(string)))
+            tipLabel.attributedText = labelAttributes;
+        }
+    }
 }
