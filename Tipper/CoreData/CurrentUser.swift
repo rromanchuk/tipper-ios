@@ -17,6 +17,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     let KeychainUserAccount: String = "tips.coinbit.tipper.user"
     let KeychainTokenAccount: String = "tips.coinbit.tipper.token"
     let KeychainBitcoinAccount: String = "tips.coinbit.tipper.bitcoinaddress"
+    let KeychainUserIDAccount: String = "tips.coinbit.tipper.userID"
     lazy var mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
 
 
@@ -106,6 +107,33 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
             NSUbiquitousKeyValueStore.defaultStore().setString(newValue, forKey: KeychainTokenAccount)
         }
     }
+
+    var userId: String? {
+        get {
+            self.willAccessValueForKey("userId")
+            if let _userId = self.primitiveValueForKey("userId") as! String? {
+                return _userId
+            } else {
+                if let _userId = SSKeychain.passwordForService(KeychainUserIDAccount, account:KeychainAccount) {
+                    self.userId = _userId
+                    return _userId
+                } else if let _userId = NSUbiquitousKeyValueStore.defaultStore().stringForKey(KeychainUserIDAccount) {
+                    self.userId = _userId
+                    return _userId
+                } else {
+                    return nil
+                }
+            }
+        }
+        set {
+            self.willChangeValueForKey("userId")
+            self.setPrimitiveValue(newValue, forKey: "userId")
+            self.didChangeValueForKey("userId")
+            SSKeychain.setPassword(newValue, forService: KeychainUserIDAccount, account: KeychainAccount)
+            NSUbiquitousKeyValueStore.defaultStore().setString(newValue, forKey: KeychainUserIDAccount)
+        }
+    }
+
 
     var bitcoinAddress: String? {
         get {
@@ -225,11 +253,12 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
     func updateEntityWithJSON(json: JSON) {
         println("\(className)::\(__FUNCTION__) json:\(json)")
-        self.twitterUserId = json["TwitterUserID"].stringValue
-        self.twitterUsername = json["TwitterUsername"].stringValue
-        self.bitcoinAddress = json["BitcoinAddress"].string
-        self.cognitoIdentity = json["CognityIdentity"].string
-        self.cognitoToken = json["CognitoToken"].string
+        self.twitterUserId      = json["TwitterUserID"].stringValue
+        self.userId             = json["UserID"].stringValue
+        self.twitterUsername    = json["TwitterUsername"].stringValue
+        self.bitcoinAddress     = json["BitcoinAddress"].string
+        self.cognitoIdentity    = json["CognityIdentity"].string
+        self.cognitoToken       = json["CognitoToken"].string
 
         if let balance = json["BitcoinBalanceBTC"].string {
             self.bitcoinBalanceBTC = balance
@@ -261,10 +290,10 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         println("\(className)::\(__FUNCTION__)")
         if isTwitterAuthenticated {
             let user = DynamoUser.new()
-            user.TwitterUserID = twitterUserId
-            user.TwitterAuthToken = twitterAuthToken
-            user.TwitterAuthSecret = twitterAuthSecret
-            user.EndpointArn = endpointArn
+            user.TwitterUserID      = twitterUserId
+            user.TwitterAuthToken   = twitterAuthToken
+            user.TwitterAuthSecret  = twitterAuthSecret
+            user.EndpointArn        = endpointArn
             mapper.save(user, configuration: defaultDynamoConfiguration)
         }
     }
@@ -324,12 +353,13 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
     func updateEntityWithDynamoModel(dynamoModel: DynamoUpdatable) {
         println("\(className)::\(__FUNCTION__) model:\(dynamoModel)")
-        let user = dynamoModel as! DynamoUser
-        self.twitterUserId = user.TwitterUserID
-        self.twitterUsername = user.TwitterUsername
-        self.twitterAuthToken = user.TwitterAuthToken
-        self.twitterAuthSecret = user.TwitterAuthSecret
-        self.bitcoinAddress = user.BitcoinAddress
+        let user                    = dynamoModel as! DynamoUser
+        self.userId                 = user.UserID
+        self.twitterUserId          = user.TwitterUserID
+        self.twitterUsername        = user.TwitterUsername
+        self.twitterAuthToken       = user.TwitterAuthToken
+        self.twitterAuthSecret      = user.TwitterAuthSecret
+        self.bitcoinAddress         = user.BitcoinAddress
 
 
         if let endpoint = user.EndpointArn {
@@ -346,9 +376,13 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         SSKeychain.deletePasswordForService(KeychainUserAccount, account: KeychainAccount)
         SSKeychain.deletePasswordForService(KeychainTokenAccount, account: KeychainAccount)
         SSKeychain.deletePasswordForService(KeychainBitcoinAccount, account: KeychainAccount)
+        SSKeychain.deletePasswordForService(KeychainUserIDAccount, account: KeychainAccount)
+
         NSUbiquitousKeyValueStore.defaultStore().removeObjectForKey(KeychainUserAccount)
         NSUbiquitousKeyValueStore.defaultStore().removeObjectForKey(KeychainTokenAccount)
         NSUbiquitousKeyValueStore.defaultStore().removeObjectForKey(KeychainBitcoinAccount)
+        NSUbiquitousKeyValueStore.defaultStore().removeObjectForKey(KeychainUserIDAccount)
+
         NSUbiquitousKeyValueStore.defaultStore().synchronize()
         self.destroy()
         self.writeToDisk()

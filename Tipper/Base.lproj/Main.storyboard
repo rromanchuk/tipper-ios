@@ -719,6 +719,9 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="userDidTip:" destination="E28-WE-ams" eventType="touchUpInside" id="mCK-mX-ICb"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <animations/>
@@ -1067,8 +1070,8 @@
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="constraints">
-                                                            <exclude reference="5yL-Ho-B31"/>
                                                             <exclude reference="0VO-TG-RUC"/>
+                                                            <exclude reference="5yL-Ho-B31"/>
                                                         </mask>
                                                     </variation>
                                                 </imageView>
@@ -1152,9 +1155,9 @@
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="Oc9-Tv-aY5"/>
                                         <exclude reference="Ol2-kM-ncB"/>
                                         <exclude reference="iF9-f7-4ft"/>
-                                        <exclude reference="Oc9-Tv-aY5"/>
                                     </mask>
                                 </variation>
                                 <connections>
@@ -1176,8 +1179,8 @@
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="kBb-tS-gb9"/>
                                         <exclude reference="exg-rH-JsW"/>
+                                        <exclude reference="kBb-tS-gb9"/>
                                         <exclude reference="p1h-Ln-nPX"/>
                                     </mask>
                                 </variation>
@@ -1227,6 +1230,7 @@
                         <outlet property="balanceLabel" destination="dAL-w9-cfz" id="Ran-bS-inU"/>
                         <outlet property="settingsButton" destination="YCv-dq-4JX" id="aof-PD-tic"/>
                         <outlet property="walletButton" destination="1yo-N2-sfZ" id="FYd-n0-o6C"/>
+                        <segue destination="hg3-He-cdC" kind="unwind" unwindAction="done:sender:" id="as6-QZ-PA1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bi8-YR-qsc" userLabel="First Responder" sceneMemberID="firstResponder"/>

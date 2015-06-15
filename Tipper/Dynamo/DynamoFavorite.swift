@@ -56,18 +56,19 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: "FromTwitterID").continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             //println("Result: \(task.result) Error \(task.error)")
             if task.error == nil {
-                let results = task.result as! AWSDynamoDBPaginatedOutput
-                let privateContext = context.privateContext
-                privateContext.performBlock({ () -> Void in
-                    for result in results.items as! [DynamoFavorite] {
-                        autoreleasepool({ () -> () in
-                            //println("result from query \(result)")
-                            let json = JSON(result)
-                            Favorite.entityWithDYNAMO(Favorite.self, model: result, context: privateContext)
-                            privateContext.saveMoc()
-                        })
-                    }
-                })
+                if let results = task.result as? AWSDynamoDBPaginatedOutput {
+                    let privateContext = context.privateContext
+                    privateContext.performBlock({ () -> Void in
+                        for result in results.items as! [DynamoFavorite] {
+                            autoreleasepool({ () -> () in
+                                //println("result from query \(result)")
+                                let json = JSON(result)
+                                Favorite.entityWithDYNAMO(Favorite.self, model: result, context: privateContext)
+                                privateContext.saveMoc()
+                            })
+                        }
+                    })
+                }
             }
 
             return nil

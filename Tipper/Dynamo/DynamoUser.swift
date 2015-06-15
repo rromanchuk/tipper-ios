@@ -19,6 +19,7 @@ import TwitterKit
 import SwiftyJSON
 
 class DynamoUser: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
+    var UserID: String?
     var TwitterUserID: String?
     var TwitterUsername: String?
     var BitcoinAddress: String?
@@ -32,11 +33,11 @@ class DynamoUser: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
     var BitcoinBalanceBTC: NSNumber?
 
     static func dynamoDBTableName() -> String! {
-        return "TipperBitcoinAccounts"
+        return "TipperUsers"
     }
 
     static func hashKeyAttribute() -> String! {
-        return "TwitterUserID"
+        return "UserID"
     }
 
     func lookupProperty() -> String {
@@ -44,11 +45,11 @@ class DynamoUser: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
     }
 
     class func lookupProperty() -> String {
-        return "twitterUserId"
+        return "UserID"
     }
 
     func lookupValue() -> String {
-        return self.TwitterUserID!
+        return self.UserID!
     }
     
     override func isEqual(anObject: AnyObject?) -> Bool {
