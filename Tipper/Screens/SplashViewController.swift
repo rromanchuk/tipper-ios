@@ -72,8 +72,15 @@ class SplashViewController: UIViewController {
         UIApplication.sharedApplication().openURL(NSURL(string:"https://www.coinbit.tips/privacy")!)
     }
 
-    @IBAction func done(segue: UIStoryboardSegue, sender: AnyObject?) {
+    @IBAction func unwindToSplash(unwindSegue: UIStoryboardSegue) {
         println("\(className)::\(__FUNCTION__)")
+        if let blueViewController = unwindSegue.sourceViewController as? HomeController {
+            println("Coming from HomeController")
+        }
+        else if let redViewController = unwindSegue.sourceViewController as? TipDetailsViewController {
+            println("Coming from TipDetailsViewController")
+        }
         (UIApplication.sharedApplication().delegate as! AppDelegate).setupFirstController()
     }
+
 }

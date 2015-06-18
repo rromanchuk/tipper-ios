@@ -22,6 +22,8 @@ class Transaction: NSManagedObject, CoreDataUpdatable {
     @NSManaged var toTwitterId: String?
     @NSManaged var fromTwitterUsername: String?
     @NSManaged var toTwitterUsername: String?
+    @NSManaged var toUserId: String?
+    @NSManaged var fromUserId: String?
 
     @NSManaged var time: NSDate
 

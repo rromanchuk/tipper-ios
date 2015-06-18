@@ -822,7 +822,7 @@
                     <connections>
                         <outlet property="segmentControl" destination="zmw-Y4-Vvl" id="MId-Sy-3WU"/>
                         <outlet property="tableView" destination="RZK-c9-5JT" id="RTy-nC-ktx"/>
-                        <segue destination="hg3-He-cdC" kind="unwind" identifier="BackToSplash" unwindAction="done:sender:" id="d2z-jv-TGO"/>
+                        <segue destination="hg3-He-cdC" kind="unwind" identifier="BackToSplash" unwindAction="unwindToSplash:" id="xIT-KD-kEp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="syl-PA-E4Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -881,6 +881,9 @@
                         </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <segue destination="hg3-He-cdC" kind="unwind" identifier="BackToSplashFromTipDetails" unwindAction="unwindToSplash:" id="Sn2-2f-UK9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rca-90-DIA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1230,7 +1233,6 @@
                         <outlet property="balanceLabel" destination="dAL-w9-cfz" id="Ran-bS-inU"/>
                         <outlet property="settingsButton" destination="YCv-dq-4JX" id="aof-PD-tic"/>
                         <outlet property="walletButton" destination="1yo-N2-sfZ" id="FYd-n0-o6C"/>
-                        <segue destination="hg3-He-cdC" kind="unwind" unwindAction="done:sender:" id="as6-QZ-PA1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bi8-YR-qsc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1253,6 +1255,6 @@
         <image name="wallet" width="76" height="73"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sw9-Zr-Rqd"/>
+        <segue reference="7dQ-p7-IX8"/>
     </inferredMetricsTieBreakers>
 </document>

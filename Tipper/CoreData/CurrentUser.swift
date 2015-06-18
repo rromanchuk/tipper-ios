@@ -82,6 +82,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         }
     }
 
+
     var token: String? {
         get {
             self.willAccessValueForKey("token")
@@ -218,7 +219,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
     static var lookupProperty: String {
         get {
-            return "twitterUserId"
+            return "userId"
         }
     }
 
@@ -363,7 +364,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     func refreshWithDynamo() {
         println("\(className)::\(__FUNCTION__)")
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
-        mapper.load(DynamoUser.self, hashKey: self.twitterUserId, rangeKey: nil).continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+        mapper.load(DynamoUser.self, hashKey: self.userId, rangeKey: nil).continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             println("error \(task.error)")
             let dynamoUser: DynamoUser = task.result as! DynamoUser
             self.updateEntityWithDynamoModel(dynamoUser)

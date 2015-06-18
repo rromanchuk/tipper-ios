@@ -20,7 +20,9 @@ let TwitterDateFormatter: NSDateFormatter = {
 
 
 class Favorite: NSManagedObject, CoreDataUpdatable {
-
+    @NSManaged var objectId: String
+    @NSManaged var fromUserId: String
+    @NSManaged var toUserId: String
     @NSManaged var tweetId: String
     @NSManaged var toTwitterId: String
     @NSManaged var toTwitterUsername: String
@@ -74,6 +76,12 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
         //println("\(className)::\(__FUNCTION__) ")
         let dynamoFavorite = dynamoObject as! DynamoFavorite
         self.tweetId = dynamoFavorite.TweetID!
+        self.objectId = dynamoFavorite.ObjectID!
+
+        if let fromUserId = dynamoFavorite.FromUserID {
+            self.fromUserId = fromUserId
+        }
+
         if let didLeaveTip = dynamoFavorite.DidLeaveTip {
             self.didLeaveTip = true
         }

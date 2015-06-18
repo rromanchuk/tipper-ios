@@ -10,7 +10,7 @@ import UIKit
 import TwitterKit
 import SwiftyJSON
 
-class HomeController: UIViewController, NotificationMessagesDelegate, UITableViewDelegate {
+class HomeController: UIViewController, NotificationMessagesDelegate, UITableViewDelegate, Logoutable {
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
     var market: Market!
@@ -36,11 +36,11 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
     lazy var fetchedResultsController: NSFetchedResultsController = NSFetchedResultsController.superFetchedResultsController("Favorite", sectionNameKeyPath: "daySectionString", sortDescriptors: self.sortDescriptors, predicate: self.predicate, tableView: self.tableView, context: self.managedObjectContext)
 
     lazy var predicate: NSPredicate? = {
-        return NSPredicate(format: "fromTwitterId = %@", self.currentUser.uuid!)
+        return NSPredicate(format: "fromUserId = %@", self.currentUser.userId!)
     }()
 
     lazy var receivedPredicate: NSPredicate? = {
-        return NSPredicate(format: "toTwitterId = %@", self.currentUser.uuid!)
+        return NSPredicate(format: "toUserId = %@", self.currentUser.userId!)
     }()
 
     lazy var sortDescriptors: [AnyObject] = {
@@ -99,7 +99,7 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        println("\(className)::\(__FUNCTION__)")
+        println("\(className)::\(__FUNCTION__) identifier: \(segue.identifier)")
 
         if segue.identifier == "TipDetails" {
             let cell: TipCell = sender as! TipCell
@@ -119,6 +119,12 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
             //vc.favorite = favorite
         }
 
+    }
+
+    func backToSplash() {
+        println("\(className)::\(__FUNCTION__)")
+        currentUser.resetIdentifiers()
+        performSegueWithIdentifier("BackToSplash", sender: self)
     }
 
     @IBAction func done(segue: UIStoryboardSegue, sender: AnyObject?) {

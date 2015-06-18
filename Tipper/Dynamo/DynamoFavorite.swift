@@ -11,6 +11,9 @@ import TwitterKit
 import SwiftyJSON
 
 class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
+    var ObjectID: String?
+    var FromUserID: String?
+    var ToUserID: String?
     var TweetID: String?
     var ToTwitterID: String?
     var ToTwitterUsername: String?
@@ -21,15 +24,15 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     var DidLeaveTip: String?
    
     static func dynamoDBTableName() -> String! {
-        return "TipperTwitterFavorites"
+        return "TipperTips"
     }
 
     static func hashKeyAttribute() -> String! {
-        return "TweetID"
+        return "ObjectID"
     }
 
     static func rangeKeyAttribute() -> String! {
-        return "FromTwitterID"
+        return "FromUserID"
     }
 
     func lookupProperty() -> String {
@@ -37,11 +40,11 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     }
 
     class func lookupProperty() -> String {
-        return "tweetId"
+        return "objectId"
     }
 
     func lookupValue() -> String {
-        return self.TweetID!
+        return self.ObjectID!
     }
 
     class func fetchFromAWS(currentUser: CurrentUser, context: NSManagedObjectContext) {
@@ -49,11 +52,11 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
 
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let exp = AWSDynamoDBQueryExpression()
-        exp.hashKeyValues      = currentUser.uuid
-        exp.indexName = "FromTwitterID-index"
+        exp.hashKeyValues      = currentUser.userId
+        exp.indexName = "FromUserID-index"
         exp.limit = 3000
 
-        mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: "FromTwitterID").continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+        mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: "FromUserID").continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             //println("Result: \(task.result) Error \(task.error)")
             if task.error == nil {
                 if let results = task.result as? AWSDynamoDBPaginatedOutput {
@@ -94,10 +97,10 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let exp = AWSDynamoDBQueryExpression()
         exp.hashKeyValues      = currentUser.uuid
-        exp.indexName = "ToTwitterID-index"
+        exp.indexName = "ToUserID-index"
         exp.limit = 3000
 
-        mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: "ToTwitterID").continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+        mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: "ToUserID").continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             //println("Result: \(task.result) Error \(task.error)")
             if task == nil {
                 let results = task.result as! AWSDynamoDBPaginatedOutput

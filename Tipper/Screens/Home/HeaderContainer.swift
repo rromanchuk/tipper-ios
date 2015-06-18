@@ -37,8 +37,10 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate {
 
         let destroyAction = UIAlertAction(title: "Logout", style: .Destructive) { [weak self] (action) in
             println("\(self?.className)::\(__FUNCTION__) destroyAction")
-            self?.currentUser.resetIdentifiers()
-            self?.performSegueWithIdentifier("BackToSplash", sender: self)
+            
+            if let vc = self?.parentViewController as? Logoutable {
+                vc.backToSplash()
+            }
         }
 
         let feedbackAction = UIAlertAction(title: "Feedback and Support", style: .Default, handler: { [weak self] (action) -> Void in
@@ -146,10 +148,7 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate {
         dismissViewControllerAnimated(true, completion:nil)
     }
 
-    func logout() {
-        currentUser.resetIdentifiers()
-        performSegueWithIdentifier("BackToSplash", sender: self)
-    }
+   
 
     // MARK: Application lifecycle
 
@@ -177,6 +176,7 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate {
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        println("\(className)::\(__FUNCTION__) identifier: \(segue.identifier)")
         if segue.identifier == "Wallet" {
             let vc = segue.destinationViewController as! WalletContainerController
             vc.managedObjectContext = managedObjectContext
@@ -185,4 +185,8 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate {
         }
     }
 
+}
+
+protocol Logoutable {
+    func backToSplash()
 }
