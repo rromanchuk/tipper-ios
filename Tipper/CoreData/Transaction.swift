@@ -69,11 +69,9 @@ class Transaction: NSManagedObject, CoreDataUpdatable {
         }
     }
 
-    class func market() -> Market {
-        return (UIApplication.sharedApplication().delegate as! AppDelegate).market
+    class func fetch(txid: String) {
+        let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
+        mapper.load(DynamoTransaction.self, hashKey: txid, rangeKey: nil)
     }
 
-    func update(completion: () ->Void) {
-
-    }
 }

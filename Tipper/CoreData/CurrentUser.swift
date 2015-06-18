@@ -305,7 +305,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         let sqs = AWSSQS.defaultSQS()
         let request = AWSSQSSendMessageRequest()
 
-        var tipDict = ["TwitterUserID": self.uuid!, "ToBitcoinAddress": toAddress ]
+        var tipDict = ["TwitterUserID": self.uuid!, "ToBitcoinAddress": toAddress, "UserID": userId! ]
         let jsonTipDict = NSJSONSerialization.dataWithJSONObject(tipDict, options: nil, error: nil)
         let json: String = NSString(data: jsonTipDict!, encoding: NSUTF8StringEncoding) as! String
 
@@ -321,6 +321,32 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
             }
             return nil
         }
+    }
+
+    func refetchFeeds(completion: (error: NSError?) -> Void) {
+        println("\(className)::\(__FUNCTION__)")
+        completion(error: nil)
+
+        let sqs = AWSSQS.defaultSQS()
+        let request = AWSSQSSendMessageRequest()
+
+        var tipDict = ["TwitterUserID": self.uuid!, "UserID": userId! ]
+        let jsonTipDict = NSJSONSerialization.dataWithJSONObject(tipDict, options: nil, error: nil)
+        let json: String = NSString(data: jsonTipDict!, encoding: NSUTF8StringEncoding) as! String
+
+
+        request.messageBody = json
+        request.queueUrl = "***REMOVED***"
+        sqs.sendMessage(request).continueWithBlock { (task) -> AnyObject! in
+            if (task.error != nil) {
+                println("ERROR: \(task.error)")
+                completion(error: task.error)
+            } else {
+                completion(error: nil)
+            }
+            return nil
+        }
+
     }
 
 
