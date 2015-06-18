@@ -82,6 +82,10 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
             self.fromUserId = fromUserId
         }
 
+        if let toUserId = dynamoFavorite.ToUserID {
+            self.toUserId = toUserId
+        }
+
         if let didLeaveTip = dynamoFavorite.DidLeaveTip {
             self.didLeaveTip = true
         }
@@ -106,7 +110,7 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
             //[NSString stringWithFormat:@"%d", [components year] * 10000 + [components month] * 100  + [components day]];
 
 
-        if let jsonString =   dynamoFavorite.TweetJSON, data = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true) {
+        if let jsonString = dynamoFavorite.TweetJSON, data = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true) {
             let json = JSON(data: data)
             self.tweetId = json["id"].stringValue
             self.twitterJSON = json.dictionaryObject
@@ -116,6 +120,7 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
             self.toTwitterId = toTwitterID
             self.fromTwitterId = fromTwitterID
         }
+
 
         if let toTwitterUsername = dynamoFavorite.ToTwitterUsername {
             self.toTwitterUsername = toTwitterUsername
