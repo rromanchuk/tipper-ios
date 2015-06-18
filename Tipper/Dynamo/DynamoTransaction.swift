@@ -12,8 +12,10 @@ class DynamoTransaction: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpda
     var txid: String?
 
     var ToTwitterID: String?
+    var ToUserID: String?
     var ToTwitterUsername: String?
     var FromTwitterID: String?
+    var FromUserID: String?
     var FromTwitterUsername: String?
     var fee: String?
     var amount: String?

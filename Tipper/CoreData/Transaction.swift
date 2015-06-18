@@ -64,6 +64,10 @@ class Transaction: NSManagedObject, CoreDataUpdatable {
             fromTwitterId = transaction.FromTwitterID
             toTwitterId = transaction.ToTwitterID
 
+            fromUserId = transaction.FromUserID
+            toUserId = transaction.ToUserID
+
+
             fromTwitterUsername = transaction.FromTwitterUsername
             toTwitterUsername = transaction.ToTwitterUsername
 
@@ -71,9 +75,15 @@ class Transaction: NSManagedObject, CoreDataUpdatable {
         }
     }
 
-    class func fetch(txid: String) {
+    class func fetch(txid: String, context: NSManagedObjectContext, completion: (transaction:Transaction) -> Void) {
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
-        mapper.load(DynamoTransaction.self, hashKey: txid, rangeKey: nil)
+        mapper.load(DynamoTransaction.self, hashKey: txid, rangeKey: nil).continueWithBlock { (task) -> AnyObject! in
+            if let dynamoTransaction = task.result as? DynamoTransaction {
+                let transaction = Transaction.entityWithDYNAMO(Transaction.self, model: dynamoTransaction, context: context)
+                completion(transaction: transaction!)
+            }
+            return nil
+        }
     }
 
 }

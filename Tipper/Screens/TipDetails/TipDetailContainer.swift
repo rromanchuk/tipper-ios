@@ -11,7 +11,7 @@ import TwitterKit
 
 class TipDetailContainer: UITableViewController {
     let className = "TipDetailContainer"
-    var managedObjectContext: NSManagedObjectContext?
+    var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
     var favorite: Favorite!
     
@@ -19,17 +19,27 @@ class TipDetailContainer: UITableViewController {
 
     @IBOutlet weak var tipLabel: UILabel!
 
+    @IBOutlet weak var transactionIdLabel: UILabel!
+    @IBOutlet weak var confirmationsLabel: UILabel!
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTipAmount()
         println("\(className)::\(__FUNCTION__)")
         let twt = TWTRTweet(JSONDictionary: favorite.twitterJSON)
         tweetView.configureWithTweet(twt)
+        transactionIdLabel.text = favorite.txid
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+
+        Transaction.fetch(favorite.txid, context: managedObjectContext) { (transaction) -> Void in
+            self.confirmationsLabel.text = transaction.confirmations
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -103,7 +103,7 @@
                             </label>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.41176470590000003" green="0.76470588240000004" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.36078431372549019" green="0.74117647058823533" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="YOy-ZY-rsY" firstAttribute="top" secondItem="dHj-ZJ-tNj" secondAttribute="bottom" constant="8" id="3tQ-R6-GiZ"/>
                             <constraint firstAttribute="centerX" secondItem="YOy-ZY-rsY" secondAttribute="centerX" id="4pR-WE-v9p"/>
@@ -190,7 +190,7 @@
                             </label>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.41176470590000003" green="0.76470588240000004" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.36078431372549019" green="0.74117647058823533" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="TaF-SW-wW7" firstAttribute="top" secondItem="Wpm-Fc-fcZ" secondAttribute="bottom" constant="62" id="1po-hE-QlV"/>
                             <constraint firstItem="TaF-SW-wW7" firstAttribute="leading" secondItem="xl9-h1-7Xu" secondAttribute="leadingMargin" id="7tA-29-D8g"/>
@@ -1122,7 +1122,9 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="confirmationsLabel" destination="4SP-s5-x5r" id="RxU-U8-RGP"/>
                         <outlet property="tipLabel" destination="2WX-eU-6Uo" id="JLk-py-Sff"/>
+                        <outlet property="transactionIdLabel" destination="i3d-JV-ent" id="PfW-pz-6Is"/>
                         <outlet property="tweetView" destination="JuM-IQ-xeF" id="giq-Tn-sF1"/>
                         <segue destination="nkS-N6-z7z" kind="unwind" identifier="ExitToHome" unwindAction="done:sender:" id="Dtq-pE-qnf"/>
                     </connections>
@@ -1255,6 +1257,6 @@
         <image name="wallet" width="76" height="73"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7dQ-p7-IX8"/>
+        <segue reference="sw9-Zr-Rqd"/>
     </inferredMetricsTieBreakers>
 </document>
