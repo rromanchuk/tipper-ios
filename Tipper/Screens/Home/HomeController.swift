@@ -196,6 +196,13 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
         return fetchedResultsController.sections![section].numberOfObjects!
     }
 
+    func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if let favorite = fetchedResultsController.objectAtIndexPath(indexPath) as? Favorite {
+            return favorite.didLeaveTip
+        }
+        return false
+    }
+
 
 }
 

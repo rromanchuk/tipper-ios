@@ -64,4 +64,6 @@ class TipDetailContainer: UITableViewController {
             tipLabel.attributedText = labelAttributes;
         }
     }
+
+
 }
