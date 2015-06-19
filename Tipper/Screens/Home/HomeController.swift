@@ -67,6 +67,16 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "logout", name: "UNAUTHORIZED_USER", object: nil)
 
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
+        tableView.addSubview(refreshControl)
+
+    }
+
+    func refresh(refreshControl: UIRefreshControl) {
+        DynamoFavorite.fetchFromAWS(currentUser, context: managedObjectContext)
+        DynamoFavorite.fetchReceivedFromAWS(currentUser, context: managedObjectContext)
+        refreshControl.endRefreshing()
     }
 
 

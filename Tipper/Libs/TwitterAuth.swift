@@ -19,7 +19,7 @@ public class TwitterAuth : AWSAbstractIdentityProvider {
         super.init()
         self.token = nil
         var dict  = NSMutableDictionary()
-        dict.setObject("temp", forKey: "com.checkthis.today")
+        dict.setObject("temp", forKey: "com.ryanromanchuk.tipper")
         self.logins = dict as [NSObject : AnyObject]
 
     }

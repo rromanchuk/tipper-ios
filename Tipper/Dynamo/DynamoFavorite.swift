@@ -19,9 +19,13 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     var ToTwitterUsername: String?
     var FromTwitterID: String?
     var FromTwitterUsername: String?
+    var FromTwitterProfileImage: String?
+    var ToTwitterProfileImage: String?
+    var Provider: String?
     var TweetJSON: String?
     var CreatedAt: NSNumber?
     var DidLeaveTip: String?
+    var txid: String?
    
     static func dynamoDBTableName() -> String! {
         return "TipperTips"
@@ -52,12 +56,14 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
 
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let exp = AWSDynamoDBQueryExpression()
-        exp.hashKeyValues      = currentUser.userId
+        exp.hashKeyValues      = currentUser.userId!
         exp.indexName = "FromUserID-index"
-        exp.limit = 3000
+        exp.limit = 30
+
+        println("userId: \(currentUser.userId!)")
 
         mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: "FromUserID").continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-            println("fetchFromAWS Result: \(task.result) Error \(task.error)")
+            println("fetchFromAWS Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
             if task.error == nil {
                 if let results = task.result as? AWSDynamoDBPaginatedOutput {
                     let privateContext = context.privateContext
@@ -96,9 +102,9 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
 
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let exp = AWSDynamoDBQueryExpression()
-        exp.hashKeyValues      = currentUser.userId
+        exp.hashKeyValues      = currentUser.userId!
         exp.indexName = "ToUserID-index"
-        exp.limit = 3000
+        exp.limit = 30
 
         mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: "ToUserID").continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             println("fetchReceivedFromAWS Result: \(task.result) Error \(task.error)")
