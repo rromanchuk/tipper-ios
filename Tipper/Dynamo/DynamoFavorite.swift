@@ -57,14 +57,14 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         exp.limit = 3000
 
         mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: "FromUserID").continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-            //println("Result: \(task.result) Error \(task.error)")
+            println("fetchFromAWS Result: \(task.result) Error \(task.error)")
             if task.error == nil {
                 if let results = task.result as? AWSDynamoDBPaginatedOutput {
                     let privateContext = context.privateContext
                     privateContext.performBlock({ () -> Void in
                         for result in results.items as! [DynamoFavorite] {
                             autoreleasepool({ () -> () in
-                                //println("result from query \(result)")
+                                println("fetchFromAWS result from query \(result)")
                                 let json = JSON(result)
                                 Favorite.entityWithDYNAMO(Favorite.self, model: result, context: privateContext)
                                 privateContext.saveMoc()
@@ -96,19 +96,19 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
 
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let exp = AWSDynamoDBQueryExpression()
-        exp.hashKeyValues      = currentUser.uuid
+        exp.hashKeyValues      = currentUser.userId
         exp.indexName = "ToUserID-index"
         exp.limit = 3000
 
         mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: "ToUserID").continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-            //println("Result: \(task.result) Error \(task.error)")
-            if task == nil {
+            println("fetchReceivedFromAWS Result: \(task.result) Error \(task.error)")
+            if task.error == nil {
                 let results = task.result as! AWSDynamoDBPaginatedOutput
                 let privateContext = context.privateContext
                 privateContext.performBlock({ () -> Void in
                     for result in results.items as! [DynamoFavorite] {
                         autoreleasepool({ () -> () in
-                            //println("result from query \(result)")
+                            println("fetchReceivedFromAWS result from query \(result)")
                             Favorite.entityWithDYNAMO(Favorite.self, model: result, context: privateContext)
                             privateContext.saveMoc()
                         })

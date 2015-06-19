@@ -42,7 +42,7 @@ class TweetCell: UITableViewCell {
 
         //println("favorite:\(favorite), currentUser:\(currentUser)")
         if let currentUser = currentUser {
-            var tipDict = ["TweetID": favorite.tweetId, "FromTwitterID": currentUser.uuid!, "ToTwitterID": favorite.toTwitterId ]
+            var tipDict = ["TweetID": favorite.tweetId, "FromTwitterID": currentUser.uuid!, "ToTwitterID": favorite.toTwitterId, "FromUserID": currentUser.userId! ]
             let jsonTipDict = NSJSONSerialization.dataWithJSONObject(tipDict, options: nil, error: nil)
             let json: String = NSString(data: jsonTipDict!, encoding: NSUTF8StringEncoding) as! String
 

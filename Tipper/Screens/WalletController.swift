@@ -130,6 +130,7 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
         createBackendChargeWithToken(token, completion: completion)
     }
 
+
     func paymentAuthorizationViewControllerDidFinish(controller: PKPaymentAuthorizationViewController!) {
         println("\(className)::\(__FUNCTION__)")
         self.parentViewController!.dismissViewControllerAnimated(true, completion: nil)

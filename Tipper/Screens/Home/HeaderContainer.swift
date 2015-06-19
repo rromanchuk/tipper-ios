@@ -51,13 +51,13 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate {
             self?.presentViewController(mailComposer, animated:true, completion: nil)
         })
 
-        let refetchFeedAction = UIAlertAction(title: "Refetch feed", style: .Default, handler: { [weak self] (action) -> Void in
-            self?.currentUser.refetchFeeds { (error) -> Void in
-                println("\(error)")
-            }
-        })
+//        let refetchFeedAction = UIAlertAction(title: "Refetch feed", style: .Default, handler: { [weak self] (action) -> Void in
+//            self?.currentUser.refetchFeeds { (error) -> Void in
+//                println("\(error)")
+//            }
+//        })
 
-        _actionController.addAction(refetchFeedAction)
+        //_actionController.addAction(refetchFeedAction)
         _actionController.addAction(feedbackAction)
         _actionController.addAction(destroyAction)
         return _actionController

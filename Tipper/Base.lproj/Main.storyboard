@@ -781,7 +781,7 @@
                                             <outlet property="tipButton" destination="bPO-dH-Ads" id="0VY-jh-Eqr"/>
                                             <outlet property="userProfileImage" destination="CUL-hF-IVD" id="Hdn-0A-Rz2"/>
                                             <outlet property="usernameLabel" destination="wg5-nK-ero" id="8B7-fd-LWb"/>
-                                            <segue destination="qBg-iZ-CkH" kind="custom" identifier="TipDetails" id="aRR-Wu-84D"/>
+                                            <segue destination="qBg-iZ-CkH" kind="show" identifier="TipDetails" id="aRR-Wu-84D"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -905,7 +905,7 @@
                         <sections>
                             <tableViewSection id="QOW-BQ-MA6">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HeaderDetailCell" rowHeight="70" id="qS6-MU-cnv" customClass="HeaderDetailCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HeaderDetailCell" rowHeight="70" id="qS6-MU-cnv" customClass="HeaderDetailCell" customModule="Tipper" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qS6-MU-cnv" id="nQh-KL-tM2">

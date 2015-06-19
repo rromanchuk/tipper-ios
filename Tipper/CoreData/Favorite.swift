@@ -46,13 +46,13 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
 
     static var lookupProperty: String {
         get {
-            return "tweetId"
+            return "objectId"
         }
     }
 
     var lookupValue: String {
         get {
-            return self.tweetId
+            return self.objectId
         }
     }
 
@@ -86,6 +86,7 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
             self.toUserId = toUserId
         }
 
+        println("Dynamo favorite model DidLeaveTip: \(dynamoFavorite.DidLeaveTip) objectId:\(dynamoFavorite.ObjectID)")
         if let didLeaveTip = dynamoFavorite.DidLeaveTip {
             self.didLeaveTip = true
         }

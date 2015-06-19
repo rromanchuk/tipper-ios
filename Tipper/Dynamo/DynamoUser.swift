@@ -25,7 +25,7 @@ class DynamoUser: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
     var BitcoinAddress: String?
     var CreatedAt: NSNumber?
     var token: String?
-    var CognityIdentity: String?
+    var CognitoIdentity: String?
     var TwitterAuthToken: String?
     var TwitterAuthSecret: String?
     var EndpointArn: String?

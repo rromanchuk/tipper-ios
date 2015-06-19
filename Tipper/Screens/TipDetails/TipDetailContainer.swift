@@ -29,7 +29,7 @@ class TipDetailContainer: UITableViewController {
         println("\(className)::\(__FUNCTION__)")
         let twt = TWTRTweet(JSONDictionary: favorite.twitterJSON)
         tweetView.configureWithTweet(twt)
-        transactionIdLabel.text = favorite.txid
+        //transactionIdLabel.text = favorite.txid
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -37,9 +37,9 @@ class TipDetailContainer: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
 
-        Transaction.fetch(favorite.txid, context: managedObjectContext) { (transaction) -> Void in
-            self.confirmationsLabel.text = transaction.confirmations
-        }
+//        Transaction.fetch(favorite.txid, context: managedObjectContext) { (transaction) -> Void in
+//            self.confirmationsLabel.text = transaction.confirmations
+//        }
     }
 
     override func didReceiveMemoryWarning() {

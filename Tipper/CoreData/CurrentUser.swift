@@ -258,7 +258,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         self.userId             = json["UserID"].stringValue
         self.twitterUsername    = json["TwitterUsername"].stringValue
         self.bitcoinAddress     = json["BitcoinAddress"].string
-        self.cognitoIdentity    = json["CognityIdentity"].string
+        self.cognitoIdentity    = json["CognitoIdentity"].string
         self.cognitoToken       = json["CognitoToken"].string
 
         if let balance = json["BitcoinBalanceBTC"].string {
