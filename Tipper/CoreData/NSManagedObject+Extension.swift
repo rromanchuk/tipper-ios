@@ -141,11 +141,11 @@ extension NSManagedObject  {
     }
 
     class func appManagedObjectContext() -> NSManagedObjectContext {
-        return (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
+        return (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     }
 
     func appManagedObjectContext() -> NSManagedObjectContext {
-        return (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
+        return (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     }
 }
 

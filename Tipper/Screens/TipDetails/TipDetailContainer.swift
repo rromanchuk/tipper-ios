@@ -29,7 +29,11 @@ class TipDetailContainer: UITableViewController {
         println("\(className)::\(__FUNCTION__)")
         let twt = TWTRTweet(JSONDictionary: favorite.twitterJSON)
         tweetView.configureWithTweet(twt)
-        //transactionIdLabel.text = favorite.txid
+
+        if let txid = favorite.txid {
+            transactionIdLabel.text = favorite.txid
+        }
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -51,6 +55,10 @@ class TipDetailContainer: UITableViewController {
 
     @IBAction func didTapBack(sender: UIButton) {
         self.performSegueWithIdentifier("ExitToHome", sender: self)
+    }
+
+    @IBAction func didTapTxidLabel(sender: UITapGestureRecognizer) {
+        UIApplication.sharedApplication().openURL(NSURL(string: "https://blockchain.info/tx/\(favorite.txid)")!)
     }
 
     func setupTipAmount() {

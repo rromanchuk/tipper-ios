@@ -116,7 +116,7 @@ enum Router: URLRequestConvertible {
 
             // Set authentication header
             let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            let currentUser = CurrentUser.currentUser(delegate.managedObjectContext!)
+            let currentUser = CurrentUser.currentUser(delegate.managedObjectContext)
             if let uuid = currentUser.uuid, token = currentUser.token {
                 let authString = "\(uuid):\(token)"
                 println("authString\(authString)")

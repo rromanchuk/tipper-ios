@@ -1038,12 +1038,16 @@
                                                         <constraint firstAttribute="height" constant="213" id="E9V-gc-Xbs"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17uSiLnLUXUMKuQFNbdLQQQfaAWQhFHcM9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3d-JV-ent">
+                                                <label opaque="NO" alpha="0.49999999999999961" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17uSiLnLUXUMKuQFNbdLQQQfaAWQhFHcM9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3d-JV-ent">
                                                     <rect key="frame" x="47" y="283" width="226" height="12"/>
                                                     <animations/>
+                                                    <gestureRecognizers/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="bcn-wg-Izh" appends="YES" id="O2m-Cn-dp7"/>
+                                                    </connections>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirmations" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKH-Sa-iwv">
                                                     <rect key="frame" x="47" y="310" width="84" height="15"/>
@@ -1134,6 +1138,12 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zvh-p8-0CT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="bcn-wg-Izh">
+                    <connections>
+                        <action selector="didTapTxidLabel:" destination="3XR-c5-WyO" id="FNL-ik-sWW"/>
+                        <outlet property="delegate" destination="3XR-c5-WyO" id="6YA-PC-nh1"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="856" y="1646"/>
         </scene>

@@ -28,7 +28,7 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
     @NSManaged var toTwitterUsername: String
     @NSManaged var fromTwitterId: String
     @NSManaged var fromTwitterUsername: String
-    @NSManaged var txid: String
+    @NSManaged var txid: String?
     @NSManaged var createdAt: NSDate
     @NSManaged var twitterJSON: [String: AnyObject]?
     @NSManaged var didLeaveTip: Bool
@@ -84,6 +84,10 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
 
         if let toUserId = dynamoFavorite.ToUserID {
             self.toUserId = toUserId
+        }
+
+        if let txid = dynamoFavorite.txid {
+            self.txid = txid
         }
 
         println("Dynamo favorite model DidLeaveTip: \(dynamoFavorite.DidLeaveTip) objectId:\(dynamoFavorite.ObjectID)")

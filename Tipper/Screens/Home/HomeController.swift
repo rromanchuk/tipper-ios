@@ -134,6 +134,7 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
     func backToSplash() {
         println("\(className)::\(__FUNCTION__)")
         currentUser.resetIdentifiers()
+        (UIApplication.sharedApplication().delegate as! AppDelegate).resetCoreData()
         performSegueWithIdentifier("BackToSplash", sender: self)
     }
 
