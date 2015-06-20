@@ -107,7 +107,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         exp.limit = 30
 
         mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: "ToUserID").continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-            println("fetchReceivedFromAWS Result: \(task.result) Error \(task.error)")
+            println("fetchReceivedFromAWS Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
             if task.error == nil {
                 let results = task.result as! AWSDynamoDBPaginatedOutput
                 let privateContext = context.privateContext
