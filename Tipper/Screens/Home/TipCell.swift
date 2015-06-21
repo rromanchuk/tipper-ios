@@ -67,14 +67,20 @@ class TipCell: UITableViewCell {
                 if _favorite!.didLeaveTip {
                     tipActionLabel.text = "You tipped \(twt.author.name)"
                     tipButton.hidden = true
+                    tipAmount.hidden = false
+                    tipAmountBTC.hidden = false
                 } else {
                     tipActionLabel.text = "You favorited \(twt.author.name)"
                     tipButton.hidden = false
+                    tipAmount.hidden = true
+                    tipAmountBTC.hidden = true
                 }
 
             } else {
                 tipButton.hidden = true
                 tipActionLabel.text = "\(_favorite!.fromTwitterUsername) sent you a tip"
+                tipAmount.hidden = false
+                tipAmountBTC.hidden = false
             }
 
             timeLabel.text = formatter.stringFromDate(_favorite!.createdAt)

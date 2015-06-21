@@ -680,7 +680,7 @@
                                                     </variation>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGe-Ki-kum">
-                                                    <rect key="frame" x="244" y="15" width="43" height="20"/>
+                                                    <rect key="frame" x="249" y="15" width="43" height="20"/>
                                                     <animations/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="b">
@@ -701,7 +701,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" text="BTC 0.0005" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3z8-aG-t3s">
-                                                    <rect key="frame" x="226" y="39" width="61" height="12"/>
+                                                    <rect key="frame" x="231" y="39" width="61" height="12"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -745,7 +745,7 @@
                                                 <constraint firstItem="wGe-Ki-kum" firstAttribute="top" secondItem="Ls0-h3-eUY" secondAttribute="top" id="Zc5-gS-qet"/>
                                                 <constraint firstItem="wg5-nK-ero" firstAttribute="leading" secondItem="Ls0-h3-eUY" secondAttribute="leading" id="Zhn-2V-dTM"/>
                                                 <constraint firstAttribute="centerY" secondItem="c5W-Fr-Hqi" secondAttribute="centerY" id="bzb-me-JoH"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="wGe-Ki-kum" secondAttribute="trailing" constant="25" id="cLH-Dz-zS2"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="wGe-Ki-kum" secondAttribute="trailing" constant="20" id="cLH-Dz-zS2"/>
                                                 <constraint firstItem="c5W-Fr-Hqi" firstAttribute="leading" secondItem="jrj-2F-EWN" secondAttribute="leadingMargin" constant="12" id="dwl-cQ-iMD"/>
                                                 <constraint firstItem="dQu-lY-tE2" firstAttribute="leading" secondItem="jrj-2F-EWN" secondAttribute="leadingMargin" id="jaT-dh-4Uq"/>
                                                 <constraint firstItem="bPO-dH-Ads" firstAttribute="bottom" secondItem="jrj-2F-EWN" secondAttribute="bottom" id="kdn-ep-iDV"/>

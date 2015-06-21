@@ -33,6 +33,17 @@ class TipDetailContainer: UITableViewController {
         println("\(className)::\(__FUNCTION__)")
         let twt = TWTRTweet(JSONDictionary: favorite.twitterJSON)
         tweetView.configureWithTweet(twt)
+        usernameLabel.text = "@\(favorite.toTwitterUsername)"
+
+        if let urlString = twt.author.profileImageLargeURL, url = NSURL(string: urlString) {
+            profileImageView.hnk_setImageFromURL(url)
+        }
+
+        if favorite.fromUserId == currentUser.userId {
+            tipHeaderLabel.text = "You tipped \(twt.author.name)."
+        } else {
+            tipHeaderLabel.text = "\(twt.author.name) tipped you."
+        }
 
         if let txid = favorite.txid {
             transactionIdLabel.text = favorite.txid
