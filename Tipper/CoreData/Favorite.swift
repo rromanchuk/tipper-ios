@@ -75,7 +75,10 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
     func updateEntityWithDynamoModel(dynamoObject: DynamoUpdatable) {
         //println("\(className)::\(__FUNCTION__) ")
         let dynamoFavorite = dynamoObject as! DynamoFavorite
-        self.tweetId = dynamoFavorite.TweetID!
+        if let tweetId = dynamoFavorite.TweetID {
+            self.tweetId = tweetId
+        }
+
         self.objectId = dynamoFavorite.ObjectID!
 
         if let fromUserId = dynamoFavorite.FromUserID {
@@ -110,7 +113,7 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
         //calendar.components((.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay),
             //fromDate:self.createdAt)
 
-        self.daySectionString = "\(components.year * 1000 + components.month * 100 + components.day)"
+        self.daySectionString = "\(components.year * 10000 + components.month * 100 + components.day)"
 
             //[NSString stringWithFormat:@"%d", [components year] * 10000 + [components month] * 100  + [components day]];
 

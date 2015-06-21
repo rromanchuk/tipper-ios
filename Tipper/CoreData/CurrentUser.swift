@@ -215,7 +215,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
     var isTwitterAuthenticated: Bool {
         get {
-            return self.twitterUserId != nil && self.token != nil && self.bitcoinAddress != nil
+            return self.twitterUserId != nil && self.token != nil && self.bitcoinAddress != nil && self.userId != nil
         }
     }
 

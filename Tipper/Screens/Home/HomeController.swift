@@ -172,7 +172,7 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
         if let sections = fetchedResultsController.sections {
             let currentSection = sections[section] as! NSFetchedResultsSectionInfo
             if let name = currentSection.name, numericSection = name.toInt() {
-                let year = numericSection / 1000;
+                let year = numericSection / 10000;
                 let month = (numericSection / 100) % 100;
                 let day = numericSection % 100;
 
