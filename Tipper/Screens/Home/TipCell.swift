@@ -59,8 +59,6 @@ class TipCell: UITableViewCell {
             tipAmountBTC.text = currentUser?.settings?.tipAmount
 
 
-            //userProfileImage.hnk_setImageFromURL(twt.author.profileImageLargeURL)
-
             if let urlString = twt.author.profileImageLargeURL, url = NSURL(string: urlString) {
                 userProfileImage.hnk_setImageFromURL(url)
             }
@@ -76,7 +74,7 @@ class TipCell: UITableViewCell {
 
             } else {
                 tipButton.hidden = true
-                tipActionLabel.text = "\(self.favorite.fromTwitterUsername) favorited your tweet"
+                tipActionLabel.text = "\(_favorite!.fromTwitterUsername) sent you a tip"
             }
 
             timeLabel.text = formatter.stringFromDate(_favorite!.createdAt)

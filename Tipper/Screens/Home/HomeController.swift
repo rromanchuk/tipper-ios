@@ -30,9 +30,6 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
 
-    @IBOutlet weak var settingsButton: UIButton!
-    @IBOutlet weak var balanceLabel: UILabel!
-
     lazy var fetchedResultsController: NSFetchedResultsController = NSFetchedResultsController.superFetchedResultsController("Favorite", sectionNameKeyPath: "daySectionString", sortDescriptors: self.sortDescriptors, predicate: self.predicate, tableView: self.tableView, context: self.managedObjectContext)
 
     lazy var predicate: NSPredicate? = {

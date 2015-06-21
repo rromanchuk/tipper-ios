@@ -400,6 +400,10 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         self.cognitoIdentity    = json["CognitoIdentity"].string
         self.cognitoToken       = json["CognitoToken"].string
 
+        if let profileImage = json["ProfileImage"].string {
+            self.profileImage = profileImage
+        }
+
         if let balance = json["BitcoinBalanceBTC"].string {
             let balanceAsDouble = (balance as NSString).doubleValue
             self.bitcoinBalanceBTC = balanceAsDouble

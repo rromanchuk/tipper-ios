@@ -20,15 +20,15 @@
     </entity>
     <entity name="Favorite" representedClassName="Tipper.Favorite" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="daySectionString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="daySectionString" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="didLeaveTip" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="fromTwitterId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="fromTwitterUsername" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fromUserId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fromUserId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="objectId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="toTwitterId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="toTwitterUsername" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="toUserId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="toUserId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="tweetId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="twitterJSON" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="txid" optional="YES" attributeType="String" syncable="YES"/>

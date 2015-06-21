@@ -10,7 +10,6 @@
 		3B6E9F44501E44BF73C99834 /* libPods-Tipper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E57F9EB756EFF49AEA100E /* libPods-Tipper.a */; };
 		9416317F1AC3C1EC002016FD /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9416317E1AC3C1EC002016FD /* HomeController.swift */; };
 		941631831AC3CC5E002016FD /* AddressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941631821AC3CC5E002016FD /* AddressController.swift */; };
-		941631851AC3FAB4002016FD /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941631841AC3FAB4002016FD /* TweetCell.swift */; };
 		941631881AC404A7002016FD /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941631871AC404A7002016FD /* UIColor.swift */; };
 		941AA38A1AAFA34900CA9192 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA3891AAFA34900CA9192 /* Config.swift */; };
 		941AA38E1AB01EC000CA9192 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA38D1AB01EC000CA9192 /* SplashViewController.swift */; };
@@ -51,7 +50,6 @@
 		949842041B2601130079082C /* profile-image-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 949842031B2601130079082C /* profile-image-placeholder.png */; };
 		949842061B260FB80079082C /* TipDetailContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949842051B260FB80079082C /* TipDetailContainer.swift */; };
 		94AB27931ACA3D2B005A433F /* TintedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AB27921ACA3D2B005A433F /* TintedButton.swift */; };
-		94AC30041B2AE900000D8B9B /* TipReceivedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AC30031B2AE900000D8B9B /* TipReceivedCell.swift */; };
 		94AF29751AAEF2B600E16048 /* Tipper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94AF29731AAEF2B600E16048 /* Tipper.xcdatamodeld */; };
 		94AF297A1AAEF2B600E16048 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94AF29781AAEF2B600E16048 /* Main.storyboard */; };
 		94AF297F1AAEF2B600E16048 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AF297D1AAEF2B600E16048 /* LaunchScreen.xib */; };
@@ -118,7 +116,6 @@
 		74E57F9EB756EFF49AEA100E /* libPods-Tipper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tipper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9416317E1AC3C1EC002016FD /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeController.swift; path = Home/HomeController.swift; sourceTree = "<group>"; };
 		941631821AC3CC5E002016FD /* AddressController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressController.swift; path = Address/AddressController.swift; sourceTree = "<group>"; };
-		941631841AC3FAB4002016FD /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TweetCell.swift; path = Home/TweetCell.swift; sourceTree = "<group>"; };
 		941631871AC404A7002016FD /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = Extensions/UIColor.swift; sourceTree = "<group>"; };
 		941AA3891AAFA34900CA9192 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		941AA38D1AB01EC000CA9192 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -166,7 +163,6 @@
 		949842031B2601130079082C /* profile-image-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile-image-placeholder.png"; path = "Resources/profile-image-placeholder.png"; sourceTree = "<group>"; };
 		949842051B260FB80079082C /* TipDetailContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipDetailContainer.swift; path = TipDetails/TipDetailContainer.swift; sourceTree = "<group>"; };
 		94AB27921ACA3D2B005A433F /* TintedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TintedButton.swift; path = Views/TintedButton.swift; sourceTree = "<group>"; };
-		94AC30031B2AE900000D8B9B /* TipReceivedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipReceivedCell.swift; path = Home/TipReceivedCell.swift; sourceTree = "<group>"; };
 		94AF296C1AAEF2B600E16048 /* Tipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94AF29701AAEF2B600E16048 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94AF29741AAEF2B600E16048 /* Tipper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tipper.xcdatamodel; sourceTree = "<group>"; };
@@ -245,9 +241,7 @@
 				943243141B2D6C1300D1A1D6 /* HeaderDetailCell.swift */,
 				9432430F1B2D37FA00D1A1D6 /* HeaderContainer.swift */,
 				9416317E1AC3C1EC002016FD /* HomeController.swift */,
-				941631841AC3FAB4002016FD /* TweetCell.swift */,
 				943A6FE11B21F6B300D50D8A /* TipCell.swift */,
-				94AC30031B2AE900000D8B9B /* TipReceivedCell.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -798,9 +792,7 @@
 				94F3FD951B08581900CD0261 /* WalletContainerController.swift in Sources */,
 				94416C141AAF989F00117AFC /* NSManagedObject+Extension.swift in Sources */,
 				94416C0D1AAF989F00117AFC /* Router.swift in Sources */,
-				94AC30041B2AE900000D8B9B /* TipReceivedCell.swift in Sources */,
 				94416C151AAF989F00117AFC /* NSManagedObjectContext+Base.m in Sources */,
-				941631851AC3FAB4002016FD /* TweetCell.swift in Sources */,
 				94FA97DD1AB2EB71005B0C83 /* Favorite.swift in Sources */,
 				943243151B2D6C1300D1A1D6 /* HeaderContainer.swift in Sources */,
 				943243181B2E094A00D1A1D6 /* DynamoTransaction.swift in Sources */,
