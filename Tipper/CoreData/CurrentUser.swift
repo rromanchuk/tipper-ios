@@ -18,6 +18,15 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     let KeychainTokenAccount: String = "tips.coinbit.tipper.token"
     let KeychainBitcoinAccount: String = "tips.coinbit.tipper.bitcoinaddress"
     let KeychainUserIDAccount: String = "tips.coinbit.tipper.userID"
+
+    lazy var currencyFormatter: NSNumberFormatter =  {
+        var _formatter = NSNumberFormatter()
+        _formatter.numberStyle = .CurrencyStyle
+        _formatter.currencySymbol = ""
+        _formatter.maximumFractionDigits = 0
+        return _formatter
+    }()
+
     lazy var mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
 
 
@@ -28,7 +37,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     @NSManaged var cognitoToken: String?
     @NSManaged var profileImage: String?
 
-    @NSManaged var bitcoinBalanceBTC: String?
+    @NSManaged var bitcoinBalanceBTC: NSNumber?
 
     @NSManaged var endpointArn: String?
     @NSManaged var deviceToken: String?
@@ -202,7 +211,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         self.twitterAuthSecret = session.authTokenSecret
         self.twitterUserId = session.userID
         self.twitterUsername = session.userName
-        //self.profileImage = session.
     }
 
     var isTwitterAuthenticated: Bool {
@@ -230,9 +238,10 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     var balanceAsUBTC:String {
         get {
             if let btcBalance = self.bitcoinBalanceBTC {
-                let balanceFloat = (btcBalance as NSString).floatValue
-                let uBTCFloat = balanceFloat / 0.00000100
-                return "\(Int(uBTCFloat))"
+                let uBTCFloat = btcBalance.doubleValue / 0.00000100
+                //NSLog(@"%@", [currencyFormatter stringFromNumber:[NSNumber numberWithInt:10395209]]);
+                return currencyFormatter.stringFromNumber(NSNumber(double: uBTCFloat))!
+                //return "\(Int(uBTCFloat))"
             } else {
                 return "0"
             }
@@ -242,8 +251,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     var mbtc:String {
         get {
             if let btcBalance = self.bitcoinBalanceBTC {
-                let balanceFloat = (btcBalance as NSString).floatValue
-                let uBTCFloat = balanceFloat / 0.00100000
+                let uBTCFloat = btcBalance.doubleValue / 0.00100000
                 return "\(Int(uBTCFloat))"
             } else {
                 return "0"
@@ -252,28 +260,11 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         }
     }
 
-    func updateEntityWithJSON(json: JSON) {
-        println("\(className)::\(__FUNCTION__) json:\(json)")
-        self.twitterUserId      = json["TwitterUserID"].stringValue
-        self.userId             = json["UserID"].stringValue
-        self.twitterUsername    = json["TwitterUsername"].stringValue
-        self.bitcoinAddress     = json["BitcoinAddress"].string
-        self.cognitoIdentity    = json["CognitoIdentity"].string
-        self.cognitoToken       = json["CognitoToken"].string
 
-        if let balance = json["BitcoinBalanceBTC"].string {
-            self.bitcoinBalanceBTC = balance
-        }
-
-        if let token = json["token"].string {
-            self.token = token
-        }
-
-    }
 
 
     func updateBalanceUSD(completion: () ->Void) {
-        if let btc = bitcoinBalanceBTC where (btc as NSString).doubleValue > 0.0 {
+        if let btc = bitcoinBalanceBTC where btc > 0.0 {
             API.sharedInstance.market("\(btc)", completion: { (json, error) -> Void in
                 if error == nil {
                     self.marketValue = Market.entityWithJSON(Market.self, json: json, context: self.managedObjectContext!)!
@@ -361,7 +352,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         })
     }
 
-    func refreshWithDynamo() {
+    func refreshWithDynamo(completion: (error: NSError?) -> Void) {
         println("\(className)::\(__FUNCTION__)")
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         mapper.load(DynamoUser.self, hashKey: self.userId, rangeKey: nil).continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
@@ -388,6 +379,8 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         self.twitterAuthSecret      = user.TwitterAuthSecret
         self.bitcoinAddress         = user.BitcoinAddress
 
+        self.bitcoinBalanceBTC = user.BitcoinBalanceBTC
+
 
         if let endpoint = user.EndpointArn {
              self.endpointArn = endpoint
@@ -396,6 +389,26 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         if let deviceToken = user.DeviceToken {
             self.deviceToken = deviceToken
         }
+    }
+
+    func updateEntityWithJSON(json: JSON) {
+        println("\(className)::\(__FUNCTION__) json:\(json)")
+        self.twitterUserId      = json["TwitterUserID"].stringValue
+        self.userId             = json["UserID"].stringValue
+        self.twitterUsername    = json["TwitterUsername"].stringValue
+        self.bitcoinAddress     = json["BitcoinAddress"].string
+        self.cognitoIdentity    = json["CognitoIdentity"].string
+        self.cognitoToken       = json["CognitoToken"].string
+
+        if let balance = json["BitcoinBalanceBTC"].string {
+            let balanceAsDouble = (balance as NSString).doubleValue
+            self.bitcoinBalanceBTC = balanceAsDouble
+        }
+
+        if let token = json["token"].string {
+            self.token = token
+        }
+        
     }
 
     func resetIdentifiers() {

@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Glance - Tipper WatchKit App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>23</integer>
+		</dict>
+		<key>Tipper WatchKit App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>22</integer>
+		</dict>
 		<key>Tipper.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +22,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>9462D7601B35D108001C5083</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>94AF296B1AAEF2B600E16048</key>
 		<dict>
 			<key>primary</key>

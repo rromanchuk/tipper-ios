@@ -195,7 +195,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
                 if let tweetId = favoriteJSON["TweetID"].string,
                     fromTwitterId = favoriteJSON["FromTwitterID"].string,
-                    bitcoinBalance = userJSON["BitcoinBalanceBTC"].string {
+                    bitcoinBalance = userJSON["BitcoinBalanceBTC"].number {
                         currentUser.bitcoinBalanceBTC = bitcoinBalance
                         DynamoFavorite.fetch(tweetId, fromTwitterId: fromTwitterId, context: managedObjectContext, completion: { () -> Void in
                             completionHandler(.NewData)
@@ -206,7 +206,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
         } else if let user = userInfo["user"] as? [String: AnyObject]  {
             let userJSON = JSON(user)
-            if let bitcoinBalance = userJSON["BitcoinBalanceBTC"].string {
+            if let bitcoinBalance = userJSON["BitcoinBalanceBTC"].number {
                 currentUser.bitcoinBalanceBTC = bitcoinBalance
                 processMessage(messageJSON)
             }
@@ -215,6 +215,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             processMessage(messageJSON)
             completionHandler(.NoData)
         }
+    }
+
+    private var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
+
+    func registerBackgroundTask() {
+        backgroundTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler {
+            [unowned self] in
+            self.endBackgroundTask()
+        }
+        assert(backgroundTask != UIBackgroundTaskInvalid)
+    }
+
+    func endBackgroundTask() {
+        UIApplication.sharedApplication().endBackgroundTask(backgroundTask)
+        backgroundTask = UIBackgroundTaskInvalid
+    }
+
+    func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!) {
+        println("\(className)::\(__FUNCTION__)")
+
+        // 1
+        if let userInfo = userInfo, request = userInfo["request"] as? String {
+            if request == "balance" {
+                // 2
+                registerBackgroundTask()
+                currentUser.refreshWithServer({ (error) -> Void in
+                    self.managedObjectContext.refreshObject(self.currentUser, mergeChanges: true)
+                    reply(["balance": self.currentUser.balanceAsUBTC, "userId": self.currentUser.userId!, "bitcoinAddress": self.currentUser.bitcoinAddress!])
+                    if self.backgroundTask != UIBackgroundTaskInvalid {
+                        self.endBackgroundTask()
+                    }
+                })
+                // 3
+
+                return
+            }
+        }
+        
+        // 4
+        reply([:])
     }
 
     func processMessage(message:JSON?) {

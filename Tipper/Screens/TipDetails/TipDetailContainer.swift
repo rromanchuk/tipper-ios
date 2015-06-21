@@ -32,18 +32,17 @@ class TipDetailContainer: UITableViewController {
 
         if let txid = favorite.txid {
             transactionIdLabel.text = favorite.txid
+        } else {
+            transactionIdLabel.text = "Transaction pending..."
         }
 
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        if let txid = favorite.txid {
+            Transaction.fetch(txid, context: managedObjectContext) { (transaction) -> Void in
+                //self.confirmationsLabel.text = transaction.confirmations
+            }
+        }
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-
-//        Transaction.fetch(favorite.txid, context: managedObjectContext) { (transaction) -> Void in
-//            self.confirmationsLabel.text = transaction.confirmations
-//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,7 +57,9 @@ class TipDetailContainer: UITableViewController {
     }
 
     @IBAction func didTapTxidLabel(sender: UITapGestureRecognizer) {
-        UIApplication.sharedApplication().openURL(NSURL(string: "https://blockchain.info/tx/\(favorite.txid)")!)
+        if let txid = favorite.txid {
+            UIApplication.sharedApplication().openURL(NSURL(string: "https://blockchain.info/tx/\(txid)")!)
+        }
     }
 
     func setupTipAmount() {

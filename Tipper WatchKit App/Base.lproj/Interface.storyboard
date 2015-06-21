@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7706" systemVersion="15A178w" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="7701"/>
+    </dependencies>
+    <scenes>
+        <!--Tipper-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller title="Tipper" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Tipper_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <group width="1" alignment="center" verticalAlignment="center" spacing="1" id="f8Q-Td-eK7">
+                            <items>
+                                <imageView alignment="center" image="currency-symbol" id="6wY-Nb-gh5"/>
+                                <label alignment="center" text="500" id="L3Q-Uu-E0O">
+                                    <fontDescription key="font" type="system" pointSize="41"/>
+                                </label>
+                            </items>
+                        </group>
+                        <group width="1" alignment="center" verticalAlignment="center" id="mZP-p8-BSl">
+                            <items>
+                                <label alignment="center" text="Balance" id="3Vn-qg-cwx">
+                                    <color key="textColor" red="0.35686274509803922" green="0.73725490196078436" blue="0.51764705882352935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                </label>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="balanceLabel" destination="L3Q-Uu-E0O" id="Ojq-0B-PIa"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="164" y="214"/>
+        </scene>
+        <!--Glance Interface Controller-->
+        <scene sceneID="rjY-Ar-IMT">
+            <objects>
+                <glanceController spacing="0.0" id="Sv0-Ai-Zie" customClass="GlanceController" customModule="Tipper_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <group alignment="left" layout="vertical" id="gv7-I2-MZq">
+                            <items>
+                                <imageView width="25" height="25" alignment="left" image="stacks" id="Ivf-Kh-NFb"/>
+                                <label alignment="left" text="Balance" textAlignment="left" id="mLp-3W-vUA">
+                                    <color key="textColor" red="0.35686274509803922" green="0.73725490196078436" blue="0.51764705882352935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                </label>
+                            </items>
+                        </group>
+                        <group alignment="left" id="eew-Gs-W6Y">
+                            <items>
+                                <imageView alignment="center" verticalAlignment="center" image="currency-symbol" id="FHa-Pz-Hlb"/>
+                                <label alignment="center" verticalAlignment="center" text="500" id="uut-S8-NTQ">
+                                    <fontDescription key="font" type="system" pointSize="41"/>
+                                </label>
+                            </items>
+                        </group>
+                    </items>
+                    <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
+                    <connections>
+                        <outlet property="balanceLabel" destination="uut-S8-NTQ" id="7Yf-kD-bpc"/>
+                    </connections>
+                </glanceController>
+            </objects>
+            <point key="canvasLocation" x="164" y="514"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" red="0.35686274509803922" green="0.73725490196078436" blue="0.51764705882352935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+</document>

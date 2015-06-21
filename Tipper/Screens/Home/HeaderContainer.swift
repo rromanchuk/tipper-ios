@@ -11,6 +11,7 @@ import MessageUI
 
 class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate {
     let className = "HeaderContainer"
+    
     private var displayUSD = false
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
@@ -96,6 +97,11 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate {
 
     func setBalance() {
         if let marketValue = currentUser.marketValue, amount = marketValue.amount where displayUSD {
+
+            //[currencyFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+            //NSLog(@"%@", [currencyFormatter stringFromNumber:[NSNumber numberWithInt:10395209]]);
+            
+
             let string = "$\(amount)"
             let labelAttributes = NSMutableAttributedString(string: string)
             labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Regular", size: 40.0)!, range: NSMakeRange(0, count(string)))
