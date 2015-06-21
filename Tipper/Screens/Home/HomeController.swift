@@ -151,19 +151,10 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
 
         let cell = tableView.dequeueReusableCellWithIdentifier(tweetTableReuseIdentifier, forIndexPath: indexPath) as! TipCell
         cell.currentUser = currentUser
+        cell.type = TipCellType(rawValue: segmentControl.selectedSegmentIndex)!
         cell.favorite = favorite
-        //cell.tweetView.configureWithTweet(twt)
 
-        //println("\(className)::\(__FUNCTION__) didLeaveTip: \(favorite.didLeaveTip)")
-        if favorite.didLeaveTip {
-            cell.tipButton.backgroundColor = UIColor.grayColor()
-            cell.tipButton.enabled = false
-        } else {
-            cell.tipButton.backgroundColor = UIColor.colorWithRGB(0x69C397, alpha: 1.0)
-            cell.tipButton.enabled = true
-        }
 
-        //cell.setupTipButton()
 
         return cell
     }

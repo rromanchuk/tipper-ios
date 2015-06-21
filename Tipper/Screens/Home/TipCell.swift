@@ -10,6 +10,11 @@ import UIKit
 import Haneke
 import TwitterKit
 
+enum TipCellType: Int {
+    case Sent
+    case Received
+}
+
 class TipCell: UITableViewCell {
 
     @IBOutlet weak var tipActionLabel: UILabel!
@@ -29,6 +34,7 @@ class TipCell: UITableViewCell {
     }()
 
     var currentUser: CurrentUser?
+    var type: TipCellType = .Sent
 
     
     override func awakeFromNib() {
@@ -59,13 +65,20 @@ class TipCell: UITableViewCell {
                 userProfileImage.hnk_setImageFromURL(url)
             }
 
-            if _favorite!.didLeaveTip {
-                tipActionLabel.text = "You tipped \(twt.author.name)"
-                tipButton.hidden = true
+            if type == .Sent {
+                if _favorite!.didLeaveTip {
+                    tipActionLabel.text = "You tipped \(twt.author.name)"
+                    tipButton.hidden = true
+                } else {
+                    tipActionLabel.text = "You favorited \(twt.author.name)"
+                    tipButton.hidden = false
+                }
+
             } else {
-                tipActionLabel.text = "You favorited \(twt.author.name)"
-                tipButton.hidden = false
+                tipButton.hidden = true
+                tipActionLabel.text = "\(self.favorite.fromTwitterUsername) favorited your tweet"
             }
+
             timeLabel.text = formatter.stringFromDate(_favorite!.createdAt)
         }
 

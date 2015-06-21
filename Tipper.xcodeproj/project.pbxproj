@@ -516,7 +516,6 @@
 				9462D7511B35D108001C5083 /* Sources */,
 				9462D7521B35D108001C5083 /* Frameworks */,
 				9462D7531B35D108001C5083 /* Resources */,
-				94648D841B3728400032A915 /* Version Bump */,
 			);
 			buildRules = (
 			);
@@ -720,20 +719,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tipper/Pods-Tipper-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		94648D841B3728400032A915 /* Version Bump */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Version Bump";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Set the build number to the count of Git commits\nbuildNumber=$(git rev-list HEAD | wc -l | tr -d ' ')\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
-		};
 		9484185C1AB65411001C633E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -763,7 +748,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Set the build number to the count of Git commits\nbuildNumber=$(git rev-list HEAD | wc -l | tr -d ' ')\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
+			shellScript = "# Set the build number to the count of Git commits\nbuildNumber=$(git rev-list HEAD | wc -l | tr -d ' ')\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$SRCROOT/Tipper WatchKit Extension/Info.plist\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$SRCROOT/Tipper WatchKit App/Info.plist\"\n";
 		};
 		94AF29BE1AAF032500E16048 /* Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
