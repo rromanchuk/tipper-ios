@@ -22,6 +22,10 @@ class TipDetailContainer: UITableViewController {
     @IBOutlet weak var transactionIdLabel: UILabel!
     @IBOutlet weak var confirmationsLabel: UILabel!
 
+    @IBOutlet weak var tipHeaderLabel: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1131,9 +1131,12 @@
                     </tableView>
                     <connections>
                         <outlet property="confirmationsLabel" destination="4SP-s5-x5r" id="RxU-U8-RGP"/>
+                        <outlet property="profileImageView" destination="ACe-lP-FW5" id="7fM-Bc-S1S"/>
+                        <outlet property="tipHeaderLabel" destination="60G-HZ-To5" id="dxt-Cb-hsO"/>
                         <outlet property="tipLabel" destination="2WX-eU-6Uo" id="JLk-py-Sff"/>
                         <outlet property="transactionIdLabel" destination="i3d-JV-ent" id="PfW-pz-6Is"/>
                         <outlet property="tweetView" destination="JuM-IQ-xeF" id="giq-Tn-sF1"/>
+                        <outlet property="usernameLabel" destination="VrX-Dy-Zto" id="kBQ-ty-iMZ"/>
                         <segue destination="nkS-N6-z7z" kind="unwind" identifier="ExitToHome" unwindAction="done:sender:" id="Dtq-pE-qnf"/>
                     </connections>
                 </tableViewController>
