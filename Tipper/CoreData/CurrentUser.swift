@@ -239,7 +239,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         get {
             if let btcBalance = self.bitcoinBalanceBTC {
                 let uBTCFloat = btcBalance.doubleValue / 0.00000100
-                //NSLog(@"%@", [currencyFormatter stringFromNumber:[NSNumber numberWithInt:10395209]]);
                 return currencyFormatter.stringFromNumber(NSNumber(double: uBTCFloat))!
                 //return "\(Int(uBTCFloat))"
             } else {
@@ -280,13 +279,18 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
     func pushToDynamo() {
         println("\(className)::\(__FUNCTION__)")
+        println("endpoint: \(endpointArn)")
         if isTwitterAuthenticated {
             let user = DynamoUser.new()
-            user.TwitterUserID      = twitterUserId
-            user.TwitterAuthToken   = twitterAuthToken
-            user.TwitterAuthSecret  = twitterAuthSecret
+//            user.TwitterUserID      = twitterUserId
+//            user.TwitterAuthToken   = twitterAuthToken
+//            user.TwitterAuthSecret  = twitterAuthSecret
+            user.UserID             = userId
             user.EndpointArn        = endpointArn
-            mapper.save(user, configuration: defaultDynamoConfiguration)
+            mapper.save(user, configuration: defaultDynamoConfiguration).continueWithBlock({ (task) -> AnyObject! in
+                println("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
+                return nil
+            })
         }
     }
 

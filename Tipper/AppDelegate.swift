@@ -101,6 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
+        println("\(className)::\(__FUNCTION__)")
         UIApplication.sharedApplication().applicationIconBadgeNumber = 0
         if currentUser.isTwitterAuthenticated {
             currentUser.pushToDynamo()
@@ -133,6 +134,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        if currentUser.isTwitterAuthenticated {
+            let types = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
+            let notificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
+
+            UIApplication.sharedApplication().registerForRemoteNotifications()
+            UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        }
     }
 
     func applicationWillTerminate(application: UIApplication) {
@@ -160,7 +168,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let createEndpointResponse = task.result as! AWSSNSCreateEndpointResponse
                 println("endpointArn: \(createEndpointResponse.endpointArn)")
                 self.currentUser?.endpointArn = createEndpointResponse.endpointArn
-                //self.currentUser?.pushToDynamo()
+                self.currentUser?.pushToDynamo()
                 let request = AWSSNSSubscribeInput()
                 request.endpoint = createEndpointResponse.endpointArn
                 request.protocols = "application"
