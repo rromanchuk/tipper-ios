@@ -40,7 +40,7 @@ class SplashViewController: UIViewController {
                     self.currentUser.writeToDisk()
 
                     Twitter.sharedInstance().APIClient.loadUserWithID(session.userID, completion: { (user, error) -> Void in
-                        self.currentUser.profileImage = user.profileImageURL
+                        self.currentUser.profileImage = user!.profileImageURL
                         self.currentUser.authenticate(self.provider, completion: { () -> Void in
                             //UserSync.sharedInstance.sync(self.currentUser)
                             self.currentUser.registerForRemoteNotificationsIfNeeded()

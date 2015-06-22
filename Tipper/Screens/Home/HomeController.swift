@@ -88,6 +88,8 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
 
     @IBAction func segmentChanged(sender: UISegmentedControl) {
         println("\(className)::\(__FUNCTION__) selected:\(sender.selectedSegmentIndex)")
+        //daySectionString
+        NSFetchedResultsController.deleteCacheWithName("daySectionString")
         if sender.selectedSegmentIndex == 0 {
             fetchedResultsController.fetchRequest.predicate = predicate
             fetchedResultsController.performFetch(nil)
