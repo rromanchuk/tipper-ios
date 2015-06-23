@@ -31,6 +31,8 @@
 		94416C151AAF989F00117AFC /* NSManagedObjectContext+Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 94416C021AAF989F00117AFC /* NSManagedObjectContext+Base.m */; };
 		94416C181AAF989F00117AFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416C081AAF989F00117AFC /* AppDelegate.swift */; };
 		94416C191AAF989F00117AFC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94416C091AAF989F00117AFC /* Images.xcassets */; };
+		9444D6771B38E4CC0052C2B1 /* ReceivedTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9444D6761B38E4CC0052C2B1 /* ReceivedTips.swift */; };
+		9444D67B1B38E83A0052C2B1 /* TipTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9444D67A1B38E83A0052C2B1 /* TipTabBarController.swift */; };
 		945065FB1B07CFB900AF34F6 /* Bariol_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 945065F81B07CFB900AF34F6 /* Bariol_Bold.otf */; };
 		945065FC1B07CFB900AF34F6 /* Bariol_Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 945065F91B07CFB900AF34F6 /* Bariol_Light.otf */; };
 		945065FD1B07CFB900AF34F6 /* Bariol.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 945065FA1B07CFB900AF34F6 /* Bariol.ttf */; };
@@ -141,6 +143,8 @@
 		94416C071AAF989F00117AFC /* Tipper-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tipper-Bridging-Header.h"; sourceTree = "<group>"; };
 		94416C081AAF989F00117AFC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94416C091AAF989F00117AFC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9444D6761B38E4CC0052C2B1 /* ReceivedTips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReceivedTips.swift; path = TabController/ReceivedTips.swift; sourceTree = "<group>"; };
+		9444D67A1B38E83A0052C2B1 /* TipTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipTabBarController.swift; path = TabController/TipTabBarController.swift; sourceTree = "<group>"; };
 		945065F81B07CFB900AF34F6 /* Bariol_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Bold.otf; sourceTree = "<group>"; };
 		945065F91B07CFB900AF34F6 /* Bariol_Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Light.otf; sourceTree = "<group>"; };
 		945065FA1B07CFB900AF34F6 /* Bariol.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol.ttf; sourceTree = "<group>"; };
@@ -314,6 +318,7 @@
 		94416C051AAF989F00117AFC /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				9444D6751B38E4220052C2B1 /* TabController */,
 				949842001B25FC300079082C /* TipDetails */,
 				94C255211B12B20600A65B94 /* Splash */,
 				941631811AC3CBEA002016FD /* Address */,
@@ -322,6 +327,15 @@
 				943E93FB1B05C8B3007D98C7 /* Wallet */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		9444D6751B38E4220052C2B1 /* TabController */ = {
+			isa = PBXGroup;
+			children = (
+				9444D67A1B38E83A0052C2B1 /* TipTabBarController.swift */,
+				9444D6761B38E4CC0052C2B1 /* ReceivedTips.swift */,
+			);
+			name = TabController;
 			sourceTree = "<group>";
 		};
 		9462D7561B35D108001C5083 /* Tipper WatchKit Extension */ = {
@@ -790,6 +804,7 @@
 				943243161B2D6C1300D1A1D6 /* HeaderDetailCell.swift in Sources */,
 				949842021B25FC590079082C /* TipDetailsViewController.swift in Sources */,
 				94F3FD951B08581900CD0261 /* WalletContainerController.swift in Sources */,
+				9444D67B1B38E83A0052C2B1 /* TipTabBarController.swift in Sources */,
 				94416C141AAF989F00117AFC /* NSManagedObject+Extension.swift in Sources */,
 				94416C0D1AAF989F00117AFC /* Router.swift in Sources */,
 				94416C151AAF989F00117AFC /* NSManagedObjectContext+Base.m in Sources */,
@@ -804,6 +819,7 @@
 				94FDE9C11AB4BF6A006B6454 /* Debug.swift in Sources */,
 				941AA38E1AB01EC000CA9192 /* SplashViewController.swift in Sources */,
 				94416C111AAF989F00117AFC /* CoreDataUpdatable.swift in Sources */,
+				9444D6771B38E4CC0052C2B1 /* ReceivedTips.swift in Sources */,
 				94416C0C1AAF989F00117AFC /* API.swift in Sources */,
 				94C255201B12798900A65B94 /* Settings.swift in Sources */,
 				94AB27931ACA3D2B005A433F /* TintedButton.swift in Sources */,
