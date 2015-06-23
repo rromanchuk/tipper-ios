@@ -80,9 +80,13 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate {
         // Do any additional setup after loading the view.
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        refreshUI()
+    }
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        refreshUI()
     }
 
     deinit {
@@ -96,6 +100,7 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate {
     
 
     func setBalance() {
+        println("\(className)::\(__FUNCTION__)")
         if let marketValue = currentUser.marketValue, amount = marketValue.amount where displayUSD {
 
             //[currencyFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
@@ -121,7 +126,6 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate {
     func refreshUI() {
         println("\(className)::\(__FUNCTION__)")
         Debug.isBlocking()
-
         managedObjectContext.refreshObject(currentUser, mergeChanges: true)
         setBalance()
     }
@@ -129,10 +133,14 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate {
     func updateMarkets() {
         println("\(className)::\(__FUNCTION__)")
         market.update { [weak self] () -> Void in
-            self?.refreshUI()
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self?.refreshUI()
+            })
         }
         currentUser.updateBalanceUSD { [weak self] () -> Void in
-            self?.refreshUI()
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self?.refreshUI()
+            })
         }
     }
 

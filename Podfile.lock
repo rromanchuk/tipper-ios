@@ -42,7 +42,7 @@ PODS:
   - Mantle/extobjc (1.5.4)
   - RBBAnimation (0.4.0)
   - Reachability (3.2)
-  - SDCAlertView (2.5.1):
+  - SDCAlertView (2.5.2):
     - RBBAnimation (~> 0.3)
     - SDCAutoLayout (~> 2.0)
   - SDCAutoLayout (2.0.3)
@@ -58,7 +58,7 @@ PODS:
   - TMCache (1.2.4)
   - TSMessages (0.9.12):
     - HexColors
-  - UICKeyChainStore (2.0.5)
+  - UICKeyChainStore (2.0.6)
   - XMLDictionary (1.4)
 
 DEPENDENCIES:
@@ -116,13 +116,13 @@ SPEC CHECKSUMS:
   Mantle: 60acd0cd363e27d945bda0a6b8e90577112d28f3
   RBBAnimation: 4b2d66f6d993febce63cd564da934985313b9c59
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  SDCAlertView: afdedd7ff3edef6117abbcf3ff201f0f0b960b93
+  SDCAlertView: f9706c18f456ea87909f8f199704cd28e582ff27
   SDCAutoLayout: e6885bb39ab8e2ec2ff84d158f38035f025f7420
   SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d
   Stripe: 43a4307dc789483a61668d187c4a917d1348b0b6
   TMCache: a93984b045a5ee84bd8941bd5e0b54296059cc52
   TSMessages: 2a52642128d7ab15b46930c810b9c9403a2b58f3
-  UICKeyChainStore: a389515ca090d4d49780fd563fec961571caa92b
+  UICKeyChainStore: c5719c814e8bd69e74e4a0fc09daf8f4d6257a59
   XMLDictionary: f9f51601ba76678b594ab485f2b00ec1fed23724
 
 COCOAPODS: 0.37.2

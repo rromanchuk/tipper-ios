@@ -29,8 +29,9 @@ class TipDetailContainer: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        println("\(className)::\(__FUNCTION__) favorite:\(favorite)")
         setupTipAmount()
-        println("\(className)::\(__FUNCTION__)")
+
         let twt = TWTRTweet(JSONDictionary: favorite.twitterJSON)
         tweetView.configureWithTweet(twt)
         usernameLabel.text = "@\(favorite.toTwitterUsername)"
@@ -53,33 +54,37 @@ class TipDetailContainer: UITableViewController {
 
 
         if let txid = favorite.txid {
-            Transaction.fetch(txid, context: managedObjectContext) { (transaction) -> Void in
-                //self.confirmationsLabel.text = transaction.confirmations
-            }
+            println("\(className)::\(__FUNCTION__) txid: \(txid)")
+//            Transaction.fetch(txid, context: managedObjectContext) { (transaction) -> Void in
+//                //self.confirmationsLabel.text = transaction.confirmations
+//            }
         }
 
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        println("\(className)::\(__FUNCTION__)")
         // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
     @IBAction func didTapBack(sender: UIButton) {
+        println("\(className)::\(__FUNCTION__)")
         self.performSegueWithIdentifier("ExitToHome", sender: self)
     }
 
     @IBAction func didTapTxidLabel(sender: UITapGestureRecognizer) {
+        println("\(className)::\(__FUNCTION__)")
         if let txid = favorite.txid {
             UIApplication.sharedApplication().openURL(NSURL(string: "https://blockchain.info/tx/\(txid)")!)
         }
     }
 
     func setupTipAmount() {
-        if let currentUser = currentUser {
-            let string = "a\(currentUser.settings!.tipAmountUBTC)"
+        if let currentUser = currentUser, settings = currentUser.settings {
+            let string = "a\(settings.tipAmountUBTC)"
             let labelAttributes = NSMutableAttributedString(string: string)
             labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "coiner", size: 18.0)!, range: NSMakeRange(0,1))
             labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol", size: 18.0)!, range: NSMakeRange(1, count(string) - 1))

@@ -201,6 +201,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 self.updateEntityWithJSON(json)
                 provider.identityId = self.cognitoIdentity
                 provider.token = self.cognitoToken!
+                //save()
                 completion()
             }
         }

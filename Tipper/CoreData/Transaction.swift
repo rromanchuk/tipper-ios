@@ -51,10 +51,11 @@ class Transaction: NSManagedObject, CoreDataUpdatable {
     }
 
     func updateEntityWithJSON(json: JSON) {
-
+        println("\(className)::\(__FUNCTION__)")
     }
 
     func updateEntityWithDynamoModel(dynamoObject: DynamoUpdatable) {
+        println("\(className)::\(__FUNCTION__)")
         if let transaction = dynamoObject as? DynamoTransaction {
             txid = transaction.txid
             amount = transaction.amount
@@ -75,12 +76,18 @@ class Transaction: NSManagedObject, CoreDataUpdatable {
         }
     }
 
-    class func fetch(txid: String, context: NSManagedObjectContext, completion: (transaction:Transaction) -> Void) {
+    class func fetch(txid: String, context: NSManagedObjectContext, completion: (transaction:Transaction?) -> Void) {
+        println("\(className)::\(__FUNCTION__)")
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         mapper.load(DynamoTransaction.self, hashKey: txid, rangeKey: nil).continueWithBlock { (task) -> AnyObject! in
             if let dynamoTransaction = task.result as? DynamoTransaction {
-                let transaction = Transaction.entityWithDYNAMO(Transaction.self, model: dynamoTransaction, context: context)
-                completion(transaction: transaction!)
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    let transaction = Transaction.entityWithDYNAMO(Transaction.self, model: dynamoTransaction, context: context)
+                    completion(transaction: transaction!)
+                })
+
+            } else {
+                completion(transaction: nil)
             }
             return nil
         }
