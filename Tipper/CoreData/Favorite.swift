@@ -93,7 +93,6 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
             self.txid = txid
         }
 
-        println("Dynamo favorite model DidLeaveTip: \(dynamoFavorite.DidLeaveTip) objectId:\(dynamoFavorite.ObjectID)")
         if let didLeaveTip = dynamoFavorite.DidLeaveTip {
             self.didLeaveTip = true
         }

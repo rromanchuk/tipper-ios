@@ -13,10 +13,11 @@ import SwiftyJSON
 class Transaction: NSManagedObject, CoreDataUpdatable {
 
 
-    @NSManaged var txid: String?
-    @NSManaged var amount: String?
-    @NSManaged var fee: String?
-    @NSManaged var confirmations: String?
+    @NSManaged var txid: String
+    @NSManaged var amount: NSNumber?
+    @NSManaged var category: String?
+    @NSManaged var fee: NSNumber?
+    @NSManaged var confirmations: NSNumber?
 
     @NSManaged var fromTwitterId: String?
     @NSManaged var toTwitterId: String?
@@ -35,7 +36,7 @@ class Transaction: NSManagedObject, CoreDataUpdatable {
     }
 
     var className: String {
-        return Favorite.className
+        return Transaction.className
     }
 
     static var lookupProperty: String {
@@ -46,7 +47,7 @@ class Transaction: NSManagedObject, CoreDataUpdatable {
 
     var lookupValue: String {
         get {
-            return self.txid!
+            return self.txid
         }
     }
 
@@ -55,42 +56,27 @@ class Transaction: NSManagedObject, CoreDataUpdatable {
     }
 
     func updateEntityWithDynamoModel(dynamoObject: DynamoUpdatable) {
+
         println("\(className)::\(__FUNCTION__)")
-        if let transaction = dynamoObject as? DynamoTransaction {
-            txid = transaction.txid
-            amount = transaction.amount
-            fee = transaction.fee
-            confirmations = transaction.confirmations
-
-            fromTwitterId = transaction.FromTwitterID
-            toTwitterId = transaction.ToTwitterID
-
-            fromUserId = transaction.FromUserID
-            toUserId = transaction.ToUserID
-
-
-            fromTwitterUsername = transaction.FromTwitterUsername
-            toTwitterUsername = transaction.ToTwitterUsername
-
-            time = NSDate(timeIntervalSince1970: NSTimeInterval(transaction.time!.doubleValue))
-        }
+//        if let transaction = dynamoObject as? DynamoTransaction {
+//            txid = transaction.txid!
+//            amount = transaction.amount
+//            fee = transaction.fee
+//            confirmations = transaction.confirmations
+//
+//            fromTwitterId = transaction.FromTwitterID
+//            toTwitterId = transaction.ToTwitterID
+//
+//            fromUserId = transaction.FromUserID
+//            toUserId = transaction.ToUserID
+//
+//
+//            fromTwitterUsername = transaction.FromTwitterUsername
+//            toTwitterUsername = transaction.ToTwitterUsername
+//
+//            time = NSDate(timeIntervalSince1970: NSTimeInterval(transaction.time!.doubleValue))
+//        }
     }
 
-    class func fetch(txid: String, context: NSManagedObjectContext, completion: (transaction:Transaction?) -> Void) {
-        println("\(className)::\(__FUNCTION__)")
-        let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
-        mapper.load(DynamoTransaction.self, hashKey: txid, rangeKey: nil).continueWithBlock { (task) -> AnyObject! in
-            if let dynamoTransaction = task.result as? DynamoTransaction {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    let transaction = Transaction.entityWithDYNAMO(Transaction.self, model: dynamoTransaction, context: context)
-                    completion(transaction: transaction!)
-                })
-
-            } else {
-                completion(transaction: nil)
-            }
-            return nil
-        }
-    }
-
+    
 }

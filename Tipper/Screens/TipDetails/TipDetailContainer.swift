@@ -52,12 +52,13 @@ class TipDetailContainer: UITableViewController {
             transactionIdLabel.text = "Transaction pending..."
         }
 
-
         if let txid = favorite.txid {
             println("\(className)::\(__FUNCTION__) txid: \(txid)")
-//            Transaction.fetch(txid, context: managedObjectContext) { (transaction) -> Void in
-//                //self.confirmationsLabel.text = transaction.confirmations
-//            }
+            DynamoTransaction.fetch(txid, context: managedObjectContext) { (transaction) -> Void in
+                if let transaction = transaction {
+                    self.confirmationsLabel.text = transaction.confirmations?.stringValue
+                }
+            }
         }
 
     }

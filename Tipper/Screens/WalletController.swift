@@ -125,7 +125,7 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
     }
 
     // MARK: Stripe
-    func checkoutController(controller: STPCheckoutViewController!, didCreateToken token: STPToken!, completion: STPTokenSubmissionHandler!) {
+    func checkoutController(controller: STPCheckoutViewController, didCreateToken token: STPToken, completion: STPTokenSubmissionHandler) {
         println("\(className)::\(__FUNCTION__)")
         createBackendChargeWithToken(token, completion: completion)
     }

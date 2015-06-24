@@ -7,19 +7,28 @@
 //
 
 import Foundation
+import TwitterKit
+import SwiftyJSON
 
 class DynamoTransaction: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
-    var txid: String?
+    var amount: NSNumber?
+    var category: String?
+    var confirmations: NSNumber?
+    var details: String?
+    var fee: NSNumber?
+    var FromBitcoinAddress: String?
+    var FromTwitterID: String?
+    var FromTwitterUsername: String?
+    var FromUserID: String?
 
-    var ToTwitterID: String?
+    var tip_amount: NSNumber?
+    var ToBitcoinAddress: String?
     var ToUserID: String?
     var ToTwitterUsername: String?
-    var FromTwitterID: String?
-    var FromUserID: String?
-    var FromTwitterUsername: String?
-    var fee: String?
-    var amount: String?
-    var confirmations: String?
+    var ToTwitterID: String?
+
+    var txid: String?
+
 
     var time: NSNumber?
 
@@ -33,7 +42,7 @@ class DynamoTransaction: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpda
     }
 
     func lookupProperty() -> String {
-        return DynamoFavorite.lookupProperty()
+        return DynamoTransaction.lookupProperty()
     }
 
     class func lookupProperty() -> String {
@@ -44,5 +53,24 @@ class DynamoTransaction: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpda
         return self.txid!
     }
 
+    override func isEqual(anObject: AnyObject?) -> Bool {
+        return super.isEqual(anObject)
+    }
+
+    class func fetch(txid: String, context: NSManagedObjectContext, completion: (transaction: Transaction?) -> Void) {
+        println("DynamoTransaction::\(__FUNCTION__) txid: \(txid), context:\(context)")
+        let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
+        mapper.load(DynamoTransaction.self, hashKey: txid, rangeKey: nil).continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+            println("error \(task.error)")
+            var transaction: Transaction?
+            if task.error == nil {
+                let dynamoTransaction = task.result as! DynamoTransaction
+                transaction = Transaction.entityWithDYNAMO(Transaction.self, model: dynamoTransaction, context: context)
+            }
+            completion(transaction: transaction)
+            return nil
+        })
+
+    }
 
 }
