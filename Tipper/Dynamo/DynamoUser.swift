@@ -41,7 +41,7 @@ class DynamoUser: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
     }
 
     func lookupProperty() -> String {
-        return DynamoFavorite.lookupProperty()
+        return DynamoUser.lookupProperty()
     }
 
     class func lookupProperty() -> String {
