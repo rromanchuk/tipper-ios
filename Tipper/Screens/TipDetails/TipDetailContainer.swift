@@ -29,7 +29,7 @@ class TipDetailContainer: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("\(className)::\(__FUNCTION__) favorite:\(favorite)")
+        println("\(className)::\(__FUNCTION__)")
         setupTipAmount()
 
         let twt = TWTRTweet(JSONDictionary: favorite.twitterJSON)

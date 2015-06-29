@@ -51,23 +51,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         mobileAnalyticsConfiguration.transmitOnWAN = true
         let analytics = AWSMobileAnalytics(forAppId: Config.get("AWS_ANALYTICS_ID"), configuration: mobileAnalyticsConfiguration, completionBlock: nil)
 
-        if currentUser.isTwitterAuthenticated {
-            let types = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
-            let notificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
-
-            UIApplication.sharedApplication().registerForRemoteNotifications()
-            UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
-        }
+        refresh()
 
         return true
     }
 
     func setupFirstController() {
         currentUser = CurrentUser.currentUser(managedObjectContext)
-        currentUser.settings?.update()
 
         println("\(className)::\(__FUNCTION__) currentUser:\([currentUser])")
-
 
         provider = TwitterAuth(currentUser: currentUser)
         let credentialsProvider = AWSCognitoCredentialsProvider(regionType: AWSRegionType.USEast1, identityProvider: provider, unauthRoleArn: Config.get("COGNITO_UNAUTH_ARN"), authRoleArn: Config.get("COGNITO_AUTH_ARN"))
@@ -103,22 +95,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(application: UIApplication) {
         println("\(className)::\(__FUNCTION__)")
         UIApplication.sharedApplication().applicationIconBadgeNumber = 0
-        if currentUser.isTwitterAuthenticated {
-            currentUser.pushToDynamo()
-            //currentUser.refreshWithDynamo()
-            currentUser.registerForRemoteNotificationsIfNeeded()
-            //subscribeToTopics()
-        }        
-    }
-
-    func subscribeToTopics() {
-        let sns = AWSSNS.defaultSNS()
-        let request = AWSSNSSubscribeInput()
-        request.topicArn = "***REMOVED***"
-        sns.subscribe(request).continueWithBlock { (task) -> AnyObject! in
-            println("\(task.result) \(task.error)")
-            return nil
-        }
 
     }
 
@@ -133,15 +109,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func applicationDidBecomeActive(application: UIApplication) {
+        println("\(className)::\(__FUNCTION__)")
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        if currentUser.isTwitterAuthenticated {
-            let types = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
-            let notificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
-
-            UIApplication.sharedApplication().registerForRemoteNotifications()
-            UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
-        }
+        refresh()
     }
+
+    func refresh() {
+        if currentUser.isTwitterAuthenticated {
+            currentUser.refreshWithServer { [weak self] (error) -> Void in
+                self?.currentUser.updateBalanceUSD { [weak self] () -> Void in }
+                self?.currentUser.registerForRemoteNotificationsIfNeeded()
+            }
+        }
+        currentUser.settings?.update()
+        market.update { [weak self] () -> Void in }
+    }
+
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.

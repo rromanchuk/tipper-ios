@@ -81,6 +81,7 @@ class ReceivedTips: UIViewController {
 
     func refresh(refreshControl: UIRefreshControl) {
         DynamoFavorite.fetchReceivedFromAWS(currentUser, context: managedObjectContext)
+        (parentViewController as! TipTabBarController).refresh()
         refreshControl.endRefreshing()
     }
 
@@ -197,6 +198,7 @@ class SentTips: UIViewController {
 
     func refresh(refreshControl: UIRefreshControl) {
         DynamoFavorite.fetchFromAWS(currentUser, context: managedObjectContext)
+        (parentViewController as! TipTabBarController).refresh()
         refreshControl.endRefreshing()
     }
 

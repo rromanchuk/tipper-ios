@@ -27,7 +27,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>102</string>
+	<string>103</string>
 	<key>COGNITO_AUTH_ARN</key>
 	<string>$(COGNITO_AUTH_ARN)</string>
 	<key>COGNITO_POOL</key>

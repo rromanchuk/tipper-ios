@@ -18,6 +18,7 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
     let tweetTableReuseIdentifier = "TipCell"
     let transitionManager = TransitionManager()
     weak var segmentDelegate: SegmentControlDelegate?
+    weak var refreshDelegate: RefreshControlDelegate?
 
     lazy var headerDateFormatter: NSDateFormatter = {
         let _formatter = NSDateFormatter()
@@ -56,6 +57,11 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
         TSMessage.showNotificationInViewController(self, title: message, subtitle: subtitle, type: type, duration: 5.0)
     }
 
+    func refresh() {
+        println("\(className)::\(__FUNCTION__)")
+        refreshDelegate?.refreshUI()
+    }
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         println("\(className)::\(__FUNCTION__) identifier: \(segue.identifier)")
 
@@ -64,6 +70,7 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
             vc.managedObjectContext = managedObjectContext
             vc.currentUser = currentUser
             vc.market = market
+            refreshDelegate = vc
             //vc.favorite = favorite
         } else if segue.identifier == "TabBarEmbed" {
             let vc = segue.destinationViewController as! TipTabBarController
@@ -72,7 +79,6 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
             vc.market = market
             segmentDelegate = vc
         }
-
     }
 
     func backToSplash() {
@@ -90,4 +96,8 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
 
 protocol SegmentControlDelegate:class {
     func segmentChanged(sender: UISegmentedControl)
+}
+
+protocol RefreshControlDelegate:class {
+    func refreshUI()
 }

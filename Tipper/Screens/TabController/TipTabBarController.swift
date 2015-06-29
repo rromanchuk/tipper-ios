@@ -40,6 +40,11 @@ class TipTabBarController: UITabBarController, SegmentControlDelegate {
         // Do any additional setup after loading the view.
     }
 
+    func refresh() {
+        println("\(className)::\(__FUNCTION__)")
+        (parentViewController as? HomeController)?.refresh()
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

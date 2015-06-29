@@ -1554,7 +1554,7 @@
         <image name="wallet" width="76" height="73"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="sw9-Zr-Rqd"/>
         <segue reference="HZW-5I-i47"/>
-        <segue reference="7dQ-p7-IX8"/>
     </inferredMetricsTieBreakers>
 </document>
