@@ -116,6 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func refresh() {
         if currentUser.isTwitterAuthenticated {
+            provider?.refresh()
             currentUser.refreshWithServer { [weak self] (error) -> Void in
                 self?.currentUser.updateBalanceUSD { [weak self] () -> Void in }
                 self?.currentUser.registerForRemoteNotificationsIfNeeded()

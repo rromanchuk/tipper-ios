@@ -74,6 +74,9 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
                                 let json = JSON(result)
                                 Favorite.entityWithDYNAMO(Favorite.self, model: result, context: privateContext)
                                 privateContext.saveMoc()
+                                context.performBlock({ () -> Void in
+                                    context.saveMoc()
+                                })
                             })
                         }
                     })
@@ -117,6 +120,9 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
                             //println("fetchReceivedFromAWS result from query \(result)")
                             Favorite.entityWithDYNAMO(Favorite.self, model: result, context: privateContext)
                             privateContext.saveMoc()
+                            context.performBlock({ () -> Void in
+                                context.saveMoc()
+                            })
                         })
                     }
                 })
