@@ -53,6 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         refresh()
 
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "logout", name: "UNAUTHORIZED_USER", object: nil)
+
         return true
     }
 
@@ -269,8 +271,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Core Data stack
 
+    func logout() {
+        println("\(className)::\(__FUNCTION__)")
+        currentUser.resetIdentifiers()
+        resetCoreData()
+        NSNotificationCenter.defaultCenter().postNotificationName("BACK_TO_SPLASH", object: nil)
+    }
+
 
     func resetCoreData() {
+        println("\(className)::\(__FUNCTION__)")
         let storeURL = applicationDocumentsDirectory.URLByAppendingPathComponent("Tipper.sqlite")
         NSFileManager.defaultManager().removeItemAtURL(storeURL, error: nil)
         _persistentStoreCoordinator = nil
@@ -335,7 +345,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data Saving support
     func writeToDisk() {
         saveContext()
-        if let privateMoc = self.privateWriterContext {
+        if let privateMoc = privateWriterContext {
             var error: NSError? = nil
             if privateMoc.hasChanges && !privateMoc.save(&error) {
                 NSLog("Unresolved error \(error), \(error!.userInfo)")

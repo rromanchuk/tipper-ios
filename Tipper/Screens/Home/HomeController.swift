@@ -35,7 +35,7 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "logout", name: "UNAUTHORIZED_USER", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "backToSplash", name: "BACK_TO_SPLASH", object: nil)
     }
 
     override func viewWillAppear(animated: Bool) {
