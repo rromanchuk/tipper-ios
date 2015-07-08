@@ -14,6 +14,7 @@ class TipDetailContainer: UITableViewController {
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
     var favorite: Favorite!
+    var tipCellType: TipCellType!
     
     @IBOutlet weak var tweetView: TWTRTweetView!
 
@@ -34,7 +35,11 @@ class TipDetailContainer: UITableViewController {
 
         let twt = TWTRTweet(JSONDictionary: favorite.twitterJSON)
         tweetView.configureWithTweet(twt)
-        usernameLabel.text = "@\(favorite.toTwitterUsername)"
+
+        if tipCellType == TipCellType.Sent {
+            usernameLabel.text = "@\(favorite.toTwitterUsername)"
+        }
+
 
         if let urlString = twt.author.profileImageLargeURL, url = NSURL(string: urlString) {
             profileImageView.hnk_setImageFromURL(url)

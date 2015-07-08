@@ -155,18 +155,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 println("endpointArn: \(createEndpointResponse.endpointArn)")
                 self.currentUser?.endpointArn = createEndpointResponse.endpointArn
                 self.currentUser?.pushToDynamo()
-                let request = AWSSNSSubscribeInput()
-                request.endpoint = createEndpointResponse.endpointArn
-                request.protocols = "application"
-                request.topicArn = "***REMOVED***"
-                sns.subscribe(request).continueWithBlock({ (task) -> AnyObject! in
-                    println("\(task.result) \(task.error)")
-                    return nil
-                })
+                self.gerneralSubscriptionChannel(task)
+                if let admin = self.currentUser?.admin {
+                    self.adminSubscriptionChannel(task)
+                }
+
             }
             
             return nil
         }
+    }
+
+    func gerneralSubscriptionChannel(task: BFTask!) {
+        println("\(className)::\(__FUNCTION__)")
+        let sns = AWSSNS.defaultSNS()
+
+        let createEndpointResponse = task.result as! AWSSNSCreateEndpointResponse
+        println("endpointArn: \(createEndpointResponse.endpointArn)")
+        let request = AWSSNSSubscribeInput()
+        request.endpoint = createEndpointResponse.endpointArn
+        request.protocols = "application"
+        request.topicArn = "***REMOVED***"
+        sns.subscribe(request).continueWithBlock({ (task) -> AnyObject! in
+            println("\(task.result) \(task.error)")
+            return nil
+        })
+        
+    }
+
+
+    func adminSubscriptionChannel(task: BFTask!) {
+        println("\(className)::\(__FUNCTION__)")
+        let sns = AWSSNS.defaultSNS()
+        let createEndpointResponse = task.result as! AWSSNSCreateEndpointResponse
+        println("endpointArn: \(createEndpointResponse.endpointArn)")
+
+        let request = AWSSNSSubscribeInput()
+        request.endpoint = createEndpointResponse.endpointArn
+        request.protocols = "application"
+        request.topicArn = "***REMOVED***"
+        sns.subscribe(request).continueWithBlock({ (task) -> AnyObject! in
+            println("\(task.result) \(task.error)")
+            return nil
+        })
+
     }
 
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject: AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {

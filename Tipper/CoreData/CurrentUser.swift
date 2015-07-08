@@ -44,6 +44,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
     @NSManaged var marketValue: Tipper.Market?
     @NSManaged var settings: Tipper.Settings?
+    @NSManaged var admin: NSNumber?
 
     class func currentUser(context: NSManagedObjectContext) -> CurrentUser {
         if let _currentUser = CurrentUser.first(CurrentUser.self, context: context) {
@@ -383,6 +384,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         self.twitterAuthToken       = user.TwitterAuthToken
         self.twitterAuthSecret      = user.TwitterAuthSecret
         self.bitcoinAddress         = user.BitcoinAddress
+        self.admin                  = user.Admin
 
         self.bitcoinBalanceBTC = user.BitcoinBalanceBTC
 
@@ -404,6 +406,10 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         self.bitcoinAddress     = json["BitcoinAddress"].string
         self.cognitoIdentity    = json["CognitoIdentity"].string
         self.cognitoToken       = json["CognitoToken"].string
+
+        if let admin = json["admin"].bool {
+            self.admin = admin
+        }
 
         if let profileImage = json["ProfileImage"].string {
             self.profileImage = profileImage

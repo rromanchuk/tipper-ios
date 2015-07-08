@@ -31,6 +31,7 @@ class DynamoUser: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
     var EndpointArn: String?
     var DeviceToken: String?
     var BitcoinBalanceBTC: NSNumber?
+    var Admin: Bool?
 
     static func dynamoDBTableName() -> String! {
         return "TipperUsers"

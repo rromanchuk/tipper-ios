@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="15A204h" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="CurrentUser" representedClassName="Tipper.CurrentUser" syncable="YES">
+        <attribute name="admin" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="bitcoinAddress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="bitcoinBalanceBTC" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="cognitoIdentity" optional="YES" attributeType="String" syncable="YES"/>
@@ -62,7 +63,7 @@
         <attribute name="txid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="285"/>
+        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="300"/>
         <element name="Favorite" positionX="-63" positionY="54" width="128" height="255"/>
         <element name="Market" positionX="-54" positionY="117" width="128" height="135"/>
         <element name="Settings" positionX="-54" positionY="99" width="128" height="105"/>

@@ -74,6 +74,7 @@ class ReceivedTips: UIViewController {
             vc.currentUser = currentUser
             vc.favorite = favorite
             vc.market = market
+            vc.tipCellType = .Received
         }
     }
 
@@ -215,6 +216,7 @@ class SentTips: UIViewController {
             vc.currentUser = currentUser
             vc.favorite = favorite
             vc.market = market
+            vc.tipCellType = .Sent
         }
     }
 

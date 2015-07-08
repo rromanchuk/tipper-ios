@@ -14,6 +14,7 @@ class TipDetailsViewController: UIViewController, Logoutable {
     var currentUser: CurrentUser!
     var favorite: Favorite!
     var market: Market!
+    var tipCellType: TipCellType!
 
 
     override func viewDidLoad() {
