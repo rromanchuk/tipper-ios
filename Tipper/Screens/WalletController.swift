@@ -43,6 +43,16 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         //applePayButton = PKPaymentButton(type: .Buy, style: .Black)
 
+        if let utcFundAmount = currentUser.settings?.fundAmountUBTC {
+            ubtcExchangeLabel.text = utcFundAmount
+        }
+
+
+        if let btcFundAmount = currentUser.settings?.fundAmount {
+            btcConversionLabel.text = "(\(btcFundAmount) Bitcoin)"
+        }
+
+
         self.addressLabel.text = currentUser.bitcoinAddress
         qrCode.image = QRCode(currentUser.bitcoinAddress!)?.image
 

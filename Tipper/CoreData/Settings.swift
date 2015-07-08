@@ -43,4 +43,16 @@ class Settings: NSManagedObject {
             }
         }
     }
+
+    var fundAmountUBTC:String {
+        get {
+            if let fundAmount = self.fundAmount {
+                let fundAmountFloat = (fundAmount as NSString).floatValue
+                let uBTCFloat = fundAmountFloat / 0.00000100
+                return "\(Int(uBTCFloat))"
+            } else {
+                return "0"
+            }
+        }
+    }
 }
