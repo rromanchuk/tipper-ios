@@ -175,7 +175,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let request = AWSSNSSubscribeInput()
         request.endpoint = createEndpointResponse.endpointArn
         request.protocols = "application"
-        request.topicArn = "***REMOVED***"
+        request.topicArn = Config.get("AWS_GENERAL_SNS")
         sns.subscribe(request).continueWithBlock({ (task) -> AnyObject! in
             println("\(task.result) \(task.error)")
             return nil
@@ -193,7 +193,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let request = AWSSNSSubscribeInput()
         request.endpoint = createEndpointResponse.endpointArn
         request.protocols = "application"
-        request.topicArn = "***REMOVED***"
+        request.topicArn = Config.get("AWS_ADMIN_SNS")
         sns.subscribe(request).continueWithBlock({ (task) -> AnyObject! in
             println("\(task.result) \(task.error)")
             return nil

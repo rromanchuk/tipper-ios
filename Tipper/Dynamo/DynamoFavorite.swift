@@ -56,35 +56,20 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
 
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let exp = AWSDynamoDBQueryExpression()
+
         exp.hashKeyValues      = currentUser.userId!
         exp.indexName = "FromUserID-index"
-        exp.limit = 30
+        self.query(exp, secondaryIndexHash: "FromUserID", context: context)
+    }
 
-        println("userId: \(currentUser.userId!)")
+    class func fetchReceivedFromAWS(currentUser: CurrentUser, context: NSManagedObjectContext) {
+        println("DynamoFavorite::\(__FUNCTION__)")
 
-        mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: "FromUserID").continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-            println("fetchFromAWS Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
-            if task.error == nil {
-                if let results = task.result as? AWSDynamoDBPaginatedOutput {
-                    let privateContext = context.privateContext
-                    privateContext.performBlock({ () -> Void in
-                        for result in results.items as! [DynamoFavorite] {
-                            autoreleasepool({ () -> () in
-                                //println("fetchFromAWS result from query \(result)")
-                                let json = JSON(result)
-                                Favorite.entityWithDYNAMO(Favorite.self, model: result, context: privateContext)
-                                privateContext.saveMoc()
-                                context.performBlock({ () -> Void in
-                                    context.saveMoc()
-                                })
-                            })
-                        }
-                    })
-                }
-            }
-
-            return nil
-        })
+        let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
+        let exp = AWSDynamoDBQueryExpression()
+        exp.hashKeyValues      = currentUser.userId!
+        exp.indexName = "ToUserID-index"
+        self.query(exp, secondaryIndexHash: "ToUserID", context: context)
     }
 
     class func fetch(tweetId:String, fromTwitterId:String, context: NSManagedObjectContext, completion: () -> Void) {
@@ -100,16 +85,10 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         }
     }
 
-    class func fetchReceivedFromAWS(currentUser: CurrentUser, context: NSManagedObjectContext) {
-        println("DynamoFavorite::\(__FUNCTION__)")
-
+    class func query(exp: AWSDynamoDBQueryExpression, secondaryIndexHash: String, context: NSManagedObjectContext) {
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
-        let exp = AWSDynamoDBQueryExpression()
-        exp.hashKeyValues      = currentUser.userId!
-        exp.indexName = "ToUserID-index"
-        exp.limit = 30
 
-        mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: "ToUserID").continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+        mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: secondaryIndexHash).continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             println("fetchReceivedFromAWS Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
             if task.error == nil {
                 let results = task.result as! AWSDynamoDBPaginatedOutput
@@ -122,6 +101,10 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
                             privateContext.saveMoc()
                             context.performBlock({ () -> Void in
                                 context.saveMoc()
+                                if results.lastEvaluatedKey != nil {
+                                    exp.exclusiveStartKey = results.lastEvaluatedKey
+                                    self.query(exp, secondaryIndexHash: secondaryIndexHash, context: context)
+                                }
                             })
                         })
                     }
@@ -131,8 +114,9 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
 
             return nil
         })
-    }
 
+
+    }
 
     override func isEqual(anObject: AnyObject?) -> Bool {
         return super.isEqual(anObject)
