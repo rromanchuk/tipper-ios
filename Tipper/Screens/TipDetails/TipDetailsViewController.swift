@@ -46,6 +46,7 @@ class TipDetailsViewController: UIViewController, Logoutable {
             vc.managedObjectContext = managedObjectContext
             vc.currentUser = currentUser
             vc.favorite = favorite
+            vc.tipCellType = tipCellType
         } else if segue.identifier == "TipDetailsHeaderEmbed" {
             let vc = segue.destinationViewController as! HeaderContainer
             vc.managedObjectContext = managedObjectContext

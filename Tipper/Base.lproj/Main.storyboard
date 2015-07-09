@@ -869,7 +869,7 @@
                                                         <constraint firstAttribute="height" constant="213" id="E9V-gc-Xbs"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" alpha="0.49999999999999961" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17uSiLnLUXUMKuQFNbdLQQQfaAWQhFHcM9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3d-JV-ent">
+                                                <label opaque="NO" alpha="0.49999999999999961" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="251" text="17uSiLnLUXUMKuQFNbdLQQQfaAWQhFHcM9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3d-JV-ent">
                                                     <rect key="frame" x="47" y="283" width="226" height="12"/>
                                                     <animations/>
                                                     <gestureRecognizers/>
@@ -881,7 +881,7 @@
                                                     </connections>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirmations" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKH-Sa-iwv">
-                                                    <rect key="frame" x="47" y="310" width="84" height="15"/>
+                                                    <rect key="frame" x="47" y="310" width="83.5" height="15"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -935,6 +935,7 @@
                                                 <constraint firstItem="JuM-IQ-xeF" firstAttribute="top" secondItem="Kpc-ho-zf3" secondAttribute="topMargin" constant="10" id="C2q-m2-L4I"/>
                                                 <constraint firstItem="I10-F2-2BU" firstAttribute="leading" secondItem="JuM-IQ-xeF" secondAttribute="leading" id="D6G-u3-UGh"/>
                                                 <constraint firstItem="woc-14-0Cg" firstAttribute="top" secondItem="jZ2-ig-xqd" secondAttribute="bottom" constant="8" id="FF4-hR-GoT"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="i3d-JV-ent" secondAttribute="trailing" constant="10" id="H4G-jU-7pD"/>
                                                 <constraint firstItem="woc-14-0Cg" firstAttribute="leading" secondItem="I10-F2-2BU" secondAttribute="leading" constant="-39" id="HQA-L6-giO"/>
                                                 <constraint firstItem="i3d-JV-ent" firstAttribute="leading" secondItem="JuM-IQ-xeF" secondAttribute="leading" id="IFN-yJ-se2"/>
                                                 <constraint firstItem="jZ2-ig-xqd" firstAttribute="leading" secondItem="Kpc-ho-zf3" secondAttribute="leadingMargin" constant="8" id="eUH-M7-z5z"/>
@@ -1555,6 +1556,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="sw9-Zr-Rqd"/>
-        <segue reference="HZW-5I-i47"/>
+        <segue reference="tr9-s8-h7f"/>
     </inferredMetricsTieBreakers>
 </document>

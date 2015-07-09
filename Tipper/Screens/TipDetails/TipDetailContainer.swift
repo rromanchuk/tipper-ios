@@ -30,7 +30,7 @@ class TipDetailContainer: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("\(className)::\(__FUNCTION__)")
+        println("\(className)::\(__FUNCTION__) tipCellType \(tipCellType)")
         setupTipAmount()
 
         let twt = TWTRTweet(JSONDictionary: favorite.twitterJSON)
@@ -38,18 +38,18 @@ class TipDetailContainer: UITableViewController {
 
         if tipCellType == TipCellType.Sent {
             usernameLabel.text = "@\(favorite.toTwitterUsername)"
-        }
-
-
-        if let urlString = twt.author.profileImageLargeURL, url = NSURL(string: urlString) {
-            profileImageView.hnk_setImageFromURL(url)
-        }
-
-        if favorite.fromUserId == currentUser.userId {
             tipHeaderLabel.text = "You tipped \(twt.author.name)."
+            if let profileImage = currentUser.profileImage, url = NSURL(string: profileImage) {
+                profileImageView.hnk_setImageFromURL(url)
+            }
+
         } else {
             tipHeaderLabel.text = "\(twt.author.name) tipped you."
+            if let urlString = twt.author.profileImageLargeURL, url = NSURL(string: urlString) {
+                profileImageView.hnk_setImageFromURL(url)
+            }
         }
+
 
         if let txid = favorite.txid {
             transactionIdLabel.text = favorite.txid
