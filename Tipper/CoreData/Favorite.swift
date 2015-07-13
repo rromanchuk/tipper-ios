@@ -26,8 +26,10 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
     @NSManaged var tweetId: String
     @NSManaged var toTwitterId: String
     @NSManaged var toTwitterUsername: String
+    @NSManaged var toTwitterProfileImage: String?
     @NSManaged var fromTwitterId: String
     @NSManaged var fromTwitterUsername: String
+    @NSManaged var fromTwitterProfileImage: String?
     @NSManaged var txid: String?
     @NSManaged var createdAt: NSDate
     @NSManaged var twitterJSON: [String: AnyObject]?
@@ -135,6 +137,14 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
 
         if let fromTwitterUsername = dynamoFavorite.FromTwitterUsername {
             self.fromTwitterUsername = fromTwitterUsername
+        }
+
+        if let fromTwitterProfileImage = dynamoFavorite.FromTwitterProfileImage {
+            self.fromTwitterProfileImage = fromTwitterProfileImage
+        }
+
+        if let toTwitterProfileImage = dynamoFavorite.ToTwitterProfileImage {
+            self.toTwitterProfileImage = toTwitterProfileImage
         }
     }
 

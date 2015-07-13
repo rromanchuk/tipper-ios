@@ -6,8 +6,12 @@
 	<string>https://coinbit.tips</string>
 	<key>APPLE_PAY_MERCHANT</key>
 	<string>$(APPLE_PAY_MERCHANT)</string>
+	<key>AWS_ADMIN_SNS</key>
+	<string>$(AWS_ADMIN_SNS)</string>
 	<key>AWS_ANALYTICS_ID</key>
 	<string>$(AWS_ANALYTICS_ID)</string>
+	<key>AWS_GENERAL_SNS</key>
+	<string>$(AWS_GENERAL_SNS)</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -27,7 +31,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>112</string>
+	<string>113</string>
 	<key>COGNITO_AUTH_ARN</key>
 	<string>$(COGNITO_AUTH_ARN)</string>
 	<key>COGNITO_POOL</key>

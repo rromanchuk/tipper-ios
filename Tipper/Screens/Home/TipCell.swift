@@ -59,11 +59,13 @@ class TipCell: UITableViewCell {
             tipAmountBTC.text = currentUser?.settings?.tipAmount
 
 
-            if let urlString = twt.author.profileImageLargeURL, url = NSURL(string: urlString) {
-                userProfileImage.hnk_setImageFromURL(url)
-            }
+
 
             if type == .Sent {
+                if let urlString = twt.author.profileImageLargeURL, url = NSURL(string: urlString) {
+                    userProfileImage.hnk_setImageFromURL(url)
+                }
+
                 if _favorite!.didLeaveTip {
                     tipActionLabel.text = "You tipped \(twt.author.name)"
                     tipButton.hidden = true
@@ -77,6 +79,9 @@ class TipCell: UITableViewCell {
                 }
 
             } else {
+                if let urlString = _favorite!.fromTwitterProfileImage, url = NSURL(string: urlString) {
+                    userProfileImage.hnk_setImageFromURL(url)
+                }
                 tipButton.hidden = true
                 tipActionLabel.text = "\(_favorite!.fromTwitterUsername) sent you a tip"
                 tipAmount.hidden = false

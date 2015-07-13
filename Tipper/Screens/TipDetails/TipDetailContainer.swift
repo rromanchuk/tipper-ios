@@ -44,8 +44,9 @@ class TipDetailContainer: UITableViewController {
             }
 
         } else {
-            tipHeaderLabel.text = "\(twt.author.name) tipped you."
-            if let urlString = twt.author.profileImageLargeURL, url = NSURL(string: urlString) {
+            tipHeaderLabel.text = "\(favorite.fromTwitterUsername) tipped you."
+            usernameLabel.text = "@\(favorite.fromTwitterUsername)"
+            if let urlString = favorite.fromTwitterProfileImage, url = NSURL(string: urlString) {
                 profileImageView.hnk_setImageFromURL(url)
             }
         }
