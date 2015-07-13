@@ -1100,7 +1100,7 @@
 				BUNDLE_IDENTIFIER = com.ryanromanchuk.tipper;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Tipper/Tipper.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Ryan Romanchuk";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COGNITO_AUTH_ARN = "arn:aws:iam::080383581145:role/Cognito_TipperAuth_DefaultRole";
 				COGNITO_POOL = "***REMOVED***";

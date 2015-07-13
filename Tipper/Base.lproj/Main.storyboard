@@ -881,7 +881,7 @@
                                                     </connections>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirmations" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKH-Sa-iwv">
-                                                    <rect key="frame" x="47" y="310" width="83.5" height="15"/>
+                                                    <rect key="frame" x="47" y="310" width="84" height="15"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -982,7 +982,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1786" y="24"/>
+            <point key="canvasLocation" x="1738" y="63"/>
         </scene>
         <!--Header Container-->
         <scene sceneID="4ed-D0-s7K">
@@ -1095,7 +1095,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="231" y="314"/>
+            <point key="canvasLocation" x="345" y="314"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="whj-sG-6gm">

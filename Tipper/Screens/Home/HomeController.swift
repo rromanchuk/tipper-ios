@@ -11,12 +11,16 @@ import TwitterKit
 import SwiftyJSON
 
 class HomeController: UIViewController, NotificationMessagesDelegate, UITableViewDelegate, Logoutable {
+
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
     var market: Market!
     var showBalanceBTC = false
+
+    let className = "HomeController"
     let tweetTableReuseIdentifier = "TipCell"
     let transitionManager = TransitionManager()
+
     weak var segmentDelegate: SegmentControlDelegate?
     weak var refreshDelegate: RefreshControlDelegate?
 
@@ -27,8 +31,6 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
     }()
 
 
-    var className = "HomeController"
-
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var tabBarContainer: UIView!
 
@@ -36,6 +38,8 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "backToSplash", name: "BACK_TO_SPLASH", object: nil)
+        //segmentControl.
+        //segmentControl.setTitleTextAttributes([NSString(string: ""): UIFont(name: "Bariol", size: 14)], forState: UIControlState.Normal)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -55,6 +59,7 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
     func didReceiveNotificationAlert(message: String, subtitle: String, type: TSMessageNotificationType) {
         println("\(className)::\(__FUNCTION__)")
         TSMessage.showNotificationInViewController(self, title: message, subtitle: subtitle, type: type, duration: 5.0)
+        refresh()
     }
 
     func refresh() {

@@ -10,7 +10,6 @@ import UIKit
 
 class TipTabBarController: UITabBarController, SegmentControlDelegate {
     let className = "TipTabBarController"
-    
 
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
@@ -34,10 +33,6 @@ class TipTabBarController: UITabBarController, SegmentControlDelegate {
                 }
             }
         }
-
-
-
-        // Do any additional setup after loading the view.
     }
 
     func refresh() {
@@ -54,16 +49,4 @@ class TipTabBarController: UITabBarController, SegmentControlDelegate {
         println("\(className)::\(__FUNCTION__)")
         selectedIndex = sender.selectedSegmentIndex
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

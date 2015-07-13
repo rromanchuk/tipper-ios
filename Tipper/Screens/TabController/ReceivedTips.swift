@@ -50,15 +50,13 @@ class ReceivedTips: UIViewController {
         println("\(className)::\(__FUNCTION__)")
 
         tableView.estimatedRowHeight = 70
-        tableView.rowHeight = UITableViewAutomaticDimension // Explicitly set on iOS 8 if using automatic row height calculation
-
+        tableView.rowHeight = UITableViewAutomaticDimension
 
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
         tableView.addSubview(refreshControl)
 
         DynamoFavorite.fetchReceivedFromAWS(currentUser, context: managedObjectContext)
-
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -77,7 +75,6 @@ class ReceivedTips: UIViewController {
             vc.tipCellType = .Received
         }
     }
-
 
 
     func refresh(refreshControl: UIRefreshControl) {
@@ -169,10 +166,9 @@ class SentTips: UIViewController {
         return NSPredicate(format: "fromUserId = %@", self.currentUser.userId!)
     }()
 
-
     lazy var sortDescriptors: [AnyObject] = {
         return [NSSortDescriptor(key: "createdAt", ascending: false)]
-        }()
+    }()
 
     lazy var fetchRequest: NSFetchRequest = {
         let request = NSFetchRequest(entityName: "Favorite")
@@ -194,7 +190,6 @@ class SentTips: UIViewController {
         tableView.addSubview(refreshControl)
 
         DynamoFavorite.fetchFromAWS(currentUser, context: managedObjectContext)
-
     }
 
     func refresh(refreshControl: UIRefreshControl) {
@@ -220,7 +215,6 @@ class SentTips: UIViewController {
         }
     }
 
-
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let favorite = fetchedResultsController.objectAtIndexPath(indexPath) as! Favorite
         let twt = TWTRTweet(JSONDictionary: favorite.twitterJSON)
@@ -229,8 +223,6 @@ class SentTips: UIViewController {
         cell.currentUser = currentUser
         cell.type = .Sent
         cell.favorite = favorite
-
-
 
         return cell
     }
@@ -256,7 +248,6 @@ class SentTips: UIViewController {
         return ""
     }
 
-
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         view.tintColor = UIColor.colorWithRGB(0x1D1D26, alpha: 0.10)
 
@@ -264,7 +255,6 @@ class SentTips: UIViewController {
         header.textLabel.textColor = UIColor.colorWithRGB(0x1D1D26, alpha: 1.0)
         header.textLabel.font = UIFont(name: "Bariol-Regular", size: 11.0)
     }
-
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return fetchedResultsController.sections!.count
@@ -280,8 +270,4 @@ class SentTips: UIViewController {
         }
         return false
     }
-
-    
-    
-    
 }
