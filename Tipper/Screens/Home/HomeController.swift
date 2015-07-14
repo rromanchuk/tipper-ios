@@ -38,6 +38,8 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "backToSplash", name: "BACK_TO_SPLASH", object: nil)
+        let font = UIFont(name: "Bariol-Regular", size: 19)!
+        segmentControl.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
         //segmentControl.
         //segmentControl.setTitleTextAttributes([NSString(string: ""): UIFont(name: "Bariol", size: 14)], forState: UIControlState.Normal)
     }

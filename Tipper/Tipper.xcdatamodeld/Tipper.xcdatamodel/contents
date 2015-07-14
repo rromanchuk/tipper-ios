@@ -6,6 +6,7 @@
         <attribute name="bitcoinBalanceBTC" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="cognitoIdentity" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cognitoToken" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="deviceToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endpointArn" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="profileImage" optional="YES" attributeType="String" syncable="YES"/>
@@ -28,6 +29,7 @@
         <attribute name="fromTwitterUsername" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fromUserId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="objectId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tippedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="toTwitterId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="toTwitterProfileImage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="toTwitterUsername" optional="YES" attributeType="String" syncable="YES"/>
@@ -65,8 +67,8 @@
         <attribute name="txid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="300"/>
-        <element name="Favorite" positionX="-63" positionY="54" width="128" height="285"/>
+        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="315"/>
+        <element name="Favorite" positionX="-63" positionY="54" width="128" height="300"/>
         <element name="Market" positionX="-54" positionY="117" width="128" height="135"/>
         <element name="Settings" positionX="-54" positionY="99" width="128" height="105"/>
         <element name="Transaction" positionX="-54" positionY="108" width="128" height="210"/>

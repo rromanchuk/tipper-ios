@@ -24,6 +24,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     var Provider: String?
     var TweetJSON: String?
     var CreatedAt: NSNumber?
+    var TippedAt: NSNumber?
     var DidLeaveTip: String?
     var txid: String?
    
@@ -67,6 +68,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
 
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let exp = AWSDynamoDBQueryExpression()
+
         exp.hashKeyValues      = currentUser.userId!
         exp.indexName = "ToUserID-index"
         self.query(exp, secondaryIndexHash: "ToUserID", context: context)
@@ -78,7 +80,6 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
             if (task.result != nil) {
                 let favorite: DynamoFavorite = task.result as! DynamoFavorite
                 Favorite.entityWithDYNAMO(Favorite.self, model: favorite, context: context)
-                //Do something with the result.
                 completion()
             }
             return nil
@@ -87,6 +88,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
 
     class func query(exp: AWSDynamoDBQueryExpression, secondaryIndexHash: String, context: NSManagedObjectContext) {
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
+
 
         mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: secondaryIndexHash).continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             println("fetchReceivedFromAWS Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
@@ -114,8 +116,6 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
 
             return nil
         })
-
-
     }
 
     override func isEqual(anObject: AnyObject?) -> Bool {

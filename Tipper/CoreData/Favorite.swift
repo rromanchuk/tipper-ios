@@ -32,6 +32,7 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
     @NSManaged var fromTwitterProfileImage: String?
     @NSManaged var txid: String?
     @NSManaged var createdAt: NSDate
+    @NSManaged var tippedAt: NSDate?
     @NSManaged var twitterJSON: [String: AnyObject]?
     @NSManaged var didLeaveTip: Bool
     @NSManaged var daySectionString: String
@@ -100,6 +101,10 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
         }
 
         self.createdAt = NSDate(timeIntervalSince1970: NSTimeInterval(dynamoFavorite.CreatedAt!.doubleValue))
+
+        if let tippedAt = dynamoFavorite.TippedAt {
+            self.tippedAt = NSDate(timeIntervalSince1970: NSTimeInterval(tippedAt))
+        }
 
         /*
         Sections are organized by month and year. Create the section identifier
