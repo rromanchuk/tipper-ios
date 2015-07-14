@@ -187,13 +187,11 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     }
 
     func registerForRemoteNotificationsIfNeeded() {
-        if deviceToken == nil {
-            let types = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
-            let notificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
+        let types = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
+        let notificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
 
-            UIApplication.sharedApplication().registerForRemoteNotifications()
-            UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
-        }
+        UIApplication.sharedApplication().registerForRemoteNotifications()
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
     }
 
     func updateCognitoIdentity(provider: TwitterAuth, completion: (() ->Void))  {
