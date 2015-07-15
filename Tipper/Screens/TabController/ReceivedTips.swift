@@ -47,8 +47,7 @@ class ReceivedTips: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("\(className)::\(__FUNCTION__)")
-        let tmp = fetchedResultsController
+        println("\(className)::\(__FUNCTION__) fetchedObjects: \(fetchedResultsController.fetchedObjects?.count)")
         tableView.estimatedRowHeight = 70
         tableView.rowHeight = UITableViewAutomaticDimension
 
@@ -179,8 +178,7 @@ class SentTips: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("\(className)::\(__FUNCTION__)")
-        let tmp = fetchedResultsController
+        println("\(className)::\(__FUNCTION__) fetchedObjects: \(fetchedResultsController.fetchedObjects?.count)")
 
         tableView.estimatedRowHeight = 70
         tableView.rowHeight = UITableViewAutomaticDimension // Explicitly set on iOS 8 if using automatic row height calculation

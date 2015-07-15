@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let className = "AppDelegate"
-    var privateWriterContext: NSManagedObjectContext?
     var currentUser: CurrentUser!
     var provider: TwitterAuth?
     var market: Market!
@@ -312,7 +311,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func resetCoreData() {
-        println("\(className)::\(__FUNCTION__)")
+        println("\(className)::\(__FUNCTION__) ****************************")
         let storeURL = applicationDocumentsDirectory.URLByAppendingPathComponent("Tipper.sqlite")
         NSFileManager.defaultManager().removeItemAtURL(storeURL, error: nil)
         _persistentStoreCoordinator = nil
@@ -378,10 +377,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func writeToDisk() {
         println("\(className)::\(__FUNCTION__)")
         saveContext()
-        if let privateMoc = privateWriterContext {
+        if let privateMoc = _privateWriterContext {
             var error: NSError? = nil
             if privateMoc.hasChanges && !privateMoc.save(&error) {
-                NSLog("Unresolved error \(error), \(error!.userInfo)")
+                println("Unresolved error \(error), \(error!.userInfo)")
             }
         }
 
@@ -390,8 +389,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func saveContext () {
         var error: NSError? = nil
         if managedObjectContext.hasChanges && !managedObjectContext.save(&error) {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             println("Unresolved error \(error), \(error!.userInfo)")
             abort()
         }
