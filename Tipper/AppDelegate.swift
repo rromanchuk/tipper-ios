@@ -155,6 +155,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.currentUser?.endpointArn = createEndpointResponse.endpointArn
                 self.currentUser?.pushToDynamo()
                 self.gerneralSubscriptionChannel(task)
+                println("admin? \(self.currentUser?.admin)")
                 if let admin = self.currentUser?.admin {
                     self.adminSubscriptionChannel(task)
                 }

@@ -187,6 +187,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     }
 
     func registerForRemoteNotificationsIfNeeded() {
+        println("\(className)::\(__FUNCTION__)")
         let types = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
         let notificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
 
@@ -405,7 +406,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         self.cognitoIdentity    = json["CognitoIdentity"].string
         self.cognitoToken       = json["CognitoToken"].string
 
-        if let admin = json["admin"].bool {
+        if let admin = json["Admin"].bool {
             self.admin = admin
         }
 
