@@ -260,7 +260,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         }
     }
 
-
     func updateBalanceUSD(completion: () ->Void) {
         if let btc = bitcoinBalanceBTC where btc > 0.0 {
             API.sharedInstance.market("\(btc)", completion: { (json, error) -> Void in
