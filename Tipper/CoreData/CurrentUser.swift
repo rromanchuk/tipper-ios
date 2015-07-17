@@ -261,8 +261,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     }
 
 
-
-
     func updateBalanceUSD(completion: () ->Void) {
         if let btc = bitcoinBalanceBTC where btc > 0.0 {
             API.sharedInstance.market("\(btc)", completion: { (json, error) -> Void in
@@ -282,16 +280,20 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         println("\(className)::\(__FUNCTION__)")
         println("endpoint: \(endpointArn)")
         if isTwitterAuthenticated {
-            let user = DynamoUser.new()
-//            user.TwitterUserID      = twitterUserId
-//            user.TwitterAuthToken   = twitterAuthToken
-//            user.TwitterAuthSecret  = twitterAuthSecret
-            user.UserID             = userId
-            user.EndpointArn        = endpointArn
-            mapper.save(user, configuration: defaultDynamoConfiguration).continueWithBlock({ (task) -> AnyObject! in
+
+            mapper.load(DynamoUser.self, hashKey: userId, rangeKey: nil).continueWithBlock({ (task) -> AnyObject! in
                 println("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
+                if (task.error == nil) {
+                    let user:DynamoUser = task.result as! DynamoUser
+                    user.EndpointArn = self.endpointArn
+                    user.TwitterUserID      = self.twitterUserId
+                    user.TwitterAuthToken   = self.twitterAuthToken
+                    user.TwitterAuthSecret  = self.twitterAuthSecret
+                    self.mapper.save(user)
+                }
                 return nil
             })
+
         }
     }
 
