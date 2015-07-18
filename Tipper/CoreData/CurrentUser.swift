@@ -199,9 +199,9 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         API.sharedInstance.cognito(self.twitterUserId!) { (json, error) -> Void in
             if (error == nil) {
                 self.updateEntityWithJSON(json)
+                self.writeToDisk()
                 provider.identityId = self.cognitoIdentity
                 provider.token = self.cognitoToken!
-                //save()
                 completion()
             }
         }
@@ -288,7 +288,10 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                     user.TwitterUserID      = self.twitterUserId
                     user.TwitterAuthToken   = self.twitterAuthToken
                     user.TwitterAuthSecret  = self.twitterAuthSecret
-                    self.mapper.save(user)
+                    self.mapper.save(user).continueWithBlock({ (task) -> AnyObject! in
+                        println("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
+                        return nil
+                    })
                 }
                 return nil
             })

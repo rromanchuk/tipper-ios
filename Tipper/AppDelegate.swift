@@ -50,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         mobileAnalyticsConfiguration.transmitOnWAN = true
         let analytics = AWSMobileAnalytics(forAppId: Config.get("AWS_ANALYTICS_ID"), configuration: mobileAnalyticsConfiguration, completionBlock: nil)
 
+
         refresh()
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "logout", name: "UNAUTHORIZED_USER", object: nil)

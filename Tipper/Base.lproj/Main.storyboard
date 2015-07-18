@@ -35,9 +35,9 @@
             <string>Bariol-Regular</string>
             <string>Bariol-Regular</string>
             <string>Bariol-Regular</string>
-            <string>Bariol-Regular</string>
         </mutableArray>
         <mutableArray key="Bariol_Bold.otf">
+            <string>Bariol-Bold</string>
             <string>Bariol-Bold</string>
             <string>Bariol-Bold</string>
             <string>Bariol-Bold</string>
@@ -69,28 +69,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tipper" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWF-UR-7re">
-                                <rect key="frame" x="150" y="51" width="114" height="45"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="45"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHj-ZJ-tNj" customClass="TWTRLogInButton">
                                 <rect key="frame" x="60" y="455" width="294" height="40"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="294" id="3oq-39-uGV"/>
-                                    <constraint firstAttribute="height" constant="40" id="B5H-a3-DY4"/>
+                                    <constraint firstAttribute="width" constant="294" id="lbI-5c-tT6"/>
+                                    <constraint firstAttribute="height" constant="40" id="z1x-TW-0bJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stack-of-coins" translatesAutoresizingMaskIntoConstraints="NO" id="6Wa-bK-0VZ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-stacks" translatesAutoresizingMaskIntoConstraints="NO" id="6Wa-bK-0VZ">
                                 <rect key="frame" x="107" y="129" width="200" height="235"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="235" id="KIi-xA-SeS"/>
+                                    <constraint firstAttribute="width" constant="200" id="hwB-M7-j0i"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By creating your account you confirm that you've read the Terms Of Use. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOy-ZY-rsY">
                                 <rect key="frame" x="60" y="503" width="294" height="34"/>
@@ -106,20 +103,36 @@
                                     <outletCollection property="gestureRecognizers" destination="foq-6c-Mjb" appends="YES" id="hfX-fa-8as"/>
                                 </connections>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tipper" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWF-UR-7re">
+                                <rect key="frame" x="154" y="385" width="106" height="45"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="Bariol-Bold" family="Bariol" pointSize="45"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.36078431372549019" green="0.74117647058823533" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="YOy-ZY-rsY" firstAttribute="top" secondItem="dHj-ZJ-tNj" secondAttribute="bottom" constant="8" id="3tQ-R6-GiZ"/>
-                            <constraint firstAttribute="centerX" secondItem="YOy-ZY-rsY" secondAttribute="centerX" id="4pR-WE-v9p"/>
-                            <constraint firstAttribute="centerX" secondItem="YWF-UR-7re" secondAttribute="centerX" id="7bu-b0-DkO"/>
-                            <constraint firstAttribute="centerX" secondItem="YWF-UR-7re" secondAttribute="centerX" id="c7P-7h-CW1"/>
-                            <constraint firstAttribute="centerX" secondItem="6Wa-bK-0VZ" secondAttribute="centerX" id="gV2-u8-luJ"/>
-                            <constraint firstItem="YWF-UR-7re" firstAttribute="top" secondItem="CCi-e0-bbW" secondAttribute="bottom" constant="31" id="gvp-jh-Xu0"/>
-                            <constraint firstAttribute="centerX" secondItem="dHj-ZJ-tNj" secondAttribute="centerX" id="lcU-zu-ial"/>
+                            <constraint firstAttribute="centerX" secondItem="YWF-UR-7re" secondAttribute="centerX" id="BXP-5r-n29"/>
+                            <constraint firstAttribute="centerX" secondItem="6Wa-bK-0VZ" secondAttribute="centerX" id="E5r-ux-ngD"/>
+                            <constraint firstItem="YWF-UR-7re" firstAttribute="top" secondItem="6Wa-bK-0VZ" secondAttribute="bottom" constant="21" id="Oda-jx-QM4"/>
+                            <constraint firstItem="YOy-ZY-rsY" firstAttribute="top" secondItem="dHj-ZJ-tNj" secondAttribute="bottom" constant="8" id="YaC-1r-ef0"/>
+                            <constraint firstAttribute="centerX" secondItem="dHj-ZJ-tNj" secondAttribute="centerX" id="cXc-Fp-4Uk"/>
                             <constraint firstItem="6Wa-bK-0VZ" firstAttribute="top" secondItem="YWF-UR-7re" secondAttribute="bottom" constant="33" id="nUx-te-mek"/>
                             <constraint firstItem="dHj-ZJ-tNj" firstAttribute="top" secondItem="6Wa-bK-0VZ" secondAttribute="bottom" constant="91" id="oCc-cr-831"/>
+                            <constraint firstAttribute="centerX" secondItem="YOy-ZY-rsY" secondAttribute="centerX" id="uaT-zl-RGW"/>
+                            <constraint firstItem="6Wa-bK-0VZ" firstAttribute="top" secondItem="CCi-e0-bbW" secondAttribute="bottom" constant="109" id="vza-af-Oaz"/>
+                            <constraint firstItem="dHj-ZJ-tNj" firstAttribute="top" secondItem="YWF-UR-7re" secondAttribute="bottom" constant="25" id="xuB-2n-Smp"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="nUx-te-mek"/>
+                                <exclude reference="oCc-cr-831"/>
+                                <exclude reference="3tQ-R6-GiZ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
@@ -768,7 +781,7 @@
                                                         <constraint firstAttribute="height" constant="40" id="uSw-ma-KTS"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2WX-eU-6Uo">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2WX-eU-6Uo">
                                                     <rect key="frame" x="339" y="15" width="43" height="20"/>
                                                     <animations/>
                                                     <attributedString key="attributedText">
@@ -789,7 +802,7 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTC 0.0005" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNi-GN-KiE">
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="BTC 0.0005" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNi-GN-KiE">
                                                     <rect key="frame" x="321" y="43" width="61" height="12"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="12"/>
@@ -1550,7 +1563,7 @@
         <image name="cc-exchange" width="380" height="116"/>
         <image name="profile-image-placeholder.png" width="240" height="240"/>
         <image name="settings" width="64" height="64"/>
-        <image name="stack-of-coins" width="200" height="235"/>
+        <image name="splash-stacks" width="367" height="379"/>
         <image name="star-2-icon.png" width="96" height="93"/>
         <image name="wallet" width="76" height="73"/>
     </resources>
