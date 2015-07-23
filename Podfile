@@ -6,6 +6,7 @@ target 'Tipper' do
     pod 'AWSDynamoDB', :git => "https://github.com/rromanchuk/aws-sdk-ios.git"
     pod 'AWSSQS', :git => "https://github.com/rromanchuk/aws-sdk-ios.git"
     pod 'AWSSNS', :git => "https://github.com/rromanchuk/aws-sdk-ios.git"
+    pod 'AWSMobileAnalytics', :git => "https://github.com/rromanchuk/aws-sdk-ios.git"
     pod 'Stripe'
     pod 'Stripe/ApplePay'
     pod 'SSKeychain'

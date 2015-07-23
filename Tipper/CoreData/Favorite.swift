@@ -104,6 +104,8 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
 
         if let tippedAt = dynamoFavorite.TippedAt {
             self.tippedAt = NSDate(timeIntervalSince1970: NSTimeInterval(tippedAt))
+        } else {
+            self.tippedAt = self.createdAt
         }
 
         /*
@@ -114,7 +116,7 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
         */
         let calendar = NSCalendar.currentCalendar()
         let unitFlags: NSCalendarUnit = .CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay
-        let components: NSDateComponents = calendar.components(unitFlags, fromDate: self.createdAt) //calendar.component(unitFlags, fromDate: self.createdAt)
+        let components: NSDateComponents = calendar.components(unitFlags, fromDate: self.tippedAt!) //calendar.component(unitFlags, fromDate: self.createdAt)
 
         //calendar.components((.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay),
             //fromDate:self.createdAt)

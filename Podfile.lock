@@ -1,47 +1,19 @@
 PODS:
-  - AWSCognito (2.1.2):
-    - AWSCore (~> 2.1.2)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-    - Reachability (~> 3.1)
-    - UICKeyChainStore (~> 2.0)
-  - AWSCore (2.1.2):
-    - Bolts (~> 1.1.0)
-    - GZIP (~> 1.0.3)
-    - Mantle (~> 1.4)
-    - Reachability (~> 3.1)
-    - UICKeyChainStore (~> 2.0)
-    - XMLDictionary (~> 1.4.0)
-  - AWSDynamoDB (2.1.2):
-    - AWSCore (= 2.1.2)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-  - AWSS3 (2.1.2):
-    - AWSCore (= 2.1.2)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-    - TMCache (~> 1.2.1)
-  - AWSSNS (2.1.2):
-    - AWSCore (= 2.1.2)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-  - AWSSQS (2.1.2):
-    - AWSCore (= 2.1.2)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-  - Bolts (1.1.5):
-    - Bolts/AppLinks (= 1.1.5)
-    - Bolts/Tasks (= 1.1.5)
-  - Bolts/AppLinks (1.1.5):
-    - Bolts/Tasks
-  - Bolts/Tasks (1.1.5)
-  - GZIP (1.0.3)
+  - AWSCognito (2.2.2):
+    - AWSCore (= 2.2.2)
+  - AWSCore (2.2.2)
+  - AWSDynamoDB (2.2.2):
+    - AWSCore (= 2.2.2)
+  - AWSMobileAnalytics (2.2.2):
+    - AWSCore (= 2.2.2)
+  - AWSS3 (2.2.2):
+    - AWSCore (= 2.2.2)
+  - AWSSNS (2.2.2):
+    - AWSCore (= 2.2.2)
+  - AWSSQS (2.2.2):
+    - AWSCore (= 2.2.2)
   - HexColors (2.2.1)
-  - Mantle (1.5.4):
-    - Mantle/extobjc (= 1.5.4)
-  - Mantle/extobjc (1.5.4)
   - RBBAnimation (0.4.0)
-  - Reachability (3.2)
   - SDCAlertView (2.5.2):
     - RBBAnimation (~> 0.3)
     - SDCAutoLayout (~> 2.0)
@@ -55,16 +27,14 @@ PODS:
   - Stripe/Checkout (4.0.3):
     - Stripe/Core
   - Stripe/Core (4.0.3)
-  - TMCache (1.2.4)
   - TSMessages (0.9.12):
     - HexColors (~> 2.2.0)
-  - UICKeyChainStore (2.0.6)
-  - XMLDictionary (1.4)
 
 DEPENDENCIES:
   - AWSCognito
   - AWSCore (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
   - AWSDynamoDB (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
+  - AWSMobileAnalytics (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
   - AWSS3 (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
   - AWSSNS (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
   - AWSSQS (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
@@ -79,6 +49,8 @@ EXTERNAL SOURCES:
     :git: https://github.com/rromanchuk/aws-sdk-ios.git
   AWSDynamoDB:
     :git: https://github.com/rromanchuk/aws-sdk-ios.git
+  AWSMobileAnalytics:
+    :git: https://github.com/rromanchuk/aws-sdk-ios.git
   AWSS3:
     :git: https://github.com/rromanchuk/aws-sdk-ios.git
   AWSSNS:
@@ -88,41 +60,38 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   AWSCore:
-    :commit: df8c178c66f91541db8a983ed5613b5a65d063fc
+    :commit: 65973892e4f31db7adc6c477c785a088a5f4b717
     :git: https://github.com/rromanchuk/aws-sdk-ios.git
   AWSDynamoDB:
-    :commit: df8c178c66f91541db8a983ed5613b5a65d063fc
+    :commit: 65973892e4f31db7adc6c477c785a088a5f4b717
+    :git: https://github.com/rromanchuk/aws-sdk-ios.git
+  AWSMobileAnalytics:
+    :commit: 65973892e4f31db7adc6c477c785a088a5f4b717
     :git: https://github.com/rromanchuk/aws-sdk-ios.git
   AWSS3:
-    :commit: df8c178c66f91541db8a983ed5613b5a65d063fc
+    :commit: 65973892e4f31db7adc6c477c785a088a5f4b717
     :git: https://github.com/rromanchuk/aws-sdk-ios.git
   AWSSNS:
-    :commit: df8c178c66f91541db8a983ed5613b5a65d063fc
+    :commit: 65973892e4f31db7adc6c477c785a088a5f4b717
     :git: https://github.com/rromanchuk/aws-sdk-ios.git
   AWSSQS:
-    :commit: df8c178c66f91541db8a983ed5613b5a65d063fc
+    :commit: 65973892e4f31db7adc6c477c785a088a5f4b717
     :git: https://github.com/rromanchuk/aws-sdk-ios.git
 
 SPEC CHECKSUMS:
-  AWSCognito: 2c9dbdce4282a1070d644a82ae81ef20fbd0d7ce
-  AWSCore: c8f48b48a8d5ab3c35171908695cea9a17e6dc82
-  AWSDynamoDB: 1f137de42333fe090e3e6056faad4b6fe7c64496
-  AWSS3: 7cb2a3922bd4472f3e4d95a7788d0f2d72bb5e64
-  AWSSNS: c5f5bab85da604f937014ddedf2635244f6c382b
-  AWSSQS: a8981633c414d4083cebba2453cd9f2766a611cf
-  Bolts: aac24961496d504aa56fc267cde95162a71bac39
-  GZIP: f0863fda354e8f83316508c0a2c7bbe385e39129
+  AWSCognito: c7364b3ac4bf8e5849eead5c678513084750c32e
+  AWSCore: 3e969334460cc7ba16504fb2e074f59f95880800
+  AWSDynamoDB: 26acc42c6a6b98cd03112d3e8e733dde9b9b595e
+  AWSMobileAnalytics: cf091087c94ef969111fb38f798eb9514f173971
+  AWSS3: 4f89fcc0ef11303f94f561310979a0d2ec816fff
+  AWSSNS: a984cf9ea5286e57a3cbd8f819cc9f71cf270dec
+  AWSSQS: d60d84d7e5c759d893c880fb0315d7801c85f105
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
-  Mantle: 60acd0cd363e27d945bda0a6b8e90577112d28f3
   RBBAnimation: 4b2d66f6d993febce63cd564da934985313b9c59
-  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDCAlertView: f9706c18f456ea87909f8f199704cd28e582ff27
   SDCAutoLayout: e6885bb39ab8e2ec2ff84d158f38035f025f7420
   SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d
   Stripe: 43a4307dc789483a61668d187c4a917d1348b0b6
-  TMCache: a93984b045a5ee84bd8941bd5e0b54296059cc52
   TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
-  UICKeyChainStore: c5719c814e8bd69e74e4a0fc09daf8f4d6257a59
-  XMLDictionary: f9f51601ba76678b594ab485f2b00ec1fed23724
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.38.0

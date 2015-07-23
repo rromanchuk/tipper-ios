@@ -35,12 +35,12 @@ public class TwitterAuth : AWSAbstractIdentityProvider {
         }
     }
 
-    override public func getIdentityId() -> BFTask! {
+    override public func getIdentityId() -> AWSTask! {
         println("\(className)::\(__FUNCTION__)")
         if (self.identityId != nil) {
-            return BFTask(result: self.identityId)
+            return AWSTask(result: self.identityId)
         } else {
-            return BFTask(result: nil).continueWithBlock({ (task) -> AnyObject! in
+            return AWSTask(result: nil).continueWithBlock({ (task) -> AnyObject! in
                 if (self.identityId == nil) {
                     return self.refresh()
                 }
@@ -50,9 +50,9 @@ public class TwitterAuth : AWSAbstractIdentityProvider {
     }
 
 
-    override public func refresh() -> BFTask! {
+    override public func refresh() -> AWSTask! {
         println("\(className)::\(__FUNCTION__) \(currentUser) ---------------------------------------------")
-        let task = BFTaskCompletionSource()
+        let task = AWSTaskCompletionSource()
         if currentUser.isTwitterAuthenticated {
              println("is authenticated")
             currentUser.updateCognitoIdentity(self, completion: { () -> Void in

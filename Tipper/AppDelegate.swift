@@ -46,10 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         println("\(className)::\(__FUNCTION__) currentUser:\([currentUser])")
 
         AWSLogger.defaultLogger().logLevel = .Error
-        let mobileAnalyticsConfiguration = AWSMobileAnalyticsConfiguration()
-        mobileAnalyticsConfiguration.transmitOnWAN = true
-        let analytics = AWSMobileAnalytics(forAppId: Config.get("AWS_ANALYTICS_ID"), configuration: mobileAnalyticsConfiguration, completionBlock: nil)
-
+        AWSMobileAnalytics(forAppId: Config.get("AWS_ANALYTICS_ID"))
 
         refresh()
 
@@ -147,7 +144,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let request = AWSSNSCreatePlatformEndpointInput()
         request.token = deviceTokenString
         request.platformApplicationArn = Config.get("SNS_ENDPOINT")
-        sns.createPlatformEndpoint(request).continueWithBlock { (task: BFTask!) -> AnyObject! in
+        sns.createPlatformEndpoint(request).continueWithBlock { (task: AWSTask!) -> AnyObject! in
             if task.error != nil {
                 println("Error: \(task.error)")
             } else {
@@ -167,7 +164,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    func gerneralSubscriptionChannel(task: BFTask!) {
+    func gerneralSubscriptionChannel(task: AWSTask!) {
         println("\(className)::\(__FUNCTION__)")
         let sns = AWSSNS.defaultSNS()
 
@@ -185,7 +182,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
-    func adminSubscriptionChannel(task: BFTask!) {
+    func adminSubscriptionChannel(task: AWSTask!) {
         println("\(className)::\(__FUNCTION__)")
         let sns = AWSSNS.defaultSNS()
         let createEndpointResponse = task.result as! AWSSNSCreateEndpointResponse

@@ -56,6 +56,7 @@ class ReceivedTips: UIViewController {
         tableView.addSubview(refreshControl)
 
         DynamoFavorite.fetchReceivedFromAWS(currentUser, context: managedObjectContext)
+        //DynamoFavorite.updateReceived(currentUser, context: managedObjectContext)
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -77,7 +78,7 @@ class ReceivedTips: UIViewController {
 
 
     func refresh(refreshControl: UIRefreshControl) {
-        DynamoFavorite.fetchReceivedFromAWS(currentUser, context: managedObjectContext)
+        DynamoFavorite.updateReceivedTips(currentUser, context: managedObjectContext)
         (parentViewController as! TipTabBarController).refresh()
         refreshControl.endRefreshing()
     }
@@ -192,7 +193,7 @@ class SentTips: UIViewController {
     }
 
     func refresh(refreshControl: UIRefreshControl) {
-        DynamoFavorite.fetchFromAWS(currentUser, context: managedObjectContext)
+        DynamoFavorite.updateSentTips(currentUser, context: managedObjectContext)
         (parentViewController as! TipTabBarController).refresh()
         refreshControl.endRefreshing()
     }

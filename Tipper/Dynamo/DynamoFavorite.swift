@@ -27,7 +27,8 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     var TippedAt: NSNumber?
     var DidLeaveTip: String?
     var txid: String?
-   
+
+
     static func dynamoDBTableName() -> String! {
         return "TipperTips"
     }
@@ -52,6 +53,18 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         return self.ObjectID!
     }
 
+    class func updateSentTips(currentUser: CurrentUser, context: NSManagedObjectContext) {
+        println("DynamoFavorite::\(__FUNCTION__)")
+
+        let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
+        let exp = AWSDynamoDBQueryExpression()
+
+        exp.hashKeyValues      = currentUser.userId!
+        //exp.rangeKeyConditions
+        exp.indexName = "FromUserID-TippedAt-index"
+        self.query(exp, secondaryIndexHash: "FromUserID", context: context)
+    }
+
     class func fetchFromAWS(currentUser: CurrentUser, context: NSManagedObjectContext) {
         println("DynamoFavorite::\(__FUNCTION__)")
 
@@ -59,9 +72,23 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         let exp = AWSDynamoDBQueryExpression()
 
         exp.hashKeyValues      = currentUser.userId!
+        //exp.rangeKeyConditions
         exp.indexName = "FromUserID-index"
         self.query(exp, secondaryIndexHash: "FromUserID", context: context)
     }
+
+    class func updateReceivedTips(currentUser: CurrentUser, context: NSManagedObjectContext) {
+        println("DynamoFavorite::\(__FUNCTION__)")
+
+        let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
+        let exp = AWSDynamoDBQueryExpression()
+
+        exp.hashKeyValues      = currentUser.userId!
+        //exp.rangeKeyConditions
+        exp.indexName = "ToUserID-TippedAt-index"
+        self.query(exp, secondaryIndexHash: "FromUserID", context: context)
+    }
+
 
     class func fetchReceivedFromAWS(currentUser: CurrentUser, context: NSManagedObjectContext) {
         println("DynamoFavorite::\(__FUNCTION__)")
@@ -73,6 +100,28 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         exp.indexName = "ToUserID-index"
         self.query(exp, secondaryIndexHash: "ToUserID", context: context)
     }
+
+//    class func updateReceived(currentUser: CurrentUser, context: NSManagedObjectContext) {
+//        println("DynamoFavorite::\(__FUNCTION__)")
+//let dynamo = AWSDynamoDB.defaultDynamoDB()
+//let queryInput = AWSDynamoDBQueryInput()
+//
+//queryInput.tableName = "TipperTips"
+//queryInput.indexName = "FromUserID-TippedAt-index"
+//queryInput.keyConditionExpression = "FromUserID = :hashval" // AND TippedAt > :rangeval"
+//queryInput.expressionAttributeValues = [":hashval": ["S": currentUser.userId!]] //, ":rangeval": ["N": "0"] ]
+//
+//dynamo.query(queryInput).continueWithBlock { (task) -> AnyObject! in
+//    if task.error == nil {
+//        let results = task.result as! AWSDynamoDBPaginatedOutput
+//        println("results: \(results)")
+//    }
+//    return nil
+//}
+//
+//    }
+
+
 
     class func fetch(tweetId:String, fromTwitterId:String, context: NSManagedObjectContext, completion: () -> Void) {
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
@@ -90,7 +139,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
 
 
-        mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: secondaryIndexHash).continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+        mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: secondaryIndexHash).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             println("fetchReceivedFromAWS Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
             if task.error == nil {
                 let results = task.result as! AWSDynamoDBPaginatedOutput

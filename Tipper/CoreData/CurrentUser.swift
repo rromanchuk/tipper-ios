@@ -45,6 +45,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     @NSManaged var marketValue: Tipper.Market?
     @NSManaged var settings: Tipper.Settings?
     @NSManaged var admin: NSNumber?
+    @NSManaged var lastReceivedEvaluatedKey: NSNumber?
 
     class func currentUser(context: NSManagedObjectContext) -> CurrentUser {
         if let _currentUser = CurrentUser.first(CurrentUser.self, context: context) {
@@ -364,7 +365,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     func refreshWithDynamo(completion: (error: NSError?) -> Void) {
         println("\(className)::\(__FUNCTION__)")
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
-        mapper.load(DynamoUser.self, hashKey: self.userId, rangeKey: nil).continueWithExecutor(BFExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+        mapper.load(DynamoUser.self, hashKey: self.userId, rangeKey: nil).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             println("error \(task.error)")
             let dynamoUser: DynamoUser = task.result as! DynamoUser
             self.updateEntityWithDynamoModel(dynamoUser)
