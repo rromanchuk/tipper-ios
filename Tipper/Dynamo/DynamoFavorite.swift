@@ -101,38 +101,26 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         self.query(exp, secondaryIndexHash: "ToUserID", context: context)
     }
 
-//    class func updateReceived(currentUser: CurrentUser, context: NSManagedObjectContext) {
-//        println("DynamoFavorite::\(__FUNCTION__)")
-//let dynamo = AWSDynamoDB.defaultDynamoDB()
-//let queryInput = AWSDynamoDBQueryInput()
-//
-//queryInput.tableName = "TipperTips"
-//queryInput.indexName = "FromUserID-TippedAt-index"
-//queryInput.keyConditionExpression = "FromUserID = :hashval" // AND TippedAt > :rangeval"
-//queryInput.expressionAttributeValues = [":hashval": ["S": currentUser.userId!]] //, ":rangeval": ["N": "0"] ]
-//
-//dynamo.query(queryInput).continueWithBlock { (task) -> AnyObject! in
-//    if task.error == nil {
-//        let results = task.result as! AWSDynamoDBPaginatedOutput
-//        println("results: \(results)")
-//    }
-//    return nil
-//}
-//
-//    }
-
-
 
     class func fetch(tweetId:String, fromTwitterId:String, context: NSManagedObjectContext, completion: () -> Void) {
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
-        mapper.load(DynamoFavorite.self, hashKey: tweetId, rangeKey: fromTwitterId).continueWithBlock { (task) -> AnyObject! in
+        let privateContext = context.privateContext
+
+        mapper .load(DynamoFavorite.self, hashKey: tweetId, rangeKey: fromTwitterId) .continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task:AWSTask!) -> AnyObject! in
             if (task.result != nil) {
-                let favorite: DynamoFavorite = task.result as! DynamoFavorite
-                Favorite.entityWithDYNAMO(Favorite.self, model: favorite, context: context)
+                privateContext.performBlock({ () -> Void in
+                    let favorite: DynamoFavorite = task.result as! DynamoFavorite
+                    Favorite.entityWithDYNAMO(Favorite.self, model: favorite, context: privateContext)
+                    privateContext.saveMoc()
+                    completion()
+                })
+            } else {
                 completion()
             }
+
             return nil
-        }
+        })
+
     }
 
     class func query(exp: AWSDynamoDBQueryExpression, secondaryIndexHash: String, context: NSManagedObjectContext) {

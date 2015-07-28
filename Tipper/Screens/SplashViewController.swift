@@ -10,7 +10,7 @@ import Foundation
 import TwitterKit
 
 class SplashViewController: UIViewController {
-    var provider: TwitterAuth!
+    var provider: AWSCognitoCredentialsProvider!
     var currentUser: CurrentUser!
     var className = "SplashViewController"
     var managedObjectContext: NSManagedObjectContext?
@@ -40,20 +40,19 @@ class SplashViewController: UIViewController {
             twitterLoginButton.logInCompletion = { (session, error) in
                 if (session != nil) {
                     println("signed in as \(session.userName)");
-
+                    self.provider.logins = ["api.twitter.com": "\(session.authToken);\(session.authTokenSecret)"]
                     self.currentUser.twitterAuthenticationWithTKSession(session)
                     self.currentUser.writeToDisk()
 
                     Twitter.sharedInstance().APIClient.loadUserWithID(session.userID, completion: { (user, error) -> Void in
                         if let user = user {
                             self.currentUser.profileImage = user.profileImageURL
-                            self.currentUser.authenticate(self.provider, completion: { () -> Void in
+                            self.currentUser.authenticate( { () -> Void in
                                 //UserSync.sharedInstance.sync(self.currentUser)
                                 self.currentUser.registerForRemoteNotificationsIfNeeded()
                                 self.performSegueWithIdentifier("Home", sender: self)
                             })
                         }
-
                     })
 
                 } else {

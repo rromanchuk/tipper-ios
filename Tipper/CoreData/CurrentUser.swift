@@ -174,14 +174,12 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     }
 
 
-    func authenticate(provider: TwitterAuth, completion: (() ->Void))  {
+    func authenticate(completion: (() ->Void))  {
         println("\(className)::\(__FUNCTION__)")
         API.sharedInstance.register(self.twitterUsername, twitterId: self.twitterUserId!, twitterAuth: self.twitterAuthToken!, twitterSecret: self.twitterAuthSecret!, profileImage: self.profileImage!, completion: { (json, error) -> Void in
             println("\(json)")
             if (error == nil) {
                 self.updateEntityWithJSON(json)
-                provider.identityId = self.cognitoIdentity
-                provider.token = self.cognitoToken!
                 completion()
             }
         })

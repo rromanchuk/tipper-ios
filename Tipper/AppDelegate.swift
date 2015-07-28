@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let className = "AppDelegate"
     var currentUser: CurrentUser!
-    var provider: TwitterAuth?
+    var provider: AWSCognitoCredentialsProvider!
     var market: Market!
     weak var notificationsDelegate: NotificationMessagesDelegate?
 
@@ -33,8 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        // Override point for customization after application launch.
         Fabric.with([Crashlytics(), Twitter()])
         Config.dump()
-        //TWTRTweetView.appearance().primaryTextColor = UIColor.whiteColor()
-        //TWTRTweetView.appearance().backgroundColor = UIColor.colorWithRGB(0xC1DBCE, alpha: 1.0)
+
 
         NSUbiquitousKeyValueStore.defaultStore().synchronize()
         
@@ -60,14 +59,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         println("\(className)::\(__FUNCTION__) currentUser:\([currentUser])")
 
-        provider = TwitterAuth(currentUser: currentUser)
-        let credentialsProvider = AWSCognitoCredentialsProvider(regionType: AWSRegionType.USEast1, identityProvider: provider, unauthRoleArn: Config.get("COGNITO_UNAUTH_ARN"), authRoleArn: Config.get("COGNITO_AUTH_ARN"))
 
-        let defaultServiceConfiguration = AWSServiceConfiguration(
-            region: AWSRegionType.USEast1,
-            credentialsProvider: credentialsProvider)
+        provider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: Config.get("COGNITO_POOL"))
+        let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: provider)
+        AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = configuration
 
-        AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = defaultServiceConfiguration
+        
+
         market = NSEntityDescription.insertNewObjectForEntityForName("Market", inManagedObjectContext: managedObjectContext) as! Market
         writeToDisk()
 
