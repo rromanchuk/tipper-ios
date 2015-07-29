@@ -194,17 +194,17 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
     }
 
-    func updateCognitoIdentity(provider: TwitterAuth, completion: (() ->Void))  {
-        API.sharedInstance.cognito(self.twitterUserId!) { (json, error) -> Void in
-            if (error == nil) {
-                self.updateEntityWithJSON(json)
-                self.writeToDisk()
-                provider.identityId = self.cognitoIdentity
-                provider.token = self.cognitoToken!
-                completion()
-            }
-        }
-    }
+//    func updateCognitoIdentity(provider: TwitterAuth, completion: (() ->Void))  {
+//        API.sharedInstance.cognito(self.twitterUserId!) { (json, error) -> Void in
+//            if (error == nil) {
+//                self.updateEntityWithJSON(json)
+//                self.writeToDisk()
+//                provider.identityId = self.cognitoIdentity
+//                provider.token = self.cognitoToken!
+//                completion()
+//            }
+//        }
+//    }
 
     func twitterAuthenticationWithTKSession(session: TWTRSession) {
         self.twitterAuthToken = session.authToken
@@ -297,6 +297,26 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
         }
     }
+
+    func loadFromDynamo() {
+        if isTwitterAuthenticated {
+            mapper.load(DynamoUser.self, hashKey: "ksdfjd", rangeKey: nil).continueWithBlock({ (task) -> AnyObject! in
+                println("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
+                return nil
+            })
+
+        }
+    }
+
+
+//    func register(user: CurrentUser) {
+//        let dynamoUser = DynamoUser()
+//        dynamoUser.UserID = curr
+//
+//
+//
+//
+//    }
 
     func withdrawBalance(toAddress: NSString, completion: (error: NSError?) -> Void) {
         println("\(className)::\(__FUNCTION__)")

@@ -23,7 +23,6 @@
 		94416C0A1AAF989F00117AFC /* Alamofire-SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF51AAF989F00117AFC /* Alamofire-SwiftyJSON.swift */; };
 		94416C0C1AAF989F00117AFC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF71AAF989F00117AFC /* API.swift */; };
 		94416C0D1AAF989F00117AFC /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF81AAF989F00117AFC /* Router.swift */; };
-		94416C0F1AAF989F00117AFC /* TwitterAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BFA1AAF989F00117AFC /* TwitterAuth.swift */; };
 		94416C101AAF989F00117AFC /* UserSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BFB1AAF989F00117AFC /* UserSync.swift */; };
 		94416C111AAF989F00117AFC /* CoreDataUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BFD1AAF989F00117AFC /* CoreDataUpdatable.swift */; };
 		94416C131AAF989F00117AFC /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BFF1AAF989F00117AFC /* CurrentUser.swift */; };
@@ -133,7 +132,6 @@
 		94416BF51AAF989F00117AFC /* Alamofire-SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire-SwiftyJSON.swift"; sourceTree = "<group>"; };
 		94416BF71AAF989F00117AFC /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		94416BF81AAF989F00117AFC /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		94416BFA1AAF989F00117AFC /* TwitterAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterAuth.swift; sourceTree = "<group>"; };
 		94416BFB1AAF989F00117AFC /* UserSync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSync.swift; sourceTree = "<group>"; };
 		94416BFD1AAF989F00117AFC /* CoreDataUpdatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataUpdatable.swift; sourceTree = "<group>"; };
 		94416BFF1AAF989F00117AFC /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
@@ -283,7 +281,6 @@
 				941AA3891AAFA34900CA9192 /* Config.swift */,
 				94FDE9C01AB4BF6A006B6454 /* Debug.swift */,
 				94416BF81AAF989F00117AFC /* Router.swift */,
-				94416BFA1AAF989F00117AFC /* TwitterAuth.swift */,
 				94416BFB1AAF989F00117AFC /* UserSync.swift */,
 			);
 			path = Libs;
@@ -814,7 +811,6 @@
 				943243151B2D6C1300D1A1D6 /* HeaderContainer.swift in Sources */,
 				943243181B2E094A00D1A1D6 /* DynamoTransaction.swift in Sources */,
 				94416C181AAF989F00117AFC /* AppDelegate.swift in Sources */,
-				94416C0F1AAF989F00117AFC /* TwitterAuth.swift in Sources */,
 				943E93FD1B05C8DC007D98C7 /* WalletController.swift in Sources */,
 				943243121B2D6BBE00D1A1D6 /* TransitionManager.swift in Sources */,
 				94416C101AAF989F00117AFC /* UserSync.swift in Sources */,
@@ -1055,9 +1051,7 @@
 				CODE_SIGN_ENTITLEMENTS = Tipper/Tipper.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COGNITO_AUTH_ARN = "arn:aws:iam::080383581145:role/Cognito_TipperAuth_DefaultRole";
 				COGNITO_POOL = "***REMOVED***";
-				COGNITO_UNAUTH_ARN = "arn:aws:iam::080383581145:role/Cognito_TipperUnauth_DefaultRole";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1102,9 +1096,7 @@
 				CODE_SIGN_ENTITLEMENTS = Tipper/Tipper.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				COGNITO_AUTH_ARN = "arn:aws:iam::080383581145:role/Cognito_TipperAuth_DefaultRole";
 				COGNITO_POOL = "***REMOVED***";
-				COGNITO_UNAUTH_ARN = "arn:aws:iam::080383581145:role/Cognito_TipperUnauth_DefaultRole";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

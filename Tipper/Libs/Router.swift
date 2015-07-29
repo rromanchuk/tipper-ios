@@ -47,8 +47,10 @@ enum Router: URLRequestConvertible {
 
     var URL: String {
         switch self {
-        case .Register,.Me:
+        case .Me:
             return "\(APIRoot)/me"
+        case .Register:
+            return "\(APIRoot)/register"
         case .Charge:
             return "\(APIRoot)/charges"
         case .Cognito:

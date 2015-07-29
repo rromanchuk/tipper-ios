@@ -31,13 +31,9 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>126</string>
-	<key>COGNITO_AUTH_ARN</key>
-	<string>$(COGNITO_AUTH_ARN)</string>
+	<string>127</string>
 	<key>COGNITO_POOL</key>
 	<string>$(COGNITO_POOL)</string>
-	<key>COGNITO_UNAUTH_ARN</key>
-	<string>$(COGNITO_UNAUTH_ARN)</string>
 	<key>Configuration</key>
 	<string>${CONFIGURATION}</string>
 	<key>Fabric</key>
@@ -62,17 +58,6 @@
 				</dict>
 				<key>KitName</key>
 				<string>Twitter</string>
-			</dict>
-			<dict>
-				<key>KitInfo</key>
-				<dict>
-					<key>consumerKey</key>
-					<string>***REMOVED***</string>
-					<key>consumerSecret</key>
-					<string>***REMOVED***</string>
-				</dict>
-				<key>KitName</key>
-				<string>Digits</string>
 			</dict>
 		</array>
 	</dict>

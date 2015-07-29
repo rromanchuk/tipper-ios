@@ -74,6 +74,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         firstController.provider = provider
         firstController.managedObjectContext = managedObjectContext
         firstController.market = market
+
+        currentUser.loadFromDynamo()
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -112,15 +114,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func refresh() {
-        if currentUser.isTwitterAuthenticated {
-            provider?.refresh()
-            currentUser.refreshWithServer { [weak self] (error) -> Void in
-                self?.currentUser.updateBalanceUSD { [weak self] () -> Void in }
-                self?.currentUser.registerForRemoteNotificationsIfNeeded()
-            }
-        }
-        currentUser.settings?.update()
-        market.update { [weak self] () -> Void in }
+//        if currentUser.isTwitterAuthenticated {
+//            currentUser.refreshWithServer { [weak self] (error) -> Void in
+//                self?.currentUser.updateBalanceUSD { [weak self] () -> Void in }
+//                self?.currentUser.registerForRemoteNotificationsIfNeeded()
+//            }
+//        }
+//        currentUser.settings?.update()
+//        market.update { [weak self] () -> Void in }
     }
 
 

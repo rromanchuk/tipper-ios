@@ -73,11 +73,6 @@ public class API {
         self.call(self.manager.request(Router.Settings), completion: completion)
     }
 
-    func cognito(twitterId: String,  completion: ((json: JSON, error: NSError?) -> Void)!) {
-        println("\(className)::\(__FUNCTION__)")
-        self.call(self.manager.request(Router.Cognito(twitterId)), completion: completion)
-    }
-
     func market(btc: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
         println("\(className)::\(__FUNCTION__)")
         self.call(self.manager.request(Router.MarketPrice(btc)), completion: completion)
