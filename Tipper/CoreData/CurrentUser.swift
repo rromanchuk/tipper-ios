@@ -30,11 +30,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     lazy var mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
 
 
-    @NSManaged var twitterAuthToken: String?
-    @NSManaged var twitterAuthSecret: String?
     @NSManaged var twitterUsername: String!
-    @NSManaged var cognitoIdentity: String?
-    @NSManaged var cognitoToken: String?
     @NSManaged var profileImage: String?
 
     @NSManaged var bitcoinBalanceBTC: NSNumber?
@@ -176,13 +172,45 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
     func authenticate(completion: (() ->Void))  {
         println("\(className)::\(__FUNCTION__)")
-        API.sharedInstance.register(self.twitterUsername, twitterId: self.twitterUserId!, twitterAuth: self.twitterAuthToken!, twitterSecret: self.twitterAuthSecret!, profileImage: self.profileImage!, completion: { (json, error) -> Void in
-            println("\(json)")
-            if (error == nil) {
-                self.updateEntityWithJSON(json)
-                completion()
+        DynamoUser.findByTwitterId( Twitter.sharedInstance().session().userID, completion: { (user) -> Void in
+            if let dynamoUser = user {
+                dynamoUser.TwitterAuthToken = Twitter.sharedInstance().session().authToken
+                dynamoUser.TwitterAuthSecret = Twitter.sharedInstance().session().authToken
+                dynamoUser.TwitterUsername = Twitter.sharedInstance().session().userName
+                dynamoUser.IsActive = "X"
+                dynamoUser.ProfileImage = self.profileImage
+                self.mapper.save(dynamoUser)
+            } else {
+                let dynamoUser = DynamoUser.new()
+                dynamoUser.UserID = NSUUID().UUIDString
+                dynamoUser.TwitterAuthToken = Twitter.sharedInstance().session().authToken
+                dynamoUser.TwitterAuthSecret = Twitter.sharedInstance().session().authToken
+                dynamoUser.TwitterUserID = Twitter.sharedInstance().session().userID
+                dynamoUser.TwitterUsername = Twitter.sharedInstance().session().userName
+                dynamoUser.CreatedAt = NSDate().timeIntervalSince1970
+                dynamoUser.IsActive = "X"
+                dynamoUser.ProfileImage = self.profileImage
+                self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
+                    API.sharedInstance.address({ (json, error) -> Void in
+                        if error == nil {
+                            dynamoUser.BitcoinAddress     = json["BitcoinAddress"].string
+                            self.bitcoinAddress  = json["BitcoinAddress"].string
+                            self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration)
+                        }
+                    })
+
+                    return nil
+                })
             }
         })
+
+//        API.sharedInstance.register(self.twitterUsername, twitterId: self.twitterUserId!, twitterAuth: Twitter.sharedInstance().session().authToken, twitterSecret: Twitter.sharedInstance().session().authTokenSecret, profileImage: self.profileImage!, completion: { (json, error) -> Void in
+//            println("\(json)")
+//            if (error == nil) {
+//                self.updateEntityWithJSON(json)
+//                completion()
+//            }
+//        })
     }
 
     func registerForRemoteNotificationsIfNeeded() {
@@ -194,28 +222,15 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
     }
 
-//    func updateCognitoIdentity(provider: TwitterAuth, completion: (() ->Void))  {
-//        API.sharedInstance.cognito(self.twitterUserId!) { (json, error) -> Void in
-//            if (error == nil) {
-//                self.updateEntityWithJSON(json)
-//                self.writeToDisk()
-//                provider.identityId = self.cognitoIdentity
-//                provider.token = self.cognitoToken!
-//                completion()
-//            }
-//        }
-//    }
 
     func twitterAuthenticationWithTKSession(session: TWTRSession) {
-        self.twitterAuthToken = session.authToken
-        self.twitterAuthSecret = session.authTokenSecret
         self.twitterUserId = session.userID
         self.twitterUsername = session.userName
     }
 
     var isTwitterAuthenticated: Bool {
         get {
-            return self.twitterUserId != nil && self.token != nil && self.bitcoinAddress != nil && self.userId != nil
+            return Twitter.sharedInstance().session() != nil && self.twitterUserId != nil && self.token != nil && self.bitcoinAddress != nil && self.userId != nil
         }
     }
 
@@ -285,8 +300,9 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                     let user:DynamoUser = task.result as! DynamoUser
                     user.EndpointArn = self.endpointArn
                     user.TwitterUserID      = self.twitterUserId
-                    user.TwitterAuthToken   = self.twitterAuthToken
-                    user.TwitterAuthSecret  = self.twitterAuthSecret
+                    user.TwitterAuthToken   = Twitter.sharedInstance().session().authToken
+                    user.TwitterAuthSecret  = Twitter.sharedInstance().session().authTokenSecret
+
                     self.mapper.save(user).continueWithBlock({ (task) -> AnyObject! in
                         println("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
                         return nil
@@ -298,25 +314,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         }
     }
 
-    func loadFromDynamo() {
-        if isTwitterAuthenticated {
-            mapper.load(DynamoUser.self, hashKey: "ksdfjd", rangeKey: nil).continueWithBlock({ (task) -> AnyObject! in
-                println("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
-                return nil
-            })
-
-        }
-    }
-
-
-//    func register(user: CurrentUser) {
-//        let dynamoUser = DynamoUser()
-//        dynamoUser.UserID = curr
-//
-//
-//
-//
-//    }
 
     func withdrawBalance(toAddress: NSString, completion: (error: NSError?) -> Void) {
         println("\(className)::\(__FUNCTION__)")
@@ -403,12 +400,11 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         self.userId                 = user.UserID
         self.twitterUserId          = user.TwitterUserID
         self.twitterUsername        = user.TwitterUsername
-        self.twitterAuthToken       = user.TwitterAuthToken
-        self.twitterAuthSecret      = user.TwitterAuthSecret
         self.bitcoinAddress         = user.BitcoinAddress
         self.admin                  = user.Admin
+        self.profileImage           = user.ProfileImage
 
-        self.bitcoinBalanceBTC = user.BitcoinBalanceBTC
+        self.bitcoinBalanceBTC      = user.BitcoinBalanceBTC
 
 
         if let endpoint = user.EndpointArn {
@@ -426,8 +422,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         self.userId             = json["UserID"].stringValue
         self.twitterUsername    = json["TwitterUsername"].stringValue
         self.bitcoinAddress     = json["BitcoinAddress"].string
-        self.cognitoIdentity    = json["CognitoIdentity"].string
-        self.cognitoToken       = json["CognitoToken"].string
 
         if let admin = json["Admin"].bool {
             self.admin = admin
@@ -446,6 +440,12 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
             self.token = token
         }
         
+    }
+
+    func disconnect() {
+        println("\(className)::\(__FUNCTION__)")
+        API.sharedInstance.disconnect { (json, error) -> Void in
+        }
     }
 
     func resetIdentifiers() {

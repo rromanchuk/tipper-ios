@@ -17,7 +17,8 @@ enum Router: URLRequestConvertible {
 
     static var links = [String: String]()
 
-
+    case Disconnect
+    case Address
     case Register(String, String, String, String, String)
     case Cognito(String)
     case Charge(String, String)
@@ -29,18 +30,18 @@ enum Router: URLRequestConvertible {
 
     var method: Alamofire.Method {
         switch self {
+        case .Address:
+            return .POST
         case .Register:
             return .POST
         case .Cognito:
             return .POST
         case .Charge:
             return .POST
-        case .Favorites,.Me:
+        case .Favorites,.Me,.MarketPrice, .Settings:
             return .GET
-        case .MarketPrice:
-            return .GET
-        case .Settings:
-            return .GET
+        case .Disconnect:
+            return .DELETE
         }
     }
 
@@ -51,6 +52,10 @@ enum Router: URLRequestConvertible {
             return "\(APIRoot)/me"
         case .Register:
             return "\(APIRoot)/register"
+        case .Disconnect:
+            return "\(APIRoot)/disconnect"
+        case .Address:
+            return "\(APIRoot)/address"
         case .Charge:
             return "\(APIRoot)/charges"
         case .Cognito:
@@ -119,7 +124,7 @@ enum Router: URLRequestConvertible {
             // Set authentication header
             let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let currentUser = CurrentUser.currentUser(delegate.managedObjectContext)
-            if let uuid = currentUser.uuid, token = currentUser.token {
+            if let uuid = currentUser.uuid, token = Twitter.sharedInstance().session().authToken {
                 let authString = "\(uuid):\(token)"
                 println("authString\(authString)")
                 let base64EncodedString = authString.dataUsingEncoding(NSUTF8StringEncoding)!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.allZeros)

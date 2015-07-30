@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         refresh()
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "logout", name: "UNAUTHORIZED_USER", object: nil)
-
+        //DynamoUser.findByTwitterId(currentUser.uuid!)
         return true
     }
 
@@ -75,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         firstController.managedObjectContext = managedObjectContext
         firstController.market = market
 
-        currentUser.loadFromDynamo()
+
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -114,14 +114,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func refresh() {
-//        if currentUser.isTwitterAuthenticated {
-//            currentUser.refreshWithServer { [weak self] (error) -> Void in
-//                self?.currentUser.updateBalanceUSD { [weak self] () -> Void in }
-//                self?.currentUser.registerForRemoteNotificationsIfNeeded()
-//            }
-//        }
-//        currentUser.settings?.update()
-//        market.update { [weak self] () -> Void in }
+        if currentUser.isTwitterAuthenticated {
+            provider.logins = ["api.twitter.com": "\(Twitter.sharedInstance().session().authToken);\(Twitter.sharedInstance().session().authTokenSecret)"]
+            currentUser.refreshWithServer { [weak self] (error) -> Void in
+                self?.currentUser.updateBalanceUSD { [weak self] () -> Void in }
+                self?.currentUser.registerForRemoteNotificationsIfNeeded()
+            }
+        }
+        currentUser.settings?.update()
+        market.update { [weak self] () -> Void in }
     }
 
 

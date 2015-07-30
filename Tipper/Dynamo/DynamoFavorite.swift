@@ -53,6 +53,8 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         return self.ObjectID!
     }
 
+
+
     class func updateSentTips(currentUser: CurrentUser, context: NSManagedObjectContext) {
         println("DynamoFavorite::\(__FUNCTION__)")
 

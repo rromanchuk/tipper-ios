@@ -53,6 +53,16 @@ public class API {
         self.call(self.manager.request(Router.Register(username, twitterId, twitterAuth, twitterSecret, profileImage)), completion: completion)
     }
 
+    func disconnect(completion: ((json: JSON, error: NSError?) -> Void)!) {
+        println("\(className)::\(__FUNCTION__)")
+        self.call(self.manager.request(Router.Disconnect), completion: completion)
+    }
+
+    func address(completion: ((json: JSON, error: NSError?) -> Void)!) {
+        println("\(className)::\(__FUNCTION__)")
+        self.call(self.manager.request(Router.Address), completion: completion)
+    }
+
     func charge(token: String, amount: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
         println("\(className)::\(__FUNCTION__)")
         self.call(self.manager.request(Router.Charge(token, amount)), completion: completion)

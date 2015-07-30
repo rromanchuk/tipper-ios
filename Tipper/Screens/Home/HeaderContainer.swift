@@ -44,6 +44,12 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
             }
         }
 
+        let disconnectAction = UIAlertAction(title: "Stop automatic tipping", style: .Destructive) { [weak self] (action) in
+            println("\(self?.className)::\(__FUNCTION__) destroyAction")
+            self?.currentUser.disconnect()
+        }
+
+
         let feedbackAction = UIAlertAction(title: "Feedback and Support", style: .Default, handler: { [weak self] (action) -> Void in
             let mailComposer = MFMailComposeViewController()
             mailComposer.mailComposeDelegate = self
@@ -61,6 +67,7 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
         _actionController.addAction(refetchFeedAction)
         _actionController.addAction(feedbackAction)
         _actionController.addAction(destroyAction)
+        _actionController.addAction(disconnectAction)
         return _actionController
     }()
 

@@ -32,6 +32,35 @@ class DynamoUser: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
     var DeviceToken: String?
     var BitcoinBalanceBTC: NSNumber?
     var Admin: Bool?
+    var IsActive: String?
+    var ProfileImage: String?
+
+    class func findByTwitterId(twitterId:String, completion: (user:DynamoUser?) -> Void) {
+        let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
+        let exp = AWSDynamoDBQueryExpression()
+        exp.hashKeyValues      = twitterId
+        exp.indexName = "TwitterUserID-index"
+
+        mapper.query(DynamoUser.self, expression: exp, withSecondaryIndexHashKey: "TwitterUserID").continueWithBlock( { (task) -> AnyObject! in
+            println("DynamoUser::\(__FUNCTION__) error:\(task.error), exception:\(task.exception), taskResult:\(task.result)")
+            if (task.error == nil) {
+                if let results = task.result as? AWSDynamoDBPaginatedOutput, items = results.items as? [DynamoUser]  {
+                    let user = items[0]
+                    println("user:\(user)")
+                    completion(user: user)
+                } else {
+                    println("Could not find user!!")
+                    completion(user: nil)
+                }
+
+            } else {
+                completion(user: nil)
+            }
+
+            return nil
+        })
+    }
+
 
     static func dynamoDBTableName() -> String! {
         return "TipperUsers"
