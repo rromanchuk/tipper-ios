@@ -173,13 +173,21 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     func authenticate(completion: (() ->Void))  {
         println("\(className)::\(__FUNCTION__)")
         DynamoUser.findByTwitterId( Twitter.sharedInstance().session().userID, completion: { (user) -> Void in
+            Debug.isBlocking()
             if let dynamoUser = user {
                 dynamoUser.TwitterAuthToken = Twitter.sharedInstance().session().authToken
                 dynamoUser.TwitterAuthSecret = Twitter.sharedInstance().session().authToken
                 dynamoUser.TwitterUsername = Twitter.sharedInstance().session().userName
                 dynamoUser.IsActive = "X"
                 dynamoUser.ProfileImage = self.profileImage
-                self.mapper.save(dynamoUser)
+                self.mapper.save(dynamoUser).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
+                    API.sharedInstance.connect({ (json, error) -> Void in
+
+                    })
+                    return nil
+                })
+                self.updateEntityWithDynamoModel(dynamoUser)
+                completion()
             } else {
                 let dynamoUser = DynamoUser.new()
                 dynamoUser.UserID = NSUUID().UUIDString
@@ -191,12 +199,17 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 dynamoUser.IsActive = "X"
                 dynamoUser.ProfileImage = self.profileImage
                 self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
+                    API.sharedInstance.connect({ (json, error) -> Void in
+
+                    })
                     API.sharedInstance.address({ (json, error) -> Void in
                         if error == nil {
                             dynamoUser.BitcoinAddress     = json["BitcoinAddress"].string
                             self.bitcoinAddress  = json["BitcoinAddress"].string
                             self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration)
                         }
+                        self.updateEntityWithDynamoModel(dynamoUser)
+                        completion()
                     })
 
                     return nil
@@ -204,13 +217,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
             }
         })
 
-//        API.sharedInstance.register(self.twitterUsername, twitterId: self.twitterUserId!, twitterAuth: Twitter.sharedInstance().session().authToken, twitterSecret: Twitter.sharedInstance().session().authTokenSecret, profileImage: self.profileImage!, completion: { (json, error) -> Void in
-//            println("\(json)")
-//            if (error == nil) {
-//                self.updateEntityWithJSON(json)
-//                completion()
-//            }
-//        })
     }
 
     func registerForRemoteNotificationsIfNeeded() {
@@ -274,6 +280,17 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         }
     }
 
+    func updateBTCBalance(completion: ()->Void) {
+        println("\(className)::\(__FUNCTION__)")
+        API.sharedInstance.balance { (json, error) -> Void in
+            if let satoshisString = json["balance"].string, satoshis = satoshisString.toInt() {
+                self.bitcoinBalanceBTC = Double(satoshis) / 0.00000001
+                self.updateBalanceUSD { [weak self] () -> Void in }
+            }
+            completion()
+        }
+    }
+
     func updateBalanceUSD(completion: () ->Void) {
         if let btc = bitcoinBalanceBTC where btc > 0.0 {
             API.sharedInstance.market("\(btc)", completion: { (json, error) -> Void in
@@ -291,10 +308,8 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
     func pushToDynamo() {
         println("\(className)::\(__FUNCTION__)")
-        println("endpoint: \(endpointArn)")
         if isTwitterAuthenticated {
-
-            mapper.load(DynamoUser.self, hashKey: userId, rangeKey: nil).continueWithBlock({ (task) -> AnyObject! in
+            mapper.load(DynamoUser.self, hashKey: userId, rangeKey: nil).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
                 println("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
                 if (task.error == nil) {
                     let user:DynamoUser = task.result as! DynamoUser
@@ -302,7 +317,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                     user.TwitterUserID      = self.twitterUserId
                     user.TwitterAuthToken   = Twitter.sharedInstance().session().authToken
                     user.TwitterAuthSecret  = Twitter.sharedInstance().session().authTokenSecret
-
+                    user.BitcoinBalanceBTC  = self.bitcoinBalanceBTC
                     self.mapper.save(user).continueWithBlock({ (task) -> AnyObject! in
                         println("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
                         return nil
@@ -384,6 +399,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
             println("error \(task.error)")
             let dynamoUser: DynamoUser = task.result as! DynamoUser
             self.updateEntityWithDynamoModel(dynamoUser)
+            completion(error: task.error)
             return nil
         })
     }

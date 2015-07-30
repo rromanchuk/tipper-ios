@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var _managedObjectModel: NSManagedObjectModel?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-//        // Override point for customization after application launch.
+        println("\(className)::\(__FUNCTION__)")
         Fabric.with([Crashlytics(), Twitter()])
         Config.dump()
 
@@ -46,8 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         AWSLogger.defaultLogger().logLevel = .Error
         AWSMobileAnalytics(forAppId: Config.get("AWS_ANALYTICS_ID"))
-
-        refresh()
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "logout", name: "UNAUTHORIZED_USER", object: nil)
         //DynamoUser.findByTwitterId(currentUser.uuid!)
@@ -116,12 +114,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func refresh() {
         if currentUser.isTwitterAuthenticated {
             provider.logins = ["api.twitter.com": "\(Twitter.sharedInstance().session().authToken);\(Twitter.sharedInstance().session().authTokenSecret)"]
-            currentUser.refreshWithServer { [weak self] (error) -> Void in
-                self?.currentUser.updateBalanceUSD { [weak self] () -> Void in }
+            currentUser.refreshWithDynamo { [weak self] (error) -> Void in
+                self?.currentUser.updateBTCBalance({ () -> Void in
+                    self?.currentUser?.pushToDynamo()
+                })
                 self?.currentUser.registerForRemoteNotificationsIfNeeded()
             }
         }
-        currentUser.settings?.update()
+        if let settings = currentUser.settings {
+            settings.update()
+        }
+
         market.update { [weak self] () -> Void in }
     }
 

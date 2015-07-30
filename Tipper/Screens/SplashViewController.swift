@@ -46,7 +46,6 @@ class SplashViewController: UIViewController {
 
                     Twitter.sharedInstance().APIClient.loadUserWithID(session.userID, completion: { (user, error) -> Void in
                         if let user = user {
-                            self.currentUser.profileImage = user.profileImageURL
                             self.currentUser.authenticate( { () -> Void in
                                 //UserSync.sharedInstance.sync(self.currentUser)
                                 self.currentUser.registerForRemoteNotificationsIfNeeded()

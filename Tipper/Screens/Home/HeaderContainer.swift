@@ -181,7 +181,7 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
     func applicationDidBecomeActive(aNotification: NSNotification) {
         println("\(className)::\(__FUNCTION__)")
         updateMarkets()
-        currentUser.refreshWithServer { [weak self] (error) -> Void in
+        currentUser.refreshWithDynamo { [weak self] (error) -> Void in
             if (error == nil) {
                 self?.updateMarkets()
                 self?.refreshUI()

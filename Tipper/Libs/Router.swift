@@ -18,6 +18,7 @@ enum Router: URLRequestConvertible {
     static var links = [String: String]()
 
     case Disconnect
+    case Connect
     case Address
     case Register(String, String, String, String, String)
     case Cognito(String)
@@ -26,7 +27,7 @@ enum Router: URLRequestConvertible {
     case Me
     case Settings
     case MarketPrice(String)
-
+    case Balance
 
     var method: Alamofire.Method {
         switch self {
@@ -38,7 +39,7 @@ enum Router: URLRequestConvertible {
             return .POST
         case .Charge:
             return .POST
-        case .Favorites,.Me,.MarketPrice, .Settings:
+        case .Favorites,.Me,.MarketPrice,.Settings,.Balance,.Connect:
             return .GET
         case .Disconnect:
             return .DELETE
@@ -54,6 +55,8 @@ enum Router: URLRequestConvertible {
             return "\(APIRoot)/register"
         case .Disconnect:
             return "\(APIRoot)/disconnect"
+        case .Connect:
+            return "\(APIRoot)/connect"
         case .Address:
             return "\(APIRoot)/address"
         case .Charge:
@@ -64,6 +67,9 @@ enum Router: URLRequestConvertible {
             return "https://api.twitter.com/1.1/favorites/list.json"
         case .MarketPrice:
             return "https://api.coinbase.com/v1/prices/buy"
+        case .Balance:
+            let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            return "https://bitcoin.toshi.io/api/v0/addresses/\(CurrentUser.currentUser(delegate.managedObjectContext).bitcoinAddress!)" //https://bitcoin.toshi.io/api/v0/addresses/1G8f1EeFKq1ueXCSHJ8zwoZ6YBCrnCpaAP
         case .Settings:
             return "\(APIRoot)/settings"
         }
@@ -110,11 +116,12 @@ enum Router: URLRequestConvertible {
 
         var URLString = URL
 
+
         let mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: URLString)!)
         mutableURLRequest.HTTPMethod = method.rawValue
 
         switch self {
-        case .Register, .MarketPrice, .Settings:
+        case .Register, .MarketPrice, .Settings, .Balance:
             // Does't need authentication
             break
         case .Favorites:

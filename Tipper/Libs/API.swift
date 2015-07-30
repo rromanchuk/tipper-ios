@@ -58,6 +58,11 @@ public class API {
         self.call(self.manager.request(Router.Disconnect), completion: completion)
     }
 
+    func connect(completion: ((json: JSON, error: NSError?) -> Void)!) {
+        println("\(className)::\(__FUNCTION__)")
+        self.call(self.manager.request(Router.Connect), completion: completion)
+    }
+
     func address(completion: ((json: JSON, error: NSError?) -> Void)!) {
         println("\(className)::\(__FUNCTION__)")
         self.call(self.manager.request(Router.Address), completion: completion)
@@ -86,6 +91,11 @@ public class API {
     func market(btc: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
         println("\(className)::\(__FUNCTION__)")
         self.call(self.manager.request(Router.MarketPrice(btc)), completion: completion)
+    }
+
+    func balance(completion: ((json: JSON, error: NSError?) -> Void)!) {
+        println("\(className)::\(__FUNCTION__)")
+        self.call(self.manager.request(Router.Balance), completion: completion)
     }
 
 }

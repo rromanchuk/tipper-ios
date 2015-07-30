@@ -114,7 +114,9 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
                     let favorite: DynamoFavorite = task.result as! DynamoFavorite
                     Favorite.entityWithDYNAMO(Favorite.self, model: favorite, context: privateContext)
                     privateContext.saveMoc()
-                    completion()
+                    context.performBlock({ () -> Void in
+                        completion()
+                    })
                 })
             } else {
                 completion()

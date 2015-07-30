@@ -20,6 +20,7 @@ class Settings: NSManagedObject {
 
     func update() {
         API.sharedInstance.settings { (json, error) -> Void in
+            Debug.isBlocking()
             self.updateEntityWithJSON(json)
         }
     }
