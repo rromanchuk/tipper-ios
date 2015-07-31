@@ -21,7 +21,6 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
     let tweetTableReuseIdentifier = "TipCell"
     let transitionManager = TransitionManager()
 
-    weak var segmentDelegate: SegmentControlDelegate?
     weak var refreshDelegate: RefreshControlDelegate?
 
     lazy var headerDateFormatter: NSDateFormatter = {
@@ -31,7 +30,6 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
     }()
 
 
-    @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var tabBarContainer: UIView!
 
 
@@ -39,7 +37,6 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "backToSplash", name: "BACK_TO_SPLASH", object: nil)
         let font = UIFont(name: "Bariol-Regular", size: 19)!
-        segmentControl.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -51,10 +48,6 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
-    @IBAction func segmentChanged(sender: UISegmentedControl) {
-        println("\(className)::\(__FUNCTION__) selected:\(sender.selectedSegmentIndex)")
-        segmentDelegate?.segmentChanged(sender)
-    }
 
     func didReceiveNotificationAlert(message: String, subtitle: String, type: TSMessageNotificationType) {
         println("\(className)::\(__FUNCTION__)")
@@ -77,12 +70,11 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
             vc.market = market
             refreshDelegate = vc
             //vc.favorite = favorite
-        } else if segue.identifier == "TabBarEmbed" {
-            let vc = segue.destinationViewController as! TipTabBarController
+        } else if segue.identifier == "FeedEmbed" {
+            let vc = segue.destinationViewController as! TipsController
             vc.managedObjectContext = managedObjectContext
             vc.currentUser = currentUser
             vc.market = market
-            segmentDelegate = vc
         }
     }
 

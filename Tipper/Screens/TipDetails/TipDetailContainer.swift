@@ -14,8 +14,7 @@ class TipDetailContainer: UITableViewController {
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
     var favorite: Favorite!
-    var tipCellType: TipCellType!
-    
+
     @IBOutlet weak var tweetView: TWTRTweetView!
 
     @IBOutlet weak var tipLabel: UILabel!
@@ -30,13 +29,13 @@ class TipDetailContainer: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("\(className)::\(__FUNCTION__) tipCellType \(tipCellType)")
+        println("\(className)::\(__FUNCTION__)")
         setupTipAmount()
 
         let twt = TWTRTweet(JSONDictionary: favorite.twitterJSON)
         tweetView.configureWithTweet(twt)
 
-        if tipCellType == TipCellType.Sent {
+        if favorite.fromTwitterId == currentUser.uuid {
             usernameLabel.text = "@\(favorite.toTwitterUsername)"
             tipHeaderLabel.text = "You tipped \(twt.author.name)."
             if let profileImage = currentUser.profileImage, url = NSURL(string: profileImage) {

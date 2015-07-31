@@ -26,6 +26,7 @@ class TipCell: UITableViewCell {
     @IBOutlet weak var tipAmountBTC: UILabel!
     @IBOutlet weak var tipButton: UIButton!
 
+    @IBOutlet weak var tipArrow: UIImageView!
     private var _favorite: Favorite?
     lazy var formatter: NSDateFormatter = {
         let formatter = NSDateFormatter()
@@ -56,17 +57,18 @@ class TipCell: UITableViewCell {
             twt.author.profileImageLargeURL
             setupTipAmount()
             usernameLabel.text = "@\(_favorite!.toTwitterUsername)"
-            tipAmountBTC.text = currentUser?.settings?.tipAmount
+            if let tipAmount = currentUser?.settings?.tipAmount {
+                tipAmountBTC.text = "BTC \(tipAmount)"
+            }
 
 
-
-
-            if type == .Sent {
+            if _favorite?.fromTwitterId  == currentUser?.uuid {
                 if let urlString = twt.author.profileImageLargeURL, url = NSURL(string: urlString) {
                     userProfileImage.hnk_setImageFromURL(url)
                 }
 
                 if _favorite!.didLeaveTip {
+                    tipArrow.image = UIImage(named: "down-arrow")
                     tipActionLabel.text = "You tipped \(twt.author.name)"
                     tipButton.hidden = true
                     tipAmount.hidden = false
@@ -82,6 +84,7 @@ class TipCell: UITableViewCell {
                 if let urlString = _favorite!.fromTwitterProfileImage, url = NSURL(string: urlString) {
                     userProfileImage.hnk_setImageFromURL(url)
                 }
+                tipArrow.image = UIImage(named: "up-arrow")
                 tipButton.hidden = true
                 tipActionLabel.text = "\(_favorite!.fromTwitterUsername) sent you a tip"
                 tipAmount.hidden = false
@@ -123,7 +126,7 @@ class TipCell: UITableViewCell {
 
 
             request.messageBody = json
-            request.queueUrl = ***REMOVED***
+            request.queueUrl = Config.get("SQS_NEW_TIP")
             sqs.sendMessage(request).continueWithBlock { (task) -> AnyObject! in
                 if (task.error != nil) {
                     println("ERROR: \(task.error)")

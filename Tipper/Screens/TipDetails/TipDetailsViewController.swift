@@ -14,7 +14,6 @@ class TipDetailsViewController: UIViewController, Logoutable {
     var currentUser: CurrentUser!
     var favorite: Favorite!
     var market: Market!
-    var tipCellType: TipCellType!
 
 
     override func viewDidLoad() {
@@ -46,7 +45,6 @@ class TipDetailsViewController: UIViewController, Logoutable {
             vc.managedObjectContext = managedObjectContext
             vc.currentUser = currentUser
             vc.favorite = favorite
-            vc.tipCellType = tipCellType
         } else if segue.identifier == "TipDetailsHeaderEmbed" {
             let vc = segue.destinationViewController as! HeaderContainer
             vc.managedObjectContext = managedObjectContext

@@ -130,7 +130,6 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     class func query(exp: AWSDynamoDBQueryExpression, secondaryIndexHash: String, context: NSManagedObjectContext) {
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
 
-
         mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: secondaryIndexHash).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             println("fetchReceivedFromAWS Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
             if task.error == nil {
@@ -142,15 +141,16 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
                             //println("fetchReceivedFromAWS result from query \(result)")
                             Favorite.entityWithDYNAMO(Favorite.self, model: result, context: privateContext)
                             privateContext.saveMoc()
-                            context.performBlock({ () -> Void in
-                                context.saveMoc()
-                                if results.lastEvaluatedKey != nil {
-                                    exp.exclusiveStartKey = results.lastEvaluatedKey
-                                    self.query(exp, secondaryIndexHash: secondaryIndexHash, context: context)
-                                }
-                            })
                         })
                     }
+                    context.performBlock({ () -> Void in
+                        println("lastEvaluatedKey:\(results.lastEvaluatedKey)")
+                        if results.lastEvaluatedKey != nil {
+                            exp.exclusiveStartKey = results.lastEvaluatedKey
+                            self.query(exp, secondaryIndexHash: secondaryIndexHash, context: context)
+                        }
+                    })
+
                 })
 
             }

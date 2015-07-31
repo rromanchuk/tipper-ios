@@ -30,11 +30,10 @@
 		94416C151AAF989F00117AFC /* NSManagedObjectContext+Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 94416C021AAF989F00117AFC /* NSManagedObjectContext+Base.m */; };
 		94416C181AAF989F00117AFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416C081AAF989F00117AFC /* AppDelegate.swift */; };
 		94416C191AAF989F00117AFC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94416C091AAF989F00117AFC /* Images.xcassets */; };
-		9444D67B1B38E83A0052C2B1 /* TipTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9444D67A1B38E83A0052C2B1 /* TipTabBarController.swift */; };
 		945065FB1B07CFB900AF34F6 /* Bariol_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 945065F81B07CFB900AF34F6 /* Bariol_Bold.otf */; };
 		945065FC1B07CFB900AF34F6 /* Bariol_Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 945065F91B07CFB900AF34F6 /* Bariol_Light.otf */; };
 		945065FD1B07CFB900AF34F6 /* Bariol.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 945065FA1B07CFB900AF34F6 /* Bariol.ttf */; };
-		9453A66C1B39FD8800D35E04 /* ReceivedTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9453A66B1B39FD8800D35E04 /* ReceivedTips.swift */; };
+		9453A66C1B39FD8800D35E04 /* TipsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9453A66B1B39FD8800D35E04 /* TipsController.swift */; };
 		9462D75A1B35D108001C5083 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462D7591B35D108001C5083 /* InterfaceController.swift */; };
 		9462D75C1B35D108001C5083 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462D75B1B35D108001C5083 /* GlanceController.swift */; };
 		9462D75E1B35D108001C5083 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9462D75D1B35D108001C5083 /* Images.xcassets */; };
@@ -141,11 +140,10 @@
 		94416C071AAF989F00117AFC /* Tipper-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tipper-Bridging-Header.h"; sourceTree = "<group>"; };
 		94416C081AAF989F00117AFC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94416C091AAF989F00117AFC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		9444D67A1B38E83A0052C2B1 /* TipTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipTabBarController.swift; path = TabController/TipTabBarController.swift; sourceTree = "<group>"; };
 		945065F81B07CFB900AF34F6 /* Bariol_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Bold.otf; sourceTree = "<group>"; };
 		945065F91B07CFB900AF34F6 /* Bariol_Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Light.otf; sourceTree = "<group>"; };
 		945065FA1B07CFB900AF34F6 /* Bariol.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol.ttf; sourceTree = "<group>"; };
-		9453A66B1B39FD8800D35E04 /* ReceivedTips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReceivedTips.swift; path = TabController/ReceivedTips.swift; sourceTree = "<group>"; };
+		9453A66B1B39FD8800D35E04 /* TipsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipsController.swift; path = TabController/TipsController.swift; sourceTree = "<group>"; };
 		9462D7551B35D108001C5083 /* Tipper WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Tipper WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9462D7581B35D108001C5083 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9462D7591B35D108001C5083 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
@@ -329,8 +327,7 @@
 		9444D6751B38E4220052C2B1 /* TabController */ = {
 			isa = PBXGroup;
 			children = (
-				9453A66B1B39FD8800D35E04 /* ReceivedTips.swift */,
-				9444D67A1B38E83A0052C2B1 /* TipTabBarController.swift */,
+				9453A66B1B39FD8800D35E04 /* TipsController.swift */,
 			);
 			name = TabController;
 			sourceTree = "<group>";
@@ -802,11 +799,10 @@
 				943243161B2D6C1300D1A1D6 /* HeaderDetailCell.swift in Sources */,
 				949842021B25FC590079082C /* TipDetailsViewController.swift in Sources */,
 				94F3FD951B08581900CD0261 /* WalletContainerController.swift in Sources */,
-				9444D67B1B38E83A0052C2B1 /* TipTabBarController.swift in Sources */,
 				94416C141AAF989F00117AFC /* NSManagedObject+Extension.swift in Sources */,
 				94416C0D1AAF989F00117AFC /* Router.swift in Sources */,
 				94416C151AAF989F00117AFC /* NSManagedObjectContext+Base.m in Sources */,
-				9453A66C1B39FD8800D35E04 /* ReceivedTips.swift in Sources */,
+				9453A66C1B39FD8800D35E04 /* TipsController.swift in Sources */,
 				94FA97DD1AB2EB71005B0C83 /* Favorite.swift in Sources */,
 				943243151B2D6C1300D1A1D6 /* HeaderContainer.swift in Sources */,
 				943243181B2E094A00D1A1D6 /* DynamoTransaction.swift in Sources */,
@@ -1074,6 +1070,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SNS_ENDPOINT = "arn:aws:sns:us-east-1:080383581145:app/APNS_SANDBOX/TipperSandbox";
+				SQS_NEW_TIP = ***REMOVED***;
 				STRIPE_PUBLISHABLE = ***REMOVED***;
 				SWIFT_OBJC_BRIDGING_HEADER = "Tipper/Tipper-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1119,6 +1116,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "d998e53b-a53f-47f1-852f-b91451ab8b4b";
 				SNS_ENDPOINT = ***REMOVED***;
+				SQS_NEW_TIP = ***REMOVED***;
 				STRIPE_PUBLISHABLE = ***REMOVED***;
 				SWIFT_OBJC_BRIDGING_HEADER = "Tipper/Tipper-Bridging-Header.h";
 			};

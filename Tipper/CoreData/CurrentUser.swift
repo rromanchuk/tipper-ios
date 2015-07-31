@@ -180,6 +180,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 dynamoUser.TwitterUsername = Twitter.sharedInstance().session().userName
                 dynamoUser.IsActive = "X"
                 dynamoUser.ProfileImage = self.profileImage
+                dynamoUser.UpdatedAt = NSDate().timeIntervalSince1970
                 self.mapper.save(dynamoUser).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
                     API.sharedInstance.connect({ (json, error) -> Void in
 

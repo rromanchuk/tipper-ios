@@ -147,7 +147,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let request = AWSSNSCreatePlatformEndpointInput()
         request.token = deviceTokenString
         request.platformApplicationArn = Config.get("SNS_ENDPOINT")
-        sns.createPlatformEndpoint(request).continueWithBlock { (task: AWSTask!) -> AnyObject! in
+        sns.createPlatformEndpoint(request).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task:AWSTask!) -> AnyObject! in
             if task.error != nil {
                 println("Error: \(task.error)")
             } else {
@@ -164,7 +164,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
             return nil
-        }
+        })
     }
 
     func gerneralSubscriptionChannel(task: AWSTask!) {
