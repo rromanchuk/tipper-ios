@@ -21,6 +21,7 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var walletButton: UIButton!
     @IBOutlet weak var balanceLabel: UILabel!
+    @IBOutlet weak var btcLabel: UILabel!
 
     lazy var actionSheet: UIAlertController = {
         let _actionController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
@@ -121,6 +122,10 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
             labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Regular", size: 40.0)!, range: NSMakeRange(1, count(string) - 1))
             labelAttributes.addAttribute(NSKernAttributeName, value:-5.0, range: NSMakeRange(0, 1))
             balanceLabel.attributedText = labelAttributes
+            if let btcBalance = currentUser.bitcoinBalanceBTC {
+                btcLabel.text = "BTC \(btcBalance)"
+            }
+
         }
 
 
