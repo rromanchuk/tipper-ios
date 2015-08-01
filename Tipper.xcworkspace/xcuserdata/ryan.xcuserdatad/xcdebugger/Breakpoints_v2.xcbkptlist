@@ -37,8 +37,6 @@
             continueAfterRunningActions = "No"
             symbolName = "warnForBackgroundThreadUsage"
             moduleName = "">
-            <Locations>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

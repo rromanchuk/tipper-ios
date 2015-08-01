@@ -68,12 +68,14 @@ class TipCell: UITableViewCell {
                 }
 
                 if _favorite!.didLeaveTip {
+                    tipArrow.hidden = false
                     tipArrow.image = UIImage(named: "down-arrow")
                     tipActionLabel.text = "You tipped \(twt.author.name)"
                     tipButton.hidden = true
                     tipAmount.hidden = false
                     tipAmountBTC.hidden = false
                 } else {
+                    tipArrow.hidden = true
                     tipActionLabel.text = "You favorited \(twt.author.name)"
                     tipButton.hidden = false
                     tipAmount.hidden = true

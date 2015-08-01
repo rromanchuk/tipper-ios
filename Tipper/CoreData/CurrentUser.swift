@@ -49,8 +49,9 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         } else {
 
             let _currentUser = CurrentUser.create(CurrentUser.self, context: context)
-            let _settings = NSEntityDescription.insertNewObjectForEntityForName("Settings", inManagedObjectContext: context) as! Settings
-            _currentUser.settings = _settings
+            if let _settings = NSEntityDescription.insertNewObjectForEntityForName("Settings", inManagedObjectContext: context) as? Settings {
+                _currentUser.settings = _settings
+            }
             _currentUser.writeToDisk()
             return _currentUser
         }
@@ -181,7 +182,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 dynamoUser.IsActive = "X"
                 dynamoUser.ProfileImage = self.profileImage
                 dynamoUser.UpdatedAt = NSDate().timeIntervalSince1970
-                self.mapper.save(dynamoUser).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
+                self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
                     API.sharedInstance.connect({ (json, error) -> Void in
 
                     })
@@ -319,7 +320,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                     user.TwitterAuthToken   = Twitter.sharedInstance().session().authToken
                     user.TwitterAuthSecret  = Twitter.sharedInstance().session().authTokenSecret
                     user.BitcoinBalanceBTC  = self.bitcoinBalanceBTC
-                    self.mapper.save(user).continueWithBlock({ (task) -> AnyObject! in
+                    self.mapper.save(user, configuration: self.defaultDynamoConfiguration).continueWithBlock({ (task) -> AnyObject! in
                         println("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
                         return nil
                     })

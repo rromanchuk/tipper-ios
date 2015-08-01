@@ -58,16 +58,19 @@ class TipsController: UIViewController {
         refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
         tableView.addSubview(refreshControl)
 
-        DynamoFavorite.fetchFromAWS(currentUser, context: managedObjectContext)
-        DynamoFavorite.fetchReceivedFromAWS(currentUser, context: managedObjectContext)
+        DynamoFavorite.fetchTips(currentUser, context: managedObjectContext) { () -> Void in
+
+        }
+        
 
     }
 
     func refresh(refreshControl: UIRefreshControl) {
-        DynamoFavorite.updateSentTips(currentUser, context: managedObjectContext)
-        DynamoFavorite.updateSentTips(currentUser, context: managedObjectContext)
+        println("\(className)::\(__FUNCTION__)")
+        DynamoFavorite.updateTips(currentUser, context: managedObjectContext) { () -> Void in
+            refreshControl.endRefreshing()
+        }
         //(parentViewController as! TipsController).refresh()
-        refreshControl.endRefreshing()
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
