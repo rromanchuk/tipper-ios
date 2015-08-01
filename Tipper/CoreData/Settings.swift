@@ -10,21 +10,57 @@ import Foundation
 import CoreData
 import SwiftyJSON
 
-class Settings: NSManagedObject {
+class Settings: NSManagedObject, CoreDataUpdatable {
     @NSManaged var fundAmount: String?
     @NSManaged var tipAmount: String?
     @NSManaged var feeAmount: String?
+    @NSManaged var version: String?
     @NSManaged var user: Tipper.CurrentUser?
 
-    let className = "Settings"
+    class var className: String {
+        get {
+            return "Settings"
+        }
+    }
+
+    var className: String {
+        return Settings.className
+    }
+
+    static var lookupProperty: String {
+        get {
+            return "version"
+        }
+    }
+
+    var lookupValue: String {
+        get {
+            return self.version!
+        }
+    }
+
+    class func dateForTwitterDate(date: String) -> NSDate {
+        return TwitterDateFormatter.dateFromString(date)!
+    }
+
 
     func update() {
-        API.sharedInstance.settings { (json, error) -> Void in
-            Debug.isBlocking()
-            self.managedObjectContext?.performBlock({ () -> Void in
-                self.updateEntityWithJSON(json)
-            })
-        }
+        println("\(className)::\(__FUNCTION__)")
+        let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
+        let exp = AWSDynamoDBScanExpression()
+        exp.limit = 1
+
+        mapper.scan(DynamoSettings.self, expression: exp).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+            println("Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
+            if let results = task.result as?  AWSDynamoDBPaginatedOutput where task.error == nil && task.exception == nil {
+                if let dynamoSettings: DynamoSettings = results.items[0] as? DynamoSettings {
+                    self.updateEntityWithDynamoModel(dynamoSettings)
+                }
+            }
+            return nil
+        })
+
+        
     }
 
     func updateEntityWithJSON(json: JSON) {
@@ -32,6 +68,15 @@ class Settings: NSManagedObject {
         self.fundAmount = json["fund_amount"].stringValue
         self.tipAmount = json["tip_amount"].stringValue
         self.feeAmount = json["fee_amount"].string
+    }
+
+    func updateEntityWithDynamoModel(dynamoModel: DynamoUpdatable) {
+        println("\(className)::\(__FUNCTION__) model:\(dynamoModel)")
+        let settings                    = dynamoModel as! DynamoSettings
+        self.version                    = settings.Version
+        self.fundAmount                 = settings.FeeAmount
+        self.tipAmount                  = settings.TipAmount
+        self.feeAmount                  = settings.FeeAmount
     }
 
 

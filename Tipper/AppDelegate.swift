@@ -122,7 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         if let settings = currentUser.settings {
-            //settings.update()
+            settings.update()
         }
 
         market.update { [weak self] () -> Void in }

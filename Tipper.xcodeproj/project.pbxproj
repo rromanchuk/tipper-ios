@@ -63,6 +63,7 @@
 		94C255201B12798900A65B94 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C2551F1B12798900A65B94 /* Settings.swift */; };
 		94C5C0D31ABFF47A009E4B05 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C5C0D21ABFF47A009E4B05 /* Market.swift */; };
 		94D9795E1B27696B0079F50C /* Haneke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 949841FC1B25E47A0079082C /* Haneke.framework */; };
+		94DA84B01B6D55E0005D4CD6 /* DynamoSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA84AF1B6D55E0005D4CD6 /* DynamoSettings.swift */; };
 		94EE8CF61AB16E7E000593CD /* TTTURLRequestFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */; };
 		94F3FD951B08581900CD0261 /* WalletContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F3FD941B08581900CD0261 /* WalletContainerController.swift */; };
 		94FA97DB1AB2E691005B0C83 /* DynamoFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA97DA1AB2E691005B0C83 /* DynamoFavorite.swift */; };
@@ -179,6 +180,7 @@
 		94C2551D1B10FDF800A65B94 /* coiner.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = coiner.ttf; sourceTree = "<group>"; };
 		94C2551F1B12798900A65B94 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		94C5C0D21ABFF47A009E4B05 /* Market.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
+		94DA84AF1B6D55E0005D4CD6 /* DynamoSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoSettings.swift; sourceTree = "<group>"; };
 		94EE8CF41AB16E7E000593CD /* TTTURLRequestFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTURLRequestFormatter.h; sourceTree = "<group>"; };
 		94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTURLRequestFormatter.m; sourceTree = "<group>"; };
 		94F3FD941B08581900CD0261 /* WalletContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletContainerController.swift; path = Wallet/WalletContainerController.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				94FA97DA1AB2E691005B0C83 /* DynamoFavorite.swift */,
 				9484185D1AB6B2B8001C633E /* DynamoUser.swift */,
 				943243171B2E094A00D1A1D6 /* DynamoTransaction.swift */,
+				94DA84AF1B6D55E0005D4CD6 /* DynamoSettings.swift */,
 			);
 			path = Dynamo;
 			sourceTree = "<group>";
@@ -813,6 +816,7 @@
 				94FDE9C11AB4BF6A006B6454 /* Debug.swift in Sources */,
 				941AA38E1AB01EC000CA9192 /* SplashViewController.swift in Sources */,
 				94416C111AAF989F00117AFC /* CoreDataUpdatable.swift in Sources */,
+				94DA84B01B6D55E0005D4CD6 /* DynamoSettings.swift in Sources */,
 				94416C0C1AAF989F00117AFC /* API.swift in Sources */,
 				94C255201B12798900A65B94 /* Settings.swift in Sources */,
 				94AB27931ACA3D2B005A433F /* TintedButton.swift in Sources */,

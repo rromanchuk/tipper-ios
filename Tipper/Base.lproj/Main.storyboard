@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A235d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J4X-Ps-uMP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8164.2" systemVersion="15A235d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J4X-Ps-uMP">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8135.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -730,7 +731,7 @@
                             <tableViewSection id="QOW-BQ-MA6">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HeaderDetailCell" rowHeight="70" id="qS6-MU-cnv" customClass="HeaderDetailCell" customModule="Tipper" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44" width="414" height="70"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qS6-MU-cnv" id="nQh-KL-tM2">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
@@ -848,10 +849,10 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TipDetailCell" rowHeight="430" id="Ve4-wX-jq0">
-                                        <rect key="frame" x="0.0" y="22" width="414" height="430"/>
+                                        <rect key="frame" x="0.0" y="70" width="414" height="430"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ve4-wX-jq0" id="Kpc-ho-zf3">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="429"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="430"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JuM-IQ-xeF" customClass="TWTRTweetView">
@@ -989,7 +990,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCv-dq-4JX" userLabel="Settings Button">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCv-dq-4JX" userLabel="Settings Button">
                                 <rect key="frame" x="343" y="28" width="35" height="35"/>
                                 <animations/>
                                 <constraints>
@@ -1013,7 +1014,7 @@
                                     <action selector="didTapSettings:" destination="x99-hT-nup" eventType="touchUpInside" id="7nA-ql-0cc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yo-N2-sfZ" userLabel="Address Button">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yo-N2-sfZ" userLabel="Address Button">
                                 <rect key="frame" x="37" y="28" width="37" height="35"/>
                                 <animations/>
                                 <constraints>
@@ -1120,7 +1121,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="627"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="30" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UWM-7z-Xgz">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="30" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UWM-7z-Xgz">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="627"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1131,7 +1132,7 @@
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SentTips" rowHeight="70" id="kx1-hc-hzV" customClass="TipCell" customModule="Tipper" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44" width="414" height="70"/>
+                                        <rect key="frame" x="0.0" y="30" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kx1-hc-hzV" id="Opi-Fd-4ZQ">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
