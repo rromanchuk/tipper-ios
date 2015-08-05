@@ -65,7 +65,7 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
             }
         })
 
-        _actionController.addAction(refetchFeedAction)
+        //_actionController.addAction(refetchFeedAction)
         _actionController.addAction(feedbackAction)
         _actionController.addAction(destroyAction)
         _actionController.addAction(disconnectAction)
