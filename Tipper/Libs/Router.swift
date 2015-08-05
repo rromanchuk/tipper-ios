@@ -33,13 +33,13 @@ enum Router: URLRequestConvertible {
         switch self {
         case .Address:
             return .POST
-        case .Register:
+        case .Register, .Connect:
             return .POST
         case .Cognito:
             return .POST
         case .Charge:
             return .POST
-        case .Favorites,.Me,.MarketPrice,.Settings,.Balance,.Connect:
+        case .Favorites,.Me,.MarketPrice,.Settings,.Balance:
             return .GET
         case .Disconnect:
             return .DELETE

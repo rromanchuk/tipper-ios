@@ -345,7 +345,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
 
         request.messageBody = json
-        request.queueUrl = "***REMOVED***e"
+        request.queueUrl = Config.get("SQS_TRANSFER_OUT")
         sqs.sendMessage(request).continueWithBlock { (task) -> AnyObject! in
             if (task.error != nil) {
                 println("ERROR: \(task.error)")
@@ -370,7 +370,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
 
         request.messageBody = json
-        request.queueUrl = "***REMOVED***"
+        request.queueUrl = Config.get("SQS_FETCH_FAVORITES")
         sqs.sendMessage(request).continueWithBlock { (task) -> AnyObject! in
             if (task.error != nil) {
                 println("ERROR: \(task.error)")
