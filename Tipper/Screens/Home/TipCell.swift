@@ -57,10 +57,7 @@ class TipCell: UITableViewCell {
             twt.author.profileImageLargeURL
             setupTipAmount()
             usernameLabel.text = "@\(_favorite!.toTwitterUsername)"
-            if let tipAmount = currentUser?.settings?.tipAmount {
-                tipAmountBTC.text = "BTC \(tipAmount)"
-            }
-
+           
 
             if _favorite?.fromTwitterId  == currentUser?.uuid {
                 if let urlString = twt.author.profileImageLargeURL, url = NSURL(string: urlString) {
@@ -102,14 +99,19 @@ class TipCell: UITableViewCell {
     }
 
     func setupTipAmount() {
-        if let currentUser = currentUser {
-            let string = "a\(currentUser.settings!.tipAmountUBTC)"
+        if let currentUser = currentUser, settings = currentUser.settings {
+            let string = "a\(settings.tipAmountUBTC)"
             let labelAttributes = NSMutableAttributedString(string: string)
             labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "coiner", size: 18.0)!, range: NSMakeRange(0,1))
             labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol", size: 18.0)!, range: NSMakeRange(1, count(string) - 1))
             labelAttributes.addAttribute(NSKernAttributeName, value:-5.0, range: NSMakeRange(0, 1))
             labelAttributes.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSMakeRange(0, count(string)))
             tipAmount.attributedText = labelAttributes;
+            
+            if let tipAmount = settings.tipAmount {
+                tipAmountBTC.text = "BTC \(tipAmount)"
+            }
+            
         }
     }
 

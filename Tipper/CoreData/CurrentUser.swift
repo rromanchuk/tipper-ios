@@ -34,6 +34,8 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     @NSManaged var profileImage: String?
 
     @NSManaged var bitcoinBalanceBTC: NSNumber?
+    @NSManaged var createdAt: NSDate?
+    @NSManaged var updatedAt: NSDate?
 
     @NSManaged var endpointArn: String?
     @NSManaged var deviceToken: String?
@@ -50,6 +52,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
             let _currentUser = CurrentUser.create(CurrentUser.self, context: context)
             if let _settings = NSEntityDescription.insertNewObjectForEntityForName("Settings", inManagedObjectContext: context) as? Settings {
+                _settings.save()
                 _currentUser.settings = _settings
             }
             _currentUser.writeToDisk()
@@ -198,6 +201,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 dynamoUser.TwitterUserID = Twitter.sharedInstance().session().userID
                 dynamoUser.TwitterUsername = Twitter.sharedInstance().session().userName
                 dynamoUser.CreatedAt = NSDate().timeIntervalSince1970
+                dynamoUser.UpdatedAt = NSDate().timeIntervalSince1970
                 dynamoUser.IsActive = "X"
                 dynamoUser.ProfileImage = self.profileImage
                 self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
@@ -423,7 +427,15 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         self.profileImage           = user.ProfileImage
 
         self.bitcoinBalanceBTC      = user.BitcoinBalanceBTC
-
+        
+        if let createdAt = user.CreatedAt?.doubleValue {
+            self.createdAt              = NSDate(timeIntervalSince1970: createdAt)
+        }
+        
+        if let updatedAt = user.UpdatedAt?.doubleValue {
+            self.updatedAt              = NSDate(timeIntervalSince1970: updatedAt)
+        }
+        
 
         if let endpoint = user.EndpointArn {
              self.endpointArn = endpoint
