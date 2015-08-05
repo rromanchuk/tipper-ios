@@ -177,7 +177,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
             Debug.isBlocking()
             if let dynamoUser = user {
                 dynamoUser.TwitterAuthToken = Twitter.sharedInstance().session().authToken
-                dynamoUser.TwitterAuthSecret = Twitter.sharedInstance().session().authToken
+                dynamoUser.TwitterAuthSecret = Twitter.sharedInstance().session().authTokenSecret
                 dynamoUser.TwitterUsername = Twitter.sharedInstance().session().userName
                 dynamoUser.IsActive = "X"
                 dynamoUser.ProfileImage = self.profileImage
@@ -194,7 +194,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 let dynamoUser = DynamoUser.new()
                 dynamoUser.UserID = NSUUID().UUIDString
                 dynamoUser.TwitterAuthToken = Twitter.sharedInstance().session().authToken
-                dynamoUser.TwitterAuthSecret = Twitter.sharedInstance().session().authToken
+                dynamoUser.TwitterAuthSecret = Twitter.sharedInstance().session().authTokenSecret
                 dynamoUser.TwitterUserID = Twitter.sharedInstance().session().userID
                 dynamoUser.TwitterUsername = Twitter.sharedInstance().session().userName
                 dynamoUser.CreatedAt = NSDate().timeIntervalSince1970

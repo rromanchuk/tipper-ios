@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>SQS_TRANSFER_OUT</key>
-	<string>***REMOVED***e</string>
 	<key>API_ROOT_URL</key>
 	<string>https://coinbit.tips</string>
 	<key>APPLE_PAY_MERCHANT</key>
@@ -33,7 +31,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>140</string>
+	<string>141</string>
 	<key>COGNITO_POOL</key>
 	<string>$(COGNITO_POOL)</string>
 	<key>Configuration</key>
@@ -67,8 +65,12 @@
 	<true/>
 	<key>SNS_ENDPOINT</key>
 	<string>$(SNS_ENDPOINT)</string>
+	<key>SQS_FETCH_FAVORITES</key>
+	<string>***REMOVED***</string>
 	<key>SQS_NEW_TIP</key>
 	<string>$(SQS_NEW_TIP)</string>
+	<key>SQS_TRANSFER_OUT</key>
+	<string>***REMOVED***e</string>
 	<key>STRIPE_PUBLISHABLE</key>
 	<string>$(STRIPE_PUBLISHABLE)</string>
 	<key>UIAppFonts</key>
@@ -106,8 +108,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>SQS_FETCH_FAVORITES</key>
-	<string>***REMOVED***</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>
