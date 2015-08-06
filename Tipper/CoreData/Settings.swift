@@ -15,8 +15,15 @@ class Settings: NSManagedObject, CoreDataUpdatable {
     @NSManaged var tipAmount: String?
     @NSManaged var feeAmount: String?
     @NSManaged var version: String?
-    @NSManaged var user: Tipper.CurrentUser?
-
+    
+    static let sharedInstance = Settings.createInstance()
+    
+    class func createInstance() -> Settings {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let _settings = NSEntityDescription.insertNewObjectForEntityForName("Settings", inManagedObjectContext: appDelegate.managedObjectContext) as! Settings
+        return _settings
+    }
+    
     class var className: String {
         get {
             return "Settings"
@@ -42,7 +49,29 @@ class Settings: NSManagedObject, CoreDataUpdatable {
     class func dateForTwitterDate(date: String) -> NSDate {
         return TwitterDateFormatter.dateFromString(date)!
     }
+    
+    class func update(currentUser:CurrentUser) {
+        println("\(className)::\(__FUNCTION__)")
+        let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
+        let exp = AWSDynamoDBScanExpression()
+        exp.limit = 1
+        
+        mapper.scan(DynamoSettings.self, expression: exp).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+            println("Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
+            if let results = task.result as?  AWSDynamoDBPaginatedOutput where task.error == nil && task.exception == nil {
+                if let dynamoSettings: DynamoSettings = results.items[0] as? DynamoSettings {
+                    //self.updateEntityWithDynamoModel(dynamoSettings)
+                    //self.save()
+                    Settings.sharedInstance.version = dynamoSettings.Version
+                    Settings.sharedInstance.fundAmount = dynamoSettings.FundAmount
+                    Settings.sharedInstance.feeAmount = dynamoSettings.FeeAmount
+                    Settings.sharedInstance.tipAmount = dynamoSettings.TipAmount
+                }
+            }
+            return nil
+        })
 
+    }
 
     func update() {
         println("\(className)::\(__FUNCTION__)")
@@ -55,6 +84,7 @@ class Settings: NSManagedObject, CoreDataUpdatable {
             if let results = task.result as?  AWSDynamoDBPaginatedOutput where task.error == nil && task.exception == nil {
                 if let dynamoSettings: DynamoSettings = results.items[0] as? DynamoSettings {
                     self.updateEntityWithDynamoModel(dynamoSettings)
+                    self.writeToDisk()
                 }
             }
             return nil

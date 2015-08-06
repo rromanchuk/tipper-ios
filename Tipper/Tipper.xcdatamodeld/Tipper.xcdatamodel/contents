@@ -15,7 +15,6 @@
         <attribute name="userId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="favorites" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favorite" inverseName="user" inverseEntity="Favorite" syncable="YES"/>
         <relationship name="marketValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Market" inverseName="userBalance" inverseEntity="Market" syncable="YES"/>
-        <relationship name="settings" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Settings" inverseName="user" inverseEntity="Settings" syncable="YES"/>
     </entity>
     <entity name="Favorite" representedClassName="Tipper.Favorite" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
@@ -49,7 +48,6 @@
         <attribute name="fundAmount" optional="YES" attributeType="String" defaultValueString="0.02" syncable="YES"/>
         <attribute name="tipAmount" optional="YES" attributeType="String" defaultValueString="0.0005" syncable="YES"/>
         <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CurrentUser" inverseName="settings" inverseEntity="CurrentUser" syncable="YES"/>
     </entity>
     <entity name="Transaction" representedClassName="Tipper.Transaction" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
@@ -65,10 +63,10 @@
         <attribute name="txid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="270"/>
+        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="255"/>
         <element name="Favorite" positionX="-63" positionY="54" width="128" height="300"/>
         <element name="Market" positionX="-54" positionY="117" width="128" height="135"/>
-        <element name="Settings" positionX="-54" positionY="99" width="128" height="120"/>
+        <element name="Settings" positionX="-54" positionY="99" width="128" height="105"/>
         <element name="Transaction" positionX="-54" positionY="108" width="128" height="210"/>
     </elements>
 </model>

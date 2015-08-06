@@ -89,8 +89,8 @@ class TipDetailContainer: UITableViewController {
     }
 
     func setupTipAmount() {
-        if let currentUser = currentUser, settings = currentUser.settings {
-            let string = "a\(settings.tipAmountUBTC)"
+        if let currentUser = currentUser {
+            let string = "a\(Settings.sharedInstance.tipAmountUBTC)"
             let labelAttributes = NSMutableAttributedString(string: string)
             labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "coiner", size: 18.0)!, range: NSMakeRange(0,1))
             labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol", size: 18.0)!, range: NSMakeRange(1, count(string) - 1))

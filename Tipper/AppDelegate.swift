@@ -112,6 +112,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func refresh() {
+        println("\(className)::\(__FUNCTION__)")
+        
         if currentUser.isTwitterAuthenticated {
             provider.logins = ["api.twitter.com": "\(Twitter.sharedInstance().session().authToken);\(Twitter.sharedInstance().session().authTokenSecret)"]
             currentUser.refreshWithDynamo { [weak self] (error) -> Void in
@@ -121,9 +123,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self?.currentUser.registerForRemoteNotificationsIfNeeded()
             }
         }
-        if let settings = currentUser.settings {
-            settings.update()
-        }
+        
+        Settings.update(currentUser)
+        
 
         market.update { [weak self] () -> Void in }
     }

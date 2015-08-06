@@ -1,17 +1,17 @@
 PODS:
-  - AWSCognito (2.2.2):
-    - AWSCore (= 2.2.2)
-  - AWSCore (2.2.2)
-  - AWSDynamoDB (2.2.2):
-    - AWSCore (= 2.2.2)
-  - AWSMobileAnalytics (2.2.2):
-    - AWSCore (= 2.2.2)
-  - AWSS3 (2.2.2):
-    - AWSCore (= 2.2.2)
-  - AWSSNS (2.2.2):
-    - AWSCore (= 2.2.2)
-  - AWSSQS (2.2.2):
-    - AWSCore (= 2.2.2)
+  - AWSCognito (2.2.3):
+    - AWSCore (= 2.2.3)
+  - AWSCore (2.2.3)
+  - AWSDynamoDB (2.2.3):
+    - AWSCore (= 2.2.3)
+  - AWSMobileAnalytics (2.2.3):
+    - AWSCore (= 2.2.3)
+  - AWSS3 (2.2.3):
+    - AWSCore (= 2.2.3)
+  - AWSSNS (2.2.3):
+    - AWSCore (= 2.2.3)
+  - AWSSQS (2.2.3):
+    - AWSCore (= 2.2.3)
   - HexColors (2.2.1)
   - RBBAnimation (0.4.0)
   - SDCAlertView (2.5.2):
@@ -40,7 +40,7 @@ DEPENDENCIES:
   - AWSSQS (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
   - SDCAlertView
   - SSKeychain
-  - Stripe
+  - Stripe (= 4.0.3)
   - Stripe/ApplePay
   - TSMessages
 
@@ -60,32 +60,32 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   AWSCore:
-    :commit: 65973892e4f31db7adc6c477c785a088a5f4b717
+    :commit: 5c40e6609900108c24021e311b5bacac39e9b36c
     :git: https://github.com/rromanchuk/aws-sdk-ios.git
   AWSDynamoDB:
-    :commit: 65973892e4f31db7adc6c477c785a088a5f4b717
+    :commit: 5c40e6609900108c24021e311b5bacac39e9b36c
     :git: https://github.com/rromanchuk/aws-sdk-ios.git
   AWSMobileAnalytics:
-    :commit: 65973892e4f31db7adc6c477c785a088a5f4b717
+    :commit: 5c40e6609900108c24021e311b5bacac39e9b36c
     :git: https://github.com/rromanchuk/aws-sdk-ios.git
   AWSS3:
-    :commit: 65973892e4f31db7adc6c477c785a088a5f4b717
+    :commit: 5c40e6609900108c24021e311b5bacac39e9b36c
     :git: https://github.com/rromanchuk/aws-sdk-ios.git
   AWSSNS:
-    :commit: 65973892e4f31db7adc6c477c785a088a5f4b717
+    :commit: 5c40e6609900108c24021e311b5bacac39e9b36c
     :git: https://github.com/rromanchuk/aws-sdk-ios.git
   AWSSQS:
-    :commit: 65973892e4f31db7adc6c477c785a088a5f4b717
+    :commit: 5c40e6609900108c24021e311b5bacac39e9b36c
     :git: https://github.com/rromanchuk/aws-sdk-ios.git
 
 SPEC CHECKSUMS:
-  AWSCognito: c7364b3ac4bf8e5849eead5c678513084750c32e
-  AWSCore: 3e969334460cc7ba16504fb2e074f59f95880800
-  AWSDynamoDB: 26acc42c6a6b98cd03112d3e8e733dde9b9b595e
-  AWSMobileAnalytics: cf091087c94ef969111fb38f798eb9514f173971
-  AWSS3: 4f89fcc0ef11303f94f561310979a0d2ec816fff
-  AWSSNS: a984cf9ea5286e57a3cbd8f819cc9f71cf270dec
-  AWSSQS: d60d84d7e5c759d893c880fb0315d7801c85f105
+  AWSCognito: ae340057e5f8c535aabd39234c7bd5b704b1955e
+  AWSCore: 30510dc1bf3e4cc975868ed4cc9ae16ba402790b
+  AWSDynamoDB: e3a88b170845ae0aea73d1daf2dcfd8faa9495ed
+  AWSMobileAnalytics: d6207510bbceeefed28bcf7694df544b29c8162d
+  AWSS3: 9c03206264668b69ca94e4f05caa8926a4b0660f
+  AWSSNS: fac1edf1fd6ba5c74cd446330278f930e089fd79
+  AWSSQS: 888f04ee28a2050aeced66e96415cdbf6c073865
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
   RBBAnimation: 4b2d66f6d993febce63cd564da934985313b9c59
   SDCAlertView: f9706c18f456ea87909f8f199704cd28e582ff27

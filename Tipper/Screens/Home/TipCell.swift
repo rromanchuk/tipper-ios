@@ -99,8 +99,8 @@ class TipCell: UITableViewCell {
     }
 
     func setupTipAmount() {
-        if let currentUser = currentUser, settings = currentUser.settings {
-            let string = "a\(settings.tipAmountUBTC)"
+        if let currentUser = currentUser {
+            let string = "a\(Settings.sharedInstance.tipAmountUBTC)"
             let labelAttributes = NSMutableAttributedString(string: string)
             labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "coiner", size: 18.0)!, range: NSMakeRange(0,1))
             labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol", size: 18.0)!, range: NSMakeRange(1, count(string) - 1))
@@ -108,7 +108,7 @@ class TipCell: UITableViewCell {
             labelAttributes.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSMakeRange(0, count(string)))
             tipAmount.attributedText = labelAttributes;
             
-            if let tipAmount = settings.tipAmount {
+            if let tipAmount = Settings.sharedInstance.tipAmount {
                 tipAmountBTC.text = "BTC \(tipAmount)"
             }
             
@@ -132,6 +132,7 @@ class TipCell: UITableViewCell {
             request.messageBody = json
             request.queueUrl = Config.get("SQS_NEW_TIP")
             sqs.sendMessage(request).continueWithBlock { (task) -> AnyObject! in
+                println("Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
                 if (task.error != nil) {
                     println("ERROR: \(task.error)")
                 }
