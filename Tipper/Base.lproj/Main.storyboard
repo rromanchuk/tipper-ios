@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8164.2" systemVersion="15A235d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J4X-Ps-uMP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J4X-Ps-uMP">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8135.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -763,7 +762,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2WX-eU-6Uo">
-                                                    <rect key="frame" x="339" y="15" width="43" height="20"/>
+                                                    <rect key="frame" x="338" y="15" width="43" height="20"/>
                                                     <animations/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="b">
@@ -784,7 +783,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTC 0.0005" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNi-GN-KiE">
-                                                    <rect key="frame" x="321" y="43" width="61" height="12"/>
+                                                    <rect key="frame" x="320" y="43" width="61" height="12"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -990,7 +989,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCv-dq-4JX" userLabel="Settings Button">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCv-dq-4JX" userLabel="Settings Button">
                                 <rect key="frame" x="343" y="28" width="35" height="35"/>
                                 <animations/>
                                 <constraints>
@@ -1014,7 +1013,7 @@
                                     <action selector="didTapSettings:" destination="x99-hT-nup" eventType="touchUpInside" id="7nA-ql-0cc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yo-N2-sfZ" userLabel="Address Button">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yo-N2-sfZ" userLabel="Address Button">
                                 <rect key="frame" x="37" y="28" width="37" height="35"/>
                                 <animations/>
                                 <constraints>
@@ -1039,7 +1038,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="778" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAL-w9-cfz">
-                                <rect key="frame" x="140" y="25" width="134.5" height="41"/>
+                                <rect key="frame" x="140" y="25" width="135" height="41"/>
                                 <animations/>
                                 <gestureRecognizers/>
                                 <attributedString key="attributedText">
@@ -1064,7 +1063,7 @@
                                 </connections>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTC 0.000234" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQP-rY-fhZ">
-                                <rect key="frame" x="170.5" y="68" width="73" height="12"/>
+                                <rect key="frame" x="171" y="68" width="73" height="12"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1121,7 +1120,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="627"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="30" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UWM-7z-Xgz">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="30" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UWM-7z-Xgz">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="627"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1139,7 +1138,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You tipped Ryan Romanchuk" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XcG-Cs-3sh">
-                                                    <rect key="frame" x="101" y="15" width="168.5" height="15"/>
+                                                    <rect key="frame" x="101" y="15" width="169" height="15"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1187,7 +1186,7 @@
                                                     </variation>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6c-DF-Hu2">
-                                                    <rect key="frame" x="343.5" y="15" width="42.5" height="20"/>
+                                                    <rect key="frame" x="343" y="15" width="43" height="20"/>
                                                     <animations/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="b">
@@ -1208,7 +1207,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" text="BTC 0.0005" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qH3-1F-IyA">
-                                                    <rect key="frame" x="325.5" y="39" width="60.5" height="12"/>
+                                                    <rect key="frame" x="325" y="39" width="61" height="12"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1231,7 +1230,7 @@
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="up-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="Twy-Nb-vaZ">
-                                                    <rect key="frame" x="326.5" y="18" width="13" height="13"/>
+                                                    <rect key="frame" x="326" y="18" width="13" height="13"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="13" id="Upn-s5-TNI"/>

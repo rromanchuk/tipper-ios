@@ -16,6 +16,7 @@ enum TipCellType: Int {
 }
 
 class TipCell: UITableViewCell {
+    let className = "TipCell"
 
     @IBOutlet weak var tipActionLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -116,7 +117,7 @@ class TipCell: UITableViewCell {
     }
 
     @IBAction func userDidTip(sender: UIButton) {
-        //println("favorite:\(favorite), currentUser:\(currentUser)")
+        println("\(className)::\(__FUNCTION__)")
         tipButton.backgroundColor = UIColor.grayColor()
         favorite.didLeaveTip = true
 
