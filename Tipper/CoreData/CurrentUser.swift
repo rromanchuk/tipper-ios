@@ -200,7 +200,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 dynamoUser.ProfileImage = self.profileImage
                 self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
                     API.sharedInstance.connect({ (json, error) -> Void in
-
+                        
                     })
                     API.sharedInstance.address({ (json, error) -> Void in
                         if error == nil {
