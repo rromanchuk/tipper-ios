@@ -178,7 +178,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 dynamoUser.TwitterUsername = Twitter.sharedInstance().session().userName
                 dynamoUser.IsActive = "X"
                 dynamoUser.ProfileImage = self.profileImage
-                dynamoUser.UpdatedAt = NSDate().timeIntervalSince1970
+                dynamoUser.UpdatedAt = Int(NSDate().timeIntervalSince1970)
                 self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
                     API.sharedInstance.connect({ (json, error) -> Void in
 
@@ -194,8 +194,8 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 dynamoUser.TwitterAuthSecret = Twitter.sharedInstance().session().authTokenSecret
                 dynamoUser.TwitterUserID = Twitter.sharedInstance().session().userID
                 dynamoUser.TwitterUsername = Twitter.sharedInstance().session().userName
-                dynamoUser.CreatedAt = NSDate().timeIntervalSince1970
-                dynamoUser.UpdatedAt = NSDate().timeIntervalSince1970
+                dynamoUser.CreatedAt = Int(NSDate().timeIntervalSince1970)
+                dynamoUser.UpdatedAt = Int(NSDate().timeIntervalSince1970)
                 dynamoUser.IsActive = "X"
                 dynamoUser.ProfileImage = self.profileImage
                 self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
