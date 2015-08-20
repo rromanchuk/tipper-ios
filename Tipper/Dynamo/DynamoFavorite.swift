@@ -69,7 +69,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         let exp = AWSDynamoDBQueryExpression()
 
         exp.hashKeyValues      = currentUser.userId!
-        exp.indexName = "FromUserID-index"
+        exp.indexName = "FromUserID-TippedAt-index"
         self.query(exp, secondaryIndexHash: "FromUserID", context: context) { () -> Void in
             completion()
         }
@@ -83,7 +83,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         let exp = AWSDynamoDBQueryExpression()
 
         exp.hashKeyValues      = currentUser.userId!
-        exp.indexName = "ToUserID-index"
+        exp.indexName = "ToUserID-TippedAt-index"
         self.query(exp, secondaryIndexHash: "ToUserID", context: context) { () -> Void in
             completion()
         }
