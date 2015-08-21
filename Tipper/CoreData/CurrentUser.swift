@@ -397,8 +397,11 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         mapper.load(DynamoUser.self, hashKey: self.userId, rangeKey: nil).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             println("error \(task.error)")
-            let dynamoUser: DynamoUser = task.result as! DynamoUser
-            self.updateEntityWithDynamoModel(dynamoUser)
+            
+            if let dynamoUser: DynamoUser = task.result as? DynamoUser {
+                self.updateEntityWithDynamoModel(dynamoUser)
+            }
+            
             completion(error: task.error)
             return nil
         })
