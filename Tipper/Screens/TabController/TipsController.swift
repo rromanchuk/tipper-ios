@@ -59,7 +59,7 @@ class TipsController: UIViewController {
         tableView.addSubview(refreshControl)
 
         DynamoFavorite.fetchTips(currentUser, context: managedObjectContext) { () -> Void in
-
+            
         }
         
 

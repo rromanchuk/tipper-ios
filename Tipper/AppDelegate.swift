@@ -328,13 +328,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func cognitoIdentityDidChange(notficiation: NSNotification) {
         println("\(className)::\(__FUNCTION__)")
+        
         if let userInfo = notficiation.userInfo, identifier = userInfo[AWSCognitoNotificationNewId] as? String {
             println("\(className)::\(__FUNCTION__) New cognito identifier: \(identifier)")
-            self.currentUser.cognitoIdentity = identifier
-            self.currentUser.pushToDynamo()
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.currentUser.cognitoIdentity = identifier
+                self.currentUser.pushToDynamo()
+            })
         }
-        
-        
     }
 
     func resetCoreData() {
