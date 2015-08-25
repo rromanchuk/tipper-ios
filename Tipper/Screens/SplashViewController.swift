@@ -27,13 +27,14 @@ class SplashViewController: UIViewController {
         gradient.colors = [UIColor.colorWithRGB(0x7BD5AA, alpha: 1.0).CGColor, UIColor.colorWithRGB(0x5BAB85, alpha: 1.0).CGColor]
         view.layer.insertSublayer(gradient, atIndex: 0)
         println("\(className)::\(__FUNCTION__) \(managedObjectContext)")
+        
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         println("\(className)::\(__FUNCTION__)")
         if (currentUser.isTwitterAuthenticated) {
-
+            SwiftSpinner.hide(completion: nil)
             performSegueWithIdentifier("Home", sender: self)
         } else {
 
@@ -44,18 +45,23 @@ class SplashViewController: UIViewController {
                     self.currentUser.twitterAuthenticationWithTKSession(session)
                     self.currentUser.cognitoIdentity = self.provider.identityId
                     self.currentUser.writeToDisk()
-
-                    Twitter.sharedInstance().APIClient.loadUserWithID(session.userID, completion: { (user, error) -> Void in
-                        if let user = user {
-                            self.currentUser.authenticate( { () -> Void in
-                                //UserSync.sharedInstance.sync(self.currentUser)
-                                self.currentUser.registerForRemoteNotificationsIfNeeded()
-                                self.performSegueWithIdentifier("Home", sender: self)
-                            })
-                        }
+                    self.provider.refresh().continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+                        
+                        Twitter.sharedInstance().APIClient.loadUserWithID(session.userID, completion: { (user, error) -> Void in
+                            if let user = user {
+                                self.currentUser.authenticate( { () -> Void in
+                                    //UserSync.sharedInstance.sync(self.currentUser)
+                                    SwiftSpinner.hide(completion: nil)
+                                    self.currentUser.registerForRemoteNotificationsIfNeeded()
+                                    self.performSegueWithIdentifier("Home", sender: self)
+                                })
+                            }
+                        })
+                        // todo
+                        return nil
                     })
-
                 } else {
+                    SwiftSpinner.hide(completion: nil)
                     println("error: \(error.localizedDescription)");
                 }
 
@@ -79,6 +85,10 @@ class SplashViewController: UIViewController {
         UIApplication.sharedApplication().openURL(NSURL(string:"https://www.coinbit.tips/privacy")!)
     }
 
+    @IBAction func didTapLogin(sender: TWTRLogInButton) {
+        SwiftSpinner.show("Logging you in...")
+    }
+    
     @IBAction func unwindToSplash(unwindSegue: UIStoryboardSegue) {
         println("\(className)::\(__FUNCTION__)")
         if let blueViewController = unwindSegue.sourceViewController as? HomeController {

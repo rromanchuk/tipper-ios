@@ -66,6 +66,7 @@
 		94DA84B01B6D55E0005D4CD6 /* DynamoSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA84AF1B6D55E0005D4CD6 /* DynamoSettings.swift */; };
 		94EE8CF61AB16E7E000593CD /* TTTURLRequestFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */; };
 		94F3FD951B08581900CD0261 /* WalletContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F3FD941B08581900CD0261 /* WalletContainerController.swift */; };
+		94F5137C1B8D03BC002E0996 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F5137B1B8D03BC002E0996 /* SwiftSpinner.swift */; };
 		94FA97DB1AB2E691005B0C83 /* DynamoFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA97DA1AB2E691005B0C83 /* DynamoFavorite.swift */; };
 		94FA97DD1AB2EB71005B0C83 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA97DC1AB2EB71005B0C83 /* Favorite.swift */; };
 		94FA97DF1AB356FB005B0C83 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA97DE1AB356FB005B0C83 /* FavoriteCell.swift */; };
@@ -184,6 +185,7 @@
 		94EE8CF41AB16E7E000593CD /* TTTURLRequestFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTURLRequestFormatter.h; sourceTree = "<group>"; };
 		94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTURLRequestFormatter.m; sourceTree = "<group>"; };
 		94F3FD941B08581900CD0261 /* WalletContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletContainerController.swift; path = Wallet/WalletContainerController.swift; sourceTree = "<group>"; };
+		94F5137B1B8D03BC002E0996 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
 		94FA97DA1AB2E691005B0C83 /* DynamoFavorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoFavorite.swift; sourceTree = "<group>"; };
 		94FA97DC1AB2EB71005B0C83 /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		94FA97DE1AB356FB005B0C83 /* FavoriteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoriteCell.swift; path = Transactions/FavoriteCell.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 		94416BF41AAF989F00117AFC /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				94F5137B1B8D03BC002E0996 /* SwiftSpinner.swift */,
 				94416BF51AAF989F00117AFC /* Alamofire-SwiftyJSON.swift */,
 				94416BF71AAF989F00117AFC /* API.swift */,
 				941AA3891AAFA34900CA9192 /* Config.swift */,
@@ -818,6 +821,7 @@
 				94416C111AAF989F00117AFC /* CoreDataUpdatable.swift in Sources */,
 				94DA84B01B6D55E0005D4CD6 /* DynamoSettings.swift in Sources */,
 				94416C0C1AAF989F00117AFC /* API.swift in Sources */,
+				94F5137C1B8D03BC002E0996 /* SwiftSpinner.swift in Sources */,
 				94C255201B12798900A65B94 /* Settings.swift in Sources */,
 				94AB27931ACA3D2B005A433F /* TintedButton.swift in Sources */,
 				94FA97DF1AB356FB005B0C83 /* FavoriteCell.swift in Sources */,
