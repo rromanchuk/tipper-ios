@@ -39,6 +39,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
     @NSManaged var endpointArn: String?
     @NSManaged var deviceToken: String?
+    @NSManaged var cognitoIdentity: String?
 
     @NSManaged var marketValue: Tipper.Market?
     @NSManaged var admin: NSNumber?
@@ -198,6 +199,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 dynamoUser.UpdatedAt = Int(NSDate().timeIntervalSince1970)
                 dynamoUser.IsActive = "X"
                 dynamoUser.ProfileImage = self.profileImage
+                dynamoUser.CognitoIdentity = self.cognitoIdentity
                 self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
                     API.sharedInstance.connect({ (json, error) -> Void in
                         

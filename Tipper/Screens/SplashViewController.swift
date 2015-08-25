@@ -42,6 +42,7 @@ class SplashViewController: UIViewController {
                     println("signed in as \(session.userName)");
                     self.provider.logins = ["api.twitter.com": "\(session.authToken);\(session.authTokenSecret)"]
                     self.currentUser.twitterAuthenticationWithTKSession(session)
+                    self.currentUser.cognitoIdentity = self.provider.identityId
                     self.currentUser.writeToDisk()
 
                     Twitter.sharedInstance().APIClient.loadUserWithID(session.userID, completion: { (user, error) -> Void in
