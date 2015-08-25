@@ -49,6 +49,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "logout", name: "UNAUTHORIZED_USER", object: nil)
         //DynamoUser.findByTwitterId(currentUser.uuid!)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "cognitoIdentityDidChange:", name: AWSCognitoIdentityIdChangedNotification, object: nil)
         return true
     }
 
@@ -116,18 +118,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if currentUser.isTwitterAuthenticated {
             provider.logins = ["api.twitter.com": "\(Twitter.sharedInstance().session().authToken);\(Twitter.sharedInstance().session().authTokenSecret)"]
-            currentUser.cognitoIdentity = provider.identityId
+           
             currentUser.refreshWithDynamo { [weak self] (error) -> Void in
                 self?.currentUser.updateBTCBalance({ () -> Void in
-                    self?.currentUser?.pushToDynamo()
+                    self?.provider.getIdentityId().continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+                        if task.error == nil, let identity = task.result as? String {
+                            println("\(self?.className)::\(__FUNCTION__) Just fetched cognito identity and is \(identity)")
+                            self?.currentUser.cognitoIdentity = identity
+                        }
+                        self?.currentUser?.pushToDynamo()
+                        return nil
+                    })
                 })
                 self?.currentUser.registerForRemoteNotificationsIfNeeded()
             }
         }
         
         Settings.update(currentUser)
-        
-
         market.update { [weak self] () -> Void in }
     }
 
@@ -314,6 +321,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSNotificationCenter.defaultCenter().postNotificationName("BACK_TO_SPLASH", object: nil)
     }
 
+    func resetCognitoCredentials() {
+        println("\(className)::\(__FUNCTION__)")
+        self.provider.clearKeychain()
+    }
+    
+    func cognitoIdentityDidChange(notficiation: NSNotification) {
+        println("\(className)::\(__FUNCTION__)")
+        if let userInfo = notficiation.userInfo, identifier = userInfo[AWSCognitoNotificationNewId] as? String {
+            println("\(className)::\(__FUNCTION__) New cognito identifier: \(identifier)")
+            self.currentUser.cognitoIdentity = identifier
+            self.currentUser.pushToDynamo()
+        }
+        
+        
+    }
 
     func resetCoreData() {
         println("\(className)::\(__FUNCTION__) ****************************")

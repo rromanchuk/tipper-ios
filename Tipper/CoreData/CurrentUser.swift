@@ -320,6 +320,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                     user.TwitterAuthToken   = Twitter.sharedInstance().session().authToken
                     user.TwitterAuthSecret  = Twitter.sharedInstance().session().authTokenSecret
                     user.BitcoinBalanceBTC  = self.bitcoinBalanceBTC
+                    user.CognitoIdentity    = self.cognitoIdentity
                     self.mapper.save(user, configuration: self.defaultDynamoConfiguration).continueWithBlock({ (task) -> AnyObject! in
                         println("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
                         return nil
@@ -479,6 +480,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
     func resetIdentifiers() {
         println("\(className)::\(__FUNCTION__)")
+        (UIApplication.sharedApplication().delegate as! AppDelegate).resetCognitoCredentials()
         SSKeychain.deletePasswordForService(KeychainUserAccount, account: KeychainAccount)
         SSKeychain.deletePasswordForService(KeychainTokenAccount, account: KeychainAccount)
         SSKeychain.deletePasswordForService(KeychainBitcoinAccount, account: KeychainAccount)
