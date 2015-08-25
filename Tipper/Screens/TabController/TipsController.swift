@@ -57,9 +57,10 @@ class TipsController: UIViewController {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
         tableView.addSubview(refreshControl)
-
+        
+        SwiftSpinner.show("Loading your tips...", animated: true)
         DynamoFavorite.fetchTips(currentUser, context: managedObjectContext) { () -> Void in
-            
+            SwiftSpinner.hide(completion: nil)
         }
         
 

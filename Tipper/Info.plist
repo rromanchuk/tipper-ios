@@ -31,7 +31,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>154</string>
+	<string>155</string>
 	<key>COGNITO_POOL</key>
 	<string>$(COGNITO_POOL)</string>
 	<key>Configuration</key>
@@ -63,6 +63,8 @@
 	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>PRIVACY_URL</key>
+	<string>https://www.downloadtipper.com/privacy</string>
 	<key>SNS_ENDPOINT</key>
 	<string>$(SNS_ENDPOINT)</string>
 	<key>SQS_FETCH_FAVORITES</key>

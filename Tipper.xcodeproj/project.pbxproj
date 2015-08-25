@@ -319,6 +319,7 @@
 		94416C051AAF989F00117AFC /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				94F5137D1B8D161A002E0996 /* Notifications */,
 				9444D6751B38E4220052C2B1 /* TabController */,
 				949842001B25FC300079082C /* TipDetails */,
 				94C255211B12B20600A65B94 /* Splash */,
@@ -485,6 +486,13 @@
 				941AA38D1AB01EC000CA9192 /* SplashViewController.swift */,
 			);
 			name = Splash;
+			sourceTree = "<group>";
+		};
+		94F5137D1B8D161A002E0996 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Notifications;
 			sourceTree = "<group>";
 		};
 		94FA97D51AB2E0DA005B0C83 /* Transaction */ = {

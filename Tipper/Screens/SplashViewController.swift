@@ -40,23 +40,29 @@ class SplashViewController: UIViewController {
 
             twitterLoginButton.logInCompletion = { (session, error) in
                 if (session != nil) {
-                    println("signed in as \(session.userName)");
+                    println("signed in as \(session.userName)")
                     self.provider.logins = ["api.twitter.com": "\(session.authToken);\(session.authTokenSecret)"]
                     self.currentUser.twitterAuthenticationWithTKSession(session)
-                    self.currentUser.cognitoIdentity = self.provider.identityId
-                    self.currentUser.writeToDisk()
+                    
                     self.provider.refresh().continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+                        println("provider refresh() finished result: \(task.result) error? \(task.error)")
+                        if task.error == nil, let identifier = task.result as? String {
+                            self.currentUser.cognitoIdentity = identifier
+                            self.currentUser.writeToDisk()
+                            Twitter.sharedInstance().APIClient.loadUserWithID(session.userID, completion: { (user, error) -> Void in
+                                if let user = user {
+                                    self.currentUser.authenticate( { () -> Void in
+                                        SwiftSpinner.hide(completion: nil)
+                                        self.currentUser.registerForRemoteNotificationsIfNeeded()
+                                        self.performSegueWithIdentifier("Home", sender: self)
+                                    })
+                                }
+                            })
+
+                        } else {
+                            SwiftSpinner.showWithDelay(4.0, title: "There was a problem logging in.", animated: true)
+                        }
                         
-                        Twitter.sharedInstance().APIClient.loadUserWithID(session.userID, completion: { (user, error) -> Void in
-                            if let user = user {
-                                self.currentUser.authenticate( { () -> Void in
-                                    //UserSync.sharedInstance.sync(self.currentUser)
-                                    SwiftSpinner.hide(completion: nil)
-                                    self.currentUser.registerForRemoteNotificationsIfNeeded()
-                                    self.performSegueWithIdentifier("Home", sender: self)
-                                })
-                            }
-                        })
                         // todo
                         return nil
                     })

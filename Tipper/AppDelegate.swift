@@ -98,10 +98,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func setApplicationBadgeNumber(number: UInt) {
+        println("\(className)::\(__FUNCTION__)")
         UIApplication.sharedApplication().applicationIconBadgeNumber = Int(number)
     }
 
     func incrementApplicationtBadgeNumber() {
+        println("\(className)::\(__FUNCTION__)")
         var num = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
         setApplicationBadgeNumber(UInt(num))
     }
