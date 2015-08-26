@@ -30,7 +30,6 @@
             <string>Bariol-Regular</string>
             <string>Bariol-Regular</string>
             <string>Bariol-Regular</string>
-            <string>Bariol-Regular</string>
         </mutableArray>
         <mutableArray key="Bariol_Bold.otf">
             <string>Bariol-Bold</string>
@@ -41,6 +40,7 @@
             <string>Bariol-Bold</string>
         </mutableArray>
         <mutableArray key="Bariol_Light.otf">
+            <string>Bariol-Light</string>
             <string>Bariol-Light</string>
             <string>Bariol-Light</string>
             <string>Bariol-Light</string>
@@ -62,33 +62,47 @@
                         <viewControllerLayoutGuide type="bottom" id="Scb-tF-PuG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tgM-WN-m8P">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tipper" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWF-UR-7re">
-                                <rect key="frame" x="107" y="322" width="106" height="45"/>
+                                <rect key="frame" x="135" y="415" width="105.5" height="45"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Bariol-Bold" family="Bariol" pointSize="45"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHj-ZJ-tNj" customClass="TWTRLogInButton">
-                                <rect key="frame" x="13" y="373" width="294" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHj-ZJ-tNj">
+                                <rect key="frame" x="29.5" y="545" width="315" height="55"/>
                                 <animations/>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="315" id="CsM-hL-y8v"/>
+                                    <constraint firstAttribute="height" constant="55" id="H2f-vv-zBU"/>
                                     <constraint firstAttribute="height" constant="40" id="H4z-Hn-HzX"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="55" id="O6m-O4-ZKf"/>
+                                    <constraint firstAttribute="width" constant="315" id="oAW-eI-byQ"/>
                                     <constraint firstAttribute="width" constant="294" id="zjE-Av-dj7"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
-                                <state key="normal">
+                                <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="18"/>
+                                <inset key="titleEdgeInsets" minX="9" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Sign in with Twitter" image="twitter-bird">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="CsM-hL-y8v"/>
+                                        <exclude reference="H4z-Hn-HzX"/>
+                                        <exclude reference="O6m-O4-ZKf"/>
+                                        <exclude reference="zjE-Av-dj7"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="didTapLogin:" destination="J4X-Ps-uMP" eventType="touchUpInside" id="T5a-4V-pjy"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-stacks" translatesAutoresizingMaskIntoConstraints="NO" id="6Wa-bK-0VZ">
-                                <rect key="frame" x="60" y="71" width="200" height="235"/>
+                                <rect key="frame" x="87" y="164" width="200" height="235"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="235" id="Deq-wl-50v"/>
@@ -96,7 +110,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="754" verticalCompressionResistancePriority="754" text="By creating your account you confirm that you've read the Terms Of Use. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOy-ZY-rsY">
-                                <rect key="frame" x="13" y="426" width="294" height="34"/>
+                                <rect key="frame" x="13" y="613" width="349" height="34"/>
                                 <animations/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="17"/>
@@ -134,7 +148,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="twitterLoginButton" destination="dHj-ZJ-tNj" id="atz-2Y-X9g"/>
                         <segue destination="JsD-Be-PS1" kind="presentation" identifier="Home" id="tXL-Ky-fzU"/>
@@ -1350,6 +1364,7 @@
         <image name="settings" width="64" height="64"/>
         <image name="splash-stacks" width="367" height="379"/>
         <image name="star-2-icon.png" width="96" height="93"/>
+        <image name="twitter-bird" width="19" height="16"/>
         <image name="up-arrow" width="27" height="28"/>
         <image name="wallet" width="76" height="73"/>
     </resources>

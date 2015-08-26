@@ -16,7 +16,7 @@ class SplashViewController: UIViewController {
     var managedObjectContext: NSManagedObjectContext?
     var market: Market?
 
-    @IBOutlet weak var twitterLoginButton: TWTRLogInButton!
+    @IBOutlet weak var twitterLoginButton: UIButton!
 
 
     override func viewDidLoad() {
@@ -26,6 +26,9 @@ class SplashViewController: UIViewController {
         gradient.frame = view.bounds
         gradient.colors = [UIColor.colorWithRGB(0x7BD5AA, alpha: 1.0).CGColor, UIColor.colorWithRGB(0x5BAB85, alpha: 1.0).CGColor]
         view.layer.insertSublayer(gradient, atIndex: 0)
+        
+        twitterLoginButton.layer.borderWidth = 1.0
+        twitterLoginButton.layer.borderColor = UIColor.whiteColor().CGColor
         println("\(className)::\(__FUNCTION__) \(managedObjectContext)")
         
     }
@@ -36,45 +39,7 @@ class SplashViewController: UIViewController {
         if (currentUser.isTwitterAuthenticated) {
             SwiftSpinner.hide(completion: nil)
             performSegueWithIdentifier("Home", sender: self)
-        } else {
-
-            twitterLoginButton.logInCompletion = { (session, error) in
-                if (session != nil) {
-                    println("signed in as \(session.userName)")
-                    self.provider.logins = ["api.twitter.com": "\(session.authToken);\(session.authTokenSecret)"]
-                    self.currentUser.twitterAuthenticationWithTKSession(session)
-                    
-                    self.provider.refresh().continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-                        println("provider refresh() finished result: \(task.result) error? \(task.error)")
-                        if task.error == nil, let identifier = task.result as? String {
-                            self.currentUser.cognitoIdentity = identifier
-                            self.currentUser.writeToDisk()
-                            Twitter.sharedInstance().APIClient.loadUserWithID(session.userID, completion: { (user, error) -> Void in
-                                if let user = user {
-                                    self.currentUser.authenticate( { () -> Void in
-                                        SwiftSpinner.hide(completion: nil)
-                                        self.currentUser.registerForRemoteNotificationsIfNeeded()
-                                        self.performSegueWithIdentifier("Home", sender: self)
-                                    })
-                                }
-                            })
-
-                        } else {
-                            SwiftSpinner.showWithDelay(4.0, title: "There was a problem logging in.", animated: true)
-                        }
-                        
-                        // todo
-                        return nil
-                    })
-                } else {
-                    SwiftSpinner.hide(completion: nil)
-                    println("error: \(error.localizedDescription)");
-                }
-
-            }
-
         }
-
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -88,11 +53,44 @@ class SplashViewController: UIViewController {
     }
 
     @IBAction func didTapTOS(sender: UITapGestureRecognizer) {
-        UIApplication.sharedApplication().openURL(NSURL(string:"https://www.coinbit.tips/privacy")!)
+        UIApplication.sharedApplication().openURL(NSURL(string:Config.get("PRIVACY_URL"))!)
     }
 
     @IBAction func didTapLogin(sender: TWTRLogInButton) {
         SwiftSpinner.show("Logging you in...")
+        Twitter.sharedInstance().logInWithCompletion { session, error in
+            if (session != nil) {
+                println("signed in as \(session.userName)")
+                self.provider.logins = ["api.twitter.com": "\(session.authToken);\(session.authTokenSecret)"]
+                self.currentUser.twitterAuthenticationWithTKSession(session)
+                
+                self.provider.refresh().continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+                    println("provider refresh() finished result: \(task.result) error? \(task.error)")
+                    if task.error == nil, let identifier = task.result as? String {
+                        self.currentUser.cognitoIdentity = identifier
+                        self.currentUser.writeToDisk()
+                        Twitter.sharedInstance().APIClient.loadUserWithID(session.userID, completion: { (user, error) -> Void in
+                            if let user = user {
+                                self.currentUser.authenticate( { () -> Void in
+                                    SwiftSpinner.hide(completion: nil)
+                                    self.currentUser.registerForRemoteNotificationsIfNeeded()
+                                    self.performSegueWithIdentifier("Home", sender: self)
+                                })
+                            }
+                        })
+                        
+                    } else {
+                        SwiftSpinner.showWithDelay(4.0, title: "There was a problem logging in.", animated: true)
+                    }
+                    
+                    // todo
+                    return nil
+                })
+            } else {
+                SwiftSpinner.hide(completion: nil)
+                println("error: \(error.localizedDescription)");
+            }
+        }
     }
     
     @IBAction func unwindToSplash(unwindSegue: UIStoryboardSegue) {
