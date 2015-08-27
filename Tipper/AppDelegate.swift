@@ -33,7 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         println("\(className)::\(__FUNCTION__)")
         Fabric.with([Crashlytics(), Twitter()])
         Config.dump()
-
+        AWSLogger.defaultLogger().logLevel = .Error
+        AWSMobileAnalytics(forAppId: Config.get("AWS_ANALYTICS_ID"))
+        
 
         NSUbiquitousKeyValueStore.defaultStore().synchronize()
         
@@ -44,13 +46,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         println("\(className)::\(__FUNCTION__) currentUser:\([currentUser])")
 
-        AWSLogger.defaultLogger().logLevel = .Error
-        AWSMobileAnalytics(forAppId: Config.get("AWS_ANALYTICS_ID"))
+        
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "logout", name: "UNAUTHORIZED_USER", object: nil)
-        //DynamoUser.findByTwitterId(currentUser.uuid!)
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "cognitoIdentityDidChange:", name: AWSCognitoIdentityIdChangedNotification, object: nil)
+
         return true
     }
 
@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 
         market = NSEntityDescription.insertNewObjectForEntityForName("Market", inManagedObjectContext: managedObjectContext) as! Market
-        writeToDisk()
+        market.save()
 
         let firstController = window?.rootViewController as! SplashViewController
         firstController.currentUser = CurrentUser.currentUser(managedObjectContext)

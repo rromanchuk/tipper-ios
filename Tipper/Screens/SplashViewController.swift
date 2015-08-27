@@ -59,6 +59,7 @@ class SplashViewController: UIViewController {
     @IBAction func didTapLogin(sender: TWTRLogInButton) {
         SwiftSpinner.show("Logging you in...")
         Twitter.sharedInstance().logInWithCompletion { session, error in
+            Debug.isBlocking()
             if (session != nil) {
                 println("signed in as \(session.userName)")
                 self.provider.logins = ["api.twitter.com": "\(session.authToken);\(session.authTokenSecret)"]
@@ -68,10 +69,13 @@ class SplashViewController: UIViewController {
                     println("provider refresh() finished result: \(task.result) error? \(task.error)")
                     if task.error == nil, let identifier = task.result as? String {
                         self.currentUser.cognitoIdentity = identifier
-                        self.currentUser.writeToDisk()
+                        //self.currentUser.writeToDisk()
                         Twitter.sharedInstance().APIClient.loadUserWithID(session.userID, completion: { (user, error) -> Void in
+                            Debug.isBlocking()
                             if let user = user {
                                 self.currentUser.authenticate( { () -> Void in
+                                    println("\(self.className)::\(__FUNCTION__) authenticate callback")
+                                    Debug.isBlocking()
                                     SwiftSpinner.hide(completion: nil)
                                     self.currentUser.registerForRemoteNotificationsIfNeeded()
                                     self.performSegueWithIdentifier("Home", sender: self)
