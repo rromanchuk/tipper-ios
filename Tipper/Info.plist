@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>API_ROOT_URL</key>
-	<string>https://coinbit.tips</string>
+	<string>https://coinbit.tips/api</string>
 	<key>APPLE_PAY_MERCHANT</key>
 	<string>$(APPLE_PAY_MERCHANT)</string>
 	<key>AWS_ADMIN_SNS</key>
@@ -31,7 +31,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>157</string>
+	<string>158</string>
 	<key>COGNITO_POOL</key>
 	<string>$(COGNITO_POOL)</string>
 	<key>Configuration</key>
