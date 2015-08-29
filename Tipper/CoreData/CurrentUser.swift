@@ -84,7 +84,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
     var uuid: String? {
         get {
-            return twitterUserId!
+            return twitterUserId
         }
     }
 
@@ -385,15 +385,15 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     }
 
 
-    func refreshWithServer(completion: (error: NSError?) -> Void) {
-        API.sharedInstance.me({ (json, error) -> Void in
-            if (error == nil) {
-                self.updateEntityWithJSON(json)
-                self.writeToDisk()
-            }
-            completion(error: error)
-        })
-    }
+//    func refreshWithServer(completion: (error: NSError?) -> Void) {
+//        API.sharedInstance.me({ (json, error) -> Void in
+//            if (error == nil) {
+//                self.updateEntityWithJSON(json)
+//                self.writeToDisk()
+//            }
+//            completion(error: error)
+//        })
+//    }
 
     func refreshWithDynamo(completion: (error: NSError?) -> Void) {
         println("\(className)::\(__FUNCTION__)")

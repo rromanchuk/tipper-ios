@@ -40,11 +40,15 @@ class InterfaceController: WKInterfaceController {
     }
     
     func requestBalanceFromPhone() {
+        
         WKInterfaceController.openParentApplication(["request": "balance"], reply: { (replyInfo, error) -> Void in
             println("\(self.className)::\(__FUNCTION__) replyInfo:\(replyInfo) error:\(error)")
-            if let balance: String = replyInfo["balance"] as? String {
-                self.balanceLabel.setText(balance)
+            if error == nil && replyInfo != nil {
+                if let balance: String = replyInfo["balance"] as? String  {
+                    self.balanceLabel.setText(balance)
+                }
             }
+            
 
         })
     }

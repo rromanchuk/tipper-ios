@@ -116,7 +116,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func refresh() {
-        println("\(className)::\(__FUNCTION__)")
+        println("\(className)::\(__FUNCTION__) balance: \(currentUser.balanceAsUBTC)")
+        
         
         if currentUser.isTwitterAuthenticated {
             provider.logins = ["api.twitter.com": "\(Twitter.sharedInstance().session().authToken);\(Twitter.sharedInstance().session().authTokenSecret)"]
@@ -267,34 +268,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func endBackgroundTask() {
-        UIApplication.sharedApplication().endBackgroundTask(backgroundTask)
-        backgroundTask = UIBackgroundTaskInvalid
-    }
-
-    func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!) {
-        println("\(className)::\(__FUNCTION__)")
-
-        // 1
-        if let userInfo = userInfo, request = userInfo["request"] as? String {
-            if request == "balance" {
-                // 2
-                registerBackgroundTask()
-                currentUser.refreshWithServer({ (error) -> Void in
-                    self.managedObjectContext.refreshObject(self.currentUser, mergeChanges: true)
-                    reply(["balance": self.currentUser.balanceAsUBTC, "userId": self.currentUser.userId!, "bitcoinAddress": self.currentUser.bitcoinAddress!])
-                    if self.backgroundTask != UIBackgroundTaskInvalid {
-                        self.endBackgroundTask()
-                    }
-                })
-                // 3
-
-                return
-            }
+        if self.backgroundTask != UIBackgroundTaskInvalid {
+            UIApplication.sharedApplication().endBackgroundTask(backgroundTask)
+            backgroundTask = UIBackgroundTaskInvalid
         }
-        
-        // 4
-        reply([:])
     }
+    
+    func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!) {
+        println("\(className)::\(__FUNCTION__) userInfo:\(userInfo)")
+        registerBackgroundTask()
+        if currentUser != nil && currentUser.isTwitterAuthenticated {
+            reply(["balance": currentUser.balanceAsUBTC])
+        } else {
+           reply(["balance": "0"])
+        }
+        //
+        
+        endBackgroundTask()
+    }
+
+//    func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!) {
+//        println("\(className)::\(__FUNCTION__)")
+//        registerBackgroundTask()
+//        reply(["balance": self.currentUser.balanceAsUBTC])
+//        endBackgroundTask()
+//
+////        // 1
+////        if let userInfo = userInfo, request = userInfo["request"] as? String where currentUser.isTwitterAuthenticated {
+////            if request == "balance" {
+////                // 2
+////                currentUser.refreshWithDynamo({ (error) -> Void in
+////                    Debug.isBlocking()
+////                    if error == nil{
+////                        reply(["balance": self.currentUser.balanceAsUBTC])
+////                        if self.backgroundTask != UIBackgroundTaskInvalid {
+////                            self.endBackgroundTask()
+////                        }
+////                    } else {
+////                        reply([:])
+////                        if self.backgroundTask != UIBackgroundTaskInvalid {
+////                            self.endBackgroundTask()
+////                        }
+////                    }
+////                })
+////                // 3
+////                return
+////            }
+////            reply([:])
+////        }
+////        
+////        // 4
+////        reply([:])
+//    }
 
     func processMessage(message:JSON?) {
         println("\(className)::\(__FUNCTION__)")

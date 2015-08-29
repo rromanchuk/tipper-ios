@@ -21,15 +21,52 @@
             continueAfterRunningActions = "No"
             symbolName = "warnForBackgroundThreadUsage"
             moduleName = "">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tipper WatchKit Extension/InterfaceController.swift"
+            timestampString = "462501775.030883"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "requestBalanceFromPhone()"
+            landmarkType = "5">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "+[TWTRMultiThreadUtil warnForBackgroundThreadUsage]"
-                  moduleName = "Tipper"
+                  symbolName = "Tipper_WatchKit_Extension.InterfaceController.requestBalanceFromPhone (Tipper_WatchKit_Extension.InterfaceController)() -&gt; ()"
+                  moduleName = "Tipper WatchKit Extension"
                   usesParentBreakpointCondition = "Yes"
-                  offsetFromSymbolStart = "0">
+                  urlString = "file:///Users/ryan/tipper-ios/Tipper%20WatchKit%20Extension/InterfaceController.swift"
+                  timestampString = "462502001.243366"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "15">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tipper_WatchKit_Extension.InterfaceController.(requestBalanceFromPhone (Tipper_WatchKit_Extension.InterfaceController) -&gt; () -&gt; ()).(closure #1)"
+                  moduleName = "Tipper WatchKit Extension"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ryan/tipper-ios/Tipper%20WatchKit%20Extension/InterfaceController.swift"
+                  timestampString = "462502001.243546"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "37">
                </Location>
             </Locations>
          </BreakpointContent>
