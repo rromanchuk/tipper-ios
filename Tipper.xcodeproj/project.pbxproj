@@ -13,6 +13,7 @@
 		941631881AC404A7002016FD /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941631871AC404A7002016FD /* UIColor.swift */; };
 		941AA38A1AAFA34900CA9192 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA3891AAFA34900CA9192 /* Config.swift */; };
 		941AA38E1AB01EC000CA9192 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA38D1AB01EC000CA9192 /* SplashViewController.swift */; };
+		942780011B94CE70007CB713 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942780001B94CE70007CB713 /* BaseView.swift */; };
 		943243121B2D6BBE00D1A1D6 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943243111B2D6BBE00D1A1D6 /* TransitionManager.swift */; };
 		943243151B2D6C1300D1A1D6 /* HeaderContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943243131B2D6C1300D1A1D6 /* HeaderContainer.swift */; };
 		943243161B2D6C1300D1A1D6 /* HeaderDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943243141B2D6C1300D1A1D6 /* HeaderDetailCell.swift */; };
@@ -121,6 +122,7 @@
 		941631871AC404A7002016FD /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = Extensions/UIColor.swift; sourceTree = "<group>"; };
 		941AA3891AAFA34900CA9192 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		941AA38D1AB01EC000CA9192 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		942780001B94CE70007CB713 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseView.swift; path = Views/BaseView.swift; sourceTree = "<group>"; };
 		9432430F1B2D37FA00D1A1D6 /* HeaderContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderContainer.swift; path = Home/HeaderContainer.swift; sourceTree = "<group>"; };
 		943243111B2D6BBE00D1A1D6 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransitionManager.swift; path = Views/TransitionManager.swift; sourceTree = "<group>"; };
 		943243131B2D6C1300D1A1D6 /* HeaderContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderContainer.swift; path = Home/HeaderContainer.swift; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 			children = (
 				943243111B2D6BBE00D1A1D6 /* TransitionManager.swift */,
 				94AB27921ACA3D2B005A433F /* TintedButton.swift */,
+				942780001B94CE70007CB713 /* BaseView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -804,6 +807,7 @@
 				94416C0A1AAF989F00117AFC /* Alamofire-SwiftyJSON.swift in Sources */,
 				9432431A1B2E0A0C00D1A1D6 /* Transaction.swift in Sources */,
 				94FDE9BD1AB42079006B6454 /* NSFetchedResultsControllerExtension.swift in Sources */,
+				942780011B94CE70007CB713 /* BaseView.swift in Sources */,
 				94FA97DB1AB2E691005B0C83 /* DynamoFavorite.swift in Sources */,
 				949842061B260FB80079082C /* TipDetailContainer.swift in Sources */,
 				941AA38A1AAFA34900CA9192 /* Config.swift in Sources */,

@@ -21,6 +21,17 @@
             continueAfterRunningActions = "No"
             symbolName = "warnForBackgroundThreadUsage"
             moduleName = "">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "+[TWTRMultiThreadUtil warnForBackgroundThreadUsage]"
+                  moduleName = "Tipper"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

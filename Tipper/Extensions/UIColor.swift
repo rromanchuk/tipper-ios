@@ -8,6 +8,10 @@
 
 import Foundation
 extension UIColor {
+    
+    class func brandColor() -> UIColor {
+        return UIColor.colorWithRGB(0x5BBC84, alpha: 1.0)
+    }
     /**
     Construct a UIColor using an HTML/CSS RGB formatted value and an alpha value
 

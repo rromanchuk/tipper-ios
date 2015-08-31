@@ -61,7 +61,7 @@
                         <viewControllerLayoutGuide type="top" id="CCi-e0-bbW"/>
                         <viewControllerLayoutGuide type="bottom" id="Scb-tF-PuG"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="tgM-WN-m8P">
+                    <view key="view" contentMode="scaleToFill" id="tgM-WN-m8P" customClass="BaseView" customModule="Tipper" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -172,7 +172,7 @@
                         <viewControllerLayoutGuide type="top" id="Wpm-Fc-fcZ"/>
                         <viewControllerLayoutGuide type="bottom" id="ycM-k7-yOs"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="xl9-h1-7Xu">
+                    <view key="view" contentMode="scaleToFill" id="xl9-h1-7Xu" customClass="BaseView" customModule="Tipper" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -630,7 +630,7 @@
                         <viewControllerLayoutGuide type="top" id="66p-ui-yt4"/>
                         <viewControllerLayoutGuide type="bottom" id="Q64-ty-CaD"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="swy-dr-NMf">
+                    <view key="view" contentMode="scaleToFill" id="swy-dr-NMf" customClass="BaseView" customModule="Tipper" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -683,7 +683,7 @@
                         <viewControllerLayoutGuide type="top" id="ohq-tc-ubd"/>
                         <viewControllerLayoutGuide type="bottom" id="vzA-zG-apR"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="NhH-jh-Y5F">
+                    <view key="view" contentMode="scaleToFill" id="NhH-jh-Y5F" customClass="BaseView" customModule="Tipper" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1002,12 +1002,12 @@
                         <viewControllerLayoutGuide type="top" id="WZW-gG-YVx"/>
                         <viewControllerLayoutGuide type="bottom" id="aja-b9-tWN"/>
                     </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="NwU-FI-gqd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="NwU-FI-gqd" customClass="BaseView" customModule="Tipper" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCv-dq-4JX" userLabel="Settings Button">
-                                <rect key="frame" x="343" y="28" width="35" height="35"/>
+                                <rect key="frame" x="343" y="22" width="35" height="35"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="6xB-QF-Xzp"/>
@@ -1031,7 +1031,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yo-N2-sfZ" userLabel="Address Button">
-                                <rect key="frame" x="37" y="28" width="37" height="35"/>
+                                <rect key="frame" x="37" y="22" width="37" height="35"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="WeZ-3u-bmJ"/>
@@ -1055,7 +1055,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="778" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAL-w9-cfz">
-                                <rect key="frame" x="140" y="25" width="134.5" height="41"/>
+                                <rect key="frame" x="140" y="19" width="134.5" height="41"/>
                                 <animations/>
                                 <gestureRecognizers/>
                                 <attributedString key="attributedText">
@@ -1080,7 +1080,7 @@
                                 </connections>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTC 0.000234" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQP-rY-fhZ">
-                                <rect key="frame" x="170.5" y="68" width="73" height="12"/>
+                                <rect key="frame" x="170" y="62" width="73" height="12"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1369,6 +1369,6 @@
         <image name="wallet" width="76" height="73"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sw9-Zr-Rqd"/>
+        <segue reference="7dQ-p7-IX8"/>
     </inferredMetricsTieBreakers>
 </document>
