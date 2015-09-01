@@ -2,3 +2,4 @@ github "aschuch/QRCode" == 0.1.1
 github "SwiftyJSON/SwiftyJSON"
 github "Alamofire/Alamofire" 
 github "Haneke/HanekeSwift"
+github "stripe/stripe-ios"

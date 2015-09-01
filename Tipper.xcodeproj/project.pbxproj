@@ -21,7 +21,6 @@
 		9432431A1B2E0A0C00D1A1D6 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943243191B2E0A0C00D1A1D6 /* Transaction.swift */; };
 		943A6FE21B21F6B300D50D8A /* TipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943A6FE11B21F6B300D50D8A /* TipCell.swift */; };
 		943E93FD1B05C8DC007D98C7 /* WalletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943E93FC1B05C8DC007D98C7 /* WalletController.swift */; };
-		94416C0A1AAF989F00117AFC /* Alamofire-SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF51AAF989F00117AFC /* Alamofire-SwiftyJSON.swift */; };
 		94416C0C1AAF989F00117AFC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF71AAF989F00117AFC /* API.swift */; };
 		94416C0D1AAF989F00117AFC /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF81AAF989F00117AFC /* Router.swift */; };
 		94416C101AAF989F00117AFC /* UserSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BFB1AAF989F00117AFC /* UserSync.swift */; };
@@ -132,7 +131,6 @@
 		943A6FE11B21F6B300D50D8A /* TipCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipCell.swift; path = Home/TipCell.swift; sourceTree = "<group>"; };
 		943E93FC1B05C8DC007D98C7 /* WalletController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletController.swift; sourceTree = "<group>"; };
 		94416BED1AAF94C700117AFC /* Tipper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Tipper.entitlements; sourceTree = "<group>"; };
-		94416BF51AAF989F00117AFC /* Alamofire-SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire-SwiftyJSON.swift"; sourceTree = "<group>"; };
 		94416BF71AAF989F00117AFC /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		94416BF81AAF989F00117AFC /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		94416BFB1AAF989F00117AFC /* UserSync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSync.swift; sourceTree = "<group>"; };
@@ -281,7 +279,6 @@
 			isa = PBXGroup;
 			children = (
 				94F5137B1B8D03BC002E0996 /* SwiftSpinner.swift */,
-				94416BF51AAF989F00117AFC /* Alamofire-SwiftyJSON.swift */,
 				94416BF71AAF989F00117AFC /* API.swift */,
 				941AA3891AAFA34900CA9192 /* Config.swift */,
 				94FDE9C01AB4BF6A006B6454 /* Debug.swift */,
@@ -804,7 +801,6 @@
 				94FDE9BF1AB4209B006B6454 /* SuperFetchedResultsControllerDelegate.swift in Sources */,
 				941631881AC404A7002016FD /* UIColor.swift in Sources */,
 				94C5C0D31ABFF47A009E4B05 /* Market.swift in Sources */,
-				94416C0A1AAF989F00117AFC /* Alamofire-SwiftyJSON.swift in Sources */,
 				9432431A1B2E0A0C00D1A1D6 /* Transaction.swift in Sources */,
 				94FDE9BD1AB42079006B6454 /* NSFetchedResultsControllerExtension.swift in Sources */,
 				942780011B94CE70007CB713 /* BaseView.swift in Sources */,

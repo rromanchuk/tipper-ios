@@ -28,21 +28,33 @@ public class API {
 
     func call(req: Request, completion: ((json: JSON, error: NSError?) -> Void)?) {
         //println("\(className)::\(__FUNCTION__) req:\(req)")
-
-        req.validate().responseSwiftyJSON( { (request, response, JSON, error) -> Void in
-            //println(TTTURLRequestFormatter.cURLCommandFromURLRequest(request))
-            //println("API Call: request:\(request), response:\(response), JSON:\(JSON), error:\(error)")
-            if let error = error {
+        
+        req.responseJSON(options: nil) { (request, response, json, error) -> Void in
+            if error != nil {
                 if let response = response where response == 401 {
                     println("Received 401 UNAUTHORIZED FROM USER")
                     NSNotificationCenter.defaultCenter().postNotificationName("UNAUTHORIZED_USER", object: nil)
                 }
-
                 completion?(json: nil, error: error)
             } else {
-                completion?(json: JSON, error: nil)
+                completion?(json: JSON(json!), error: error)
             }
-        })
+ 
+        }
+//        req.validate().responseJSON( { (request, response, JSON, error) -> Void in
+//            //println(TTTURLRequestFormatter.cURLCommandFromURLRequest(request))
+//            //println("API Call: request:\(request), response:\(response), JSON:\(JSON), error:\(error)")
+//            if let error = error {
+//                if let response = response where response == 401 {
+//                    println("Received 401 UNAUTHORIZED FROM USER")
+//                    NSNotificationCenter.defaultCenter().postNotificationName("UNAUTHORIZED_USER", object: nil)
+//                }
+//
+//                completion?(json: nil, error: error)
+//            } else {
+//                completion?(json: JSON, error: nil)
+//            }
+//        })
 
         //        debugPrintln(req)
     }
