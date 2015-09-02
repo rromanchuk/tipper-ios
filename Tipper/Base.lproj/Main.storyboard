@@ -29,7 +29,6 @@
             <string>Bariol-Regular</string>
             <string>Bariol-Regular</string>
             <string>Bariol-Regular</string>
-            <string>Bariol-Regular</string>
         </mutableArray>
         <mutableArray key="Bariol_Bold.otf">
             <string>Bariol-Bold</string>
@@ -164,6 +163,62 @@
             </objects>
             <point key="canvasLocation" x="-848" y="643"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="QQm-cH-2fI">
+            <objects>
+                <viewController id="AQK-kz-A32" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GDd-DS-KaY"/>
+                        <viewControllerLayoutGuide type="bottom" id="gYx-fP-Btv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9u7-As-ctZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6dN-4r-PiX">
+                                <rect key="frame" x="0.0" y="20" width="414" height="78"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="78" id="94b-nW-dQP"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="x99-hT-nup" kind="embed" identifier="AccountHeaderEmbed" id="ejE-aS-Apy"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dpK-my-TPF">
+                                <rect key="frame" x="0.0" y="98" width="414" height="638"/>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="6dN-4r-PiX" secondAttribute="width" id="5ko-Uz-t23"/>
+                            <constraint firstAttribute="centerX" secondItem="6dN-4r-PiX" secondAttribute="centerX" id="7Na-DY-LCR"/>
+                            <constraint firstItem="gYx-fP-Btv" firstAttribute="top" secondItem="dpK-my-TPF" secondAttribute="bottom" id="FBR-MU-BrZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dpK-my-TPF" secondAttribute="trailing" id="Mj7-x0-ihi"/>
+                            <constraint firstAttribute="width" secondItem="dpK-my-TPF" secondAttribute="width" id="alU-NU-F1A"/>
+                            <constraint firstItem="6dN-4r-PiX" firstAttribute="trailingMargin" secondItem="9u7-As-ctZ" secondAttribute="trailingMargin" id="fet-6P-bw9"/>
+                            <constraint firstAttribute="centerX" secondItem="dpK-my-TPF" secondAttribute="centerX" id="gdh-iG-HNM"/>
+                            <constraint firstItem="dpK-my-TPF" firstAttribute="leading" secondItem="9u7-As-ctZ" secondAttribute="leadingMargin" id="hoY-N7-cNA"/>
+                            <constraint firstItem="6dN-4r-PiX" firstAttribute="leadingMargin" secondItem="9u7-As-ctZ" secondAttribute="leadingMargin" id="lEq-pP-9bU"/>
+                            <constraint firstItem="6dN-4r-PiX" firstAttribute="top" secondItem="GDd-DS-KaY" secondAttribute="top" id="oti-jc-8i1"/>
+                            <constraint firstItem="dpK-my-TPF" firstAttribute="top" secondItem="6dN-4r-PiX" secondAttribute="bottom" id="pmb-Xp-dkZ"/>
+                            <constraint firstItem="6dN-4r-PiX" firstAttribute="top" secondItem="dpK-my-TPF" secondAttribute="top" id="tMZ-Hz-pk5"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="fet-6P-bw9"/>
+                                <exclude reference="lEq-pP-9bU"/>
+                                <exclude reference="tMZ-Hz-pk5"/>
+                                <exclude reference="Mj7-x0-ihi"/>
+                                <exclude reference="hoY-N7-cNA"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cgb-fb-WEY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-496" y="1635"/>
+        </scene>
         <!--Wallet Container Controller-->
         <scene sceneID="rCw-nr-KXE">
             <objects>
@@ -288,7 +343,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8OC-yB-Kxp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-318" y="1515"/>
+            <point key="canvasLocation" x="187" y="1515"/>
         </scene>
         <!--Wallet Controller-->
         <scene sceneID="ehQ-m5-dqf">
@@ -620,7 +675,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BaR-wB-r7m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="231" y="1515"/>
+            <point key="canvasLocation" x="743" y="1515"/>
         </scene>
         <!--Home Controller-->
         <scene sceneID="o0I-3q-2Do">
@@ -1055,7 +1110,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="778" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAL-w9-cfz">
-                                <rect key="frame" x="140" y="19" width="134.5" height="41"/>
+                                <rect key="frame" x="139" y="19" width="134.5" height="41"/>
                                 <animations/>
                                 <gestureRecognizers/>
                                 <attributedString key="attributedText">
@@ -1079,41 +1134,21 @@
                                     <outletCollection property="gestureRecognizers" destination="Yr9-6e-qR1" appends="YES" id="9y8-7i-dMh"/>
                                 </connections>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTC 0.000234" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQP-rY-fhZ">
-                                <rect key="frame" x="170" y="62" width="73" height="12"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="12"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.36078431370000003" green="0.74117647060000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="dAL-w9-cfz" secondAttribute="centerX" id="97f-yC-MB3"/>
-                            <constraint firstItem="DQP-rY-fhZ" firstAttribute="top" secondItem="dAL-w9-cfz" secondAttribute="bottom" constant="2" id="CKi-N4-ClW"/>
                             <constraint firstItem="1yo-N2-sfZ" firstAttribute="leading" secondItem="NwU-FI-gqd" secondAttribute="leadingMargin" constant="21" id="Gn9-kt-0WA"/>
-                            <constraint firstAttribute="centerX" secondItem="DQP-rY-fhZ" secondAttribute="centerX" id="IqJ-UT-NVb"/>
                             <constraint firstItem="YCv-dq-4JX" firstAttribute="centerY" secondItem="dAL-w9-cfz" secondAttribute="centerY" id="ZfN-Hx-iPP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YCv-dq-4JX" secondAttribute="trailing" constant="20" id="aAc-v0-Qsr"/>
                             <constraint firstItem="dAL-w9-cfz" firstAttribute="centerY" secondItem="1yo-N2-sfZ" secondAttribute="centerY" id="f7E-oZ-qf1"/>
-                            <constraint firstItem="DQP-rY-fhZ" firstAttribute="top" secondItem="dAL-w9-cfz" secondAttribute="bottom" constant="-5" id="hr5-V8-4lx"/>
                             <constraint firstAttribute="centerY" secondItem="dAL-w9-cfz" secondAttribute="centerY" id="iod-MY-tR9"/>
-                            <constraint firstAttribute="centerX" secondItem="DQP-rY-fhZ" secondAttribute="centerX" id="ljK-kN-0k9"/>
-                            <constraint firstItem="DQP-rY-fhZ" firstAttribute="centerX" secondItem="dAL-w9-cfz" secondAttribute="centerX" constant="10" id="xK8-Nf-bjt"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="IqJ-UT-NVb"/>
-                                <exclude reference="hr5-V8-4lx"/>
-                                <exclude reference="xK8-Nf-bjt"/>
-                            </mask>
-                        </variation>
                     </view>
                     <toolbarItems/>
                     <connections>
                         <outlet property="balanceLabel" destination="dAL-w9-cfz" id="Ran-bS-inU"/>
-                        <outlet property="btcLabel" destination="DQP-rY-fhZ" id="d3s-6g-F9d"/>
                         <outlet property="settingsButton" destination="YCv-dq-4JX" id="aof-PD-tic"/>
                         <outlet property="walletButton" destination="1yo-N2-sfZ" id="FYd-n0-o6C"/>
                     </connections>
@@ -1369,6 +1404,6 @@
         <image name="wallet" width="76" height="73"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7dQ-p7-IX8"/>
+        <segue reference="ejE-aS-Apy"/>
     </inferredMetricsTieBreakers>
 </document>

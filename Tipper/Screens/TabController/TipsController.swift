@@ -59,9 +59,12 @@ class TipsController: UIViewController {
         tableView.addSubview(refreshControl)
         
         SwiftSpinner.show("Loading your tips...", animated: true)
-        DynamoFavorite.fetchTips(currentUser, context: managedObjectContext) { () -> Void in
+        DynamoFavorite.fetchAllFavoritesFromUser(currentUser, context: managedObjectContext, completion: { () -> Void in
             SwiftSpinner.hide(completion: nil)
-        }
+        })
+//        DynamoFavorite.fetchTips(currentUser, context: managedObjectContext) { () -> Void in
+//            
+//        }
         
 
     }

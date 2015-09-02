@@ -319,7 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				94F5137D1B8D161A002E0996 /* Notifications */,
-				9444D6751B38E4220052C2B1 /* TabController */,
+				9444D6751B38E4220052C2B1 /* TipsController */,
 				949842001B25FC300079082C /* TipDetails */,
 				94C255211B12B20600A65B94 /* Splash */,
 				941631811AC3CBEA002016FD /* Address */,
@@ -330,12 +330,12 @@
 			path = Screens;
 			sourceTree = "<group>";
 		};
-		9444D6751B38E4220052C2B1 /* TabController */ = {
+		9444D6751B38E4220052C2B1 /* TipsController */ = {
 			isa = PBXGroup;
 			children = (
 				9453A66B1B39FD8800D35E04 /* TipsController.swift */,
 			);
-			name = TabController;
+			name = TipsController;
 			sourceTree = "<group>";
 		};
 		9462D7561B35D108001C5083 /* Tipper WatchKit Extension */ = {

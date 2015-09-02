@@ -52,6 +52,20 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     func lookupValue() -> String {
         return self.ObjectID!
     }
+    
+    class func fetchAllFavoritesFromUser(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
+        println("DynamoFavorite::\(__FUNCTION__)")
+        
+        let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
+        let exp = AWSDynamoDBQueryExpression()
+        
+        exp.hashKeyValues      = currentUser.userId!
+        exp.indexName = "FromUserID-index"
+        self.query(exp, secondaryIndexHash: "FromUserID", context: context) { () -> Void in
+            completion()
+        }
+
+    }
 
 
     class func fetchTips(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
@@ -149,7 +163,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
 
     }
 
-    class func query(exp: AWSDynamoDBQueryExpression, secondaryIndexHash: String, context: NSManagedObjectContext, completion: () -> Void) {
+    private class func query(exp: AWSDynamoDBQueryExpression, secondaryIndexHash: String, context: NSManagedObjectContext, completion: () -> Void) {
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let privateContext = context.privateContext
 
