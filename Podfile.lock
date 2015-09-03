@@ -12,6 +12,19 @@ PODS:
     - AWSCore (= 2.2.3)
   - AWSSQS (2.2.3):
     - AWSCore (= 2.2.3)
+  - Google/Analytics (1.0.7):
+    - Google/Core
+    - GoogleAnalytics (~> 3.12)
+  - Google/Core (1.0.7):
+    - GoogleNetworkingUtilities (~> 1.0)
+    - GoogleSymbolUtilities (~> 1.0)
+    - GoogleUtilities (~> 1.0)
+  - GoogleAnalytics (3.13.0)
+  - GoogleNetworkingUtilities (1.0.0):
+    - GoogleSymbolUtilities (~> 1.0)
+  - GoogleSymbolUtilities (1.0.0)
+  - GoogleUtilities (1.0.1):
+    - GoogleSymbolUtilities (~> 1.0)
   - HexColors (2.2.1)
   - RBBAnimation (0.4.0)
   - SDCAlertView (2.5.2):
@@ -19,14 +32,6 @@ PODS:
     - SDCAutoLayout (~> 2.0)
   - SDCAutoLayout (2.0.3)
   - SSKeychain (1.2.3)
-  - Stripe (4.0.3):
-    - Stripe/Checkout (= 4.0.3)
-    - Stripe/Core (= 4.0.3)
-  - Stripe/ApplePay (4.0.3):
-    - Stripe/Core
-  - Stripe/Checkout (4.0.3):
-    - Stripe/Core
-  - Stripe/Core (4.0.3)
   - TSMessages (0.9.12):
     - HexColors (~> 2.2.0)
 
@@ -38,10 +43,9 @@ DEPENDENCIES:
   - AWSS3 (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
   - AWSSNS (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
   - AWSSQS (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
+  - Google/Analytics
   - SDCAlertView
   - SSKeychain
-  - Stripe (= 4.0.3)
-  - Stripe/ApplePay
   - TSMessages
 
 EXTERNAL SOURCES:
@@ -86,12 +90,16 @@ SPEC CHECKSUMS:
   AWSS3: 9c03206264668b69ca94e4f05caa8926a4b0660f
   AWSSNS: fac1edf1fd6ba5c74cd446330278f930e089fd79
   AWSSQS: 888f04ee28a2050aeced66e96415cdbf6c073865
+  Google: 875f5a8ade86dd02e36586e4a54814843938c7f6
+  GoogleAnalytics: fcf1f1cad57ae1a9a53520018f0f680ceeeb8b49
+  GoogleNetworkingUtilities: 292992ab31b7b4ba32809a0e8b40e324cdfb2c0c
+  GoogleSymbolUtilities: a7b0feed1fe667c8d5e647177938d0ecd62d6948
+  GoogleUtilities: e3475cd4d45134221d2f3f3626095a1c49b62041
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
   RBBAnimation: 4b2d66f6d993febce63cd564da934985313b9c59
   SDCAlertView: f9706c18f456ea87909f8f199704cd28e582ff27
   SDCAutoLayout: e6885bb39ab8e2ec2ff84d158f38035f025f7420
   SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d
-  Stripe: 43a4307dc789483a61668d187c4a917d1348b0b6
   TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
 
 COCOAPODS: 0.38.2

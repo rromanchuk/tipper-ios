@@ -8,11 +8,13 @@
 
 import UIKit
 
-class NotificationsController: UIViewController, ContainerDelegate {
+class NotificationsController: UIViewController, ContainerDelegate, CustomModable {
     let className = "NotificationsController"
     var managedObjectContext: NSManagedObjectContext?
     var currentUser: CurrentUser!
     var market: Market!
+    
+    @IBOutlet weak var headerContainer: UIView!
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -39,6 +41,17 @@ class NotificationsController: UIViewController, ContainerDelegate {
             vc.containerDelegate = self
         }
         
+    }
+    
+    func prepareForTransition() {
+        println("\(className)::\(__FUNCTION__)")
+        view.backgroundColor = UIColor.clearColor()
+        headerContainer.hidden = true
+    }
+    
+    func transitionComplete() {
+        view.backgroundColor = UIColor.brandColor()
+        headerContainer.hidden = false
     }
     
 //    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {

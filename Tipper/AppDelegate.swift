@@ -12,6 +12,7 @@ import Fabric
 import Crashlytics
 import TwitterKit
 import SwiftyJSON
+import Stripe
 
 @UIApplicationMain
 
@@ -35,6 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Config.dump()
         AWSLogger.defaultLogger().logLevel = .Error
         AWSMobileAnalytics(forAppId: Config.get("AWS_ANALYTICS_ID"))
+        
+        // Configure tracker from GoogleService-Info.plist.
+        var configureError:NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
         
 
         NSUbiquitousKeyValueStore.defaultStore().synchronize()

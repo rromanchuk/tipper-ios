@@ -14,6 +14,7 @@ class AccountController: UIViewController, ContainerDelegate {
     var market: Market!
     let className = "AccountController"
     
+    @IBOutlet weak var headerContainer: UIView!
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         println("\(className)::\(__FUNCTION__)")

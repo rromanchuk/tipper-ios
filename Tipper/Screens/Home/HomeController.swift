@@ -58,7 +58,7 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
 
     func refresh() {
         println("\(className)::\(__FUNCTION__)")
-        refreshDelegate?.refreshUI()
+        refreshDelegate?.refreshHeader()
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -142,5 +142,5 @@ protocol SegmentControlDelegate:class {
 }
 
 protocol RefreshControlDelegate:class {
-    func refreshUI()
+    func refreshHeader()
 }

@@ -90,9 +90,9 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
         super.viewDidLoad()
         println("\(className)::\(__FUNCTION__) screenType: \(activeScreenType.rawValue)")
         displayUSD = false
-        updateMarkets()
-        refreshHeader()
         
+        refreshHeader()
+        updateMarkets()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillResignActive:", name: UIApplicationWillResignActiveNotification, object: UIApplication.sharedApplication())
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidEnterBackground:", name: UIApplicationDidEnterBackgroundNotification, object: UIApplication.sharedApplication())
@@ -128,10 +128,12 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
             notificationsButton.hidden = true
             accountButton.tintColor = UIColor.whiteColor()
             notificationsButton.tintColor = UIColor.whiteColor()
+            setHeaderTitle("Account")
         case .NotificationsScreen:
             closeButtonRight.hidden = false
             accountButton.hidden = true
             notificationsButton.tintColor = UIColor.whiteColor()
+            setHeaderTitle("Notifications")
         case .Unknown:
             closeButtonLeft.hidden = true
             closeButtonRight.hidden = true
@@ -139,12 +141,13 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
             accountButton.hidden = false
             accountButton.tintColor = UIColor.colorWithRGB(0x387652, alpha: 1.0)
             notificationsButton.tintColor = UIColor.colorWithRGB(0x387652, alpha: 1.0)
+            setBalance()
         }
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        refreshUI()
+        updateMarkets()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -184,28 +187,24 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
             labelAttributes.addAttribute(NSKernAttributeName, value:-5.0, range: NSMakeRange(0, 1))
             balanceLabel.attributedText = labelAttributes
         }
-
-
     }
     
-
-    func refreshUI() {
-        //println("\(className)::\(__FUNCTION__)")
-        Debug.isBlocking()
-        managedObjectContext.refreshObject(currentUser, mergeChanges: true)
-        setBalance()
+    func setHeaderTitle(title: String) {
+        let labelAttributes = NSMutableAttributedString(string: title)
+        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Regular", size: 40.0)!, range: NSMakeRange(0, count(title)))
+        balanceLabel.attributedText = labelAttributes
     }
-
+    
     func updateMarkets() {
         //println("\(className)::\(__FUNCTION__)")
         market.update { [weak self] () -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self?.refreshUI()
+                self?.refreshHeader()
             })
         }
         currentUser.updateBalanceUSD { [weak self] () -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self?.refreshUI()
+                self?.refreshHeader()
             })
         }
     }
@@ -260,7 +259,7 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
         currentUser.refreshWithDynamo { [weak self] (error) -> Void in
             if (error == nil) {
                 self?.updateMarkets()
-                self?.refreshUI()
+                self?.refreshHeader()
             } else if let error = error where error.code == 401 {
                 self?.currentUser.resetIdentifiers()
                 self?.performSegueWithIdentifier("BackToSplash", sender: self)

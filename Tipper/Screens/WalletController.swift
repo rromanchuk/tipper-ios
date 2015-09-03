@@ -10,6 +10,7 @@ import Foundation
 import PassKit
 import QRCode
 import SwiftyJSON
+import Stripe
 
 class WalletController: UITableViewController, PKPaymentAuthorizationViewControllerDelegate, STPCheckoutViewControllerDelegate, UITextFieldDelegate, UINavigationControllerDelegate {
     var managedObjectContext: NSManagedObjectContext?

@@ -14,6 +14,8 @@
 		941AA38A1AAFA34900CA9192 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA3891AAFA34900CA9192 /* Config.swift */; };
 		941AA38E1AB01EC000CA9192 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA38D1AB01EC000CA9192 /* SplashViewController.swift */; };
 		9426B28B1B97F177001F996C /* CustomUnwindModalSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9426B28A1B97F177001F996C /* CustomUnwindModalSegue.swift */; };
+		9426B28D1B98CF44001F996C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9426B28C1B98CF44001F996C /* GoogleService-Info.plist */; };
+		9426B2911B98DFCA001F996C /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9426B28E1B98D0FF001F996C /* Stripe.framework */; };
 		942780011B94CE70007CB713 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942780001B94CE70007CB713 /* BaseView.swift */; };
 		942780071B97B7D5007CB713 /* CustomModalSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942780061B97B7D5007CB713 /* CustomModalSegue.swift */; };
 		942780091B97B8EC007CB713 /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942780081B97B8EC007CB713 /* AccountController.swift */; };
@@ -126,6 +128,8 @@
 		941AA3891AAFA34900CA9192 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		941AA38D1AB01EC000CA9192 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		9426B28A1B97F177001F996C /* CustomUnwindModalSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomUnwindModalSegue.swift; path = Segues/CustomUnwindModalSegue.swift; sourceTree = "<group>"; };
+		9426B28C1B98CF44001F996C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9426B28E1B98D0FF001F996C /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
 		942780001B94CE70007CB713 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseView.swift; path = Views/BaseView.swift; sourceTree = "<group>"; };
 		942780061B97B7D5007CB713 /* CustomModalSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomModalSegue.swift; path = Segues/CustomModalSegue.swift; sourceTree = "<group>"; };
 		942780081B97B8EC007CB713 /* AccountController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountController.swift; path = Account/AccountController.swift; sourceTree = "<group>"; };
@@ -215,6 +219,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9426B2911B98DFCA001F996C /* Stripe.framework in Frameworks */,
 				94D9795E1B27696B0079F50C /* Haneke.framework in Frameworks */,
 				9484185A1AB6525F001C633E /* Alamofire.framework in Frameworks */,
 				94C255131B0D825800A65B94 /* Fabric.framework in Frameworks */,
@@ -463,6 +468,7 @@
 		94AF296F1AAEF2B600E16048 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9426B28C1B98CF44001F996C /* GoogleService-Info.plist */,
 				94AF29701AAEF2B600E16048 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -528,6 +534,7 @@
 		99548B7BBFFD4449A2DD2385 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9426B28E1B98D0FF001F996C /* Stripe.framework */,
 				949841FC1B25E47A0079082C /* Haneke.framework */,
 				94C255171B0D829100A65B94 /* TwitterKitResources.bundle */,
 				94C2550F1B0D825800A65B94 /* Fabric.framework */,
@@ -711,6 +718,7 @@
 				949841FF1B25F5BC0079082C /* star-2-icon.png in Resources */,
 				94416C191AAF989F00117AFC /* Images.xcassets in Resources */,
 				949842041B2601130079082C /* profile-image-placeholder.png in Resources */,
+				9426B28D1B98CF44001F996C /* GoogleService-Info.plist in Resources */,
 				94AF297F1AAEF2B600E16048 /* LaunchScreen.xib in Resources */,
 				945065FD1B07CFB900AF34F6 /* Bariol.ttf in Resources */,
 			);
@@ -766,6 +774,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/QRCode.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Haneke.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
 			);
 			outputPaths = (
 			);
