@@ -126,14 +126,19 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
         case .AccountScreen:
             closeButtonLeft.hidden = false
             notificationsButton.hidden = true
+            accountButton.tintColor = UIColor.whiteColor()
+            notificationsButton.tintColor = UIColor.whiteColor()
         case .NotificationsScreen:
-            closeButtonLeft.hidden = false
-            notificationsButton.hidden = true
+            closeButtonRight.hidden = false
+            accountButton.hidden = true
+            notificationsButton.tintColor = UIColor.whiteColor()
         case .Unknown:
             closeButtonLeft.hidden = true
             closeButtonRight.hidden = true
             notificationsButton.hidden = false
             accountButton.hidden = false
+            accountButton.tintColor = UIColor.colorWithRGB(0x387652, alpha: 1.0)
+            notificationsButton.tintColor = UIColor.colorWithRGB(0x387652, alpha: 1.0)
         }
     }
 
@@ -214,11 +219,22 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
     }
 
     @IBAction func didTapNotifications(sender: UIButton) {
-          self.parentViewController!.performSegueWithIdentifier("DidTapNotifications", sender: self)
+        switch activeScreenType {
+        case .NotificationsScreen:
+            didTapClose(sender)
+        case .Unknown, .AccountScreen:
+           self.parentViewController!.performSegueWithIdentifier("DidTapNotifications", sender: self)
+        }
+        
     }
 
     @IBAction func didTapAccount(sender: UIButton) {
-        self.parentViewController!.performSegueWithIdentifier("DidTapAccountSegue", sender: self)
+        switch activeScreenType {
+        case .AccountScreen:
+            didTapClose(sender)
+        case .Unknown, .NotificationsScreen:
+            self.parentViewController!.performSegueWithIdentifier("DidTapAccountSegue", sender: self)
+        }
     }
     
     func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {

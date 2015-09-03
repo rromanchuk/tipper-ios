@@ -943,7 +943,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCv-dq-4JX" userLabel="Account Button">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCv-dq-4JX" userLabel="Account Button" customClass="TintedButton" customModule="Tipper" customModuleProvider="target">
                                 <rect key="frame" x="343" y="22" width="35" height="35"/>
                                 <animations/>
                                 <constraints>
@@ -953,6 +953,7 @@
                                     <constraint firstAttribute="width" constant="50" id="Ol2-kM-ncB"/>
                                     <constraint firstAttribute="width" secondItem="YCv-dq-4JX" secondAttribute="height" multiplier="1:1" id="iF9-f7-4ft"/>
                                 </constraints>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="account">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -967,7 +968,7 @@
                                     <action selector="didTapAccount:" destination="x99-hT-nup" eventType="touchUpInside" id="U7Q-Nh-1ns"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yo-N2-sfZ" userLabel="Notifications Button">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yo-N2-sfZ" userLabel="Notifications Button" customClass="TintedButton" customModule="Tipper" customModuleProvider="target">
                                 <rect key="frame" x="37" y="22" width="37" height="35"/>
                                 <animations/>
                                 <constraints>
