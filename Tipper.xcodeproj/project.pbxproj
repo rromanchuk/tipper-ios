@@ -13,7 +13,12 @@
 		941631881AC404A7002016FD /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941631871AC404A7002016FD /* UIColor.swift */; };
 		941AA38A1AAFA34900CA9192 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA3891AAFA34900CA9192 /* Config.swift */; };
 		941AA38E1AB01EC000CA9192 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA38D1AB01EC000CA9192 /* SplashViewController.swift */; };
+		9426B28B1B97F177001F996C /* CustomUnwindModalSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9426B28A1B97F177001F996C /* CustomUnwindModalSegue.swift */; };
 		942780011B94CE70007CB713 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942780001B94CE70007CB713 /* BaseView.swift */; };
+		942780071B97B7D5007CB713 /* CustomModalSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942780061B97B7D5007CB713 /* CustomModalSegue.swift */; };
+		942780091B97B8EC007CB713 /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942780081B97B8EC007CB713 /* AccountController.swift */; };
+		9427800B1B97D294007CB713 /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9427800A1B97D294007CB713 /* NotificationsController.swift */; };
+		9427800D1B97D33F007CB713 /* NotificationsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9427800C1B97D33F007CB713 /* NotificationsTableController.swift */; };
 		943243121B2D6BBE00D1A1D6 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943243111B2D6BBE00D1A1D6 /* TransitionManager.swift */; };
 		943243151B2D6C1300D1A1D6 /* HeaderContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943243131B2D6C1300D1A1D6 /* HeaderContainer.swift */; };
 		943243161B2D6C1300D1A1D6 /* HeaderDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943243141B2D6C1300D1A1D6 /* HeaderDetailCell.swift */; };
@@ -65,7 +70,6 @@
 		94D9795E1B27696B0079F50C /* Haneke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 949841FC1B25E47A0079082C /* Haneke.framework */; };
 		94DA84B01B6D55E0005D4CD6 /* DynamoSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA84AF1B6D55E0005D4CD6 /* DynamoSettings.swift */; };
 		94EE8CF61AB16E7E000593CD /* TTTURLRequestFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */; };
-		94F3FD951B08581900CD0261 /* WalletContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F3FD941B08581900CD0261 /* WalletContainerController.swift */; };
 		94F5137C1B8D03BC002E0996 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F5137B1B8D03BC002E0996 /* SwiftSpinner.swift */; };
 		94FA97DB1AB2E691005B0C83 /* DynamoFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA97DA1AB2E691005B0C83 /* DynamoFavorite.swift */; };
 		94FA97DD1AB2EB71005B0C83 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA97DC1AB2EB71005B0C83 /* Favorite.swift */; };
@@ -121,7 +125,12 @@
 		941631871AC404A7002016FD /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = Extensions/UIColor.swift; sourceTree = "<group>"; };
 		941AA3891AAFA34900CA9192 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		941AA38D1AB01EC000CA9192 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		9426B28A1B97F177001F996C /* CustomUnwindModalSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomUnwindModalSegue.swift; path = Segues/CustomUnwindModalSegue.swift; sourceTree = "<group>"; };
 		942780001B94CE70007CB713 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseView.swift; path = Views/BaseView.swift; sourceTree = "<group>"; };
+		942780061B97B7D5007CB713 /* CustomModalSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomModalSegue.swift; path = Segues/CustomModalSegue.swift; sourceTree = "<group>"; };
+		942780081B97B8EC007CB713 /* AccountController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountController.swift; path = Account/AccountController.swift; sourceTree = "<group>"; };
+		9427800A1B97D294007CB713 /* NotificationsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsController.swift; path = Notifcations/NotificationsController.swift; sourceTree = "<group>"; };
+		9427800C1B97D33F007CB713 /* NotificationsTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsTableController.swift; path = Notifcations/NotificationsTableController.swift; sourceTree = "<group>"; };
 		9432430F1B2D37FA00D1A1D6 /* HeaderContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderContainer.swift; path = Home/HeaderContainer.swift; sourceTree = "<group>"; };
 		943243111B2D6BBE00D1A1D6 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransitionManager.swift; path = Views/TransitionManager.swift; sourceTree = "<group>"; };
 		943243131B2D6C1300D1A1D6 /* HeaderContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderContainer.swift; path = Home/HeaderContainer.swift; sourceTree = "<group>"; };
@@ -184,7 +193,6 @@
 		94DA84AF1B6D55E0005D4CD6 /* DynamoSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoSettings.swift; sourceTree = "<group>"; };
 		94EE8CF41AB16E7E000593CD /* TTTURLRequestFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTURLRequestFormatter.h; sourceTree = "<group>"; };
 		94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTURLRequestFormatter.m; sourceTree = "<group>"; };
-		94F3FD941B08581900CD0261 /* WalletContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletContainerController.swift; path = Wallet/WalletContainerController.swift; sourceTree = "<group>"; };
 		94F5137B1B8D03BC002E0996 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
 		94FA97DA1AB2E691005B0C83 /* DynamoFavorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoFavorite.swift; sourceTree = "<group>"; };
 		94FA97DC1AB2EB71005B0C83 /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
@@ -266,13 +274,22 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
-		943E93FB1B05C8B3007D98C7 /* Wallet */ = {
+		942780021B97AE9A007CB713 /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
 				943E93FC1B05C8DC007D98C7 /* WalletController.swift */,
-				94F3FD941B08581900CD0261 /* WalletContainerController.swift */,
+				942780081B97B8EC007CB713 /* AccountController.swift */,
 			);
-			name = Wallet;
+			name = Accounts;
+			sourceTree = "<group>";
+		};
+		942780031B97B730007CB713 /* Segues */ = {
+			isa = PBXGroup;
+			children = (
+				942780061B97B7D5007CB713 /* CustomModalSegue.swift */,
+				9426B28A1B97F177001F996C /* CustomUnwindModalSegue.swift */,
+			);
+			name = Segues;
 			sourceTree = "<group>";
 		};
 		94416BF41AAF989F00117AFC /* Libs */ = {
@@ -318,6 +335,7 @@
 		94416C051AAF989F00117AFC /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				942780021B97AE9A007CB713 /* Accounts */,
 				94F5137D1B8D161A002E0996 /* Notifications */,
 				9444D6751B38E4220052C2B1 /* TipsController */,
 				949842001B25FC300079082C /* TipDetails */,
@@ -325,7 +343,6 @@
 				941631811AC3CBEA002016FD /* Address */,
 				941631801AC3CBE2002016FD /* Home */,
 				94FA97D51AB2E0DA005B0C83 /* Transaction */,
-				943E93FB1B05C8B3007D98C7 /* Wallet */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -421,6 +438,7 @@
 		94AF296E1AAEF2B600E16048 /* Tipper */ = {
 			isa = PBXGroup;
 			children = (
+				942780031B97B730007CB713 /* Segues */,
 				94C2551C1B10FDCB00A65B94 /* Resources */,
 				94416C081AAF989F00117AFC /* AppDelegate.swift */,
 				94416BFC1AAF989F00117AFC /* CoreData */,
@@ -491,6 +509,8 @@
 		94F5137D1B8D161A002E0996 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				9427800A1B97D294007CB713 /* NotificationsController.swift */,
+				9427800C1B97D33F007CB713 /* NotificationsTableController.swift */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -799,6 +819,7 @@
 			files = (
 				943A6FE21B21F6B300D50D8A /* TipCell.swift in Sources */,
 				94FDE9BF1AB4209B006B6454 /* SuperFetchedResultsControllerDelegate.swift in Sources */,
+				942780091B97B8EC007CB713 /* AccountController.swift in Sources */,
 				941631881AC404A7002016FD /* UIColor.swift in Sources */,
 				94C5C0D31ABFF47A009E4B05 /* Market.swift in Sources */,
 				9432431A1B2E0A0C00D1A1D6 /* Transaction.swift in Sources */,
@@ -812,14 +833,16 @@
 				941631831AC3CC5E002016FD /* AddressController.swift in Sources */,
 				943243161B2D6C1300D1A1D6 /* HeaderDetailCell.swift in Sources */,
 				949842021B25FC590079082C /* TipDetailsViewController.swift in Sources */,
-				94F3FD951B08581900CD0261 /* WalletContainerController.swift in Sources */,
+				9426B28B1B97F177001F996C /* CustomUnwindModalSegue.swift in Sources */,
 				94416C141AAF989F00117AFC /* NSManagedObject+Extension.swift in Sources */,
+				9427800B1B97D294007CB713 /* NotificationsController.swift in Sources */,
 				94416C0D1AAF989F00117AFC /* Router.swift in Sources */,
 				94416C151AAF989F00117AFC /* NSManagedObjectContext+Base.m in Sources */,
 				9453A66C1B39FD8800D35E04 /* TipsController.swift in Sources */,
 				94FA97DD1AB2EB71005B0C83 /* Favorite.swift in Sources */,
 				943243151B2D6C1300D1A1D6 /* HeaderContainer.swift in Sources */,
 				943243181B2E094A00D1A1D6 /* DynamoTransaction.swift in Sources */,
+				9427800D1B97D33F007CB713 /* NotificationsTableController.swift in Sources */,
 				94416C181AAF989F00117AFC /* AppDelegate.swift in Sources */,
 				943E93FD1B05C8DC007D98C7 /* WalletController.swift in Sources */,
 				943243121B2D6BBE00D1A1D6 /* TransitionManager.swift in Sources */,
@@ -833,6 +856,7 @@
 				94C255201B12798900A65B94 /* Settings.swift in Sources */,
 				94AB27931ACA3D2B005A433F /* TintedButton.swift in Sources */,
 				94FA97DF1AB356FB005B0C83 /* FavoriteCell.swift in Sources */,
+				942780071B97B7D5007CB713 /* CustomModalSegue.swift in Sources */,
 				9484185E1AB6B2B8001C633E /* DynamoUser.swift in Sources */,
 				94AF29751AAEF2B600E16048 /* Tipper.xcdatamodeld in Sources */,
 				94EE8CF61AB16E7E000593CD /* TTTURLRequestFormatter.m in Sources */,

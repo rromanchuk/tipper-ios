@@ -44,6 +44,7 @@
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="userBalance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CurrentUser" inverseName="marketValue" inverseEntity="CurrentUser" syncable="YES"/>
     </entity>
+    <entity name="Notification" syncable="YES"/>
     <entity name="Settings" representedClassName="Tipper.Settings" syncable="YES">
         <attribute name="feeAmount" optional="YES" attributeType="String" defaultValueString="0.00001" syncable="YES"/>
         <attribute name="fundAmount" optional="YES" attributeType="String" defaultValueString="0.02" syncable="YES"/>
@@ -69,5 +70,6 @@
         <element name="Market" positionX="-54" positionY="117" width="128" height="135"/>
         <element name="Settings" positionX="-54" positionY="99" width="128" height="105"/>
         <element name="Transaction" positionX="-54" positionY="108" width="128" height="210"/>
+        <element name="Notification" positionX="-54" positionY="135" width="128" height="45"/>
     </elements>
 </model>

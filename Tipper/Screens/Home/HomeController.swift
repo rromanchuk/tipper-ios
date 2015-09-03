@@ -30,7 +30,8 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
     }()
 
 
-    @IBOutlet weak var tabBarContainer: UIView!
+    @IBOutlet weak var headerContainer: UIView!
+    @IBOutlet weak var tipsContainer: UIView!
 
 
     override func viewDidLoad() {
@@ -68,10 +69,21 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
             vc.managedObjectContext = managedObjectContext
             vc.currentUser = currentUser
             vc.market = market
+            vc.activeScreenType = .Unknown
             refreshDelegate = vc
             //vc.favorite = favorite
         } else if segue.identifier == "FeedEmbed" {
             let vc = segue.destinationViewController as! TipsController
+            vc.managedObjectContext = managedObjectContext
+            vc.currentUser = currentUser
+            vc.market = market
+        } else if segue.identifier == "DidTapNotifications" {
+            let vc = segue.destinationViewController as! NotificationsController
+            vc.managedObjectContext = managedObjectContext
+            vc.currentUser = currentUser
+            vc.market = market
+        } else if segue.identifier == "DidTapAccountSegue" {
+            let vc = segue.destinationViewController as! AccountController
             vc.managedObjectContext = managedObjectContext
             vc.currentUser = currentUser
             vc.market = market
@@ -86,8 +98,42 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
     }
 
     @IBAction func done(segue: UIStoryboardSegue, sender: AnyObject?) {
-        println("\(className)::\(__FUNCTION__)")
+        println("\(className)::\(__FUNCTION__) identifier: \(segue.identifier) \(segue.sourceViewController)")
+        let vc = segue.sourceViewController as? UIViewController
+        if let header = vc as? HeaderContainer {
+           header.refreshHeader()
+        }
     }
+    
+    override func viewControllerForUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject?) -> UIViewController? {
+        println("\(className)::\(__FUNCTION__) fromViewController: \(fromViewController)")
+        let vc = super.viewControllerForUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
+        println("viewController to handle the unwind: \(vc)")
+        return vc
+    }
+    
+    override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
+        println("\(className)::\(__FUNCTION__) fromViewController: \(fromViewController)")
+        let canPerform =  super.canPerformUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
+        println("canPerform?: \(canPerform)")
+        return canPerform
+    }
+
+    
+//    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
+//        if let id = identifier{
+//            println("\(className)::\(__FUNCTION__) identifier: \(id)")
+//            if id == "ExitToHome" {
+//                let unwindSegue = CustomUnwindModalSegue(identifier: id, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
+//                    
+//                })
+//                return unwindSegue
+//            }
+//        }
+//        
+//        return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
+//    }
+
 
 }
 
