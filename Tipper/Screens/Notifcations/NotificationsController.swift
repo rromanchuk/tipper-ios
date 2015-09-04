@@ -43,30 +43,25 @@ class NotificationsController: UIViewController, ContainerDelegate, CustomModabl
         
     }
     
-    func prepareForTransition() {
+    func prepareForSegueAnimation() {
         println("\(className)::\(__FUNCTION__)")
         view.backgroundColor = UIColor.clearColor()
         headerContainer.hidden = true
     }
     
-    func transitionComplete() {
+    func segueAnimationComplete() {
         view.backgroundColor = UIColor.brandColor()
         headerContainer.hidden = false
     }
     
-//    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
-//        if let id = identifier{
-//            println("\(className)::\(__FUNCTION__) identifier: \(id)")
-//            if id == "ExitToHome" {
-//                let unwindSegue = CustomUnwindModalSegue(identifier: id, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
-//                    
-//                })
-//                return unwindSegue
-//            }
-//        }
-//        
-//        return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
+//    func prepareForUnwindSegue() {
+//        prepareForSegue()
 //    }
+//    
+//    func segueUnwindComplete() {
+//        
+//    }
+    
     
     @IBAction func didTapClose() {
         println("\(className)::\(__FUNCTION__)")

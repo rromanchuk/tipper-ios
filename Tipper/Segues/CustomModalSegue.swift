@@ -18,7 +18,7 @@ class CustomModalSegue: UIStoryboardSegue {
         var secondVCView = self.destinationViewController.view as UIView!
         
         let destinationVc =  self.destinationViewController as? CustomModable
-        destinationVc?.prepareForTransition()
+        destinationVc?.prepareForSegueAnimation()
         
         // Get the screen width and height.
         let screenWidth = UIScreen.mainScreen().bounds.size.width
@@ -27,10 +27,6 @@ class CustomModalSegue: UIStoryboardSegue {
         // Specify the initial position of the destination view.
         secondVCView.frame = CGRectMake(0.0, screenHeight, screenWidth, screenHeight)
         
-//        if let vc = self.destinationViewController as? NotificationsController {
-//            vc.headerContainer.hidden = true
-//            vc.view.backgroundColor = UIColor.clearColor()
-//        }
         
         // Access the app's key window and insert the destination view above the current (source) one.
         let window = UIApplication.sharedApplication().keyWindow
@@ -42,7 +38,7 @@ class CustomModalSegue: UIStoryboardSegue {
             secondVCView.frame = CGRectOffset(secondVCView.frame, 0.0, -screenHeight)
             
             }) { (Finished) -> Void in
-                destinationVc?.transitionComplete()
+                destinationVc?.segueAnimationComplete()
                 self.sourceViewController.presentViewController(self.destinationViewController as! UIViewController,
                     animated: false,
                     completion: nil)
@@ -51,6 +47,9 @@ class CustomModalSegue: UIStoryboardSegue {
 }
 
 protocol CustomModable:class {
-    func prepareForTransition()
-    func transitionComplete()
+    func prepareForSegueAnimation()
+    func segueAnimationComplete()
+    
+//    func prepareForUnwindSegue()
+//    func segueUnwindComplete()
 }

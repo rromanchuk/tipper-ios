@@ -9,22 +9,42 @@
 import UIKit
 
 class CustomUnwindModalSegue: UIStoryboardSegue {
+    let className = "CustomUnwindModalSegue"
+
     override func perform() {
+        println("\(className)::\(__FUNCTION__) source: \(self.sourceViewController) destination: \(self.destinationViewController) ")
         // Assign the source and destination views to local variables.
-        var secondVCView = self.sourceViewController.view as UIView!
-        var firstVCView = self.destinationViewController.view as UIView!
+        var viewOnScreen = self.sourceViewController.view as UIView!
+        var viewAfterUnwind = self.destinationViewController.view as UIView!
         
-       
+        let controllerOnScreen = self.sourceViewController as? CustomModable
+        //let controllerAfterUnwind =
         
         let screenHeight = UIScreen.mainScreen().bounds.size.height
-        
+        let screenWidth = UIScreen.mainScreen().bounds.size.width
         let window = UIApplication.sharedApplication().keyWindow
-        window?.insertSubview(firstVCView, aboveSubview: secondVCView)
+        
+        //sourceViewController.view?.superview?.insertSubview(destinationViewController.view!, atIndex: 0)
+        
+        //sourceViewController.view!!.insertSubview(destinationViewController.view, atIndex: 0)
+        if let source = sourceViewController as? UIViewController, destination = destinationViewController as? UIViewController {
+            source.view.superview?.insertSubview(destination.view, atIndex: 0)
+        }
+        //(self.sourceViewController as! UIViewController).view.superview?.insertSubview(self.destinationViewController, atIndex: <#Int#>)
+        
+        //viewAfterUnwind.frame = CGRectMake(0.0, 0.0, screenWidth, screenHeight)
+        //window?.insertSubview(viewAfterUnwind, be: viewOnScreen)
+        //window?.insertSubview(viewAfterUnwind, belowSubview: viewOnScreen)
+        
+        println("viewOnScreen: \(NSStringFromCGRect(viewOnScreen.frame))")
+        println("viewAfterUnwind: \(NSStringFromCGRect(viewAfterUnwind.frame))")
+        controllerOnScreen?.prepareForSegueAnimation()
+        
         
         // Animate the transition.
         UIView.animateWithDuration(0.4, animations: { () -> Void in
-            firstVCView.frame = CGRectOffset(firstVCView.frame, 0.0, screenHeight)
-            secondVCView.frame = CGRectOffset(secondVCView.frame, 0.0, screenHeight)
+            viewOnScreen.frame = CGRectOffset(viewOnScreen.frame, 0.0, screenHeight)
+            //secondVCView.frame = CGRectOffset(secondVCView.frame, 0.0, screenHeight)
             
             }) { (Finished) -> Void in
                 

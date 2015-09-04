@@ -120,19 +120,18 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
     }
 
     
-//    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
-//        if let id = identifier{
-//            println("\(className)::\(__FUNCTION__) identifier: \(id)")
-//            if id == "ExitToHome" {
-//                let unwindSegue = CustomUnwindModalSegue(identifier: id, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
-//                    
-//                })
-//                return unwindSegue
-//            }
-//        }
-//        
-//        return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
-//    }
+    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
+        println("\(className)::\(__FUNCTION__) toViewController: \(toViewController), fromViewController: \(fromViewController)")
+        if let fromModal = fromViewController as? CustomModable {
+
+            let unwindSegue = CustomUnwindModalSegue(identifier: identifier, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
+                
+            })
+            return unwindSegue
+        }
+        
+        return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
+    }
 
 
 }

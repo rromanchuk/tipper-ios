@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AccountController: UIViewController, ContainerDelegate {
+class AccountController: UIViewController, ContainerDelegate, CustomModable {
     var managedObjectContext: NSManagedObjectContext?
     var currentUser: CurrentUser!
     var market: Market!
@@ -38,6 +38,25 @@ class AccountController: UIViewController, ContainerDelegate {
     func didTapClose() {
         println("\(className)::\(__FUNCTION__)")
         self.performSegueWithIdentifier("ExitToHomeFromAccount", sender: self)
+    }
+    
+    func prepareForSegueAnimation() {
+        println("\(className)::\(__FUNCTION__)")
+        view.backgroundColor = UIColor.clearColor()
+        headerContainer.hidden = true
+    }
+    
+    func segueAnimationComplete() {
+        view.backgroundColor = UIColor.brandColor()
+        headerContainer.hidden = false
+    }
+    
+    func prepareForUnwindSegue() {
+        
+    }
+    
+    func segueUnwindComplete() {
+        
     }
 
 }
