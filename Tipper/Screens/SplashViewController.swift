@@ -15,6 +15,7 @@ class SplashViewController: UIViewController {
     var className = "SplashViewController"
     var managedObjectContext: NSManagedObjectContext?
     var market: Market?
+    var twitterSession: TWTRAuthSession? = nil
 
     @IBOutlet weak var twitterLoginButton: UIButton!
 
@@ -30,6 +31,8 @@ class SplashViewController: UIViewController {
         twitterLoginButton.layer.borderWidth = 1.0
         twitterLoginButton.layer.borderColor = UIColor.whiteColor().CGColor
         println("\(className)::\(__FUNCTION__) \(managedObjectContext)")
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillResignActive:", name: UIApplicationWillResignActiveNotification, object: UIApplication.sharedApplication())
         
     }
 
@@ -40,6 +43,10 @@ class SplashViewController: UIViewController {
             SwiftSpinner.hide(completion: nil)
             performSegueWithIdentifier("Home", sender: self)
         }
+    }
+
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -57,44 +64,8 @@ class SplashViewController: UIViewController {
     }
 
     @IBAction func didTapLogin(sender: TWTRLogInButton) {
-        SwiftSpinner.show("Logging you in...")
-        Twitter.sharedInstance().logInWithCompletion { session, error in
-            Debug.isBlocking()
-            if (session != nil) {
-                println("signed in as \(session.userName)")
-                self.provider.logins = ["api.twitter.com": "\(session.authToken);\(session.authTokenSecret)"]
-                self.currentUser.twitterAuthenticationWithTKSession(session)
-                
-                self.provider.refresh().continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-                    println("provider refresh() finished result: \(task.result) error? \(task.error)")
-                    if task.error == nil, let identifier = task.result as? String {
-                        self.currentUser.cognitoIdentity = identifier
-                        //self.currentUser.writeToDisk()
-                        Twitter.sharedInstance().APIClient.loadUserWithID(session.userID, completion: { (user, error) -> Void in
-                            Debug.isBlocking()
-                            if let user = user {
-                                self.currentUser.authenticate( { () -> Void in
-                                    println("\(self.className)::\(__FUNCTION__) authenticate callback")
-                                    Debug.isBlocking()
-                                    SwiftSpinner.hide(completion: nil)
-                                    self.currentUser.registerForRemoteNotificationsIfNeeded()
-                                    self.performSegueWithIdentifier("Home", sender: self)
-                                })
-                            }
-                        })
-                        
-                    } else {
-                        SwiftSpinner.showWithDelay(4.0, title: "There was a problem logging in.", animated: true)
-                    }
-                    
-                    // todo
-                    return nil
-                })
-            } else {
-                SwiftSpinner.hide(completion: nil)
-                println("error: \(error.localizedDescription)");
-            }
-        }
+        println("\(className)::\(__FUNCTION__)")
+        logInWithCompletion()
     }
     
     @IBAction func unwindToSplash(unwindSegue: UIStoryboardSegue) {
@@ -108,4 +79,63 @@ class SplashViewController: UIViewController {
         (UIApplication.sharedApplication().delegate as! AppDelegate).setupFirstController()
     }
 
+    // MARK: Application lifecycle
+
+    func applicationWillResignActive(aNotification: NSNotification) {
+        println("\(className)::\(__FUNCTION__)")
+        SwiftSpinner.hide(completion: nil)
+    }
+
+
+    private func logInWithCompletion() {
+        println("\(className)::\(__FUNCTION__)")
+        Twitter.sharedInstance().logInWithCompletion { (session, error) -> Void in
+            SwiftSpinner.show("Logging you in...")
+            if error == nil {
+                self.provider.logins = ["api.twitter.com": "\(session.authToken);\(session.authTokenSecret)"]
+                self.currentUser.twitterAuthenticationWithTKSession(session)
+                self.refreshProvider(session)
+            } else {
+                SwiftSpinner.showWithDelay(2.0, title: error.localizedDescription, animated: true)
+            }
+        }
+    }
+
+    private func refreshProvider(twitterSession: TWTRAuthSession) {
+        println("\(className)::\(__FUNCTION__)")
+        provider.refresh().continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+            println("provider refresh() finished result: \(task.result) error? \(task.error)")
+            if task.error == nil, let identifier = task.result as? String {
+                self.currentUser.cognitoIdentity = identifier
+                self.currentUser.save()
+                self.loadUser(self.currentUser.twitterUserId!)
+            } else {
+                SwiftSpinner.showWithDelay(2.0, title: "Something bad happened. Try again?", animated: true)
+            }
+            return nil
+        })
+    }
+
+    private func loadUser(twitterUserId: String) {
+        println("\(className)::\(__FUNCTION__)")
+        Twitter.sharedInstance().APIClient.loadUserWithID(twitterUserId, completion: { (user, error) -> Void in
+            if let user = user where error == nil {
+                self.currentUser.profileImage = user.profileImageURL
+                self.authenticate()
+            } else if let error = error {
+                SwiftSpinner.showWithDelay(2.0, title: error.localizedDescription, animated: true)
+            }
+        })
+    }
+
+    private func authenticate() {
+        println("\(className)::\(__FUNCTION__)")
+        self.currentUser.authenticate( { () -> Void in
+            println("\(self.className)::\(__FUNCTION__) authenticate callback")
+            Debug.isBlocking()
+            SwiftSpinner.hide(completion: nil)
+            self.currentUser.registerForRemoteNotificationsIfNeeded()
+            self.performSegueWithIdentifier("Home", sender: self)
+        })
+    }
 }

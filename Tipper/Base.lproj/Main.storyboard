@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J4X-Ps-uMP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J4X-Ps-uMP">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -7,6 +7,8 @@
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Bariol.ttf">
+            <string>Bariol-Regular</string>
+            <string>Bariol-Regular</string>
             <string>Bariol-Regular</string>
             <string>Bariol-Regular</string>
             <string>Bariol-Regular</string>
@@ -45,6 +47,7 @@
             <string>Bariol-Light</string>
             <string>Bariol-Light</string>
             <string>Bariol-Light</string>
+            <string>Bariol-Light</string>
         </mutableArray>
         <mutableArray key="coiner.ttf">
             <string>coiner</string>
@@ -64,14 +67,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tipper" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWF-UR-7re">
-                                <rect key="frame" x="135" y="415" width="105.5" height="45"/>
+                                <rect key="frame" x="135" y="415" width="106" height="45"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Bariol-Bold" family="Bariol" pointSize="45"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHj-ZJ-tNj">
-                                <rect key="frame" x="29.5" y="545" width="315" height="55"/>
+                                <rect key="frame" x="30" y="545" width="315" height="55"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="315" id="CsM-hL-y8v"/>
@@ -176,6 +179,7 @@
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6dN-4r-PiX" userLabel="Header Container">
                                 <rect key="frame" x="0.0" y="20" width="414" height="78"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="78" id="94b-nW-dQP"/>
                                 </constraints>
@@ -185,11 +189,13 @@
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dpK-my-TPF">
                                 <rect key="frame" x="0.0" y="98" width="414" height="638"/>
+                                <animations/>
                                 <connections>
                                     <segue destination="UEU-XD-8Ny" kind="embed" identifier="AccountEmbed" id="7dT-xN-NwC"/>
                                 </connections>
                             </containerView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="6dN-4r-PiX" secondAttribute="width" id="5ko-Uz-t23"/>
@@ -237,7 +243,7 @@
                         <sections>
                             <tableViewSection id="WIJ-gH-sDq">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="1300" id="gjm-B2-Ug4">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="1300" id="gjm-B2-Ug4" userLabel="Wallet">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gjm-B2-Ug4" id="YEX-Sw-CQJ">
@@ -531,6 +537,91 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="200" id="hRW-SL-7jq" userLabel="Logout">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hRW-SL-7jq" id="h0O-xa-N9w">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TWITTER ACCOUNT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDT-E6-D30">
+                                                    <rect key="frame" x="23" y="28" width="207" height="97"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="25"/>
+                                                    <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TFO-v8-JjZ" userLabel="Separator">
+                                                    <rect key="frame" x="23" y="128" width="370" height="1"/>
+                                                    <animations/>
+                                                    <color key="backgroundColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="b35-KC-TA1"/>
+                                                    </constraints>
+                                                </view>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-image-placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="0RF-kJ-poF">
+                                                    <rect key="frame" x="23" y="144" width="40" height="40"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="0PV-7i-dOl"/>
+                                                        <constraint firstAttribute="height" constant="40" id="NPF-Z2-qsh"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@rromanchuk" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x50-na-n7T">
+                                                    <rect key="frame" x="71" y="155" width="95" height="17"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6yg-8p-cyH">
+                                                    <rect key="frame" x="307" y="147" width="86" height="33"/>
+                                                    <animations/>
+                                                    <color key="backgroundColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="86" id="Kci-g6-bOf"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="33" id="L7d-6t-tuK"/>
+                                                        <constraint firstAttribute="height" constant="48" id="Sxe-Be-f14"/>
+                                                        <constraint firstAttribute="height" constant="33" id="gUp-vv-glW"/>
+                                                        <constraint firstAttribute="width" constant="300" id="uJX-mI-doa"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="86" id="uVZ-hm-2ry"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="18"/>
+                                                    <state key="normal" title="Logout">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="L7d-6t-tuK"/>
+                                                            <exclude reference="Sxe-Be-f14"/>
+                                                            <exclude reference="uJX-mI-doa"/>
+                                                            <exclude reference="uVZ-hm-2ry"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <connections>
+                                                        <action selector="didTapLogout:" destination="UEU-XD-8Ny" eventType="touchUpInside" id="Ray-Vq-MJ5"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstItem="qDT-E6-D30" firstAttribute="leading" secondItem="TFO-v8-JjZ" secondAttribute="leading" id="1lS-gM-HtD"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="6yg-8p-cyH" secondAttribute="trailing" constant="13" id="49t-mc-usw"/>
+                                                <constraint firstItem="qDT-E6-D30" firstAttribute="top" secondItem="h0O-xa-N9w" secondAttribute="topMargin" constant="20" id="4q1-5H-oZ9"/>
+                                                <constraint firstItem="qDT-E6-D30" firstAttribute="leading" secondItem="0RF-kJ-poF" secondAttribute="leading" id="80Y-Fy-AFR"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="TFO-v8-JjZ" secondAttribute="trailing" constant="13" id="8xh-fc-tvY"/>
+                                                <constraint firstItem="6yg-8p-cyH" firstAttribute="centerY" secondItem="x50-na-n7T" secondAttribute="centerY" id="DEb-3i-rbo"/>
+                                                <constraint firstItem="x50-na-n7T" firstAttribute="centerY" secondItem="0RF-kJ-poF" secondAttribute="centerY" constant="-0.5" id="LYa-Th-Bc0"/>
+                                                <constraint firstItem="qDT-E6-D30" firstAttribute="leading" secondItem="h0O-xa-N9w" secondAttribute="leadingMargin" constant="15" id="OL1-mp-kqf"/>
+                                                <constraint firstItem="TFO-v8-JjZ" firstAttribute="top" secondItem="qDT-E6-D30" secondAttribute="bottom" constant="3" id="dgk-u5-3TG"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="x50-na-n7T" secondAttribute="bottom" constant="20" id="fEc-vI-B4b"/>
+                                                <constraint firstItem="0RF-kJ-poF" firstAttribute="top" secondItem="qDT-E6-D30" secondAttribute="bottom" constant="19" id="fFa-jf-4ar"/>
+                                                <constraint firstItem="x50-na-n7T" firstAttribute="leading" secondItem="0RF-kJ-poF" secondAttribute="trailing" constant="8" id="rek-tE-m5U"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -547,10 +638,13 @@
                         <outlet property="btcConversionLabel" destination="3iP-12-iHD" id="BgS-L8-1Yx"/>
                         <outlet property="copyToClipboardButton" destination="6Wd-76-ren" id="BtJ-hi-X0J"/>
                         <outlet property="pasteAddressFromClipboard" destination="Jm4-av-7oX" id="fJY-Kn-CMf"/>
+                        <outlet property="profileImage" destination="0RF-kJ-poF" id="N7a-TC-PPo"/>
                         <outlet property="qrCode" destination="uTM-ii-n9a" id="Y0t-yK-j7O"/>
                         <outlet property="stripeButton" destination="Uug-ax-ABv" id="kZp-xc-f1h"/>
+                        <outlet property="twitterUsername" destination="x50-na-n7T" id="8tn-Ld-TeC"/>
                         <outlet property="ubtcExchangeLabel" destination="WgK-yF-TQV" id="pFw-u9-2jD"/>
                         <outlet property="usdExchangeLabel" destination="3cn-W2-1Jv" id="srD-5m-8MC"/>
+                        <segue destination="hg3-He-cdC" kind="unwind" identifier="BackToSplashFromAccount" unwindAction="unwindToSplash:" id="AdH-Ob-6V8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BaR-wB-r7m" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -994,7 +1088,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="778" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAL-w9-cfz" userLabel="Balance Label">
-                                <rect key="frame" x="139" y="19" width="134.5" height="41"/>
+                                <rect key="frame" x="139" y="19" width="135" height="41"/>
                                 <animations/>
                                 <gestureRecognizers/>
                                 <attributedString key="attributedText">
@@ -1020,6 +1114,7 @@
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="coF-79-h7G" userLabel="Close Button Right">
                                 <rect key="frame" x="343" y="22" width="35" height="35"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="1fO-CM-TMr"/>
                                     <constraint firstAttribute="width" constant="50" id="KhP-0s-gbH"/>
@@ -1043,6 +1138,7 @@
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQ5-Q0-j5e" userLabel="Close Button Left">
                                 <rect key="frame" x="38" y="22" width="35" height="35"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="HuG-6X-paS"/>
                                     <constraint firstAttribute="width" constant="50" id="Ih6-Rg-wRm"/>
@@ -1340,6 +1436,7 @@
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wvi-RS-UTW" userLabel="Header Container">
                                 <rect key="frame" x="0.0" y="20" width="414" height="78"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="78" id="igB-0r-dBY"/>
                                 </constraints>
@@ -1349,11 +1446,13 @@
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nA8-2f-hfA">
                                 <rect key="frame" x="0.0" y="98" width="414" height="638"/>
+                                <animations/>
                                 <connections>
                                     <segue destination="RIO-dg-bBv" kind="embed" identifier="NotificationsEmbed" id="CPb-sV-Iyr"/>
                                 </connections>
                             </containerView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="nA8-2f-hfA" secondAttribute="width" id="B8h-zY-Yfg"/>
@@ -1396,13 +1495,16 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="22" sectionFooterHeight="22" id="daG-JR-lAQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="65" id="tl5-jp-ON5">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tl5-jp-ON5" id="8j9-Rb-sSN">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
                                 </tableViewCellContentView>
+                                <animations/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1431,6 +1533,6 @@
         <image name="up-arrow" width="27" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Qcf-N3-O5L"/>
+        <segue reference="7dQ-p7-IX8"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -11,6 +11,7 @@ import PassKit
 import QRCode
 import SwiftyJSON
 import Stripe
+import Haneke
 
 class WalletController: UITableViewController, PKPaymentAuthorizationViewControllerDelegate, STPCheckoutViewControllerDelegate, UITextFieldDelegate, UINavigationControllerDelegate {
     var managedObjectContext: NSManagedObjectContext?
@@ -37,6 +38,10 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
 
     @IBOutlet weak var qrCode: UIImageView!
     
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var twitterUsername: UILabel!
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         //println("\(className)::\(__FUNCTION__) currentUser: \(currentUser)")
@@ -71,6 +76,13 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
             self.applePayButton.hidden = true
             self.stripeButton.hidden = false
         }
+
+        if let profileImageUrl = currentUser.profileImage, url = NSURL(string: profileImageUrl) {
+            profileImage.hnk_setImageFromURL(url)
+        }
+
+        twitterUsername.text = currentUser.twitterUsername
+
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -157,6 +169,10 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
     }
 
 
+    @IBAction func didTapLogout(sender: UIButton) {
+        currentUser.resetIdentifiers()
+        performSegueWithIdentifier("BackToSplashFromAccount", sender: self)
+    }
 
     @IBAction func didTapPay(sender: UIButton) {
         println("\(className)::\(__FUNCTION__)")

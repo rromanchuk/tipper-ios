@@ -55,8 +55,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         }
     }
 
-    /// This should not be visible the outside world. We don't want anyone outside this class modifying the uuid
-    private var twitterUserId: String? {
+    var twitterUserId: String? {
         get {
             self.willAccessValueForKey("twitterUserId")
             if let _twitterUserId = self.primitiveValueForKey("twitterUserId") as! String? {
@@ -303,7 +302,9 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
             })
         } else {
             let json = JSON(["total": ["amount": "0.00"], "subtotal": ["amount": "0.00"], "btc": ["amount": "0.00"]])
-            self.marketValue = Market.entityWithJSON(Market.self, json: json, context: self.managedObjectContext!)
+            if let moc = self.managedObjectContext {
+                self.marketValue = Market.entityWithJSON(Market.self, json: json, context: moc)
+            }
             completion()
         }
     }
