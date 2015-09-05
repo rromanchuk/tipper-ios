@@ -17,7 +17,11 @@ class CustomModalSegue: UIStoryboardSegue {
         var firstVCView = self.sourceViewController.view as UIView!
         var secondVCView = self.destinationViewController.view as UIView!
         
+        let sourceVc = self.sourceViewController as? HomeController
         let destinationVc =  self.destinationViewController as? CustomModable
+        
+        
+        
         destinationVc?.prepareForSegueAnimation()
         
         // Get the screen width and height.
@@ -32,11 +36,19 @@ class CustomModalSegue: UIStoryboardSegue {
         let window = UIApplication.sharedApplication().keyWindow
         window?.insertSubview(secondVCView, aboveSubview: firstVCView)
         
+        if identifier == "DidTapNotifications" {
+            sourceVc?.headerContainerController.setHeaderTitle("Notifications")
+        } else if identifier == "DidTapAccountSegue" {
+            sourceVc?.headerContainerController.setHeaderTitle("Account")
+        }
+        
+        
         // Animate the transition.
         UIView.animateWithDuration(0.4, animations: { () -> Void in
             //firstVCView.frame = CGRectOffset(firstVCView.frame, 0.0, -screenHeight)
             secondVCView.frame = CGRectOffset(secondVCView.frame, 0.0, -screenHeight)
             
+
             }) { (Finished) -> Void in
                 destinationVc?.segueAnimationComplete()
                 self.sourceViewController.presentViewController(self.destinationViewController as! UIViewController,

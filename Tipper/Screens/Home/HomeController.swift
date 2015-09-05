@@ -20,6 +20,7 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
     let className = "HomeController"
     let tweetTableReuseIdentifier = "TipCell"
     let transitionManager = TransitionManager()
+    var headerContainerController: HeaderContainer!
 
     weak var refreshDelegate: RefreshControlDelegate?
 
@@ -71,6 +72,7 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
             vc.market = market
             vc.activeScreenType = .Unknown
             refreshDelegate = vc
+            self.headerContainerController = vc
             //vc.favorite = favorite
         } else if segue.identifier == "FeedEmbed" {
             let vc = segue.destinationViewController as! TipsController
@@ -89,6 +91,8 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
             vc.market = market
         }
     }
+    
+
 
     func backToSplash() {
         println("\(className)::\(__FUNCTION__)")
@@ -132,6 +136,7 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
         
         return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
     }
+    
 
 
 }
