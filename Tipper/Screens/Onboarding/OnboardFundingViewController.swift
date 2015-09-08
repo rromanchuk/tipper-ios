@@ -64,11 +64,11 @@ class OnboardFundingViewController: UIViewController, PKPaymentAuthorizationView
             #if DEBUG
                 let applePayController = STPTestPaymentAuthorizationViewController(paymentRequest: request)
                 applePayController.delegate = self
-                self.parentViewController!.presentViewController(applePayController, animated: true, completion: nil)
+                self.presentViewController(applePayController, animated: true, completion: nil)
                 #else
                 let applePayController = PKPaymentAuthorizationViewController(paymentRequest: request)
                 applePayController.delegate = self
-                self.parentViewController!.presentViewController(applePayController, animated: true, completion: nil)
+                self.presentViewController(applePayController, animated: true, completion: nil)
             #endif
         } else {
             //default to Stripe's PaymentKit Form
@@ -79,7 +79,7 @@ class OnboardFundingViewController: UIViewController, PKPaymentAuthorizationView
             options.companyName = "Tipper"
             let checkoutViewController = STPCheckoutViewController(options: options)
             checkoutViewController.checkoutDelegate = self
-            self.parentViewController!.presentViewController(checkoutViewController, animated: true, completion: nil)
+            self.presentViewController(checkoutViewController, animated: true, completion: nil)
         }
         
 

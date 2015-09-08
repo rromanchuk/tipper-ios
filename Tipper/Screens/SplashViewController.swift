@@ -108,7 +108,12 @@ class SplashViewController: UIViewController {
                 self.currentUser.twitterAuthenticationWithTKSession(session)
                 self.refreshProvider(session)
             } else {
-                SwiftSpinner.showWithDelay(2.0, title: error.localizedDescription, animated: true)
+                SwiftSpinner.hide(completion: { () -> Void in
+                    let alert = UIAlertController(title: "Opps", message: error.localizedDescription, preferredStyle: .Alert)
+                    let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                    alert.addAction(defaultAction)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                })
             }
         }
     }
@@ -122,7 +127,12 @@ class SplashViewController: UIViewController {
                 self.currentUser.save()
                 self.loadUser(self.currentUser.twitterUserId!)
             } else {
-                SwiftSpinner.showWithDelay(2.0, title: "Something bad happened. Try again?", animated: true)
+                SwiftSpinner.hide(completion: { () -> Void in
+                    let alert = UIAlertController(title: "Opps", message: "Something bad happened. Try again?", preferredStyle: .Alert)
+                    let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                    alert.addAction(defaultAction)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                })
             }
             return nil
         })
@@ -135,7 +145,12 @@ class SplashViewController: UIViewController {
                 self.currentUser.profileImage = user.profileImageURL
                 self.authenticate()
             } else if let error = error {
-                SwiftSpinner.showWithDelay(2.0, title: error.localizedDescription, animated: true)
+                SwiftSpinner.hide(completion: { () -> Void in
+                    let alert = UIAlertController(title: "Opps", message: error.localizedDescription, preferredStyle: .Alert)
+                    let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                    alert.addAction(defaultAction)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                })
             }
         })
     }
