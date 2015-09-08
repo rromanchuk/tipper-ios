@@ -1,4 +1,5 @@
 PODS:
+  - ApplePayStubs (0.2)
   - AWSCognito (2.2.3):
     - AWSCore (= 2.2.3)
   - AWSCore (2.2.3)
@@ -36,6 +37,7 @@ PODS:
     - HexColors (~> 2.2.0)
 
 DEPENDENCIES:
+  - ApplePayStubs
   - AWSCognito
   - AWSCore (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
   - AWSDynamoDB (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
@@ -83,6 +85,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/rromanchuk/aws-sdk-ios.git
 
 SPEC CHECKSUMS:
+  ApplePayStubs: 5dd63c36527d1117b2045939fb5b6581b4815433
   AWSCognito: ae340057e5f8c535aabd39234c7bd5b704b1955e
   AWSCore: 30510dc1bf3e4cc975868ed4cc9ae16ba402790b
   AWSDynamoDB: e3a88b170845ae0aea73d1daf2dcfd8faa9495ed

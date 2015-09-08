@@ -10,12 +10,11 @@
 #import <AWSCognito/AWSCognito.h>
 #import <AWSMobileAnalytics/AWSMobileAnalytics.h>
 
-//#import "PTKView.h"
 
 #import "NSManagedObjectContext+Base.h"
-//#import "Stripe.h"
 #import "TTTURLRequestFormatter.h"
 #import "SSKeychain.h"
 #import <TSMessages/TSMessageView.h>
 
 #import <Google/Analytics.h>
+#import "ApplePayStubs.h"

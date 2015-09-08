@@ -1016,7 +1016,7 @@ Free money!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLd-DI-xSQ">
-                                <rect key="frame" x="0.0" y="97" width="414" height="639"/>
+                                <rect key="frame" x="0.0" y="98" width="414" height="638"/>
                                 <animations/>
                                 <connections>
                                     <segue destination="AGP-Z8-nEe" kind="embed" identifier="FeedEmbed" id="Qt9-LN-ziX"/>
@@ -1041,7 +1041,7 @@ Free money!</string>
                             <constraint firstItem="hmM-hj-UsV" firstAttribute="width" secondItem="swy-dr-NMf" secondAttribute="width" id="LjZ-H2-TQd"/>
                             <constraint firstItem="hmM-hj-UsV" firstAttribute="top" secondItem="66p-ui-yt4" secondAttribute="bottom" id="SKh-eU-wi4"/>
                             <constraint firstAttribute="trailing" secondItem="GLd-DI-xSQ" secondAttribute="trailing" id="ieL-dU-eAG"/>
-                            <constraint firstItem="GLd-DI-xSQ" firstAttribute="top" secondItem="hmM-hj-UsV" secondAttribute="bottom" constant="-1" id="tL0-CE-8uh"/>
+                            <constraint firstItem="GLd-DI-xSQ" firstAttribute="top" secondItem="hmM-hj-UsV" secondAttribute="bottom" id="tL0-CE-8uh"/>
                             <constraint firstItem="GLd-DI-xSQ" firstAttribute="leading" secondItem="swy-dr-NMf" secondAttribute="leading" id="z5m-li-eCE"/>
                         </constraints>
                     </view>
@@ -1555,11 +1555,11 @@ Free money!</string>
                         <viewControllerLayoutGuide type="bottom" id="2M2-D5-kOp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="HUl-Qa-WBm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="639"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="638"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="30" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UWM-7z-Xgz">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="639"/>
+                                <rect key="frame" x="0.0" y="0.0" width="413" height="638"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1576,7 +1576,7 @@ Free money!</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You tipped Ryan Romanchuk" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XcG-Cs-3sh">
-                                                    <rect key="frame" x="101" y="15" width="169" height="15"/>
+                                                    <rect key="frame" x="101" y="15" width="168.5" height="15"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1624,7 +1624,7 @@ Free money!</string>
                                                     </variation>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6c-DF-Hu2">
-                                                    <rect key="frame" x="343" y="15" width="43" height="20"/>
+                                                    <rect key="frame" x="342" y="15" width="42.5" height="20"/>
                                                     <animations/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="b">
@@ -1645,14 +1645,14 @@ Free money!</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" text="BTC 0.0005" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qH3-1F-IyA">
-                                                    <rect key="frame" x="325" y="39" width="61" height="12"/>
+                                                    <rect key="frame" x="324" y="39" width="60.5" height="12"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6g-ZB-g3b">
-                                                    <rect key="frame" x="320" y="0.0" width="94" height="70"/>
+                                                    <rect key="frame" x="319" y="0.0" width="94" height="70"/>
                                                     <animations/>
                                                     <color key="backgroundColor" red="0.36078431370000003" green="0.74117647060000003" blue="0.52156862749999999" alpha="0.818860853" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
@@ -1668,7 +1668,7 @@ Free money!</string>
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="up-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="Twy-Nb-vaZ">
-                                                    <rect key="frame" x="326" y="18" width="13" height="13"/>
+                                                    <rect key="frame" x="325" y="18" width="13" height="13"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="13" id="Upn-s5-TNI"/>
@@ -1758,9 +1758,9 @@ Free money!</string>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="UWM-7z-Xgz" firstAttribute="leading" secondItem="HUl-Qa-WBm" secondAttribute="leadingMargin" constant="-16" id="AyX-nN-LRd"/>
+                            <constraint firstItem="UWM-7z-Xgz" firstAttribute="leading" secondItem="HUl-Qa-WBm" secondAttribute="leading" id="AyX-nN-LRd"/>
                             <constraint firstItem="2M2-D5-kOp" firstAttribute="top" secondItem="UWM-7z-Xgz" secondAttribute="bottom" id="ab7-b0-zku"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="UWM-7z-Xgz" secondAttribute="trailing" constant="-16" id="bq3-K8-y37"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UWM-7z-Xgz" secondAttribute="trailingMargin" id="bq3-K8-y37"/>
                             <constraint firstItem="UWM-7z-Xgz" firstAttribute="top" secondItem="RoD-1h-GCi" secondAttribute="bottom" id="zil-l5-VLv"/>
                         </constraints>
                     </view>

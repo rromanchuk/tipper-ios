@@ -7,6 +7,7 @@ target 'Tipper' do
     pod 'AWSSQS', :git => "https://github.com/rromanchuk/aws-sdk-ios.git"
     pod 'AWSSNS', :git => "https://github.com/rromanchuk/aws-sdk-ios.git"
     pod 'AWSMobileAnalytics', :git => "https://github.com/rromanchuk/aws-sdk-ios.git"
+    pod 'ApplePayStubs'
     #pod 'Stripe', '4.0.3'
     pod 'SSKeychain'
     pod 'SDCAlertView'

@@ -27,7 +27,7 @@ class OnboardFundingViewController: UIViewController, PKPaymentAuthorizationView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updateMarkets()
         let paymentRequest = Stripe.paymentRequestWithMerchantIdentifier(ApplePayMerchantID)
         
         if PKPaymentAuthorizationViewController.canMakePaymentsUsingNetworks(SupportedPaymentNetworks) && Stripe.canSubmitPaymentRequest(paymentRequest) {
@@ -49,9 +49,21 @@ class OnboardFundingViewController: UIViewController, PKPaymentAuthorizationView
         // Dispose of any resources that can be recreated.
     }
     
+    func updateMarkets() {
+        //println("\(className)::\(__FUNCTION__)")
+        market.update { [weak self] () -> Void in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            })
+        }
+        currentUser.updateBalanceUSD { [weak self] () -> Void in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            })
+        }
+    }
+    
 
     @IBAction func didTapPay(sender: UIButton) {
-        println("\(className)::\(__FUNCTION__)")
+        println("\(className)::\(__FUNCTION__) market: \(market)")
         let request = PKPaymentRequest()
         request.merchantIdentifier = ApplePayMerchantID
         request.supportedNetworks = SupportedPaymentNetworks
@@ -62,10 +74,11 @@ class OnboardFundingViewController: UIViewController, PKPaymentAuthorizationView
         request.paymentSummaryItems = [PKPaymentSummaryItem(label: "Tipper 0.02BTC deposit", amount: NSDecimalNumber(double: amount))]
         if Stripe.canSubmitPaymentRequest(request) {
             #if DEBUG
+                println("in debug mode")
                 let applePayController = STPTestPaymentAuthorizationViewController(paymentRequest: request)
                 applePayController.delegate = self
                 self.presentViewController(applePayController, animated: true, completion: nil)
-                #else
+            #else
                 let applePayController = PKPaymentAuthorizationViewController(paymentRequest: request)
                 applePayController.delegate = self
                 self.presentViewController(applePayController, animated: true, completion: nil)

@@ -19,9 +19,7 @@ class NotificationsController: UIViewController, ContainerDelegate, CustomModabl
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         println("\(className)::\(__FUNCTION__)")
-//        if let header = parentViewController as? HeaderContainer {
-//            header.toggleRightButton()
-//        }
+
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
