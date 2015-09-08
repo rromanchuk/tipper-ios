@@ -30,8 +30,16 @@
             <string>Bariol-Regular</string>
             <string>Bariol-Regular</string>
             <string>Bariol-Regular</string>
+            <string>Bariol-Regular</string>
+            <string>Bariol-Regular</string>
+            <string>Bariol-Regular</string>
+            <string>Bariol-Regular</string>
+            <string>Bariol-Regular</string>
+            <string>Bariol-Regular</string>
         </mutableArray>
         <mutableArray key="Bariol_Bold.otf">
+            <string>Bariol-Bold</string>
+            <string>Bariol-Bold</string>
             <string>Bariol-Bold</string>
             <string>Bariol-Bold</string>
             <string>Bariol-Bold</string>
@@ -48,54 +56,324 @@
             <string>Bariol-Light</string>
             <string>Bariol-Light</string>
             <string>Bariol-Light</string>
+            <string>Bariol-Light</string>
+            <string>Bariol-Light</string>
+            <string>Bariol-Light</string>
         </mutableArray>
         <mutableArray key="coiner.ttf">
+            <string>coiner</string>
             <string>coiner</string>
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Root View Controller-->
-        <scene sceneID="0Si-8U-om3">
-            <objects>
-                <tableViewController id="cXL-Gq-9z0" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Drf-sO-6If">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Fb5-hg-Pd6">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fb5-hg-Pd6" id="wvF-bR-82V">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="cXL-Gq-9z0" id="5Ti-AX-CC6"/>
-                            <outlet property="delegate" destination="cXL-Gq-9z0" id="SWf-jq-uWm"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="YFq-Tu-VQ2"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0Ik-OW-MQY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1030" y="-51"/>
-        </scene>
-        <!--Navigation Controller-->
+        <!--Onboard Navigation Controller-->
         <scene sceneID="QsX-mm-aFe">
             <objects>
-                <navigationController id="xXo-Pl-mej" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="xXo-Pl-mej" customClass="OnboardNavigationController" customModule="Tipper" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ojb-sK-TuU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="cXL-Gq-9z0" kind="relationship" relationship="rootViewController" id="rCO-Px-qVk"/>
+                        <segue destination="1kR-D4-qXd" kind="relationship" relationship="rootViewController" id="XaC-Ga-SC4"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fes-2J-jgz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1850" y="-51"/>
+            <point key="canvasLocation" x="-1468.5" y="-80.5"/>
+        </scene>
+        <!--Onboard Funding View Controller-->
+        <scene sceneID="kP7-uB-gAz">
+            <objects>
+                <viewController id="1kR-D4-qXd" customClass="OnboardFundingViewController" customModule="Tipper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CgL-iR-ge3"/>
+                        <viewControllerLayoutGuide type="bottom" id="mMB-JC-M35"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9zU-E2-bNU" customClass="BaseView" customModule="Tipper" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tippy" translatesAutoresizingMaskIntoConstraints="NO" id="fBP-yX-Fiq">
+                                <rect key="frame" x="57" y="28" width="125" height="106"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="125" id="cZG-Ee-g3L"/>
+                                    <constraint firstAttribute="height" constant="106" id="ujq-Yt-4yC"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIj-Q4-Rw0">
+                                <rect key="frame" x="202" y="48" width="137" height="66"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Welcome to ">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="33" name="Bariol-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Tipper">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="33" name="Bariol-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Every time you favorite a Tweet on Twitter, tipper will send a Bitcoin “tip” to the author of that Tweet. " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVe-Qy-x5c">
+                                <rect key="frame" x="37" y="154" width="302" height="51"/>
+                                <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cju-Fh-Zum">
+                                <rect key="frame" x="16" y="278" width="343" height="17.5"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Tips are ">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="17" name="Bariol-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="a">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="17" name="coiner"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="500 (~$0.10) by default.">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="17" name="Bariol-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6D-C0-oGu">
+                                <rect key="frame" x="16" y="305" width="343" height="17.5"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Get started by adding ">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="17" name="Bariol-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="a">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="17" name="coiner"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="20,000 to your wallet:">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="17" name="Bariol-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-exchange" translatesAutoresizingMaskIntoConstraints="NO" id="wTz-RL-1UQ">
+                                <rect key="frame" x="127" y="225" width="121" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="121" id="grO-p6-oGc"/>
+                                    <constraint firstAttribute="height" constant="36" id="pMd-Av-bKo"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZ3-Or-KzK">
+                                <rect key="frame" x="93" y="519" width="188" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="2Jv-ol-L9M"/>
+                                    <constraint firstAttribute="width" constant="188" id="UQ4-8m-gBM"/>
+                                </constraints>
+                                <state key="normal" image="apple-pay-white">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eB3-LN-Tv8" customClass="BaseView" customModule="Tipper" customModuleProvider="target">
+                                <rect key="frame" x="53" y="342" width="269" height="167"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EXCHANGE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRu-C6-slv" userLabel="Exchange label">
+                                        <rect key="frame" x="20" y="33" width="72" height="15"/>
+                                        <fontDescription key="fontDescription" name="Bariol-Bold" family="Bariol" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FOR" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xg-eX-9w7" userLabel="For label">
+                                        <rect key="frame" x="65" y="107" width="27" height="15"/>
+                                        <fontDescription key="fontDescription" name="Bariol-Bold" family="Bariol" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nc7-Hs-1g3">
+                                        <rect key="frame" x="155" y="31" width="12" height="20"/>
+                                        <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(0.02 Bitcoin)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRk-KK-LGf">
+                                        <rect key="frame" x="164" y="132" width="79" height="15"/>
+                                        <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOi-Oh-5P2">
+                                        <rect key="frame" x="172" y="20" width="77" height="42"/>
+                                        <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="42"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="200" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0j-sU-WEJ">
+                                        <rect key="frame" x="172" y="94" width="72" height="42"/>
+                                        <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="42"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="a" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thU-8H-Ms7">
+                                        <rect key="frame" x="147" y="103" width="29" height="24"/>
+                                        <fontDescription key="fontDescription" name="coiner" family="coiner" pointSize="29"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.35686274509999999" green="0.73725490199999999" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="167" id="ZKG-rR-cvI"/>
+                                    <constraint firstAttribute="width" constant="269" id="kEN-bg-Qsz"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEx-Mq-uya">
+                                <rect key="frame" x="172" y="582" width="31" height="30"/>
+                                <state key="normal" title="Skip">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="bxo-15-ISD" kind="show" id="hIz-cO-ajm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.35686274509803922" green="0.73725490196078436" blue="0.51764705882352935" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="fIj-Q4-Rw0" secondAttribute="trailing" constant="20" id="0Xf-EK-pUQ"/>
+                            <constraint firstAttribute="centerX" secondItem="BZ3-Or-KzK" secondAttribute="centerX" id="34l-hK-JvQ"/>
+                            <constraint firstItem="wEx-Mq-uya" firstAttribute="top" secondItem="BZ3-Or-KzK" secondAttribute="bottom" constant="3" id="6Cz-P5-zjP"/>
+                            <constraint firstItem="n6D-C0-oGu" firstAttribute="trailing" secondItem="9zU-E2-bNU" secondAttribute="trailingMargin" id="73G-Ng-kUb"/>
+                            <constraint firstItem="fIj-Q4-Rw0" firstAttribute="leading" secondItem="fBP-yX-Fiq" secondAttribute="trailing" constant="20" id="7cB-K5-NKX"/>
+                            <constraint firstAttribute="centerX" secondItem="wEx-Mq-uya" secondAttribute="centerX" id="7kr-ti-xT0"/>
+                            <constraint firstItem="eVe-Qy-x5c" firstAttribute="leading" secondItem="9zU-E2-bNU" secondAttribute="leadingMargin" constant="21" id="8Kr-Vj-7R8"/>
+                            <constraint firstItem="wTz-RL-1UQ" firstAttribute="top" secondItem="eVe-Qy-x5c" secondAttribute="bottom" constant="20" id="DlZ-Mq-IZq"/>
+                            <constraint firstItem="fIj-Q4-Rw0" firstAttribute="centerY" secondItem="fBP-yX-Fiq" secondAttribute="centerY" id="HQi-8X-Dqu"/>
+                            <constraint firstItem="BZ3-Or-KzK" firstAttribute="top" secondItem="eB3-LN-Tv8" secondAttribute="bottom" constant="10" id="Igf-3g-chw"/>
+                            <constraint firstItem="cju-Fh-Zum" firstAttribute="leading" secondItem="9zU-E2-bNU" secondAttribute="leadingMargin" id="RWA-7M-yK8"/>
+                            <constraint firstItem="n6D-C0-oGu" firstAttribute="leading" secondItem="9zU-E2-bNU" secondAttribute="leadingMargin" id="SO4-np-LxU"/>
+                            <constraint firstAttribute="centerX" secondItem="wTz-RL-1UQ" secondAttribute="centerX" id="UTA-sL-M5U"/>
+                            <constraint firstItem="eB3-LN-Tv8" firstAttribute="top" secondItem="n6D-C0-oGu" secondAttribute="bottom" constant="20" id="V64-Fa-QsX"/>
+                            <constraint firstAttribute="centerX" secondItem="eB3-LN-Tv8" secondAttribute="centerX" id="agq-TB-9To"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eVe-Qy-x5c" secondAttribute="trailing" constant="20" id="bdh-hZ-5k7"/>
+                            <constraint firstItem="n6D-C0-oGu" firstAttribute="top" secondItem="cju-Fh-Zum" secondAttribute="bottom" constant="10" id="gaV-3F-NM5"/>
+                            <constraint firstItem="eVe-Qy-x5c" firstAttribute="top" secondItem="fBP-yX-Fiq" secondAttribute="bottom" constant="20" id="jVK-Ty-YyT"/>
+                            <constraint firstItem="cju-Fh-Zum" firstAttribute="top" secondItem="wTz-RL-1UQ" secondAttribute="bottom" constant="17" id="pcf-vb-wKN"/>
+                            <constraint firstItem="fBP-yX-Fiq" firstAttribute="top" secondItem="CgL-iR-ge3" secondAttribute="bottom" constant="8" id="sYH-QY-bBl"/>
+                            <constraint firstItem="cju-Fh-Zum" firstAttribute="trailing" secondItem="9zU-E2-bNU" secondAttribute="trailingMargin" id="sgS-8Z-qTE"/>
+                            <constraint firstItem="fBP-yX-Fiq" firstAttribute="leading" secondItem="9zU-E2-bNU" secondAttribute="leadingMargin" constant="41" id="vNl-1M-x49"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZLH-PM-QCF"/>
+                    <connections>
+                        <segue destination="bxo-15-ISD" kind="show" identifier="OnboardStepTwo" id="t6O-KW-eUn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UTE-Td-7sR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-931.5" y="-80.5"/>
+        </scene>
+        <!--Onboard Auto Tip View Controller-->
+        <scene sceneID="XHO-cq-RGf">
+            <objects>
+                <viewController id="bxo-15-ISD" customClass="OnboardAutoTipViewController" customModule="Tipper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WZ5-1B-FiW"/>
+                        <viewControllerLayoutGuide type="bottom" id="lWl-hI-LL2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="N8z-mU-dMz" customClass="BaseView" customModule="Tipper" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tippy" translatesAutoresizingMaskIntoConstraints="NO" id="fGL-Yc-eq3">
+                                <rect key="frame" x="36" y="20" width="125" height="106"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="125" id="NFQ-cE-lP3"/>
+                                    <constraint firstAttribute="height" constant="106" id="xoC-Pz-eV6"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="754" verticalCompressionResistancePriority="754" text="Let’s start tipping!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSk-hP-X01">
+                                <rect key="frame" x="181" y="40" width="158" height="66"/>
+                                <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="33"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Vz-G9-KTE">
+                                <rect key="frame" x="36" y="146" width="303" height="51"/>
+                                <string key="text">@TipperBot would like to Favorite a few of your Tweets to show you how tipping works. 
+Free money!</string>
+                                <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="These tips will show up in your transaction history on the next page where you can track all the tips you send and receive." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mx7-mR-z57">
+                                <rect key="frame" x="36" y="223" width="303" height="51"/>
+                                <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="98v-hU-2Q9" customClass="TipperButton" customModule="Tipper" customModuleProvider="target">
+                                <rect key="frame" x="16" y="608" width="343" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="Sdc-hH-w6K"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="18"/>
+                                <state key="normal" title="Go">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapGo:" destination="bxo-15-ISD" eventType="touchUpInside" id="SGA-0k-mxi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.35686274509999999" green="0.73725490199999999" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="98v-hU-2Q9" firstAttribute="trailing" secondItem="N8z-mU-dMz" secondAttribute="trailingMargin" id="EdL-rq-alE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Mx7-mR-z57" secondAttribute="trailing" constant="20" id="Het-ct-1rS"/>
+                            <constraint firstItem="fGL-Yc-eq3" firstAttribute="leading" secondItem="N8z-mU-dMz" secondAttribute="leadingMargin" constant="20" id="IDa-3P-cTX"/>
+                            <constraint firstItem="6Vz-G9-KTE" firstAttribute="leading" secondItem="N8z-mU-dMz" secondAttribute="leadingMargin" constant="20" id="Jo9-lS-Y07"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZSk-hP-X01" secondAttribute="trailing" constant="20" id="Rpj-GR-gsd"/>
+                            <constraint firstItem="ZSk-hP-X01" firstAttribute="leading" secondItem="fGL-Yc-eq3" secondAttribute="trailing" constant="20" id="YPe-rX-6Tp"/>
+                            <constraint firstItem="fGL-Yc-eq3" firstAttribute="top" secondItem="WZ5-1B-FiW" secondAttribute="bottom" id="Z1t-bi-ckm"/>
+                            <constraint firstItem="ZSk-hP-X01" firstAttribute="centerY" secondItem="fGL-Yc-eq3" secondAttribute="centerY" id="aD4-YK-s47"/>
+                            <constraint firstItem="98v-hU-2Q9" firstAttribute="leading" secondItem="N8z-mU-dMz" secondAttribute="leadingMargin" id="bOE-2B-Fcm"/>
+                            <constraint firstItem="6Vz-G9-KTE" firstAttribute="top" secondItem="fGL-Yc-eq3" secondAttribute="bottom" constant="20" id="gdX-Ox-YT9"/>
+                            <constraint firstItem="lWl-hI-LL2" firstAttribute="top" secondItem="98v-hU-2Q9" secondAttribute="bottom" constant="20" id="hJl-DS-2U1"/>
+                            <constraint firstItem="Mx7-mR-z57" firstAttribute="leading" secondItem="N8z-mU-dMz" secondAttribute="leadingMargin" constant="20" id="lDj-4j-xHB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6Vz-G9-KTE" secondAttribute="trailing" constant="20" id="nqh-Fr-7K2"/>
+                            <constraint firstItem="Mx7-mR-z57" firstAttribute="top" secondItem="6Vz-G9-KTE" secondAttribute="bottom" constant="26" id="okt-43-bnp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="hg3-He-cdC" kind="unwind" identifier="ExitFromOnboarding" unwindAction="done:sender:" id="Kob-Bh-yFq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PVn-jP-zJS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-302.5" y="-80.5"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="vcy-RQ-2K7">
@@ -116,7 +394,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHj-ZJ-tNj">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHj-ZJ-tNj" customClass="TipperButton" customModule="Tipper" customModuleProvider="target">
                                 <rect key="frame" x="30" y="545" width="315" height="55"/>
                                 <animations/>
                                 <constraints>
@@ -196,6 +474,7 @@
                     <connections>
                         <outlet property="twitterLoginButton" destination="dHj-ZJ-tNj" id="atz-2Y-X9g"/>
                         <segue destination="JsD-Be-PS1" kind="presentation" identifier="Home" id="tXL-Ky-fzU"/>
+                        <segue destination="xXo-Pl-mej" kind="presentation" identifier="Onboarding" id="piJ-Qo-8ps"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b7S-es-3hb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -206,7 +485,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-848" y="643"/>
+            <point key="canvasLocation" x="-931.5" y="654.5"/>
         </scene>
         <!--Account Controller-->
         <scene sceneID="QQm-cH-2fI">
@@ -748,7 +1027,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="syl-PA-E4Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="nkS-N6-z7z" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-327" y="643"/>
+            <point key="canvasLocation" x="-322" y="655"/>
         </scene>
         <!--Tip Details View Controller-->
         <scene sceneID="uXt-kZ-oaU">
@@ -1565,17 +1844,21 @@
     <resources>
         <image name="account" width="29" height="29"/>
         <image name="apple-pay" width="582" height="192"/>
+        <image name="apple-pay-white" width="188" height="60"/>
         <image name="back" width="25" height="48"/>
         <image name="cc-exchange" width="380" height="116"/>
         <image name="close" width="25" height="26"/>
         <image name="notifications" width="25" height="31"/>
+        <image name="onboarding-exchange" width="122" height="36"/>
         <image name="profile-image-placeholder.png" width="240" height="240"/>
         <image name="splash-stacks" width="367" height="379"/>
         <image name="star-2-icon.png" width="96" height="93"/>
+        <image name="tippy" width="124" height="110"/>
         <image name="twitter-bird" width="19" height="16"/>
         <image name="up-arrow" width="27" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7dQ-p7-IX8"/>
+        <segue reference="t6O-KW-eUn"/>
+        <segue reference="sw9-Zr-Rqd"/>
     </inferredMetricsTieBreakers>
 </document>

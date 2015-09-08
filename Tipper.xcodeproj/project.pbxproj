@@ -16,6 +16,10 @@
 		9426B28B1B97F177001F996C /* CustomUnwindModalSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9426B28A1B97F177001F996C /* CustomUnwindModalSegue.swift */; };
 		9426B28D1B98CF44001F996C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9426B28C1B98CF44001F996C /* GoogleService-Info.plist */; };
 		9426B2911B98DFCA001F996C /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9426B28E1B98D0FF001F996C /* Stripe.framework */; };
+		9426B2941B9F6D76001F996C /* OnboardFundingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9426B2931B9F6D76001F996C /* OnboardFundingViewController.swift */; };
+		9426B2961B9F6D9C001F996C /* OnboardAutoTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9426B2951B9F6D9C001F996C /* OnboardAutoTipViewController.swift */; };
+		9426B2981B9F6DDF001F996C /* OnboardNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9426B2971B9F6DDF001F996C /* OnboardNavigationController.swift */; };
+		9426B29A1B9F6E6F001F996C /* TipperButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9426B2991B9F6E6F001F996C /* TipperButton.swift */; };
 		942780011B94CE70007CB713 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942780001B94CE70007CB713 /* BaseView.swift */; };
 		942780071B97B7D5007CB713 /* CustomModalSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942780061B97B7D5007CB713 /* CustomModalSegue.swift */; };
 		942780091B97B8EC007CB713 /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942780081B97B8EC007CB713 /* AccountController.swift */; };
@@ -130,6 +134,10 @@
 		9426B28A1B97F177001F996C /* CustomUnwindModalSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomUnwindModalSegue.swift; path = Segues/CustomUnwindModalSegue.swift; sourceTree = "<group>"; };
 		9426B28C1B98CF44001F996C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9426B28E1B98D0FF001F996C /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
+		9426B2931B9F6D76001F996C /* OnboardFundingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardFundingViewController.swift; path = Onboarding/OnboardFundingViewController.swift; sourceTree = "<group>"; };
+		9426B2951B9F6D9C001F996C /* OnboardAutoTipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardAutoTipViewController.swift; path = Onboarding/OnboardAutoTipViewController.swift; sourceTree = "<group>"; };
+		9426B2971B9F6DDF001F996C /* OnboardNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardNavigationController.swift; path = Onboarding/OnboardNavigationController.swift; sourceTree = "<group>"; };
+		9426B2991B9F6E6F001F996C /* TipperButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipperButton.swift; path = Views/TipperButton.swift; sourceTree = "<group>"; };
 		942780001B94CE70007CB713 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseView.swift; path = Views/BaseView.swift; sourceTree = "<group>"; };
 		942780061B97B7D5007CB713 /* CustomModalSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomModalSegue.swift; path = Segues/CustomModalSegue.swift; sourceTree = "<group>"; };
 		942780081B97B8EC007CB713 /* AccountController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountController.swift; path = Account/AccountController.swift; sourceTree = "<group>"; };
@@ -279,6 +287,16 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		9426B2921B9F67D0001F996C /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				9426B2931B9F6D76001F996C /* OnboardFundingViewController.swift */,
+				9426B2951B9F6D9C001F996C /* OnboardAutoTipViewController.swift */,
+				9426B2971B9F6DDF001F996C /* OnboardNavigationController.swift */,
+			);
+			name = Onboarding;
+			sourceTree = "<group>";
+		};
 		942780021B97AE9A007CB713 /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,6 +358,7 @@
 		94416C051AAF989F00117AFC /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				9426B2921B9F67D0001F996C /* Onboarding */,
 				942780021B97AE9A007CB713 /* Accounts */,
 				94F5137D1B8D161A002E0996 /* Notifications */,
 				9444D6751B38E4220052C2B1 /* TipsController */,
@@ -412,6 +431,7 @@
 				943243111B2D6BBE00D1A1D6 /* TransitionManager.swift */,
 				94AB27921ACA3D2B005A433F /* TintedButton.swift */,
 				942780001B94CE70007CB713 /* BaseView.swift */,
+				9426B2991B9F6E6F001F996C /* TipperButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -826,6 +846,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9426B2941B9F6D76001F996C /* OnboardFundingViewController.swift in Sources */,
 				943A6FE21B21F6B300D50D8A /* TipCell.swift in Sources */,
 				94FDE9BF1AB4209B006B6454 /* SuperFetchedResultsControllerDelegate.swift in Sources */,
 				942780091B97B8EC007CB713 /* AccountController.swift in Sources */,
@@ -836,6 +857,8 @@
 				942780011B94CE70007CB713 /* BaseView.swift in Sources */,
 				94FA97DB1AB2E691005B0C83 /* DynamoFavorite.swift in Sources */,
 				949842061B260FB80079082C /* TipDetailContainer.swift in Sources */,
+				9426B29A1B9F6E6F001F996C /* TipperButton.swift in Sources */,
+				9426B2981B9F6DDF001F996C /* OnboardNavigationController.swift in Sources */,
 				941AA38A1AAFA34900CA9192 /* Config.swift in Sources */,
 				9416317F1AC3C1EC002016FD /* HomeController.swift in Sources */,
 				94416C131AAF989F00117AFC /* CurrentUser.swift in Sources */,
@@ -861,6 +884,7 @@
 				94416C111AAF989F00117AFC /* CoreDataUpdatable.swift in Sources */,
 				94DA84B01B6D55E0005D4CD6 /* DynamoSettings.swift in Sources */,
 				94416C0C1AAF989F00117AFC /* API.swift in Sources */,
+				9426B2961B9F6D9C001F996C /* OnboardAutoTipViewController.swift in Sources */,
 				94F5137C1B8D03BC002E0996 /* SwiftSpinner.swift in Sources */,
 				94C255201B12798900A65B94 /* Settings.swift in Sources */,
 				94AB27931ACA3D2B005A433F /* TintedButton.swift in Sources */,

@@ -28,8 +28,8 @@ class SplashViewController: UIViewController {
         gradient.colors = [UIColor.colorWithRGB(0x7BD5AA, alpha: 1.0).CGColor, UIColor.colorWithRGB(0x5BAB85, alpha: 1.0).CGColor]
         view.layer.insertSublayer(gradient, atIndex: 0)
         
-        twitterLoginButton.layer.borderWidth = 1.0
-        twitterLoginButton.layer.borderColor = UIColor.whiteColor().CGColor
+//        twitterLoginButton.layer.borderWidth = 1.0
+//        twitterLoginButton.layer.borderColor = UIColor.whiteColor().CGColor
         println("\(className)::\(__FUNCTION__) \(managedObjectContext)")
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillResignActive:", name: UIApplicationWillResignActiveNotification, object: UIApplication.sharedApplication())
@@ -38,7 +38,7 @@ class SplashViewController: UIViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        println("\(className)::\(__FUNCTION__)")
+        println("\(className)::\(__FUNCTION__) isTwitterAuthenticated \(currentUser.isTwitterAuthenticated)")
         if (currentUser.isTwitterAuthenticated) {
             SwiftSpinner.hide(completion: nil)
             performSegueWithIdentifier("Home", sender: self)
@@ -55,7 +55,12 @@ class SplashViewController: UIViewController {
             vc.managedObjectContext = managedObjectContext
             vc.currentUser = currentUser
             vc.market = market
-
+        } else if (segue.identifier == "Onboarding") {
+            let vc = segue.destinationViewController as! OnboardNavigationController
+            let topVc = vc.topViewController as! OnboardFundingViewController
+            topVc.managedObjectContext = managedObjectContext
+            topVc.currentUser = currentUser
+            topVc.market = market
         }
     }
 
@@ -78,6 +83,13 @@ class SplashViewController: UIViewController {
         }
         (UIApplication.sharedApplication().delegate as! AppDelegate).setupFirstController()
     }
+    
+    @IBAction func done(segue: UIStoryboardSegue, sender: AnyObject?) {
+        println("\(className)::\(__FUNCTION__) identifier: \(segue.identifier) \(segue.sourceViewController)")
+        if segue.identifier == "ExitFromOnboarding" {
+        }
+    }
+
 
     // MARK: Application lifecycle
 
@@ -135,7 +147,9 @@ class SplashViewController: UIViewController {
             Debug.isBlocking()
             SwiftSpinner.hide(completion: nil)
             self.currentUser.registerForRemoteNotificationsIfNeeded()
-            self.performSegueWithIdentifier("Home", sender: self)
+            self.currentUser.writeToDisk()
+            self.performSegueWithIdentifier("Onboarding", sender: self)
+            //self.performSegueWithIdentifier("Home", sender: self)
         })
     }
 }

@@ -237,7 +237,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
     var isTwitterAuthenticated: Bool {
         get {
-            return Twitter.sharedInstance().session() != nil && self.twitterUserId != nil && self.token != nil && self.bitcoinAddress != nil && self.userId != nil
+            return Twitter.sharedInstance().session() != nil && self.twitterUserId != nil && self.bitcoinAddress != nil && self.userId != nil
         }
     }
 
