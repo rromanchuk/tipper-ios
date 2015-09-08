@@ -295,8 +295,8 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     func updateBalanceUSD(completion: () ->Void) {
         if let btc = bitcoinBalanceBTC where btc > 0.0 {
             API.sharedInstance.market("\(btc)", completion: { (json, error) -> Void in
-                if error == nil {
-                    self.marketValue = Market.entityWithJSON(Market.self, json: json, context: self.managedObjectContext!)!
+                if let moc = self.managedObjectContext where error == nil {
+                    self.marketValue = Market.entityWithJSON(Market.self, json: json, context: moc)!
                 }
                 completion()
             })
