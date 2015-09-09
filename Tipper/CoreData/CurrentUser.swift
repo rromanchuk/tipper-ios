@@ -44,6 +44,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     @NSManaged var marketValue: Tipper.Market?
     @NSManaged var admin: NSNumber?
     @NSManaged var lastReceivedEvaluatedKey: NSNumber?
+    @NSManaged var automaticTippingEnabled: NSNumber?
 
     class func currentUser(context: NSManagedObjectContext) -> CurrentUser {
         if let _currentUser = CurrentUser.first(CurrentUser.self, context: context) {
@@ -322,6 +323,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                     user.TwitterAuthSecret  = Twitter.sharedInstance().session().authTokenSecret
                     user.BitcoinBalanceBTC  = self.bitcoinBalanceBTC
                     user.CognitoIdentity    = self.cognitoIdentity
+                    user.AutomaticTippingEnabled = self.automaticTippingEnabled
                     self.mapper.save(user, configuration: self.defaultDynamoConfiguration).continueWithBlock({ (task) -> AnyObject! in
                         println("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
                         return nil
@@ -426,6 +428,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         self.bitcoinAddress         = user.BitcoinAddress
         self.admin                  = user.Admin
         self.profileImage           = user.ProfileImage
+        self.automaticTippingEnabled = user.AutomaticTippingEnabled
 
         self.bitcoinBalanceBTC      = user.BitcoinBalanceBTC
         

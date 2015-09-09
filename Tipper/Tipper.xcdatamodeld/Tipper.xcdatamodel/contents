@@ -2,6 +2,7 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14F27" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="CurrentUser" representedClassName="Tipper.CurrentUser" syncable="YES">
         <attribute name="admin" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="automaticTippingEnabled" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="bitcoinAddress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="bitcoinBalanceBTC" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="cognitoIdentity" optional="YES" attributeType="String" syncable="YES"/>
@@ -65,11 +66,11 @@
         <attribute name="txid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="270"/>
+        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="285"/>
         <element name="Favorite" positionX="-63" positionY="54" width="128" height="300"/>
         <element name="Market" positionX="-54" positionY="117" width="128" height="135"/>
+        <element name="Notification" positionX="-54" positionY="135" width="128" height="45"/>
         <element name="Settings" positionX="-54" positionY="99" width="128" height="105"/>
         <element name="Transaction" positionX="-54" positionY="108" width="128" height="210"/>
-        <element name="Notification" positionX="-54" positionY="135" width="128" height="45"/>
     </elements>
 </model>

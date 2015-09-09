@@ -41,6 +41,7 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var twitterUsername: UILabel!
 
+    @IBOutlet weak var autotipSwitch: UISwitch!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +81,11 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
         if let profileImageUrl = currentUser.profileImage, url = NSURL(string: profileImageUrl) {
             profileImage.hnk_setImageFromURL(url)
         }
-
+        
+        if let automaticTipping = currentUser.automaticTippingEnabled {
+            autotipSwitch.on = automaticTipping.boolValue
+        }
+        //
         twitterUsername.text = currentUser.twitterUsername
 
     }
@@ -168,6 +173,12 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
         })
     }
 
+    @IBAction func didToggleAutomaticTipping(sender: UISwitch) {
+        println("\(className)::\(__FUNCTION__) autotipSwitch:\(autotipSwitch.on), urrentUser.automaticTippingEnabled:\(currentUser.automaticTippingEnabled)")
+        currentUser.automaticTippingEnabled = NSNumber(bool: autotipSwitch.on)
+        currentUser.pushToDynamo()
+    }
+    
     @IBAction func didLongPressPayButton(sender: UILongPressGestureRecognizer) {
         println("\(className)::\(__FUNCTION__) \(currentUser.admin)")
         if let admin = currentUser.admin where admin.boolValue {

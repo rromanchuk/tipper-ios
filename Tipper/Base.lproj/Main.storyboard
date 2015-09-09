@@ -37,6 +37,7 @@
             <string>Bariol-Regular</string>
             <string>Bariol-Regular</string>
             <string>Bariol-Regular</string>
+            <string>Bariol-Regular</string>
         </mutableArray>
         <mutableArray key="Bariol_Bold.otf">
             <string>Bariol-Bold</string>
@@ -49,6 +50,7 @@
             <string>Bariol-Bold</string>
         </mutableArray>
         <mutableArray key="Bariol_Light.otf">
+            <string>Bariol-Light</string>
             <string>Bariol-Light</string>
             <string>Bariol-Light</string>
             <string>Bariol-Light</string>
@@ -984,6 +986,62 @@ Free money!</string>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="200" id="hk2-zr-Jo9" userLabel="Twitter">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hk2-zr-Jo9" id="I63-kU-iys">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIPPING PREFERENCES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9p-sS-VNt">
+                                                    <rect key="frame" x="23" y="28" width="239.5" height="97"/>
+                                                    <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="25"/>
+                                                    <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5wH-jD-mPa" userLabel="Separator">
+                                                    <rect key="frame" x="23" y="128" width="370" height="1"/>
+                                                    <color key="backgroundColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="sdP-co-KfE"/>
+                                                    </constraints>
+                                                </view>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-image-placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="AKm-pC-5Cz">
+                                                    <rect key="frame" x="23" y="144" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="S5Z-LZ-KuL"/>
+                                                        <constraint firstAttribute="height" constant="40" id="XOp-bz-cXL"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto-Tip Twitter Favorites" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPN-nE-2RL">
+                                                    <rect key="frame" x="71" y="155" width="169" height="17"/>
+                                                    <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jcr-U5-eEF">
+                                                    <rect key="frame" x="344" y="148" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="didToggleAutomaticTipping:" destination="UEU-XD-8Ny" eventType="valueChanged" id="SWY-g9-gq4"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="b9p-sS-VNt" firstAttribute="leading" secondItem="AKm-pC-5Cz" secondAttribute="leading" id="0OM-cd-HKh"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="5wH-jD-mPa" secondAttribute="trailing" constant="13" id="DIV-Nz-f9o"/>
+                                                <constraint firstItem="b9p-sS-VNt" firstAttribute="top" secondItem="I63-kU-iys" secondAttribute="topMargin" constant="20" id="F0p-6Y-crh"/>
+                                                <constraint firstItem="5wH-jD-mPa" firstAttribute="top" secondItem="b9p-sS-VNt" secondAttribute="bottom" constant="3" id="Sq7-qg-2nz"/>
+                                                <constraint firstItem="b9p-sS-VNt" firstAttribute="leading" secondItem="I63-kU-iys" secondAttribute="leadingMargin" constant="15" id="Ta4-QO-Xgf"/>
+                                                <constraint firstItem="b9p-sS-VNt" firstAttribute="leading" secondItem="5wH-jD-mPa" secondAttribute="leading" id="Yjn-ye-hmU"/>
+                                                <constraint firstItem="EPN-nE-2RL" firstAttribute="centerY" secondItem="AKm-pC-5Cz" secondAttribute="centerY" constant="-0.5" id="ZVA-dE-hL6"/>
+                                                <constraint firstItem="Jcr-U5-eEF" firstAttribute="centerY" secondItem="EPN-nE-2RL" secondAttribute="centerY" id="bUg-ie-oca"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="EPN-nE-2RL" secondAttribute="bottom" constant="20" id="ej9-z5-nd7"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Jcr-U5-eEF" secondAttribute="trailing" constant="13" id="pUU-7n-r7y"/>
+                                                <constraint firstItem="EPN-nE-2RL" firstAttribute="leading" secondItem="AKm-pC-5Cz" secondAttribute="trailing" constant="8" id="vwh-yN-aRp"/>
+                                                <constraint firstItem="AKm-pC-5Cz" firstAttribute="top" secondItem="b9p-sS-VNt" secondAttribute="bottom" constant="19" id="yUe-9K-RPb"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -997,6 +1055,7 @@ Free money!</string>
                         <outlet property="addressLabel" destination="AR8-pK-0TU" id="zvL-db-cLJ"/>
                         <outlet property="addressToPayTextField" destination="IAn-5m-NYd" id="ytt-eq-4P1"/>
                         <outlet property="applePayButton" destination="9DJ-2s-fVD" id="Vw8-cs-08m"/>
+                        <outlet property="autotipSwitch" destination="Jcr-U5-eEF" id="ndj-xf-3O6"/>
                         <outlet property="btcConversionLabel" destination="3iP-12-iHD" id="BgS-L8-1Yx"/>
                         <outlet property="copyToClipboardButton" destination="6Wd-76-ren" id="BtJ-hi-X0J"/>
                         <outlet property="pasteAddressFromClipboard" destination="Jm4-av-7oX" id="fJY-Kn-CMf"/>
