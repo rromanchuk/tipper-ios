@@ -168,8 +168,15 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
         })
     }
 
+    @IBAction func didLongPressPayButton(sender: UILongPressGestureRecognizer) {
+        println("\(className)::\(__FUNCTION__) \(currentUser.admin)")
+        if let admin = currentUser.admin where admin.boolValue {
+            launchStripeFlow()
+        }
+    }
 
     @IBAction func didTapLogout(sender: UIButton) {
+        println("\(className)::\(__FUNCTION__)")
         currentUser.resetIdentifiers()
         performSegueWithIdentifier("BackToSplashFromAccount", sender: self)
     }
@@ -208,7 +215,18 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
         }
 
     }
-
+    
+    func launchStripeFlow() {
+        //default to Stripe's PaymentKit Form
+        var options = STPCheckoutOptions()
+        let amount = (market.amount! as NSString).doubleValue
+        options.purchaseDescription = "Tipper 0.02BTC deposit";
+        options.purchaseAmount = UInt(amount * 100)
+        options.companyName = "Tipper"
+        let checkoutViewController = STPCheckoutViewController(options: options)
+        checkoutViewController.checkoutDelegate = self
+        self.parentViewController!.presentViewController(checkoutViewController, animated: true, completion: nil)
+    }
 
     func createBackendChargeWithToken(token: STPToken, completion: STPTokenSubmissionHandler) {
         println("\(className)::\(__FUNCTION__)")

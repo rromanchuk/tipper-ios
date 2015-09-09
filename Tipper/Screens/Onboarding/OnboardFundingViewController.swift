@@ -61,6 +61,11 @@ class OnboardFundingViewController: UIViewController, PKPaymentAuthorizationView
         }
     }
     
+    @IBAction func didLongPressPay(sender: UILongPressGestureRecognizer) {
+        if let admin = currentUser.admin where admin.boolValue {
+            launchStripeFlow()
+        }
+    }
 
     @IBAction func didTapPay(sender: UIButton) {
         println("\(className)::\(__FUNCTION__) market: \(market)")
@@ -84,18 +89,22 @@ class OnboardFundingViewController: UIViewController, PKPaymentAuthorizationView
                 self.presentViewController(applePayController, animated: true, completion: nil)
             #endif
         } else {
-            //default to Stripe's PaymentKit Form
-            var options = STPCheckoutOptions()
-            let amount = (market.amount! as NSString).doubleValue
-            options.purchaseDescription = "Tipper 0.02BTC deposit";
-            options.purchaseAmount = UInt(amount * 100)
-            options.companyName = "Tipper"
-            let checkoutViewController = STPCheckoutViewController(options: options)
-            checkoutViewController.checkoutDelegate = self
-            self.presentViewController(checkoutViewController, animated: true, completion: nil)
+            launchStripeFlow()
         }
         
 
+    }
+    
+    func launchStripeFlow() {
+        //default to Stripe's PaymentKit Form
+        var options = STPCheckoutOptions()
+        let amount = (market.amount! as NSString).doubleValue
+        options.purchaseDescription = "Tipper 0.02BTC deposit";
+        options.purchaseAmount = UInt(amount * 100)
+        options.companyName = "Tipper"
+        let checkoutViewController = STPCheckoutViewController(options: options)
+        checkoutViewController.checkoutDelegate = self
+        self.presentViewController(checkoutViewController, animated: true, completion: nil)
     }
     /*
     // MARK: - Navigation
