@@ -125,7 +125,7 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
     
     override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
         print("\(className)::\(__FUNCTION__) toViewController: \(toViewController), fromViewController: \(fromViewController)")
-        if let fromModal = fromViewController as? CustomModable {
+        if let _ = fromViewController as? CustomModable {
 
             let unwindSegue = CustomUnwindModalSegue(identifier: identifier, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
                 

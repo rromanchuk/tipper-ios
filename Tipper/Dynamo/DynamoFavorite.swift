@@ -56,7 +56,6 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     class func fetchAllFavoritesFromUser(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
         print("DynamoFavorite::\(__FUNCTION__)")
         
-        let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let exp = AWSDynamoDBQueryExpression()
         
         exp.hashKeyValues      = currentUser.userId!
@@ -79,7 +78,6 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     class func fetchSentTips(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
         print("DynamoFavorite::\(__FUNCTION__)")
 
-        let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let exp = AWSDynamoDBQueryExpression()
 
         exp.hashKeyValues      = currentUser.userId!
@@ -93,7 +91,6 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     class func fetchReceivedTips(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
         print("DynamoFavorite::\(__FUNCTION__)")
 
-        let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let exp = AWSDynamoDBQueryExpression()
 
         exp.hashKeyValues      = currentUser.userId!
@@ -115,7 +112,6 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     class func updateReceivedTips(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
         print("DynamoFavorite::\(__FUNCTION__)")
 
-        let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let exp = AWSDynamoDBQueryExpression()
 
         exp.hashKeyValues      = currentUser.userId!
@@ -128,7 +124,6 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     class func updateSentTips(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
         print("DynamoFavorite::\(__FUNCTION__)")
 
-        let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let exp = AWSDynamoDBQueryExpression()
 
         exp.hashKeyValues      = currentUser.userId!
