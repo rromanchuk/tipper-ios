@@ -1,5 +1,5 @@
-github "Alamofire/Alamofire" "092022fb5b1580e28ce1f1344484e04820c168e0"
+github "Alamofire/Alamofire" "2.0.0"
 github "meteochu/HanekeSwift" "f87220fccba7810955fe5392ebd492a5c9baf050"
-github "rromanchuk/QRCode" "ab395969238036ef3da0b0556868fea1bf1be172"
+github "rromanchuk/QRCode" "ea5eaf724c55b3f1002872e73a5ca395a7039e44"
 github "rromanchuk/SwiftyJSON" "89aba511936ad1064aea3ed96f23732c9ddb5bb4"
 github "rromanchuk/stripe-ios" "05debf487adeb5685f31a51aaf2f787633f482b1"

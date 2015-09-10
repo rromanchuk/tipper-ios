@@ -88,14 +88,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tipper/Screens/TabController/TipsController.swift"
-            timestampString = "463551190.98447"
+            filePath = "Tipper/Screens/WalletController.swift"
+            timestampString = "463534228.064727"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "fetchRequest"
-            landmarkType = "19">
+            startingLineNumber = "278"
+            endingLineNumber = "278"
+            landmarkName = "textFieldChanged(_:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
