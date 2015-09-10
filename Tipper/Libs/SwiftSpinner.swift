@@ -100,7 +100,7 @@ public class SwiftSpinner: UIView {
     //
     public class func show(title: String, animated: Bool = true) -> SwiftSpinner {
         
-        let window = UIApplication.sharedApplication().windows.first as! UIWindow
+        let window = UIApplication.sharedApplication().windows.first
         let spinner = SwiftSpinner.sharedInstance
         
         spinner.showWithDelayBlock = nil
@@ -111,7 +111,7 @@ public class SwiftSpinner: UIView {
         if spinner.superview == nil {
             //show the spinner
             spinner.alpha = 0.0
-            window.addSubview(spinner)
+            window?.addSubview(spinner)
             
             UIView.animateWithDuration(0.33, delay: 0.0, options: .CurveEaseOut, animations: {
                 spinner.alpha = 1.0
@@ -377,8 +377,8 @@ public class SwiftSpinner: UIView {
     }
     
     public func updateFrame() {
-        let window = UIApplication.sharedApplication().windows.first as! UIWindow
-        SwiftSpinner.sharedInstance.frame = window.frame
+        let window = UIApplication.sharedApplication().windows.first
+        SwiftSpinner.sharedInstance.frame = window!.frame
     }
     
     // MARK: - Util methods

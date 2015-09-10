@@ -23,8 +23,8 @@ class TransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIView
         let toView = transitionContext.viewForKey(UITransitionContextToViewKey)!
 
         // set up from 2D transforms that we'll use in the animation
-        let offScreenRight = CGAffineTransformMakeTranslation(container.frame.width, 0)
-        let offScreenLeft = CGAffineTransformMakeTranslation(-container.frame.width, 0)
+        let offScreenRight = CGAffineTransformMakeTranslation(container!.frame.width, 0)
+        let offScreenLeft = CGAffineTransformMakeTranslation(-container!.frame.width, 0)
 
         // prepare the toView for the animation
         if (self.presenting){
@@ -36,8 +36,8 @@ class TransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIView
 
 
         // add the both views to our view controller
-        container.addSubview(toView)
-        container.addSubview(fromView)
+        container!.addSubview(toView)
+        container!.addSubview(fromView)
 
         // get the duration of the animation
         // DON'T just type '0.5s' -- the reason why won't make sense until the next post

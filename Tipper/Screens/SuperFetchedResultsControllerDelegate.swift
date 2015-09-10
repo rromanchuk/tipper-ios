@@ -117,9 +117,7 @@ class SuperFetchedResultsControllerDelegate: NSObject, NSFetchedResultsControlle
         }
     }
 
-
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: NSManagedObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?)
-    {
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
         //println("didChangeObject")
         if(receiverType() == ReusableViewType.TableView){
             switch type {
@@ -194,16 +192,17 @@ class SuperFetchedResultsControllerDelegate: NSObject, NSFetchedResultsControlle
                 } else {
                     collectionView!.performBatchUpdates({() -> Void in
                         for change in self.objectChanges {
-                            for (dictKey,dictValue) in change {
+                            for (dictKey, dictValue) in change {
                                 switch (dictKey) {
                                 case NSFetchedResultsChangeType.Insert:
-                                    self.collectionView!.insertItemsAtIndexPaths([dictValue])
+                                    
+                                    self.collectionView!.insertItemsAtIndexPaths([dictValue as! NSIndexPath])
                                     break;
                                 case NSFetchedResultsChangeType.Delete:
-                                    self.collectionView!.deleteItemsAtIndexPaths([dictValue])
+                                    self.collectionView!.deleteItemsAtIndexPaths([dictValue as! NSIndexPath])
                                     break;
                                 case NSFetchedResultsChangeType.Update:
-                                    self.collectionView!.reloadItemsAtIndexPaths([dictValue])
+                                    self.collectionView!.reloadItemsAtIndexPaths([dictValue as! NSIndexPath])
                                     break;
                                 case NSFetchedResultsChangeType.Move:
                                     self.collectionView!.moveItemAtIndexPath(dictValue[0] as! NSIndexPath, toIndexPath: dictValue[1] as! NSIndexPath)

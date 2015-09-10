@@ -42,7 +42,7 @@ class TipsController: UIViewController {
     lazy var fetchRequest: NSFetchRequest = {
         let request = NSFetchRequest(entityName: "Favorite")
         request.predicate = self.predicate
-        request.sortDescriptors = self.sortDescriptors
+        request.sortDescriptors = self.sortDescriptors as? [NSSortDescriptor]
         return request
     }()
 
@@ -95,7 +95,7 @@ class TipsController: UIViewController {
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let favorite = fetchedResultsController.objectAtIndexPath(indexPath) as! Favorite
-        let twt = TWTRTweet(JSONDictionary: favorite.twitterJSON)
+        //let twt = TWTRTweet(JSONDictionary: favorite.twitterJSON)
 
         let cell = tableView.dequeueReusableCellWithIdentifier(className, forIndexPath: indexPath) as! TipCell
         cell.currentUser = currentUser
@@ -108,7 +108,7 @@ class TipsController: UIViewController {
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String {
         if let sections = fetchedResultsController.sections {
             let currentSection = sections[section] 
-            if let name = currentSection.name, numericSection = Int(name) {
+            if let numericSection = Int(currentSection.name) {
                 let year = numericSection / 10000;
                 let month = (numericSection / 100) % 100;
                 let day = numericSection % 100;
@@ -130,8 +130,8 @@ class TipsController: UIViewController {
         view.tintColor = UIColor.colorWithRGB(0x1D1D26, alpha: 0.10)
 
         let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-        header.textLabel.textColor = UIColor.colorWithRGB(0x1D1D26, alpha: 1.0)
-        header.textLabel.font = UIFont(name: "Bariol-Regular", size: 11.0)
+        header.textLabel!.textColor = UIColor.colorWithRGB(0x1D1D26, alpha: 1.0)
+        header.textLabel!.font = UIFont(name: "Bariol-Regular", size: 11.0)
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

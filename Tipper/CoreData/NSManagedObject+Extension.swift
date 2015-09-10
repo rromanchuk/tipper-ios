@@ -46,21 +46,14 @@ extension NSManagedObject  {
     class func entityWithJSON<T: NSManagedObject where T: CoreDataUpdatable>(entity: T.Type, json: JSON, context: NSManagedObjectContext) -> T? {
         let request = NSFetchRequest(entityName: entity.className)
         request.predicate = NSPredicate(format: "%K == %@", entity.lookupProperty, json[entity.lookupProperty].stringValue)
-        var error: NSError? = nil
-        let results = context.executeFetchRequest(request, error: &error)
-        if let _error = error {
-            print("ERROR: \(_error)")
-        }
-
-        if (results == nil) {
-            return nil
-        } else if (results?.count == 0) {
+        let results = try! context.executeFetchRequest(request)
+        
+        if (results.count == 0) {
             let entityObj = self.create(entity, context: context)
-
             entityObj.updateEntityWithJSON(json)
             return entityObj
         } else {
-            let entityObj = results?.last as? T
+            let entityObj = results.last as? T
             entityObj?.updateEntityWithJSON(json)
             return entityObj
         }

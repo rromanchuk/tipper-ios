@@ -112,22 +112,24 @@ enum Router: URLRequestConvertible {
 
     // MARK: URLRequestConvertible
 
-    var URLRequest: NSURLRequest {
-
+    var URLRequest: NSMutableURLRequest {
+        
         let URLString = URL
-
-
+        
+        
         let mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: URLString)!)
         mutableURLRequest.HTTPMethod = method.rawValue
-
+        
         switch self {
         case .Register, .MarketPrice, .Settings, .Balance:
             // Does't need authentication
             break
         case .Favorites:
-            return Twitter.sharedInstance().APIClient.URLRequestWithMethod(method.rawValue, URL: URLString, parameters: URLParameters, error: nil)
+            let request : NSURLRequest = Twitter.sharedInstance().APIClient.URLRequestWithMethod(method.rawValue, URL: URLString, parameters: URLParameters, error: nil)
+            //let mutableRequest: NSMutableURLRequest = request.mutableCopy()
+            return request.mutableCopy() as! NSMutableURLRequest
         default:
-
+            
             // Set authentication header
             let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let currentUser = CurrentUser.currentUser(delegate.managedObjectContext)
@@ -138,7 +140,7 @@ enum Router: URLRequestConvertible {
                 mutableURLRequest.setValue("Basic \(base64EncodedString)", forHTTPHeaderField: "Authorization")
             }
         }
-
+        
         switch method {
         case .POST, .PUT, .PATCH:
             return ParameterEncoding.JSON.encode(mutableURLRequest, parameters: JSONparameters).0
