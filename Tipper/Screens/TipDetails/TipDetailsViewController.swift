@@ -18,7 +18,7 @@ class TipDetailsViewController: UIViewController, Logoutable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
 
         // Do any additional setup after loading the view.
     }
@@ -29,7 +29,7 @@ class TipDetailsViewController: UIViewController, Logoutable {
     }
 
     func backToSplash() {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         currentUser.resetIdentifiers()
         performSegueWithIdentifier("BackToSplashFromTipDetails", sender: self)
     }
@@ -38,7 +38,7 @@ class TipDetailsViewController: UIViewController, Logoutable {
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        println("\(className)::\(__FUNCTION__) identifier: \(segue.identifier)")
+        print("\(className)::\(__FUNCTION__) identifier: \(segue.identifier)")
 
         if segue.identifier == "TipDetailEmbed" {
             let vc = segue.destinationViewController as! TipDetailContainer

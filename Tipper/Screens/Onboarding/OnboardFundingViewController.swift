@@ -31,11 +31,11 @@ class OnboardFundingViewController: UIViewController, PKPaymentAuthorizationView
         let paymentRequest = Stripe.paymentRequestWithMerchantIdentifier(ApplePayMerchantID)
         
         if PKPaymentAuthorizationViewController.canMakePaymentsUsingNetworks(SupportedPaymentNetworks) && Stripe.canSubmitPaymentRequest(paymentRequest) {
-            print("ApplePay supported")
+            print("ApplePay supported", terminator: "")
             self.applePayButton.hidden = false
             self.stripeButton.hidden = true
         } else {
-            print("ApplePay not supported")
+            print("ApplePay not supported", terminator: "")
             self.applePayButton.hidden = true
             self.stripeButton.hidden = false
         }
@@ -68,7 +68,7 @@ class OnboardFundingViewController: UIViewController, PKPaymentAuthorizationView
     }
 
     @IBAction func didTapPay(sender: UIButton) {
-        println("\(className)::\(__FUNCTION__) market: \(market)")
+        print("\(className)::\(__FUNCTION__) market: \(market)", terminator: "")
         let request = PKPaymentRequest()
         request.merchantIdentifier = ApplePayMerchantID
         request.supportedNetworks = SupportedPaymentNetworks
@@ -79,7 +79,7 @@ class OnboardFundingViewController: UIViewController, PKPaymentAuthorizationView
         request.paymentSummaryItems = [PKPaymentSummaryItem(label: "Tipper 0.02BTC deposit", amount: NSDecimalNumber(double: amount))]
         if Stripe.canSubmitPaymentRequest(request) {
             #if DEBUG
-                println("in debug mode")
+                print("in debug mode", terminator: "")
                 let applePayController = STPTestPaymentAuthorizationViewController(paymentRequest: request)
                 applePayController.delegate = self
                 self.presentViewController(applePayController, animated: true, completion: nil)
@@ -97,7 +97,7 @@ class OnboardFundingViewController: UIViewController, PKPaymentAuthorizationView
     
     func launchStripeFlow() {
         //default to Stripe's PaymentKit Form
-        var options = STPCheckoutOptions()
+        let options = STPCheckoutOptions()
         let amount = (market.amount! as NSString).doubleValue
         options.purchaseDescription = "Tipper 0.02BTC deposit";
         options.purchaseAmount = UInt(amount * 100)
@@ -125,33 +125,33 @@ class OnboardFundingViewController: UIViewController, PKPaymentAuthorizationView
     
     // MARK: Stripe
     func checkoutController(controller: STPCheckoutViewController, didCreateToken token: STPToken, completion: STPTokenSubmissionHandler) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)", terminator: "")
         createBackendChargeWithToken(token, completion: completion)
     }
     
     
-    func paymentAuthorizationViewControllerDidFinish(controller: PKPaymentAuthorizationViewController!) {
-        println("\(className)::\(__FUNCTION__)")
+    func paymentAuthorizationViewControllerDidFinish(controller: PKPaymentAuthorizationViewController) {
+        print("\(className)::\(__FUNCTION__)", terminator: "")
         self.parentViewController!.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func checkoutController(controller: STPCheckoutViewController, didFinishWithStatus status: STPPaymentStatus, error: NSError?) {
-        println("\(className)::\(__FUNCTION__) error:\(error)")
+        print("\(className)::\(__FUNCTION__) error:\(error)", terminator: "")
         self.parentViewController!.dismissViewControllerAnimated(true, completion: {
             switch(status) {
             case .UserCancelled:
                 return // just do nothing in this case
             case .Success:
-                println("great success!")
+                print("great success!", terminator: "")
             case .Error:
-                println("oh no, an error: \(error?.localizedDescription)")
+                print("oh no, an error: \(error?.localizedDescription)", terminator: "")
             }
         })
     }
     
     
     func createBackendChargeWithToken(token: STPToken, completion: STPTokenSubmissionHandler) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)", terminator: "")
         API.sharedInstance.charge(token.tokenId, amount:self.market.amount!, completion: { [weak self] (json, error) -> Void in
             if (error != nil) {
                 completion(STPBackendChargeResult.Failure, error)
@@ -165,13 +165,13 @@ class OnboardFundingViewController: UIViewController, PKPaymentAuthorizationView
     }
     
     func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: ((PKPaymentAuthorizationStatus) -> Void)) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)", terminator: "")
         STPAPIClient.sharedClient().createTokenWithPayment(payment, completion: { [weak self] (token, error) -> Void in
-            println("\(self!.className)::\(__FUNCTION__) error:\(error), token: \(token)")
+            print("\(self!.className)::\(__FUNCTION__) error:\(error), token: \(token)", terminator: "")
             if error == nil {
                 if let token = token {
                     self?.createBackendChargeWithToken(token, completion: { (result, error) -> Void in
-                        println("\(self!.className)::\(__FUNCTION__) error:\(error), result: \(result)")
+                        print("\(self!.className)::\(__FUNCTION__) error:\(error), result: \(result)", terminator: "")
                         if result == STPBackendChargeResult.Success {
                             completion(PKPaymentAuthorizationStatus.Success)
                             return

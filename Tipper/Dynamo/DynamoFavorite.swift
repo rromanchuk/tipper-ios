@@ -54,7 +54,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     }
     
     class func fetchAllFavoritesFromUser(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
-        println("DynamoFavorite::\(__FUNCTION__)")
+        print("DynamoFavorite::\(__FUNCTION__)")
         
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let exp = AWSDynamoDBQueryExpression()
@@ -77,7 +77,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     }
 
     class func fetchSentTips(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
-        println("DynamoFavorite::\(__FUNCTION__)")
+        print("DynamoFavorite::\(__FUNCTION__)")
 
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let exp = AWSDynamoDBQueryExpression()
@@ -91,7 +91,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     }
 
     class func fetchReceivedTips(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
-        println("DynamoFavorite::\(__FUNCTION__)")
+        print("DynamoFavorite::\(__FUNCTION__)")
 
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let exp = AWSDynamoDBQueryExpression()
@@ -113,7 +113,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
 
 
     class func updateReceivedTips(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
-        println("DynamoFavorite::\(__FUNCTION__)")
+        print("DynamoFavorite::\(__FUNCTION__)")
 
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let exp = AWSDynamoDBQueryExpression()
@@ -126,7 +126,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     }
 
     class func updateSentTips(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
-        println("DynamoFavorite::\(__FUNCTION__)")
+        print("DynamoFavorite::\(__FUNCTION__)")
 
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let exp = AWSDynamoDBQueryExpression()
@@ -168,7 +168,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         let privateContext = context.privateContext
 
         mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: secondaryIndexHash).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-            println("query secondaryIndexHash: \(secondaryIndexHash), value: \(exp.hashKeyValues)  Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
+            print("query secondaryIndexHash: \(secondaryIndexHash), value: \(exp.hashKeyValues)  Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
             if let results = task.result as?  AWSDynamoDBPaginatedOutput where task.error == nil && task.exception == nil {
                 privateContext.performBlock({ () -> Void in
                     for result in results.items as! [DynamoFavorite] {
@@ -176,7 +176,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
                         privateContext.saveMoc()
                     }
                     context.performBlock({ () -> Void in
-                        println("lastEvaluatedKey:\(results.lastEvaluatedKey)")
+                        print("lastEvaluatedKey:\(results.lastEvaluatedKey)")
                         if results.lastEvaluatedKey != nil {
                             exp.exclusiveStartKey = results.lastEvaluatedKey
                             self.query(exp, secondaryIndexHash: secondaryIndexHash, context: context, completion:completion)
@@ -186,7 +186,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
                     })
                 })
             } else {
-                print("FAILURE!!!!!!")
+                print("FAILURE!!!!!!", terminator: "")
                 completion()
             }
 

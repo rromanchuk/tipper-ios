@@ -104,9 +104,9 @@ class TipCell: UITableViewCell {
             let string = "a\(Settings.sharedInstance.tipAmountUBTC)"
             let labelAttributes = NSMutableAttributedString(string: string)
             labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "coiner", size: 18.0)!, range: NSMakeRange(0,1))
-            labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol", size: 18.0)!, range: NSMakeRange(1, count(string) - 1))
+            labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol", size: 18.0)!, range: NSMakeRange(1, string.characters.count - 1))
             labelAttributes.addAttribute(NSKernAttributeName, value:-5.0, range: NSMakeRange(0, 1))
-            labelAttributes.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSMakeRange(0, count(string)))
+            labelAttributes.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSMakeRange(0, string.characters.count))
             tipAmount.attributedText = labelAttributes;
             
             if let tipAmount = Settings.sharedInstance.tipAmount {
@@ -117,7 +117,7 @@ class TipCell: UITableViewCell {
     }
 
     @IBAction func userDidTip(sender: UIButton) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)", terminator: "")
         tipButton.backgroundColor = UIColor.grayColor()
         favorite.didLeaveTip = true
 
@@ -125,17 +125,17 @@ class TipCell: UITableViewCell {
         let request = AWSSQSSendMessageRequest()
 
         if let currentUser = currentUser {
-            var tipDict = ["TweetID": favorite.tweetId, "FromTwitterID": currentUser.uuid!, "ToTwitterID": favorite.toTwitterId ]
-            let jsonTipDict = NSJSONSerialization.dataWithJSONObject(tipDict, options: nil, error: nil)
+            let tipDict = ["TweetID": favorite.tweetId, "FromTwitterID": currentUser.uuid!, "ToTwitterID": favorite.toTwitterId ]
+            let jsonTipDict = try? NSJSONSerialization.dataWithJSONObject(tipDict, options: [])
             let json: String = NSString(data: jsonTipDict!, encoding: NSUTF8StringEncoding) as! String
 
 
             request.messageBody = json
             request.queueUrl = Config.get("SQS_NEW_TIP")
             sqs.sendMessage(request).continueWithBlock { (task) -> AnyObject! in
-                println("Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
+                print("Result: \(task.result) Error \(task.error), Exception: \(task.exception)", terminator: "")
                 if (task.error != nil) {
-                    println("ERROR: \(task.error)")
+                    print("ERROR: \(task.error)", terminator: "")
                 }
                 return nil
             }

@@ -48,7 +48,7 @@ class TipsController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("\(className)::\(__FUNCTION__) fetchedObjects: \(fetchedResultsController.fetchedObjects?.count)")
+        print("\(className)::\(__FUNCTION__) fetchedObjects: \(fetchedResultsController.fetchedObjects?.count)")
 
         tableView.estimatedRowHeight = 70
         tableView.rowHeight = UITableViewAutomaticDimension // Explicitly set on iOS 8 if using automatic row height calculation
@@ -60,7 +60,7 @@ class TipsController: UIViewController {
         
         SwiftSpinner.show("Loading your tips...", animated: true)
         DynamoFavorite.fetchAllFavoritesFromUser(currentUser, context: managedObjectContext, completion: { () -> Void in
-            SwiftSpinner.hide(completion: nil)
+            SwiftSpinner.hide(nil)
         })
 //        DynamoFavorite.fetchTips(currentUser, context: managedObjectContext) { () -> Void in
 //            
@@ -70,7 +70,7 @@ class TipsController: UIViewController {
     }
 
     func refresh(refreshControl: UIRefreshControl) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         DynamoFavorite.updateTips(currentUser, context: managedObjectContext) { () -> Void in
             refreshControl.endRefreshing()
         }
@@ -78,7 +78,7 @@ class TipsController: UIViewController {
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        println("\(className)::\(__FUNCTION__) identifier: \(segue.identifier)")
+        print("\(className)::\(__FUNCTION__) identifier: \(segue.identifier)")
 
         if segue.identifier == "TipDetails" {
             let cell: TipCell = sender as! TipCell
@@ -107,8 +107,8 @@ class TipsController: UIViewController {
 
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String {
         if let sections = fetchedResultsController.sections {
-            let currentSection = sections[section] as! NSFetchedResultsSectionInfo
-            if let name = currentSection.name, numericSection = name.toInt() {
+            let currentSection = sections[section] 
+            if let name = currentSection.name, numericSection = Int(name) {
                 let year = numericSection / 10000;
                 let month = (numericSection / 100) % 100;
                 let day = numericSection % 100;
@@ -139,7 +139,7 @@ class TipsController: UIViewController {
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchedResultsController.sections![section].numberOfObjects!
+        return fetchedResultsController.sections![section].numberOfObjects
     }
 
     func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {

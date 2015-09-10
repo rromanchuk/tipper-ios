@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/Haneke-Swift.h</key>
 		<data>
-		kN/UpO62a4Q80dGzXW5M8/Z49Dk=
+		wj+ydiGOXvAUxCS8gcHyXzpdjwo=
 		</data>
 		<key>Headers/Haneke.h</key>
 		<data>
@@ -14,23 +14,23 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		JrRJcbBTapUQaa8EcnnomshB3jk=
+		o4nh8YVe0zXnZRofC4e1YO4bsO4=
 		</data>
 		<key>Modules/Haneke.swiftmodule/arm.swiftdoc</key>
 		<data>
-		7rMdzmYBkR7uUwabHwh8gRyEMZ8=
+		AFpR5/bnZxDj46ztuDhhvAnpBls=
 		</data>
 		<key>Modules/Haneke.swiftmodule/arm.swiftmodule</key>
 		<data>
-		a+sk5PujQ/oUblNjx7IzZFHJw7s=
+		57/0SRkyaFx/0yefz4FUizGC+Qw=
 		</data>
 		<key>Modules/Haneke.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		ib/BzXN7cdiGk9d67pENMpQBVhU=
+		qDVyp3KCmVP/vYwoWB0+89/bdLQ=
 		</data>
 		<key>Modules/Haneke.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		joY+zXBnE61QnW18bbpacrediBM=
+		NdLMf3EloJ9PwUWU9FHHoPUDMvw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -41,7 +41,7 @@
 	<dict>
 		<key>Headers/Haneke-Swift.h</key>
 		<data>
-		kN/UpO62a4Q80dGzXW5M8/Z49Dk=
+		wj+ydiGOXvAUxCS8gcHyXzpdjwo=
 		</data>
 		<key>Headers/Haneke.h</key>
 		<data>
@@ -49,19 +49,19 @@
 		</data>
 		<key>Modules/Haneke.swiftmodule/arm.swiftdoc</key>
 		<data>
-		7rMdzmYBkR7uUwabHwh8gRyEMZ8=
+		AFpR5/bnZxDj46ztuDhhvAnpBls=
 		</data>
 		<key>Modules/Haneke.swiftmodule/arm.swiftmodule</key>
 		<data>
-		a+sk5PujQ/oUblNjx7IzZFHJw7s=
+		57/0SRkyaFx/0yefz4FUizGC+Qw=
 		</data>
 		<key>Modules/Haneke.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		ib/BzXN7cdiGk9d67pENMpQBVhU=
+		qDVyp3KCmVP/vYwoWB0+89/bdLQ=
 		</data>
 		<key>Modules/Haneke.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		joY+zXBnE61QnW18bbpacrediBM=
+		NdLMf3EloJ9PwUWU9FHHoPUDMvw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>

@@ -22,12 +22,12 @@ class Config {
     }
 
     class func dump() {
-        println("---------------- CURRENT CONFIGURATION ----------------")
+        print("---------------- CURRENT CONFIGURATION ----------------")
         for (myKey, myValue) in NSBundle.mainBundle().infoDictionary! {
             if let value: String = myValue as? String {
-                println("\(myKey) = \(value)")
+                print("\(myKey) = \(value)")
             }
         }
-        println("---------------- END CONFIGURATION ----------------")
+        print("---------------- END CONFIGURATION ----------------")
     }
 }

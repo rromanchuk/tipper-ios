@@ -10,7 +10,7 @@ import UIKit
 
 class TintedButton: UIButton {
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         TintedButton.setup(self)
     }

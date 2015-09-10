@@ -29,7 +29,7 @@ class TipDetailContainer: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         setupTipAmount()
 
         let twt = TWTRTweet(JSONDictionary: favorite.twitterJSON)
@@ -58,7 +58,7 @@ class TipDetailContainer: UITableViewController {
         }
 
         if let txid = favorite.txid {
-            println("\(className)::\(__FUNCTION__) txid: \(txid)")
+            print("\(className)::\(__FUNCTION__) txid: \(txid)")
             DynamoTransaction.fetch(txid, context: managedObjectContext) { (transaction) -> Void in
                 if let transaction = transaction {
                     self.confirmationsLabel.text = transaction.confirmations?.stringValue
@@ -70,19 +70,19 @@ class TipDetailContainer: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
     @IBAction func didTapBack(sender: UIButton) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         self.performSegueWithIdentifier("ExitToHome", sender: self)
     }
 
     @IBAction func didTapTxidLabel(sender: UITapGestureRecognizer) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         if let txid = favorite.txid {
             UIApplication.sharedApplication().openURL(NSURL(string: "https://blockchain.info/tx/\(txid)")!)
         }
@@ -93,9 +93,9 @@ class TipDetailContainer: UITableViewController {
             let string = "a\(Settings.sharedInstance.tipAmountUBTC)"
             let labelAttributes = NSMutableAttributedString(string: string)
             labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "coiner", size: 18.0)!, range: NSMakeRange(0,1))
-            labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol", size: 18.0)!, range: NSMakeRange(1, count(string) - 1))
+            labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol", size: 18.0)!, range: NSMakeRange(1, string.characters.count - 1))
             labelAttributes.addAttribute(NSKernAttributeName, value:-5.0, range: NSMakeRange(0, 1))
-            labelAttributes.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSMakeRange(0, count(string)))
+            labelAttributes.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSMakeRange(0, string.characters.count))
             tipLabel.attributedText = labelAttributes;
         }
     }

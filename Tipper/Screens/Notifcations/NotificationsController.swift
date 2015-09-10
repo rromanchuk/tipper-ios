@@ -18,12 +18,12 @@ class NotificationsController: UIViewController, ContainerDelegate, CustomModabl
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
 
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        println("\(className)::\(__FUNCTION__) identifier: \(segue.identifier)")
+        print("\(className)::\(__FUNCTION__) identifier: \(segue.identifier)")
         
         if segue.identifier == "NotificationsEmbed" {
             let vc = segue.destinationViewController as! NotificationsTableController
@@ -42,7 +42,7 @@ class NotificationsController: UIViewController, ContainerDelegate, CustomModabl
     }
     
     func prepareForSegueAnimation() {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         view.backgroundColor = UIColor.clearColor()
         headerContainer.hidden = true
     }
@@ -62,7 +62,7 @@ class NotificationsController: UIViewController, ContainerDelegate, CustomModabl
     
     
     @IBAction func didTapClose() {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         self.performSegueWithIdentifier("ExitToHomeFromNotifications", sender: self)
     }
 

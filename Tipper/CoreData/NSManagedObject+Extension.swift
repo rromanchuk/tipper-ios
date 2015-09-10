@@ -12,13 +12,13 @@ import SwiftyJSON
 
 extension NSManagedObject  {
     class func create<T: NSManagedObject where T: CoreDataUpdatable>(entity: T.Type, context: NSManagedObjectContext) -> T {
-        var object = NSEntityDescription.insertNewObjectForEntityForName(entity.className, inManagedObjectContext: context) as! T
+        let object = NSEntityDescription.insertNewObjectForEntityForName(entity.className, inManagedObjectContext: context) as! T
         return object
     }
 
     class func all<T: NSManagedObject where T: CoreDataUpdatable>(entity: T.Type, context: NSManagedObjectContext) -> Array<AnyObject>? {
         let request = NSFetchRequest(entityName: entity.className)
-        let results = context.executeFetchRequest(request, error: nil)
+        let results = try? context.executeFetchRequest(request)
         return results
     }
 
@@ -49,7 +49,7 @@ extension NSManagedObject  {
         var error: NSError? = nil
         let results = context.executeFetchRequest(request, error: &error)
         if let _error = error {
-            println("ERROR: \(_error)")
+            print("ERROR: \(_error)")
         }
 
         if (results == nil) {
@@ -74,9 +74,15 @@ extension NSManagedObject  {
         let request = NSFetchRequest(entityName: entity.className)
         request.predicate = NSPredicate(format: "%K == %@", model.lookupProperty(), model.lookupValue())
         var error: NSError? = nil
-        let results = context.executeFetchRequest(request, error: &error)
+        let results: [AnyObject]?
+        do {
+            results = try context.executeFetchRequest(request)
+        } catch let error1 as NSError {
+            error = error1
+            results = nil
+        }
         if let _error = error {
-            println("ERROR: \(_error)")
+            print("ERROR: \(_error)")
         }
 
         if (results == nil) {
@@ -99,9 +105,15 @@ extension NSManagedObject  {
         let request = NSFetchRequest(entityName: entity.className)
         request.predicate = NSPredicate(format: "uuid == %@", uuid)
         var error: NSError? = nil
-        let results = context.executeFetchRequest(request, error: &error)
+        let results: [AnyObject]?
+        do {
+            results = try context.executeFetchRequest(request)
+        } catch let error1 as NSError {
+            error = error1
+            results = nil
+        }
         if let _error = error {
-            println("ERROR: \(_error)")
+            print("ERROR: \(_error)")
         }
 
         if (results == nil) {
@@ -123,7 +135,7 @@ extension NSManagedObject  {
     }
 
     func destroy() {
-        println("NSManagedObject::\(__FUNCTION__)")
+        print("NSManagedObject::\(__FUNCTION__)")
         self.managedObjectContext?.deleteObject(self)
     }
 

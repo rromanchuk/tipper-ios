@@ -52,12 +52,12 @@ class Transaction: NSManagedObject, CoreDataUpdatable {
     }
 
     func updateEntityWithJSON(json: JSON) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)", terminator: "")
     }
 
     func updateEntityWithDynamoModel(dynamoObject: DynamoUpdatable) {
 
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)", terminator: "")
 //        if let transaction = dynamoObject as? DynamoTransaction {
 //            txid = transaction.txid!
 //            amount = transaction.amount

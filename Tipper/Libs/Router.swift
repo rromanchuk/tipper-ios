@@ -114,7 +114,7 @@ enum Router: URLRequestConvertible {
 
     var URLRequest: NSURLRequest {
 
-        var URLString = URL
+        let URLString = URL
 
 
         let mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: URLString)!)
@@ -133,8 +133,8 @@ enum Router: URLRequestConvertible {
             let currentUser = CurrentUser.currentUser(delegate.managedObjectContext)
             if let uuid = currentUser.uuid, token = Twitter.sharedInstance().session().authToken {
                 let authString = "\(uuid):\(token)"
-                println("authString\(authString)")
-                let base64EncodedString = authString.dataUsingEncoding(NSUTF8StringEncoding)!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.allZeros)
+                print("authString\(authString)")
+                let base64EncodedString = authString.dataUsingEncoding(NSUTF8StringEncoding)!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions())
                 mutableURLRequest.setValue("Basic \(base64EncodedString)", forHTTPHeaderField: "Authorization")
             }
         }

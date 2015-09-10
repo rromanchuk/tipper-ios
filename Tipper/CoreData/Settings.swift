@@ -51,13 +51,13 @@ class Settings: NSManagedObject, CoreDataUpdatable {
     }
     
     class func update(currentUser:CurrentUser) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let exp = AWSDynamoDBScanExpression()
         exp.limit = 1
         
         mapper.scan(DynamoSettings.self, expression: exp).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-            println("Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
+            print("Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
             if let results = task.result as?  AWSDynamoDBPaginatedOutput where task.error == nil && task.exception == nil {
                 if let dynamoSettings: DynamoSettings = results.items[0] as? DynamoSettings {
                     //self.updateEntityWithDynamoModel(dynamoSettings)
@@ -74,13 +74,13 @@ class Settings: NSManagedObject, CoreDataUpdatable {
     }
 
     func update() {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let exp = AWSDynamoDBScanExpression()
         exp.limit = 1
 
         mapper.scan(DynamoSettings.self, expression: exp).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-            println("Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
+            print("Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
             if let results = task.result as?  AWSDynamoDBPaginatedOutput where task.error == nil && task.exception == nil {
                 if let dynamoSettings: DynamoSettings = results.items[0] as? DynamoSettings {
                     self.updateEntityWithDynamoModel(dynamoSettings)
@@ -94,14 +94,14 @@ class Settings: NSManagedObject, CoreDataUpdatable {
     }
 
     func updateEntityWithJSON(json: JSON) {
-        println("\(className)::\(__FUNCTION__) json:\(json)")
+        print("\(className)::\(__FUNCTION__) json:\(json)")
         self.fundAmount = json["fund_amount"].stringValue
         self.tipAmount = json["tip_amount"].stringValue
         self.feeAmount = json["fee_amount"].string
     }
 
     func updateEntityWithDynamoModel(dynamoModel: DynamoUpdatable) {
-        println("\(className)::\(__FUNCTION__) model:\(dynamoModel)")
+        print("\(className)::\(__FUNCTION__) model:\(dynamoModel)")
         let settings                    = dynamoModel as! DynamoSettings
         self.version                    = settings.Version
         self.fundAmount                 = settings.FeeAmount

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J4X-Ps-uMP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J4X-Ps-uMP">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -76,6 +77,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ojb-sK-TuU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <connections>
                         <segue destination="1kR-D4-qXd" kind="relationship" relationship="rootViewController" id="XaC-Ga-SC4"/>
@@ -99,6 +101,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tippy" translatesAutoresizingMaskIntoConstraints="NO" id="fBP-yX-Fiq">
                                 <rect key="frame" x="57" y="40" width="125" height="106"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="cZG-Ee-g3L"/>
                                     <constraint firstAttribute="height" constant="106" id="ujq-Yt-4yC"/>
@@ -106,6 +109,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIj-Q4-Rw0">
                                 <rect key="frame" x="202" y="60" width="137" height="66"/>
+                                <animations/>
                                 <attributedString key="attributedText">
                                     <fragment content="Welcome to ">
                                         <attributes>
@@ -126,12 +130,14 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Every time you favorite a Tweet on Twitter, tipper will send a Bitcoin “tip” to the author of that Tweet. " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVe-Qy-x5c">
                                 <rect key="frame" x="37" y="166" width="302" height="51"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cju-Fh-Zum">
-                                <rect key="frame" x="16" y="290" width="343" height="17.5"/>
+                                <rect key="frame" x="16" y="290" width="343" height="18"/>
+                                <animations/>
                                 <attributedString key="attributedText">
                                     <fragment content="Tips are ">
                                         <attributes>
@@ -158,7 +164,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6D-C0-oGu">
-                                <rect key="frame" x="16" y="317" width="343" height="17.5"/>
+                                <rect key="frame" x="16" y="318" width="343" height="18"/>
+                                <animations/>
                                 <attributedString key="attributedText">
                                     <fragment content="Get started by adding ">
                                         <attributes>
@@ -185,7 +192,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEx-Mq-uya">
-                                <rect key="frame" x="172" y="612" width="31" height="30"/>
+                                <rect key="frame" x="173" y="612" width="30" height="30"/>
+                                <animations/>
                                 <state key="normal" title="Skip">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -196,57 +204,66 @@
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-exchange" translatesAutoresizingMaskIntoConstraints="NO" id="wTz-RL-1UQ">
                                 <rect key="frame" x="127" y="237" width="121" height="36"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="121" id="grO-p6-oGc"/>
                                     <constraint firstAttribute="height" constant="36" id="pMd-Av-bKo"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eB3-LN-Tv8" customClass="BaseView" customModule="Tipper" customModuleProvider="target">
-                                <rect key="frame" x="53" y="354" width="269" height="167"/>
+                                <rect key="frame" x="53" y="356" width="269" height="167"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EXCHANGE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRu-C6-slv" userLabel="Exchange label">
                                         <rect key="frame" x="20" y="33" width="72" height="15"/>
+                                        <animations/>
                                         <fontDescription key="fontDescription" name="Bariol-Bold" family="Bariol" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FOR" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xg-eX-9w7" userLabel="For label">
                                         <rect key="frame" x="65" y="107" width="27" height="15"/>
+                                        <animations/>
                                         <fontDescription key="fontDescription" name="Bariol-Bold" family="Bariol" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nc7-Hs-1g3">
                                         <rect key="frame" x="155" y="31" width="12" height="20"/>
+                                        <animations/>
                                         <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(0.02 Bitcoin)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRk-KK-LGf">
                                         <rect key="frame" x="164" y="132" width="79" height="15"/>
+                                        <animations/>
                                         <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOi-Oh-5P2">
                                         <rect key="frame" x="172" y="20" width="77" height="42"/>
+                                        <animations/>
                                         <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="42"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="200" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0j-sU-WEJ">
                                         <rect key="frame" x="172" y="94" width="72" height="42"/>
+                                        <animations/>
                                         <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="42"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="a" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thU-8H-Ms7">
                                         <rect key="frame" x="147" y="103" width="29" height="24"/>
+                                        <animations/>
                                         <fontDescription key="fontDescription" name="coiner" family="coiner" pointSize="29"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <animations/>
                                 <color key="backgroundColor" red="0.35686274509999999" green="0.73725490199999999" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="167" id="ZKG-rR-cvI"/>
@@ -254,7 +271,8 @@
                                 </constraints>
                             </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZL-6W-vXd" userLabel="Stripe Button">
-                                <rect key="frame" x="90" y="542" width="194" height="64"/>
+                                <rect key="frame" x="90" y="544" width="194" height="64"/>
+                                <animations/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="194" id="L5T-xH-nJn"/>
@@ -271,6 +289,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZ3-Or-KzK" userLabel="Apple Pay Button">
                                 <rect key="frame" x="93" y="542" width="188" height="60"/>
+                                <animations/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="2Jv-ol-L9M"/>
@@ -285,6 +304,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" red="0.35686274509803922" green="0.73725490196078436" blue="0.51764705882352935" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="fIj-Q4-Rw0" secondAttribute="trailing" constant="20" id="0Xf-EK-pUQ"/>
@@ -350,6 +370,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tippy" translatesAutoresizingMaskIntoConstraints="NO" id="fGL-Yc-eq3">
                                 <rect key="frame" x="36" y="40" width="125" height="106"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="NFQ-cE-lP3"/>
                                     <constraint firstAttribute="height" constant="106" id="xoC-Pz-eV6"/>
@@ -357,12 +378,14 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="754" verticalCompressionResistancePriority="754" text="Let’s start tipping!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSk-hP-X01">
                                 <rect key="frame" x="181" y="60" width="158" height="66"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="33"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Vz-G9-KTE">
                                 <rect key="frame" x="36" y="166" width="303" height="51"/>
+                                <animations/>
                                 <string key="text">@TipperBot would like to Favorite a few of your Tweets to show you how tipping works. 
 Free money!</string>
                                 <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="17"/>
@@ -371,12 +394,14 @@ Free money!</string>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="These tips will show up in your transaction history on the next page where you can track all the tips you send and receive." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mx7-mR-z57">
                                 <rect key="frame" x="36" y="243" width="303" height="51"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="98v-hU-2Q9" customClass="TipperButton" customModule="Tipper" customModuleProvider="target">
                                 <rect key="frame" x="16" y="608" width="343" height="39"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="Sdc-hH-w6K"/>
                                 </constraints>
@@ -389,6 +414,7 @@ Free money!</string>
                                 </connections>
                             </button>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" red="0.35686274509999999" green="0.73725490199999999" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="98v-hU-2Q9" firstAttribute="trailing" secondItem="N8z-mU-dMz" secondAttribute="trailingMargin" id="EdL-rq-alE"/>
@@ -902,10 +928,10 @@ Free money!</string>
                                         <animations/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="200" id="hRW-SL-7jq" userLabel="Logout">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
+                                        <rect key="frame" x="0.0" y="1300" width="414" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hRW-SL-7jq" id="h0O-xa-N9w">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TWITTER ACCOUNT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDT-E6-D30">
@@ -987,20 +1013,22 @@ Free money!</string>
                                         <animations/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="200" id="hk2-zr-Jo9" userLabel="Twitter">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
+                                        <rect key="frame" x="0.0" y="1500" width="414" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hk2-zr-Jo9" id="I63-kU-iys">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIPPING PREFERENCES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9p-sS-VNt">
-                                                    <rect key="frame" x="23" y="28" width="239.5" height="97"/>
+                                                    <rect key="frame" x="23" y="28" width="240" height="97"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="25"/>
                                                     <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5wH-jD-mPa" userLabel="Separator">
                                                     <rect key="frame" x="23" y="128" width="370" height="1"/>
+                                                    <animations/>
                                                     <color key="backgroundColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="sdP-co-KfE"/>
@@ -1008,6 +1036,7 @@ Free money!</string>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-image-placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="AKm-pC-5Cz">
                                                     <rect key="frame" x="23" y="144" width="40" height="40"/>
+                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="S5Z-LZ-KuL"/>
                                                         <constraint firstAttribute="height" constant="40" id="XOp-bz-cXL"/>
@@ -1015,17 +1044,20 @@ Free money!</string>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto-Tip Twitter Favorites" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPN-nE-2RL">
                                                     <rect key="frame" x="71" y="155" width="169" height="17"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jcr-U5-eEF">
                                                     <rect key="frame" x="344" y="148" width="51" height="31"/>
+                                                    <animations/>
                                                     <connections>
                                                         <action selector="didToggleAutomaticTipping:" destination="UEU-XD-8Ny" eventType="valueChanged" id="SWY-g9-gq4"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="b9p-sS-VNt" firstAttribute="leading" secondItem="AKm-pC-5Cz" secondAttribute="leading" id="0OM-cd-HKh"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="5wH-jD-mPa" secondAttribute="trailing" constant="13" id="DIV-Nz-f9o"/>
@@ -1041,6 +1073,7 @@ Free money!</string>
                                                 <constraint firstItem="AKm-pC-5Cz" firstAttribute="top" secondItem="b9p-sS-VNt" secondAttribute="bottom" constant="19" id="yUe-9K-RPb"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1465,7 +1498,7 @@ Free money!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCv-dq-4JX" userLabel="Account Button" customClass="TintedButton" customModule="Tipper" customModuleProvider="target">
-                                <rect key="frame" x="343" y="22" width="35" height="35"/>
+                                <rect key="frame" x="339" y="22" width="35" height="35"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="6xB-QF-Xzp"/>
@@ -1490,7 +1523,7 @@ Free money!</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yo-N2-sfZ" userLabel="Notifications Button" customClass="TintedButton" customModule="Tipper" customModuleProvider="target">
-                                <rect key="frame" x="37" y="22" width="37" height="35"/>
+                                <rect key="frame" x="41" y="22" width="37" height="35"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="WeZ-3u-bmJ"/>
@@ -1539,7 +1572,7 @@ Free money!</string>
                                 </connections>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="coF-79-h7G" userLabel="Close Button Right">
-                                <rect key="frame" x="343" y="22" width="35" height="35"/>
+                                <rect key="frame" x="339" y="22" width="35" height="35"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="1fO-CM-TMr"/>
@@ -1563,7 +1596,7 @@ Free money!</string>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQ5-Q0-j5e" userLabel="Close Button Left">
-                                <rect key="frame" x="38" y="22" width="35" height="35"/>
+                                <rect key="frame" x="42" y="22" width="35" height="35"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="HuG-6X-paS"/>
@@ -1633,7 +1666,7 @@ Free money!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="30" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UWM-7z-Xgz">
-                                <rect key="frame" x="0.0" y="0.0" width="413" height="638"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="638"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1650,7 +1683,7 @@ Free money!</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You tipped Ryan Romanchuk" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XcG-Cs-3sh">
-                                                    <rect key="frame" x="101" y="15" width="168.5" height="15"/>
+                                                    <rect key="frame" x="101" y="15" width="169" height="15"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1698,7 +1731,7 @@ Free money!</string>
                                                     </variation>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6c-DF-Hu2">
-                                                    <rect key="frame" x="342" y="15" width="42.5" height="20"/>
+                                                    <rect key="frame" x="343" y="15" width="43" height="20"/>
                                                     <animations/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="b">
@@ -1719,14 +1752,14 @@ Free money!</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" text="BTC 0.0005" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qH3-1F-IyA">
-                                                    <rect key="frame" x="324" y="39" width="60.5" height="12"/>
+                                                    <rect key="frame" x="325" y="39" width="61" height="12"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6g-ZB-g3b">
-                                                    <rect key="frame" x="319" y="0.0" width="94" height="70"/>
+                                                    <rect key="frame" x="320" y="0.0" width="94" height="70"/>
                                                     <animations/>
                                                     <color key="backgroundColor" red="0.36078431370000003" green="0.74117647060000003" blue="0.52156862749999999" alpha="0.818860853" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
@@ -1742,7 +1775,7 @@ Free money!</string>
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="up-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="Twy-Nb-vaZ">
-                                                    <rect key="frame" x="325" y="18" width="13" height="13"/>
+                                                    <rect key="frame" x="326" y="18" width="13" height="13"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="13" id="Upn-s5-TNI"/>
@@ -1834,9 +1867,15 @@ Free money!</string>
                         <constraints>
                             <constraint firstItem="UWM-7z-Xgz" firstAttribute="leading" secondItem="HUl-Qa-WBm" secondAttribute="leading" id="AyX-nN-LRd"/>
                             <constraint firstItem="2M2-D5-kOp" firstAttribute="top" secondItem="UWM-7z-Xgz" secondAttribute="bottom" id="ab7-b0-zku"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="UWM-7z-Xgz" secondAttribute="trailingMargin" id="bq3-K8-y37"/>
+                            <constraint firstAttribute="trailing" secondItem="UWM-7z-Xgz" secondAttribute="trailingMargin" id="bq3-K8-y37"/>
+                            <constraint firstItem="UWM-7z-Xgz" firstAttribute="trailing" secondItem="HUl-Qa-WBm" secondAttribute="trailing" id="oWR-Vm-2gT"/>
                             <constraint firstItem="UWM-7z-Xgz" firstAttribute="top" secondItem="RoD-1h-GCi" secondAttribute="bottom" id="zil-l5-VLv"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="bq3-K8-y37"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="2eD-kZ-QdA"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -1925,8 +1964,10 @@ Free money!</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="65" id="tl5-jp-ON5">
+                                <rect key="frame" x="0.0" y="22" width="414" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tl5-jp-ON5" id="8j9-Rb-sSN">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </tableViewCellContentView>

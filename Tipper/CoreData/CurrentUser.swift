@@ -170,7 +170,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
 
     func authenticate(completion: (() ->Void))  {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         DynamoUser.findByTwitterId( Twitter.sharedInstance().session().userID, completion: { (user) -> Void in
             Debug.isBlocking()
             if let dynamoUser = user {
@@ -189,7 +189,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 self.updateEntityWithDynamoModel(dynamoUser)
                 completion()
             } else {
-                let dynamoUser = DynamoUser.new()
+                let dynamoUser = DynamoUser()
                 dynamoUser.UserID = NSUUID().UUIDString
                 dynamoUser.TwitterAuthToken = Twitter.sharedInstance().session().authToken
                 dynamoUser.TwitterAuthSecret = Twitter.sharedInstance().session().authTokenSecret
@@ -222,8 +222,8 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     }
 
     func registerForRemoteNotificationsIfNeeded() {
-        println("\(className)::\(__FUNCTION__)")
-        let types = UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert
+        print("\(className)::\(__FUNCTION__)")
+        let types: UIUserNotificationType = [UIUserNotificationType.Badge, UIUserNotificationType.Sound, UIUserNotificationType.Alert]
         let notificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
 
         UIApplication.sharedApplication().registerForRemoteNotifications()
@@ -283,9 +283,9 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     }
 
     func updateBTCBalance(completion: ()->Void) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         API.sharedInstance.balance { (json, error) -> Void in
-            if let satoshisString = json["balance"].string, satoshis = satoshisString.toInt() {
+            if let satoshisString = json["balance"].string, satoshis = Int(satoshisString) {
                 self.bitcoinBalanceBTC = Double(satoshis) / 0.00000001
                 self.updateBalanceUSD { [weak self] () -> Void in }
             }
@@ -311,10 +311,10 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     }
 
     func pushToDynamo() {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         if isTwitterAuthenticated {
             mapper.load(DynamoUser.self, hashKey: userId, rangeKey: nil).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-                println("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
+                print("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
                 if (task.error == nil) {
                     let user:DynamoUser = task.result as! DynamoUser
                     user.EndpointArn = self.endpointArn
@@ -325,7 +325,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                     user.CognitoIdentity    = self.cognitoIdentity
                     user.AutomaticTippingEnabled = self.automaticTippingEnabled
                     self.mapper.save(user, configuration: self.defaultDynamoConfiguration).continueWithBlock({ (task) -> AnyObject! in
-                        println("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
+                        print("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
                         return nil
                     })
                 }
@@ -337,14 +337,14 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
 
     func withdrawBalance(toAddress: NSString, completion: (error: NSError?) -> Void) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         completion(error: nil)
 
         let sqs = AWSSQS.defaultSQS()
         let request = AWSSQSSendMessageRequest()
 
-        var tipDict = ["TwitterUserID": self.uuid!, "ToBitcoinAddress": toAddress, "UserID": userId! ]
-        let jsonTipDict = NSJSONSerialization.dataWithJSONObject(tipDict, options: nil, error: nil)
+        let tipDict = ["TwitterUserID": self.uuid!, "ToBitcoinAddress": toAddress, "UserID": userId! ]
+        let jsonTipDict = try? NSJSONSerialization.dataWithJSONObject(tipDict, options: [])
         let json: String = NSString(data: jsonTipDict!, encoding: NSUTF8StringEncoding) as! String
 
 
@@ -352,7 +352,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         request.queueUrl = Config.get("SQS_TRANSFER_OUT")
         sqs.sendMessage(request).continueWithBlock { (task) -> AnyObject! in
             if (task.error != nil) {
-                println("ERROR: \(task.error)")
+                print("ERROR: \(task.error)")
                 completion(error: task.error)
             } else {
                 completion(error: nil)
@@ -362,14 +362,14 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     }
 
     func refetchFeeds(completion: (error: NSError?) -> Void) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         completion(error: nil)
 
         let sqs = AWSSQS.defaultSQS()
         let request = AWSSQSSendMessageRequest()
 
-        var tipDict = ["TwitterUserID": self.uuid!, "UserID": userId! ]
-        let jsonTipDict = NSJSONSerialization.dataWithJSONObject(tipDict, options: nil, error: nil)
+        let tipDict = ["TwitterUserID": self.uuid!, "UserID": userId! ]
+        let jsonTipDict = try? NSJSONSerialization.dataWithJSONObject(tipDict, options: [])
         let json: String = NSString(data: jsonTipDict!, encoding: NSUTF8StringEncoding) as! String
 
 
@@ -377,7 +377,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         request.queueUrl = Config.get("SQS_FETCH_FAVORITES")
         sqs.sendMessage(request).continueWithBlock { (task) -> AnyObject! in
             if (task.error != nil) {
-                println("ERROR: \(task.error)")
+                print("ERROR: \(task.error)")
                 completion(error: task.error)
             } else {
                 completion(error: nil)
@@ -399,10 +399,10 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 //    }
 
     func refreshWithDynamo(completion: (error: NSError?) -> Void) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         mapper.load(DynamoUser.self, hashKey: self.userId, rangeKey: nil).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-            println("error \(task.error)")
+            print("error \(task.error)")
             
             if let dynamoUser: DynamoUser = task.result as? DynamoUser {
                 self.updateEntityWithDynamoModel(dynamoUser)
@@ -420,7 +420,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     }()
 
     func updateEntityWithDynamoModel(dynamoModel: DynamoUpdatable) {
-        println("\(className)::\(__FUNCTION__) model:\(dynamoModel)")
+        print("\(className)::\(__FUNCTION__) model:\(dynamoModel)")
         let user                    = dynamoModel as! DynamoUser
         self.userId                 = user.UserID
         self.twitterUserId          = user.TwitterUserID
@@ -451,7 +451,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     }
 
     func updateEntityWithJSON(json: JSON) {
-        println("\(className)::\(__FUNCTION__) json:\(json)")
+        print("\(className)::\(__FUNCTION__) json:\(json)")
         self.twitterUserId      = json["TwitterUserID"].stringValue
         self.userId             = json["UserID"].stringValue
         self.twitterUsername    = json["TwitterUsername"].stringValue
@@ -477,13 +477,13 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     }
 
     func disconnect() {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         API.sharedInstance.disconnect { (json, error) -> Void in
         }
     }
 
     func resetIdentifiers() {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         (UIApplication.sharedApplication().delegate as! AppDelegate).resetCognitoCredentials()
         SSKeychain.deletePasswordForService(KeychainUserAccount, account: KeychainAccount)
         SSKeychain.deletePasswordForService(KeychainTokenAccount, account: KeychainAccount)

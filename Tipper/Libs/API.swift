@@ -61,52 +61,52 @@ public class API {
 
 
     func register(username: String, twitterId: String, twitterAuth: String, twitterSecret: String, profileImage: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         self.call(self.manager.request(Router.Register(username, twitterId, twitterAuth, twitterSecret, profileImage)), completion: completion)
     }
 
     func disconnect(completion: ((json: JSON, error: NSError?) -> Void)!) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         self.call(self.manager.request(Router.Disconnect), completion: completion)
     }
 
     func connect(completion: ((json: JSON, error: NSError?) -> Void)!) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         self.call(self.manager.request(Router.Connect), completion: completion)
     }
 
     func address(completion: ((json: JSON, error: NSError?) -> Void)!) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         self.call(self.manager.request(Router.Address), completion: completion)
     }
 
     func charge(token: String, amount: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         self.call(self.manager.request(Router.Charge(token, amount)), completion: completion)
     }
 
     func favorites(completion: ((json: JSON, error: NSError?) -> Void)!) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         self.call(self.manager.request(Router.Favorites), completion: completion)
     }
 
     func me(completion: ((json: JSON, error: NSError?) -> Void)!) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         self.call(self.manager.request(Router.Me), completion: completion)
     }
 
     func settings(completion: ((json: JSON, error: NSError?) -> Void)!) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         self.call(self.manager.request(Router.Settings), completion: completion)
     }
 
     func market(btc: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         self.call(self.manager.request(Router.MarketPrice(btc)), completion: completion)
     }
 
     func balance(completion: ((json: JSON, error: NSError?) -> Void)!) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         self.call(self.manager.request(Router.Balance), completion: completion)
     }
 

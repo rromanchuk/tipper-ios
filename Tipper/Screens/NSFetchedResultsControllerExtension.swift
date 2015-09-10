@@ -100,8 +100,8 @@ public extension NSFetchedResultsController {
         if let predicate = predicate {
             fetchRequest.predicate = predicate
         }
-        if let sortDescriptors = sortDescriptors {
-            fetchRequest.sortDescriptors = sortDescriptors as [AnyObject]
+        if let sortDescriptors = sortDescriptors as? [NSSortDescriptor] {
+            fetchRequest.sortDescriptors = sortDescriptors
         } else {
             fetchRequest.sortDescriptors = []
         }
@@ -117,11 +117,15 @@ public extension NSFetchedResultsController {
         NSFetchedResultsController.deleteCacheWithName(nil)
 
         var error : NSError?
-        tempFetchedResultsController.performFetch(&error)
+        do {
+            try tempFetchedResultsController.performFetch()
+        } catch let error1 as NSError {
+            error = error1
+        }
 
         if (error != nil){
             //TODO: This needs actual error handling.
-            println("Error : \(error)")
+            print("Error : \(error)", terminator: "")
         }
 
         return tempFetchedResultsController

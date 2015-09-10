@@ -38,7 +38,6 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "backToSplash", name: "BACK_TO_SPLASH", object: nil)
-        let font = UIFont(name: "Bariol-Regular", size: 19)!
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -52,18 +51,18 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
 
 
     func didReceiveNotificationAlert(message: String, subtitle: String, type: TSMessageNotificationType) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         TSMessage.showNotificationInViewController(self, title: message, subtitle: subtitle, type: type, duration: 5.0)
         refresh()
     }
 
     func refresh() {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         refreshDelegate?.refreshHeader()
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        println("\(className)::\(__FUNCTION__) identifier: \(segue.identifier)")
+        print("\(className)::\(__FUNCTION__) identifier: \(segue.identifier)")
 
         if segue.identifier == "HomeHeaderEmbed" {
             let vc = segue.destinationViewController as! HeaderContainer
@@ -95,14 +94,14 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
 
 
     func backToSplash() {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         currentUser.resetIdentifiers()
         (UIApplication.sharedApplication().delegate as! AppDelegate).resetCoreData()
         performSegueWithIdentifier("BackToSplash", sender: self)
     }
 
     @IBAction func done(segue: UIStoryboardSegue, sender: AnyObject?) {
-        println("\(className)::\(__FUNCTION__) identifier: \(segue.identifier) \(segue.sourceViewController)")
+        print("\(className)::\(__FUNCTION__) identifier: \(segue.identifier) \(segue.sourceViewController)")
         let vc = segue.sourceViewController as? UIViewController
         if let header = vc as? HeaderContainer {
            header.refreshHeader()
@@ -110,22 +109,22 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
     }
     
     override func viewControllerForUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject?) -> UIViewController? {
-        println("\(className)::\(__FUNCTION__) fromViewController: \(fromViewController)")
+        print("\(className)::\(__FUNCTION__) fromViewController: \(fromViewController)")
         let vc = super.viewControllerForUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
-        println("viewController to handle the unwind: \(vc)")
+        print("viewController to handle the unwind: \(vc)")
         return vc
     }
     
     override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
-        println("\(className)::\(__FUNCTION__) fromViewController: \(fromViewController)")
+        print("\(className)::\(__FUNCTION__) fromViewController: \(fromViewController)")
         let canPerform =  super.canPerformUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
-        println("canPerform?: \(canPerform)")
+        print("canPerform?: \(canPerform)")
         return canPerform
     }
 
     
     override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
-        println("\(className)::\(__FUNCTION__) toViewController: \(toViewController), fromViewController: \(fromViewController)")
+        print("\(className)::\(__FUNCTION__) toViewController: \(toViewController), fromViewController: \(fromViewController)")
         if let fromModal = fromViewController as? CustomModable {
 
             let unwindSegue = CustomUnwindModalSegue(identifier: identifier, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
@@ -134,7 +133,7 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
             return unwindSegue
         }
         
-        return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
+        return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)!
     }
     
 

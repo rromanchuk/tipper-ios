@@ -33,7 +33,7 @@ class GlanceController: WKInterfaceController {
 
     func requestBalanceFromPhone() {
         WKInterfaceController.openParentApplication(["request": "balance"], reply: { (replyInfo, error) -> Void in
-            println("\(self.className)::\(__FUNCTION__) replyInfo:\(replyInfo) error:\(error)")
+            print("\(self.className)::\(__FUNCTION__) replyInfo:\(replyInfo) error:\(error)", terminator: "")
             if let balance: String = replyInfo["balance"] as? String {
                 self.balanceLabel.setText(balance)
             }

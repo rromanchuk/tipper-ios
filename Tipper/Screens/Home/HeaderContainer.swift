@@ -88,7 +88,7 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("\(className)::\(__FUNCTION__) screenType: \(activeScreenType.rawValue)")
+        print("\(className)::\(__FUNCTION__) screenType: \(activeScreenType.rawValue)")
         displayUSD = false
         
         refreshHeader()
@@ -103,25 +103,25 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        println("\(className)::\(__FUNCTION__) screenType: \(activeScreenType.rawValue)")
+        print("\(className)::\(__FUNCTION__) screenType: \(activeScreenType.rawValue)")
     }
     
     override func viewControllerForUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject?) -> UIViewController? {
-        println("\(className)::\(__FUNCTION__) screenType: \(activeScreenType.rawValue) fromViewController: \(fromViewController)")
+        print("\(className)::\(__FUNCTION__) screenType: \(activeScreenType.rawValue) fromViewController: \(fromViewController)")
         let vc = super.viewControllerForUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
-        println("viewController to handle the unwind: \(vc)")
+        print("viewController to handle the unwind: \(vc)")
         return vc
     }
     
     override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
-        println("\(className)::\(__FUNCTION__) screenType: \(activeScreenType.rawValue) fromViewController: \(fromViewController)")
+        print("\(className)::\(__FUNCTION__) screenType: \(activeScreenType.rawValue) fromViewController: \(fromViewController)")
         let canPerform =  super.canPerformUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
-        println("canPerform?: \(canPerform)")
+        print("canPerform?: \(canPerform)")
         return canPerform
     }
     
     func refreshHeader() {
-        println("\(className)::\(__FUNCTION__) screenType: \(activeScreenType.rawValue)")
+        print("\(className)::\(__FUNCTION__) screenType: \(activeScreenType.rawValue)")
         switch activeScreenType {
         case .AccountScreen:
             closeButtonLeft.hidden = false
@@ -166,7 +166,7 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
     
 
     @IBAction func didTapClose(sender: UIButton) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         containerDelegate?.didTapClose()
         //self.performSegueWithIdentifier("ExitToHome", sender: self)
     }
@@ -177,13 +177,13 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
 
             let string = "$\(amount)"
             let labelAttributes = NSMutableAttributedString(string: string)
-            labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Regular", size: 40.0)!, range: NSMakeRange(0, count(string)))
+            labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Regular", size: 40.0)!, range: NSMakeRange(0, string.characters.count))
             balanceLabel.attributedText = labelAttributes
         } else {
             let string = "a\(currentUser.balanceAsUBTC)"
             let labelAttributes = NSMutableAttributedString(string: string)
             labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "coiner", size: 40.0)!, range: NSMakeRange(0,1))
-            labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Regular", size: 40.0)!, range: NSMakeRange(1, count(string) - 1))
+            labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Regular", size: 40.0)!, range: NSMakeRange(1, string.characters.count - 1))
             labelAttributes.addAttribute(NSKernAttributeName, value:-5.0, range: NSMakeRange(0, 1))
             balanceLabel.attributedText = labelAttributes
         }
@@ -191,7 +191,7 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
     
     func setHeaderTitle(title: String) {
         let labelAttributes = NSMutableAttributedString(string: title)
-        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Regular", size: 40.0)!, range: NSMakeRange(0, count(title)))
+        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Regular", size: 40.0)!, range: NSMakeRange(0, title.characters.count))
         balanceLabel.attributedText = labelAttributes
     }
     
@@ -211,7 +211,7 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
 
    
     @IBAction func didTapBalance(sender: UITapGestureRecognizer) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         displayUSD = !displayUSD
         setBalance()
 
@@ -236,7 +236,7 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
         }
     }
     
-    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         dismissViewControllerAnimated(true, completion:nil)
     }
 
@@ -245,16 +245,16 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
     // MARK: Application lifecycle
 
     func applicationWillResignActive(aNotification: NSNotification) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
     }
 
     func applicationDidEnterBackground(aNotification: NSNotification) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
 
     }
 
     func applicationDidBecomeActive(aNotification: NSNotification) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         updateMarkets()
         currentUser.refreshWithDynamo { [weak self] (error) -> Void in
             if (error == nil) {
@@ -268,7 +268,7 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        println("\(className)::\(__FUNCTION__) identifier: \(segue.identifier) screenType: \(activeScreenType.rawValue)")
+        print("\(className)::\(__FUNCTION__) identifier: \(segue.identifier) screenType: \(activeScreenType.rawValue)")
         
     }
     

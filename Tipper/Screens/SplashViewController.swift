@@ -23,14 +23,14 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var gradient: CAGradientLayer = CAGradientLayer()
+        let gradient: CAGradientLayer = CAGradientLayer()
         gradient.frame = view.bounds
         gradient.colors = [UIColor.colorWithRGB(0x7BD5AA, alpha: 1.0).CGColor, UIColor.colorWithRGB(0x5BAB85, alpha: 1.0).CGColor]
         view.layer.insertSublayer(gradient, atIndex: 0)
         
 //        twitterLoginButton.layer.borderWidth = 1.0
 //        twitterLoginButton.layer.borderColor = UIColor.whiteColor().CGColor
-        println("\(className)::\(__FUNCTION__) \(managedObjectContext)")
+        print("\(className)::\(__FUNCTION__) \(managedObjectContext)")
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillResignActive:", name: UIApplicationWillResignActiveNotification, object: UIApplication.sharedApplication())
         
@@ -38,9 +38,9 @@ class SplashViewController: UIViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        println("\(className)::\(__FUNCTION__) isTwitterAuthenticated \(currentUser.isTwitterAuthenticated)")
+        print("\(className)::\(__FUNCTION__) isTwitterAuthenticated \(currentUser.isTwitterAuthenticated)")
         if (currentUser.isTwitterAuthenticated) {
-            SwiftSpinner.hide(completion: nil)
+            SwiftSpinner.hide(nil)
             performSegueWithIdentifier("Home", sender: self)
         }
     }
@@ -69,23 +69,23 @@ class SplashViewController: UIViewController {
     }
 
     @IBAction func didTapLogin(sender: TWTRLogInButton) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         logInWithCompletion()
     }
     
     @IBAction func unwindToSplash(unwindSegue: UIStoryboardSegue) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         if let blueViewController = unwindSegue.sourceViewController as? HomeController {
-            println("Coming from HomeController")
+            print("Coming from HomeController")
         }
         else if let redViewController = unwindSegue.sourceViewController as? TipDetailsViewController {
-            println("Coming from TipDetailsViewController")
+            print("Coming from TipDetailsViewController")
         }
         (UIApplication.sharedApplication().delegate as! AppDelegate).setupFirstController()
     }
     
     @IBAction func done(segue: UIStoryboardSegue, sender: AnyObject?) {
-        println("\(className)::\(__FUNCTION__) identifier: \(segue.identifier) \(segue.sourceViewController)")
+        print("\(className)::\(__FUNCTION__) identifier: \(segue.identifier) \(segue.sourceViewController)")
         if segue.identifier == "ExitFromOnboarding" {
         }
     }
@@ -94,13 +94,13 @@ class SplashViewController: UIViewController {
     // MARK: Application lifecycle
 
     func applicationWillResignActive(aNotification: NSNotification) {
-        println("\(className)::\(__FUNCTION__)")
-        SwiftSpinner.hide(completion: nil)
+        print("\(className)::\(__FUNCTION__)")
+        SwiftSpinner.hide(nil)
     }
 
 
     private func logInWithCompletion() {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         Twitter.sharedInstance().logInWithCompletion { (session, error) -> Void in
             SwiftSpinner.show("Logging you in...")
             if error == nil {
@@ -108,7 +108,7 @@ class SplashViewController: UIViewController {
                 self.currentUser.twitterAuthenticationWithTKSession(session)
                 self.refreshProvider(session)
             } else {
-                SwiftSpinner.hide(completion: { () -> Void in
+                SwiftSpinner.hide({ () -> Void in
                     let alert = UIAlertController(title: "Opps", message: error.localizedDescription, preferredStyle: .Alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
                     alert.addAction(defaultAction)
@@ -119,15 +119,15 @@ class SplashViewController: UIViewController {
     }
 
     private func refreshProvider(twitterSession: TWTRAuthSession) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         provider.refresh().continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-            println("provider refresh() finished result: \(task.result) error? \(task.error)")
+            print("provider refresh() finished result: \(task.result) error? \(task.error)")
             if task.error == nil, let identifier = task.result as? String {
                 self.currentUser.cognitoIdentity = identifier
                 self.currentUser.save()
                 self.loadUser(self.currentUser.twitterUserId!)
             } else {
-                SwiftSpinner.hide(completion: { () -> Void in
+                SwiftSpinner.hide({ () -> Void in
                     let alert = UIAlertController(title: "Opps", message: "Something bad happened. Try again?", preferredStyle: .Alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
                     alert.addAction(defaultAction)
@@ -139,13 +139,13 @@ class SplashViewController: UIViewController {
     }
 
     private func loadUser(twitterUserId: String) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         Twitter.sharedInstance().APIClient.loadUserWithID(twitterUserId, completion: { (user, error) -> Void in
             if let user = user where error == nil {
                 self.currentUser.profileImage = user.profileImageURL
                 self.authenticate()
             } else if let error = error {
-                SwiftSpinner.hide(completion: { () -> Void in
+                SwiftSpinner.hide({ () -> Void in
                     let alert = UIAlertController(title: "Opps", message: error.localizedDescription, preferredStyle: .Alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
                     alert.addAction(defaultAction)
@@ -156,11 +156,11 @@ class SplashViewController: UIViewController {
     }
 
     private func authenticate() {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         self.currentUser.authenticate( { () -> Void in
-            println("\(self.className)::\(__FUNCTION__) authenticate callback")
+            print("\(self.className)::\(__FUNCTION__) authenticate callback")
             Debug.isBlocking()
-            SwiftSpinner.hide(completion: nil)
+            SwiftSpinner.hide(nil)
             self.currentUser.registerForRemoteNotificationsIfNeeded()
             self.currentUser.writeToDisk()
             self.performSegueWithIdentifier("Onboarding", sender: self)

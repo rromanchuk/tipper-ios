@@ -115,7 +115,7 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
         the actual name of the month.
         */
         let calendar = NSCalendar.currentCalendar()
-        let unitFlags: NSCalendarUnit = .CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay
+        let unitFlags: NSCalendarUnit = [.Year, .Month, .Day]
         let components: NSDateComponents = calendar.components(unitFlags, fromDate: self.tippedAt!) //calendar.component(unitFlags, fromDate: self.createdAt)
 
         //calendar.components((.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay),

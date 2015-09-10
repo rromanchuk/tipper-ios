@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/QRCode-Swift.h</key>
 		<data>
-		AjJdQx9mXb1KDlot9Xwl6BcQX9w=
+		fB04omtsckiZo1k/0wudNtUj7lY=
 		</data>
 		<key>Headers/QRCode.h</key>
 		<data>
@@ -14,23 +14,23 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		73CboH9sCBNKI667+XV1BJOSrkU=
+		cOBx80z9jSHuZotDC/GUpja14GI=
 		</data>
 		<key>Modules/QRCode.swiftmodule/arm.swiftdoc</key>
 		<data>
-		AsaeLjAl0plTuCdOx43CgXL/1EM=
+		kV7mKakQATWxe/+DOzpTe2PdADY=
 		</data>
 		<key>Modules/QRCode.swiftmodule/arm.swiftmodule</key>
 		<data>
-		ZvjVc1BharoDebOfUr6YuFFlTN4=
+		Wf4FKafsAPXwqXnQXpWBdm5xkrk=
 		</data>
 		<key>Modules/QRCode.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		3S6zeJ1TICbabcI98I11c6PqL9o=
+		elGUnTCZI13ltJlhtqQbcW5Lbo8=
 		</data>
 		<key>Modules/QRCode.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		uDSteLeq7ND9Mhakqc4fEskhQGo=
+		oSHV7/FyBOpQ3uIVBH8GWBo7VO8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -41,7 +41,7 @@
 	<dict>
 		<key>Headers/QRCode-Swift.h</key>
 		<data>
-		AjJdQx9mXb1KDlot9Xwl6BcQX9w=
+		fB04omtsckiZo1k/0wudNtUj7lY=
 		</data>
 		<key>Headers/QRCode.h</key>
 		<data>
@@ -49,19 +49,19 @@
 		</data>
 		<key>Modules/QRCode.swiftmodule/arm.swiftdoc</key>
 		<data>
-		AsaeLjAl0plTuCdOx43CgXL/1EM=
+		kV7mKakQATWxe/+DOzpTe2PdADY=
 		</data>
 		<key>Modules/QRCode.swiftmodule/arm.swiftmodule</key>
 		<data>
-		ZvjVc1BharoDebOfUr6YuFFlTN4=
+		Wf4FKafsAPXwqXnQXpWBdm5xkrk=
 		</data>
 		<key>Modules/QRCode.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		3S6zeJ1TICbabcI98I11c6PqL9o=
+		elGUnTCZI13ltJlhtqQbcW5Lbo8=
 		</data>
 		<key>Modules/QRCode.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		uDSteLeq7ND9Mhakqc4fEskhQGo=
+		oSHV7/FyBOpQ3uIVBH8GWBo7VO8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>

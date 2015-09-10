@@ -54,11 +54,11 @@ class SuperFetchedResultsControllerDelegate: NSObject, NSFetchedResultsControlle
 
     func receiverType() -> ReusableViewType
     {
-        if let reusableView = collectionView {
+        if let _ = collectionView {
             return ReusableViewType.CollectionView
         }
 
-        if let reusableView = tableView {
+        if let _ = tableView {
             return ReusableViewType.TableView
         }
 
@@ -66,18 +66,18 @@ class SuperFetchedResultsControllerDelegate: NSObject, NSFetchedResultsControlle
     }
 
     func bindsLifetimeTo(owner: AnyObject!) -> Void {
-        var oldOwner: AnyObject? = self.owner
+        let oldOwner: AnyObject? = self.owner
         self.owner = owner
 
         var ownerArray: AnyObject? = objc_getAssociatedObject(self.owner, kOwnerKey);
         if(ownerArray == nil){
             ownerArray = NSMutableArray()
-            objc_setAssociatedObject(self.owner, kOwnerKey, ownerArray, UInt(OBJC_ASSOCIATION_RETAIN));
+            objc_setAssociatedObject(self.owner, kOwnerKey, ownerArray, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
         ownerArray?.addObject(self)
 
         if(oldOwner != nil){
-            var oldOwnerArray: NSMutableArray = objc_getAssociatedObject(oldOwner, kOwnerKey) as! NSMutableArray;
+            let oldOwnerArray: NSMutableArray = objc_getAssociatedObject(oldOwner, kOwnerKey) as! NSMutableArray;
             oldOwnerArray.removeObjectIdenticalTo(self)
         }
     }
@@ -111,14 +111,14 @@ class SuperFetchedResultsControllerDelegate: NSObject, NSFetchedResultsControlle
             case NSFetchedResultsChangeType.Delete:
                 changeDictionary[type] = sectionIndex
             default:
-                println("Unexpected NSFetchedResultsChangeType received for didChangeSection. \(type)")
+                print("Unexpected NSFetchedResultsChangeType received for didChangeSection. \(type)", terminator: "")
             }
             sectionChanges.append(changeDictionary)
         }
     }
 
 
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?)
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: NSManagedObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?)
     {
         //println("didChangeObject")
         if(receiverType() == ReusableViewType.TableView){
@@ -133,7 +133,7 @@ class SuperFetchedResultsControllerDelegate: NSObject, NSFetchedResultsControlle
                 tableView?.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.None)
                 tableView?.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.None)
             default:
-                println("Unexpected NSFetchedResultsChangeType received for didChangeObject. \(type)")
+                print("Unexpected NSFetchedResultsChangeType received for didChangeObject. \(type)", terminator: "")
             }
         } else if(receiverType() == ReusableViewType.CollectionView) {
             var changeDictionary: [NSFetchedResultsChangeType: AnyObject] = Dictionary()
@@ -153,7 +153,7 @@ class SuperFetchedResultsControllerDelegate: NSObject, NSFetchedResultsControlle
                 changeDictionary[type] = [indexPath!, newIndexPath!]
                 break;
             default:
-                println("Unexpected NSFetchedResultsChangeType received for didChangeObject. \(type)")
+                print("Unexpected NSFetchedResultsChangeType received for didChangeObject. \(type)", terminator: "")
             }
             objectChanges.append(changeDictionary)
         }
@@ -179,7 +179,7 @@ class SuperFetchedResultsControllerDelegate: NSObject, NSFetchedResultsControlle
                                 self.collectionView!.reloadSections(NSIndexSet(index: dictValue))
                                 break;
                             default:
-                                println("Unexpected NSFetchedResultsChangeType stored for controllerDidChangeContent. \(dictKey)")
+                                print("Unexpected NSFetchedResultsChangeType stored for controllerDidChangeContent. \(dictKey)", terminator: "")
                             }
                         }
                     }
@@ -209,7 +209,7 @@ class SuperFetchedResultsControllerDelegate: NSObject, NSFetchedResultsControlle
                                     self.collectionView!.moveItemAtIndexPath(dictValue[0] as! NSIndexPath, toIndexPath: dictValue[1] as! NSIndexPath)
                                     break;
                                 default:
-                                    println("Unexpected NSFetchedResultsChangeType stored for controllerDidChangeContent. \(dictKey)")
+                                    print("Unexpected NSFetchedResultsChangeType stored for controllerDidChangeContent. \(dictKey)", terminator: "")
                                 }
                             }
                         }

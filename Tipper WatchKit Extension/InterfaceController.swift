@@ -17,21 +17,21 @@ class InterfaceController: WKInterfaceController {
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)", terminator: "")
         // Configure interface objects here.
     }
 
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)", terminator: "")
         requestBalanceFromPhone()
     }
 
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)", terminator: "")
     }
 
 
@@ -42,8 +42,8 @@ class InterfaceController: WKInterfaceController {
     func requestBalanceFromPhone() {
         
         WKInterfaceController.openParentApplication(["request": "balance"], reply: { (replyInfo, error) -> Void in
-            println("\(self.className)::\(__FUNCTION__) replyInfo:\(replyInfo) error:\(error)")
-            if error == nil && replyInfo != nil {
+            print("\(self.className)::\(__FUNCTION__) replyInfo:\(replyInfo) error:\(error)", terminator: "")
+            if error == nil  {
                 if let balance: String = replyInfo["balance"] as? String  {
                     self.balanceLabel.setText(balance)
                 }

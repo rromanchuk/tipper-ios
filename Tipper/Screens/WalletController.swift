@@ -19,7 +19,7 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
     var market: Market!
 
     let stripeCheckout = STPCheckoutViewController()
-    let regularExpression = NSRegularExpression(pattern: "^[13][a-km-zA-HJ-NP-Z1-9]{25,34}$", options: nil, error: nil)
+    let regularExpression = try! NSRegularExpression(pattern: "^[13][a-km-zA-HJ-NP-Z1-9]{25,34}$", options: [])
     let ApplePayMerchantID = Config.get("APPLE_PAY_MERCHANT")
     let SupportedPaymentNetworks = [PKPaymentNetworkVisa, PKPaymentNetworkMasterCard, PKPaymentNetworkAmex]
     let className = "WalletController"
@@ -100,23 +100,23 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
     }
 
     func addressValid() -> Bool {
-        let textRange = NSMakeRange(0, count(addressToPayTextField.text));
-        let matchRange = regularExpression?.rangeOfFirstMatchInString(addressToPayTextField.text, options: .ReportProgress, range: textRange)
-        if matchRange?.location != NSNotFound {
+        let textRange = NSMakeRange(0, addressToPayTextField.text!.characters.count);
+        let matchRange = regularExpression.rangeOfFirstMatchInString(addressToPayTextField.text!, options: .ReportProgress, range: textRange)
+        if matchRange.location != NSNotFound {
             return true
         }
         return false
     }
 
     @IBAction func didCopy(sender: UIButton) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         let pb = UIPasteboard.generalPasteboard()
         pb.string = currentUser.bitcoinAddress!
     }
 
     @IBAction func didPaste(sender: UIButton) {
-        println("\(className)::\(__FUNCTION__)")
-        if (count(addressToPayTextField.text) == 0) {
+        print("\(className)::\(__FUNCTION__)")
+        if (addressToPayTextField.text?.characters.count == 0) {
             let pb = UIPasteboard.generalPasteboard()
             if let address = pb.string {
                 addressToPayTextField.text = address
@@ -129,7 +129,7 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
             alertController.addAction(OKAction)
             self.parentViewController!.presentViewController(alertController, animated: true, completion: nil)
         } else {
-            currentUser.withdrawBalance(addressToPayTextField.text, completion: { [weak self] (error) -> Void in
+            currentUser.withdrawBalance(addressToPayTextField.text!, completion: { [weak self] (error) -> Void in
                 if error != nil {
                     let alertController = UIAlertController(title: "There was a problem", message: "Please try again later", preferredStyle: .Alert)
                     let OKAction = UIAlertAction(title: "OK", style: .Default, handler:nil)
@@ -149,51 +149,51 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
 
     // MARK: Stripe
     func checkoutController(controller: STPCheckoutViewController, didCreateToken token: STPToken, completion: STPTokenSubmissionHandler) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         createBackendChargeWithToken(token, completion: completion)
     }
 
 
     func paymentAuthorizationViewControllerDidFinish(controller: PKPaymentAuthorizationViewController!) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         self.parentViewController!.dismissViewControllerAnimated(true, completion: nil)
     }
 
     func checkoutController(controller: STPCheckoutViewController, didFinishWithStatus status: STPPaymentStatus, error: NSError?) {
-        println("\(className)::\(__FUNCTION__) error:\(error)")
+        print("\(className)::\(__FUNCTION__) error:\(error)")
         self.parentViewController!.dismissViewControllerAnimated(true, completion: {
             switch(status) {
             case .UserCancelled:
                 return // just do nothing in this case
             case .Success:
-                println("great success!")
+                print("great success!")
             case .Error:
-                println("oh no, an error: \(error?.localizedDescription)")
+                print("oh no, an error: \(error?.localizedDescription)")
             }
         })
     }
 
     @IBAction func didToggleAutomaticTipping(sender: UISwitch) {
-        println("\(className)::\(__FUNCTION__) autotipSwitch:\(autotipSwitch.on), urrentUser.automaticTippingEnabled:\(currentUser.automaticTippingEnabled)")
+        print("\(className)::\(__FUNCTION__) autotipSwitch:\(autotipSwitch.on), urrentUser.automaticTippingEnabled:\(currentUser.automaticTippingEnabled)")
         currentUser.automaticTippingEnabled = NSNumber(bool: autotipSwitch.on)
         currentUser.pushToDynamo()
     }
     
     @IBAction func didLongPressPayButton(sender: UILongPressGestureRecognizer) {
-        println("\(className)::\(__FUNCTION__) \(currentUser.admin)")
+        print("\(className)::\(__FUNCTION__) \(currentUser.admin)")
         if let admin = currentUser.admin where admin.boolValue {
             launchStripeFlow()
         }
     }
 
     @IBAction func didTapLogout(sender: UIButton) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         currentUser.resetIdentifiers()
         performSegueWithIdentifier("BackToSplashFromAccount", sender: self)
     }
 
     @IBAction func didTapPay(sender: UIButton) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         let request = PKPaymentRequest()
         request.merchantIdentifier = ApplePayMerchantID
         request.supportedNetworks = SupportedPaymentNetworks
@@ -214,7 +214,7 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
             #endif
         } else {
             //default to Stripe's PaymentKit Form
-            var options = STPCheckoutOptions()
+            let options = STPCheckoutOptions()
             let amount = (market.amount! as NSString).doubleValue
             options.purchaseDescription = "Tipper 0.02BTC deposit";
             options.purchaseAmount = UInt(amount * 100)
@@ -229,7 +229,7 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
     
     func launchStripeFlow() {
         //default to Stripe's PaymentKit Form
-        var options = STPCheckoutOptions()
+        let options = STPCheckoutOptions()
         let amount = (market.amount! as NSString).doubleValue
         options.purchaseDescription = "Tipper 0.02BTC deposit";
         options.purchaseAmount = UInt(amount * 100)
@@ -240,7 +240,7 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
     }
 
     func createBackendChargeWithToken(token: STPToken, completion: STPTokenSubmissionHandler) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         API.sharedInstance.charge(token.tokenId, amount:self.market.amount!, completion: { [weak self] (json, error) -> Void in
             if (error != nil) {
                 completion(STPBackendChargeResult.Failure, error)
@@ -253,13 +253,13 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
     }
 
     func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: ((PKPaymentAuthorizationStatus) -> Void)) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         STPAPIClient.sharedClient().createTokenWithPayment(payment, completion: { [weak self] (token, error) -> Void in
-            println("\(self!.className)::\(__FUNCTION__) error:\(error), token: \(token)")
+            print("\(self!.className)::\(__FUNCTION__) error:\(error), token: \(token)")
             if error == nil {
                 if let token = token {
                     self?.createBackendChargeWithToken(token, completion: { (result, error) -> Void in
-                        println("\(self!.className)::\(__FUNCTION__) error:\(error), result: \(result)")
+                        print("\(self!.className)::\(__FUNCTION__) error:\(error), result: \(result)")
                         if result == STPBackendChargeResult.Success {
                             completion(PKPaymentAuthorizationStatus.Success)
                             return
@@ -275,7 +275,7 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
 
 
     @IBAction func textFieldChanged(sender: UITextField) {
-        if (count(addressToPayTextField.text) > 24) {
+        if (addressToPayTextField.text!.characters.count > 24) {
             pasteAddressFromClipboard.setTitle("Send", forState: .Normal)
             pasteAddressFromClipboard.backgroundColor = UIColor.colorWithRGB(0x69C397, alpha: 1.0)
 

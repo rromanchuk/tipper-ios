@@ -17,7 +17,7 @@ class AccountController: UIViewController, ContainerDelegate, CustomModable {
     @IBOutlet weak var headerContainer: UIView!
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)", terminator: "")
         
         if segue.identifier == "AccountEmbed" {
             let vc = segue.destinationViewController as! WalletController
@@ -36,12 +36,12 @@ class AccountController: UIViewController, ContainerDelegate, CustomModable {
     }
     
     func didTapClose() {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)", terminator: "")
         self.performSegueWithIdentifier("ExitToHomeFromAccount", sender: self)
     }
     
     func prepareForSegueAnimation() {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)", terminator: "")
         view.backgroundColor = UIColor.clearColor()
         headerContainer.hidden = true
     }

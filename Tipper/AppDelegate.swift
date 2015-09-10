@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var _managedObjectModel: NSManagedObjectModel?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         Fabric.with([Crashlytics(), Twitter()])
         Config.dump()
         AWSLogger.defaultLogger().logLevel = .Error
@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupFirstController()
 
 
-        println("\(className)::\(__FUNCTION__) currentUser:\([currentUser])")
+        print("\(className)::\(__FUNCTION__) currentUser:\([currentUser])")
 
         
 
@@ -63,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setupFirstController() {
         currentUser = CurrentUser.currentUser(managedObjectContext)
 
-        println("\(className)::\(__FUNCTION__) currentUser:\([currentUser])")
+        print("\(className)::\(__FUNCTION__) currentUser:\([currentUser])")
 
 
         provider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: Config.get("COGNITO_POOL"))
@@ -87,42 +87,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-         println("\(className)::\(__FUNCTION__)")
+         print("\(className)::\(__FUNCTION__)")
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         writeToDisk()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         UIApplication.sharedApplication().applicationIconBadgeNumber = 0
 
     }
 
     func setApplicationBadgeNumber(number: UInt) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         UIApplication.sharedApplication().applicationIconBadgeNumber = Int(number)
     }
 
     func incrementApplicationtBadgeNumber() {
-        println("\(className)::\(__FUNCTION__)")
-        var num = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
+        print("\(className)::\(__FUNCTION__)")
+        let num = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
         setApplicationBadgeNumber(UInt(num))
     }
 
 
     func applicationDidBecomeActive(application: UIApplication) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         refresh()
     }
 
     func refresh() {
-        println("\(className)::\(__FUNCTION__) balance: \(currentUser.balanceAsUBTC)")
+        print("\(className)::\(__FUNCTION__) balance: \(currentUser.balanceAsUBTC)")
         
         
         if currentUser.isTwitterAuthenticated {
@@ -132,7 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self?.currentUser.updateBTCBalance({ () -> Void in
                     self?.provider.getIdentityId().continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
                         if task.error == nil, let identity = task.result as? String {
-                            println("\(self?.className)::\(__FUNCTION__) Just fetched cognito identity and is \(identity)")
+                            print("\(self?.className)::\(__FUNCTION__) Just fetched cognito identity and is \(identity)")
                             self?.currentUser.cognitoIdentity = identity
                         }
                         self?.currentUser?.pushToDynamo()
@@ -155,11 +155,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         let deviceTokenString = "\(deviceToken)"
             .stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString:"<>"))
             .stringByReplacingOccurrencesOfString(" ", withString: "")
-        println("deviceTokenString: \(deviceTokenString)")
+        print("deviceTokenString: \(deviceTokenString)")
         currentUser?.deviceToken = deviceTokenString
 
         let sns = AWSSNS.defaultSNS()
@@ -168,14 +168,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         request.platformApplicationArn = Config.get("SNS_ENDPOINT")
         sns.createPlatformEndpoint(request).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task:AWSTask!) -> AnyObject! in
             if task.error != nil {
-                println("Error: \(task.error)")
+                print("Error: \(task.error)")
             } else {
                 let createEndpointResponse = task.result as! AWSSNSCreateEndpointResponse
-                println("endpointArn: \(createEndpointResponse.endpointArn)")
+                print("endpointArn: \(createEndpointResponse.endpointArn)")
                 self.currentUser?.endpointArn = createEndpointResponse.endpointArn
                 self.currentUser?.pushToDynamo()
                 self.gerneralSubscriptionChannel(task)
-                println("admin? \(self.currentUser?.admin)")
+                print("admin? \(self.currentUser?.admin)")
                 if let admin = self.currentUser?.admin {
                     self.adminSubscriptionChannel(task)
                 }
@@ -187,17 +187,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func gerneralSubscriptionChannel(task: AWSTask!) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         let sns = AWSSNS.defaultSNS()
 
         let createEndpointResponse = task.result as! AWSSNSCreateEndpointResponse
-        println("endpointArn: \(createEndpointResponse.endpointArn)")
+        print("endpointArn: \(createEndpointResponse.endpointArn)")
         let request = AWSSNSSubscribeInput()
         request.endpoint = createEndpointResponse.endpointArn
         request.protocols = "application"
         request.topicArn = Config.get("AWS_GENERAL_SNS")
         sns.subscribe(request).continueWithBlock({ (task) -> AnyObject! in
-            println("\(task.result) \(task.error)")
+            print("\(task.result) \(task.error)")
             return nil
         })
         
@@ -205,17 +205,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func adminSubscriptionChannel(task: AWSTask!) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         let sns = AWSSNS.defaultSNS()
         let createEndpointResponse = task.result as! AWSSNSCreateEndpointResponse
-        println("endpointArn: \(createEndpointResponse.endpointArn)")
+        print("endpointArn: \(createEndpointResponse.endpointArn)")
 
         let request = AWSSNSSubscribeInput()
         request.endpoint = createEndpointResponse.endpointArn
         request.protocols = "application"
         request.topicArn = Config.get("AWS_ADMIN_SNS")
         sns.subscribe(request).continueWithBlock({ (task) -> AnyObject! in
-            println("\(task.result) \(task.error)")
+            print("\(task.result) \(task.error)")
             return nil
         })
 
@@ -223,7 +223,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject: AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
 
-        println("\(className)::\(__FUNCTION__) userInfo:\(userInfo)")
+        print("\(className)::\(__FUNCTION__) userInfo:\(userInfo)")
         var messageJSON: JSON?
 
         if let message = userInfo["message"] as? [String: AnyObject]  {
@@ -280,8 +280,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!) {
-        println("\(className)::\(__FUNCTION__) userInfo:\(userInfo)")
+    func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]?) -> Void)) {
+        print("\(className)::\(__FUNCTION__) userInfo:\(userInfo)")
         registerBackgroundTask()
         if currentUser != nil && currentUser.isTwitterAuthenticated {
             reply(["balance": currentUser.balanceAsUBTC])
@@ -328,7 +328,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    }
 
     func processMessage(message:JSON?) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         if let message = message {
             let title = message["title"].stringValue
             let subtitle = message["subtitle"].stringValue
@@ -348,22 +348,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data stack
 
     func logout() {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         currentUser.resetIdentifiers()
         resetCoreData()
         NSNotificationCenter.defaultCenter().postNotificationName("BACK_TO_SPLASH", object: nil)
     }
 
     func resetCognitoCredentials() {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         self.provider.clearKeychain()
     }
     
     func cognitoIdentityDidChange(notficiation: NSNotification) {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         
         if let userInfo = notficiation.userInfo, identifier = userInfo[AWSCognitoNotificationNewId] as? String {
-            println("\(className)::\(__FUNCTION__) New cognito identifier: \(identifier)")
+            print("\(className)::\(__FUNCTION__) New cognito identifier: \(identifier)")
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.currentUser.cognitoIdentity = identifier
                 self.currentUser.pushToDynamo()
@@ -372,9 +372,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func resetCoreData() {
-        println("\(className)::\(__FUNCTION__) ****************************")
+        print("\(className)::\(__FUNCTION__) ****************************")
         let storeURL = applicationDocumentsDirectory.URLByAppendingPathComponent("Tipper.sqlite")
-        NSFileManager.defaultManager().removeItemAtURL(storeURL, error: nil)
+        do {
+            try NSFileManager.defaultManager().removeItemAtURL(storeURL)
+        } catch _ {
+        }
         _persistentStoreCoordinator = nil
         _managedObjectContext = nil
         _privateWriterContext = nil
@@ -386,7 +389,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.checkthis.today" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as! NSURL
+        return urls[urls.count-1] 
     }()
 
     var managedObjectModel: NSManagedObjectModel {
@@ -409,12 +412,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("Tipper.sqlite")
                 var error: NSError? = nil
                 var failureReason = "There was an error creating or loading the application's saved data."
-                if _persistentStoreCoordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
+                do {
+                    try _persistentStoreCoordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
+                } catch let error2 as NSError {
+                    error = error2
                     _persistentStoreCoordinator = nil
 
-                    NSFileManager.defaultManager().removeItemAtURL(url, error:nil)
+                    do {
+                        try NSFileManager.defaultManager().removeItemAtURL(url)
+                    } catch _ {
+                    }
                     _persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-                    _persistentStoreCoordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error)
+                    do {
+                        try _persistentStoreCoordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
+                    } catch let error1 as NSError {
+                        error = error1
+                    }
                 }
 
             }
@@ -436,12 +449,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Core Data Saving support
     func writeToDisk() {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         saveContext()
         if let privateMoc = _privateWriterContext {
             var error: NSError? = nil
-            if privateMoc.hasChanges && !privateMoc.save(&error) {
-                println("Unresolved error \(error), \(error!.userInfo)")
+            if privateMoc.hasChanges {
+                do {
+                    try privateMoc.save()
+                } catch let error1 as NSError {
+                    error = error1
+                    print("Unresolved error \(error), \(error!.userInfo)")
+                }
             }
         }
 
@@ -449,9 +467,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func saveContext () {
         var error: NSError? = nil
-        if managedObjectContext.hasChanges && !managedObjectContext.save(&error) {
-            println("Unresolved error \(error), \(error!.userInfo)")
-            abort()
+        if managedObjectContext.hasChanges {
+            do {
+                try managedObjectContext.save()
+            } catch let error1 as NSError {
+                error = error1
+                print("Unresolved error \(error), \(error!.userInfo)")
+                abort()
+            }
         }
     }
 

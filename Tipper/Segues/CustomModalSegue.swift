@@ -12,10 +12,10 @@ class CustomModalSegue: UIStoryboardSegue {
     let className = "CustomModalSegue"
 
     override func perform() {
-        println("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
         // Assign the source and destination views to local variables.
-        var firstVCView = self.sourceViewController.view as UIView!
-        var secondVCView = self.destinationViewController.view as UIView!
+        let firstVCView = self.sourceViewController.view as UIView!
+        let secondVCView = self.destinationViewController.view as UIView!
         
         let sourceVc = self.sourceViewController as? HomeController
         let destinationVc =  self.destinationViewController as? CustomModable
@@ -51,7 +51,7 @@ class CustomModalSegue: UIStoryboardSegue {
 
             }) { (Finished) -> Void in
                 destinationVc?.segueAnimationComplete()
-                self.sourceViewController.presentViewController(self.destinationViewController as! UIViewController,
+                self.sourceViewController.presentViewController(self.destinationViewController ,
                     animated: false,
                     completion: nil)
         }
