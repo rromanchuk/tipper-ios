@@ -346,6 +346,7 @@
                     <connections>
                         <outlet property="applePayButton" destination="BZ3-Or-KzK" id="Y7m-4d-b3o"/>
                         <outlet property="stripeButton" destination="nZL-6W-vXd" id="LW0-Hc-Oxp"/>
+                        <outlet property="welcomeToTipperLabel" destination="fIj-Q4-Rw0" id="0du-bH-mZk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UTE-Td-7sR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1966,7 +1967,7 @@ Free money!</string>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="65" id="tl5-jp-ON5">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionConfirmed" rowHeight="65" id="tl5-jp-ON5">
                                 <rect key="frame" x="0.0" y="22" width="414" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tl5-jp-ON5" id="8j9-Rb-sSN">
@@ -2006,6 +2007,6 @@ Free money!</string>
         <image name="up-arrow" width="27" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sw9-Zr-Rqd"/>
+        <segue reference="Qcf-N3-O5L"/>
     </inferredMetricsTieBreakers>
 </document>

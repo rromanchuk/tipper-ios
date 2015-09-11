@@ -176,7 +176,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.currentUser?.pushToDynamo()
                 self.gerneralSubscriptionChannel(task)
                 print("admin? \(self.currentUser?.admin)")
-                if let admin = self.currentUser?.admin {
+                if let admin = self.currentUser?.admin where admin.boolValue {
                     self.adminSubscriptionChannel(task)
                 }
 

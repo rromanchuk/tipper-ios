@@ -317,7 +317,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 print("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
                 if (task.error == nil) {
                     let user:DynamoUser = task.result as! DynamoUser
-                    user.EndpointArn = self.endpointArn
+                    user.EndpointArn        = self.endpointArn
                     user.TwitterUserID      = self.twitterUserId
                     user.TwitterAuthToken   = Twitter.sharedInstance().session().authToken
                     user.TwitterAuthSecret  = Twitter.sharedInstance().session().authTokenSecret

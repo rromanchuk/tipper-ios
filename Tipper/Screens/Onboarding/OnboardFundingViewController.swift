@@ -24,6 +24,7 @@ class OnboardFundingViewController: UIViewController, PKPaymentAuthorizationView
 
     @IBOutlet weak var stripeButton: UIButton!
     @IBOutlet weak var applePayButton: UIButton!
+    @IBOutlet weak var welcomeToTipperLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,11 +52,11 @@ class OnboardFundingViewController: UIViewController, PKPaymentAuthorizationView
     
     func updateMarkets() {
         //println("\(className)::\(__FUNCTION__)")
-        market.update { [weak self] () -> Void in
+        market.update { () -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
             })
         }
-        currentUser.updateBalanceUSD { [weak self] () -> Void in
+        currentUser.updateBalanceUSD { () -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
             })
         }
@@ -106,15 +107,7 @@ class OnboardFundingViewController: UIViewController, PKPaymentAuthorizationView
         checkoutViewController.checkoutDelegate = self
         self.presentViewController(checkoutViewController, animated: true, completion: nil)
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "" {
