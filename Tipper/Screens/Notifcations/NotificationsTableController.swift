@@ -13,6 +13,24 @@ class NotificationsTableController: UITableViewController {
     var managedObjectContext: NSManagedObjectContext?
     var currentUser: CurrentUser!
     var market: Market!
+
+    lazy var fetchedResultsController: NSFetchedResultsController = NSFetchedResultsController.superFetchedResultsController("Notification", sectionNameKeyPath: nil, sortDescriptors: self.sortDescriptors, predicate: self.predicate, tableView: self.tableView, context: self.managedObjectContext)
+
+    lazy var predicate: NSPredicate? = {
+        return NSPredicate(format: "fromUserId = %@ OR toUserId = %@", self.currentUser.userId!, self.currentUser.userId!)
+        }()
+
+    lazy var sortDescriptors: [AnyObject] = {
+        return [NSSortDescriptor(key: "createdAt", ascending: false)]
+        }()
+
+    lazy var fetchRequest: NSFetchRequest = {
+        let request = NSFetchRequest(entityName: "Notification")
+        //request.predicate = self.predicate
+        request.sortDescriptors = self.sortDescriptors as? [NSSortDescriptor]
+        return request
+        }()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
