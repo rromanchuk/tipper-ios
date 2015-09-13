@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics(), Twitter()])
         Config.dump()
         AWSLogger.defaultLogger().logLevel = .Error
-        AWSMobileAnalytics(forAppId: Config.get("AWS_ANALYTICS_ID"))
+        let _ = AWSMobileAnalytics(forAppId: Config.get("AWS_ANALYTICS_ID"))
         
         // Configure tracker from GoogleService-Info.plist.
         var configureError:NSError?
