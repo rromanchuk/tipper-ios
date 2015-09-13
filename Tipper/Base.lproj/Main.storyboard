@@ -108,7 +108,7 @@
                                     <constraint firstAttribute="height" constant="106" id="ujq-Yt-4yC"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIj-Q4-Rw0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIj-Q4-Rw0">
                                 <rect key="frame" x="202" y="60" width="137" height="66"/>
                                 <animations/>
                                 <attributedString key="attributedText">
@@ -129,14 +129,14 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Every time you favorite a Tweet on Twitter, tipper will send a Bitcoin “tip” to the author of that Tweet. " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVe-Qy-x5c">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Every time you favorite a Tweet on Twitter, tipper will send a Bitcoin “tip” to the author of that Tweet. " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVe-Qy-x5c">
                                 <rect key="frame" x="37" y="166" width="302" height="51"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cju-Fh-Zum">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cju-Fh-Zum">
                                 <rect key="frame" x="16" y="290" width="343" height="18"/>
                                 <animations/>
                                 <attributedString key="attributedText">
@@ -164,7 +164,7 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6D-C0-oGu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6D-C0-oGu">
                                 <rect key="frame" x="16" y="318" width="343" height="18"/>
                                 <animations/>
                                 <attributedString key="attributedText">
@@ -203,7 +203,7 @@
                                     <segue destination="bxo-15-ISD" kind="show" identifier="OnboardStepTwo" id="hIz-cO-ajm"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="onboarding-exchange" translatesAutoresizingMaskIntoConstraints="NO" id="wTz-RL-1UQ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-exchange" translatesAutoresizingMaskIntoConstraints="NO" id="wTz-RL-1UQ">
                                 <rect key="frame" x="127" y="237" width="121" height="36"/>
                                 <animations/>
                                 <constraints>
@@ -211,7 +211,7 @@
                                     <constraint firstAttribute="height" constant="36" id="pMd-Av-bKo"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eB3-LN-Tv8" customClass="BaseView" customModule="Tipper" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eB3-LN-Tv8" customClass="BaseView" customModule="Tipper" customModuleProvider="target">
                                 <rect key="frame" x="53" y="356" width="269" height="167"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EXCHANGE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRu-C6-slv" userLabel="Exchange label">
@@ -271,7 +271,7 @@
                                     <constraint firstAttribute="width" constant="269" id="kEN-bg-Qsz"/>
                                 </constraints>
                             </view>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZL-6W-vXd" userLabel="Stripe Button">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZL-6W-vXd" userLabel="Stripe Button">
                                 <rect key="frame" x="90" y="544" width="194" height="64"/>
                                 <animations/>
                                 <gestureRecognizers/>
@@ -378,14 +378,14 @@
                                     <constraint firstAttribute="height" constant="106" id="xoC-Pz-eV6"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Let’s start tipping!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSk-hP-X01">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let’s start tipping!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSk-hP-X01">
                                 <rect key="frame" x="181" y="60" width="158" height="66"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="33"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Vz-G9-KTE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Vz-G9-KTE">
                                 <rect key="frame" x="36" y="166" width="303" height="51"/>
                                 <animations/>
                                 <string key="text">@TipperBot would like to Favorite a few of your Tweets to show you how tipping works. 
@@ -394,7 +394,7 @@ Free money!</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="These tips will show up in your transaction history on the next page where you can track all the tips you send and receive." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mx7-mR-z57">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="These tips will show up in your transaction history on the next page where you can track all the tips you send and receive." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mx7-mR-z57">
                                 <rect key="frame" x="36" y="243" width="303" height="51"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="17"/>
@@ -455,14 +455,14 @@ Free money!</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="tipper" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWF-UR-7re">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tipper" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWF-UR-7re">
                                 <rect key="frame" x="135" y="415" width="106" height="45"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Bariol-Bold" family="Bariol" pointSize="45"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHj-ZJ-tNj" customClass="TipperButton" customModule="Tipper" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHj-ZJ-tNj" customClass="TipperButton" customModule="Tipper" customModuleProvider="target">
                                 <rect key="frame" x="30" y="549" width="315" height="55"/>
                                 <animations/>
                                 <constraints>
@@ -499,7 +499,7 @@ Free money!</string>
                                     <constraint firstAttribute="width" constant="200" id="uo7-I1-LPe"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="754" verticalCompressionResistancePriority="754" misplaced="YES" text="By creating your account you confirm that you've read the Terms Of Use. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOy-ZY-rsY">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="754" verticalCompressionResistancePriority="754" text="By creating your account you confirm that you've read the Terms Of Use. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOy-ZY-rsY">
                                 <rect key="frame" x="13" y="617" width="349" height="30"/>
                                 <animations/>
                                 <gestureRecognizers/>
@@ -510,10 +510,9 @@ Free money!</string>
                                     <outletCollection property="gestureRecognizers" destination="foq-6c-Mjb" appends="YES" id="hfX-fa-8as"/>
                                 </connections>
                             </label>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="754" verticalCompressionResistancePriority="754" misplaced="YES" text="Automatically send Bitcoin tips to the people you love by favorting their Tweets on Twitter." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzN-WF-Mb0">
-                                <rect key="frame" x="13" y="475" width="349" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Automatically send Bitcoin tips to the people you love by favorting their Tweets on Twitter." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zjV-q5-4yC">
+                                <rect key="frame" x="16" y="480" width="343" height="34"/>
                                 <animations/>
-                                <gestureRecognizers/>
                                 <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -525,17 +524,17 @@ Free money!</string>
                             <constraint firstAttribute="centerX" secondItem="dHj-ZJ-tNj" secondAttribute="centerX" id="1MX-uD-eqN"/>
                             <constraint firstAttribute="centerX" secondItem="YWF-UR-7re" secondAttribute="centerX" id="1Uw-Ix-ihH"/>
                             <constraint firstItem="YOy-ZY-rsY" firstAttribute="top" secondItem="dHj-ZJ-tNj" secondAttribute="bottom" constant="8" id="3tQ-R6-GiZ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="pzN-WF-Mb0" secondAttribute="trailing" constant="-3" id="4Cp-jz-b2l"/>
                             <constraint firstItem="YOy-ZY-rsY" firstAttribute="leading" secondItem="tgM-WN-m8P" secondAttribute="leadingMargin" constant="-3" id="Ak4-SE-xZn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zjV-q5-4yC" secondAttribute="trailing" id="Eai-ev-0Ek"/>
                             <constraint firstAttribute="centerX" secondItem="YOy-ZY-rsY" secondAttribute="centerX" id="In1-R6-grv"/>
                             <constraint firstAttribute="centerY" secondItem="6Wa-bK-0VZ" secondAttribute="centerY" constant="52" id="Ll9-mE-uew"/>
                             <constraint firstItem="Scb-tF-PuG" firstAttribute="top" secondItem="YOy-ZY-rsY" secondAttribute="bottom" constant="20" id="OMi-bw-38y"/>
-                            <constraint firstItem="pzN-WF-Mb0" firstAttribute="centerX" secondItem="tgM-WN-m8P" secondAttribute="centerX" id="UbB-7l-wp8"/>
+                            <constraint firstItem="zjV-q5-4yC" firstAttribute="top" secondItem="YWF-UR-7re" secondAttribute="bottom" constant="20" id="Qov-ZC-kjz"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="zjV-q5-4yC" secondAttribute="leading" id="VQf-mT-1n7"/>
                             <constraint firstItem="YWF-UR-7re" firstAttribute="top" secondItem="6Wa-bK-0VZ" secondAttribute="bottom" constant="16" id="XpB-Kr-0xn"/>
-                            <constraint firstItem="pzN-WF-Mb0" firstAttribute="top" secondItem="YWF-UR-7re" secondAttribute="bottom" constant="15" id="aR7-aY-EnM"/>
                             <constraint firstItem="6Wa-bK-0VZ" firstAttribute="top" secondItem="CCi-e0-bbW" secondAttribute="bottom" constant="8" id="gvb-gB-1Oo"/>
                             <constraint firstItem="YOy-ZY-rsY" firstAttribute="top" secondItem="dHj-ZJ-tNj" secondAttribute="bottom" constant="13" id="hug-Jy-Qil"/>
-                            <constraint firstItem="pzN-WF-Mb0" firstAttribute="leading" secondItem="tgM-WN-m8P" secondAttribute="leadingMargin" constant="-3" id="l9p-pl-ED4"/>
+                            <constraint firstItem="zjV-q5-4yC" firstAttribute="centerX" secondItem="tgM-WN-m8P" secondAttribute="centerX" id="nF8-bd-dMR"/>
                             <constraint firstItem="6Wa-bK-0VZ" firstAttribute="top" secondItem="YWF-UR-7re" secondAttribute="bottom" constant="33" id="nUx-te-mek"/>
                             <constraint firstAttribute="centerX" secondItem="6Wa-bK-0VZ" secondAttribute="centerX" id="nn1-7q-7eO"/>
                             <constraint firstItem="dHj-ZJ-tNj" firstAttribute="top" secondItem="6Wa-bK-0VZ" secondAttribute="bottom" constant="91" id="oCc-cr-831"/>
@@ -652,14 +651,14 @@ Free money!</string>
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="DEPOSIT FUNDS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xD2-av-nLf">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEPOSIT FUNDS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xD2-av-nLf">
                                                     <rect key="frame" x="23" y="28" width="170" height="25"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="25"/>
                                                     <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f0q-kf-Mol" userLabel="Separator">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f0q-kf-Mol" userLabel="Separator">
                                                     <rect key="frame" x="23" y="56" width="370" height="1"/>
                                                     <animations/>
                                                     <color key="backgroundColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -667,63 +666,63 @@ Free money!</string>
                                                         <constraint firstAttribute="height" constant="1" id="adJ-2i-a70"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="EXCHANGE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7MI-BW-rqR" userLabel="Exchange label">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXCHANGE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7MI-BW-rqR" userLabel="Exchange label">
                                                     <rect key="frame" x="66" y="106" width="72" height="15"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Bold" family="Bariol" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="FOR" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAV-5u-7mb" userLabel="For label">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FOR" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAV-5u-7mb" userLabel="For label">
                                                     <rect key="frame" x="111" y="180" width="27" height="15"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Bold" family="Bariol" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="5.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cn-W2-1Jv">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cn-W2-1Jv">
                                                     <rect key="frame" x="218" y="93" width="77" height="42"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="42"/>
                                                     <color key="textColor" red="0.41176470590000003" green="0.41176470590000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="200" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgK-yF-TQV">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgK-yF-TQV">
                                                     <rect key="frame" x="218" y="167" width="72" height="42"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="42"/>
                                                     <color key="textColor" red="0.41176470590000003" green="0.41176470590000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="17uSiLUXUMKuQRNbdLQ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AR8-pK-0TU">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17uSiLUXUMKuQRNbdLQ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AR8-pK-0TU">
                                                     <rect key="frame" x="131" y="426" width="152" height="15"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SEND TO MY ADDRESS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7r-Gq-8mP">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEND TO MY ADDRESS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7r-Gq-8mP">
                                                     <rect key="frame" x="135" y="401" width="145" height="15"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Bold" family="Bariol" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ix-8z-rrx">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ix-8z-rrx">
                                                     <rect key="frame" x="201" y="104" width="12" height="20"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="20"/>
                                                     <color key="textColor" red="0.41176470590000003" green="0.41176470590000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="(0.02 Bitcoin)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3iP-12-iHD">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(0.02 Bitcoin)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3iP-12-iHD">
                                                     <rect key="frame" x="210" y="205" width="79" height="15"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="15"/>
                                                     <color key="textColor" red="0.41176470590000003" green="0.41176470590000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9DJ-2s-fVD" userLabel="ApplePay Button">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9DJ-2s-fVD" userLabel="ApplePay Button">
                                                     <rect key="frame" x="110" y="252" width="194" height="64"/>
                                                     <animations/>
                                                     <constraints>
@@ -739,7 +738,7 @@ Free money!</string>
                                                         <outletCollection property="gestureRecognizers" destination="Z5y-R8-iT4" appends="YES" id="xSz-Q0-X4x"/>
                                                     </connections>
                                                 </button>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFk-hZ-4zT" userLabel="Separator">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kFk-hZ-4zT" userLabel="Separator">
                                                     <rect key="frame" x="18" y="356" width="370" height="1"/>
                                                     <animations/>
                                                     <color key="backgroundColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -747,7 +746,7 @@ Free money!</string>
                                                         <constraint firstAttribute="height" constant="1" id="hqn-h7-SQi"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Wd-76-ren">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Wd-76-ren">
                                                     <rect key="frame" x="57" y="463" width="300" height="48"/>
                                                     <animations/>
                                                     <color key="backgroundColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -764,14 +763,14 @@ Free money!</string>
                                                         <action selector="didCopy:" destination="UEU-XD-8Ny" eventType="touchUpInside" id="QsT-BN-2Yl"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uTM-ii-n9a">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uTM-ii-n9a">
                                                     <rect key="frame" x="45" y="606" width="325" height="325"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="uTM-ii-n9a" secondAttribute="height" multiplier="1:1" id="4KM-hs-r4y"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uBa-1b-LJq" userLabel="Separator">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uBa-1b-LJq" userLabel="Separator">
                                                     <rect key="frame" x="23" y="555" width="370" height="1"/>
                                                     <animations/>
                                                     <color key="backgroundColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -779,21 +778,21 @@ Free money!</string>
                                                         <constraint firstAttribute="height" constant="1" id="JbE-zi-jZt"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SEND TO MY QR CODE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u43-sd-Dvu">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEND TO MY QR CODE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u43-sd-Dvu">
                                                     <rect key="frame" x="136" y="577" width="143" height="15"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Bold" family="Bariol" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="WITHDRAW FUNDS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAz-Ju-zso">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WITHDRAW FUNDS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAz-Ju-zso">
                                                     <rect key="frame" x="27" y="986" width="198" height="25"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="25"/>
                                                     <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ryn-Zr-put" userLabel="Separator">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ryn-Zr-put" userLabel="Separator">
                                                     <rect key="frame" x="27" y="1014" width="370" height="1"/>
                                                     <animations/>
                                                     <color key="backgroundColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -801,14 +800,14 @@ Free money!</string>
                                                         <constraint firstAttribute="height" constant="1" id="4QL-mc-pHu"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SEND TO MY ADDRESS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rP5-Rl-cgz">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEND TO MY ADDRESS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rP5-Rl-cgz">
                                                     <rect key="frame" x="135" y="1047" width="145" height="15"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Bold" family="Bariol" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jm4-av-7oX">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jm4-av-7oX">
                                                     <rect key="frame" x="57" y="1122" width="300" height="48"/>
                                                     <animations/>
                                                     <color key="backgroundColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -825,7 +824,7 @@ Free money!</string>
                                                         <action selector="didPaste:" destination="UEU-XD-8Ny" eventType="touchUpInside" id="IoA-eY-Pto"/>
                                                     </connections>
                                                 </button>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IAn-5m-NYd">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IAn-5m-NYd">
                                                     <rect key="frame" x="27" y="1075" width="370" height="30"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="14"/>
@@ -834,14 +833,14 @@ Free money!</string>
                                                         <action selector="textFieldChanged:" destination="UEU-XD-8Ny" eventType="editingChanged" id="bBd-Lk-cwf"/>
                                                     </connections>
                                                 </textField>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="a" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GmB-7c-2pP">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GmB-7c-2pP">
                                                     <rect key="frame" x="191" y="176" width="29" height="24"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="coiner" family="coiner" pointSize="29"/>
                                                     <color key="textColor" red="0.41176470590000003" green="0.41176470590000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uug-ax-ABv" userLabel="Stripe Button">
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uug-ax-ABv" userLabel="Stripe Button">
                                                     <rect key="frame" x="111" y="252" width="194" height="64"/>
                                                     <animations/>
                                                     <gestureRecognizers/>
@@ -948,14 +947,14 @@ Free money!</string>
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TWITTER ACCOUNT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDT-E6-D30">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TWITTER ACCOUNT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDT-E6-D30">
                                                     <rect key="frame" x="23" y="28" width="207" height="97"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="25"/>
                                                     <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TFO-v8-JjZ" userLabel="Separator">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TFO-v8-JjZ" userLabel="Separator">
                                                     <rect key="frame" x="23" y="128" width="370" height="1"/>
                                                     <animations/>
                                                     <color key="backgroundColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -963,7 +962,7 @@ Free money!</string>
                                                         <constraint firstAttribute="height" constant="1" id="b35-KC-TA1"/>
                                                     </constraints>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="profile-image-placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="0RF-kJ-poF">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-image-placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="0RF-kJ-poF">
                                                     <rect key="frame" x="23" y="144" width="40" height="40"/>
                                                     <animations/>
                                                     <constraints>
@@ -971,14 +970,14 @@ Free money!</string>
                                                         <constraint firstAttribute="height" constant="40" id="NPF-Z2-qsh"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="@rromanchuk" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x50-na-n7T">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@rromanchuk" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x50-na-n7T">
                                                     <rect key="frame" x="71" y="155" width="95" height="17"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6yg-8p-cyH">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6yg-8p-cyH">
                                                     <rect key="frame" x="307" y="147" width="86" height="33"/>
                                                     <animations/>
                                                     <color key="backgroundColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1033,14 +1032,14 @@ Free money!</string>
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TIPPING PREFERENCES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9p-sS-VNt">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIPPING PREFERENCES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9p-sS-VNt">
                                                     <rect key="frame" x="23" y="28" width="240" height="96"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="25"/>
                                                     <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5wH-jD-mPa" userLabel="Separator">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5wH-jD-mPa" userLabel="Separator">
                                                     <rect key="frame" x="23" y="127" width="370" height="1"/>
                                                     <animations/>
                                                     <color key="backgroundColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1048,14 +1047,14 @@ Free money!</string>
                                                         <constraint firstAttribute="height" constant="1" id="sdP-co-KfE"/>
                                                     </constraints>
                                                 </view>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jcr-U5-eEF">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jcr-U5-eEF">
                                                     <rect key="frame" x="344" y="148" width="51" height="31"/>
                                                     <animations/>
                                                     <connections>
                                                         <action selector="didToggleAutomaticTipping:" destination="UEU-XD-8Ny" eventType="valueChanged" id="SWY-g9-gq4"/>
                                                     </connections>
                                                 </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Auto-Tip Twitter Favorites" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPN-nE-2RL">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto-Tip Twitter Favorites" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPN-nE-2RL">
                                                     <rect key="frame" x="23" y="155" width="169" height="17"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="17"/>
@@ -1248,14 +1247,14 @@ Free money!</string>
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="You tipped Ryan" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60G-HZ-To5">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You tipped Ryan" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60G-HZ-To5">
                                                     <rect key="frame" x="81" y="15" width="95" height="15"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="@rromanchuk" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VrX-Dy-Zto">
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@rromanchuk" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VrX-Dy-Zto">
                                                     <rect key="frame" x="81" y="34" width="192" height="21"/>
                                                     <animations/>
                                                     <constraints>
@@ -1273,7 +1272,7 @@ Free money!</string>
                                                         <constraint firstAttribute="height" constant="40" id="uSw-ma-KTS"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2WX-eU-6Uo">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2WX-eU-6Uo">
                                                     <rect key="frame" x="338" y="15" width="43" height="20"/>
                                                     <animations/>
                                                     <attributedString key="attributedText">
@@ -1294,7 +1293,7 @@ Free money!</string>
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="BTC 0.0005" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNi-GN-KiE">
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTC 0.0005" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNi-GN-KiE">
                                                     <rect key="frame" x="320" y="43" width="61" height="12"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="12"/>
@@ -1374,7 +1373,7 @@ Free money!</string>
                                                         <constraint firstAttribute="height" constant="213" id="E9V-gc-Xbs"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" alpha="0.49999999999999961" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="251" misplaced="YES" text="17uSiLnLUXUMKuQFNbdLQQQfaAWQhFHcM9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3d-JV-ent">
+                                                <label opaque="NO" alpha="0.49999999999999961" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="251" text="17uSiLnLUXUMKuQFNbdLQQQfaAWQhFHcM9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3d-JV-ent">
                                                     <rect key="frame" x="47" y="283" width="226" height="12"/>
                                                     <animations/>
                                                     <gestureRecognizers/>
@@ -1385,21 +1384,21 @@ Free money!</string>
                                                         <outletCollection property="gestureRecognizers" destination="bcn-wg-Izh" appends="YES" id="O2m-Cn-dp7"/>
                                                     </connections>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Confirmations" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKH-Sa-iwv">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirmations" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKH-Sa-iwv">
                                                     <rect key="frame" x="47" y="310" width="84" height="15"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Transaction ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I10-F2-2BU">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I10-F2-2BU">
                                                     <rect key="frame" x="47" y="260" width="84" height="15"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" misplaced="YES" text="8:30 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="woc-14-0Cg">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="8:30 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="woc-14-0Cg">
                                                     <rect key="frame" x="8" y="41" width="31" height="9"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="9"/>
@@ -1422,7 +1421,7 @@ Free money!</string>
                                                         </mask>
                                                     </variation>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="200" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4SP-s5-x5r">
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4SP-s5-x5r">
                                                     <rect key="frame" x="47" y="333" width="21" height="12"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="12"/>
@@ -1550,7 +1549,7 @@ Free money!</string>
                                     <action selector="didTapNotifications:" destination="x99-hT-nup" eventType="touchUpInside" id="oyb-qR-hiE"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="778" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAL-w9-cfz" userLabel="Balance Label">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="778" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAL-w9-cfz" userLabel="Balance Label">
                                 <rect key="frame" x="139" y="19" width="135" height="41"/>
                                 <animations/>
                                 <gestureRecognizers/>
@@ -1686,14 +1685,14 @@ Free money!</string>
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="You tipped Ryan Romanchuk" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XcG-Cs-3sh">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You tipped Ryan Romanchuk" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XcG-Cs-3sh">
                                                     <rect key="frame" x="101" y="15" width="169" height="15"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="@rromanchuk" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZMD-0a-WOQ">
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@rromanchuk" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZMD-0a-WOQ">
                                                     <rect key="frame" x="101" y="30" width="67" height="21"/>
                                                     <animations/>
                                                     <constraints>
@@ -1711,7 +1710,7 @@ Free money!</string>
                                                         <constraint firstAttribute="height" constant="40" id="luB-gu-2uD"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="8:30 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eA-X1-dsK">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8:30 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eA-X1-dsK">
                                                     <rect key="frame" x="10" y="38" width="31" height="9"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="9"/>
@@ -1734,7 +1733,7 @@ Free money!</string>
                                                         </mask>
                                                     </variation>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6c-DF-Hu2">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6c-DF-Hu2">
                                                     <rect key="frame" x="343" y="15" width="43" height="20"/>
                                                     <animations/>
                                                     <attributedString key="attributedText">
@@ -1755,7 +1754,7 @@ Free money!</string>
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="BTC 0.0005" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qH3-1F-IyA">
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" text="BTC 0.0005" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qH3-1F-IyA">
                                                     <rect key="frame" x="325" y="39" width="61" height="12"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="12"/>
@@ -1778,7 +1777,7 @@ Free money!</string>
                                                         <action selector="userDidTip:" destination="kx1-hc-hzV" eventType="touchUpInside" id="84M-6P-GkZ"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="up-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="Twy-Nb-vaZ">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="up-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="Twy-Nb-vaZ">
                                                     <rect key="frame" x="326" y="18" width="13" height="13"/>
                                                     <animations/>
                                                     <constraints>
