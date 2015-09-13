@@ -43,6 +43,15 @@ class OnboardFundingViewController: UIViewController, PKPaymentAuthorizationView
 
 
         // Do any additional setup after loading the view.
+        setAttributedLabels()
+    }
+
+    func setAttributedLabels() {
+        let string = "Welcome to Tipper!"
+        let labelAttributes = NSMutableAttributedString(string: string)
+        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Regular", size: 33.0)!, range: NSMakeRange(0,1))
+        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Bold", size: 33.0)!, range: NSMakeRange(11, string.characters.count - 1))
+        welcomeToTipperLabel.attributedText = labelAttributes
     }
 
     override func didReceiveMemoryWarning() {

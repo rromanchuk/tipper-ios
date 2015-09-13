@@ -207,8 +207,6 @@ class SuperFetchedResultsControllerDelegate: NSObject, NSFetchedResultsControlle
                                 case NSFetchedResultsChangeType.Move:
                                     self.collectionView!.moveItemAtIndexPath(dictValue[0] as! NSIndexPath, toIndexPath: dictValue[1] as! NSIndexPath)
                                     break;
-                                default:
-                                    print("Unexpected NSFetchedResultsChangeType stored for controllerDidChangeContent. \(dictKey)", terminator: "")
                                 }
                             }
                         }

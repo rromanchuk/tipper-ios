@@ -75,10 +75,10 @@ class SplashViewController: UIViewController {
     
     @IBAction func unwindToSplash(unwindSegue: UIStoryboardSegue) {
         print("\(className)::\(__FUNCTION__)")
-        if let blueViewController = unwindSegue.sourceViewController as? HomeController {
+        if let _ = unwindSegue.sourceViewController as? HomeController {
             print("Coming from HomeController")
         }
-        else if let redViewController = unwindSegue.sourceViewController as? TipDetailsViewController {
+        else if let _ = unwindSegue.sourceViewController as? TipDetailsViewController {
             print("Coming from TipDetailsViewController")
         }
         (UIApplication.sharedApplication().delegate as! AppDelegate).setupFirstController()

@@ -402,10 +402,10 @@ Free money!</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="98v-hU-2Q9" customClass="TipperButton" customModule="Tipper" customModuleProvider="target">
-                                <rect key="frame" x="16" y="608" width="343" height="39"/>
+                                <rect key="frame" x="16" y="592" width="343" height="55"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="39" id="Sdc-hH-w6K"/>
+                                    <constraint firstAttribute="height" constant="55" id="Sdc-hH-w6K"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="18"/>
                                 <state key="normal" title="Go">

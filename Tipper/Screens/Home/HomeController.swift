@@ -102,7 +102,7 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
 
     @IBAction func done(segue: UIStoryboardSegue, sender: AnyObject?) {
         print("\(className)::\(__FUNCTION__) identifier: \(segue.identifier) \(segue.sourceViewController)")
-        let vc = segue.sourceViewController as? UIViewController
+        let vc = segue.sourceViewController
         if let header = vc as? HeaderContainer {
            header.refreshHeader()
         }
