@@ -47,10 +47,15 @@ class OnboardFundingViewController: UIViewController, PKPaymentAuthorizationView
     }
 
     func setAttributedLabels() {
-        let string = "Welcome to Tipper!"
+        let prefix = "Welcome to "
+        let bold = "Tipper"
+        let postfix = "!"
+        
+        let string = "\(prefix)\(bold)\(postfix)"
         let labelAttributes = NSMutableAttributedString(string: string)
-        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Regular", size: 33.0)!, range: NSMakeRange(0,1))
-        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Bold", size: 33.0)!, range: NSMakeRange(11, string.characters.count - 1))
+        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Regular", size: 33.0)!, range: NSMakeRange(0,prefix.characters.count))
+        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Bold", size: 33.0)!, range: NSMakeRange(prefix.characters.count, bold.characters.count))
+        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Regular", size: 33.0)!, range: NSMakeRange(prefix.characters.count + bold.characters.count,postfix.characters.count))
         welcomeToTipperLabel.attributedText = labelAttributes
     }
 

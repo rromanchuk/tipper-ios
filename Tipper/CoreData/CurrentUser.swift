@@ -169,14 +169,14 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     }
 
 
-    func authenticate(completion: (() ->Void))  {
+    func authenticate(session: TWTRSession, completion: (() ->Void))  {
         print("\(className)::\(__FUNCTION__)")
         DynamoUser.findByTwitterId( Twitter.sharedInstance().session()!.userID, completion: { (user) -> Void in
             Debug.isBlocking()
             if let dynamoUser = user {
-                dynamoUser.TwitterAuthToken = Twitter.sharedInstance().session()?.authToken
-                dynamoUser.TwitterAuthSecret = Twitter.sharedInstance().session()?.authTokenSecret
-                dynamoUser.TwitterUsername = Twitter.sharedInstance().session()?.userName
+                dynamoUser.TwitterAuthToken = session.authToken
+                dynamoUser.TwitterAuthSecret = session.authTokenSecret
+                dynamoUser.TwitterUsername = session.userName
                 dynamoUser.IsActive = "X"
                 dynamoUser.ProfileImage = self.profileImage
                 dynamoUser.UpdatedAt = Int(NSDate().timeIntervalSince1970)
@@ -188,13 +188,13 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 })
                 self.updateEntityWithDynamoModel(dynamoUser)
                 completion()
-            } else {
+            } else  {
                 let dynamoUser = DynamoUser()
                 dynamoUser.UserID = NSUUID().UUIDString
-                dynamoUser.TwitterAuthToken = Twitter.sharedInstance().session()?.authToken
-                dynamoUser.TwitterAuthSecret = Twitter.sharedInstance().session()?.authTokenSecret
-                dynamoUser.TwitterUserID = Twitter.sharedInstance().session()?.userID
-                dynamoUser.TwitterUsername = Twitter.sharedInstance().session()?.userName
+                dynamoUser.TwitterAuthToken = session.authToken
+                dynamoUser.TwitterAuthSecret = session.authTokenSecret
+                dynamoUser.TwitterUserID = session.userID
+                dynamoUser.TwitterUsername = session.userName
                 dynamoUser.CreatedAt = Int(NSDate().timeIntervalSince1970)
                 dynamoUser.UpdatedAt = Int(NSDate().timeIntervalSince1970)
                 dynamoUser.IsActive = "X"

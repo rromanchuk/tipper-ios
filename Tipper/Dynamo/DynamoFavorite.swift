@@ -53,6 +53,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         return self.ObjectID!
     }
     
+    // All favorites, not just tipped
     class func fetchAllFavoritesFromUser(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
         print("DynamoFavorite::\(__FUNCTION__)")
         
@@ -61,10 +62,24 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         exp.hashKeyValues      = currentUser.userId!
         exp.indexName = "FromUserID-index"
         self.query(exp, secondaryIndexHash: "FromUserID", context: context) { () -> Void in
-            completion()
+            self.fetchAllFavoritesToUser(currentUser, context: context, completion: completion)
         }
 
     }
+    
+    class func fetchAllFavoritesToUser(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
+        print("DynamoFavorite::\(__FUNCTION__)")
+        
+        let exp = AWSDynamoDBQueryExpression()
+        exp.hashKeyValues      = currentUser.userId!
+        exp.indexName = "ToUserID-index"
+        self.query(exp, secondaryIndexHash: "ToUserID", context: context) { () -> Void in
+            completion()
+        }
+        
+    }
+    
+    
 
 
     class func fetchTips(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {

@@ -103,10 +103,10 @@ class SplashViewController: UIViewController {
         print("\(className)::\(__FUNCTION__)")
         Twitter.sharedInstance().logInWithCompletion { (session, error) -> Void in
             SwiftSpinner.show("Logging you in...")
-            if error == nil {
-                self.provider.logins = ["api.twitter.com": "\(session?.authToken);\(session?.authTokenSecret)"]
-                self.currentUser.twitterAuthenticationWithTKSession(session!)
-                self.refreshProvider(session!)
+            if let session = session where error == nil {
+                self.provider.logins = ["api.twitter.com": "\(session.authToken);\(session.authTokenSecret)"]
+                self.currentUser.twitterAuthenticationWithTKSession(session)
+                self.refreshProvider(session)
             } else {
                 SwiftSpinner.hide({ () -> Void in
                     let alert = UIAlertController(title: "Opps", message: error!.localizedDescription, preferredStyle: .Alert)
@@ -157,7 +157,7 @@ class SplashViewController: UIViewController {
 
     private func authenticate() {
         print("\(className)::\(__FUNCTION__)")
-        self.currentUser.authenticate( { () -> Void in
+        self.currentUser.authenticate(Twitter.sharedInstance().session()!) { () -> Void in
             print("\(self.className)::\(__FUNCTION__) authenticate callback")
             Debug.isBlocking()
             SwiftSpinner.hide(nil)
@@ -165,6 +165,6 @@ class SplashViewController: UIViewController {
             self.currentUser.writeToDisk()
             self.performSegueWithIdentifier("Onboarding", sender: self)
             //self.performSegueWithIdentifier("Home", sender: self)
-        })
+        }
     }
 }

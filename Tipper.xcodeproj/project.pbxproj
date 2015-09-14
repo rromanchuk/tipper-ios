@@ -15,7 +15,6 @@
 		941AA38E1AB01EC000CA9192 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA38D1AB01EC000CA9192 /* SplashViewController.swift */; };
 		9426B28B1B97F177001F996C /* CustomUnwindModalSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9426B28A1B97F177001F996C /* CustomUnwindModalSegue.swift */; };
 		9426B28D1B98CF44001F996C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9426B28C1B98CF44001F996C /* GoogleService-Info.plist */; };
-		9426B2911B98DFCA001F996C /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9426B28E1B98D0FF001F996C /* Stripe.framework */; };
 		9426B2941B9F6D76001F996C /* OnboardFundingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9426B2931B9F6D76001F996C /* OnboardFundingViewController.swift */; };
 		9426B2961B9F6D9C001F996C /* OnboardAutoTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9426B2951B9F6D9C001F996C /* OnboardAutoTipViewController.swift */; };
 		9426B2981B9F6DDF001F996C /* OnboardNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9426B2971B9F6DDF001F996C /* OnboardNavigationController.swift */; };
@@ -67,6 +66,7 @@
 		94AF297A1AAEF2B600E16048 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94AF29781AAEF2B600E16048 /* Main.storyboard */; };
 		94AF297F1AAEF2B600E16048 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AF297D1AAEF2B600E16048 /* LaunchScreen.xib */; };
 		94AF298B1AAEF2B600E16048 /* TipperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AF298A1AAEF2B600E16048 /* TipperTests.swift */; };
+		94B026611BA6644400FC6A30 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9426B28E1B98D0FF001F996C /* Stripe.framework */; };
 		94C255131B0D825800A65B94 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C2550F1B0D825800A65B94 /* Fabric.framework */; };
 		94C255141B0D825800A65B94 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C255101B0D825800A65B94 /* TwitterKit.framework */; };
 		94C255151B0D825800A65B94 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C255111B0D825800A65B94 /* TwitterCore.framework */; };
@@ -231,7 +231,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9426B2911B98DFCA001F996C /* Stripe.framework in Frameworks */,
+				94B026611BA6644400FC6A30 /* Stripe.framework in Frameworks */,
 				94D9795E1B27696B0079F50C /* Haneke.framework in Frameworks */,
 				9484185A1AB6525F001C633E /* Alamofire.framework in Frameworks */,
 				94C255131B0D825800A65B94 /* Fabric.framework in Frameworks */,
@@ -1131,7 +1131,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COGNITO_POOL = "***REMOVED***";
 				DEBUG = YES;
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1180,7 +1180,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COGNITO_POOL = "***REMOVED***";
 				DEBUG = "";
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
