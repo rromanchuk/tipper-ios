@@ -174,9 +174,17 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
     }
 
     @IBAction func didToggleAutomaticTipping(sender: UISwitch) {
-        print("\(className)::\(__FUNCTION__) autotipSwitch:\(autotipSwitch.on), urrentUser.automaticTippingEnabled:\(currentUser.automaticTippingEnabled)")
-        currentUser.automaticTippingEnabled = NSNumber(bool: autotipSwitch.on)
-        currentUser.pushToDynamo()
+        print("\(className)::\(__FUNCTION__) autotipSwitch:\(autotipSwitch.on), currentUser.automaticTippingEnabled:\(currentUser.automaticTippingEnabled)")
+        SwiftSpinner.show("Saving..")
+        if autotipSwitch.on {
+            currentUser.turnOnAutoTipping({ (error) -> Void in
+                SwiftSpinner.hide()
+            })
+        } else {
+            currentUser.turnOffAutoTipping({ (error) -> Void in
+                SwiftSpinner.hide()
+            })
+        }
     }
     
     @IBAction func didLongPressPayButton(sender: UILongPressGestureRecognizer) {

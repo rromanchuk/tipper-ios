@@ -180,14 +180,13 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 dynamoUser.IsActive = "X"
                 dynamoUser.ProfileImage = self.profileImage
                 dynamoUser.UpdatedAt = Int(NSDate().timeIntervalSince1970)
+                self.updateEntityWithDynamoModel(dynamoUser)
                 self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
                     API.sharedInstance.connect({ (json, error) -> Void in
-
+                        completion()
                     })
                     return nil
                 })
-                self.updateEntityWithDynamoModel(dynamoUser)
-                completion()
             } else  {
                 let dynamoUser = DynamoUser()
                 dynamoUser.UserID = NSUUID().UUIDString
@@ -201,9 +200,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 dynamoUser.ProfileImage = self.profileImage
                 dynamoUser.CognitoIdentity = self.cognitoIdentity
                 self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
-                    API.sharedInstance.connect({ (json, error) -> Void in
-                        
-                    })
                     API.sharedInstance.address({ (json, error) -> Void in
                         if error == nil {
                             dynamoUser.BitcoinAddress     = json["BitcoinAddress"].string
@@ -211,9 +207,11 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                             self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration)
                         }
                         self.updateEntityWithDynamoModel(dynamoUser)
-                        completion()
+                        API.sharedInstance.connect({ (json, error) -> Void in
+                            //print("\(className)::\(__FUNCTION__)")
+                            completion()
+                        })
                     })
-
                     return nil
                 })
             }
@@ -287,7 +285,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         API.sharedInstance.balance { (json, error) -> Void in
             if let satoshisString = json["balance"].string, satoshis = Int(satoshisString) {
                 self.bitcoinBalanceBTC = Double(satoshis) / 0.00000001
-                self.updateBalanceUSD { [weak self] () -> Void in }
+                self.updateBalanceUSD { () -> Void in }
             }
             completion()
         }
@@ -476,9 +474,22 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         
     }
 
-    func disconnect() {
+    func turnOffAutoTipping(completion: (error: NSError?) -> Void) {
         print("\(className)::\(__FUNCTION__)")
         API.sharedInstance.disconnect { (json, error) -> Void in
+            if error == nil {
+                self.automaticTippingEnabled = NSNumber(bool: false)
+            }
+            completion(error: error)
+        }
+    }
+
+    func turnOnAutoTipping(completion: (error: NSError?) -> Void) {
+        API.sharedInstance.connect { (json, error) -> Void in
+            if error == nil {
+                self.automaticTippingEnabled = NSNumber(bool: true)
+            }
+            completion(error: error)
         }
     }
 

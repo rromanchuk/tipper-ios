@@ -130,8 +130,6 @@ class SuperFetchedResultsControllerDelegate: NSObject, NSFetchedResultsControlle
             case NSFetchedResultsChangeType.Move:
                 tableView?.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.None)
                 tableView?.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.None)
-            default:
-                print("Unexpected NSFetchedResultsChangeType received for didChangeObject. \(type)", terminator: "")
             }
         } else if(receiverType() == ReusableViewType.CollectionView) {
             var changeDictionary: [NSFetchedResultsChangeType: AnyObject] = Dictionary()
@@ -150,8 +148,6 @@ class SuperFetchedResultsControllerDelegate: NSObject, NSFetchedResultsControlle
                 // !TODO: we may need to migrate this to a homogenous Array as I expect this to throw a runtime exception.
                 changeDictionary[type] = [indexPath!, newIndexPath!]
                 break;
-            default:
-                print("Unexpected NSFetchedResultsChangeType received for didChangeObject. \(type)", terminator: "")
             }
             objectChanges.append(changeDictionary)
         }
