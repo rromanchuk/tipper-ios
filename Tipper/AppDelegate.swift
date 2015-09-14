@@ -126,7 +126,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         if currentUser.isTwitterAuthenticated {
-            provider.logins = ["api.twitter.com": "\(Twitter.sharedInstance().session().authToken);\(Twitter.sharedInstance().session().authTokenSecret)"]
+            provider.logins = ["api.twitter.com": "\(Twitter.sharedInstance().session()!.authToken);\(Twitter.sharedInstance().session()!.authTokenSecret)"]
            
             currentUser.refreshWithDynamo { [weak self] (error) -> Void in
                 self?.currentUser.updateBTCBalance({ () -> Void in

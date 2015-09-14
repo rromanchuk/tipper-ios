@@ -104,12 +104,12 @@ class SplashViewController: UIViewController {
         Twitter.sharedInstance().logInWithCompletion { (session, error) -> Void in
             SwiftSpinner.show("Logging you in...")
             if error == nil {
-                self.provider.logins = ["api.twitter.com": "\(session.authToken);\(session.authTokenSecret)"]
-                self.currentUser.twitterAuthenticationWithTKSession(session)
-                self.refreshProvider(session)
+                self.provider.logins = ["api.twitter.com": "\(session?.authToken);\(session?.authTokenSecret)"]
+                self.currentUser.twitterAuthenticationWithTKSession(session!)
+                self.refreshProvider(session!)
             } else {
                 SwiftSpinner.hide({ () -> Void in
-                    let alert = UIAlertController(title: "Opps", message: error.localizedDescription, preferredStyle: .Alert)
+                    let alert = UIAlertController(title: "Opps", message: error!.localizedDescription, preferredStyle: .Alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
                     alert.addAction(defaultAction)
                     self.presentViewController(alert, animated: true, completion: nil)
