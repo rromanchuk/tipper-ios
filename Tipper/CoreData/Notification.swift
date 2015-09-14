@@ -12,8 +12,6 @@ import SwiftyJSON
 
 class Notification: NSManagedObject, CoreDataUpdatable {
 
-
-
     @NSManaged var userId: String!
     @NSManaged var type: String!
     @NSManaged var text: String!

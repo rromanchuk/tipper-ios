@@ -17,7 +17,7 @@ class NotificationsTableController: UITableViewController {
     lazy var fetchedResultsController: NSFetchedResultsController = NSFetchedResultsController.superFetchedResultsController("Notification", sectionNameKeyPath: nil, sortDescriptors: self.sortDescriptors, predicate: self.predicate, tableView: self.tableView, context: self.managedObjectContext)
 
     lazy var predicate: NSPredicate? = {
-        return NSPredicate(format: "userId = %@", self.currentUser.userId!)
+        return NSPredicate(format: "userId == %@", self.currentUser.userId!)
     }()
 
     lazy var sortDescriptors: [AnyObject] = {

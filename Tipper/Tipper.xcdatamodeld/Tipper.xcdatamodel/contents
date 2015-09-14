@@ -45,7 +45,7 @@
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="userBalance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CurrentUser" inverseName="marketValue" inverseEntity="CurrentUser" syncable="YES"/>
     </entity>
-    <entity name="Notification" syncable="YES">
+    <entity name="Notification" representedClassName="Tipper.Notification" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
