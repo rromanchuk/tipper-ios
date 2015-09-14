@@ -126,7 +126,6 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
 
     class func updateReceivedTips(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
         print("DynamoFavorite::\(__FUNCTION__)")
-
         let exp = AWSDynamoDBQueryExpression()
 
         exp.hashKeyValues      = currentUser.userId!

@@ -10,30 +10,34 @@ import UIKit
 
 class NotificationsTableController: UITableViewController {
     let className = "NotificationsTableController"
-    var managedObjectContext: NSManagedObjectContext?
+    var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
     var market: Market!
 
     lazy var fetchedResultsController: NSFetchedResultsController = NSFetchedResultsController.superFetchedResultsController("Notification", sectionNameKeyPath: nil, sortDescriptors: self.sortDescriptors, predicate: self.predicate, tableView: self.tableView, context: self.managedObjectContext)
 
     lazy var predicate: NSPredicate? = {
-        return NSPredicate(format: "fromUserId = %@ OR toUserId = %@", self.currentUser.userId!, self.currentUser.userId!)
-        }()
+        return NSPredicate(format: "userId = %@", self.currentUser.userId!)
+    }()
 
     lazy var sortDescriptors: [AnyObject] = {
         return [NSSortDescriptor(key: "createdAt", ascending: false)]
-        }()
+    }()
 
     lazy var fetchRequest: NSFetchRequest = {
         let request = NSFetchRequest(entityName: "Notification")
-        //request.predicate = self.predicate
+        request.predicate = self.predicate
         request.sortDescriptors = self.sortDescriptors as? [NSSortDescriptor]
         return request
-        }()
+    }()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("\(className)::\(__FUNCTION__) count\(fetchedResultsController.fetchedObjects?.count)")
+        DynamoNotification.fetch(currentUser.userId!, context: managedObjectContext) { () -> Void in
+            print("\(self.className)::\(__FUNCTION__)")
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -49,27 +53,14 @@ class NotificationsTableController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
-    }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return 0
-    }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCellWithIdentifier("TransactionConfirmed", forIndexPath: indexPath)
 
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.

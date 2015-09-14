@@ -16,6 +16,7 @@ class Notification: NSManagedObject, CoreDataUpdatable {
 
     @NSManaged var userId: String!
     @NSManaged var type: String!
+    @NSManaged var text: String!
     @NSManaged var createdAt: NSDate!
 
     static var lookupProperty: String {
@@ -37,8 +38,9 @@ class Notification: NSManagedObject, CoreDataUpdatable {
     func updateEntityWithDynamoModel(dynamoModel: DynamoUpdatable) {
         print("\(className)::\(__FUNCTION__) model:\(dynamoModel)")
         let notification                    = dynamoModel as! DynamoNotification
-        self.userId = notification.UserID
-        self.type = notification.Type
+        self.userId                         = notification.UserID
+        self.type                           = notification.NotificationType
+        self.text                           = notification.NotificationText
 
         if let createdAt = notification.CreatedAt?.doubleValue {
             self.createdAt              = NSDate(timeIntervalSince1970: createdAt)

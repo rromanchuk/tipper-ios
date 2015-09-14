@@ -10,16 +10,20 @@ import UIKit
 
 class NotificationsController: UIViewController, ContainerDelegate, CustomModable {
     let className = "NotificationsController"
-    var managedObjectContext: NSManagedObjectContext?
+    var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
     var market: Market!
     
     @IBOutlet weak var headerContainer: UIView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         print("\(className)::\(__FUNCTION__)")
-
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -38,7 +42,6 @@ class NotificationsController: UIViewController, ContainerDelegate, CustomModabl
             vc.activeScreenType = .NotificationsScreen
             vc.containerDelegate = self
         }
-        
     }
     
     func prepareForSegueAnimation() {
@@ -51,16 +54,7 @@ class NotificationsController: UIViewController, ContainerDelegate, CustomModabl
         view.backgroundColor = UIColor.brandColor()
         headerContainer.hidden = false
     }
-    
-//    func prepareForUnwindSegue() {
-//        prepareForSegue()
-//    }
-//    
-//    func segueUnwindComplete() {
-//        
-//    }
-    
-    
+
     @IBAction func didTapClose() {
         print("\(className)::\(__FUNCTION__)")
         self.performSegueWithIdentifier("ExitToHomeFromNotifications", sender: self)
