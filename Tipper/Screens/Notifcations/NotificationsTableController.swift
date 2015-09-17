@@ -20,30 +20,32 @@ class NotificationsTableController: UITableViewController {
         return NSPredicate(format: "userId == %@", self.currentUser.userId!)
     }()
 
-    lazy var sortDescriptors: [AnyObject] = {
+    lazy var sortDescriptors: [NSSortDescriptor] = {
         return [NSSortDescriptor(key: "createdAt", ascending: false)]
     }()
 
     lazy var fetchRequest: NSFetchRequest = {
         let request = NSFetchRequest(entityName: "Notification")
         request.predicate = self.predicate
-        request.sortDescriptors = self.sortDescriptors as? [NSSortDescriptor]
+        request.sortDescriptors = self.sortDescriptors
         return request
     }()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(className)::\(__FUNCTION__) count\(fetchedResultsController.fetchedObjects?.count)")
+        print("\(className)::\(__FUNCTION__)")
+        
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
+        tableView.addSubview(refreshControl)
+
+        
         DynamoNotification.fetch(currentUser.userId!, context: managedObjectContext) { () -> Void in
-            print("\(self.className)::\(__FUNCTION__)")
+            print("\(self.className)::\(__FUNCTION__) count\(self.fetchedResultsController.fetchedObjects?.count)")
         }
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,58 +55,17 @@ class NotificationsTableController: UITableViewController {
 
     // MARK: - Table view data source
 
-
-
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TransactionConfirmed", forIndexPath: indexPath)
-
+        let cell = tableView.dequeueReusableCellWithIdentifier("NotificationCell", forIndexPath: indexPath) as! NotificationCell
+        let notification = fetchedResultsController.objectAtIndexPath(indexPath) as! Notification
+        cell.notification = notification
+        
         return cell
     }
-
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
+    
+    func refresh(refreshControl: UIRefreshControl) {
+        DynamoNotification.fetch(currentUser.userId!, context: managedObjectContext) { () -> Void in
+            refreshControl.endRefreshing()
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

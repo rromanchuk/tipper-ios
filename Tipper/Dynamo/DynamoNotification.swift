@@ -41,11 +41,12 @@ class DynamoNotification: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpd
 
         mapper.query(DynamoNotification.self, expression: expression).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             if let results = task.result as?  AWSDynamoDBPaginatedOutput where task.error == nil && task.exception == nil {
+                print("Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
                 privateContext.performBlock({ () -> Void in
                     for result in results.items as! [DynamoNotification] {
                         Notification.entityWithDYNAMO(Notification.self, model: result, context: privateContext)
-                        privateContext.saveMoc()
                     }
+                    privateContext.saveMoc()
                     context.performBlock({ () -> Void in
                         print("lastEvaluatedKey:\(results.lastEvaluatedKey)")
                         if results.lastEvaluatedKey != nil {
@@ -56,17 +57,19 @@ class DynamoNotification: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpd
                         }
                     })
                 })
+            } else {
+                completion()
             }
             return nil
         })
     }
 
     func lookupProperty() -> String {
-        return DynamoUser.lookupProperty()
+        return DynamoNotification.lookupProperty()
     }
 
     class func lookupProperty() -> String {
-        return "UserID"
+        return "userId"
     }
 
     func lookupValue() -> String {

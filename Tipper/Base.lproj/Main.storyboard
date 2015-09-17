@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J4X-Ps-uMP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A282b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J4X-Ps-uMP">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -213,7 +213,7 @@
                                     <constraint firstAttribute="height" constant="36" id="pMd-Av-bKo"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eB3-LN-Tv8" customClass="BaseView" customModule="Tipper" customModuleProvider="target">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eB3-LN-Tv8" customClass="BaseView" customModule="Tipper" customModuleProvider="target">
                                 <rect key="frame" x="53" y="356" width="269" height="167"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EXCHANGE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRu-C6-slv" userLabel="Exchange label">
@@ -273,7 +273,7 @@
                                     <constraint firstAttribute="width" constant="269" id="kEN-bg-Qsz"/>
                                 </constraints>
                             </view>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZL-6W-vXd" userLabel="Stripe Button">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZL-6W-vXd" userLabel="Stripe Button">
                                 <rect key="frame" x="90" y="544" width="194" height="64"/>
                                 <animations/>
                                 <gestureRecognizers/>
@@ -1968,14 +1968,14 @@ Free money!</string>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionConfirmed" rowHeight="80" id="tl5-jp-ON5">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotificationCell" rowHeight="80" id="tl5-jp-ON5" customClass="NotificationCell" customModule="Tipper" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="22" width="414" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tl5-jp-ON5" id="8j9-Rb-sSN">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="transaction-confirmed" translatesAutoresizingMaskIntoConstraints="NO" id="JYc-IW-cGt">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transaction-confirmed" translatesAutoresizingMaskIntoConstraints="NO" id="JYc-IW-cGt">
                                             <rect key="frame" x="15" y="22" width="35" height="35"/>
                                             <animations/>
                                         </imageView>
@@ -1995,8 +1995,17 @@ Free money!</string>
                                         </label>
                                     </subviews>
                                     <animations/>
+                                    <constraints>
+                                        <constraint firstItem="JYc-IW-cGt" firstAttribute="leading" secondItem="8j9-Rb-sSN" secondAttribute="leadingMargin" constant="7" id="3xG-9W-KCc"/>
+                                        <constraint firstItem="JYc-IW-cGt" firstAttribute="centerY" secondItem="8j9-Rb-sSN" secondAttribute="centerY" id="r2D-aW-MDF"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <outlet property="notificationImage" destination="JYc-IW-cGt" id="A6j-ew-Qju"/>
+                                    <outlet property="notificationTextLabel" destination="9AY-BC-gOs" id="K62-Rg-j7L"/>
+                                    <outlet property="notificationTitleLabel" destination="TVl-7e-fFO" id="Wpc-v0-3BY"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

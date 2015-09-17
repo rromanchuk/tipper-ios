@@ -33,6 +33,7 @@
 		9437D3DE1BA24C8F00FD5ECB /* DynamoNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9437D3DD1BA24C8F00FD5ECB /* DynamoNotification.swift */; settings = {ASSET_TAGS = (); }; };
 		943A6FE21B21F6B300D50D8A /* TipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943A6FE11B21F6B300D50D8A /* TipCell.swift */; };
 		943E93FD1B05C8DC007D98C7 /* WalletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943E93FC1B05C8DC007D98C7 /* WalletController.swift */; };
+		943F64321BAA04F30019D348 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943F64311BAA04F30019D348 /* NotificationCell.swift */; settings = {ASSET_TAGS = (); }; };
 		94416C0C1AAF989F00117AFC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF71AAF989F00117AFC /* API.swift */; };
 		94416C0D1AAF989F00117AFC /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF81AAF989F00117AFC /* Router.swift */; };
 		94416C101AAF989F00117AFC /* UserSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BFB1AAF989F00117AFC /* UserSync.swift */; };
@@ -155,6 +156,7 @@
 		9437D3DD1BA24C8F00FD5ECB /* DynamoNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoNotification.swift; sourceTree = "<group>"; };
 		943A6FE11B21F6B300D50D8A /* TipCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipCell.swift; path = Home/TipCell.swift; sourceTree = "<group>"; };
 		943E93FC1B05C8DC007D98C7 /* WalletController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletController.swift; sourceTree = "<group>"; };
+		943F64311BAA04F30019D348 /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationCell.swift; path = Notifcations/NotificationCell.swift; sourceTree = "<group>"; };
 		94416BED1AAF94C700117AFC /* Tipper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Tipper.entitlements; sourceTree = "<group>"; };
 		94416BF71AAF989F00117AFC /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		94416BF81AAF989F00117AFC /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -543,6 +545,7 @@
 			children = (
 				9427800A1B97D294007CB713 /* NotificationsController.swift */,
 				9427800C1B97D33F007CB713 /* NotificationsTableController.swift */,
+				943F64311BAA04F30019D348 /* NotificationCell.swift */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -901,6 +904,7 @@
 				942780071B97B7D5007CB713 /* CustomModalSegue.swift in Sources */,
 				9484185E1AB6B2B8001C633E /* DynamoUser.swift in Sources */,
 				94AF29751AAEF2B600E16048 /* Tipper.xcdatamodeld in Sources */,
+				943F64321BAA04F30019D348 /* NotificationCell.swift in Sources */,
 				94EE8CF61AB16E7E000593CD /* TTTURLRequestFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1131,7 +1135,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COGNITO_POOL = "***REMOVED***";
 				DEBUG = YES;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1180,7 +1184,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COGNITO_POOL = "***REMOVED***";
 				DEBUG = "";
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
