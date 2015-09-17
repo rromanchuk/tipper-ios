@@ -12,6 +12,29 @@ enum NotificationCellType: Int {
     case LowBalance
     case TipSent
     case TipReceived
+
+    func titleText() -> String {
+        switch self {
+        case .LowBalance:
+            return ""
+        case .TipSent:
+            return ""
+        case .TipReceived:
+            return ""
+        }
+    }
+    
+    func image() -> String {
+        switch self {
+        case .LowBalance:
+            return "problem"
+        case .TipSent:
+            return ""
+        case .TipReceived:
+            return ""
+        }
+    }
+    //static let typeData = [LowBalance: ["title": "", "image"]]
 }
 
 class NotificationCell: UITableViewCell {
