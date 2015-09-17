@@ -29,7 +29,6 @@ class DynamoNotification: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpd
     class func fetch(userId:String, context:NSManagedObjectContext, completion: () -> Void) {
         let expression = AWSDynamoDBQueryExpression()
         expression.hashKeyValues = userId
-        //expression.indexName = "TipperNotifications"
         query(expression, context: context) { () -> Void in
             completion()
         }
@@ -44,11 +43,14 @@ class DynamoNotification: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpd
                 print("Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
                 privateContext.performBlock({ () -> Void in
                     for result in results.items as! [DynamoNotification] {
-                        Notification.entityWithDYNAMO(Notification.self, model: result, context: privateContext)
+                        let notification = Notification.entityWithDYNAMO(Notification.self, model: result, context: privateContext)
+                        notification!.save()
+                        print("New notification entity \(notification)")
                     }
                     privateContext.saveMoc()
                     context.performBlock({ () -> Void in
                         print("lastEvaluatedKey:\(results.lastEvaluatedKey)")
+                        context.saveMoc()
                         if results.lastEvaluatedKey != nil {
                             expression.exclusiveStartKey = results.lastEvaluatedKey
                             self.query(expression, context: context, completion:completion)

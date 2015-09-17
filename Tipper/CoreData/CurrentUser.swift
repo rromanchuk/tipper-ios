@@ -36,6 +36,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     @NSManaged var bitcoinBalanceBTC: NSNumber?
     @NSManaged var createdAt: NSDate?
     @NSManaged var updatedAt: NSDate?
+    @NSManaged var deepCrawledAt: NSDate?
 
     @NSManaged var endpointArn: String?
     @NSManaged var deviceToken: String?

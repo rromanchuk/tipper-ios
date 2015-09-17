@@ -8,6 +8,12 @@
 
 import UIKit
 
+enum NotificationCellType: Int {
+    case LowBalance
+    case TipSent
+    case TipReceived
+}
+
 class NotificationCell: UITableViewCell {
 
     @IBOutlet weak var notificationTitleLabel: UILabel!

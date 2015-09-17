@@ -39,12 +39,6 @@ class TipsController: UIViewController {
         return [NSSortDescriptor(key: "tippedAt", ascending: false)]
     }()
 
-    lazy var fetchRequest: NSFetchRequest = {
-        let request = NSFetchRequest(entityName: "Favorite")
-        request.predicate = self.predicate
-        request.sortDescriptors = self.sortDescriptors as? [NSSortDescriptor]
-        return request
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,10 +52,13 @@ class TipsController: UIViewController {
         refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
         tableView.addSubview(refreshControl)
         
-        SwiftSpinner.show("Loading your tips...", animated: true)
-        DynamoFavorite.fetchAllFavoritesFromUser(currentUser, context: managedObjectContext, completion: { () -> Void in
-            SwiftSpinner.hide(nil)
-        })
+        if currentUser.deepCrawledAt == nil {
+            SwiftSpinner.show("Loading your tips...", animated: true)
+            DynamoFavorite.fetchAllFavoritesFromUser(currentUser, context: managedObjectContext, completion: { () -> Void in
+                SwiftSpinner.hide(nil)
+            })
+        }
+       
 //        DynamoFavorite.fetchTips(currentUser, context: managedObjectContext) { () -> Void in
 //            
 //        }

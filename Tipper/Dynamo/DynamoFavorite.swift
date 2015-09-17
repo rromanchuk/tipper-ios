@@ -56,7 +56,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     // All favorites, not just tipped
     class func fetchAllFavoritesFromUser(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
         print("DynamoFavorite::\(__FUNCTION__)")
-        
+        currentUser.deepCrawledAt = NSDate()
         let exp = AWSDynamoDBQueryExpression()
         
         exp.hashKeyValues      = currentUser.userId!

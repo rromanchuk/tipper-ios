@@ -12,6 +12,7 @@ class AccountController: UIViewController, ContainerDelegate, CustomModable {
     var managedObjectContext: NSManagedObjectContext?
     var currentUser: CurrentUser!
     var market: Market!
+    var exitSegueIdentifier: String!
     let className = "AccountController"
     
     @IBOutlet weak var headerContainer: UIView!
@@ -37,7 +38,7 @@ class AccountController: UIViewController, ContainerDelegate, CustomModable {
     
     func didTapClose() {
         print("\(className)::\(__FUNCTION__)", terminator: "")
-        self.performSegueWithIdentifier("ExitToHomeFromAccount", sender: self)
+        self.performSegueWithIdentifier(exitSegueIdentifier, sender: self)
     }
     
     func prepareForSegueAnimation() {

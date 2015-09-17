@@ -83,11 +83,13 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
             vc.managedObjectContext = managedObjectContext
             vc.currentUser = currentUser
             vc.market = market
+            vc.exitSegueIdentifier = "ExitToHomeFromNotifications"
         } else if segue.identifier == "DidTapAccountSegue" {
             let vc = segue.destinationViewController as! AccountController
             vc.managedObjectContext = managedObjectContext
             vc.currentUser = currentUser
             vc.market = market
+            vc.exitSegueIdentifier = "ExitToHomeFromAccount"
         }
     }
     

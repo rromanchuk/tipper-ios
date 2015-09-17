@@ -34,6 +34,26 @@ class TipDetailsViewController: UIViewController, Logoutable {
         performSegueWithIdentifier("BackToSplashFromTipDetails", sender: self)
     }
     
+    @IBAction func done(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("\(className)::\(__FUNCTION__) identifier: \(segue.identifier) \(segue.sourceViewController)")
+        let vc = segue.sourceViewController
+        if let header = vc as? HeaderContainer {
+            header.refreshHeader()
+        }
+    }
+    
+    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
+        print("\(className)::\(__FUNCTION__) toViewController: \(toViewController), fromViewController: \(fromViewController)")
+        if let _ = fromViewController as? CustomModable {
+            
+            let unwindSegue = CustomUnwindModalSegue(identifier: identifier, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
+                
+            })
+            return unwindSegue
+        }
+        
+        return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)!
+    }
 
     // MARK: - Navigation
 
@@ -50,6 +70,18 @@ class TipDetailsViewController: UIViewController, Logoutable {
             vc.managedObjectContext = managedObjectContext
             vc.currentUser = currentUser
             vc.market = market
+        } else if segue.identifier == "DidTapNotifications" {
+            let vc = segue.destinationViewController as! NotificationsController
+            vc.managedObjectContext = managedObjectContext
+            vc.currentUser = currentUser
+            vc.market = market
+            vc.exitSegueIdentifier = "ExitToTipDetailsFromNotifications"
+        } else if segue.identifier == "DidTapAccountSegue" {
+            let vc = segue.destinationViewController as! AccountController
+            vc.managedObjectContext = managedObjectContext
+            vc.currentUser = currentUser
+            vc.market = market
+            vc.exitSegueIdentifier = "ExitToTipDetailsFromAccount"
         }
     }
 

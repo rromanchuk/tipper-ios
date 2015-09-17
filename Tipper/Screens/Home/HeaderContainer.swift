@@ -28,7 +28,6 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
     weak var containerDelegate : ContainerDelegate?
 
     @IBOutlet weak var balanceLabel: UILabel!
-
     @IBOutlet weak var accountButton: UIButton!
     @IBOutlet weak var notificationsButton: UIButton!
     @IBOutlet weak var closeButtonRight: UIButton!
@@ -121,7 +120,7 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
     }
     
     func refreshHeader() {
-        print("\(className)::\(__FUNCTION__) screenType: \(activeScreenType.rawValue)")
+        //print("\(className)::\(__FUNCTION__) screenType: \(activeScreenType.rawValue)")
         switch activeScreenType {
         case .AccountScreen:
             closeButtonLeft.hidden = false

@@ -13,6 +13,7 @@ class NotificationsController: UIViewController, ContainerDelegate, CustomModabl
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
     var market: Market!
+    var exitSegueIdentifier: String!
     
     @IBOutlet weak var headerContainer: UIView!
     
@@ -57,7 +58,7 @@ class NotificationsController: UIViewController, ContainerDelegate, CustomModabl
 
     @IBAction func didTapClose() {
         print("\(className)::\(__FUNCTION__)")
-        self.performSegueWithIdentifier("ExitToHomeFromNotifications", sender: self)
+        self.performSegueWithIdentifier(exitSegueIdentifier, sender: self)
     }
 
 }

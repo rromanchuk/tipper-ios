@@ -13,29 +13,23 @@ class NotificationsTableController: UITableViewController {
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
     var market: Market!
-
+    
     lazy var fetchedResultsController: NSFetchedResultsController = NSFetchedResultsController.superFetchedResultsController("Notification", sectionNameKeyPath: nil, sortDescriptors: self.sortDescriptors, predicate: self.predicate, tableView: self.tableView, context: self.managedObjectContext)
 
     lazy var predicate: NSPredicate? = {
-        return NSPredicate(format: "userId == %@", self.currentUser.userId!)
+        return NSPredicate(format: "userId = %@", self.currentUser.userId!)
     }()
 
     lazy var sortDescriptors: [NSSortDescriptor] = {
         return [NSSortDescriptor(key: "createdAt", ascending: false)]
     }()
-
-    lazy var fetchRequest: NSFetchRequest = {
-        let request = NSFetchRequest(entityName: "Notification")
-        request.predicate = self.predicate
-        request.sortDescriptors = self.sortDescriptors
-        return request
-    }()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__) userId: \(self.currentUser.userId!)")
         
+//        tableView.delegate = self
+//        tableView.dataSource = self
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
@@ -43,7 +37,8 @@ class NotificationsTableController: UITableViewController {
 
         
         DynamoNotification.fetch(currentUser.userId!, context: managedObjectContext) { () -> Void in
-            print("\(self.className)::\(__FUNCTION__) count\(self.fetchedResultsController.fetchedObjects?.count)")
+            print("\(self.className)::\(__FUNCTION__) count\(self.fetchedResultsController.fetchedObjects!)")
+            self.tableView.reloadData()
         }
 
     }
@@ -56,10 +51,12 @@ class NotificationsTableController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        print("\(className)::\(__FUNCTION__)")
         let cell = tableView.dequeueReusableCellWithIdentifier("NotificationCell", forIndexPath: indexPath) as! NotificationCell
         let notification = fetchedResultsController.objectAtIndexPath(indexPath) as! Notification
         cell.notification = notification
         
+        print("Setting cell with \(notification)")
         return cell
     }
     
@@ -68,4 +65,13 @@ class NotificationsTableController: UITableViewController {
             refreshControl.endRefreshing()
         }
     }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return fetchedResultsController.sections!.count
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return fetchedResultsController.sections![section].numberOfObjects
+    }
+
 }
