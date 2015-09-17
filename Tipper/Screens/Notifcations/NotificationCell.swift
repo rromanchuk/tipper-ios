@@ -8,19 +8,28 @@
 
 import UIKit
 
-enum NotificationCellType: Int {
-    case LowBalance
-    case TipSent
-    case TipReceived
+enum NotificationCellType: String {
+    case LowBalance     = "low_balance"
+    case TipSent        = "user_sent_tip"
+    case TipReceived    = "user_received_tip"
+    case Withdrawal     = "withdrawal_event"
+    case FundEvent      = "fund_event"
+    case TipConfirmed   = "tip_confirmed"
 
     func titleText() -> String {
         switch self {
         case .LowBalance:
-            return ""
+            return "Insufficient funds."
         case .TipSent:
-            return ""
+            return "Tip sent."
         case .TipReceived:
-            return ""
+            return "You’ve been tipped."
+        case .Withdrawal:
+            return "Withdrawal event completed."
+        case .FundEvent:
+            return "Funding event completed."
+        case .TipConfirmed:
+            return "Transaction confirmed."
         }
     }
     
@@ -31,7 +40,13 @@ enum NotificationCellType: Int {
         case .TipSent:
             return ""
         case .TipReceived:
+            return "tip-received"
+        case .Withdrawal:
             return ""
+        case .FundEvent:
+            return "fund-event"
+        case .TipConfirmed:
+            return "transaction-confirmed"
         }
     }
     //static let typeData = [LowBalance: ["title": "", "image"]]
@@ -48,9 +63,12 @@ class NotificationCell: UITableViewCell {
     var notification:Notification? {
         set {
             _notification = newValue
-            
-            notificationTitleLabel.text = _notification?.text
-            
+            if let notificationType = NotificationCellType(rawValue: _notification!.type) {
+                notificationTitleLabel.text = notificationType.titleText()
+                notificationTextLabel.text = _notification?.text
+                notificationImage.image = UIImage(named: notificationType.image())
+            }
+
         }
         get {
             return _notification
