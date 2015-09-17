@@ -52,7 +52,7 @@ class TipDetailContainer: UITableViewController {
 
 
         if let txid = favorite.txid {
-            transactionIdLabel.text = favorite.txid
+            transactionIdLabel.text = txid
         } else {
             transactionIdLabel.text = "Transaction pending..."
         }
@@ -78,7 +78,7 @@ class TipDetailContainer: UITableViewController {
 
     @IBAction func didTapBack(sender: UIButton) {
         print("\(className)::\(__FUNCTION__)")
-        self.performSegueWithIdentifier("ExitToHome", sender: self)
+        self.parentViewController?.performSegueWithIdentifier("BackToHome", sender: self)
     }
 
     @IBAction func didTapTxidLabel(sender: UITapGestureRecognizer) {

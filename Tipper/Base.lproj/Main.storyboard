@@ -88,7 +88,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fes-2J-jgz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1468.5" y="-80.5"/>
+            <point key="canvasLocation" x="-2264.5" y="-80.5"/>
         </scene>
         <!--Onboard Funding View Controller-->
         <scene sceneID="kP7-uB-gAz">
@@ -358,7 +358,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-931.5" y="-80.5"/>
+            <point key="canvasLocation" x="-1845.5" y="-80.5"/>
         </scene>
         <!--Onboard Auto Tip View Controller-->
         <scene sceneID="XHO-cq-RGf">
@@ -443,7 +443,7 @@ Free money!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PVn-jP-zJS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-451.5" y="-80.5"/>
+            <point key="canvasLocation" x="-1407.5" y="-80.5"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="vcy-RQ-2K7">
@@ -1227,12 +1227,13 @@ Free money!</string>
                         <segue destination="hg3-He-cdC" kind="unwind" identifier="BackToSplashFromTipDetails" unwindAction="unwindToSplash:" id="Sn2-2f-UK9"/>
                         <segue destination="SFj-Ao-M2M" kind="custom" identifier="DidTapNotifications" customClass="CustomModalSegue" customModule="Tipper" customModuleProvider="target" id="LSM-VD-bA7"/>
                         <segue destination="AQK-kz-A32" kind="custom" identifier="DidTapAccountSegue" customClass="CustomModalSegue" customModule="Tipper" customModuleProvider="target" id="Qgl-S3-h4Q"/>
+                        <segue destination="nkS-N6-z7z" kind="unwind" identifier="BackToHome" unwindAction="done:sender:" id="pTD-P2-gag"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rca-90-DIA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Y7K-LD-5z7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1116" y="63"/>
+            <point key="canvasLocation" x="1148" y="63"/>
         </scene>
         <!--Tip Detail Container-->
         <scene sceneID="dG6-Mg-okg">
@@ -1481,7 +1482,6 @@ Free money!</string>
                         <outlet property="transactionIdLabel" destination="i3d-JV-ent" id="PfW-pz-6Is"/>
                         <outlet property="tweetView" destination="JuM-IQ-xeF" id="giq-Tn-sF1"/>
                         <outlet property="usernameLabel" destination="VrX-Dy-Zto" id="kBQ-ty-iMZ"/>
-                        <segue destination="nkS-N6-z7z" kind="unwind" identifier="ExitToHome" unwindAction="done:sender:" id="Dtq-pE-qnf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zvh-p8-0CT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1894,7 +1894,7 @@ Free money!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wUe-ig-pdh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-806" y="-833"/>
+            <point key="canvasLocation" x="-322" y="-173"/>
         </scene>
         <!--Notifications Controller-->
         <scene sceneID="aFu-Bu-IfK">
@@ -1967,7 +1967,7 @@ Free money!</string>
         <scene sceneID="MO9-aj-5ye">
             <objects>
                 <tableViewController id="RIO-dg-bBv" customClass="NotificationsTableController" customModule="Tipper" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="92" sectionHeaderHeight="22" sectionFooterHeight="22" id="daG-JR-lAQ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="92" sectionHeaderHeight="22" sectionFooterHeight="22" id="daG-JR-lAQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
@@ -1988,8 +1988,8 @@ Free money!</string>
                                                 <constraint firstAttribute="width" constant="35" id="MkX-7S-hVQ"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="759" text="Your tip to @rromanchuk has been confirmed by the network." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="9AY-BC-gOs">
-                                            <rect key="frame" x="58" y="35" width="286" height="38"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="759" text="Your tip to @rromanchuk has been confirmed by the network." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="9AY-BC-gOs">
+                                            <rect key="frame" x="58" y="33" width="308" height="40"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -2002,6 +2002,11 @@ Free money!</string>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dWq-Vy-0Ye">
+                                            <rect key="frame" x="396" y="41" width="10" height="10"/>
+                                            <animations/>
+                                            <color key="backgroundColor" red="0.36078431370000003" green="0.74117647060000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
                                     </subviews>
                                     <animations/>
                                     <constraints>
@@ -2012,8 +2017,9 @@ Free money!</string>
                                         <constraint firstItem="9AY-BC-gOs" firstAttribute="leading" secondItem="TVl-7e-fFO" secondAttribute="leading" id="ZFv-0x-r8D"/>
                                         <constraint firstItem="TVl-7e-fFO" firstAttribute="leading" secondItem="JYc-IW-cGt" secondAttribute="trailing" constant="8" id="e4L-Lr-1qy"/>
                                         <constraint firstItem="TVl-7e-fFO" firstAttribute="top" secondItem="JYc-IW-cGt" secondAttribute="top" id="eDG-QX-5vD"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="9AY-BC-gOs" secondAttribute="trailing" constant="40" id="fSb-E5-aC4"/>
                                         <constraint firstItem="TVl-7e-fFO" firstAttribute="top" secondItem="8j9-Rb-sSN" secondAttribute="topMargin" constant="10" id="g8f-S3-4kj"/>
-                                        <constraint firstItem="9AY-BC-gOs" firstAttribute="top" secondItem="TVl-7e-fFO" secondAttribute="bottom" constant="2" id="uQU-Aa-nyq"/>
+                                        <constraint firstItem="9AY-BC-gOs" firstAttribute="top" secondItem="TVl-7e-fFO" secondAttribute="bottom" id="uQU-Aa-nyq"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
@@ -2060,8 +2066,8 @@ Free money!</string>
         <image name="up-arrow" width="27" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="7dQ-p7-IX8"/>
         <segue reference="LSM-VD-bA7"/>
         <segue reference="Qgl-S3-h4Q"/>
-        <segue reference="ejE-aS-Apy"/>
     </inferredMetricsTieBreakers>
 </document>

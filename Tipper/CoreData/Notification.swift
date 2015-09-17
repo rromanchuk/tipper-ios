@@ -11,7 +11,7 @@ import CoreData
 import SwiftyJSON
 
 class Notification: NSManagedObject, CoreDataUpdatable {
-
+    @NSManaged var objectId: String!
     @NSManaged var userId: String!
     @NSManaged var type: String!
     @NSManaged var text: String!
@@ -19,7 +19,7 @@ class Notification: NSManagedObject, CoreDataUpdatable {
 
     static var lookupProperty: String {
         get {
-            return "userId"
+            return "objectId"
         }
     }
 
@@ -39,6 +39,7 @@ class Notification: NSManagedObject, CoreDataUpdatable {
         self.userId                         = notification.UserID
         self.type                           = notification.NotificationType
         self.text                           = notification.NotificationText
+        self.objectId                       = notification.ObjectID
 
         if let createdAt = notification.CreatedAt?.doubleValue {
             self.createdAt              = NSDate(timeIntervalSince1970: createdAt)

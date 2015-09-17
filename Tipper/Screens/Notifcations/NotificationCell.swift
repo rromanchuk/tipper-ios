@@ -38,18 +38,17 @@ enum NotificationCellType: String {
         case .LowBalance:
             return "problem"
         case .TipSent:
-            return ""
+            return "tip-received"
         case .TipReceived:
             return "tip-received"
         case .Withdrawal:
-            return ""
+            return "fund-event"
         case .FundEvent:
             return "fund-event"
         case .TipConfirmed:
             return "transaction-confirmed"
         }
     }
-    //static let typeData = [LowBalance: ["title": "", "image"]]
 }
 
 class NotificationCell: UITableViewCell {
@@ -68,7 +67,6 @@ class NotificationCell: UITableViewCell {
                 notificationTextLabel.text = _notification?.text
                 notificationImage.image = UIImage(named: notificationType.image())
             }
-
         }
         get {
             return _notification

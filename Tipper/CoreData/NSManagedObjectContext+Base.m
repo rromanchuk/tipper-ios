@@ -13,6 +13,7 @@
     if ([self hasChanges]) {
         NSError *error;
         if ([self save:&error]) {
+            NSLog(@"[SUCCESS] entity saved");
             return YES;
         } else {
             NSLog(@"[CD ERROR] %@", error.userInfo);

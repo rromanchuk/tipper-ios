@@ -23,10 +23,19 @@ class NotificationsTableController: UITableViewController {
     lazy var sortDescriptors: [NSSortDescriptor] = {
         return [NSSortDescriptor(key: "createdAt", ascending: false)]
     }()
+
+    func testCD() {
+        let fr = NSFetchRequest(entityName: "Notification")
+        fr.predicate = predicate
+        fr.sortDescriptors = sortDescriptors
+        let results = try! managedObjectContext.executeFetchRequest(fr)
+        print("Results are: \(results)")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("\(className)::\(__FUNCTION__) userId: \(self.currentUser.userId!)")
+        testCD()
         
 //        tableView.delegate = self
 //        tableView.dataSource = self

@@ -9,6 +9,7 @@
 import Foundation
 class DynamoNotification: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
     var UserID: String?
+    var ObjectID: String?
     var NotificationType: String?
     var NotificationText: String?
     var CreatedAt: NSNumber?
@@ -19,26 +20,23 @@ class DynamoNotification: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpd
     }
 
     static func hashKeyAttribute() -> String! {
-        return "UserID"
-    }
-
-    static func rangeKeyAttribute() -> String! {
-        return "CreatedAt"
+        return "ObjectID"
     }
 
     class func fetch(userId:String, context:NSManagedObjectContext, completion: () -> Void) {
         let expression = AWSDynamoDBQueryExpression()
         expression.hashKeyValues = userId
-        query(expression, context: context) { () -> Void in
+        expression.indexName = "UserID-CreatedAt-index"
+        query(expression, secondaryIndexHash: "UserID", context: context) { () -> Void in
             completion()
         }
     }
 
-    class func query(expression: AWSDynamoDBQueryExpression, context:NSManagedObjectContext, completion: () -> Void) {
+    class func query(expression: AWSDynamoDBQueryExpression, secondaryIndexHash: String, context:NSManagedObjectContext, completion: () -> Void) {
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let privateContext = context.privateContext
 
-        mapper.query(DynamoNotification.self, expression: expression).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+        mapper.query(DynamoNotification.self, expression: expression, withSecondaryIndexHashKey: secondaryIndexHash).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             if let results = task.result as?  AWSDynamoDBPaginatedOutput where task.error == nil && task.exception == nil {
                 print("Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
                 privateContext.performBlock({ () -> Void in
@@ -53,7 +51,7 @@ class DynamoNotification: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpd
                         context.saveMoc()
                         if results.lastEvaluatedKey != nil {
                             expression.exclusiveStartKey = results.lastEvaluatedKey
-                            self.query(expression, context: context, completion:completion)
+                            self.query(expression, secondaryIndexHash: "ObjectID", context: context, completion:completion)
                         } else {
                             completion()
                         }
@@ -71,11 +69,11 @@ class DynamoNotification: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpd
     }
 
     class func lookupProperty() -> String {
-        return "userId"
+        return "objectId"
     }
 
     func lookupValue() -> String {
-        return self.UserID!
+        return self.ObjectID!
     }
 
 
