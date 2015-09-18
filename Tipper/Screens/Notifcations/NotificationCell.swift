@@ -56,6 +56,7 @@ class NotificationCell: UITableViewCell {
     @IBOutlet weak var notificationTitleLabel: UILabel!
     @IBOutlet weak var notificationTextLabel: UILabel!
     @IBOutlet weak var notificationImage: UIImageView!
+    @IBOutlet weak var indicatorView: NotificationSeenIndicator!
     
     private var _notification: Notification?
     
@@ -66,6 +67,13 @@ class NotificationCell: UITableViewCell {
                 notificationTitleLabel.text = notificationType.titleText()
                 notificationTextLabel.text = _notification?.text
                 notificationImage.image = UIImage(named: notificationType.image())
+                if notification?.seenAt == nil {
+                    indicatorView.hidden = false
+                    notification?.seenAt = NSDate()
+                } else {
+                    indicatorView.hidden = true
+                }
+                
             }
         }
         get {

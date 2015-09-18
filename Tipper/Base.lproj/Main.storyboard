@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -1989,7 +1990,7 @@ Free money!</string>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="759" text="Your tip to @rromanchuk has been confirmed by the network." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="9AY-BC-gOs">
-                                            <rect key="frame" x="58" y="33" width="308" height="40"/>
+                                            <rect key="frame" x="58" y="25" width="308" height="48"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -2002,10 +2003,14 @@ Free money!</string>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dWq-Vy-0Ye">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dWq-Vy-0Ye" customClass="NotificationSeenIndicator" customModule="Tipper" customModuleProvider="target">
                                             <rect key="frame" x="396" y="41" width="10" height="10"/>
                                             <animations/>
                                             <color key="backgroundColor" red="0.36078431370000003" green="0.74117647060000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="10" id="5G1-EA-DfF"/>
+                                                <constraint firstAttribute="width" constant="10" id="tj4-8I-fAd"/>
+                                            </constraints>
                                         </view>
                                     </subviews>
                                     <animations/>
@@ -2019,7 +2024,9 @@ Free money!</string>
                                         <constraint firstItem="TVl-7e-fFO" firstAttribute="top" secondItem="JYc-IW-cGt" secondAttribute="top" id="eDG-QX-5vD"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="9AY-BC-gOs" secondAttribute="trailing" constant="40" id="fSb-E5-aC4"/>
                                         <constraint firstItem="TVl-7e-fFO" firstAttribute="top" secondItem="8j9-Rb-sSN" secondAttribute="topMargin" constant="10" id="g8f-S3-4kj"/>
-                                        <constraint firstItem="9AY-BC-gOs" firstAttribute="top" secondItem="TVl-7e-fFO" secondAttribute="bottom" id="uQU-Aa-nyq"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="dWq-Vy-0Ye" secondAttribute="trailing" id="o63-Je-yy9"/>
+                                        <constraint firstItem="9AY-BC-gOs" firstAttribute="top" secondItem="TVl-7e-fFO" secondAttribute="bottomMargin" id="uQU-Aa-nyq"/>
+                                        <constraint firstItem="dWq-Vy-0Ye" firstAttribute="centerY" secondItem="8j9-Rb-sSN" secondAttribute="centerY" id="xqL-C1-gPQ"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
@@ -2030,6 +2037,7 @@ Free money!</string>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
+                                    <outlet property="indicatorView" destination="dWq-Vy-0Ye" id="mRx-ib-az7"/>
                                     <outlet property="notificationImage" destination="JYc-IW-cGt" id="A6j-ew-Qju"/>
                                     <outlet property="notificationTextLabel" destination="9AY-BC-gOs" id="K62-Rg-j7L"/>
                                     <outlet property="notificationTitleLabel" destination="TVl-7e-fFO" id="Wpc-v0-3BY"/>
@@ -2045,7 +2053,7 @@ Free money!</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i5Y-cD-YnT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-671" y="1696"/>
+            <point key="canvasLocation" x="-582" y="1706"/>
         </scene>
     </scenes>
     <resources>

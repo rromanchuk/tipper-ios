@@ -76,6 +76,7 @@
 		94C2551E1B11540C00A65B94 /* coiner.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94C2551D1B10FDF800A65B94 /* coiner.ttf */; };
 		94C255201B12798900A65B94 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C2551F1B12798900A65B94 /* Settings.swift */; };
 		94C5C0D31ABFF47A009E4B05 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C5C0D21ABFF47A009E4B05 /* Market.swift */; };
+		94D3FEB21BABB8E400A14EB4 /* NotificationSeenIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D3FEB11BABB8E400A14EB4 /* NotificationSeenIndicator.swift */; settings = {ASSET_TAGS = (); }; };
 		94D9795E1B27696B0079F50C /* Haneke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 949841FC1B25E47A0079082C /* Haneke.framework */; };
 		94DA84B01B6D55E0005D4CD6 /* DynamoSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA84AF1B6D55E0005D4CD6 /* DynamoSettings.swift */; };
 		94EE8CF61AB16E7E000593CD /* TTTURLRequestFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */; };
@@ -208,6 +209,7 @@
 		94C2551D1B10FDF800A65B94 /* coiner.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = coiner.ttf; sourceTree = "<group>"; };
 		94C2551F1B12798900A65B94 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		94C5C0D21ABFF47A009E4B05 /* Market.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
+		94D3FEB11BABB8E400A14EB4 /* NotificationSeenIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationSeenIndicator.swift; path = Notifcations/NotificationSeenIndicator.swift; sourceTree = "<group>"; };
 		94DA84AF1B6D55E0005D4CD6 /* DynamoSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoSettings.swift; sourceTree = "<group>"; };
 		94EE8CF41AB16E7E000593CD /* TTTURLRequestFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTURLRequestFormatter.h; sourceTree = "<group>"; };
 		94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTURLRequestFormatter.m; sourceTree = "<group>"; };
@@ -546,6 +548,7 @@
 				9427800A1B97D294007CB713 /* NotificationsController.swift */,
 				9427800C1B97D33F007CB713 /* NotificationsTableController.swift */,
 				943F64311BAA04F30019D348 /* NotificationCell.swift */,
+				94D3FEB11BABB8E400A14EB4 /* NotificationSeenIndicator.swift */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -895,6 +898,7 @@
 				941AA38E1AB01EC000CA9192 /* SplashViewController.swift in Sources */,
 				94416C111AAF989F00117AFC /* CoreDataUpdatable.swift in Sources */,
 				94DA84B01B6D55E0005D4CD6 /* DynamoSettings.swift in Sources */,
+				94D3FEB21BABB8E400A14EB4 /* NotificationSeenIndicator.swift in Sources */,
 				94416C0C1AAF989F00117AFC /* API.swift in Sources */,
 				9426B2961B9F6D9C001F996C /* OnboardAutoTipViewController.swift in Sources */,
 				94F5137C1B8D03BC002E0996 /* SwiftSpinner.swift in Sources */,
@@ -1057,6 +1061,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1103,6 +1108,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

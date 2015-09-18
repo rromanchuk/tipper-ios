@@ -16,6 +16,7 @@ class Notification: NSManagedObject, CoreDataUpdatable {
     @NSManaged var type: String!
     @NSManaged var text: String!
     @NSManaged var createdAt: NSDate!
+    @NSManaged var seenAt: NSDate
 
     static var lookupProperty: String {
         get {
