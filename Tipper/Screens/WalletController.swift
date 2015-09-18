@@ -50,17 +50,15 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         //applePayButton = PKPaymentButton(type: .Buy, style: .Black)
 
-        ubtcExchangeLabel.text = Settings.sharedInstance.fundAmountUBTC
-        if let fundAmount = Settings.sharedInstance.fundAmount {
+
+        if let fundAmount = Settings.sharedInstance.fundAmount, fundAmountUBTC = Settings.sharedInstance.fundAmountUBTC {
            btcConversionLabel.text = "(\(fundAmount) Bitcoin)"
+            ubtcExchangeLabel.text = fundAmountUBTC
         }
         
         self.addressLabel.text = currentUser.bitcoinAddress
         qrCode.image = QRCode(currentUser.bitcoinAddress!)?.image
 
-//        if let marketValue = currentUser.marketValue, subtotalAmount = marketValue.subtotalAmount, btc = currentUser.bitcoinBalanceBTC {
-//            usdExchangeLabel.text = "\(market.amount!)"
-//        }
 
         if let amount = market.amount {
             usdExchangeLabel.text = amount

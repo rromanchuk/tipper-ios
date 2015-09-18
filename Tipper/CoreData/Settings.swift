@@ -110,26 +110,26 @@ class Settings: NSManagedObject, CoreDataUpdatable {
     }
 
 
-    var tipAmountUBTC:String {
+    var tipAmountUBTC:String? {
         get {
             if let tipAmount = self.tipAmount {
                 let tipAmountFloat = (tipAmount as NSString).floatValue
                 let uBTCFloat = tipAmountFloat / 0.00000100
                 return "\(Int(uBTCFloat))"
             } else {
-                return "0"
+                return nil
             }
         }
     }
 
-    var fundAmountUBTC:String {
+    var fundAmountUBTC:String? {
         get {
             if let fundAmount = self.fundAmount {
                 let fundAmountFloat = (fundAmount as NSString).floatValue
                 let uBTCFloat = fundAmountFloat / 0.00000100
                 return "\(Int(uBTCFloat))"
             } else {
-                return "0"
+                return nil
             }
         }
     }
