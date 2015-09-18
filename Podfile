@@ -1,7 +1,7 @@
 platform :ios, '8.0'
 target 'Tipper' do
     pod 'AWSCore'
-    pod 'AWSS3'
+    #pod 'AWSS3'
     pod 'AWSCognito'
     pod 'AWSDynamoDB'
     pod 'AWSSQS'
