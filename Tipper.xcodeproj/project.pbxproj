@@ -77,6 +77,7 @@
 		94C255201B12798900A65B94 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C2551F1B12798900A65B94 /* Settings.swift */; };
 		94C5C0D31ABFF47A009E4B05 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C5C0D21ABFF47A009E4B05 /* Market.swift */; };
 		94D3FEB21BABB8E400A14EB4 /* NotificationSeenIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D3FEB11BABB8E400A14EB4 /* NotificationSeenIndicator.swift */; settings = {ASSET_TAGS = (); }; };
+		94D3FEB41BABD6C600A14EB4 /* NotficationBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D3FEB31BABD6C600A14EB4 /* NotficationBadge.swift */; settings = {ASSET_TAGS = (); }; };
 		94D9795E1B27696B0079F50C /* Haneke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 949841FC1B25E47A0079082C /* Haneke.framework */; };
 		94DA84B01B6D55E0005D4CD6 /* DynamoSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA84AF1B6D55E0005D4CD6 /* DynamoSettings.swift */; };
 		94EE8CF61AB16E7E000593CD /* TTTURLRequestFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */; };
@@ -210,6 +211,7 @@
 		94C2551F1B12798900A65B94 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		94C5C0D21ABFF47A009E4B05 /* Market.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		94D3FEB11BABB8E400A14EB4 /* NotificationSeenIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationSeenIndicator.swift; path = Notifcations/NotificationSeenIndicator.swift; sourceTree = "<group>"; };
+		94D3FEB31BABD6C600A14EB4 /* NotficationBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotficationBadge.swift; path = Home/NotficationBadge.swift; sourceTree = "<group>"; };
 		94DA84AF1B6D55E0005D4CD6 /* DynamoSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoSettings.swift; sourceTree = "<group>"; };
 		94EE8CF41AB16E7E000593CD /* TTTURLRequestFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTURLRequestFormatter.h; sourceTree = "<group>"; };
 		94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTURLRequestFormatter.m; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				9432430F1B2D37FA00D1A1D6 /* HeaderContainer.swift */,
 				9416317E1AC3C1EC002016FD /* HomeController.swift */,
 				943A6FE11B21F6B300D50D8A /* TipCell.swift */,
+				94D3FEB31BABD6C600A14EB4 /* NotficationBadge.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -869,6 +872,7 @@
 				94FDE9BD1AB42079006B6454 /* NSFetchedResultsControllerExtension.swift in Sources */,
 				942780011B94CE70007CB713 /* BaseView.swift in Sources */,
 				94FA97DB1AB2E691005B0C83 /* DynamoFavorite.swift in Sources */,
+				94D3FEB41BABD6C600A14EB4 /* NotficationBadge.swift in Sources */,
 				949842061B260FB80079082C /* TipDetailContainer.swift in Sources */,
 				9426B29A1B9F6E6F001F996C /* TipperButton.swift in Sources */,
 				9426B2981B9F6DDF001F996C /* OnboardNavigationController.swift in Sources */,

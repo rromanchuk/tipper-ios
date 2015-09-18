@@ -99,7 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(application: UIApplication) {
         print("\(className)::\(__FUNCTION__)")
-        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+        //UIApplication.sharedApplication().applicationIconBadgeNumber = 0
 
     }
 
@@ -109,7 +109,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func incrementApplicationtBadgeNumber() {
-        print("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__) current badge count is \(UIApplication.sharedApplication().applicationIconBadgeNumber)")
+        
         let num = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
         setApplicationBadgeNumber(UInt(num))
     }
@@ -119,6 +120,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("\(className)::\(__FUNCTION__)")
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         refresh()
+        //incrementApplicationtBadgeNumber()
     }
 
     func refresh() {

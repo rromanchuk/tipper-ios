@@ -1629,16 +1629,42 @@ Free money!</string>
                                     <action selector="didTapClose:" destination="x99-hT-nup" eventType="touchUpInside" id="wT4-rZ-IWK"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="od1-tz-UYN" customClass="NotficationBadge" customModule="Tipper" customModuleProvider="target">
+                                <rect key="frame" x="58" y="22" width="20" height="20"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sd5-wf-sqY">
+                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="1Ih-G1-cNT"/>
+                                            <constraint firstAttribute="height" constant="20" id="voV-IG-pkW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="01Y-YH-lER"/>
+                                    <constraint firstItem="Sd5-wf-sqY" firstAttribute="centerY" secondItem="od1-tz-UYN" secondAttribute="centerY" id="8ow-ab-9Tu"/>
+                                    <constraint firstAttribute="height" constant="20" id="T5B-k4-Ym5"/>
+                                    <constraint firstItem="Sd5-wf-sqY" firstAttribute="centerX" secondItem="od1-tz-UYN" secondAttribute="centerX" id="jxX-pC-u2p"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.36078431370000003" green="0.74117647060000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="dAL-w9-cfz" secondAttribute="centerX" id="97f-yC-MB3"/>
                             <constraint firstItem="1yo-N2-sfZ" firstAttribute="leading" secondItem="NwU-FI-gqd" secondAttribute="leadingMargin" constant="21" id="Gn9-kt-0WA"/>
+                            <constraint firstItem="od1-tz-UYN" firstAttribute="top" secondItem="YCv-dq-4JX" secondAttribute="top" id="YT0-qH-JBD"/>
                             <constraint firstItem="YCv-dq-4JX" firstAttribute="centerY" secondItem="dAL-w9-cfz" secondAttribute="centerY" id="ZfN-Hx-iPP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YCv-dq-4JX" secondAttribute="trailing" constant="20" id="aAc-v0-Qsr"/>
                             <constraint firstItem="coF-79-h7G" firstAttribute="centerY" secondItem="dAL-w9-cfz" secondAttribute="centerY" id="dir-t0-vmp"/>
                             <constraint firstItem="dAL-w9-cfz" firstAttribute="centerY" secondItem="1yo-N2-sfZ" secondAttribute="centerY" id="f7E-oZ-qf1"/>
+                            <constraint firstItem="od1-tz-UYN" firstAttribute="leading" secondItem="1yo-N2-sfZ" secondAttribute="trailing" constant="-20" id="hKO-g6-m3g"/>
                             <constraint firstAttribute="centerY" secondItem="dAL-w9-cfz" secondAttribute="centerY" id="iod-MY-tR9"/>
                             <constraint firstItem="hQ5-Q0-j5e" firstAttribute="centerY" secondItem="dAL-w9-cfz" secondAttribute="centerY" id="o3n-lg-pPB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="coF-79-h7G" secondAttribute="trailing" constant="20" id="sYd-0N-ur1"/>
@@ -1651,6 +1677,8 @@ Free money!</string>
                         <outlet property="balanceLabel" destination="dAL-w9-cfz" id="Ran-bS-inU"/>
                         <outlet property="closeButtonLeft" destination="hQ5-Q0-j5e" id="rMD-Th-iB7"/>
                         <outlet property="closeButtonRight" destination="coF-79-h7G" id="uSV-vB-PLf"/>
+                        <outlet property="notificationBadge" destination="od1-tz-UYN" id="M07-HP-bMQ"/>
+                        <outlet property="notificationCountLabel" destination="Sd5-wf-sqY" id="Gcz-lF-FwF"/>
                         <outlet property="notificationsButton" destination="1yo-N2-sfZ" id="Doq-C8-1yB"/>
                     </connections>
                 </viewController>

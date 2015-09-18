@@ -51,5 +51,15 @@ class Notification: NSManagedObject, CoreDataUpdatable {
     func updateEntityWithJSON(json: JSON) {
 
     }
+    
+    
+    class func unreadCount() -> Int {
+        let fetchRquest = NSFetchRequest(entityName: "Notification")
+        fetchRquest.predicate = NSPredicate(format: "seenAt = null")
+        
+        let result = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext.countForFetchRequest(fetchRquest, error: nil)
+        return result
+        
+    }
 
 }

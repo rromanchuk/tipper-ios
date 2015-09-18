@@ -32,6 +32,8 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
     @IBOutlet weak var notificationsButton: UIButton!
     @IBOutlet weak var closeButtonRight: UIButton!
     @IBOutlet weak var closeButtonLeft: UIButton!
+    @IBOutlet weak var notificationBadge: NotficationBadge!
+    @IBOutlet weak var notificationCountLabel: UILabel!
     
     
 //    lazy var actionSheet: UIAlertController = {
@@ -93,12 +95,15 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
         refreshHeader()
         updateMarkets()
         
+        
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillResignActive:", name: UIApplicationWillResignActiveNotification, object: UIApplication.sharedApplication())
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidEnterBackground:", name: UIApplicationDidEnterBackgroundNotification, object: UIApplication.sharedApplication())
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidBecomeActive:", name: UIApplicationDidBecomeActiveNotification, object: UIApplication.sharedApplication())
 
         // Do any additional setup after loading the view.
     }
+    
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
@@ -151,6 +156,13 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        let notificationCount = Notification.unreadCount()
+        if notificationCount > 0 {
+            notificationBadge.hidden = false
+            notificationCountLabel.text = "\(notificationCount)"
+        } else {
+            notificationBadge.hidden = true
+        }
     }
 
     deinit {
