@@ -73,6 +73,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         let exp = AWSDynamoDBQueryExpression()
         exp.hashKeyValues      = currentUser.userId!
         exp.indexName = "ToUserID-index"
+        exp.hashKeyAttribute = "ToUserID"
         self.query(exp, secondaryIndexHash: "ToUserID", context: context) { () -> Void in
             completion()
         }
@@ -97,6 +98,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
 
         exp.hashKeyValues      = currentUser.userId!
         exp.indexName = "FromUserID-TippedAt-index"
+        exp.hashKeyAttribute = "FromUserID"
         self.query(exp, secondaryIndexHash: "FromUserID", context: context) { () -> Void in
             completion()
         }
@@ -110,6 +112,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
 
         exp.hashKeyValues      = currentUser.userId!
         exp.indexName = "ToUserID-TippedAt-index"
+        exp.hashKeyAttribute = "ToUserID"
         self.query(exp, secondaryIndexHash: "ToUserID", context: context) { () -> Void in
             completion()
         }
@@ -130,6 +133,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
 
         exp.hashKeyValues      = currentUser.userId!
         exp.indexName = "ToUserID-TippedAt-index"
+        exp.hashKeyAttribute = "ToUserID"
         self.query(exp, secondaryIndexHash: "ToUserID", context: context) { () -> Void in
             completion()
         }
@@ -142,6 +146,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
 
         exp.hashKeyValues      = currentUser.userId!
         exp.indexName = "FromUserID-TippedAt-index"
+        exp.hashKeyAttribute = "FromUserID"
         self.query(exp, secondaryIndexHash: "FromUserID", context: context) { () -> Void in
             completion()
         }
@@ -176,7 +181,8 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let privateContext = context.privateContext
 
-        mapper.query(DynamoFavorite.self, expression: exp, withSecondaryIndexHashKey: secondaryIndexHash).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+
+        mapper.query(DynamoFavorite.self, expression: exp).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             print("query secondaryIndexHash: \(secondaryIndexHash), value: \(exp.hashKeyValues)  Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
             if let results = task.result as?  AWSDynamoDBPaginatedOutput where task.error == nil && task.exception == nil {
                 privateContext.performBlock({ () -> Void in

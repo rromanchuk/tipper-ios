@@ -1,4 +1,4 @@
-github "Alamofire/Alamofire" "2.0.0"
+github "Alamofire/Alamofire" "2.0.1"
 github "meteochu/HanekeSwift" "f87220fccba7810955fe5392ebd492a5c9baf050"
 github "rromanchuk/QRCode" "ea5eaf724c55b3f1002872e73a5ca395a7039e44"
 github "rromanchuk/SwiftyJSON" "89aba511936ad1064aea3ed96f23732c9ddb5bb4"

@@ -1,21 +1,19 @@
 PODS:
   - ApplePayStubs (0.2)
-  - AWSCognito (2.2.3):
-    - AWSCore (= 2.2.3)
-  - AWSCore (2.2.3)
-  - AWSDynamoDB (2.2.3):
-    - AWSCore (= 2.2.3)
-  - AWSMobileAnalytics (2.2.3):
-    - AWSCore (= 2.2.3)
-  - AWSS3 (2.2.3):
-    - AWSCore (= 2.2.3)
-  - AWSSNS (2.2.3):
-    - AWSCore (= 2.2.3)
-  - AWSSQS (2.2.3):
-    - AWSCore (= 2.2.3)
+  - AWSCognito (2.2.6):
+    - AWSCore (= 2.2.6)
+  - AWSCore (2.2.6)
+  - AWSDynamoDB (2.2.6):
+    - AWSCore (= 2.2.6)
+  - AWSMobileAnalytics (2.2.6):
+    - AWSCore (= 2.2.6)
+  - AWSSNS (2.2.6):
+    - AWSCore (= 2.2.6)
+  - AWSSQS (2.2.6):
+    - AWSCore (= 2.2.6)
   - HexColors (2.2.1)
   - RBBAnimation (0.4.0)
-  - SDCAlertView (2.5.2):
+  - SDCAlertView (2.5.3):
     - RBBAnimation (~> 0.3)
     - SDCAutoLayout (~> 2.0)
   - SDCAutoLayout (2.0.3)
@@ -26,62 +24,26 @@ PODS:
 DEPENDENCIES:
   - ApplePayStubs
   - AWSCognito
-  - AWSCore (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
-  - AWSDynamoDB (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
-  - AWSMobileAnalytics (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
-  - AWSS3 (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
-  - AWSSNS (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
-  - AWSSQS (from `https://github.com/rromanchuk/aws-sdk-ios.git`)
+  - AWSCore
+  - AWSDynamoDB
+  - AWSMobileAnalytics
+  - AWSSNS
+  - AWSSQS
   - SDCAlertView
   - SSKeychain
   - TSMessages
 
-EXTERNAL SOURCES:
-  AWSCore:
-    :git: https://github.com/rromanchuk/aws-sdk-ios.git
-  AWSDynamoDB:
-    :git: https://github.com/rromanchuk/aws-sdk-ios.git
-  AWSMobileAnalytics:
-    :git: https://github.com/rromanchuk/aws-sdk-ios.git
-  AWSS3:
-    :git: https://github.com/rromanchuk/aws-sdk-ios.git
-  AWSSNS:
-    :git: https://github.com/rromanchuk/aws-sdk-ios.git
-  AWSSQS:
-    :git: https://github.com/rromanchuk/aws-sdk-ios.git
-
-CHECKOUT OPTIONS:
-  AWSCore:
-    :commit: 5c40e6609900108c24021e311b5bacac39e9b36c
-    :git: https://github.com/rromanchuk/aws-sdk-ios.git
-  AWSDynamoDB:
-    :commit: 5c40e6609900108c24021e311b5bacac39e9b36c
-    :git: https://github.com/rromanchuk/aws-sdk-ios.git
-  AWSMobileAnalytics:
-    :commit: 5c40e6609900108c24021e311b5bacac39e9b36c
-    :git: https://github.com/rromanchuk/aws-sdk-ios.git
-  AWSS3:
-    :commit: 5c40e6609900108c24021e311b5bacac39e9b36c
-    :git: https://github.com/rromanchuk/aws-sdk-ios.git
-  AWSSNS:
-    :commit: 5c40e6609900108c24021e311b5bacac39e9b36c
-    :git: https://github.com/rromanchuk/aws-sdk-ios.git
-  AWSSQS:
-    :commit: 5c40e6609900108c24021e311b5bacac39e9b36c
-    :git: https://github.com/rromanchuk/aws-sdk-ios.git
-
 SPEC CHECKSUMS:
   ApplePayStubs: 5dd63c36527d1117b2045939fb5b6581b4815433
-  AWSCognito: ae340057e5f8c535aabd39234c7bd5b704b1955e
-  AWSCore: 30510dc1bf3e4cc975868ed4cc9ae16ba402790b
-  AWSDynamoDB: e3a88b170845ae0aea73d1daf2dcfd8faa9495ed
-  AWSMobileAnalytics: d6207510bbceeefed28bcf7694df544b29c8162d
-  AWSS3: 9c03206264668b69ca94e4f05caa8926a4b0660f
-  AWSSNS: fac1edf1fd6ba5c74cd446330278f930e089fd79
-  AWSSQS: 888f04ee28a2050aeced66e96415cdbf6c073865
+  AWSCognito: 4cb0bd389dedf6673048609408577bb6c871422b
+  AWSCore: dd05203bf44d45b58b7667754ce4fa6f1bdb1c3e
+  AWSDynamoDB: d0eb38a6bcaaee5931e5168478c409a39b0a9066
+  AWSMobileAnalytics: 522b2bb4705f05e7a2eb9f86a085ddfce64f183a
+  AWSSNS: 0188eab8b808981c531bbcd4ef238325c71270ec
+  AWSSQS: a2304d18086ce907aa7a8bba275861a69886a662
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
   RBBAnimation: 4b2d66f6d993febce63cd564da934985313b9c59
-  SDCAlertView: f9706c18f456ea87909f8f199704cd28e582ff27
+  SDCAlertView: 7554e4e7ce1adbefbcc7374e7bae237dad32a8d8
   SDCAutoLayout: e6885bb39ab8e2ec2ff84d158f38035f025f7420
   SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d
   TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc

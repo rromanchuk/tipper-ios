@@ -42,6 +42,8 @@ class SplashViewController: UIViewController {
         if (currentUser.isTwitterAuthenticated) {
             SwiftSpinner.hide(nil)
             performSegueWithIdentifier("Home", sender: self)
+            //performSegueWithIdentifier("Onboarding", sender: self)
+
         }
     }
 

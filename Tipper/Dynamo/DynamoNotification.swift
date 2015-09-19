@@ -27,16 +27,17 @@ class DynamoNotification: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpd
         let expression = AWSDynamoDBQueryExpression()
         expression.hashKeyValues = userId
         expression.indexName = "UserID-CreatedAt-index"
-        query(expression, secondaryIndexHash: "UserID", context: context) { () -> Void in
+        expression.hashKeyAttribute = "UserID"
+        query(expression, context: context) { () -> Void in
             completion()
         }
     }
 
-    class func query(expression: AWSDynamoDBQueryExpression, secondaryIndexHash: String, context:NSManagedObjectContext, completion: () -> Void) {
+    class func query(expression: AWSDynamoDBQueryExpression, context:NSManagedObjectContext, completion: () -> Void) {
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let privateContext = context.privateContext
 
-        mapper.query(DynamoNotification.self, expression: expression, withSecondaryIndexHashKey: secondaryIndexHash).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+        mapper.query(DynamoNotification.self, expression: expression).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             if let results = task.result as?  AWSDynamoDBPaginatedOutput where task.error == nil && task.exception == nil {
                 print("Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
                 privateContext.performBlock({ () -> Void in
@@ -51,7 +52,7 @@ class DynamoNotification: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpd
                         context.saveMoc()
                         if results.lastEvaluatedKey != nil {
                             expression.exclusiveStartKey = results.lastEvaluatedKey
-                            self.query(expression, secondaryIndexHash: "ObjectID", context: context, completion:completion)
+                            self.query(expression, context: context, completion:completion)
                         } else {
                             completion()
                         }

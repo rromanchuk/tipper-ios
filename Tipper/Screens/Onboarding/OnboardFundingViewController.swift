@@ -21,16 +21,26 @@ class OnboardFundingViewController: UIViewController, PKPaymentAuthorizationView
     let SupportedPaymentNetworks = [PKPaymentNetworkVisa, PKPaymentNetworkMasterCard, PKPaymentNetworkAmex]
     let className = "OnboardFundingViewController"
 
+    let tipAmount = Settings.sharedInstance.tipAmountUBTC
+    let fundAmount = Settings.sharedInstance.fundAmount!
+
 
     @IBOutlet weak var stripeButton: UIButton!
     @IBOutlet weak var applePayButton: UIButton!
     @IBOutlet weak var welcomeToTipperLabel: UILabel!
+    @IBOutlet weak var tipAmountLabel: UILabel!
+    @IBOutlet weak var fundAmountLabel: UILabel!
+
+    @IBOutlet weak var btcConversionLabel: UILabel!
+    @IBOutlet weak var ubtcExchangeLabel: UILabel!
+    @IBOutlet weak var usdExchangeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateMarkets()
+        updateBTCSpotPrice()
+        updateMarketData()
+
         let paymentRequest = Stripe.paymentRequestWithMerchantIdentifier(ApplePayMerchantID)
-        
         if PKPaymentAuthorizationViewController.canMakePaymentsUsingNetworks(SupportedPaymentNetworks) && Stripe.canSubmitPaymentRequest(paymentRequest) {
             print("ApplePay supported", terminator: "")
             self.applePayButton.hidden = false
@@ -47,31 +57,50 @@ class OnboardFundingViewController: UIViewController, PKPaymentAuthorizationView
     }
 
     func setAttributedLabels() {
-        let prefix = "Welcome to "
-        let bold = "Tipper"
-        let postfix = "!"
-        
-        let string = "\(prefix)\(bold)\(postfix)"
-        let labelAttributes = NSMutableAttributedString(string: string)
-        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Regular", size: 33.0)!, range: NSMakeRange(0,prefix.characters.count))
-        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Bold", size: 33.0)!, range: NSMakeRange(prefix.characters.count, bold.characters.count))
-        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Regular", size: 33.0)!, range: NSMakeRange(prefix.characters.count + bold.characters.count,postfix.characters.count))
+
+
+        let labelAttributes = NSMutableAttributedString(attributedString: welcomeToTipperLabel.attributedText!)
+        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Regular", size: 33.0)!, range: (welcomeToTipperLabel.text! as NSString).rangeOfString("Welcome to "))
+        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Regular", size: 33.0)!, range: (welcomeToTipperLabel.text! as NSString).rangeOfString("!"))
+        labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol-Bold", size: 33.0)!, range: (welcomeToTipperLabel.text! as NSString).rangeOfString("Tipper"))
         welcomeToTipperLabel.attributedText = labelAttributes
+
+        let tipAmountString = "Tips are a\(Settings.sharedInstance.tipAmountUBTC!) (~$0.10) by default."
+        let tipAmountAttributes = NSMutableAttributedString(string: tipAmountString)
+        tipAmountAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "coiner", size: 17.0)!, range: NSMakeRange((tipAmountString as NSString).rangeOfString("a500").location, 1))
+        tipAmountLabel.attributedText = tipAmountAttributes
+
+        let fundAmountString = "Get started by adding a\(Settings.sharedInstance.fundAmountUBTC!) to your wallet:"
+        let fundAmountAttributes = NSMutableAttributedString(string: fundAmountString)
+        print(NSStringFromRange((fundAmountLabel.text! as NSString).rangeOfString("a\(Settings.sharedInstance.fundAmountUBTC!)")))
+        fundAmountAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "coiner", size: 17.0)!, range: NSMakeRange((fundAmountString as NSString).rangeOfString("a\(Settings.sharedInstance.fundAmountUBTC!)").location, 1))
+        fundAmountLabel.attributedText = fundAmountAttributes
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    func updateMarketData() {
+        print("\(className)::\(__FUNCTION__)")
+
+        if let fundAmount = Settings.sharedInstance.fundAmount, fundAmountUBTC =  Settings.sharedInstance.fundAmountUBTC {
+            btcConversionLabel.text = "(\(fundAmount) Bitcoin)"
+            ubtcExchangeLabel.text = fundAmountUBTC
+        }
+
+        if let amount = market.amount {
+            usdExchangeLabel.text = amount
+        }
+    }
     
-    func updateMarkets() {
-        //println("\(className)::\(__FUNCTION__)")
+    func updateBTCSpotPrice() {
+        print("\(className)::\(__FUNCTION__)")
         market.update { () -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            })
-        }
-        currentUser.updateBalanceUSD { () -> Void in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.updateMarketData()
             })
         }
     }

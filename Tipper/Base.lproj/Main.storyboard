@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A282b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J4X-Ps-uMP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J4X-Ps-uMP">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -214,24 +214,24 @@
                                     <constraint firstAttribute="height" constant="36" id="pMd-Av-bKo"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eB3-LN-Tv8" customClass="BaseView" customModule="Tipper" customModuleProvider="target">
-                                <rect key="frame" x="53" y="356" width="269" height="167"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eB3-LN-Tv8" customClass="BaseView" customModule="Tipper" customModuleProvider="target">
+                                <rect key="frame" x="38" y="356" width="300" height="167"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EXCHANGE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRu-C6-slv" userLabel="Exchange label">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXCHANGE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRu-C6-slv" userLabel="Exchange label">
                                         <rect key="frame" x="20" y="33" width="72" height="15"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="Bariol-Bold" family="Bariol" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FOR" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xg-eX-9w7" userLabel="For label">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FOR" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xg-eX-9w7" userLabel="For label">
                                         <rect key="frame" x="65" y="107" width="27" height="15"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="Bariol-Bold" family="Bariol" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nc7-Hs-1g3">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nc7-Hs-1g3">
                                         <rect key="frame" x="155" y="31" width="12" height="20"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="20"/>
@@ -245,23 +245,27 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOi-Oh-5P2">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOi-Oh-5P2">
                                         <rect key="frame" x="172" y="20" width="77" height="42"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="42"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="200" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0j-sU-WEJ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="756" text="200" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0j-sU-WEJ">
                                         <rect key="frame" x="172" y="94" width="72" height="42"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="42"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="a" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thU-8H-Ms7">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thU-8H-Ms7">
                                         <rect key="frame" x="147" y="103" width="29" height="24"/>
                                         <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="29" id="Qfz-aj-lmy"/>
+                                            <constraint firstAttribute="height" constant="24" id="Wu3-1U-s1O"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="coiner" family="coiner" pointSize="29"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -270,11 +274,23 @@
                                 <animations/>
                                 <color key="backgroundColor" red="0.35686274509999999" green="0.73725490199999999" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="Nc7-Hs-1g3" firstAttribute="centerY" secondItem="hOi-Oh-5P2" secondAttribute="centerY" id="7Ym-d4-4bf"/>
+                                    <constraint firstItem="hOi-Oh-5P2" firstAttribute="leading" secondItem="rRu-C6-slv" secondAttribute="trailing" constant="80" id="7Z0-BA-Q58"/>
+                                    <constraint firstItem="s0j-sU-WEJ" firstAttribute="top" secondItem="hOi-Oh-5P2" secondAttribute="bottom" constant="32" id="GFp-FI-g9M"/>
+                                    <constraint firstItem="hOi-Oh-5P2" firstAttribute="centerY" secondItem="rRu-C6-slv" secondAttribute="centerY" id="PtT-vj-g4J"/>
+                                    <constraint firstItem="2Xg-eX-9w7" firstAttribute="trailing" secondItem="rRu-C6-slv" secondAttribute="trailing" id="XaP-wv-zlP"/>
+                                    <constraint firstItem="s0j-sU-WEJ" firstAttribute="leading" secondItem="thU-8H-Ms7" secondAttribute="trailing" constant="-4" id="XdM-fa-gr1"/>
                                     <constraint firstAttribute="height" constant="167" id="ZKG-rR-cvI"/>
-                                    <constraint firstAttribute="width" constant="269" id="kEN-bg-Qsz"/>
+                                    <constraint firstItem="hOi-Oh-5P2" firstAttribute="leading" secondItem="Nc7-Hs-1g3" secondAttribute="trailing" constant="5" id="aOu-O6-KNF"/>
+                                    <constraint firstItem="s0j-sU-WEJ" firstAttribute="centerY" secondItem="2Xg-eX-9w7" secondAttribute="centerY" id="eTM-cR-hEo"/>
+                                    <constraint firstItem="rRu-C6-slv" firstAttribute="leading" secondItem="eB3-LN-Tv8" secondAttribute="leading" constant="20" id="ijw-Go-iUe"/>
+                                    <constraint firstAttribute="width" constant="300" id="kEN-bg-Qsz"/>
+                                    <constraint firstItem="thU-8H-Ms7" firstAttribute="centerY" secondItem="s0j-sU-WEJ" secondAttribute="centerY" id="sgN-cV-bQg"/>
+                                    <constraint firstItem="rRu-C6-slv" firstAttribute="top" secondItem="eB3-LN-Tv8" secondAttribute="top" constant="33" id="xbj-2m-lEd"/>
+                                    <constraint firstItem="s0j-sU-WEJ" firstAttribute="leading" secondItem="hOi-Oh-5P2" secondAttribute="leading" id="yZn-MV-ADk"/>
                                 </constraints>
                             </view>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZL-6W-vXd" userLabel="Stripe Button">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZL-6W-vXd" userLabel="Stripe Button">
                                 <rect key="frame" x="90" y="544" width="194" height="64"/>
                                 <animations/>
                                 <gestureRecognizers/>
@@ -348,7 +364,12 @@
                     <navigationItem key="navigationItem" id="ZLH-PM-QCF"/>
                     <connections>
                         <outlet property="applePayButton" destination="BZ3-Or-KzK" id="Y7m-4d-b3o"/>
+                        <outlet property="btcConversionLabel" destination="iRk-KK-LGf" id="zts-OF-1xc"/>
+                        <outlet property="fundAmountLabel" destination="n6D-C0-oGu" id="v6e-c8-pbG"/>
                         <outlet property="stripeButton" destination="nZL-6W-vXd" id="LW0-Hc-Oxp"/>
+                        <outlet property="tipAmountLabel" destination="cju-Fh-Zum" id="Dw2-SW-Ggc"/>
+                        <outlet property="ubtcExchangeLabel" destination="s0j-sU-WEJ" id="6YQ-qe-U0q"/>
+                        <outlet property="usdExchangeLabel" destination="hOi-Oh-5P2" id="I3F-02-Ip5"/>
                         <outlet property="welcomeToTipperLabel" destination="fIj-Q4-Rw0" id="0du-bH-mZk"/>
                     </connections>
                 </viewController>
@@ -2006,7 +2027,7 @@ Free money!</string>
                                 <rect key="frame" x="0.0" y="22" width="414" height="92"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tl5-jp-ON5" id="8j9-Rb-sSN">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="91.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="91"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transaction-confirmed" translatesAutoresizingMaskIntoConstraints="NO" id="JYc-IW-cGt">

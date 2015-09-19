@@ -42,8 +42,9 @@ class DynamoUser: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
         let exp = AWSDynamoDBQueryExpression()
         exp.hashKeyValues      = twitterId
         exp.indexName = "TwitterUserID-index"
+        exp.hashKeyAttribute = "TwitterUserID"
 
-        mapper.query(DynamoUser.self, expression: exp, withSecondaryIndexHashKey: "TwitterUserID").continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+        mapper.query(DynamoUser.self, expression: exp).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             print("DynamoUser::\(__FUNCTION__) error:\(task.error), exception:\(task.exception), taskResult:\(task.result)")
             Debug.isBlocking()
             if (task.error == nil) {
