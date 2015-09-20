@@ -63,23 +63,10 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         exp.indexName = "FromUserID-index"
         exp.hashKeyAttribute = "FromUserID"
         self.query(exp, context: context) { () -> Void in
-            self.fetchAllFavoritesToUser(currentUser, context: context, completion: completion)
-        }
-
-    }
-    
-    class func fetchAllFavoritesToUser(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
-        print("DynamoFavorite::\(__FUNCTION__)")
-        
-        let exp = AWSDynamoDBQueryExpression()
-        exp.hashKeyValues      = currentUser.userId!
-        exp.indexName = "ToUserID-index"
-        exp.hashKeyAttribute = "ToUserID"
-        self.query(exp, context: context) { () -> Void in
             completion()
         }
-        
     }
+    
     
     
     class func fetchTips(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
@@ -201,7 +188,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
                     })
                 })
             } else {
-                print("FAILURE!!!!!!", terminator: "")
+                print("FAILURE!!!!!!")
                 completion()
             }
 
