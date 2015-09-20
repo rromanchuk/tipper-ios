@@ -52,7 +52,19 @@ class Notification: NSManagedObject, CoreDataUpdatable {
 
     }
     
-    
+    class func markAllAsRead() {
+        let fetchRquest = NSFetchRequest(entityName: "Notification")
+        fetchRquest.predicate = NSPredicate(format: "seenAt = null")
+        do {
+            let results = try (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext.executeFetchRequest(fetchRquest)
+            for result in results as! [Notification] {
+                result.seenAt = NSDate()
+            }
+        } catch let error as NSError {
+            print("[ERROR] \(error)")
+        }
+    }
+
     class func unreadCount() -> Int {
         let fetchRquest = NSFetchRequest(entityName: "Notification")
         fetchRquest.predicate = NSPredicate(format: "seenAt = null")

@@ -40,6 +40,11 @@ class NotificationsTableController: UITableViewController {
 
     }
 
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        Notification.markAllAsRead()
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

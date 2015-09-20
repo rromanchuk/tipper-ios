@@ -232,6 +232,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if application.applicationState == .Active {
                 messageJSON = JSON(message)
 
+            } else {
+                incrementApplicationtBadgeNumber()
             }
         }
 

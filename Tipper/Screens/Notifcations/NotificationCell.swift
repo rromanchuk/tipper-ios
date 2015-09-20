@@ -69,7 +69,6 @@ class NotificationCell: UITableViewCell {
                 notificationImage.image = UIImage(named: notificationType.image())
                 if notification?.seenAt == nil {
                     indicatorView.hidden = false
-                    notification?.seenAt = NSDate()
                 } else {
                     indicatorView.hidden = true
                 }
