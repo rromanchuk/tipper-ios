@@ -38,8 +38,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     @NSManaged var updatedAt: NSDate?
     @NSManaged var deepCrawledAt: NSDate?
 
-    @NSManaged var endpointArn: String?
-    @NSManaged var deviceToken: String?
+    @NSManaged var endpointArns: NSSet?
     @NSManaged var cognitoIdentity: String?
 
     @NSManaged var marketValue: Tipper.Market?
@@ -311,13 +310,13 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     }
 
     func pushToDynamo() {
-        print("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__) self:\(self)")
         if isTwitterAuthenticated {
             mapper.load(DynamoUser.self, hashKey: userId, rangeKey: nil).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
                 print("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
                 if (task.error == nil) {
                     let user:DynamoUser = task.result as! DynamoUser
-                    user.EndpointArn                = self.endpointArn
+                    user.EndpointArns               = self.endpointArns
                     user.TwitterUserID              = self.twitterUserId
                     user.TwitterAuthToken           = Twitter.sharedInstance().session()!.authToken
                     user.TwitterAuthSecret          = Twitter.sharedInstance().session()!.authTokenSecret
@@ -441,17 +440,12 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
             self.updatedAt              = NSDate(timeIntervalSince1970: updatedAt)
         }
         
-
-        if let endpoint = user.EndpointArn {
-             self.endpointArn = endpoint
-        }
-
-        if let deviceToken = user.DeviceToken {
-            self.deviceToken = deviceToken
+        if let _deviceTokens = user.DeviceTokens {
+            self.deviceTokens = _deviceTokens
         }
         
-        if let deviceTokens = user.DeviceTokens {
-            self.deviceTokens = deviceTokens
+        if let _endpointArns = user.EndpointArns {
+            self.deviceTokens = _endpointArns
         }
     }
 
