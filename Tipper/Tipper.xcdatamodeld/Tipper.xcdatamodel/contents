@@ -9,6 +9,7 @@
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="deepCrawledAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="deviceToken" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deviceTokens" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="endpointArn" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="profileImage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="token" optional="YES" attributeType="String" syncable="YES"/>
@@ -74,7 +75,7 @@
         <attribute name="txid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="300"/>
+        <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="315"/>
         <element name="Favorite" positionX="-63" positionY="54" width="128" height="300"/>
         <element name="Market" positionX="-54" positionY="117" width="128" height="135"/>
         <element name="Notification" positionX="-54" positionY="135" width="128" height="135"/>

@@ -46,6 +46,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     @NSManaged var admin: NSNumber?
     @NSManaged var lastReceivedEvaluatedKey: NSNumber?
     @NSManaged var automaticTippingEnabled: NSNumber?
+    @NSManaged var deviceTokens: NSSet?
 
     class func currentUser(context: NSManagedObjectContext) -> CurrentUser {
         if let _currentUser = CurrentUser.first(CurrentUser.self, context: context) {
@@ -316,13 +317,14 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 print("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
                 if (task.error == nil) {
                     let user:DynamoUser = task.result as! DynamoUser
-                    user.EndpointArn        = self.endpointArn
-                    user.TwitterUserID      = self.twitterUserId
-                    user.TwitterAuthToken   = Twitter.sharedInstance().session()!.authToken
-                    user.TwitterAuthSecret  = Twitter.sharedInstance().session()!.authTokenSecret
-                    user.BitcoinBalanceBTC  = self.bitcoinBalanceBTC
-                    user.CognitoIdentity    = self.cognitoIdentity
-                    user.AutomaticTippingEnabled = self.automaticTippingEnabled
+                    user.EndpointArn                = self.endpointArn
+                    user.TwitterUserID              = self.twitterUserId
+                    user.TwitterAuthToken           = Twitter.sharedInstance().session()!.authToken
+                    user.TwitterAuthSecret          = Twitter.sharedInstance().session()!.authTokenSecret
+                    user.BitcoinBalanceBTC          = self.bitcoinBalanceBTC
+                    user.CognitoIdentity            = self.cognitoIdentity
+                    user.AutomaticTippingEnabled    = self.automaticTippingEnabled
+                    user.DeviceTokens               = self.deviceTokens
                     self.mapper.save(user, configuration: self.defaultDynamoConfiguration).continueWithBlock({ (task) -> AnyObject! in
                         print("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
                         return nil
@@ -446,6 +448,10 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
         if let deviceToken = user.DeviceToken {
             self.deviceToken = deviceToken
+        }
+        
+        if let deviceTokens = user.DeviceTokens {
+            self.deviceTokens = deviceTokens
         }
     }
 

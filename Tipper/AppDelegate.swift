@@ -146,7 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         Settings.update(currentUser)
-        market.update { [weak self] () -> Void in }
+        market.update { () -> Void in }
     }
 
 
@@ -162,8 +162,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString:"<>"))
             .stringByReplacingOccurrencesOfString(" ", withString: "")
         print("deviceTokenString: \(deviceTokenString)")
-        currentUser?.deviceToken = deviceTokenString
-
+        
+        let deviceTokensArr = NSMutableArray(array: [deviceToken])
+        
+        if let deviceTokens = currentUser!.deviceTokens {
+            deviceTokensArr.addObject(deviceTokens.allObjects)
+        }
+        currentUser?.deviceTokens = NSSet(array: deviceTokensArr as [AnyObject])
+        
         let sns = AWSSNS.defaultSNS()
         let request = AWSSNSCreatePlatformEndpointInput()
         request.token = deviceTokenString
