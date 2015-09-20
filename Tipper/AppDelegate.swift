@@ -128,8 +128,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         if currentUser.isTwitterAuthenticated {
+            DynamoNotification.refresh(currentUser.userId!)
             provider.logins = ["api.twitter.com": "\(Twitter.sharedInstance().session()!.authToken);\(Twitter.sharedInstance().session()!.authTokenSecret)"]
-           
             currentUser.refreshWithDynamo { [weak self] (error) -> Void in
                 self?.currentUser.updateBTCBalance({ () -> Void in
                     self?.provider.getIdentityId().continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in

@@ -31,10 +31,10 @@ class DynamoUser: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
     var TwitterAuthSecret: String?
     var EndpointArns: NSSet?
     var BitcoinBalanceBTC: NSNumber?
-    var Admin: NSNumber?
+    var Admin: Bool?
     var IsActive: String?
     var ProfileImage: String?
-    var AutomaticTippingEnabled: NSNumber?
+    var AutomaticTippingEnabled: Bool?
     var DeviceTokens: NSSet?
 
     class func findByTwitterId(twitterId:String, completion: (user:DynamoUser?) -> Void) {

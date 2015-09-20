@@ -316,14 +316,14 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 print("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
                 if (task.error == nil) {
                     let user:DynamoUser = task.result as! DynamoUser
-                    user.EndpointArns               = self.endpointArns
                     user.TwitterUserID              = self.twitterUserId
                     user.TwitterAuthToken           = Twitter.sharedInstance().session()!.authToken
                     user.TwitterAuthSecret          = Twitter.sharedInstance().session()!.authTokenSecret
                     user.BitcoinBalanceBTC          = self.bitcoinBalanceBTC
                     user.CognitoIdentity            = self.cognitoIdentity
-                    user.AutomaticTippingEnabled    = self.automaticTippingEnabled
+                    user.AutomaticTippingEnabled    = self.automaticTippingEnabled?.boolValue
                     user.DeviceTokens               = self.deviceTokens
+                    user.EndpointArns               = self.endpointArns
                     self.mapper.save(user, configuration: self.defaultDynamoConfiguration).continueWithBlock({ (task) -> AnyObject! in
                         print("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
                         return nil
@@ -426,9 +426,21 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         self.twitterUserId          = user.TwitterUserID
         self.twitterUsername        = user.TwitterUsername
         self.bitcoinAddress         = user.BitcoinAddress
-        self.admin                  = user.Admin
         self.profileImage           = user.ProfileImage
-        self.automaticTippingEnabled = user.AutomaticTippingEnabled
+        
+        
+        if let _admin = user.Admin {
+            self.automaticTippingEnabled = NSNumber(bool: _admin)
+        } else {
+            self.automaticTippingEnabled = NSNumber(bool: false)
+        }
+        
+        if let _automaticTippingEnabled = user.AutomaticTippingEnabled {
+            self.automaticTippingEnabled = NSNumber(bool: _automaticTippingEnabled)
+        } else {
+            self.automaticTippingEnabled = NSNumber(bool: true)
+        }
+        
 
         self.bitcoinBalanceBTC      = user.BitcoinBalanceBTC
         

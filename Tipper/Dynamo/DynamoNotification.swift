@@ -32,6 +32,12 @@ class DynamoNotification: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpd
             completion()
         }
     }
+    
+    class func refresh(userId:String) {
+        fetch(userId, context: (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext) { () -> Void in
+            
+        }
+    }
 
     class func query(expression: AWSDynamoDBQueryExpression, context:NSManagedObjectContext, completion: () -> Void) {
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()

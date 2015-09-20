@@ -188,14 +188,15 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
                 privateContext.performBlock({ () -> Void in
                     for result in results.items as! [DynamoFavorite] {
                         Favorite.entityWithDYNAMO(Favorite.self, model: result, context: privateContext)
-                        privateContext.saveMoc()
                     }
+                    privateContext.saveMoc()
                     context.performBlock({ () -> Void in
                         print("lastEvaluatedKey:\(results.lastEvaluatedKey)")
                         if results.lastEvaluatedKey != nil {
                             exp.exclusiveStartKey = results.lastEvaluatedKey
                             self.query(exp, secondaryIndexHash: secondaryIndexHash, context: context, completion:completion)
                         } else {
+                            context.saveMoc()
                             completion()
                         }
                     })
