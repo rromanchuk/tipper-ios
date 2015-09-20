@@ -445,7 +445,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         }
         
         if let _endpointArns = user.EndpointArns {
-            self.deviceTokens = _endpointArns
+            self.endpointArns = _endpointArns
         }
     }
 
