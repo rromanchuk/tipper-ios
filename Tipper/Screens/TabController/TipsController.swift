@@ -72,7 +72,6 @@ class TipsController: UIViewController {
         DynamoFavorite.updateTips(currentUser, context: managedObjectContext) { () -> Void in
             refreshControl.endRefreshing()
         }
-        //(parentViewController as! TipsController).refresh()
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

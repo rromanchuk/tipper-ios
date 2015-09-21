@@ -191,7 +191,6 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
                 print("FAILURE!!!!!!")
                 completion()
             }
-
             return nil
         })
     }
