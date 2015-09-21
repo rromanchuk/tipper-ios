@@ -208,10 +208,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                             self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration)
                         }
                         self.updateEntityWithDynamoModel(dynamoUser)
-                        API.sharedInstance.connect({ (json, error) -> Void in
-                            //print("\(className)::\(__FUNCTION__)")
-                            completion()
-                        })
+                        completion()
                     })
                     return nil
                 })

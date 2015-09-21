@@ -42,13 +42,16 @@ public class API {
                 }
             }
         }
-
     }
     
-
     func register(username: String, twitterId: String, twitterAuth: String, twitterSecret: String, profileImage: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
         print("\(className)::\(__FUNCTION__)")
         self.call(self.manager.request(Router.Register(username, twitterId, twitterAuth, twitterSecret, profileImage)), completion: completion)
+    }
+    
+    func autotip(completion: ((json: JSON, error: NSError?) -> Void)!) {
+        print("\(className)::\(__FUNCTION__)")
+        self.call(self.manager.request(Router.AutoTip), completion: completion)
     }
 
     func disconnect(completion: ((json: JSON, error: NSError?) -> Void)!) {

@@ -28,6 +28,7 @@ enum Router: URLRequestConvertible {
     case Settings
     case MarketPrice(String)
     case Balance
+    case AutoTip
 
     var method: Alamofire.Method {
         switch self {
@@ -37,7 +38,7 @@ enum Router: URLRequestConvertible {
             return .POST
         case .Cognito:
             return .POST
-        case .Charge:
+        case .Charge,.AutoTip:
             return .POST
         case .Favorites,.Me,.MarketPrice,.Settings,.Balance:
             return .GET
@@ -61,6 +62,8 @@ enum Router: URLRequestConvertible {
             return "\(APIRoot)/address"
         case .Charge:
             return "\(APIRoot)/charges"
+        case .AutoTip:
+            return "\(APIRoot)/autotip"
         case .Cognito:
             return "\(APIRoot)/cognito"
         case .Favorites:
