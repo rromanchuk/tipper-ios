@@ -183,9 +183,14 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 dynamoUser.UpdatedAt = Int(NSDate().timeIntervalSince1970)
                 self.updateEntityWithDynamoModel(dynamoUser)
                 self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
-                    API.sharedInstance.connect({ (json, error) -> Void in
-                        completion()
-                    })
+                    if let _automaticTippingEnabled = self.automaticTippingEnabled where _automaticTippingEnabled.boolValue {
+                        API.sharedInstance.connect({ (json, error) -> Void in
+                            completion()
+                        })
+                    } else {
+                       completion()
+                    }
+                    
                     return nil
                 })
             } else  {
@@ -200,6 +205,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 dynamoUser.IsActive = "X"
                 dynamoUser.ProfileImage = self.profileImage
                 dynamoUser.CognitoIdentity = self.cognitoIdentity
+                dynamoUser.AutomaticTippingEnabled = true
                 self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
                     API.sharedInstance.address({ (json, error) -> Void in
                         if error == nil {
@@ -208,7 +214,11 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                             self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration)
                         }
                         self.updateEntityWithDynamoModel(dynamoUser)
+                        API.sharedInstance.connect({ (json, error) -> Void in
+                            
+                        })
                         completion()
+                        
                     })
                     return nil
                 })
