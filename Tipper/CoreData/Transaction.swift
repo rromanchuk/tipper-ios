@@ -13,7 +13,7 @@ import SwiftyJSON
 class Transaction: NSManagedObject, CoreDataUpdatable {
 
 
-    @NSManaged var txid: String
+    @NSManaged var txid: String!
     @NSManaged var amount: NSNumber?
     @NSManaged var category: String?
     @NSManaged var fee: NSNumber?
@@ -58,24 +58,24 @@ class Transaction: NSManagedObject, CoreDataUpdatable {
     func updateEntityWithDynamoModel(dynamoObject: DynamoUpdatable) {
 
         print("\(className)::\(__FUNCTION__)", terminator: "")
-//        if let transaction = dynamoObject as? DynamoTransaction {
-//            txid = transaction.txid!
-//            amount = transaction.amount
-//            fee = transaction.fee
-//            confirmations = transaction.confirmations
-//
-//            fromTwitterId = transaction.FromTwitterID
-//            toTwitterId = transaction.ToTwitterID
-//
-//            fromUserId = transaction.FromUserID
-//            toUserId = transaction.ToUserID
-//
-//
-//            fromTwitterUsername = transaction.FromTwitterUsername
-//            toTwitterUsername = transaction.ToTwitterUsername
-//
-//            time = NSDate(timeIntervalSince1970: NSTimeInterval(transaction.time!.doubleValue))
-//        }
+        if let transaction = dynamoObject as? DynamoTransaction {
+            self.txid = transaction.txid
+            self.amount = transaction.amount
+            self.fee = transaction.fee
+            self.confirmations = transaction.confirmations
+
+            self.fromTwitterId = transaction.FromTwitterID
+            self.toTwitterId = transaction.ToTwitterID
+
+            self.fromUserId = transaction.FromUserID
+            self.toUserId = transaction.ToUserID
+
+
+            self.fromTwitterUsername = transaction.FromTwitterUsername
+            self.toTwitterUsername = transaction.ToTwitterUsername
+
+            self.time = NSDate(timeIntervalSince1970: NSTimeInterval(transaction.time!.doubleValue))
+        }
     }
 
     

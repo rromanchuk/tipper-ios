@@ -58,12 +58,7 @@ class TipsController: UIViewController {
                 SwiftSpinner.hide(nil)
             })
         }
-       
-//        DynamoFavorite.fetchTips(currentUser, context: managedObjectContext) { () -> Void in
-//            
-//        }
         
-
     }
 
     func refresh(refreshControl: UIRefreshControl) {
@@ -71,7 +66,6 @@ class TipsController: UIViewController {
         DynamoFavorite.updateTips(currentUser, context: managedObjectContext) { () -> Void in
             refreshControl.endRefreshing()
         }
-        //(parentViewController as! TipsController).refresh()
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

@@ -79,8 +79,6 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
         }
         
     }
-    
-    
 
 
     class func fetchTips(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
