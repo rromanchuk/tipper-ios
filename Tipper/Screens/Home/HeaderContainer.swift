@@ -126,6 +126,8 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
     
     func refreshHeader() {
         //print("\(className)::\(__FUNCTION__) screenType: \(activeScreenType.rawValue)")
+        
+
         switch activeScreenType {
         case .AccountScreen:
             closeButtonLeft.hidden = false
@@ -137,6 +139,7 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
             closeButtonRight.hidden = false
             accountButton.hidden = true
             notificationsButton.tintColor = UIColor.whiteColor()
+            notificationBadge.hidden = true
             setHeaderTitle("Notifications")
         case .Unknown:
             closeButtonLeft.hidden = true
@@ -156,13 +159,7 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        let notificationCount = Notification.unreadCount()
-        if notificationCount > 0 {
-            notificationBadge.hidden = false
-            notificationCountLabel.text = "\(notificationCount)"
-        } else {
-            notificationBadge.hidden = true
-        }
+        needsToUpdateNotifications()
     }
 
     deinit {
@@ -249,6 +246,20 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
     
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         dismissViewControllerAnimated(true, completion:nil)
+    }
+    
+    // MARK: Notifications
+    
+    func needsToUpdateNotifications() {
+        let notificationCount = Notification.unreadCount()
+        if notificationCount > 0 {
+            if activeScreenType != .NotificationsScreen {
+                notificationBadge.hidden = false
+            }
+            notificationCountLabel.text = "\(notificationCount)"
+        } else {
+            notificationBadge.hidden = true
+        }
     }
 
    

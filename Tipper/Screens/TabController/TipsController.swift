@@ -56,6 +56,7 @@ class TipsController: UIViewController {
             SwiftSpinner.show("Loading your tips...", animated: true)
             DynamoFavorite.fetchAllFavoritesFromUser(currentUser, context: managedObjectContext, completion: { () -> Void in
                 SwiftSpinner.hide(nil)
+                self.tableView.reloadData()
             })
         }
         

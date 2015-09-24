@@ -38,14 +38,14 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     @NSManaged var updatedAt: NSDate?
     @NSManaged var deepCrawledAt: NSDate?
 
-    @NSManaged var endpointArn: String?
-    @NSManaged var deviceToken: String?
+    @NSManaged var endpointArns: NSSet?
     @NSManaged var cognitoIdentity: String?
 
     @NSManaged var marketValue: Tipper.Market?
     @NSManaged var admin: NSNumber?
     @NSManaged var lastReceivedEvaluatedKey: NSNumber?
     @NSManaged var automaticTippingEnabled: NSNumber?
+    @NSManaged var deviceTokens: NSSet?
 
     class func currentUser(context: NSManagedObjectContext) -> CurrentUser {
         if let _currentUser = CurrentUser.first(CurrentUser.self, context: context) {
@@ -183,9 +183,14 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 dynamoUser.UpdatedAt = Int(NSDate().timeIntervalSince1970)
                 self.updateEntityWithDynamoModel(dynamoUser)
                 self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
-                    API.sharedInstance.connect({ (json, error) -> Void in
-                        completion()
-                    })
+                    if let _automaticTippingEnabled = self.automaticTippingEnabled where _automaticTippingEnabled.boolValue {
+                        API.sharedInstance.connect({ (json, error) -> Void in
+                            completion()
+                        })
+                    } else {
+                       completion()
+                    }
+                    
                     return nil
                 })
             } else  {
@@ -200,6 +205,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 dynamoUser.IsActive = "X"
                 dynamoUser.ProfileImage = self.profileImage
                 dynamoUser.CognitoIdentity = self.cognitoIdentity
+                dynamoUser.AutomaticTippingEnabled = true
                 self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
                     API.sharedInstance.address({ (json, error) -> Void in
                         if error == nil {
@@ -209,9 +215,10 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                         }
                         self.updateEntityWithDynamoModel(dynamoUser)
                         API.sharedInstance.connect({ (json, error) -> Void in
-                            //print("\(className)::\(__FUNCTION__)")
-                            completion()
+                            
                         })
+                        completion()
+                        
                     })
                     return nil
                 })
@@ -310,19 +317,20 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     }
 
     func pushToDynamo() {
-        print("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__) self:\(self)")
         if isTwitterAuthenticated {
             mapper.load(DynamoUser.self, hashKey: userId, rangeKey: nil).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
                 print("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
                 if (task.error == nil) {
                     let user:DynamoUser = task.result as! DynamoUser
-                    user.EndpointArn        = self.endpointArn
-                    user.TwitterUserID      = self.twitterUserId
-                    user.TwitterAuthToken   = Twitter.sharedInstance().session()!.authToken
-                    user.TwitterAuthSecret  = Twitter.sharedInstance().session()!.authTokenSecret
-                    user.BitcoinBalanceBTC  = self.bitcoinBalanceBTC
-                    user.CognitoIdentity    = self.cognitoIdentity
-                    user.AutomaticTippingEnabled = self.automaticTippingEnabled
+                    user.TwitterUserID              = self.twitterUserId
+                    user.TwitterAuthToken           = Twitter.sharedInstance().session()!.authToken
+                    user.TwitterAuthSecret          = Twitter.sharedInstance().session()!.authTokenSecret
+                    user.BitcoinBalanceBTC          = self.bitcoinBalanceBTC
+                    user.CognitoIdentity            = self.cognitoIdentity
+                    user.AutomaticTippingEnabled    = self.automaticTippingEnabled?.boolValue
+                    user.DeviceTokens               = self.deviceTokens
+                    user.EndpointArns               = self.endpointArns
                     self.mapper.save(user, configuration: self.defaultDynamoConfiguration).continueWithBlock({ (task) -> AnyObject! in
                         print("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
                         return nil
@@ -425,9 +433,21 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         self.twitterUserId          = user.TwitterUserID
         self.twitterUsername        = user.TwitterUsername
         self.bitcoinAddress         = user.BitcoinAddress
-        self.admin                  = user.Admin
         self.profileImage           = user.ProfileImage
-        self.automaticTippingEnabled = user.AutomaticTippingEnabled
+        
+        
+        if let _admin = user.Admin {
+            self.automaticTippingEnabled = NSNumber(bool: _admin)
+        } else {
+            self.automaticTippingEnabled = NSNumber(bool: false)
+        }
+        
+        if let _automaticTippingEnabled = user.AutomaticTippingEnabled {
+            self.automaticTippingEnabled = NSNumber(bool: _automaticTippingEnabled)
+        } else {
+            self.automaticTippingEnabled = NSNumber(bool: true)
+        }
+        
 
         self.bitcoinBalanceBTC      = user.BitcoinBalanceBTC
         
@@ -439,13 +459,12 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
             self.updatedAt              = NSDate(timeIntervalSince1970: updatedAt)
         }
         
-
-        if let endpoint = user.EndpointArn {
-             self.endpointArn = endpoint
+        if let _deviceTokens = user.DeviceTokens {
+            self.deviceTokens = _deviceTokens
         }
-
-        if let deviceToken = user.DeviceToken {
-            self.deviceToken = deviceToken
+        
+        if let _endpointArns = user.EndpointArns {
+            self.endpointArns = _endpointArns
         }
     }
 

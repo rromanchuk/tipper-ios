@@ -29,13 +29,13 @@ class DynamoUser: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
     var CognitoIdentity: String?
     var TwitterAuthToken: String?
     var TwitterAuthSecret: String?
-    var EndpointArn: String?
-    var DeviceToken: String?
+    var EndpointArns: NSSet?
     var BitcoinBalanceBTC: NSNumber?
-    var Admin: NSNumber?
+    var Admin: Bool?
     var IsActive: String?
     var ProfileImage: String?
-    var AutomaticTippingEnabled: NSNumber?
+    var AutomaticTippingEnabled: Bool?
+    var DeviceTokens: NSSet?
 
     class func findByTwitterId(twitterId:String, completion: (user:DynamoUser?) -> Void) {
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()

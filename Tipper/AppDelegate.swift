@@ -128,8 +128,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         if currentUser.isTwitterAuthenticated {
+            DynamoNotification.refresh(currentUser.userId!)
             provider.logins = ["api.twitter.com": "\(Twitter.sharedInstance().session()!.authToken);\(Twitter.sharedInstance().session()!.authTokenSecret)"]
-           
             currentUser.refreshWithDynamo { [weak self] (error) -> Void in
                 self?.currentUser.updateBTCBalance({ () -> Void in
                     self?.provider.getIdentityId().continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
@@ -146,7 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         Settings.update(currentUser)
-        market.update { [weak self] () -> Void in }
+        market.update { () -> Void in }
     }
 
 
@@ -162,30 +162,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString:"<>"))
             .stringByReplacingOccurrencesOfString(" ", withString: "")
         print("deviceTokenString: \(deviceTokenString)")
-        currentUser?.deviceToken = deviceTokenString
-
+        
+        
+        let deviceTokenSet = NSMutableSet(objects: deviceTokenString)
+        if let deviceTokens = currentUser!.deviceTokens?.allObjects {
+            print("currentUser!.deviceTokens?: \(deviceTokens)")
+            deviceTokenSet.addObjectsFromArray(deviceTokens)
+        }
+        print("deviceTokenSet: \(deviceTokenSet)")
+        currentUser?.deviceTokens = deviceTokenSet
+        
+        registerTokens(currentUser.deviceTokens!.allObjects)
+    }
+    
+    
+    func registerTokens(tokens: NSArray) {
+        print("\(className)::\(__FUNCTION__) tokens:\(tokens)")
         let sns = AWSSNS.defaultSNS()
         let request = AWSSNSCreatePlatformEndpointInput()
-        request.token = deviceTokenString
         request.platformApplicationArn = Config.get("SNS_ENDPOINT")
-        sns.createPlatformEndpoint(request).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task:AWSTask!) -> AnyObject! in
-            if task.error != nil {
-                print("Error: \(task.error)")
-            } else {
-                let createEndpointResponse = task.result as! AWSSNSCreateEndpointResponse
-                print("endpointArn: \(createEndpointResponse.endpointArn)")
-                self.currentUser?.endpointArn = createEndpointResponse.endpointArn
-                self.currentUser?.pushToDynamo()
-                self.gerneralSubscriptionChannel(task)
-                print("admin? \(self.currentUser?.admin)")
-                if let admin = self.currentUser?.admin where admin.boolValue {
-                    self.adminSubscriptionChannel(task)
+        
+        for token in tokens {
+            request.token = token as! String 
+            sns.createPlatformEndpoint(request).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task:AWSTask!) -> AnyObject! in
+                if task.error != nil {
+                    print("Error: \(task.error)")
+                } else {
+                    let createEndpointResponse = task.result as! AWSSNSCreateEndpointResponse
+                    print("endpointArn: \(createEndpointResponse.endpointArn)")
+                    let endpointArnSet = NSMutableSet(objects: createEndpointResponse.endpointArn)
+                    if let endPoints = self.currentUser.endpointArns?.allObjects {
+                        endpointArnSet.addObjectsFromArray(endPoints)
+                    }
+                    self.currentUser?.endpointArns = endpointArnSet
+                    self.currentUser?.pushToDynamo()
+                    self.gerneralSubscriptionChannel(task)
+                    print("admin? \(self.currentUser?.admin)")
+                    if let admin = self.currentUser?.admin where admin.boolValue {
+                        self.adminSubscriptionChannel(task)
+                    }
+                    
                 }
+                
+                return nil
+            })
 
-            }
-            
-            return nil
-        })
+        }
     }
 
     func gerneralSubscriptionChannel(task: AWSTask!) {

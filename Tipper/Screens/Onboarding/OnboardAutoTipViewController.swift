@@ -12,6 +12,8 @@ class OnboardAutoTipViewController: UIViewController {
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
     var market: Market!
+    
+    let className = "OnboardAutoTipViewController"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +28,10 @@ class OnboardAutoTipViewController: UIViewController {
     
 
     @IBAction func didTapGo(sender: TipperButton) {
+        print("\(className)::\(__FUNCTION__)")
+        API.sharedInstance.autotip({ (json, error) -> Void in
+            //
+        })
         performSegueWithIdentifier("ExitFromOnboarding", sender: nil)
     }
     /*
