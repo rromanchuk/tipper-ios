@@ -70,7 +70,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: provider)
         AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = configuration
 
+        TIPPERTipperClient.defaultClient().APIKey = Config.get("AWS_API_GATEWAY_KEY")
         
+        Settings.get("1")
 
         market = NSEntityDescription.insertNewObjectForEntityForName("Market", inManagedObjectContext: managedObjectContext) as! Market
         market.save()

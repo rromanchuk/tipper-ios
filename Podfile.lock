@@ -1,5 +1,7 @@
 PODS:
   - ApplePayStubs (0.2)
+  - AWSAPIGateway (2.2.6):
+    - AWSCore (= 2.2.6)
   - AWSCognito (2.2.6):
     - AWSCore (= 2.2.6)
   - AWSCore (2.2.6)
@@ -23,6 +25,7 @@ PODS:
 
 DEPENDENCIES:
   - ApplePayStubs
+  - AWSAPIGateway
   - AWSCognito
   - AWSCore
   - AWSDynamoDB
@@ -35,6 +38,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   ApplePayStubs: 5dd63c36527d1117b2045939fb5b6581b4815433
+  AWSAPIGateway: 822612754602308c240774c6bfaa2c1b6a05a116
   AWSCognito: 4cb0bd389dedf6673048609408577bb6c871422b
   AWSCore: dd05203bf44d45b58b7667754ce4fa6f1bdb1c3e
   AWSDynamoDB: d0eb38a6bcaaee5931e5168478c409a39b0a9066

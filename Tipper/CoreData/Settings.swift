@@ -49,6 +49,13 @@ class Settings: NSManagedObject, CoreDataUpdatable {
     class func dateForTwitterDate(date: String) -> NSDate {
         return TwitterDateFormatter.dateFromString(date)!
     }
+
+    class func get(settingId: String) {
+        TIPPERTipperClient.defaultClient().tipGet(settingId).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+            print("Settings fetch \(task.result), \(task.error)")
+            return nil;
+        })
+    }
     
     class func update(currentUser:CurrentUser) {
         print("\(className)::\(__FUNCTION__)")
@@ -57,7 +64,7 @@ class Settings: NSManagedObject, CoreDataUpdatable {
         exp.limit = 1
         
         mapper.scan(DynamoSettings.self, expression: exp).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-            print("Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
+            print("Result: \(task.result) Error \(task.error), Exception: \(task.exception), \(task.exception)")
             if let results = task.result as?  AWSDynamoDBPaginatedOutput where task.error == nil && task.exception == nil {
                 if let dynamoSettings: DynamoSettings = results.items[0] as? DynamoSettings {
                     //self.updateEntityWithDynamoModel(dynamoSettings)

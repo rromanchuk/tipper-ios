@@ -27,6 +27,7 @@ class NotificationsTableController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("\(className)::\(__FUNCTION__) userId: \(self.currentUser.userId!)")
+        Settings.get("1")
         UIApplication.sharedApplication().applicationIconBadgeNumber = 0
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)

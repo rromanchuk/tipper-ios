@@ -54,6 +54,8 @@
 		9462D76A1B35D108001C5083 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9462D7681B35D108001C5083 /* Interface.storyboard */; };
 		9462D76C1B35D108001C5083 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9462D76B1B35D108001C5083 /* Images.xcassets */; };
 		9462D76F1B35D108001C5083 /* Tipper WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9462D7551B35D108001C5083 /* Tipper WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		94723C751BB49F3F00C33210 /* TIPPERTipperClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 94723C741BB49F3F00C33210 /* TIPPERTipperClient.m */; settings = {ASSET_TAGS = (); }; };
+		94723C781BB49F6A00C33210 /* TIPPEREmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 94723C771BB49F6A00C33210 /* TIPPEREmpty.m */; settings = {ASSET_TAGS = (); }; };
 		948418571AB6525E001C633E /* QRCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9484183A1AB61396001C633E /* QRCode.framework */; };
 		9484185A1AB6525F001C633E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 948418581AB6525F001C633E /* Alamofire.framework */; };
 		9484185B1AB6525F001C633E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 948418591AB6525F001C633E /* SwiftyJSON.framework */; };
@@ -184,6 +186,10 @@
 		9462D7671B35D108001C5083 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9462D7691B35D108001C5083 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		9462D76B1B35D108001C5083 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		94723C731BB49F3F00C33210 /* TIPPERTipperClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIPPERTipperClient.h; sourceTree = "<group>"; };
+		94723C741BB49F3F00C33210 /* TIPPERTipperClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIPPERTipperClient.m; sourceTree = "<group>"; };
+		94723C761BB49F6A00C33210 /* TIPPEREmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIPPEREmpty.h; sourceTree = "<group>"; };
+		94723C771BB49F6A00C33210 /* TIPPEREmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIPPEREmpty.m; sourceTree = "<group>"; };
 		9484183A1AB61396001C633E /* QRCode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRCode.framework; path = Carthage/Build/iOS/QRCode.framework; sourceTree = "<group>"; };
 		948418581AB6525F001C633E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		948418591AB6525F001C633E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -329,6 +335,7 @@
 		94416BF41AAF989F00117AFC /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				94723C661BB4939A00C33210 /* AWSGateway */,
 				94F5137B1B8D03BC002E0996 /* SwiftSpinner.swift */,
 				94416BF71AAF989F00117AFC /* API.swift */,
 				941AA3891AAFA34900CA9192 /* Config.swift */,
@@ -427,6 +434,17 @@
 				9462D7671B35D108001C5083 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		94723C661BB4939A00C33210 /* AWSGateway */ = {
+			isa = PBXGroup;
+			children = (
+				94723C761BB49F6A00C33210 /* TIPPEREmpty.h */,
+				94723C771BB49F6A00C33210 /* TIPPEREmpty.m */,
+				94723C731BB49F3F00C33210 /* TIPPERTipperClient.h */,
+				94723C741BB49F3F00C33210 /* TIPPERTipperClient.m */,
+			);
+			name = AWSGateway;
 			sourceTree = "<group>";
 		};
 		949842001B25FC300079082C /* TipDetails */ = {
@@ -877,6 +895,7 @@
 				9426B29A1B9F6E6F001F996C /* TipperButton.swift in Sources */,
 				9426B2981B9F6DDF001F996C /* OnboardNavigationController.swift in Sources */,
 				941AA38A1AAFA34900CA9192 /* Config.swift in Sources */,
+				94723C781BB49F6A00C33210 /* TIPPEREmpty.m in Sources */,
 				9416317F1AC3C1EC002016FD /* HomeController.swift in Sources */,
 				94416C131AAF989F00117AFC /* CurrentUser.swift in Sources */,
 				941631831AC3CC5E002016FD /* AddressController.swift in Sources */,
@@ -887,6 +906,7 @@
 				94416C141AAF989F00117AFC /* NSManagedObject+Extension.swift in Sources */,
 				9427800B1B97D294007CB713 /* NotificationsController.swift in Sources */,
 				94416C0D1AAF989F00117AFC /* Router.swift in Sources */,
+				94723C751BB49F3F00C33210 /* TIPPERTipperClient.m in Sources */,
 				94416C151AAF989F00117AFC /* NSManagedObjectContext+Base.m in Sources */,
 				9453A66C1B39FD8800D35E04 /* TipsController.swift in Sources */,
 				94FA97DD1AB2EB71005B0C83 /* Favorite.swift in Sources */,

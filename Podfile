@@ -7,6 +7,7 @@ target 'Tipper' do
     pod 'AWSSQS'
     pod 'AWSSNS'
     pod 'AWSMobileAnalytics'
+    pod 'AWSAPIGateway'
     pod 'ApplePayStubs'
     #pod 'Stripe', '4.0.3'
     pod 'SSKeychain'

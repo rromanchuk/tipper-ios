@@ -9,7 +9,7 @@
 #import <AWSSNS/AWSSNS.h>
 #import <AWSCognito/AWSCognito.h>
 #import <AWSMobileAnalytics/AWSMobileAnalytics.h>
-
+#import <AWSAPIGateway/AWSAPIGateway.h>
 
 #import "NSManagedObjectContext+Base.h"
 #import "TTTURLRequestFormatter.h"
@@ -18,3 +18,5 @@
 
 //#import <Google/Analytics.h>
 #import "ApplePayStubs.h"
+
+#import "TipperTipperClient.h"

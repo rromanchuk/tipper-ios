@@ -10,6 +10,8 @@
 	<string>$(AWS_ADMIN_SNS)</string>
 	<key>AWS_ANALYTICS_ID</key>
 	<string>$(AWS_ANALYTICS_ID)</string>
+	<key>AWS_API_GATEWAY_KEY</key>
+	<string>***REMOVED***</string>
 	<key>AWS_GENERAL_SNS</key>
 	<string>$(AWS_GENERAL_SNS)</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -31,7 +33,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>226</string>
+	<string>229</string>
 	<key>COGNITO_POOL</key>
 	<string>$(COGNITO_POOL)</string>
 	<key>Configuration</key>

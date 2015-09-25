@@ -66,14 +66,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
             completion()
         }
     }
-<<<<<<< HEAD
 
-
-=======
-    
-    
-    
->>>>>>> 7fe54f17a0b2df447f7ac599705203787610bff5
     class func fetchTips(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
         fetchSentTips(currentUser, context: context) { () -> Void in
             self.fetchReceivedTips(currentUser, context: context, completion: { () -> Void in
