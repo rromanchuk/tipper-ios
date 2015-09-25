@@ -15,7 +15,7 @@ PODS:
     - AWSCore (= 2.2.6)
   - HexColors (2.2.1)
   - RBBAnimation (0.4.0)
-  - SDCAlertView (2.5.3):
+  - SDCAlertView (2.5.4):
     - RBBAnimation (~> 0.3)
     - SDCAutoLayout (~> 2.0)
   - SDCAutoLayout (2.0.3)
@@ -47,7 +47,7 @@ SPEC CHECKSUMS:
   AWSSQS: a2304d18086ce907aa7a8bba275861a69886a662
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
   RBBAnimation: 4b2d66f6d993febce63cd564da934985313b9c59
-  SDCAlertView: 7554e4e7ce1adbefbcc7374e7bae237dad32a8d8
+  SDCAlertView: 2e2b0ecc5f1ec367e45d83efa2e512688ca7fa55
   SDCAutoLayout: e6885bb39ab8e2ec2ff84d158f38035f025f7420
   SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d
   TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc

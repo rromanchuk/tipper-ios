@@ -18,6 +18,7 @@
 #import <AWSAPIGateway/AWSAPIGateway.h>
 
 #import "TIPPEREmpty.h"
+#import "TIPPERSettings.h"
 
 /**
  The service client object.
@@ -176,7 +177,7 @@
  
  @param _id 
  
- return type: TIPPEREmpty *
+ return type: TIPPERSettings *
  */
 - (AWSTask *)settingsGet:(NSString *)_id;
 

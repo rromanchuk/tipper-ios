@@ -56,6 +56,7 @@
 		9462D76F1B35D108001C5083 /* Tipper WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9462D7551B35D108001C5083 /* Tipper WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		94723C751BB49F3F00C33210 /* TIPPERTipperClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 94723C741BB49F3F00C33210 /* TIPPERTipperClient.m */; settings = {ASSET_TAGS = (); }; };
 		94723C781BB49F6A00C33210 /* TIPPEREmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 94723C771BB49F6A00C33210 /* TIPPEREmpty.m */; settings = {ASSET_TAGS = (); }; };
+		94723C7B1BB507D100C33210 /* TIPPERSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 94723C7A1BB507D100C33210 /* TIPPERSettings.m */; settings = {ASSET_TAGS = (); }; };
 		948418571AB6525E001C633E /* QRCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9484183A1AB61396001C633E /* QRCode.framework */; };
 		9484185A1AB6525F001C633E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 948418581AB6525F001C633E /* Alamofire.framework */; };
 		9484185B1AB6525F001C633E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 948418591AB6525F001C633E /* SwiftyJSON.framework */; };
@@ -190,6 +191,8 @@
 		94723C741BB49F3F00C33210 /* TIPPERTipperClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIPPERTipperClient.m; sourceTree = "<group>"; };
 		94723C761BB49F6A00C33210 /* TIPPEREmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIPPEREmpty.h; sourceTree = "<group>"; };
 		94723C771BB49F6A00C33210 /* TIPPEREmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIPPEREmpty.m; sourceTree = "<group>"; };
+		94723C791BB507D100C33210 /* TIPPERSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIPPERSettings.h; sourceTree = "<group>"; };
+		94723C7A1BB507D100C33210 /* TIPPERSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIPPERSettings.m; sourceTree = "<group>"; };
 		9484183A1AB61396001C633E /* QRCode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRCode.framework; path = Carthage/Build/iOS/QRCode.framework; sourceTree = "<group>"; };
 		948418581AB6525F001C633E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		948418591AB6525F001C633E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -439,6 +442,8 @@
 		94723C661BB4939A00C33210 /* AWSGateway */ = {
 			isa = PBXGroup;
 			children = (
+				94723C791BB507D100C33210 /* TIPPERSettings.h */,
+				94723C7A1BB507D100C33210 /* TIPPERSettings.m */,
 				94723C761BB49F6A00C33210 /* TIPPEREmpty.h */,
 				94723C771BB49F6A00C33210 /* TIPPEREmpty.m */,
 				94723C731BB49F3F00C33210 /* TIPPERTipperClient.h */,
@@ -900,6 +905,7 @@
 				94416C131AAF989F00117AFC /* CurrentUser.swift in Sources */,
 				941631831AC3CC5E002016FD /* AddressController.swift in Sources */,
 				943243161B2D6C1300D1A1D6 /* HeaderDetailCell.swift in Sources */,
+				94723C7B1BB507D100C33210 /* TIPPERSettings.m in Sources */,
 				949842021B25FC590079082C /* TipDetailsViewController.swift in Sources */,
 				9426B28B1B97F177001F996C /* CustomUnwindModalSegue.swift in Sources */,
 				9437D3DC1BA24C0C00FD5ECB /* Notification.swift in Sources */,

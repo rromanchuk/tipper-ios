@@ -20,6 +20,7 @@
 #import <AWSCore/AWSSynchronizedMutableDictionary.h>
 
 #import "TIPPEREmpty.h"
+#import "TIPPERSettings.h"
 
 @interface AWSAPIGatewayClient()
 
@@ -166,7 +167,7 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
                    queryParameters:queryParameters
                   headerParameters:headerParameters
                               body:nil
-                     responseClass:[TIPPEREmpty class]];
+                     responseClass:[TIPPERSettings class]];
 }
 
 - (AWSTask *)tipGet:(NSString *)_id {
