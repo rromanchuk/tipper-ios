@@ -98,5 +98,53 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tipper/CoreData/Settings.swift"
+            timestampString = "464906999.132173"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "get(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Tipper.Settings.get (Tipper.Settings.Type)(Swift.String) -&gt; ()"
+                  moduleName = "Tipper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ryan/dev/Tipper/Tipper/CoreData/Settings.swift"
+                  timestampString = "464907013.166031"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Tipper.Settings.(get (Tipper.Settings.Type) -&gt; (Swift.String) -&gt; ()).(closure #1)"
+                  moduleName = "Tipper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ryan/dev/Tipper/Tipper/CoreData/Settings.swift"
+                  timestampString = "464907013.166291"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "15">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
