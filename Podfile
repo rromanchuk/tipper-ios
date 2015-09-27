@@ -13,7 +13,7 @@ target 'Tipper' do
     pod 'SSKeychain'
     pod 'SDCAlertView'
     pod 'TSMessages'
-    #pod 'Google/Analytics'
+    pod 'Google/Analytics'
     #pod 'Reveal-iOS-SDK'
 end
 
