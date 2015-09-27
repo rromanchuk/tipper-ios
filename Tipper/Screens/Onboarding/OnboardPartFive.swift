@@ -1,18 +1,15 @@
 //
-//  OnboardNavigationController.swift
+//  OnboardPartFive.swift
 //  Tipper
 //
-//  Created by Ryan Romanchuk on 9/8/15.
-//  Copyright (c) 2015 Ryan Romanchuk. All rights reserved.
+//  Created by Ryan Romanchuk on 9/27/15.
+//  Copyright © 2015 Ryan Romanchuk. All rights reserved.
 //
 
 import UIKit
 
-class OnboardNavigationController: UINavigationController {
-    var managedObjectContext: NSManagedObjectContext!
-    var currentUser: CurrentUser!
-    var market: Market!
-    
+class OnboardPartFive: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

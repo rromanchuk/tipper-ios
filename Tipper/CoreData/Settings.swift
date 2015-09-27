@@ -53,6 +53,10 @@ class Settings: NSManagedObject, CoreDataUpdatable {
     class func get(settingId: String) {
         TIPPERTipperClient.defaultClient().settingsGet(settingId).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             print("Settings fetch \(task.result), \(task.error)")
+            if let settings = task.result as? TIPPERSettings {
+                Settings.sharedInstance.version = settings.Version
+            }
+            
             return nil;
         })
     }

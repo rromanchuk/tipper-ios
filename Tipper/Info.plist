@@ -33,11 +33,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-<<<<<<< HEAD
-	<string>232</string>
-=======
-	<string>231</string>
->>>>>>> d070951ad08aeb8e73d7f90e9f726c2be46e29f3
+	<string>235</string>
 	<key>COGNITO_POOL</key>
 	<string>$(COGNITO_POOL)</string>
 	<key>Configuration</key>

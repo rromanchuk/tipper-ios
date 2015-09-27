@@ -1,79 +1,41 @@
 //
-//  SplashViewController.swift
+//  OnboardPartOne.swift
 //  Tipper
 //
-//  Created by Ryan Romanchuk on 3/10/15.
-//  Copyright (c) 2015 Ryan Romanchuk. All rights reserved.
+//  Created by Ryan Romanchuk on 9/26/15.
+//  Copyright © 2015 Ryan Romanchuk. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import TwitterKit
 
-class SplashViewController: UIViewController {
+class OnboardPartOne: UIViewController, StandardViewController {
+    
     var provider: AWSCognitoCredentialsProvider!
     var currentUser: CurrentUser!
-    var className = "SplashViewController"
+    var className = "OnboardPartOne"
     var managedObjectContext: NSManagedObjectContext?
-    var market: Market?
-    var twitterSession: TWTRAuthSession? = nil
-
-    @IBOutlet weak var twitterLoginButton: UIButton!
-
-
+    var market: Market!
+    weak var containerController: OnboardingViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let gradient: CAGradientLayer = CAGradientLayer()
-        gradient.frame = view.bounds
-        gradient.colors = [UIColor.colorWithRGB(0x7BD5AA, alpha: 1.0).CGColor, UIColor.colorWithRGB(0x5BAB85, alpha: 1.0).CGColor]
-        view.layer.insertSublayer(gradient, atIndex: 0)
-        
-//        twitterLoginButton.layer.borderWidth = 1.0
-//        twitterLoginButton.layer.borderColor = UIColor.whiteColor().CGColor
-        print("\(className)::\(__FUNCTION__) \(managedObjectContext)")
-
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillResignActive:", name: UIApplicationWillResignActiveNotification, object: UIApplication.sharedApplication())
-        
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        print("\(className)::\(__FUNCTION__) isTwitterAuthenticated \(currentUser.isTwitterAuthenticated)")
-        if (currentUser.isTwitterAuthenticated) {
-            SwiftSpinner.hide(nil)
-            performSegueWithIdentifier("Home", sender: self)
-            //performSegueWithIdentifier("Onboarding", sender: self)
-
-        }
-    }
-
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "Home") {
-            let vc = segue.destinationViewController as! HomeController
-            vc.managedObjectContext = managedObjectContext
-            vc.currentUser = currentUser
-            vc.market = market
-        } else if (segue.identifier == "Onboarding") {
-            let vc = segue.destinationViewController as! OnboardNavigationController
-            let topVc = vc.topViewController as! OnboardFundingViewController
-            topVc.managedObjectContext = managedObjectContext
-            topVc.currentUser = currentUser
-            topVc.market = market
-        }
-    }
-
-    @IBAction func didTapTOS(sender: UITapGestureRecognizer) {
-        UIApplication.sharedApplication().openURL(NSURL(string:Config.get("PRIVACY_URL"))!)
-    }
-
-    @IBAction func didTapLogin(sender: TWTRLogInButton) {
         print("\(className)::\(__FUNCTION__)")
-        logInWithCompletion()
+        containerController?.twitterLoginButton.setTitle("Sign in to Twitter", forState: .Normal)
+        // Do any additional setup after loading the view.
     }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func didTapButton(sender: UIButton) {
+        print("\(className)::\(__FUNCTION__)")
+    }
+    
+    
     
     @IBAction func unwindToSplash(unwindSegue: UIStoryboardSegue) {
         print("\(className)::\(__FUNCTION__)")
@@ -92,15 +54,16 @@ class SplashViewController: UIViewController {
         }
     }
 
-
+    
+    
     // MARK: Application lifecycle
-
+    
     func applicationWillResignActive(aNotification: NSNotification) {
         print("\(className)::\(__FUNCTION__)")
         SwiftSpinner.hide(nil)
     }
-
-
+    
+    
     private func logInWithCompletion() {
         print("\(className)::\(__FUNCTION__)")
         Twitter.sharedInstance().logInWithCompletion { (session, error) -> Void in
@@ -119,7 +82,7 @@ class SplashViewController: UIViewController {
             }
         }
     }
-
+    
     private func refreshProvider(twitterSession: TWTRAuthSession) {
         print("\(className)::\(__FUNCTION__)")
         provider.refresh().continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
@@ -139,7 +102,7 @@ class SplashViewController: UIViewController {
             return nil
         })
     }
-
+    
     private func loadUser(twitterUserId: String) {
         print("\(className)::\(__FUNCTION__)")
         Twitter.sharedInstance().APIClient.loadUserWithID(twitterUserId, completion: { (user, error) -> Void in
@@ -156,7 +119,7 @@ class SplashViewController: UIViewController {
             }
         })
     }
-
+    
     private func authenticate() {
         print("\(className)::\(__FUNCTION__)")
         self.currentUser.authenticate(Twitter.sharedInstance().session()!) { () -> Void in
@@ -169,4 +132,7 @@ class SplashViewController: UIViewController {
             //self.performSegueWithIdentifier("Home", sender: self)
         }
     }
+
+
+
 }

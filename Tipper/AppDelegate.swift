@@ -77,7 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         market = NSEntityDescription.insertNewObjectForEntityForName("Market", inManagedObjectContext: managedObjectContext) as! Market
         market.save()
 
-        let firstController = window?.rootViewController as! SplashViewController
+        let firstController = window?.rootViewController as! OnboardingViewController
         firstController.currentUser = CurrentUser.currentUser(managedObjectContext)
         firstController.provider = provider
         firstController.managedObjectContext = managedObjectContext
@@ -157,9 +157,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         writeToDisk()
     }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print("\(className)::\(__FUNCTION__)")
+        NSNotificationCenter.defaultCenter().postNotificationName("didFailToRegisterForRemoteNotificationsWithError", object: nil)
+    }
 
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         print("\(className)::\(__FUNCTION__)")
+        NSNotificationCenter.defaultCenter().postNotificationName("didRegisterForRemoteNotificationsWithDeviceToken", object: nil)
+        
         let deviceTokenString = "\(deviceToken)"
             .stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString:"<>"))
             .stringByReplacingOccurrencesOfString(" ", withString: "")
