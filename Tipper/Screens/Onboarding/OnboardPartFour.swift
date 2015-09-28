@@ -9,6 +9,7 @@
 import UIKit
 
 class OnboardPartFour: UIViewController, StandardViewController {
+    var provider: AWSCognitoCredentialsProvider!
     var currentUser: CurrentUser!
     var className = "OnboardPartThree"
     var managedObjectContext: NSManagedObjectContext?

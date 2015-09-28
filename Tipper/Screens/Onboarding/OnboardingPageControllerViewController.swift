@@ -22,7 +22,7 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
         self.storyboard!.instantiateViewControllerWithIdentifier("OnboardPartTwo"),
         self.storyboard!.instantiateViewControllerWithIdentifier("OnboardPartThree"),
         self.storyboard!.instantiateViewControllerWithIdentifier("OnboardPartFour"),
-        self.storyboard!.instantiateViewControllerWithIdentifier("OnboardPartFour")]
+        self.storyboard!.instantiateViewControllerWithIdentifier("OnboardPartFive")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,7 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
             (page as! StandardViewController).managedObjectContext = managedObjectContext
             (page as! StandardViewController).currentUser = currentUser
             (page as! StandardViewController).market = market
-            (page as! StandardViewController).market = market
+            (page as! StandardViewController).provider = provider
             (page as! StandardViewController).containerController = containerController
             
         }
@@ -55,18 +55,24 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
     
     
     func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [UIViewController]) {
+        
         if let _ = pendingViewControllers[0] as? OnboardPartTwo {
+            containerController?.pageControl.hidden = false
             containerController?.pageControl.currentPage = 0
             containerController?.twitterLoginButton.setTitle("Next", forState: .Normal)
+            containerController?.twitterLoginButton.setImage(nil, forState: .Normal)
         } else if let _ = pendingViewControllers[0] as? OnboardPartThree {
+            containerController?.pageControl.hidden = false
             containerController?.pageControl.currentPage = 1
             containerController?.twitterLoginButton.setTitle("Buy with Apple Pay", forState: .Normal)
         } else if let _ = pendingViewControllers[0] as? OnboardPartFour {
+            containerController?.pageControl.currentPage = 2
             containerController?.twitterLoginButton.setTitle("Allow Notifications", forState: .Normal)
         } else if let _ = pendingViewControllers[0] as? OnboardPartFive {
+            containerController?.pageControl.currentPage = 3
             containerController?.twitterLoginButton.setTitle("Next", forState: .Normal)
         } else if let _ = pendingViewControllers[0] as? OnboardPartOne {
-            containerController?.twitterLoginButton.setTitle("Sign in with Twitter", forState: .Normal)
+            containerController?.twitterLoginButton.setTitle("  Sign in with Twitter", forState: .Normal)
         }
     }
     
@@ -77,6 +83,8 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
         
         if (idx + 1) < pages.count {
             self.setViewControllers([pages[idx + 1]], direction: .Forward, animated: true, completion: nil)
+        } else if (idx + 1) == pages.count {
+            containerController?.performSegueWithIdentifier("Home", sender: self)
         }
     }
     
@@ -84,7 +92,9 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
         print("\(className)::\(__FUNCTION__) currentIndex: \(pages.indexOf(viewController)),  allPages: \(self.pages)")
         if let currentIndex = pages.indexOf(viewController) where (currentIndex - 1) >= pages.count {
             let newIndex = currentIndex - 1
-            if newIndex >= pages.count {
+            if newIndex == 0 {
+                return nil
+            }else if newIndex >= pages.count {
                 return pages[newIndex]
             } else {
                 return nil
@@ -99,7 +109,9 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
         print("\(className)::\(__FUNCTION__) currentIndex: \(pages.indexOf(viewController)),  allPages: \(self.pages)")
         if let currentIndex = pages.indexOf(viewController) {
             let newIndex = currentIndex + 1
-            if newIndex < pages.count {
+            if newIndex == 1 {
+                return nil
+            } else if newIndex < pages.count {
                 return pages[newIndex]
             } else {
                 return nil
@@ -130,6 +142,7 @@ protocol StandardViewController:class {
     var currentUser: CurrentUser! {get set}
     var market: Market! {get set}
     var managedObjectContext: NSManagedObjectContext? {get set}
+    var provider: AWSCognitoCredentialsProvider! {get set}
     weak var containerController: OnboardingViewController? {get set}
     func didTapButton(sender: UIButton)
 }

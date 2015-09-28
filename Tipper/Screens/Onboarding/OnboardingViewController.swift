@@ -72,6 +72,7 @@ class OnboardingViewController: UIViewController {
             vc.managedObjectContext = self.managedObjectContext
             vc.currentUser = self.currentUser
             vc.containerController = self
+            vc.provider = self.provider
             //vc.onboardingDelegate = self
             onboardingDelegate = vc
         } else if (segue.identifier == "Home") {

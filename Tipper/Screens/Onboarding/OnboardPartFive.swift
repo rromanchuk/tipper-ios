@@ -8,8 +8,14 @@
 
 import UIKit
 
-class OnboardPartFive: UIViewController {
-
+class OnboardPartFive: UIViewController, StandardViewController {
+    var provider: AWSCognitoCredentialsProvider!
+    var currentUser: CurrentUser!
+    var className = "OnboardPartFive"
+    var managedObjectContext: NSManagedObjectContext?
+    var market: Market!
+    weak var containerController: OnboardingViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,15 +27,12 @@ class OnboardPartFive: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func didTapButton(sender: UIButton) {
+        print("\(className)::\(__FUNCTION__)")
+        API.sharedInstance.autotip({ (json, error) -> Void in
+            //
+        })
+        (parentViewController as! OnboardingPageControllerViewController).autoAdvance()
     }
-    */
-
+    
 }

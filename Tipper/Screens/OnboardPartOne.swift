@@ -33,6 +33,7 @@ class OnboardPartOne: UIViewController, StandardViewController {
     
     func didTapButton(sender: UIButton) {
         print("\(className)::\(__FUNCTION__)")
+        logInWithCompletion()
     }
     
     
@@ -128,8 +129,7 @@ class OnboardPartOne: UIViewController, StandardViewController {
             SwiftSpinner.hide(nil)
             self.currentUser.registerForRemoteNotificationsIfNeeded()
             self.currentUser.writeToDisk()
-            self.performSegueWithIdentifier("Onboarding", sender: self)
-            //self.performSegueWithIdentifier("Home", sender: self)
+            (self.parentViewController as! OnboardingPageControllerViewController).autoAdvance()
         }
     }
 

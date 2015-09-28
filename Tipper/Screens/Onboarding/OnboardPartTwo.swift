@@ -17,10 +17,11 @@ class OnboardPartTwo: UIViewController, StandardViewController {
     var market: Market!
     weak var onboardingDelegate: OnboardingViewController?
     weak var containerController: OnboardingViewController?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("\(className)::\(__FUNCTION__)")
-        containerController?.twitterLoginButton.setTitle("Part two", forState: .Normal)
         // Do any additional setup after loading the view.
     }
 
@@ -32,6 +33,7 @@ class OnboardPartTwo: UIViewController, StandardViewController {
 
     func didTapButton(sender: UIButton) {
         print("\(className)::\(__FUNCTION__)")
+        (self.parentViewController as! OnboardingPageControllerViewController).autoAdvance()
     }
     
 }

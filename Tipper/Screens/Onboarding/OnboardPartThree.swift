@@ -12,6 +12,7 @@ import Stripe
 
 
 class OnboardPartThree: UIViewController, PKPaymentAuthorizationViewControllerDelegate, STPCheckoutViewControllerDelegate, UINavigationControllerDelegate, StandardViewController {
+    var provider: AWSCognitoCredentialsProvider!
     var currentUser: CurrentUser!
     var className = "OnboardPartThree"
     var managedObjectContext: NSManagedObjectContext?
@@ -74,7 +75,7 @@ class OnboardPartThree: UIViewController, PKPaymentAuthorizationViewControllerDe
                 let applePayController = STPTestPaymentAuthorizationViewController(paymentRequest: request)
                 applePayController.delegate = self
                 self.presentViewController(applePayController, animated: true, completion: nil)
-                #else
+            #else
                 let applePayController = PKPaymentAuthorizationViewController(paymentRequest: request)
                 applePayController.delegate = self
                 self.presentViewController(applePayController, animated: true, completion: nil)
@@ -134,8 +135,8 @@ class OnboardPartThree: UIViewController, PKPaymentAuthorizationViewControllerDe
             } else {
                 //self?.currentUser.updateEntityWithJSON(json)
                 completion(STPBackendChargeResult.Success, nil)
-                self?.performSegueWithIdentifier("OnboardStepTwo", sender: self)
-                TSMessage.showNotificationInViewController(self?.parentViewController!, title: "Payment complete", subtitle: "Your bitcoin will arrive shortly.", type: .Success, duration: 5.0)
+                (self!.parentViewController as! OnboardingPageControllerViewController).autoAdvance()
+                //TSMessage.showNotificationInViewController(self?.parentViewController!, title: "Payment complete", subtitle: "Your bitcoin will arrive shortly.", type: .Success, duration: 5.0)
             }
             })
     }
