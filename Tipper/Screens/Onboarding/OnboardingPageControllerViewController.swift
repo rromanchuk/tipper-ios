@@ -55,37 +55,43 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
     
     
     func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [UIViewController]) {
-
-        if let _ = pendingViewControllers[0] as? OnboardPartTwo {
-            containerController?.pageControl.hidden = false
-            containerController?.pageControl.currentPage = 0
-            containerController?.twitterLoginButton.setTitle("Next", forState: .Normal)
-        } else if let _ = pendingViewControllers[0] as? OnboardPartThree {
-            containerController?.pageControl.hidden = false
-            containerController?.pageControl.currentPage = 1
-            containerController?.twitterLoginButton.setTitle("Buy with Apple Pay", forState: .Normal)
-        } else if let _ = pendingViewControllers[0] as? OnboardPartFour {
-            containerController?.pageControl.currentPage = 2
-            containerController?.twitterLoginButton.setTitle("Allow Notifications", forState: .Normal)
-        } else if let _ = pendingViewControllers[0] as? OnboardPartFive {
-            containerController?.pageControl.currentPage = 3
-            containerController?.twitterLoginButton.setTitle("Next", forState: .Normal)
-        } else if let _ = pendingViewControllers[0] as? OnboardPartOne {
-            containerController?.twitterLoginButton.setTitle("  Sign in with Twitter", forState: .Normal)
-        }
+        setupLabels(pendingViewControllers[0])
     }
     
     func autoAdvance() {
         print("\(className)::\(__FUNCTION__)")
-        containerController?.twitterLoginButton.setImage(nil, forState: .Normal)
         let vc = viewControllers![0]
         let idx = pages.indexOf(vc)!
         
         if (idx + 1) < pages.count {
-            self.setViewControllers([pages[idx + 1]], direction: .Forward, animated: true, completion: nil)
+            let newController = pages[idx + 1]
+            setupLabels(newController)
+            self.setViewControllers([newController], direction: .Forward, animated: true, completion: nil)
         } else if (idx + 1) == pages.count {
             containerController?.performSegueWithIdentifier("Home", sender: self)
         }
+    }
+
+    func setupLabels(pendingViewControllers: UIViewController) {
+        if let _ = pendingViewControllers as? OnboardPartTwo {
+            containerController?.twitterLoginButton.setImage(nil, forState: .Normal)
+            containerController?.pageControl.hidden = false
+            containerController?.pageControl.currentPage = 0
+            containerController?.twitterLoginButton.setTitle("Next", forState: .Normal)
+        } else if let _ = pendingViewControllers as? OnboardPartThree {
+            containerController?.pageControl.hidden = false
+            containerController?.pageControl.currentPage = 1
+            containerController?.twitterLoginButton.setTitle("Buy with Apple Pay", forState: .Normal)
+        } else if let _ = pendingViewControllers as? OnboardPartFour {
+            containerController?.pageControl.currentPage = 2
+            containerController?.twitterLoginButton.setTitle("Allow Notifications", forState: .Normal)
+        } else if let _ = pendingViewControllers as? OnboardPartFive {
+            containerController?.pageControl.currentPage = 3
+            containerController?.twitterLoginButton.setTitle("Next", forState: .Normal)
+        } else if let _ = pendingViewControllers as? OnboardPartOne {
+            containerController?.twitterLoginButton.setTitle("  Sign in with Twitter", forState: .Normal)
+        }
+
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {

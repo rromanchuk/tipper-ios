@@ -36,8 +36,7 @@ class OnboardPartOne: UIViewController, StandardViewController {
         logInWithCompletion()
     }
     
-    
-    
+
     @IBAction func unwindToSplash(unwindSegue: UIStoryboardSegue) {
         print("\(className)::\(__FUNCTION__)")
         if let _ = unwindSegue.sourceViewController as? HomeController {

@@ -134,6 +134,7 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
             notificationsButton.hidden = true
             accountButton.tintColor = UIColor.whiteColor()
             notificationsButton.tintColor = UIColor.whiteColor()
+            notificationBadge.hidden = true
             setHeaderTitle("Account")
         case .NotificationsScreen:
             closeButtonRight.hidden = false
