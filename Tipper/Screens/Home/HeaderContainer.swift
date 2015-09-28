@@ -35,57 +35,6 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
     @IBOutlet weak var notificationBadge: NotficationBadge!
     @IBOutlet weak var notificationCountLabel: UILabel!
     
-    
-//    lazy var actionSheet: UIAlertController = {
-//        let _actionController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-//        if let popoverController = _actionController.popoverPresentationController {
-//            popoverController.sourceView = self.settingsButton
-//            popoverController.sourceRect = self.settingsButton.bounds
-//        }
-//
-//
-//
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { [weak self] (action) in
-//            println("\(self?.className)::\(__FUNCTION__) cancelAction")
-//        }
-//        _actionController.addAction(cancelAction)
-//
-//        let destroyAction = UIAlertAction(title: "Logout", style: .Destructive) { [weak self] (action) in
-//            println("\(self?.className)::\(__FUNCTION__) destroyAction")
-//            
-//            if let vc = self?.parentViewController as? Logoutable {
-//                vc.backToSplash()
-//            }
-//        }
-//
-//        let disconnectAction = UIAlertAction(title: "Stop automatic tipping", style: .Destructive) { [weak self] (action) in
-//            println("\(self?.className)::\(__FUNCTION__) destroyAction")
-//            self?.currentUser.disconnect()
-//        }
-//
-//
-//        let feedbackAction = UIAlertAction(title: "Feedback and Support", style: .Default, handler: { [weak self] (action) -> Void in
-//            let mailComposer = MFMailComposeViewController()
-//            mailComposer.mailComposeDelegate = self
-//            mailComposer.setSubject("Feedback and Support")
-//            mailComposer.setToRecipients(["support@coinbit.tips"])
-//            self?.presentViewController(mailComposer, animated:true, completion: nil)
-//        })
-//
-//        let refetchFeedAction = UIAlertAction(title: "Refetch feed", style: .Default, handler: { [weak self] (action) -> Void in
-//            self?.currentUser.refetchFeeds { (error) -> Void in
-//                println("\(error)")
-//            }
-//        })
-//
-//        //_actionController.addAction(refetchFeedAction)
-//        _actionController.addAction(feedbackAction)
-//        _actionController.addAction(destroyAction)
-//        _actionController.addAction(disconnectAction)
-//        return _actionController
-//    }()
-
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,8 +43,6 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
         
         refreshHeader()
         updateMarkets()
-        
-        
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillResignActive:", name: UIApplicationWillResignActiveNotification, object: UIApplication.sharedApplication())
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidEnterBackground:", name: UIApplicationDidEnterBackgroundNotification, object: UIApplication.sharedApplication())
@@ -126,7 +73,6 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
     
     func refreshHeader() {
         //print("\(className)::\(__FUNCTION__) screenType: \(activeScreenType.rawValue)")
-        
 
         switch activeScreenType {
         case .AccountScreen:
