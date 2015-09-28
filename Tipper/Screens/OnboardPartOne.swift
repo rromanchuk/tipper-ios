@@ -68,6 +68,7 @@ class OnboardPartOne: UIViewController, StandardViewController {
     private func logInWithCompletion() {
         print("\(className)::\(__FUNCTION__)")
         Twitter.sharedInstance().logInWithCompletion { (session, error) -> Void in
+            print("\(self.className)::\(__FUNCTION__) session:\(session), error: \(error)")
             SwiftSpinner.show("Logging you in...")
             if let session = session where error == nil {
                 self.provider.logins = ["api.twitter.com": "\(session.authToken);\(session.authTokenSecret)"]
@@ -75,7 +76,7 @@ class OnboardPartOne: UIViewController, StandardViewController {
                 self.refreshProvider(session)
             } else {
                 SwiftSpinner.hide({ () -> Void in
-                    let alert = UIAlertController(title: "Opps", message: error!.localizedDescription, preferredStyle: .Alert)
+                    let alert = UIAlertController(title: "Opps", message: "Something went wrong connecting to your Twitter account. Please verify your Twitter account is properly connected in iOS settings.", preferredStyle: .Alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
                     alert.addAction(defaultAction)
                     self.presentViewController(alert, animated: true, completion: nil)

@@ -1711,7 +1711,7 @@ tipper will send a Bitcoin tip.</string>
                                 <rect key="frame" x="0.0" y="22" width="414" height="92"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tl5-jp-ON5" id="8j9-Rb-sSN">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="91.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="91"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transaction-confirmed" translatesAutoresizingMaskIntoConstraints="NO" id="JYc-IW-cGt">
@@ -1726,14 +1726,14 @@ tipper will send a Bitcoin tip.</string>
                                             <rect key="frame" x="58" y="25" width="308" height="48"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="15"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" text="Transaction confirmed." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVl-7e-fFO">
                                             <rect key="frame" x="58" y="18" width="133" height="15"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dWq-Vy-0Ye" customClass="NotificationSeenIndicator" customModule="Tipper" customModuleProvider="target">
@@ -1809,7 +1809,7 @@ tipper will send a Bitcoin tip.</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tipper" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrA-pi-tfE">
-                                <rect key="frame" x="247" y="129" width="105.5" height="45"/>
+                                <rect key="frame" x="247" y="129" width="106" height="45"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Bariol-Bold" family="Bariol" pointSize="45"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1877,7 +1877,7 @@ tipper will send a Bitcoin tip.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8D8-9R-qwP">
-                                        <rect key="frame" x="155" y="31" width="11.5" height="20"/>
+                                        <rect key="frame" x="155" y="31" width="12" height="20"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1971,8 +1971,8 @@ tipper will send a Bitcoin tip.</string>
                                     </mask>
                                 </variation>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start by loading your wallet." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y84-Q6-1b2">
-                                <rect key="frame" x="181.5" y="199" width="237.5" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Start by loading your wallet." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y84-Q6-1b2">
+                                <rect key="frame" x="182" y="199" width="237" height="22"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2060,7 +2060,7 @@ tipper will send a Bitcoin tip.</string>
                                 </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="These can be configured in Settings. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQU-EG-8Zk">
-                                <rect key="frame" x="142" y="470" width="316.5" height="22"/>
+                                <rect key="frame" x="142" y="470" width="317" height="22"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2156,10 +2156,10 @@ tipper will send a Bitcoin tip.</string>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="gp1-zH-vfP"/>
-                                        <exclude reference="etl-ig-hyP"/>
-                                        <exclude reference="UV4-pd-i2M"/>
                                         <exclude reference="7gQ-xD-tIr"/>
+                                        <exclude reference="UV4-pd-i2M"/>
+                                        <exclude reference="etl-ig-hyP"/>
+                                        <exclude reference="gp1-zH-vfP"/>
                                     </mask>
                                 </variation>
                             </imageView>

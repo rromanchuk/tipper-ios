@@ -55,12 +55,11 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
     
     
     func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [UIViewController]) {
-        
+
         if let _ = pendingViewControllers[0] as? OnboardPartTwo {
             containerController?.pageControl.hidden = false
             containerController?.pageControl.currentPage = 0
             containerController?.twitterLoginButton.setTitle("Next", forState: .Normal)
-            containerController?.twitterLoginButton.setImage(nil, forState: .Normal)
         } else if let _ = pendingViewControllers[0] as? OnboardPartThree {
             containerController?.pageControl.hidden = false
             containerController?.pageControl.currentPage = 1
@@ -78,6 +77,7 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
     
     func autoAdvance() {
         print("\(className)::\(__FUNCTION__)")
+        containerController?.twitterLoginButton.setImage(nil, forState: .Normal)
         let vc = viewControllers![0]
         let idx = pages.indexOf(vc)!
         
@@ -121,15 +121,7 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
             return nil
         }
     }
-    
-//    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-//        return 0
-//    }
-//    
-//    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-//        return pages.count
-//    }
-    
+
     // MARK: OnboardingDelegate
     func didTapButton(sender: UIButton) {
         print("\(className)::\(__FUNCTION__)")
