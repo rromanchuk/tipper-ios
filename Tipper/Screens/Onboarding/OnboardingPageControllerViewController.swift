@@ -28,13 +28,7 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
         super.viewDidLoad()
         delegate = self
         dataSource = self
-        
-        
-        setupViewControllers()
-        self.setViewControllers([self.pages[0]], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
-        
-        
-        // Do any additional setup after loading the view.
+        reset()
     }
     
     func setupViewControllers() {
@@ -46,6 +40,11 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
             (page as! StandardViewController).containerController = containerController
             
         }
+    }
+
+    func reset() {
+        setupViewControllers()
+        self.setViewControllers([self.pages[0]], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -95,12 +94,12 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        print("\(className)::\(__FUNCTION__) currentIndex: \(pages.indexOf(viewController)),  allPages: \(self.pages)")
-        if let currentIndex = pages.indexOf(viewController) where (currentIndex - 1) >= pages.count {
+        print("\(className)::\(__FUNCTION__) currentIndex: \(pages.indexOf(viewController)!),  allPages: \(self.pages.count)")
+        if let currentIndex = pages.indexOf(viewController) {
             let newIndex = currentIndex - 1
             if newIndex == 0 {
                 return nil
-            }else if newIndex >= pages.count {
+            }else if newIndex > 0 {
                 return pages[newIndex]
             } else {
                 return nil
@@ -112,7 +111,7 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        print("\(className)::\(__FUNCTION__) currentIndex: \(pages.indexOf(viewController)),  allPages: \(self.pages)")
+        print("\(className)::\(__FUNCTION__) currentIndex: \(pages.indexOf(viewController)!),  allPages: \(self.pages.count)")
         if let currentIndex = pages.indexOf(viewController) {
             let newIndex = currentIndex + 1
             if newIndex == 1 {

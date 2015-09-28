@@ -153,6 +153,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4g6-e3-hRf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="OKT-wf-h11" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-3040" y="-826"/>
         </scene>
@@ -813,6 +814,7 @@ tipper will send a Bitcoin tip.</string>
                         <outlet property="twitterUsername" destination="x50-na-n7T" id="8tn-Ld-TeC"/>
                         <outlet property="ubtcExchangeLabel" destination="WgK-yF-TQV" id="pFw-u9-2jD"/>
                         <outlet property="usdExchangeLabel" destination="3cn-W2-1Jv" id="srD-5m-8MC"/>
+                        <segue destination="OKT-wf-h11" kind="unwind" identifier="BackToSplashFromAccount" unwindAction="unwindToSplash:" id="CdU-Hi-69T"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BaR-wB-r7m" userLabel="First Responder" sceneMemberID="firstResponder"/>
