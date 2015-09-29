@@ -16,7 +16,7 @@
 #import "SSKeychain.h"
 #import <TSMessages/TSMessageView.h>
 
-#import <Google/Analytics.h>
+//#import <Google/Analytics.h>
 #import "ApplePayStubs.h"
 
 #import "TipperTipperClient.h"

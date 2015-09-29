@@ -37,19 +37,6 @@ class OnboardPartThree: UIViewController, PKPaymentAuthorizationViewControllerDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let paymentRequest = Stripe.paymentRequestWithMerchantIdentifier(ApplePayMerchantID)
-        if PKPaymentAuthorizationViewController.canMakePaymentsUsingNetworks(SupportedPaymentNetworks) && Stripe.canSubmitPaymentRequest(paymentRequest) {
-            print("ApplePay supported", terminator: "")
-            containerController?.twitterLoginButton.hidden = false
-            //self.stripeButton.hidden = true
-        } else {
-            print("ApplePay not supported", terminator: "")
-            //self.applePayButton.hidden = true
-            //self.stripeButton.hidden = false
-        }
-
-
         // Do any additional setup after loading the view.
     }
 
@@ -163,7 +150,8 @@ class OnboardPartThree: UIViewController, PKPaymentAuthorizationViewControllerDe
 
     
     func didTapButton(sender: UIButton) {
-         print("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__)")
+        didTapPay(sender)
     }
 
 }

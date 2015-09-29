@@ -21,7 +21,6 @@ class OnboardPartOne: UIViewController, StandardViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("\(className)::\(__FUNCTION__)")
-        containerController?.twitterLoginButton.setTitle("Sign in to Twitter", forState: .Normal)
         // Do any additional setup after loading the view.
     }
 
@@ -55,7 +54,6 @@ class OnboardPartOne: UIViewController, StandardViewController {
     }
 
     
-    
     // MARK: Application lifecycle
     
     func applicationWillResignActive(aNotification: NSNotification) {
@@ -66,9 +64,9 @@ class OnboardPartOne: UIViewController, StandardViewController {
     
     private func logInWithCompletion() {
         print("\(className)::\(__FUNCTION__)")
+        SwiftSpinner.show("Logging you in...")
         Twitter.sharedInstance().logInWithCompletion { (session, error) -> Void in
             print("\(self.className)::\(__FUNCTION__) session:\(session), error: \(error)")
-            SwiftSpinner.show("Logging you in...")
             if let session = session where error == nil {
                 self.provider.logins = ["api.twitter.com": "\(session.authToken);\(session.authTokenSecret)"]
                 self.currentUser.twitterAuthenticationWithTKSession(session)
