@@ -13,22 +13,6 @@ PODS:
     - AWSCore (= 2.2.6)
   - AWSSQS (2.2.6):
     - AWSCore (= 2.2.6)
-  - Google/Analytics (1.1.0):
-    - Google/Core
-    - GoogleAnalytics (~> 3.12)
-  - Google/Core (1.1.0):
-    - GoogleInterchangeUtilities (~> 1.0)
-    - GoogleNetworkingUtilities (~> 1.0)
-    - GoogleSymbolUtilities (~> 1.0)
-    - GoogleUtilities (~> 1.1)
-  - GoogleAnalytics (3.13.0)
-  - GoogleInterchangeUtilities (1.0.0):
-    - GoogleSymbolUtilities (~> 1.0)
-  - GoogleNetworkingUtilities (1.0.0):
-    - GoogleSymbolUtilities (~> 1.0)
-  - GoogleSymbolUtilities (1.0.0)
-  - GoogleUtilities (1.1.0):
-    - GoogleSymbolUtilities (~> 1.0.0)
   - HexColors (2.2.1)
   - RBBAnimation (0.4.0)
   - SDCAlertView (2.5.4):
@@ -48,7 +32,6 @@ DEPENDENCIES:
   - AWSMobileAnalytics
   - AWSSNS
   - AWSSQS
-  - Google/Analytics
   - SDCAlertView
   - SSKeychain
   - TSMessages
@@ -62,12 +45,6 @@ SPEC CHECKSUMS:
   AWSMobileAnalytics: 522b2bb4705f05e7a2eb9f86a085ddfce64f183a
   AWSSNS: 0188eab8b808981c531bbcd4ef238325c71270ec
   AWSSQS: a2304d18086ce907aa7a8bba275861a69886a662
-  Google: ec6c7729037b9579e52a4880ba06eb38ddb1de68
-  GoogleAnalytics: fcf1f1cad57ae1a9a53520018f0f680ceeeb8b49
-  GoogleInterchangeUtilities: fe088bea8c936218e52324a004d279c4491b9d65
-  GoogleNetworkingUtilities: 292992ab31b7b4ba32809a0e8b40e324cdfb2c0c
-  GoogleSymbolUtilities: a7b0feed1fe667c8d5e647177938d0ecd62d6948
-  GoogleUtilities: 8ed9134debe11719097881711464752900668f10
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
   RBBAnimation: 4b2d66f6d993febce63cd564da934985313b9c59
   SDCAlertView: 2e2b0ecc5f1ec367e45d83efa2e512688ca7fa55
