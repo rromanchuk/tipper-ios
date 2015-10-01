@@ -104,7 +104,7 @@ class OnboardPartOne: UIViewController, StandardViewController {
     
     private func loadUser(twitterUserId: String) {
         print("\(className)::\(__FUNCTION__)")
-        Twitter.sharedInstance().APIClient.loadUserWithID(twitterUserId, completion: { (user, error) -> Void in
+        TWTRAPIClient(userID: twitterUserId).loadUserWithID(twitterUserId, completion: { (user, error) -> Void in
             if let user = user where error == nil {
                 self.currentUser.profileImage = user.profileImageURL
                 self.authenticate()
@@ -121,7 +121,7 @@ class OnboardPartOne: UIViewController, StandardViewController {
     
     private func authenticate() {
         print("\(className)::\(__FUNCTION__)")
-        self.currentUser.authenticate(Twitter.sharedInstance().session()!) { () -> Void in
+        self.currentUser.authenticate(Twitter.sharedInstance().sessionStore.session()!) { () -> Void in
             print("\(self.className)::\(__FUNCTION__) authenticate callback")
             Debug.isBlocking()
             SwiftSpinner.hide(nil)

@@ -170,14 +170,14 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     }
 
 
-    func authenticate(session: TWTRSession, completion: (() ->Void))  {
+    func authenticate(session: TWTRAuthSession, completion: (() ->Void))  {
         print("\(className)::\(__FUNCTION__)")
-        DynamoUser.findByTwitterId( Twitter.sharedInstance().session()!.userID, completion: { (user) -> Void in
+        DynamoUser.findByTwitterId( Twitter.sharedInstance().sessionStore.session()!.userID, completion: { (user) -> Void in
             Debug.isBlocking()
             if let dynamoUser = user {
                 dynamoUser.TwitterAuthToken = session.authToken
                 dynamoUser.TwitterAuthSecret = session.authTokenSecret
-                dynamoUser.TwitterUsername = session.userName
+                //dynamoUser.TwitterUsername = session.u
                 dynamoUser.IsActive = "X"
                 dynamoUser.ProfileImage = self.profileImage
                 dynamoUser.UpdatedAt = Int(NSDate().timeIntervalSince1970)
@@ -199,7 +199,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 dynamoUser.TwitterAuthToken = session.authToken
                 dynamoUser.TwitterAuthSecret = session.authTokenSecret
                 dynamoUser.TwitterUserID = session.userID
-                dynamoUser.TwitterUsername = session.userName
+                //dynamoUser.TwitterUsername = session.userName
                 dynamoUser.CreatedAt = Int(NSDate().timeIntervalSince1970)
                 dynamoUser.UpdatedAt = Int(NSDate().timeIntervalSince1970)
                 dynamoUser.IsActive = "X"
@@ -244,7 +244,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
     var isTwitterAuthenticated: Bool {
         get {
-            return Twitter.sharedInstance().session() != nil && self.twitterUserId != nil && self.bitcoinAddress != nil && self.userId != nil
+            return Twitter.sharedInstance().sessionStore.session() != nil && self.twitterUserId != nil && self.bitcoinAddress != nil && self.userId != nil
         }
     }
 
@@ -324,8 +324,8 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 if (task.error == nil) {
                     let user:DynamoUser = task.result as! DynamoUser
                     user.TwitterUserID              = self.twitterUserId
-                    user.TwitterAuthToken           = Twitter.sharedInstance().session()!.authToken
-                    user.TwitterAuthSecret          = Twitter.sharedInstance().session()!.authTokenSecret
+                    user.TwitterAuthToken           = Twitter.sharedInstance().sessionStore.session()!.authToken
+                    user.TwitterAuthSecret          = Twitter.sharedInstance().sessionStore.session()!.authTokenSecret
                     user.BitcoinBalanceBTC          = self.bitcoinBalanceBTC
                     user.CognitoIdentity            = self.cognitoIdentity
                     user.AutomaticTippingEnabled    = self.automaticTippingEnabled?.boolValue

@@ -136,7 +136,7 @@ enum Router: URLRequestConvertible {
             // Set authentication header
             let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let currentUser = CurrentUser.currentUser(delegate.managedObjectContext)
-            if let uuid = currentUser.uuid, token = Twitter.sharedInstance().session()?.authToken {
+            if let uuid = currentUser.uuid, token = Twitter.sharedInstance().sessionStore.session()?.authToken {
                 let authString = "\(uuid):\(token)"
                 print("authString\(authString)")
                 let base64EncodedString = authString.dataUsingEncoding(NSUTF8StringEncoding)!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions())

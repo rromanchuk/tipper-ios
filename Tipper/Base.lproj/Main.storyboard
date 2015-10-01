@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B17c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sKB-ul-4gT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B22c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sKB-ul-4gT">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -2074,7 +2074,7 @@ tipper will send a Bitcoin tip.</string>
                                 </variation>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-logo" translatesAutoresizingMaskIntoConstraints="NO" id="dIA-Cl-gap">
-                                <rect key="frame" x="212" y="269" width="175" height="80"/>
+                                <rect key="frame" x="212" y="272" width="175" height="80"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="3pc-tw-ltF"/>
@@ -2090,7 +2090,7 @@ tipper will send a Bitcoin tip.</string>
                                 </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="These can be configured in Settings. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQU-EG-8Zk">
-                                <rect key="frame" x="142" y="474" width="316.5" height="22"/>
+                                <rect key="frame" x="142" y="477" width="316.5" height="22"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2113,7 +2113,7 @@ tipper will send a Bitcoin tip.</string>
                             <constraint firstItem="eQU-EG-8Zk" firstAttribute="centerX" secondItem="keA-n6-WbM" secondAttribute="centerX" id="QlC-iN-f0b"/>
                             <constraint firstItem="eQU-EG-8Zk" firstAttribute="top" secondItem="dIA-Cl-gap" secondAttribute="bottom" constant="125" id="RqB-dx-Tkc"/>
                             <constraint firstItem="66A-wd-Nct" firstAttribute="centerX" secondItem="keA-n6-WbM" secondAttribute="centerX" id="d67-RD-mOg"/>
-                            <constraint firstItem="dIA-Cl-gap" firstAttribute="top" secondItem="y7e-Lm-uCV" secondAttribute="bottom" constant="37" id="dnR-nd-74U"/>
+                            <constraint firstItem="dIA-Cl-gap" firstAttribute="top" secondItem="y7e-Lm-uCV" secondAttribute="bottom" constant="40" id="dnR-nd-74U"/>
                             <constraint firstItem="66A-wd-Nct" firstAttribute="top" secondItem="V86-5s-bTZ" secondAttribute="bottom" constant="12" id="iaa-pq-Upi"/>
                             <constraint firstItem="y7e-Lm-uCV" firstAttribute="centerX" secondItem="keA-n6-WbM" secondAttribute="centerX" id="pO7-f1-R5n"/>
                             <constraint firstItem="dIA-Cl-gap" firstAttribute="centerX" secondItem="keA-n6-WbM" secondAttribute="centerX" id="uSV-Ar-WiM"/>
@@ -2193,8 +2193,8 @@ tipper will send a Bitcoin tip.</string>
                                     </mask>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable notifications so we can let you know when you receive tips!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ua0-D0-nA3">
-                                <rect key="frame" x="118" y="188" width="363" height="44"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tipperbot will Favorite 3 of your Tweets to show you how tipping works." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ua0-D0-nA3">
+                                <rect key="frame" x="118" y="188" width="363" height="38"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="363" id="Fdb-ti-zSp"/>
@@ -2213,6 +2213,7 @@ tipper will send a Bitcoin tip.</string>
                             <constraint firstItem="Ua0-D0-nA3" firstAttribute="top" secondItem="x4c-GS-WNy" secondAttribute="bottom" constant="10" id="RYg-ve-wI2"/>
                             <constraint firstItem="z50-Nd-O9n" firstAttribute="centerY" secondItem="kX7-Tf-nef" secondAttribute="centerY" id="afB-GF-mem"/>
                             <constraint firstItem="z50-Nd-O9n" firstAttribute="centerX" secondItem="kX7-Tf-nef" secondAttribute="centerX" id="iI0-aa-s0A"/>
+                            <constraint firstItem="z50-Nd-O9n" firstAttribute="top" secondItem="Ua0-D0-nA3" secondAttribute="bottom" constant="40" id="krD-ea-LIy"/>
                             <constraint firstItem="x4c-GS-WNy" firstAttribute="centerX" secondItem="kX7-Tf-nef" secondAttribute="centerX" id="srp-U8-jCb"/>
                         </constraints>
                     </view>

@@ -23,7 +23,7 @@ class OnboardPartTwo: UIViewController, StandardViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(className)::\(__FUNCTION__)")
+        print("\(className)::\(__FUNCTION__) settings:\(Settings.sharedInstance)")
         setupLabel()
         // Do any additional setup after loading the view.
     }

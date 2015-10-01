@@ -72,8 +72,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         TIPPERTipperClient.defaultClient().APIKey = Config.get("AWS_API_GATEWAY_KEY")
         
-        Settings.get("1")
-
         market = NSEntityDescription.insertNewObjectForEntityForName("Market", inManagedObjectContext: managedObjectContext) as! Market
         market.save()
 
@@ -131,7 +129,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if currentUser.isTwitterAuthenticated {
             DynamoNotification.refresh(currentUser.userId!)
-            provider.logins = ["api.twitter.com": "\(Twitter.sharedInstance().session()!.authToken);\(Twitter.sharedInstance().session()!.authTokenSecret)"]
+            provider.logins = ["api.twitter.com": "\(Twitter.sharedInstance().sessionStore.session()!.authToken);\(Twitter.sharedInstance().sessionStore.session()!.authTokenSecret)"]
             currentUser.refreshWithDynamo { [weak self] (error) -> Void in
                 self?.currentUser.updateBTCBalance({ () -> Void in
                     self?.provider.getIdentityId().continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
@@ -147,7 +145,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        Settings.update(currentUser)
+        Settings.get()
         market.update { () -> Void in }
     }
 
