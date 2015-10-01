@@ -72,7 +72,7 @@ class OnboardingViewController: UIViewController {
             vc.currentUser = self.currentUser
             vc.containerController = self
             vc.provider = self.provider
-            //vc.onboardingDelegate = self
+            vc.market = self.market
             onboardingDelegate = vc
         } else if (segue.identifier == "Home") {
             let vc = segue.destinationViewController as! HomeController

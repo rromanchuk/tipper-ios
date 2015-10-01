@@ -37,6 +37,8 @@ class OnboardPartThree: UIViewController, PKPaymentAuthorizationViewControllerDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateBTCSpotPrice()
+        updateMarketData()
         // Do any additional setup after loading the view.
     }
 
@@ -44,6 +46,29 @@ class OnboardPartThree: UIViewController, PKPaymentAuthorizationViewControllerDe
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    func updateMarketData() {
+        print("\(className)::\(__FUNCTION__)")
+
+        if let fundAmount = Settings.sharedInstance.fundAmount, fundAmountUBTC =  Settings.sharedInstance.fundAmountUBTC {
+            btcConversionLabel.text = "(\(fundAmount) Bitcoin)"
+            ubtcExchangeLabel.text = fundAmountUBTC
+        }
+
+        if let amount = market.amount {
+            usdExchangeLabel.text = amount
+        }
+    }
+
+    func updateBTCSpotPrice() {
+        print("\(className)::\(__FUNCTION__)")
+        market.update { () -> Void in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.updateMarketData()
+            })
+        }
+    }
+
     
     
     @IBAction func didTapPay(sender: UIButton) {

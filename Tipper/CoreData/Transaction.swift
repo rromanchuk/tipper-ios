@@ -28,6 +28,18 @@ class Transaction: NSManagedObject, CoreDataUpdatable {
 
     @NSManaged var time: NSDate
 
+    class func get(txid: String) {
+
+        TIPPERTipperClient.defaultClient().transactionGet(txid).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+            print("Transaction fetch \(task.result), \(task.error) exception: \(task.exception)")
+            if let transaction = task.result as? TIPPERTransaction {
+                print("Transaction  \(transaction)")
+            }
+
+            return nil;
+        })
+    }
+
 
     class var className: String {
         get {

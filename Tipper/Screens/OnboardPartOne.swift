@@ -35,7 +35,10 @@ class OnboardPartOne: UIViewController, StandardViewController {
         logInWithCompletion()
     }
     
-
+    @IBAction func didTapTOS(sender: UITapGestureRecognizer) {
+        UIApplication.sharedApplication().openURL(NSURL(string:Config.get("PRIVACY_URL"))!)
+    }
+    
     @IBAction func unwindToSplash(unwindSegue: UIStoryboardSegue) {
         print("\(className)::\(__FUNCTION__)")
         if let _ = unwindSegue.sourceViewController as? HomeController {

@@ -70,6 +70,8 @@
 		949842021B25FC590079082C /* TipDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949842011B25FC590079082C /* TipDetailsViewController.swift */; };
 		949842041B2601130079082C /* profile-image-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 949842031B2601130079082C /* profile-image-placeholder.png */; };
 		949842061B260FB80079082C /* TipDetailContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949842051B260FB80079082C /* TipDetailContainer.swift */; };
+		94A00F1D1BBD3FEA00658C4C /* TIPPERTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A00F1A1BBD3FEA00658C4C /* TIPPERTransaction.m */; settings = {ASSET_TAGS = (); }; };
+		94A00F1E1BBD3FEA00658C4C /* TIPPERUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A00F1C1BBD3FEA00658C4C /* TIPPERUser.m */; settings = {ASSET_TAGS = (); }; };
 		94AB27931ACA3D2B005A433F /* TintedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AB27921ACA3D2B005A433F /* TintedButton.swift */; };
 		94AF29751AAEF2B600E16048 /* Tipper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94AF29731AAEF2B600E16048 /* Tipper.xcdatamodeld */; };
 		94AF297A1AAEF2B600E16048 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94AF29781AAEF2B600E16048 /* Main.storyboard */; };
@@ -212,6 +214,10 @@
 		949842011B25FC590079082C /* TipDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipDetailsViewController.swift; path = TipDetails/TipDetailsViewController.swift; sourceTree = "<group>"; };
 		949842031B2601130079082C /* profile-image-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile-image-placeholder.png"; path = "Resources/profile-image-placeholder.png"; sourceTree = "<group>"; };
 		949842051B260FB80079082C /* TipDetailContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipDetailContainer.swift; path = TipDetails/TipDetailContainer.swift; sourceTree = "<group>"; };
+		94A00F191BBD3FEA00658C4C /* TIPPERTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIPPERTransaction.h; sourceTree = "<group>"; };
+		94A00F1A1BBD3FEA00658C4C /* TIPPERTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIPPERTransaction.m; sourceTree = "<group>"; };
+		94A00F1B1BBD3FEA00658C4C /* TIPPERUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIPPERUser.h; sourceTree = "<group>"; };
+		94A00F1C1BBD3FEA00658C4C /* TIPPERUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIPPERUser.m; sourceTree = "<group>"; };
 		94AB27921ACA3D2B005A433F /* TintedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TintedButton.swift; path = Views/TintedButton.swift; sourceTree = "<group>"; };
 		94AF296C1AAEF2B600E16048 /* Tipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94AF29701AAEF2B600E16048 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -457,6 +463,10 @@
 		94723C661BB4939A00C33210 /* AWSGateway */ = {
 			isa = PBXGroup;
 			children = (
+				94A00F191BBD3FEA00658C4C /* TIPPERTransaction.h */,
+				94A00F1A1BBD3FEA00658C4C /* TIPPERTransaction.m */,
+				94A00F1B1BBD3FEA00658C4C /* TIPPERUser.h */,
+				94A00F1C1BBD3FEA00658C4C /* TIPPERUser.m */,
 				94723C791BB507D100C33210 /* TIPPERSettings.h */,
 				94723C7A1BB507D100C33210 /* TIPPERSettings.m */,
 				94723C761BB49F6A00C33210 /* TIPPEREmpty.h */,
@@ -948,7 +958,9 @@
 				94FA97DF1AB356FB005B0C83 /* FavoriteCell.swift in Sources */,
 				942780071B97B7D5007CB713 /* CustomModalSegue.swift in Sources */,
 				9484185E1AB6B2B8001C633E /* DynamoUser.swift in Sources */,
+				94A00F1E1BBD3FEA00658C4C /* TIPPERUser.m in Sources */,
 				94AF29751AAEF2B600E16048 /* Tipper.xcdatamodeld in Sources */,
+				94A00F1D1BBD3FEA00658C4C /* TIPPERTransaction.m in Sources */,
 				943F64321BAA04F30019D348 /* NotificationCell.swift in Sources */,
 				94098BB21BB8A32800394955 /* OnboardPartFour.swift in Sources */,
 				94EE8CF61AB16E7E000593CD /* TTTURLRequestFormatter.m in Sources */,

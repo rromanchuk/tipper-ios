@@ -19,6 +19,8 @@
 
 #import "TIPPEREmpty.h"
 #import "TIPPERSettings.h"
+#import "TIPPERTransaction.h"
+#import "TIPPERUser.h"
 
 /**
  The service client object.
@@ -175,27 +177,27 @@
 /**
  
  
- @param _id 
+ @param versionId 
  
  return type: TIPPERSettings *
  */
-- (AWSTask *)settingsGet:(NSString *)_id;
+- (AWSTask *)settingsGet:(NSString *)versionId;
 
 /**
  
  
- @param _id 
+ @param tipId 
  
  return type: TIPPEREmpty *
  */
-- (AWSTask *)tipGet:(NSString *)_id;
+- (AWSTask *)tipGet:(NSString *)tipId;
 
 /**
  
  
  @param txid 
  
- return type: TIPPEREmpty *
+ return type: TIPPERTransaction *
  */
 - (AWSTask *)transactionGet:(NSString *)txid;
 
@@ -204,8 +206,17 @@
  
  @param _id 
  
- return type: TIPPEREmpty *
+ return type: TIPPERTransaction *
  */
-- (AWSTask *)userGet:(NSString *)_id;
+- (AWSTask *)transactionPut:(NSString *)_id;
+
+/**
+ 
+ 
+ @param userId 
+ 
+ return type: TIPPERUser *
+ */
+- (AWSTask *)userGet:(NSString *)userId;
 
 @end

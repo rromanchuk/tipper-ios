@@ -21,6 +21,8 @@
 
 #import "TIPPEREmpty.h"
 #import "TIPPERSettings.h"
+#import "TIPPERTransaction.h"
+#import "TIPPERUser.h"
 
 @interface AWSAPIGatewayClient()
 
@@ -148,14 +150,14 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
                      responseClass:[TIPPEREmpty class]];
 }
 
-- (AWSTask *)settingsGet:(NSString *)_id {
+- (AWSTask *)settingsGet:(NSString *)versionId {
     NSDictionary *headerParameters = @{
                                        @"Content-Type": @"application/json",
                                        @"Accept": @"application/json",
                                        
                                        };
     NSDictionary *queryParameters = @{
-                                      @"_id": _id
+                                      @"versionId": versionId
                                       };
     NSDictionary *pathParameters = @{
                                      
@@ -170,14 +172,14 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
                      responseClass:[TIPPERSettings class]];
 }
 
-- (AWSTask *)tipGet:(NSString *)_id {
+- (AWSTask *)tipGet:(NSString *)tipId {
     NSDictionary *headerParameters = @{
                                        @"Content-Type": @"application/json",
                                        @"Accept": @"application/json",
                                        
                                        };
     NSDictionary *queryParameters = @{
-                                      @"_id": _id
+                                      @"tipId": tipId
                                       };
     NSDictionary *pathParameters = @{
                                      
@@ -211,10 +213,10 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
                    queryParameters:queryParameters
                   headerParameters:headerParameters
                               body:nil
-                     responseClass:[TIPPEREmpty class]];
+                     responseClass:[TIPPERTransaction class]];
 }
 
-- (AWSTask *)userGet:(NSString *)_id {
+- (AWSTask *)transactionPut:(NSString *)_id {
     NSDictionary *headerParameters = @{
                                        @"Content-Type": @"application/json",
                                        @"Accept": @"application/json",
@@ -227,13 +229,35 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
                                      
                                      };
     
+    return [self invokeHTTPRequest:@"PUT"
+                         URLString:@"/transaction"
+                    pathParameters:pathParameters
+                   queryParameters:queryParameters
+                  headerParameters:headerParameters
+                              body:nil
+                     responseClass:[TIPPERTransaction class]];
+}
+
+- (AWSTask *)userGet:(NSString *)userId {
+    NSDictionary *headerParameters = @{
+                                       @"Content-Type": @"application/json",
+                                       @"Accept": @"application/json",
+                                       
+                                       };
+    NSDictionary *queryParameters = @{
+                                      @"userId": userId
+                                      };
+    NSDictionary *pathParameters = @{
+                                     
+                                     };
+    
     return [self invokeHTTPRequest:@"GET"
                          URLString:@"/user"
                     pathParameters:pathParameters
                    queryParameters:queryParameters
                   headerParameters:headerParameters
                               body:nil
-                     responseClass:[TIPPEREmpty class]];
+                     responseClass:[TIPPERUser class]];
 }
 
 

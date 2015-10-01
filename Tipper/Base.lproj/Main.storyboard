@@ -235,7 +235,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kL-90-Vwz">
-                                <rect key="frame" x="181" y="407" width="238" height="22.5"/>
+                                <rect key="frame" x="181" y="407" width="238" height="23"/>
                                 <animations/>
                                 <attributedString key="attributedText">
                                     <fragment content="Tips are ">
@@ -1835,7 +1835,7 @@ tipper will send a Bitcoin tip.</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tipper" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrA-pi-tfE">
-                                <rect key="frame" x="247.5" y="129" width="105.5" height="45"/>
+                                <rect key="frame" x="248" y="129" width="105" height="45"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Bariol-Bold" family="Bariol" pointSize="45"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1849,12 +1849,15 @@ tipper will send a Bitcoin tip.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="754" verticalCompressionResistancePriority="754" text="By creating your account you confirm that you've read the Terms Of Use. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3v-bM-wwq">
-                                <rect key="frame" x="87" y="581" width="425.5" height="15"/>
+                                <rect key="frame" x="87" y="581" width="426" height="15"/>
                                 <animations/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" name="Bariol-Light" family="Bariol" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="wPj-jX-TtZ" appends="YES" id="uEM-zh-s9M"/>
+                                </connections>
                             </label>
                         </subviews>
                         <animations/>
@@ -1874,6 +1877,11 @@ tipper will send a Bitcoin tip.</string>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wBY-eN-rfw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="wPj-jX-TtZ">
+                    <connections>
+                        <action selector="didTapTOS:" destination="fNH-4s-eUY" id="ctO-Wx-inu"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1536" y="-796"/>
         </scene>
@@ -1907,7 +1915,7 @@ tipper will send a Bitcoin tip.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8D8-9R-qwP">
-                                        <rect key="frame" x="155" y="31" width="11.5" height="20"/>
+                                        <rect key="frame" x="155" y="31" width="12" height="20"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2002,7 +2010,7 @@ tipper will send a Bitcoin tip.</string>
                                 </variation>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start by loading your wallet." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y84-Q6-1b2">
-                                <rect key="frame" x="181.5" y="203" width="237.5" height="22"/>
+                                <rect key="frame" x="182" y="203" width="237" height="22"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2020,6 +2028,11 @@ tipper will send a Bitcoin tip.</string>
                             <constraint firstItem="Bkf-s0-mg8" firstAttribute="top" secondItem="jUc-h1-qjU" secondAttribute="bottom" constant="12" id="s6R-BB-xGd"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btcConversionLabel" destination="xvb-Ea-JFq" id="Hwm-bQ-8iR"/>
+                        <outlet property="ubtcExchangeLabel" destination="EIW-WQ-zO9" id="z4b-R8-XPV"/>
+                        <outlet property="usdExchangeLabel" destination="z2x-wj-mxS" id="N7l-3S-PKj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1of-LJ-Qt5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2090,7 +2103,7 @@ tipper will send a Bitcoin tip.</string>
                                 </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="These can be configured in Settings. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQU-EG-8Zk">
-                                <rect key="frame" x="142" y="477" width="316.5" height="22"/>
+                                <rect key="frame" x="142" y="477" width="317" height="22"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2176,13 +2189,15 @@ tipper will send a Bitcoin tip.</string>
                                 </variation>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="demo-tip" translatesAutoresizingMaskIntoConstraints="NO" id="z50-Nd-O9n">
-                                <rect key="frame" x="118" y="266" width="363" height="67"/>
+                                <rect key="frame" x="119" y="266" width="362" height="67"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="123" id="7gQ-xD-tIr"/>
+                                    <constraint firstAttribute="height" constant="67" id="AuS-5r-G9l"/>
                                     <constraint firstAttribute="height" constant="80" id="UV4-pd-i2M"/>
                                     <constraint firstAttribute="width" constant="265" id="etl-ig-hyP"/>
                                     <constraint firstAttribute="width" constant="175" id="gp1-zH-vfP"/>
+                                    <constraint firstAttribute="width" constant="362" id="smN-Fd-cqS"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -2193,8 +2208,8 @@ tipper will send a Bitcoin tip.</string>
                                     </mask>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tipperbot will Favorite 3 of your Tweets to show you how tipping works." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ua0-D0-nA3">
-                                <rect key="frame" x="118" y="188" width="363" height="38"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="246" verticalCompressionResistancePriority="772" text="Tipperbot will Favorite 3 of your Tweets to show you how tipping works." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="363" translatesAutoresizingMaskIntoConstraints="NO" id="Ua0-D0-nA3">
+                                <rect key="frame" x="118" y="188" width="363" height="44"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="363" id="Fdb-ti-zSp"/>
@@ -2212,10 +2227,17 @@ tipper will send a Bitcoin tip.</string>
                             <constraint firstItem="x4c-GS-WNy" firstAttribute="centerX" secondItem="kX7-Tf-nef" secondAttribute="centerX" id="I34-q2-vqU"/>
                             <constraint firstItem="Ua0-D0-nA3" firstAttribute="top" secondItem="x4c-GS-WNy" secondAttribute="bottom" constant="10" id="RYg-ve-wI2"/>
                             <constraint firstItem="z50-Nd-O9n" firstAttribute="centerY" secondItem="kX7-Tf-nef" secondAttribute="centerY" id="afB-GF-mem"/>
+                            <constraint firstItem="z50-Nd-O9n" firstAttribute="top" secondItem="Ua0-D0-nA3" secondAttribute="bottom" constant="34" id="cIE-zL-Wax"/>
                             <constraint firstItem="z50-Nd-O9n" firstAttribute="centerX" secondItem="kX7-Tf-nef" secondAttribute="centerX" id="iI0-aa-s0A"/>
-                            <constraint firstItem="z50-Nd-O9n" firstAttribute="top" secondItem="Ua0-D0-nA3" secondAttribute="bottom" constant="40" id="krD-ea-LIy"/>
+                            <constraint firstItem="z50-Nd-O9n" firstAttribute="top" secondItem="Ua0-D0-nA3" secondAttribute="bottom" constant="50" id="krD-ea-LIy"/>
                             <constraint firstItem="x4c-GS-WNy" firstAttribute="centerX" secondItem="kX7-Tf-nef" secondAttribute="centerX" id="srp-U8-jCb"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="afB-GF-mem"/>
+                                <exclude reference="krD-ea-LIy"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H7a-C8-7LW" userLabel="First Responder" sceneMemberID="firstResponder"/>
