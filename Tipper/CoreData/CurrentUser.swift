@@ -10,7 +10,9 @@ import Foundation
 import CoreData
 import TwitterKit
 import SwiftyJSON
-
+import AWSDynamoDB
+import SSKeychain
+import AWSSQS
 
 class CurrentUser: NSManagedObject, CoreDataUpdatable {
     let KeychainAccount: String = "tips.coinbit.tipper"

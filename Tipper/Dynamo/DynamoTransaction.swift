@@ -9,6 +9,7 @@
 import Foundation
 import TwitterKit
 import SwiftyJSON
+import AWSDynamoDB
 
 class DynamoTransaction: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
     var amount: NSNumber?

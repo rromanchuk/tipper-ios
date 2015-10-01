@@ -9,6 +9,7 @@
 import UIKit
 import Haneke
 import TwitterKit
+import AWSSQS
 
 enum TipCellType: Int {
     case Sent

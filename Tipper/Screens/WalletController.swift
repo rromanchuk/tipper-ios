@@ -12,6 +12,8 @@ import QRCode
 import SwiftyJSON
 import Stripe
 import Haneke
+import TSMessages
+import ApplePayStubs
 
 class WalletController: UITableViewController, PKPaymentAuthorizationViewControllerDelegate, STPCheckoutViewControllerDelegate, UITextFieldDelegate, UINavigationControllerDelegate {
     var managedObjectContext: NSManagedObjectContext?

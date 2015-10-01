@@ -9,7 +9,7 @@
 import UIKit
 import PassKit
 import Stripe
-
+import ApplePayStubs
 
 class OnboardFundingViewController: UIViewController, PKPaymentAuthorizationViewControllerDelegate, STPCheckoutViewControllerDelegate, UINavigationControllerDelegate {
     var managedObjectContext: NSManagedObjectContext!
@@ -195,7 +195,7 @@ class OnboardFundingViewController: UIViewController, PKPaymentAuthorizationView
                 //self?.currentUser.updateEntityWithJSON(json)
                 completion(STPBackendChargeResult.Success, nil)
                 self?.performSegueWithIdentifier("OnboardStepTwo", sender: self)
-                TSMessage.showNotificationInViewController(self?.parentViewController!, title: "Payment complete", subtitle: "Your bitcoin will arrive shortly.", type: .Success, duration: 5.0)
+                //TSMessage.showNotificationInViewController(self?.parentViewController!, title: "Payment complete", subtitle: "Your bitcoin will arrive shortly.", type: .Success, duration: 5.0)
             }
             })
     }

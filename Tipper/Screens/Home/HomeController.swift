@@ -9,6 +9,8 @@
 import UIKit
 import TwitterKit
 import SwiftyJSON
+import TSMessages
+
 
 class HomeController: UIViewController, NotificationMessagesDelegate, UITableViewDelegate, Logoutable {
 

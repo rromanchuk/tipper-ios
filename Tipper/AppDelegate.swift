@@ -13,6 +13,10 @@ import Crashlytics
 import TwitterKit
 import SwiftyJSON
 import Stripe
+import AWSCore
+import AWSMobileAnalytics
+import AWSSNS
+import TSMessages
 
 @UIApplicationMain
 

@@ -89,11 +89,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tipper/Screens/WalletController.swift"
-            timestampString = "464293343.731828"
+            timestampString = "465409836.802926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
             landmarkName = "textFieldChanged(_:)"
             landmarkType = "5">
          </BreakpointContent>

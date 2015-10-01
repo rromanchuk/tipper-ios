@@ -17,6 +17,7 @@
 import Foundation
 import TwitterKit
 import SwiftyJSON
+import AWSDynamoDB
 
 class DynamoUser: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
     var UserID: String?

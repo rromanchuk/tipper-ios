@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B6E9F44501E44BF73C99834 /* libPods-Tipper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E57F9EB756EFF49AEA100E /* libPods-Tipper.a */; };
+		6E39DE48C53BFCEA4855A132 /* Pods_Tipper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940BDA98A503E461460E1E7C /* Pods_Tipper.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		94098BA81BB7BDE300394955 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94098BA71BB7BDE300394955 /* OnboardingViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		94098BAA1BB7C10200394955 /* OnboardingPageControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94098BA91BB7C10200394955 /* OnboardingPageControllerViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		94098BAC1BB7C2ED00394955 /* OnboardPartOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94098BAB1BB7C2ED00394955 /* OnboardPartOne.swift */; settings = {ASSET_TAGS = (); }; };
@@ -140,7 +140,6 @@
 
 /* Begin PBXFileReference section */
 		20CFF2D7F1C187F20E1EAFF3 /* Pods-Tipper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tipper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tipper/Pods-Tipper.debug.xcconfig"; sourceTree = "<group>"; };
-		74E57F9EB756EFF49AEA100E /* libPods-Tipper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tipper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94098BA71BB7BDE300394955 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingViewController.swift; path = Onboarding/OnboardingViewController.swift; sourceTree = "<group>"; };
 		94098BA91BB7C10200394955 /* OnboardingPageControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingPageControllerViewController.swift; path = Onboarding/OnboardingPageControllerViewController.swift; sourceTree = "<group>"; };
 		94098BAB1BB7C2ED00394955 /* OnboardPartOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardPartOne.swift; sourceTree = "<group>"; };
@@ -148,6 +147,7 @@
 		94098BAF1BB878F600394955 /* OnboardPartThree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardPartThree.swift; path = Onboarding/OnboardPartThree.swift; sourceTree = "<group>"; };
 		94098BB11BB8A32800394955 /* OnboardPartFour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardPartFour.swift; path = Onboarding/OnboardPartFour.swift; sourceTree = "<group>"; };
 		94098BB31BB8AACC00394955 /* OnboardPartFive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardPartFive.swift; path = Onboarding/OnboardPartFive.swift; sourceTree = "<group>"; };
+		940BDA98A503E461460E1E7C /* Pods_Tipper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tipper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9416317E1AC3C1EC002016FD /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeController.swift; path = Home/HomeController.swift; sourceTree = "<group>"; };
 		941631821AC3CC5E002016FD /* AddressController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressController.swift; path = Address/AddressController.swift; sourceTree = "<group>"; };
 		941631871AC404A7002016FD /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = Extensions/UIColor.swift; sourceTree = "<group>"; };
@@ -270,8 +270,8 @@
 				94C255151B0D825800A65B94 /* TwitterCore.framework in Frameworks */,
 				9484185B1AB6525F001C633E /* SwiftyJSON.framework in Frameworks */,
 				948418571AB6525E001C633E /* QRCode.framework in Frameworks */,
-				3B6E9F44501E44BF73C99834 /* libPods-Tipper.a in Frameworks */,
 				94C255141B0D825800A65B94 /* TwitterKit.framework in Frameworks */,
+				6E39DE48C53BFCEA4855A132 /* Pods_Tipper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,7 +619,7 @@
 				948418581AB6525F001C633E /* Alamofire.framework */,
 				948418591AB6525F001C633E /* SwiftyJSON.framework */,
 				9484183A1AB61396001C633E /* QRCode.framework */,
-				74E57F9EB756EFF49AEA100E /* libPods-Tipper.a */,
+				940BDA98A503E461460E1E7C /* Pods_Tipper.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -673,6 +673,7 @@
 				94AF29BE1AAF032500E16048 /* Fabric */,
 				9484185C1AB65411001C633E /* ShellScript */,
 				9462D7761B35D108001C5083 /* Embed App Extensions */,
+				1144D7115C8D2B6E8C632AB0 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -810,6 +811,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1144D7115C8D2B6E8C632AB0 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tipper/Pods-Tipper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4A8E3E1574F03FDE6EC51855 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

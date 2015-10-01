@@ -1,7 +1,8 @@
-platform :ios, '8.0'
+platform :ios, '8.3'
+use_frameworks!
+
 target 'Tipper' do
     pod 'AWSCore'
-    #pod 'AWSS3'
     pod 'AWSCognito'
     pod 'AWSDynamoDB'
     pod 'AWSSQS'

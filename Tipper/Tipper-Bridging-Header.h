@@ -13,10 +13,10 @@
 
 #import "NSManagedObjectContext+Base.h"
 #import "TTTURLRequestFormatter.h"
-#import "SSKeychain.h"
+//#import "SSKeychain.h"
 #import <TSMessages/TSMessageView.h>
 
 //#import <Google/Analytics.h>
-#import "ApplePayStubs.h"
+//#import "ApplePayStubs.h"
 
 #import "TipperTipperClient.h"

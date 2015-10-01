@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import AWSDynamoDB
+
 class DynamoNotification: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
     var UserID: String?
     var ObjectID: String?

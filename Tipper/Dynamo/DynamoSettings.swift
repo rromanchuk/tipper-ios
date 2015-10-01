@@ -9,6 +9,7 @@
 import Foundation
 import TwitterKit
 import SwiftyJSON
+import AWSDynamoDB
 
 class DynamoSettings: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
     var FundAmount: String?

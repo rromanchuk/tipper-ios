@@ -9,6 +9,7 @@
 import Foundation
 import TwitterKit
 import SwiftyJSON
+import AWSDynamoDB
 
 class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
     var ObjectID: String?

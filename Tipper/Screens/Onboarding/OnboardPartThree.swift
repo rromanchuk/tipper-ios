@@ -9,7 +9,7 @@
 import UIKit
 import PassKit
 import Stripe
-
+import ApplePayStubs
 
 class OnboardPartThree: UIViewController, PKPaymentAuthorizationViewControllerDelegate, STPCheckoutViewControllerDelegate, UINavigationControllerDelegate, StandardViewController {
     var provider: AWSCognitoCredentialsProvider!
