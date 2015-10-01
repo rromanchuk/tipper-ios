@@ -72,8 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         TIPPERTipperClient.defaultClient().APIKey = Config.get("AWS_API_GATEWAY_KEY")
 
-        Transaction.get("2b0891a3c3b23ce39ac4f3a01c6e0ca96437d7b76f82eba41febf3b781eb21bf")
-        Settings.get("1")
+
         
         market = NSEntityDescription.insertNewObjectForEntityForName("Market", inManagedObjectContext: managedObjectContext) as! Market
         market.save()
@@ -150,6 +149,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 
         market.update { () -> Void in }
+        Settings.get("1")
     }
 
 
