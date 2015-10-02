@@ -53,18 +53,18 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
 
 
     func didReceiveNotificationAlert(message: String, subtitle: String, type: TSMessageNotificationType) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         TSMessage.showNotificationInViewController(self, title: message, subtitle: subtitle, type: type, duration: 5.0)
         refresh()
     }
 
     func refresh() {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         refreshDelegate?.refreshHeader()
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("\(className)::\(__FUNCTION__) identifier: \(segue.identifier)")
+        log.verbose("identifier: \(segue.identifier)")
 
         if segue.identifier == "HomeHeaderEmbed" {
             let vc = segue.destinationViewController as! HeaderContainer
@@ -98,7 +98,7 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
 
 
     func backToSplash() {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         currentUser.resetIdentifiers()
         (UIApplication.sharedApplication().delegate as! AppDelegate).resetCoreData()
         performSegueWithIdentifier("BackToSplash", sender: self)
@@ -112,29 +112,18 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
         }
     }
     
-    override func viewControllerForUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject?) -> UIViewController? {
-        print("\(className)::\(__FUNCTION__) fromViewController: \(fromViewController)")
-        let vc = super.viewControllerForUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
-        print("viewController to handle the unwind: \(vc)")
-        return vc
-    }
-    
-    override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
-        print("\(className)::\(__FUNCTION__) fromViewController: \(fromViewController)")
-        let canPerform =  super.canPerformUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
-        print("canPerform?: \(canPerform)")
-        return canPerform
-    }
-
-    
     override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
         print("\(className)::\(__FUNCTION__) toViewController: \(toViewController), fromViewController: \(fromViewController)")
-        if let _ = fromViewController as? CustomModable {
+        if let _ = fromViewController as? CustomSegueable {
+            if identifier == "UnwindFromTipDetail" {
+                return TipDetailUnwindSegue(identifier: identifier, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
+                    
+                })
+            } else {
+                return CustomUnwindModalSegue(identifier: identifier, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
 
-            let unwindSegue = CustomUnwindModalSegue(identifier: identifier, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
-                
-            })
-            return unwindSegue
+                })
+            }
         }
         
         return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)!

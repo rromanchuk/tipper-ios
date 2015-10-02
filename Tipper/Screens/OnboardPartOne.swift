@@ -20,7 +20,7 @@ class OnboardPartOne: UIViewController, StandardViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         // Do any additional setup after loading the view.
     }
 
@@ -31,7 +31,7 @@ class OnboardPartOne: UIViewController, StandardViewController {
     
     
     func didTapButton(sender: UIButton) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         logInWithCompletion()
     }
     
@@ -40,7 +40,7 @@ class OnboardPartOne: UIViewController, StandardViewController {
     }
     
     @IBAction func unwindToSplash(unwindSegue: UIStoryboardSegue) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         if let _ = unwindSegue.sourceViewController as? HomeController {
             print("Coming from HomeController")
         }
@@ -60,13 +60,13 @@ class OnboardPartOne: UIViewController, StandardViewController {
     // MARK: Application lifecycle
     
     func applicationWillResignActive(aNotification: NSNotification) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         SwiftSpinner.hide(nil)
     }
     
     
     private func logInWithCompletion() {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         SwiftSpinner.show("Logging you in...")
         Twitter.sharedInstance().logInWithCompletion { (session, error) -> Void in
             print("\(self.className)::\(__FUNCTION__) session:\(session), error: \(error)")
@@ -86,7 +86,7 @@ class OnboardPartOne: UIViewController, StandardViewController {
     }
     
     private func refreshProvider(twitterSession: TWTRAuthSession) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         provider.refresh().continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             print("provider refresh() finished result: \(task.result) error? \(task.error)")
             if task.error == nil, let identifier = task.result as? String {
@@ -106,7 +106,7 @@ class OnboardPartOne: UIViewController, StandardViewController {
     }
     
     private func loadUser(twitterUserId: String) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         TWTRAPIClient(userID: twitterUserId).loadUserWithID(twitterUserId, completion: { (user, error) -> Void in
             if let user = user where error == nil {
                 self.currentUser.profileImage = user.profileImageURL
@@ -123,7 +123,7 @@ class OnboardPartOne: UIViewController, StandardViewController {
     }
     
     private func authenticate() {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         self.currentUser.authenticate(Twitter.sharedInstance().sessionStore.session()!) { () -> Void in
             print("\(self.className)::\(__FUNCTION__) authenticate callback")
             Debug.isBlocking()

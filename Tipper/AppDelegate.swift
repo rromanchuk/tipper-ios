@@ -17,6 +17,19 @@ import AWSCore
 import AWSMobileAnalytics
 import AWSSNS
 import TSMessages
+import XCGLogger
+
+let log: XCGLogger = {
+    let log = XCGLogger.defaultInstance()
+    log.setup(.Verbose, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: nil, fileLogLevel: .Verbose)
+
+    let dateFormatter = NSDateFormatter()
+    dateFormatter.dateFormat = "MM/dd/yyyy hh:mma"
+    dateFormatter.locale = NSLocale.currentLocale()
+    log.dateFormatter = dateFormatter
+
+    return log
+}()
 
 @UIApplicationMain
 
@@ -35,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var _managedObjectModel: NSManagedObjectModel?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         Fabric.with([Crashlytics(), Twitter()])
         Config.dump()
         AWSLogger.defaultLogger().logLevel = .Error
@@ -54,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupFirstController()
 
 
-        print("\(className)::\(__FUNCTION__) currentUser:\([currentUser])")
+        log.verbose("\(className)::\(__FUNCTION__) currentUser:\([currentUser])")
 
         
 
@@ -66,8 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func setupFirstController() {
         currentUser = CurrentUser.currentUser(managedObjectContext)
-
-        print("\(className)::\(__FUNCTION__) currentUser:\([currentUser])")
+        log.verbose("currentUser:\([currentUser])")
 
 
         provider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: Config.get("COGNITO_POOL"))
@@ -93,29 +105,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-         print("\(className)::\(__FUNCTION__)")
+         log.verbose("")
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         writeToDisk()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         //UIApplication.sharedApplication().applicationIconBadgeNumber = 0
 
     }
 
     func setApplicationBadgeNumber(number: UInt) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         UIApplication.sharedApplication().applicationIconBadgeNumber = Int(number)
     }
 
     func incrementApplicationtBadgeNumber() {
-        print("\(className)::\(__FUNCTION__) current badge count is \(UIApplication.sharedApplication().applicationIconBadgeNumber)")
+        log.verbose("current badge count is \(UIApplication.sharedApplication().applicationIconBadgeNumber)")
         
         let num = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
         setApplicationBadgeNumber(UInt(num))
@@ -123,14 +135,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func applicationDidBecomeActive(application: UIApplication) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         refresh()
         //incrementApplicationtBadgeNumber()
     }
 
     func refresh() {
-        print("\(className)::\(__FUNCTION__) balance: \(currentUser.balanceAsUBTC)")
+        log.verbose("balance: \(currentUser.balanceAsUBTC)")
         
         
         if currentUser.isTwitterAuthenticated {
@@ -164,12 +176,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         NSNotificationCenter.defaultCenter().postNotificationName("didFailToRegisterForRemoteNotificationsWithError", object: nil)
     }
 
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         NSNotificationCenter.defaultCenter().postNotificationName("didRegisterForRemoteNotificationsWithDeviceToken", object: nil)
         
         let deviceTokenString = "\(deviceToken)"
@@ -191,7 +203,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func registerTokens(tokens: NSArray) {
-        print("\(className)::\(__FUNCTION__) tokens:\(tokens)")
+        log.verbose("\(className)::\(__FUNCTION__) tokens:\(tokens)")
         let sns = AWSSNS.defaultSNS()
         let request = AWSSNSCreatePlatformEndpointInput()
         request.platformApplicationArn = Config.get("SNS_ENDPOINT")
@@ -200,7 +212,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             request.token = token as! String 
             sns.createPlatformEndpoint(request).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task:AWSTask!) -> AnyObject! in
                 if task.error != nil {
-                    print("Error: \(task.error)")
+                    log.error("Error: \(task.error)")
                 } else {
                     let createEndpointResponse = task.result as! AWSSNSCreateEndpointResponse
                     print("endpointArn: \(createEndpointResponse.endpointArn)")
@@ -225,7 +237,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func gerneralSubscriptionChannel(task: AWSTask!) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         let sns = AWSSNS.defaultSNS()
 
         let createEndpointResponse = task.result as! AWSSNSCreateEndpointResponse
@@ -243,7 +255,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func adminSubscriptionChannel(task: AWSTask!) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         let sns = AWSSNS.defaultSNS()
         let createEndpointResponse = task.result as! AWSSNSCreateEndpointResponse
         print("endpointArn: \(createEndpointResponse.endpointArn)")
@@ -261,7 +273,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject: AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
 
-        print("\(className)::\(__FUNCTION__) userInfo:\(userInfo)")
+        log.verbose("\(className)::\(__FUNCTION__) userInfo:\(userInfo)")
         var messageJSON: JSON?
 
         if let message = userInfo["message"] as? [String: AnyObject]  {
@@ -368,7 +380,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    }
 
     func processMessage(message:JSON?) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         if let message = message {
             let title = message["title"].stringValue
             let subtitle = message["subtitle"].stringValue
@@ -388,19 +400,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data stack
 
     func logout() {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         currentUser.resetIdentifiers()
         resetCoreData()
         NSNotificationCenter.defaultCenter().postNotificationName("BACK_TO_SPLASH", object: nil)
     }
 
     func resetCognitoCredentials() {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         self.provider.clearKeychain()
     }
     
     func cognitoIdentityDidChange(notficiation: NSNotification) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         
         if let userInfo = notficiation.userInfo, identifier = userInfo[AWSCognitoNotificationNewId] as? String {
             print("\(className)::\(__FUNCTION__) New cognito identifier: \(identifier)")
@@ -412,7 +424,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func resetCoreData() {
-        print("\(className)::\(__FUNCTION__) ****************************")
+        log.warning("")
         let storeURL = applicationDocumentsDirectory.URLByAppendingPathComponent("Tipper.sqlite")
         do {
             try NSFileManager.defaultManager().removeItemAtURL(storeURL)
@@ -489,7 +501,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Core Data Saving support
     func writeToDisk() {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         saveContext()
         if let privateMoc = _privateWriterContext {
             var error: NSError? = nil
@@ -498,7 +510,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     try privateMoc.save()
                 } catch let error1 as NSError {
                     error = error1
-                    print("Unresolved error \(error), \(error!.userInfo)")
+                    log.error("Unresolved error \(error), \(error!.userInfo)")
                 }
             }
         }
@@ -512,7 +524,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 try managedObjectContext.save()
             } catch let error1 as NSError {
                 error = error1
-                print("Unresolved error \(error), \(error!.userInfo)")
+                log.error("Unresolved error \(error), \(error!.userInfo)")
                 abort()
             }
         }

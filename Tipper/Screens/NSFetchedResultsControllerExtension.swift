@@ -125,7 +125,7 @@ public extension NSFetchedResultsController {
 
         if (error != nil){
             //TODO: This needs actual error handling.
-            print("Error : \(error)", terminator: "")
+            log.error("\(error)")
         }
 
         return tempFetchedResultsController

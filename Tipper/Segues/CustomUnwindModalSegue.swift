@@ -17,7 +17,7 @@ class CustomUnwindModalSegue: UIStoryboardSegue {
         let viewOnScreen = self.sourceViewController.view as UIView!
         let viewAfterUnwind = self.destinationViewController.view as UIView!
         
-        let controllerOnScreen = self.sourceViewController as? CustomModable
+        let controllerOnScreen = self.sourceViewController as? CustomSegueable
         //let controllerAfterUnwind =
         
         let screenHeight = UIScreen.mainScreen().bounds.size.height

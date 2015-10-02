@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NotificationsController: UIViewController, ContainerDelegate, CustomModable {
+class NotificationsController: UIViewController, ContainerDelegate, CustomSegueable {
     let className = "NotificationsController"
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!

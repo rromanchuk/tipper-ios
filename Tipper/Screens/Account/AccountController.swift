@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AccountController: UIViewController, ContainerDelegate, CustomModable {
+class AccountController: UIViewController, ContainerDelegate, CustomSegueable {
     var managedObjectContext: NSManagedObjectContext?
     var currentUser: CurrentUser!
     var market: Market!
@@ -18,7 +18,7 @@ class AccountController: UIViewController, ContainerDelegate, CustomModable {
     @IBOutlet weak var headerContainer: UIView!
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("\(className)::\(__FUNCTION__)", terminator: "")
+        log.verbose("")
         
         if segue.identifier == "AccountEmbed" {
             let vc = segue.destinationViewController as! WalletController
@@ -37,12 +37,12 @@ class AccountController: UIViewController, ContainerDelegate, CustomModable {
     }
     
     func didTapClose() {
-        print("\(className)::\(__FUNCTION__)", terminator: "")
+        log.verbose("")
         self.performSegueWithIdentifier(exitSegueIdentifier, sender: self)
     }
     
     func prepareForSegueAnimation() {
-        print("\(className)::\(__FUNCTION__)", terminator: "")
+        log.verbose("")
         view.backgroundColor = UIColor.clearColor()
         headerContainer.hidden = true
     }

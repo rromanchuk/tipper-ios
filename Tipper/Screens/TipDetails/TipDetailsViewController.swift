@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TipDetailsViewController: UIViewController, Logoutable {
+class TipDetailsViewController: UIViewController, Logoutable, CustomSegueable {
     let className = "TipDetailsViewController"
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
@@ -44,7 +44,7 @@ class TipDetailsViewController: UIViewController, Logoutable {
     
     override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
         print("\(className)::\(__FUNCTION__) toViewController: \(toViewController), fromViewController: \(fromViewController)")
-        if let _ = fromViewController as? CustomModable {
+        if let _ = fromViewController as? CustomSegueable {
             
             let unwindSegue = CustomUnwindModalSegue(identifier: identifier, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
                 
@@ -83,6 +83,14 @@ class TipDetailsViewController: UIViewController, Logoutable {
             vc.market = market
             vc.exitSegueIdentifier = "ExitToTipDetailsFromAccount"
         }
+    }
+
+    func prepareForSegueAnimation() {
+        
+    }
+
+    func segueAnimationComplete() {
+
     }
 
 }

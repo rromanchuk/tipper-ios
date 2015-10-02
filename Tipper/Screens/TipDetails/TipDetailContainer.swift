@@ -78,7 +78,7 @@ class TipDetailContainer: UITableViewController {
 
     @IBAction func didTapBack(sender: UIButton) {
         print("\(className)::\(__FUNCTION__)")
-        self.parentViewController?.performSegueWithIdentifier("BackToHome", sender: self)
+        self.parentViewController?.performSegueWithIdentifier("UnwindFromTipDetail", sender: self)
     }
 
     @IBAction func didTapTxidLabel(sender: UITapGestureRecognizer) {

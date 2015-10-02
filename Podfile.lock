@@ -22,6 +22,7 @@ PODS:
   - SSKeychain (1.2.3)
   - TSMessages (0.9.12):
     - HexColors (~> 2.2.0)
+  - XCGLogger (3.0)
 
 DEPENDENCIES:
   - ApplePayStubs
@@ -35,6 +36,7 @@ DEPENDENCIES:
   - SDCAlertView
   - SSKeychain
   - TSMessages
+  - XCGLogger
 
 SPEC CHECKSUMS:
   ApplePayStubs: 5dd63c36527d1117b2045939fb5b6581b4815433
@@ -51,5 +53,6 @@ SPEC CHECKSUMS:
   SDCAutoLayout: e6885bb39ab8e2ec2ff84d158f38035f025f7420
   SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d
   TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
+  XCGLogger: 5802533aff8bafc8b3b9776ab8972576f31d0a4e
 
 COCOAPODS: 0.38.2

@@ -58,14 +58,13 @@ class TipCell: UITableViewCell {
             let twt = TWTRTweet(JSONDictionary: _favorite!.twitterJSON)
             twt.author.profileImageLargeURL
             setupTipAmount()
-            usernameLabel.text = "@\(_favorite!.toTwitterUsername)"
-           
-
-            if _favorite?.fromTwitterId  == currentUser?.uuid {
+            log.verbose("favorite: \(favorite)")
+            print(" \(_favorite?.fromTwitterId)  == \(currentUser?.twitterUserId)")
+            if _favorite?.fromTwitterId  == currentUser?.twitterUserId {
                 if let urlString = twt.author.profileImageLargeURL, url = NSURL(string: urlString) {
                     userProfileImage.hnk_setImageFromURL(url)
                 }
-
+                usernameLabel.text = "@\(_favorite!.toTwitterUsername)"
                 if _favorite!.didLeaveTip {
                     tipArrow.hidden = false
                     tipArrow.image = UIImage(named: "down-arrow")
@@ -90,6 +89,7 @@ class TipCell: UITableViewCell {
                 tipActionLabel.text = "\(_favorite!.fromTwitterUsername) sent you a tip"
                 tipAmount.hidden = false
                 tipAmountBTC.hidden = false
+                usernameLabel.text = "@\(_favorite!.fromTwitterUsername)"
             }
 
             timeLabel.text = formatter.stringFromDate(_favorite!.createdAt)

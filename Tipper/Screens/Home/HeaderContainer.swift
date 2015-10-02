@@ -38,7 +38,7 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(className)::\(__FUNCTION__) screenType: \(activeScreenType.rawValue)")
+        log.verbose("")
         displayUSD = false
         
         refreshHeader()
@@ -54,25 +54,12 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        print("\(className)::\(__FUNCTION__) screenType: \(activeScreenType.rawValue)")
+        log.verbose("")
     }
     
-    override func viewControllerForUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject?) -> UIViewController? {
-        print("\(className)::\(__FUNCTION__) screenType: \(activeScreenType.rawValue) fromViewController: \(fromViewController)")
-        let vc = super.viewControllerForUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
-        print("viewController to handle the unwind: \(vc)")
-        return vc
-    }
-    
-    override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
-        print("\(className)::\(__FUNCTION__) screenType: \(activeScreenType.rawValue) fromViewController: \(fromViewController)")
-        let canPerform =  super.canPerformUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
-        print("canPerform?: \(canPerform)")
-        return canPerform
-    }
-    
+
     func refreshHeader() {
-        //print("\(className)::\(__FUNCTION__) screenType: \(activeScreenType.rawValue)")
+        log.verbose("")
 
         switch activeScreenType {
         case .AccountScreen:
@@ -121,13 +108,13 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
     
 
     @IBAction func didTapClose(sender: UIButton) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         containerDelegate?.didTapClose()
         //self.performSegueWithIdentifier("ExitToHome", sender: self)
     }
     
     func setBalance() {
-        //println("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         if let marketValue = currentUser.marketValue, amount = marketValue.amount where displayUSD {
 
             let string = "$\(amount)"
@@ -151,7 +138,7 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
     }
     
     func updateMarkets() {
-        //println("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         market.update { [weak self] () -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self?.refreshHeader()
@@ -166,7 +153,7 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
 
    
     @IBAction func didTapBalance(sender: UITapGestureRecognizer) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         displayUSD = !displayUSD
         setBalance()
 
@@ -214,16 +201,16 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
     // MARK: Application lifecycle
 
     func applicationWillResignActive(aNotification: NSNotification) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
     }
 
     func applicationDidEnterBackground(aNotification: NSNotification) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
 
     }
 
     func applicationDidBecomeActive(aNotification: NSNotification) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         updateMarkets()
         currentUser.refreshWithDynamo { [weak self] (error) -> Void in
             if (error == nil) {
@@ -237,7 +224,7 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("\(className)::\(__FUNCTION__) identifier: \(segue.identifier) screenType: \(activeScreenType.rawValue)")
+        log.verbose("identifier: \(segue.identifier) screenType: \(activeScreenType.rawValue)")
         
     }
     

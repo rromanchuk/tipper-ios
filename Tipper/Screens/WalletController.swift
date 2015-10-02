@@ -109,13 +109,13 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
     }
 
     @IBAction func didCopy(sender: UIButton) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         let pb = UIPasteboard.generalPasteboard()
         pb.string = currentUser.bitcoinAddress!
     }
 
     @IBAction func didPaste(sender: UIButton) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         if (addressToPayTextField.text?.characters.count == 0) {
             let pb = UIPasteboard.generalPasteboard()
             if let address = pb.string {
@@ -149,13 +149,13 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
 
     // MARK: Stripe
     func checkoutController(controller: STPCheckoutViewController, didCreateToken token: STPToken, completion: STPTokenSubmissionHandler) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         createBackendChargeWithToken(token, completion: completion)
     }
 
 
     func paymentAuthorizationViewControllerDidFinish(controller: PKPaymentAuthorizationViewController!) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         self.parentViewController!.dismissViewControllerAnimated(true, completion: nil)
     }
 
@@ -195,13 +195,13 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
     }
 
     @IBAction func didTapLogout(sender: UIButton) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         currentUser.resetIdentifiers()
         performSegueWithIdentifier("BackToSplashFromAccount", sender: self)
     }
 
     @IBAction func didTapPay(sender: UIButton) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         let request = PKPaymentRequest()
         request.merchantIdentifier = ApplePayMerchantID
         request.supportedNetworks = SupportedPaymentNetworks
@@ -248,7 +248,7 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
     }
 
     func createBackendChargeWithToken(token: STPToken, completion: STPTokenSubmissionHandler) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         API.sharedInstance.charge(token.tokenId, amount:self.market.amount!, completion: { [weak self] (json, error) -> Void in
             if (error != nil) {
                 completion(STPBackendChargeResult.Failure, error)
@@ -261,7 +261,7 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
     }
 
     func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: ((PKPaymentAuthorizationStatus) -> Void)) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         STPAPIClient.sharedClient().createTokenWithPayment(payment, completion: { [weak self] (token, error) -> Void in
             print("\(self!.className)::\(__FUNCTION__) error:\(error), token: \(token)")
             if error == nil {

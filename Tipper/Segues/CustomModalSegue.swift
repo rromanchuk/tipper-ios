@@ -12,13 +12,13 @@ class CustomModalSegue: UIStoryboardSegue {
     let className = "CustomModalSegue"
 
     override func perform() {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         // Assign the source and destination views to local variables.
         let firstVCView = self.sourceViewController.view as UIView!
         let secondVCView = self.destinationViewController.view as UIView!
         
         let sourceVc = self.sourceViewController as? HomeController
-        let destinationVc =  self.destinationViewController as? CustomModable
+        let destinationVc =  self.destinationViewController as? CustomSegueable
         
         
         
@@ -58,7 +58,7 @@ class CustomModalSegue: UIStoryboardSegue {
     }
 }
 
-protocol CustomModable:class {
+protocol CustomSegueable:class {
     func prepareForSegueAnimation()
     func segueAnimationComplete()
     

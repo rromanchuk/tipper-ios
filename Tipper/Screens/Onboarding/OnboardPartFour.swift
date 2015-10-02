@@ -35,12 +35,12 @@ class OnboardPartFour: UIViewController, StandardViewController {
     
 
     func didTapButton(sender: UIButton) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         currentUser.registerForRemoteNotificationsIfNeeded()
     }
     
     func remoteRegistrationComplete() {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         (parentViewController as! OnboardingPageControllerViewController).autoAdvance()
     }
 
