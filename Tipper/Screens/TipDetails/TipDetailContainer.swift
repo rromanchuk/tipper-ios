@@ -35,7 +35,6 @@ class TipDetailContainer: UITableViewController {
 
 
         let client = TWTRAPIClient()
-
         client.loadTweetWithID(favorite.tweetId) { tweet, error in
             SwiftSpinner.hide()
             if let t = tweet {

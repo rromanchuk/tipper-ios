@@ -216,14 +216,14 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
                      responseClass:[TIPPERTransaction class]];
 }
 
-- (AWSTask *)transactionPut:(NSString *)_id {
+- (AWSTask *)transactionPut:(NSString *)txid {
     NSDictionary *headerParameters = @{
                                        @"Content-Type": @"application/json",
                                        @"Accept": @"application/json",
                                        
                                        };
     NSDictionary *queryParameters = @{
-                                      @"_id": _id
+                                      @"txid": txid
                                       };
     NSDictionary *pathParameters = @{
                                      

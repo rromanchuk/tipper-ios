@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import SwiftyJSON
 
-class Transaction: NSManagedObject, CoreDataUpdatable {
+class Transaction: NSManagedObject, CoreDataUpdatable, APIGatewayUpdateable {
 
 
     @NSManaged var txid: String!
@@ -67,6 +67,19 @@ class Transaction: NSManagedObject, CoreDataUpdatable {
         log.verbose("")
     }
 
+    func updateAPIGateway(task: AWSTask) {
+        log.verbose("")
+        if let transaction = task.result as? TIPPERTransaction {
+            log.verbose("Transaction  \(transaction)")
+            self.txid = transaction.txid
+            self.confirmations = transaction.confirmations
+            self.fee = transaction.fee
+            self.fromUserId = transaction.FromUserID
+            self.toUserId = transaction.ToUserID
+
+        }
+    }
+
     func updateEntityWithDynamoModel(dynamoObject: DynamoUpdatable) {
         log.verbose("")
         if let transaction = dynamoObject as? DynamoTransaction {
@@ -91,3 +104,45 @@ class Transaction: NSManagedObject, CoreDataUpdatable {
 
     
 }
+
+
+//@property (nonatomic, strong) NSString *txid;
+//
+//
+//@property (nonatomic, strong) NSString *relayed_by;
+//
+//
+//@property (nonatomic, strong) NSString *ToBitcoinAddress;
+//
+//
+//@property (nonatomic, strong) NSString *FromBitcoinAddress;
+//
+//
+//@property (nonatomic, strong) NSString *ToTwitterID;
+//
+//
+//@property (nonatomic, strong) NSString *FromTwitterID;
+//
+//
+//@property (nonatomic, strong) NSString *ToUserID;
+//
+//
+//@property (nonatomic, strong) NSString *FromUserID;
+//
+//
+//@property (nonatomic, strong) NSNumber *confirmations;
+//
+//
+//@property (nonatomic, strong) NSNumber *time;
+//
+//
+//@property (nonatomic, strong) NSNumber *size;
+//
+//
+//@property (nonatomic, strong) NSNumber *fee;
+//
+//
+//@property (nonatomic, strong) NSNumber *tip_amount;
+//
+//
+//@property (nonatomic, strong) NSString *category;

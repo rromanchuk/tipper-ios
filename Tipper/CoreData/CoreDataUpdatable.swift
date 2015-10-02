@@ -34,3 +34,14 @@ protocol DynamoUpdatable {
     //
     // :returns: String The NSManagedObject's entity name
 }
+
+protocol APIGatewayUpdateable {
+
+    // The CoreData column that should be used for lookup
+
+    func updateAPIGateway(task: AWSTask)
+
+    // Swift doesn't have very friendly introspection at the moment. NSManagedObject extension needs to ask itself what its entity string is
+    //
+    // :returns: String The NSManagedObject's entity name
+}

@@ -204,11 +204,11 @@
 /**
  
  
- @param _id 
+ @param txid 
  
  return type: TIPPERTransaction *
  */
-- (AWSTask *)transactionPut:(NSString *)_id;
+- (AWSTask *)transactionPut:(NSString *)txid;
 
 /**
  
