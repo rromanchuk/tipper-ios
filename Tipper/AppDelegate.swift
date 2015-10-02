@@ -81,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         market = NSEntityDescription.insertNewObjectForEntityForName("Market", inManagedObjectContext: managedObjectContext) as! Market
         market.save()
 
-        let firstController = window?.rootViewController as! OnboardingViewController
+        let firstController = window?.rootViewController as! SplashViewController
         firstController.currentUser = CurrentUser.currentUser(managedObjectContext)
         firstController.provider = provider
         firstController.managedObjectContext = managedObjectContext

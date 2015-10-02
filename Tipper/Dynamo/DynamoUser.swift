@@ -49,7 +49,7 @@ class DynamoUser: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
             print("DynamoUser::\(__FUNCTION__) error:\(task.error), exception:\(task.exception), taskResult:\(task.result)")
             Debug.isBlocking()
             if (task.error == nil) {
-                if let results = task.result as? AWSDynamoDBPaginatedOutput, items = results.items as? [DynamoUser]  {
+                if let results = task.result as? AWSDynamoDBPaginatedOutput, items = results.items as? [DynamoUser] where items.count > 0  {
                     let user = items[0]
                     print("user:\(user)")
                     completion(user: user)

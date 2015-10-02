@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B22c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sKB-ul-4gT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B22c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="v60-FX-pd0">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -148,13 +148,35 @@
                         <outlet property="containerView" destination="kDo-mX-IGi" id="ls6-am-S4y"/>
                         <outlet property="pageControl" destination="nxG-VK-NI4" id="0YA-sc-YNO"/>
                         <outlet property="twitterLoginButton" destination="5bK-05-bG7" id="reR-rt-hkX"/>
-                        <segue destination="JsD-Be-PS1" kind="presentation" identifier="Home" id="Pbw-qO-DHV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4g6-e3-hRf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="OKT-wf-h11" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-3040" y="-826"/>
+        </scene>
+        <!--Splash View Controller-->
+        <scene sceneID="WIC-ar-ZZk">
+            <objects>
+                <viewController id="v60-FX-pd0" customClass="SplashViewController" customModule="Tipper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="v84-IU-0gL"/>
+                        <viewControllerLayoutGuide type="bottom" id="lYf-Fl-TNK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KgP-uW-pDd" customClass="BaseView" customModule="Tipper" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.36078431370000003" green="0.74117647060000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <connections>
+                        <segue destination="sKB-ul-4gT" kind="presentation" identifier="Onboarding" animates="NO" id="4gL-Nz-vUQ"/>
+                        <segue destination="JsD-Be-PS1" kind="presentation" identifier="Home" animates="NO" id="UI0-Jp-LeU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KIO-XX-rfx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3040" y="5"/>
         </scene>
         <!--Onboarding Page Controller View Controller-->
         <scene sceneID="cHB-2Q-gDH">
@@ -987,14 +1009,14 @@ tipper will send a Bitcoin tip.</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You tipped Ryan" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60G-HZ-To5">
-                                                    <rect key="frame" x="81" y="15" width="95" height="15"/>
+                                                    <rect key="frame" x="96" y="15" width="95" height="15"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@rromanchuk" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VrX-Dy-Zto">
-                                                    <rect key="frame" x="81" y="34" width="192" height="21"/>
+                                                    <rect key="frame" x="96" y="34" width="184" height="21"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="cX1-8b-WtS"/>
@@ -1004,7 +1026,7 @@ tipper will send a Bitcoin tip.</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-image-placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="ACe-lP-FW5">
-                                                    <rect key="frame" x="33" y="15" width="40" height="40"/>
+                                                    <rect key="frame" x="48" y="15" width="40" height="40"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="baq-xi-Q5n"/>
@@ -1033,7 +1055,7 @@ tipper will send a Bitcoin tip.</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTC 0.0005" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNi-GN-KiE">
-                                                    <rect key="frame" x="320" y="43" width="61" height="12"/>
+                                                    <rect key="frame" x="321" y="43" width="60" height="12"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1052,16 +1074,24 @@ tipper will send a Bitcoin tip.</string>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tm-Ir-Phc">
-                                                    <rect key="frame" x="8" y="23" width="12" height="23"/>
+                                                <button opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tm-Ir-Phc">
+                                                    <rect key="frame" x="8" y="10" width="50" height="50"/>
                                                     <animations/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="3Wv-so-A14"/>
                                                         <constraint firstAttribute="height" constant="23" id="Ndc-0r-p4J"/>
                                                         <constraint firstAttribute="width" constant="12" id="TyX-Y1-UI4"/>
+                                                        <constraint firstAttribute="width" constant="50" id="hdC-xS-QN6"/>
                                                     </constraints>
                                                     <state key="normal" image="back">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="Ndc-0r-p4J"/>
+                                                            <exclude reference="TyX-Y1-UI4"/>
+                                                        </mask>
+                                                    </variation>
                                                     <connections>
                                                         <action selector="didTapBack:" destination="3XR-c5-WyO" eventType="touchUpInside" id="cYc-p8-9sE"/>
                                                     </connections>
@@ -1078,12 +1108,12 @@ tipper will send a Bitcoin tip.</string>
                                                 <constraint firstItem="PRd-iH-GZ3" firstAttribute="bottom" secondItem="nQh-KL-tM2" secondAttribute="bottom" id="LG4-rW-Dev"/>
                                                 <constraint firstItem="6tm-Ir-Phc" firstAttribute="leading" secondItem="nQh-KL-tM2" secondAttribute="leadingMargin" id="Oqq-cD-e5a"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="2WX-eU-6Uo" secondAttribute="trailing" constant="25" id="P6h-ka-ifW"/>
-                                                <constraint firstItem="ACe-lP-FW5" firstAttribute="leading" secondItem="nQh-KL-tM2" secondAttribute="leadingMargin" constant="25" id="PKO-5V-fFc"/>
+                                                <constraint firstItem="ACe-lP-FW5" firstAttribute="leading" secondItem="nQh-KL-tM2" secondAttribute="leadingMargin" constant="40" id="PKO-5V-fFc"/>
                                                 <constraint firstAttribute="trailing" secondItem="PRd-iH-GZ3" secondAttribute="trailing" id="PfA-hu-P2t"/>
                                                 <constraint firstItem="ACe-lP-FW5" firstAttribute="top" secondItem="60G-HZ-To5" secondAttribute="top" id="PvH-8F-6PB"/>
                                                 <constraint firstAttribute="centerY" secondItem="ACe-lP-FW5" secondAttribute="centerY" id="TbM-qM-2vp"/>
                                                 <constraint firstItem="nNi-GN-KiE" firstAttribute="top" secondItem="2WX-eU-6Uo" secondAttribute="bottom" constant="8" id="YgU-6Z-L5D"/>
-                                                <constraint firstItem="PRd-iH-GZ3" firstAttribute="leading" secondItem="VrX-Dy-Zto" secondAttribute="trailing" constant="47" id="ad3-p3-Lc6"/>
+                                                <constraint firstItem="PRd-iH-GZ3" firstAttribute="leading" relation="lessThanOrEqual" secondItem="VrX-Dy-Zto" secondAttribute="trailing" constant="40" id="ad3-p3-Lc6"/>
                                                 <constraint firstItem="VrX-Dy-Zto" firstAttribute="leading" secondItem="60G-HZ-To5" secondAttribute="leading" id="gsC-xs-9W1"/>
                                                 <constraint firstItem="VrX-Dy-Zto" firstAttribute="baseline" secondItem="nNi-GN-KiE" secondAttribute="baseline" id="iNU-Pe-sCA"/>
                                                 <constraint firstItem="60G-HZ-To5" firstAttribute="leading" secondItem="ACe-lP-FW5" secondAttribute="trailing" constant="8" id="v0S-7Q-py0"/>
@@ -2248,7 +2278,7 @@ tipper will send a Bitcoin tip.</string>
     <resources>
         <image name="account" width="29" height="29"/>
         <image name="apple-pay" width="582" height="192"/>
-        <image name="back" width="25" height="48"/>
+        <image name="back" width="13" height="24"/>
         <image name="cc-exchange" width="380" height="116"/>
         <image name="close" width="25" height="26"/>
         <image name="demo-tip" width="363" height="67"/>

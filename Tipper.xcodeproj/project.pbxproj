@@ -21,8 +21,6 @@
 		941AA38A1AAFA34900CA9192 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AA3891AAFA34900CA9192 /* Config.swift */; };
 		9426B28B1B97F177001F996C /* CustomUnwindModalSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9426B28A1B97F177001F996C /* CustomUnwindModalSegue.swift */; };
 		9426B28D1B98CF44001F996C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9426B28C1B98CF44001F996C /* GoogleService-Info.plist */; };
-		9426B2941B9F6D76001F996C /* OnboardFundingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9426B2931B9F6D76001F996C /* OnboardFundingViewController.swift */; };
-		9426B2961B9F6D9C001F996C /* OnboardAutoTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9426B2951B9F6D9C001F996C /* OnboardAutoTipViewController.swift */; };
 		9426B29A1B9F6E6F001F996C /* TipperButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9426B2991B9F6E6F001F996C /* TipperButton.swift */; };
 		942780011B94CE70007CB713 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942780001B94CE70007CB713 /* BaseView.swift */; };
 		942780071B97B7D5007CB713 /* CustomModalSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942780061B97B7D5007CB713 /* CustomModalSegue.swift */; };
@@ -72,6 +70,7 @@
 		949842061B260FB80079082C /* TipDetailContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949842051B260FB80079082C /* TipDetailContainer.swift */; };
 		94A00F1D1BBD3FEA00658C4C /* TIPPERTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A00F1A1BBD3FEA00658C4C /* TIPPERTransaction.m */; settings = {ASSET_TAGS = (); }; };
 		94A00F1E1BBD3FEA00658C4C /* TIPPERUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A00F1C1BBD3FEA00658C4C /* TIPPERUser.m */; settings = {ASSET_TAGS = (); }; };
+		94A00F241BBE6C7700658C4C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A00F231BBE6C7700658C4C /* SplashViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		94AB27931ACA3D2B005A433F /* TintedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AB27921ACA3D2B005A433F /* TintedButton.swift */; };
 		94AF29751AAEF2B600E16048 /* Tipper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94AF29731AAEF2B600E16048 /* Tipper.xcdatamodeld */; };
 		94AF297A1AAEF2B600E16048 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94AF29781AAEF2B600E16048 /* Main.storyboard */; };
@@ -155,8 +154,6 @@
 		9426B28A1B97F177001F996C /* CustomUnwindModalSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomUnwindModalSegue.swift; path = Segues/CustomUnwindModalSegue.swift; sourceTree = "<group>"; };
 		9426B28C1B98CF44001F996C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9426B28E1B98D0FF001F996C /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
-		9426B2931B9F6D76001F996C /* OnboardFundingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardFundingViewController.swift; path = Onboarding/OnboardFundingViewController.swift; sourceTree = "<group>"; };
-		9426B2951B9F6D9C001F996C /* OnboardAutoTipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardAutoTipViewController.swift; path = Onboarding/OnboardAutoTipViewController.swift; sourceTree = "<group>"; };
 		9426B2991B9F6E6F001F996C /* TipperButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipperButton.swift; path = Views/TipperButton.swift; sourceTree = "<group>"; };
 		942780001B94CE70007CB713 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseView.swift; path = Views/BaseView.swift; sourceTree = "<group>"; };
 		942780061B97B7D5007CB713 /* CustomModalSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomModalSegue.swift; path = Segues/CustomModalSegue.swift; sourceTree = "<group>"; };
@@ -218,6 +215,7 @@
 		94A00F1A1BBD3FEA00658C4C /* TIPPERTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIPPERTransaction.m; sourceTree = "<group>"; };
 		94A00F1B1BBD3FEA00658C4C /* TIPPERUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIPPERUser.h; sourceTree = "<group>"; };
 		94A00F1C1BBD3FEA00658C4C /* TIPPERUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIPPERUser.m; sourceTree = "<group>"; };
+		94A00F231BBE6C7700658C4C /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SplashViewController.swift; path = Splash/SplashViewController.swift; sourceTree = "<group>"; };
 		94AB27921ACA3D2B005A433F /* TintedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TintedButton.swift; path = Views/TintedButton.swift; sourceTree = "<group>"; };
 		94AF296C1AAEF2B600E16048 /* Tipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94AF29701AAEF2B600E16048 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -326,8 +324,6 @@
 		9426B2921B9F67D0001F996C /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				9426B2931B9F6D76001F996C /* OnboardFundingViewController.swift */,
-				9426B2951B9F6D9C001F996C /* OnboardAutoTipViewController.swift */,
 				94098BA71BB7BDE300394955 /* OnboardingViewController.swift */,
 				94098BA91BB7C10200394955 /* OnboardingPageControllerViewController.swift */,
 				94098BAB1BB7C2ED00394955 /* OnboardPartOne.swift */,
@@ -403,6 +399,7 @@
 		94416C051AAF989F00117AFC /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				94A00F1F1BBE6C2B00658C4C /* Splash */,
 				9426B2921B9F67D0001F996C /* Onboarding */,
 				942780021B97AE9A007CB713 /* Accounts */,
 				94F5137D1B8D161A002E0996 /* Notifications */,
@@ -484,6 +481,14 @@
 				949842051B260FB80079082C /* TipDetailContainer.swift */,
 			);
 			name = TipDetails;
+			sourceTree = "<group>";
+		};
+		94A00F1F1BBE6C2B00658C4C /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				94A00F231BBE6C7700658C4C /* SplashViewController.swift */,
+			);
+			name = Splash;
 			sourceTree = "<group>";
 		};
 		94AB27911ACA3CFD005A433F /* Views */ = {
@@ -918,7 +923,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9426B2941B9F6D76001F996C /* OnboardFundingViewController.swift in Sources */,
 				943A6FE21B21F6B300D50D8A /* TipCell.swift in Sources */,
 				94FDE9BF1AB4209B006B6454 /* SuperFetchedResultsControllerDelegate.swift in Sources */,
 				942780091B97B8EC007CB713 /* AccountController.swift in Sources */,
@@ -942,6 +946,7 @@
 				943243161B2D6C1300D1A1D6 /* HeaderDetailCell.swift in Sources */,
 				94723C7B1BB507D100C33210 /* TIPPERSettings.m in Sources */,
 				949842021B25FC590079082C /* TipDetailsViewController.swift in Sources */,
+				94A00F241BBE6C7700658C4C /* SplashViewController.swift in Sources */,
 				9426B28B1B97F177001F996C /* CustomUnwindModalSegue.swift in Sources */,
 				9437D3DC1BA24C0C00FD5ECB /* Notification.swift in Sources */,
 				94416C141AAF989F00117AFC /* NSManagedObject+Extension.swift in Sources */,
@@ -966,7 +971,6 @@
 				94098BAA1BB7C10200394955 /* OnboardingPageControllerViewController.swift in Sources */,
 				94D3FEB21BABB8E400A14EB4 /* NotificationSeenIndicator.swift in Sources */,
 				94416C0C1AAF989F00117AFC /* API.swift in Sources */,
-				9426B2961B9F6D9C001F996C /* OnboardAutoTipViewController.swift in Sources */,
 				94F5137C1B8D03BC002E0996 /* SwiftSpinner.swift in Sources */,
 				94C255201B12798900A65B94 /* Settings.swift in Sources */,
 				94AB27931ACA3D2B005A433F /* TintedButton.swift in Sources */,
