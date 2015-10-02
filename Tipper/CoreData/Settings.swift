@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import SwiftyJSON
 
-class Settings: NSManagedObject, CoreDataUpdatable {
+class Settings: NSManagedObject, CoreDataUpdatable, APIGatewayUpdateable {
     @NSManaged var fundAmount: String?
     @NSManaged var tipAmount: String?
     @NSManaged var feeAmount: String?
@@ -52,16 +52,9 @@ class Settings: NSManagedObject, CoreDataUpdatable {
 
     class func get(settingId: String = "1") {
 
-        TIPPERTipperClient.defaultClient().settingsGet(settingId).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+    TIPPERTipperClient.defaultClient().settingsGet(settingId).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             log.verbose("Settings fetch \(task.result), \(task.error) exception: \(task.exception)")
-            if let settings = task.result as? TIPPERSettings {
-                Settings.sharedInstance.version = settings.Version
-                Settings.sharedInstance.fundAmount = settings.FundAmount
-                Settings.sharedInstance.feeAmount = settings.FeeAmount
-                Settings.sharedInstance.tipAmount = settings.TipAmount
-                Settings.sharedInstance.writeToDisk()
-            }
-            
+            Settings.sharedInstance.updateAPIGateway(task)
             return nil;
         })
     }
@@ -78,6 +71,16 @@ class Settings: NSManagedObject, CoreDataUpdatable {
         self.fundAmount                 = settings.FeeAmount
         self.tipAmount                  = settings.TipAmount
         self.feeAmount                  = settings.FeeAmount
+    }
+
+    func updateAPIGateway(task: AWSTask) {
+        if let settings = task.result as? TIPPERSettings {
+            self.version                    = settings.Version
+            self.fundAmount                 = settings.FeeAmount
+            self.tipAmount                  = settings.TipAmount
+            self.feeAmount                  = settings.FeeAmount
+        }
+
     }
 
 
