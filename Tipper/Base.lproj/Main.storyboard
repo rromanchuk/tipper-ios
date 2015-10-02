@@ -148,6 +148,7 @@
                         <outlet property="containerView" destination="kDo-mX-IGi" id="ls6-am-S4y"/>
                         <outlet property="pageControl" destination="nxG-VK-NI4" id="0YA-sc-YNO"/>
                         <outlet property="twitterLoginButton" destination="5bK-05-bG7" id="reR-rt-hkX"/>
+                        <segue destination="SIw-pu-arB" kind="unwind" identifier="ExitToSplash" animates="NO" unwindAction="done:sender:" id="o7H-3u-QYo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4g6-e3-hRf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -175,6 +176,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KIO-XX-rfx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="SIw-pu-arB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-3040" y="5"/>
         </scene>
@@ -337,7 +339,7 @@ tipper will send a Bitcoin tip.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6dN-4r-PiX" userLabel="Header Container">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="78"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="78" id="94b-nW-dQP"/>
@@ -347,7 +349,7 @@ tipper will send a Bitcoin tip.</string>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dpK-my-TPF">
-                                <rect key="frame" x="0.0" y="78" width="414" height="658"/>
+                                <rect key="frame" x="0.0" y="98" width="414" height="638"/>
                                 <animations/>
                                 <connections>
                                     <segue destination="UEU-XD-8Ny" kind="embed" identifier="AccountEmbed" id="7dT-xN-NwC"/>
@@ -920,6 +922,7 @@ tipper will send a Bitcoin tip.</string>
                         <outlet property="tipsContainer" destination="GLd-DI-xSQ" id="x1l-8Y-pLR"/>
                         <segue destination="SFj-Ao-M2M" kind="custom" identifier="DidTapNotifications" customClass="CustomModalSegue" customModule="Tipper" customModuleProvider="target" id="PoE-I8-dAr"/>
                         <segue destination="AQK-kz-A32" kind="custom" identifier="DidTapAccountSegue" customClass="CustomModalSegue" customModule="Tipper" customModuleProvider="target" id="P8C-81-ZYI"/>
+                        <segue destination="SIw-pu-arB" kind="unwind" identifier="BackToSplash" unwindAction="unwindToSplash:" id="hN0-2U-HlL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="syl-PA-E4Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1699,7 +1702,7 @@ tipper will send a Bitcoin tip.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wvi-RS-UTW" userLabel="Header Container">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="78"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="78" id="igB-0r-dBY"/>
@@ -1709,7 +1712,7 @@ tipper will send a Bitcoin tip.</string>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nA8-2f-hfA">
-                                <rect key="frame" x="0.0" y="78" width="414" height="658"/>
+                                <rect key="frame" x="0.0" y="98" width="414" height="638"/>
                                 <animations/>
                                 <connections>
                                     <segue destination="RIO-dg-bBv" kind="embed" identifier="NotificationsEmbed" id="CPb-sV-Iyr"/>
@@ -2247,15 +2250,22 @@ tipper will send a Bitcoin tip.</string>
                                 <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Fdb-ti-zSp"/>
+                                    </mask>
+                                </variation>
                             </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.35686274509999999" green="0.73725490199999999" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Ua0-D0-nA3" secondAttribute="trailing" constant="20" id="DPa-JF-sFV"/>
                             <constraint firstItem="Ua0-D0-nA3" firstAttribute="centerX" secondItem="kX7-Tf-nef" secondAttribute="centerX" id="Dce-r4-me1"/>
                             <constraint firstItem="x4c-GS-WNy" firstAttribute="top" secondItem="0lj-nm-OHQ" secondAttribute="bottom" constant="12" id="GHu-H4-9Zy"/>
                             <constraint firstItem="x4c-GS-WNy" firstAttribute="centerX" secondItem="kX7-Tf-nef" secondAttribute="centerX" id="I34-q2-vqU"/>
                             <constraint firstItem="Ua0-D0-nA3" firstAttribute="top" secondItem="x4c-GS-WNy" secondAttribute="bottom" constant="10" id="RYg-ve-wI2"/>
+                            <constraint firstItem="Ua0-D0-nA3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kX7-Tf-nef" secondAttribute="leadingMargin" constant="20" id="ScA-P1-PWS"/>
                             <constraint firstItem="z50-Nd-O9n" firstAttribute="centerY" secondItem="kX7-Tf-nef" secondAttribute="centerY" id="afB-GF-mem"/>
                             <constraint firstItem="z50-Nd-O9n" firstAttribute="top" secondItem="Ua0-D0-nA3" secondAttribute="bottom" constant="34" id="cIE-zL-Wax"/>
                             <constraint firstItem="z50-Nd-O9n" firstAttribute="centerX" secondItem="kX7-Tf-nef" secondAttribute="centerX" id="iI0-aa-s0A"/>
@@ -2292,8 +2302,8 @@ tipper will send a Bitcoin tip.</string>
         <image name="up-arrow" width="27" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7dQ-p7-IX8"/>
-        <segue reference="Qgl-S3-h4Q"/>
-        <segue reference="LSM-VD-bA7"/>
+        <segue reference="P8C-81-ZYI"/>
+        <segue reference="PoE-I8-dAr"/>
+        <segue reference="Qcf-N3-O5L"/>
     </inferredMetricsTieBreakers>
 </document>

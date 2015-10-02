@@ -36,6 +36,26 @@ class SplashViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+
+    @IBAction func done(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("\(className)::\(__FUNCTION__) identifier: \(segue.identifier) \(segue.sourceViewController)")
+        if segue.identifier == "ExitFromOnboarding" {
+        }
+    }
+
+    @IBAction func unwindToSplash(unwindSegue: UIStoryboardSegue) {
+        print("\(className)::\(__FUNCTION__)")
+        if let _ = unwindSegue.sourceViewController as? HomeController {
+            print("Coming from HomeController")
+        }
+        else if let _ = unwindSegue.sourceViewController as? TipDetailsViewController {
+            print("Coming from TipDetailsViewController")
+        }
+        (UIApplication.sharedApplication().delegate as! AppDelegate).setupFirstController()
+    }
+
+
     
 
     // MARK: - Navigation

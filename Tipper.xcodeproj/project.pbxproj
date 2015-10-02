@@ -71,6 +71,7 @@
 		94A00F1D1BBD3FEA00658C4C /* TIPPERTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A00F1A1BBD3FEA00658C4C /* TIPPERTransaction.m */; settings = {ASSET_TAGS = (); }; };
 		94A00F1E1BBD3FEA00658C4C /* TIPPERUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A00F1C1BBD3FEA00658C4C /* TIPPERUser.m */; settings = {ASSET_TAGS = (); }; };
 		94A00F241BBE6C7700658C4C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A00F231BBE6C7700658C4C /* SplashViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		94A00F261BBE752300658C4C /* TipDetailSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A00F251BBE752300658C4C /* TipDetailSegue.swift */; settings = {ASSET_TAGS = (); }; };
 		94AB27931ACA3D2B005A433F /* TintedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AB27921ACA3D2B005A433F /* TintedButton.swift */; };
 		94AF29751AAEF2B600E16048 /* Tipper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 94AF29731AAEF2B600E16048 /* Tipper.xcdatamodeld */; };
 		94AF297A1AAEF2B600E16048 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94AF29781AAEF2B600E16048 /* Main.storyboard */; };
@@ -216,6 +217,7 @@
 		94A00F1B1BBD3FEA00658C4C /* TIPPERUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIPPERUser.h; sourceTree = "<group>"; };
 		94A00F1C1BBD3FEA00658C4C /* TIPPERUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIPPERUser.m; sourceTree = "<group>"; };
 		94A00F231BBE6C7700658C4C /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SplashViewController.swift; path = Splash/SplashViewController.swift; sourceTree = "<group>"; };
+		94A00F251BBE752300658C4C /* TipDetailSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipDetailSegue.swift; path = Segues/TipDetailSegue.swift; sourceTree = "<group>"; };
 		94AB27921ACA3D2B005A433F /* TintedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TintedButton.swift; path = Views/TintedButton.swift; sourceTree = "<group>"; };
 		94AF296C1AAEF2B600E16048 /* Tipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94AF29701AAEF2B600E16048 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 			children = (
 				942780061B97B7D5007CB713 /* CustomModalSegue.swift */,
 				9426B28A1B97F177001F996C /* CustomUnwindModalSegue.swift */,
+				94A00F251BBE752300658C4C /* TipDetailSegue.swift */,
 			);
 			name = Segues;
 			sourceTree = "<group>";
@@ -961,6 +964,7 @@
 				943243181B2E094A00D1A1D6 /* DynamoTransaction.swift in Sources */,
 				9427800D1B97D33F007CB713 /* NotificationsTableController.swift in Sources */,
 				94416C181AAF989F00117AFC /* AppDelegate.swift in Sources */,
+				94A00F261BBE752300658C4C /* TipDetailSegue.swift in Sources */,
 				943E93FD1B05C8DC007D98C7 /* WalletController.swift in Sources */,
 				943243121B2D6BBE00D1A1D6 /* TransitionManager.swift in Sources */,
 				94416C101AAF989F00117AFC /* UserSync.swift in Sources */,

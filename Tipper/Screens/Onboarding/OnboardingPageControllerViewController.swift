@@ -67,7 +67,7 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
             setupLabels(newController)
             self.setViewControllers([newController], direction: .Forward, animated: true, completion: nil)
         } else if (idx + 1) == pages.count {
-            containerController?.performSegueWithIdentifier("Home", sender: self)
+            containerController?.performSegueWithIdentifier("ExitToSplash", sender: self)
         }
     }
 

@@ -28,12 +28,10 @@ class OnboardingViewController: UIViewController {
         print("\(className)::\(__FUNCTION__)")
         
          NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillResignActive:", name: UIApplicationWillResignActiveNotification, object: UIApplication.sharedApplication())
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 
@@ -44,24 +42,7 @@ class OnboardingViewController: UIViewController {
     @IBAction func didTapTOS(sender: UITapGestureRecognizer) {
         UIApplication.sharedApplication().openURL(NSURL(string:Config.get("PRIVACY_URL"))!)
     }
-    
-    @IBAction func unwindToSplash(unwindSegue: UIStoryboardSegue) {
-        print("\(className)::\(__FUNCTION__)")
-        if let _ = unwindSegue.sourceViewController as? HomeController {
-            print("Coming from HomeController")
-        }
-        else if let _ = unwindSegue.sourceViewController as? TipDetailsViewController {
-            print("Coming from TipDetailsViewController")
-        }
-        (UIApplication.sharedApplication().delegate as! AppDelegate).setupFirstController()
-    }
-    
-    @IBAction func done(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("\(className)::\(__FUNCTION__) identifier: \(segue.identifier) \(segue.sourceViewController)")
-        if segue.identifier == "ExitFromOnboarding" {
-        }
-    }
- 
+
     
      //MARK: - Navigation
 
@@ -74,11 +55,6 @@ class OnboardingViewController: UIViewController {
             vc.provider = self.provider
             vc.market = self.market
             onboardingDelegate = vc
-        } else if (segue.identifier == "Home") {
-            let vc = segue.destinationViewController as! HomeController
-            vc.managedObjectContext = managedObjectContext
-            vc.currentUser = currentUser
-            vc.market = market
         }
     }
     
