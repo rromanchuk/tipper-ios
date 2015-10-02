@@ -29,7 +29,7 @@ import XCGLogger
 
 let log: XCGLogger = {
     let log = XCGLogger.defaultInstance()
-    log.setup(.Info, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: nil, fileLogLevel: .Verbose)
+    log.setup(.Verbose, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: nil, fileLogLevel: .Verbose)
 
     let dateFormatter = NSDateFormatter()
     dateFormatter.dateFormat = "MM/dd/yyyy hh:mma"
@@ -151,7 +151,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if currentUser.isTwitterAuthenticated {
             DynamoNotification.refresh(currentUser.userId!)
-            provider.logins = ["api.twitter.com": "\(Twitter.sharedInstance().sessionStore.session()!.authToken);\(Twitter.sharedInstance().sessionStore.session()!.authTokenSecret)"]
+            provider.logins = ["api.twitter.com": "\(currentUser.twitterAuthToken);\(currentUser.twitterAuthSecret)"]
             currentUser.refreshWithDynamo { [weak self] (error) -> Void in
                 self?.currentUser.updateBTCBalance({ () -> Void in
                     self?.provider.getIdentityId().continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in

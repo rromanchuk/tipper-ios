@@ -196,6 +196,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 dynamoUser.UserID = NSUUID().UUIDString
                 dynamoUser.CreatedAt = Int(NSDate().timeIntervalSince1970)
                 dynamoUser.AutomaticTippingEnabled = true
+                self.updateEntityWithDynamoModel(dynamoUser)
 
                 self.pushToDynamo(dynamoUser, completion: { () -> Void in
                     API.sharedInstance.address({ (json, error) -> Void in
@@ -234,10 +235,14 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         self.twitterUsername = session.userName
         self.twitterAuthToken = session.authToken
         self.twitterAuthSecret = session.authTokenSecret
+        log.info("session.userID: \(session.userID), session.userName: \(session.userName)")
+        log.info("currentUser: \(self)")
+        writeToDisk()
     }
 
     var isTwitterAuthenticated: Bool {
         get {
+            log.info("twitterUserId: \(self.twitterUserId), bitcoinAddress: \(self.bitcoinAddress), userId: \(userId)")
             return self.twitterUserId != nil && self.bitcoinAddress != nil && self.userId != nil && Twitter.sharedInstance().sessionStore.sessionForUserID(twitterUserId!) != nil
         }
     }
@@ -311,8 +316,8 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     }
 
     func pushToDynamo() {
-        log.verbose("\(className)::\(__FUNCTION__) self:\(self)")
         if isTwitterAuthenticated {
+            log.verbose("self:\(self)")
             mapper.load(DynamoUser.self, hashKey: userId, rangeKey: nil).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
                 log.verbose("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
                 if (task.error == nil) {
@@ -339,6 +344,9 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         user.EndpointArns               = self.endpointArns
         user.IsActive                   = "X"
         user.ProfileImage               = self.profileImage
+        if let _bitcoinAddress = self.bitcoinAddress {
+            user.BitcoinAddress = _bitcoinAddress
+        }
         user.UpdatedAt                  = Int(NSDate().timeIntervalSince1970)
 
 
@@ -408,12 +416,13 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         log.verbose("")
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         mapper.load(DynamoUser.self, hashKey: self.userId, rangeKey: nil).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-            log.verbose("error \(task.error)")
-            
-            if let dynamoUser: DynamoUser = task.result as? DynamoUser {
+            if let dynamoUser: DynamoUser = task.result as? DynamoUser where task.error == nil  {
                 self.updateEntityWithDynamoModel(dynamoUser)
+                self.save()
+            } else {
+                log.error("\(task.error)")
             }
-            
+
             completion(error: task.error)
             return nil
         })

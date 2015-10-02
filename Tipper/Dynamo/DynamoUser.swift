@@ -45,6 +45,8 @@ class DynamoUser: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
         exp.indexName = "TwitterUserID-index"
         exp.hashKeyAttribute = "TwitterUserID"
 
+        
+
         mapper.query(DynamoUser.self, expression: exp).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             log.verbose("error:\(task.error), exception:\(task.exception), taskResult:\(task.result)")
             Debug.isBlocking()
