@@ -42,11 +42,6 @@ public class API {
         }
     }
     
-    func register(username: String, twitterId: String, twitterAuth: String, twitterSecret: String, profileImage: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
-        log.verbose("")
-        self.call(self.manager.request(Router.Register(username, twitterId, twitterAuth, twitterSecret, profileImage)), completion: completion)
-    }
-    
     func autotip(completion: ((json: JSON, error: NSError?) -> Void)!) {
         log.verbose("")
         self.call(self.manager.request(Router.AutoTip), completion: completion)
@@ -72,15 +67,6 @@ public class API {
         self.call(self.manager.request(Router.Charge(token, amount)), completion: completion)
     }
 
-    func favorites(completion: ((json: JSON, error: NSError?) -> Void)!) {
-        log.verbose("")
-        self.call(self.manager.request(Router.Favorites), completion: completion)
-    }
-
-    func me(completion: ((json: JSON, error: NSError?) -> Void)!) {
-        log.verbose("")
-        self.call(self.manager.request(Router.Me), completion: completion)
-    }
 
     func market(btc: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
         //log.verbose()

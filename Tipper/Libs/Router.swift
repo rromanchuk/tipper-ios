@@ -20,27 +20,18 @@ enum Router: URLRequestConvertible {
     case Disconnect
     case Connect
     case Address
-    case Register(String, String, String, String, String)
-    case Cognito(String)
     case Charge(String, String)
-    case Favorites
-    case Me
-    case Settings
     case MarketPrice(String)
     case Balance
     case AutoTip
 
     var method: Alamofire.Method {
         switch self {
-        case .Address:
-            return .POST
-        case .Register, .Connect:
-            return .POST
-        case .Cognito:
+        case .Address, .Connect:
             return .POST
         case .Charge,.AutoTip:
             return .POST
-        case .Favorites,.Me,.MarketPrice,.Settings,.Balance:
+        case .MarketPrice,.Balance:
             return .GET
         case .Disconnect:
             return .DELETE
@@ -50,10 +41,6 @@ enum Router: URLRequestConvertible {
 
     var URL: String {
         switch self {
-        case .Me:
-            return "\(APIRoot)/me"
-        case .Register:
-            return "\(APIRoot)/register"
         case .Disconnect:
             return "\(APIRoot)/disconnect"
         case .Connect:
@@ -64,31 +51,20 @@ enum Router: URLRequestConvertible {
             return "\(APIRoot)/charges"
         case .AutoTip:
             return "\(APIRoot)/autotip"
-        case .Cognito:
-            return "\(APIRoot)/cognito"
-        case .Favorites:
-            return "https://api.twitter.com/1.1/favorites/list.json"
         case .MarketPrice:
             return "https://api.coinbase.com/v1/prices/buy"
         case .Balance:
             let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
             return "https://bitcoin.toshi.io/api/v0/addresses/\(CurrentUser.currentUser(delegate.managedObjectContext).bitcoinAddress!)" //https://bitcoin.toshi.io/api/v0/addresses/1G8f1EeFKq1ueXCSHJ8zwoZ6YBCrnCpaAP
-        case .Settings:
-            return "\(APIRoot)/settings"
+
         }
     }
 
 
     var URLParameters: [String: String] {
         switch self {
-        case .Register(let username, let twitterId, let twitterAuth, let twitterSecret, let profileImage):
-            return ["username": username, "twitter_id": twitterId, "twitter_auth_token": twitterAuth, "twitter_auth_secret": twitterSecret]
-        case .Cognito(let twitterId):
-            return ["twitter_id": twitterId]
         case .Charge(let token, let amount):
             return ["stripeToken": token, "amount": amount]
-        case .Favorites:
-            return ["count": "200", "include_entities": "false"]
         case .MarketPrice(let btc):
             return ["qty": btc]
         default:
@@ -99,10 +75,6 @@ enum Router: URLRequestConvertible {
 
     var JSONparameters: [String: AnyObject] {
         switch self {
-        case .Register(let username, let twitterId, let twitterAuth, let twitterSecret, let profileImage):
-            return ["username": username, "twitter_id": twitterId, "twitter_auth_token": twitterAuth, "twitter_auth_secret": twitterSecret, "profile_image" : profileImage]
-        case .Cognito(let twitterId):
-            return ["twitter_id": twitterId]
         case .Charge(let token, let amount):
             return ["stripeToken": token, "amount": amount]
         case .MarketPrice(let btc):
@@ -124,13 +96,9 @@ enum Router: URLRequestConvertible {
         mutableURLRequest.HTTPMethod = method.rawValue
         
         switch self {
-        case .Register, .MarketPrice, .Settings, .Balance:
+        case .MarketPrice, .Balance:
             // Does't need authentication
             break
-        case .Favorites:
-            let request : NSURLRequest = Twitter.sharedInstance().APIClient.URLRequestWithMethod(method.rawValue, URL: URLString, parameters: URLParameters, error: nil)
-            //let mutableRequest: NSMutableURLRequest = request.mutableCopy()
-            return request.mutableCopy() as! NSMutableURLRequest
         default:
             
             // Set authentication header
