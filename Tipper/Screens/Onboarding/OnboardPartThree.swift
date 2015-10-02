@@ -48,7 +48,7 @@ class OnboardPartThree: UIViewController, PKPaymentAuthorizationViewControllerDe
     }
 
     func updateMarketData() {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
 
         if let fundAmount = Settings.sharedInstance.fundAmount, fundAmountUBTC =  Settings.sharedInstance.fundAmountUBTC {
             btcConversionLabel.text = "(\(fundAmount) Bitcoin)"
@@ -61,7 +61,7 @@ class OnboardPartThree: UIViewController, PKPaymentAuthorizationViewControllerDe
     }
 
     func updateBTCSpotPrice() {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         market.update { () -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.updateMarketData()
@@ -72,7 +72,7 @@ class OnboardPartThree: UIViewController, PKPaymentAuthorizationViewControllerDe
     
     
     @IBAction func didTapPay(sender: UIButton) {
-        print("\(className)::\(__FUNCTION__) market: \(market)", terminator: "")
+        log.verbose("")
         let request = PKPaymentRequest()
         request.merchantIdentifier = ApplePayMerchantID
         request.supportedNetworks = SupportedPaymentNetworks
@@ -83,7 +83,7 @@ class OnboardPartThree: UIViewController, PKPaymentAuthorizationViewControllerDe
         request.paymentSummaryItems = [PKPaymentSummaryItem(label: "Tipper 0.02BTC deposit", amount: NSDecimalNumber(double: amount))]
         if Stripe.canSubmitPaymentRequest(request) {
             #if DEBUG
-                print("in debug mode", terminator: "")
+                log.info("in debug mode")
                 let applePayController = STPTestPaymentAuthorizationViewController(paymentRequest: request)
                 applePayController.delegate = self
                 self.presentViewController(applePayController, animated: true, completion: nil)
@@ -114,33 +114,33 @@ class OnboardPartThree: UIViewController, PKPaymentAuthorizationViewControllerDe
     
     // MARK: Stripe
     func checkoutController(controller: STPCheckoutViewController, didCreateToken token: STPToken, completion: STPTokenSubmissionHandler) {
-        print("\(className)::\(__FUNCTION__)", terminator: "")
+        log.verbose("")
         createBackendChargeWithToken(token, completion: completion)
     }
     
     
     func paymentAuthorizationViewControllerDidFinish(controller: PKPaymentAuthorizationViewController) {
-        print("\(className)::\(__FUNCTION__)", terminator: "")
+        log.verbose("")
         self.parentViewController!.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func checkoutController(controller: STPCheckoutViewController, didFinishWithStatus status: STPPaymentStatus, error: NSError?) {
-        print("\(className)::\(__FUNCTION__) error:\(error)", terminator: "")
+        log.verbose("\(className)::\(__FUNCTION__) error:\(error)")
         self.parentViewController!.dismissViewControllerAnimated(true, completion: {
             switch(status) {
             case .UserCancelled:
                 return // just do nothing in this case
             case .Success:
-                print("great success!", terminator: "")
+                log.info("great success!")
             case .Error:
-                print("oh no, an error: \(error?.localizedDescription)", terminator: "")
+                log.error("oh no, an error: \(error?.localizedDescription)")
             }
         })
     }
     
     
     func createBackendChargeWithToken(token: STPToken, completion: STPTokenSubmissionHandler) {
-        print("\(className)::\(__FUNCTION__)", terminator: "")
+        log.verbose("")
         API.sharedInstance.charge(token.tokenId, amount:self.market.amount!, completion: { [weak self] (json, error) -> Void in
             if (error != nil) {
                 completion(STPBackendChargeResult.Failure, error)
@@ -154,13 +154,13 @@ class OnboardPartThree: UIViewController, PKPaymentAuthorizationViewControllerDe
     }
     
     func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: ((PKPaymentAuthorizationStatus) -> Void)) {
-        print("\(className)::\(__FUNCTION__)", terminator: "")
+        log.verbose("")
         STPAPIClient.sharedClient().createTokenWithPayment(payment, completion: { [weak self] (token, error) -> Void in
-            print("\(self!.className)::\(__FUNCTION__) error:\(error), token: \(token)", terminator: "")
+            log.info("\(self!.className)::\(__FUNCTION__) error:\(error), token: \(token)")
             if error == nil {
                 if let token = token {
                     self?.createBackendChargeWithToken(token, completion: { (result, error) -> Void in
-                        print("\(self!.className)::\(__FUNCTION__) error:\(error), result: \(result)", terminator: "")
+                        log.info("\(self!.className)::\(__FUNCTION__) error:\(error), result: \(result)")
                         if result == STPBackendChargeResult.Success {
                             completion(PKPaymentAuthorizationStatus.Success)
                             return
@@ -175,7 +175,7 @@ class OnboardPartThree: UIViewController, PKPaymentAuthorizationViewControllerDe
 
     
     func didTapButton(sender: UIButton) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         didTapPay(sender)
     }
 

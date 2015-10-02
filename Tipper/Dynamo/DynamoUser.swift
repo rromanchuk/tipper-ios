@@ -46,15 +46,15 @@ class DynamoUser: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
         exp.hashKeyAttribute = "TwitterUserID"
 
         mapper.query(DynamoUser.self, expression: exp).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-            print("DynamoUser::\(__FUNCTION__) error:\(task.error), exception:\(task.exception), taskResult:\(task.result)")
+            log.verbose("error:\(task.error), exception:\(task.exception), taskResult:\(task.result)")
             Debug.isBlocking()
             if (task.error == nil) {
                 if let results = task.result as? AWSDynamoDBPaginatedOutput, items = results.items as? [DynamoUser] where items.count > 0  {
                     let user = items[0]
-                    print("user:\(user)")
+                    log.verbose("user:\(user)")
                     completion(user: user)
                 } else {
-                    print("Could not find user!!")
+                    log.error("Could not find user!!")
                     completion(user: nil)
                 }
 

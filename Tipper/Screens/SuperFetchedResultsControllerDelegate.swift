@@ -111,7 +111,7 @@ class SuperFetchedResultsControllerDelegate: NSObject, NSFetchedResultsControlle
             case NSFetchedResultsChangeType.Delete:
                 changeDictionary[type] = sectionIndex
             default:
-                print("Unexpected NSFetchedResultsChangeType received for didChangeSection. \(type)", terminator: "")
+                log.error("Unexpected NSFetchedResultsChangeType received for didChangeSection. \(type)")
             }
             sectionChanges.append(changeDictionary)
         }
@@ -173,7 +173,7 @@ class SuperFetchedResultsControllerDelegate: NSObject, NSFetchedResultsControlle
                                 self.collectionView!.reloadSections(NSIndexSet(index: dictValue))
                                 break;
                             default:
-                                print("Unexpected NSFetchedResultsChangeType stored for controllerDidChangeContent. \(dictKey)", terminator: "")
+                                log.error("Unexpected NSFetchedResultsChangeType stored for controllerDidChangeContent. \(dictKey)")
                             }
                         }
                     }

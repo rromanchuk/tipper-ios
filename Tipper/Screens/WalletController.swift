@@ -47,7 +47,6 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //println("\(className)::\(__FUNCTION__) currentUser: \(currentUser)")
         self.tableView.estimatedRowHeight = 1300;
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         //applePayButton = PKPaymentButton(type: .Buy, style: .Black)
@@ -69,11 +68,11 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
         let paymentRequest = Stripe.paymentRequestWithMerchantIdentifier(ApplePayMerchantID)
 
         if PKPaymentAuthorizationViewController.canMakePaymentsUsingNetworks(SupportedPaymentNetworks) && Stripe.canSubmitPaymentRequest(paymentRequest) {
-            print("ApplePay supported")
+            log.verbose("ApplePay supported")
             self.applePayButton.hidden = false
             self.stripeButton.hidden = true
         } else {
-            print("ApplePay not supported")
+            log.verbose("ApplePay not supported")
             self.applePayButton.hidden = true
             self.stripeButton.hidden = false
         }
@@ -160,21 +159,21 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
     }
 
     func checkoutController(controller: STPCheckoutViewController, didFinishWithStatus status: STPPaymentStatus, error: NSError?) {
-        print("\(className)::\(__FUNCTION__) error:\(error)")
+        log.error("error:\(error)")
         self.parentViewController!.dismissViewControllerAnimated(true, completion: {
             switch(status) {
             case .UserCancelled:
                 return // just do nothing in this case
             case .Success:
-                print("great success!")
+                log.verbose("great success!")
             case .Error:
-                print("oh no, an error: \(error?.localizedDescription)")
+                log.error("oh no, an error: \(error?.localizedDescription)")
             }
         })
     }
 
     @IBAction func didToggleAutomaticTipping(sender: UISwitch) {
-        print("\(className)::\(__FUNCTION__) autotipSwitch:\(autotipSwitch.on), currentUser.automaticTippingEnabled:\(currentUser.automaticTippingEnabled)")
+        log.verbose("autotipSwitch:\(autotipSwitch.on), currentUser.automaticTippingEnabled:\(currentUser.automaticTippingEnabled)")
         SwiftSpinner.show("Saving..")
         if autotipSwitch.on {
             currentUser.turnOnAutoTipping({ (error) -> Void in
@@ -188,7 +187,7 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
     }
     
     @IBAction func didLongPressPayButton(sender: UILongPressGestureRecognizer) {
-        print("\(className)::\(__FUNCTION__) \(currentUser.admin)")
+        log.info("\(currentUser.admin)")
         if let admin = currentUser.admin where admin.boolValue {
             launchStripeFlow()
         }
@@ -263,11 +262,11 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
     func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: ((PKPaymentAuthorizationStatus) -> Void)) {
         log.verbose("")
         STPAPIClient.sharedClient().createTokenWithPayment(payment, completion: { [weak self] (token, error) -> Void in
-            print("\(self!.className)::\(__FUNCTION__) error:\(error), token: \(token)")
+            log.verbose("error:\(error), token: \(token)")
             if error == nil {
                 if let token = token {
                     self?.createBackendChargeWithToken(token, completion: { (result, error) -> Void in
-                        print("\(self!.className)::\(__FUNCTION__) error:\(error), result: \(result)")
+                        log.verbose("\(self!.className)::\(__FUNCTION__) error:\(error), result: \(result)")
                         if result == STPBackendChargeResult.Success {
                             completion(PKPaymentAuthorizationStatus.Success)
                             return

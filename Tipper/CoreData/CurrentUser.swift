@@ -16,7 +16,7 @@ import AWSSQS
 
 class CurrentUser: NSManagedObject, CoreDataUpdatable {
     let KeychainAccount: String = "tips.coinbit.tipper"
-    let KeychainUserAccount: String = "tips.coinbit.tipper.user"
+    let KeychainTwitterIDAccount: String = "tips.coinbit.tipper.twitterID"
     let KeychainTokenAccount: String = "tips.coinbit.tipper.token"
     let KeychainBitcoinAccount: String = "tips.coinbit.tipper.bitcoinaddress"
     let KeychainUserIDAccount: String = "tips.coinbit.tipper.userID"
@@ -33,6 +33,8 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
 
     @NSManaged var twitterUsername: String!
+    @NSManaged var twitterAuthToken: String!
+    @NSManaged var twitterAuthSecret: String!
     @NSManaged var profileImage: String?
 
     @NSManaged var bitcoinBalanceBTC: NSNumber?
@@ -65,10 +67,10 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
             if let _twitterUserId = self.primitiveValueForKey("twitterUserId") as! String? {
                 return _twitterUserId
             } else {
-                if let _twitterUserId = SSKeychain.passwordForService(KeychainUserAccount, account:KeychainAccount) {
+                if let _twitterUserId = SSKeychain.passwordForService(KeychainTwitterIDAccount, account:KeychainAccount) {
                     self.twitterUserId = _twitterUserId
                     return _twitterUserId
-                } else if let _twitterUserId = NSUbiquitousKeyValueStore.defaultStore().stringForKey(KeychainUserAccount) {
+                } else if let _twitterUserId = NSUbiquitousKeyValueStore.defaultStore().stringForKey(KeychainTwitterIDAccount) {
                     self.twitterUserId = _twitterUserId
                     return _twitterUserId
                 } else {
@@ -80,14 +82,14 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
             self.willChangeValueForKey("twitterUserId")
             self.setPrimitiveValue(newValue, forKey: "twitterUserId")
             self.didChangeValueForKey("twitterUserId")
-            SSKeychain.setPassword(newValue, forService: KeychainUserAccount, account: KeychainAccount)
-            NSUbiquitousKeyValueStore.defaultStore().setString(newValue, forKey: KeychainUserAccount)
+            SSKeychain.setPassword(newValue, forService: KeychainTwitterIDAccount, account: KeychainAccount)
+            NSUbiquitousKeyValueStore.defaultStore().setString(newValue, forKey: KeychainTwitterIDAccount)
         }
     }
 
     var uuid: String? {
         get {
-            return twitterUserId
+            return userId
         }
     }
 
@@ -172,17 +174,11 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     }
 
 
-    func authenticate(session: TWTRAuthSession, completion: (() ->Void))  {
+    func authenticate(completion: (() ->Void))  {
         log.verbose("")
-        DynamoUser.findByTwitterId( Twitter.sharedInstance().sessionStore.session()!.userID, completion: { (user) -> Void in
+        DynamoUser.findByTwitterId(twitterUserId!, completion: { (user) -> Void in
             Debug.isBlocking()
             if let dynamoUser = user {
-                dynamoUser.TwitterAuthToken = session.authToken
-                dynamoUser.TwitterAuthSecret = session.authTokenSecret
-                //dynamoUser.TwitterUsername = session.u
-                dynamoUser.IsActive = "X"
-                dynamoUser.ProfileImage = self.profileImage
-                dynamoUser.UpdatedAt = Int(NSDate().timeIntervalSince1970)
                 self.updateEntityWithDynamoModel(dynamoUser)
                 self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
                     if let _automaticTippingEnabled = self.automaticTippingEnabled where _automaticTippingEnabled.boolValue {
@@ -198,31 +194,25 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
             } else  {
                 let dynamoUser = DynamoUser()
                 dynamoUser.UserID = NSUUID().UUIDString
-                dynamoUser.TwitterAuthToken = session.authToken
-                dynamoUser.TwitterAuthSecret = session.authTokenSecret
-                dynamoUser.TwitterUserID = session.userID
-                //dynamoUser.TwitterUsername = session.userName
                 dynamoUser.CreatedAt = Int(NSDate().timeIntervalSince1970)
-                dynamoUser.UpdatedAt = Int(NSDate().timeIntervalSince1970)
-                dynamoUser.IsActive = "X"
-                dynamoUser.ProfileImage = self.profileImage
-                dynamoUser.CognitoIdentity = self.cognitoIdentity
                 dynamoUser.AutomaticTippingEnabled = true
-                self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
+
+                self.pushToDynamo(dynamoUser, completion: { () -> Void in
                     API.sharedInstance.address({ (json, error) -> Void in
                         if error == nil {
                             dynamoUser.BitcoinAddress     = json["BitcoinAddress"].string
                             self.bitcoinAddress  = json["BitcoinAddress"].string
                             self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration)
+                        } else {
+                            log.error("\(error)")
                         }
                         self.updateEntityWithDynamoModel(dynamoUser)
                         API.sharedInstance.connect({ (json, error) -> Void in
-                            
+
                         })
                         completion()
-                        
+
                     })
-                    return nil
                 })
             }
         })
@@ -242,11 +232,13 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     func twitterAuthenticationWithTKSession(session: TWTRSession) {
         self.twitterUserId = session.userID
         self.twitterUsername = session.userName
+        self.twitterAuthToken = session.authToken
+        self.twitterAuthSecret = session.authTokenSecret
     }
 
     var isTwitterAuthenticated: Bool {
         get {
-            return Twitter.sharedInstance().sessionStore.session() != nil && self.twitterUserId != nil && self.bitcoinAddress != nil && self.userId != nil
+            return self.twitterUserId != nil && self.bitcoinAddress != nil && self.userId != nil && Twitter.sharedInstance().sessionStore.sessionForUserID(twitterUserId!) != nil
         }
     }
 
@@ -325,23 +317,38 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 log.verbose("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
                 if (task.error == nil) {
                     let user:DynamoUser = task.result as! DynamoUser
-                    user.TwitterUserID              = self.twitterUserId
-                    user.TwitterAuthToken           = Twitter.sharedInstance().sessionStore.session()!.authToken
-                    user.TwitterAuthSecret          = Twitter.sharedInstance().sessionStore.session()!.authTokenSecret
-                    user.BitcoinBalanceBTC          = self.bitcoinBalanceBTC
-                    user.CognitoIdentity            = self.cognitoIdentity
-                    user.AutomaticTippingEnabled    = self.automaticTippingEnabled?.boolValue
-                    user.DeviceTokens               = self.deviceTokens
-                    user.EndpointArns               = self.endpointArns
-                    self.mapper.save(user, configuration: self.defaultDynamoConfiguration).continueWithBlock({ (task) -> AnyObject! in
-                        print("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
-                        return nil
-                    })
+                    self.pushToDynamo(user, completion: nil)
+
+                } else {
+                    log.error("error: \(task.error)")
                 }
                 return nil
             })
 
         }
+    }
+
+    func pushToDynamo(user:DynamoUser, completion: (()->Void)?) {
+        user.TwitterUserID              = self.twitterUserId
+        user.TwitterAuthToken           = self.twitterAuthToken
+        user.TwitterAuthSecret          = self.twitterAuthSecret
+        user.BitcoinBalanceBTC          = self.bitcoinBalanceBTC
+        user.CognitoIdentity            = self.cognitoIdentity
+        user.AutomaticTippingEnabled    = self.automaticTippingEnabled?.boolValue
+        user.DeviceTokens               = self.deviceTokens
+        user.EndpointArns               = self.endpointArns
+        user.IsActive                   = "X"
+        user.ProfileImage               = self.profileImage
+        user.UpdatedAt                  = Int(NSDate().timeIntervalSince1970)
+
+
+        self.mapper.save(user, configuration: self.defaultDynamoConfiguration).continueWithBlock({ (task) -> AnyObject! in
+            log.verbose("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
+            completion?()
+            return nil
+        })
+
+
     }
 
 
@@ -352,7 +359,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         let sqs = AWSSQS.defaultSQS()
         let request = AWSSQSSendMessageRequest()
 
-        let tipDict = ["TwitterUserID": self.uuid!, "ToBitcoinAddress": toAddress, "UserID": userId! ]
+        let tipDict = ["TwitterUserID": self.twitterUserId!, "ToBitcoinAddress": toAddress, "UserID": userId! ]
         let jsonTipDict = try? NSJSONSerialization.dataWithJSONObject(tipDict, options: [])
         let json: String = NSString(data: jsonTipDict!, encoding: NSUTF8StringEncoding) as! String
 
@@ -361,7 +368,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         request.queueUrl = Config.get("SQS_TRANSFER_OUT")
         sqs.sendMessage(request).continueWithBlock { (task) -> AnyObject! in
             if (task.error != nil) {
-                print("ERROR: \(task.error)")
+                log.error("ERROR: \(task.error)")
                 completion(error: task.error)
             } else {
                 completion(error: nil)
@@ -377,7 +384,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         let sqs = AWSSQS.defaultSQS()
         let request = AWSSQSSendMessageRequest()
 
-        let tipDict = ["TwitterUserID": self.uuid!, "UserID": userId! ]
+        let tipDict = ["TwitterUserID": self.twitterUserId!, "UserID": userId! ]
         let jsonTipDict = try? NSJSONSerialization.dataWithJSONObject(tipDict, options: [])
         let json: String = NSString(data: jsonTipDict!, encoding: NSUTF8StringEncoding) as! String
 
@@ -386,7 +393,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         request.queueUrl = Config.get("SQS_FETCH_FAVORITES")
         sqs.sendMessage(request).continueWithBlock { (task) -> AnyObject! in
             if (task.error != nil) {
-                print("ERROR: \(task.error)")
+                log.error("ERROR: \(task.error)")
                 completion(error: task.error)
             } else {
                 completion(error: nil)
@@ -401,7 +408,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         log.verbose("")
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         mapper.load(DynamoUser.self, hashKey: self.userId, rangeKey: nil).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-            print("error \(task.error)")
+            log.verbose("error \(task.error)")
             
             if let dynamoUser: DynamoUser = task.result as? DynamoUser {
                 self.updateEntityWithDynamoModel(dynamoUser)
@@ -419,7 +426,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     }()
 
     func updateEntityWithDynamoModel(dynamoModel: DynamoUpdatable) {
-        print("\(className)::\(__FUNCTION__) model:\(dynamoModel)")
+        log.verbose("model:\(dynamoModel)")
         let user                    = dynamoModel as! DynamoUser
         self.userId                 = user.UserID
         self.twitterUserId          = user.TwitterUserID
@@ -461,29 +468,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
     }
 
     func updateEntityWithJSON(json: JSON) {
-        print("\(className)::\(__FUNCTION__) json:\(json)")
-        self.twitterUserId      = json["TwitterUserID"].stringValue
-        self.userId             = json["UserID"].stringValue
-        self.twitterUsername    = json["TwitterUsername"].stringValue
-        self.bitcoinAddress     = json["BitcoinAddress"].string
-
-        if let admin = json["Admin"].bool {
-            self.admin = admin
-        }
-
-        if let profileImage = json["ProfileImage"].string {
-            self.profileImage = profileImage
-        }
-
-        if let balance = json["BitcoinBalanceBTC"].string {
-            let balanceAsDouble = (balance as NSString).doubleValue
-            self.bitcoinBalanceBTC = balanceAsDouble
-        }
-
-        if let token = json["token"].string {
-            self.token = token
-        }
-        
+        log.verbose("json:\(json)")
     }
 
     func turnOffAutoTipping(completion: (error: NSError?) -> Void) {
@@ -507,21 +492,21 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
 
     func resetIdentifiers() {
         log.verbose("")
+        Twitter.sharedInstance().sessionStore.logOutUserID(twitterUserId!)
         (UIApplication.sharedApplication().delegate as! AppDelegate).resetCognitoCredentials()
-        SSKeychain.deletePasswordForService(KeychainUserAccount, account: KeychainAccount)
+        SSKeychain.deletePasswordForService(KeychainTwitterIDAccount, account: KeychainAccount)
         SSKeychain.deletePasswordForService(KeychainTokenAccount, account: KeychainAccount)
         SSKeychain.deletePasswordForService(KeychainBitcoinAccount, account: KeychainAccount)
         SSKeychain.deletePasswordForService(KeychainUserIDAccount, account: KeychainAccount)
 
-        NSUbiquitousKeyValueStore.defaultStore().removeObjectForKey(KeychainUserAccount)
+        NSUbiquitousKeyValueStore.defaultStore().removeObjectForKey(KeychainTwitterIDAccount)
         NSUbiquitousKeyValueStore.defaultStore().removeObjectForKey(KeychainTokenAccount)
         NSUbiquitousKeyValueStore.defaultStore().removeObjectForKey(KeychainBitcoinAccount)
         NSUbiquitousKeyValueStore.defaultStore().removeObjectForKey(KeychainUserIDAccount)
-
         NSUbiquitousKeyValueStore.defaultStore().synchronize()
         self.destroy()
         self.writeToDisk()
-        Twitter.sharedInstance().logOut()
+
     }
 
 

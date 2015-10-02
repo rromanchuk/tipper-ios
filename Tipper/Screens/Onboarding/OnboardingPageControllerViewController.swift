@@ -58,7 +58,7 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
     }
     
     func autoAdvance() {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         let vc = viewControllers![0]
         let idx = pages.indexOf(vc)!
         
@@ -94,7 +94,7 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        print("\(className)::\(__FUNCTION__) currentIndex: \(pages.indexOf(viewController)!),  allPages: \(self.pages.count)")
+        log.verbose("\(className)::\(__FUNCTION__) currentIndex: \(pages.indexOf(viewController)!),  allPages: \(self.pages.count)")
         if let currentIndex = pages.indexOf(viewController) {
             let newIndex = currentIndex - 1
             if newIndex == 0 {
@@ -111,7 +111,7 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        print("\(className)::\(__FUNCTION__) currentIndex: \(pages.indexOf(viewController)!),  allPages: \(self.pages.count)")
+        log.verbose("\(className)::\(__FUNCTION__) currentIndex: \(pages.indexOf(viewController)!),  allPages: \(self.pages.count)")
         if let currentIndex = pages.indexOf(viewController) {
             let newIndex = currentIndex + 1
             if newIndex == 1 {
@@ -129,7 +129,7 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
 
     // MARK: OnboardingDelegate
     func didTapButton(sender: UIButton) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         (viewControllers![0] as! StandardViewController).didTapButton(sender)
     }
    

@@ -39,18 +39,18 @@ class SplashViewController: UIViewController {
 
 
     @IBAction func done(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("\(className)::\(__FUNCTION__) identifier: \(segue.identifier) \(segue.sourceViewController)")
+        log.verbose("identifier: \(segue.identifier) \(segue.sourceViewController)")
         if segue.identifier == "ExitFromOnboarding" {
         }
     }
 
     @IBAction func unwindToSplash(unwindSegue: UIStoryboardSegue) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         if let _ = unwindSegue.sourceViewController as? HomeController {
-            print("Coming from HomeController")
+            log.verbose("Coming from HomeController")
         }
         else if let _ = unwindSegue.sourceViewController as? TipDetailsViewController {
-            print("Coming from TipDetailsViewController")
+            log.verbose("Coming from TipDetailsViewController")
         }
         (UIApplication.sharedApplication().delegate as! AppDelegate).setupFirstController()
     }

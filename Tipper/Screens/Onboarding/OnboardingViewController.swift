@@ -25,7 +25,7 @@ class OnboardingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         
          NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillResignActive:", name: UIApplicationWillResignActiveNotification, object: UIApplication.sharedApplication())
     }
@@ -59,7 +59,7 @@ class OnboardingViewController: UIViewController {
     }
     
     func applicationWillResignActive(aNotification: NSNotification) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         SwiftSpinner.hide(nil)
     }
     

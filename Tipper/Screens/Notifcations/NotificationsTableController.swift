@@ -26,7 +26,7 @@ class NotificationsTableController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(className)::\(__FUNCTION__) userId: \(self.currentUser.userId!)")
+        log.verbose("\(className)::\(__FUNCTION__) userId: \(self.currentUser.userId!)")
         Settings.get("1")
         UIApplication.sharedApplication().applicationIconBadgeNumber = 0
         let refreshControl = UIRefreshControl()
@@ -35,7 +35,7 @@ class NotificationsTableController: UITableViewController {
 
         
         DynamoNotification.fetch(currentUser.userId!, context: managedObjectContext) { () -> Void in
-            print("\(self.className)::\(__FUNCTION__) count\(self.fetchedResultsController.fetchedObjects!)")
+            log.verbose("\(self.className)::\(__FUNCTION__) count\(self.fetchedResultsController.fetchedObjects!)")
             self.tableView.reloadData()
         }
 
@@ -54,12 +54,12 @@ class NotificationsTableController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("\(className)::\(__FUNCTION__)")
         let cell = tableView.dequeueReusableCellWithIdentifier("NotificationCell", forIndexPath: indexPath) as! NotificationCell
         let notification = fetchedResultsController.objectAtIndexPath(indexPath) as! Notification
         cell.notification = notification
         
-        print("Setting cell with \(notification)")
+        log.verbose("Setting cell with \(notification)")
         return cell
     }
     

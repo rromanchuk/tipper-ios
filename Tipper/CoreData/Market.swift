@@ -34,7 +34,6 @@ class Market: NSManagedObject, CoreDataUpdatable {
     }
 
     func updateEntityWithJSON(json: JSON) {
-        //println("\(className)::\(__FUNCTION__) \(json)")
         self.subtotalAmount = json["subtotal"].dictionaryValue["amount"]!.stringValue
         self.amount = json["total"].dictionaryValue["amount"]!.stringValue
         self.btc = json["btc"].dictionaryValue["amount"]!.stringValue

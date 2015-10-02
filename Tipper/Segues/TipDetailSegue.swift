@@ -12,7 +12,7 @@ class TipDetailSegue: UIStoryboardSegue {
     let className = "TipDetailSegue"
 
     override func perform() {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         // Assign the source and destination views to local variables.
         let firstVCView = self.sourceViewController.view as UIView!
         let secondVCView = self.destinationViewController.view as UIView!
@@ -57,7 +57,7 @@ class TipDetailUnwindSegue: UIStoryboardSegue {
     let className = "TipDetailUnwindSegue"
 
     override func perform() {
-        print("\(className)::\(__FUNCTION__) source: \(self.sourceViewController) destination: \(self.destinationViewController) ")
+        log.verbose("source: \(self.sourceViewController) destination: \(self.destinationViewController) ")
         // Assign the source and destination views to local variables.
         let viewOnScreen = self.sourceViewController.view as UIView!
         let viewAfterUnwind = self.destinationViewController.view as UIView!
@@ -80,8 +80,8 @@ class TipDetailUnwindSegue: UIStoryboardSegue {
         //window?.insertSubview(viewAfterUnwind, be: viewOnScreen)
         //window?.insertSubview(viewAfterUnwind, belowSubview: viewOnScreen)
 
-        print("viewOnScreen: \(NSStringFromCGRect(viewOnScreen.frame))")
-        print("viewAfterUnwind: \(NSStringFromCGRect(viewAfterUnwind.frame))")
+        log.verbose("viewOnScreen: \(NSStringFromCGRect(viewOnScreen.frame))")
+        log.verbose("viewAfterUnwind: \(NSStringFromCGRect(viewAfterUnwind.frame))")
         controllerOnScreen?.prepareForSegueAnimation()
 
 

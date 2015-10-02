@@ -53,9 +53,8 @@ class Settings: NSManagedObject, CoreDataUpdatable {
     class func get(settingId: String = "1") {
 
         TIPPERTipperClient.defaultClient().settingsGet(settingId).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-            print("Settings fetch \(task.result), \(task.error) exception: \(task.exception)")
+            log.verbose("Settings fetch \(task.result), \(task.error) exception: \(task.exception)")
             if let settings = task.result as? TIPPERSettings {
-                print("Settings  \(settings.Version)")
                 Settings.sharedInstance.version = settings.Version
                 Settings.sharedInstance.fundAmount = settings.FundAmount
                 Settings.sharedInstance.feeAmount = settings.FeeAmount
@@ -66,36 +65,14 @@ class Settings: NSManagedObject, CoreDataUpdatable {
             return nil;
         })
     }
-//
-//    class func update() {
-//        print("\(className)::\(__FUNCTION__)")
-//        let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
-//        let exp = AWSDynamoDBScanExpression()
-//        exp.limit = 1
-//
-//        mapper.scan(DynamoSettings.self, expression: exp).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-//            print("Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
-//            if let results = task.result as?  AWSDynamoDBPaginatedOutput where task.error == nil && task.exception == nil {
-//                if let dynamoSettings: DynamoSettings = results.items[0] as? DynamoSettings {
-//                    self.updateEntityWithDynamoModel(dynamoSettings)
-//                    self.writeToDisk()
-//                }
-//            }
-//            return nil
-//        })
-//
-//        
-//    }
 
     func updateEntityWithJSON(json: JSON) {
-        print("\(className)::\(__FUNCTION__) json:\(json)")
         self.fundAmount = json["fund_amount"].stringValue
         self.tipAmount = json["tip_amount"].stringValue
         self.feeAmount = json["fee_amount"].string
     }
 
     func updateEntityWithDynamoModel(dynamoModel: DynamoUpdatable) {
-        print("\(className)::\(__FUNCTION__) model:\(dynamoModel)")
         let settings                    = dynamoModel as! DynamoSettings
         self.version                    = settings.Version
         self.fundAmount                 = settings.FeeAmount

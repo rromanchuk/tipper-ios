@@ -23,7 +23,6 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     var FromTwitterProfileImage: String?
     var ToTwitterProfileImage: String?
     var Provider: String?
-    var TweetJSON: String?
     var CreatedAt: NSNumber?
     var TippedAt: NSNumber?
     var DidLeaveTip: String?
@@ -56,7 +55,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     
     // All favorites, not just tipped
     class func fetchAllFavoritesFromUser(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
-        print("DynamoFavorite::\(__FUNCTION__)")
+        log.verbose("")
         currentUser.deepCrawledAt = NSDate()
         let exp = AWSDynamoDBQueryExpression()
         
@@ -77,7 +76,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     }
 
     class func fetchSentTips(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
-        print("DynamoFavorite::\(__FUNCTION__)")
+        log.verbose("")
 
         let exp = AWSDynamoDBQueryExpression()
 
@@ -91,7 +90,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     }
 
     class func fetchReceivedTips(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
-        print("DynamoFavorite::\(__FUNCTION__)")
+        log.verbose("")
 
         let exp = AWSDynamoDBQueryExpression()
 
@@ -113,7 +112,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
 
 
     class func updateReceivedTips(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
-        print("DynamoFavorite::\(__FUNCTION__)")
+       log.verbose("")
         let exp = AWSDynamoDBQueryExpression()
 
         exp.hashKeyValues      = currentUser.userId!
@@ -125,7 +124,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
     }
 
     class func updateSentTips(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
-        print("DynamoFavorite::\(__FUNCTION__)")
+        log.verbose("")
 
         let exp = AWSDynamoDBQueryExpression()
 
@@ -168,7 +167,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
 
 
         mapper.query(DynamoFavorite.self, expression: exp).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-            print("query, value: \(exp.hashKeyValues)  Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
+            log.verbose("query, value: \(exp.hashKeyValues)  Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
             if let results = task.result as?  AWSDynamoDBPaginatedOutput where task.error == nil && task.exception == nil {
                 privateContext.performBlock({ () -> Void in
                     for result in results.items as! [DynamoFavorite] {
@@ -176,7 +175,6 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
                     }
                     privateContext.saveMoc()
                     context.performBlock({ () -> Void in
-                        print("lastEvaluatedKey:\(results.lastEvaluatedKey)")
                         if results.lastEvaluatedKey != nil {
                             exp.exclusiveStartKey = results.lastEvaluatedKey
                             self.query(exp, context: context, completion:completion)
@@ -187,7 +185,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
                     })
                 })
             } else {
-                print("FAILURE!!!!!!")
+                log.error("FAILURE!!!!!!")
                 completion()
             }
             return nil

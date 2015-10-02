@@ -28,7 +28,7 @@ class OnboardPartFive: UIViewController, StandardViewController {
     }
     
     func didTapButton(sender: UIButton) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         API.sharedInstance.autotip({ (json, error) -> Void in
             //
         })

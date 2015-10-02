@@ -42,7 +42,7 @@ class TipsController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(className)::\(__FUNCTION__) fetchedObjects: \(fetchedResultsController.fetchedObjects?.count)")
+        log.verbose("fetchedObjects: \(fetchedResultsController.fetchedObjects?.count)")
 
         tableView.estimatedRowHeight = 70
         tableView.rowHeight = UITableViewAutomaticDimension // Explicitly set on iOS 8 if using automatic row height calculation
@@ -63,14 +63,14 @@ class TipsController: UIViewController {
     }
 
     func refresh(refreshControl: UIRefreshControl) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         DynamoFavorite.updateTips(currentUser, context: managedObjectContext) { () -> Void in
             refreshControl.endRefreshing()
         }
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("\(className)::\(__FUNCTION__) identifier: \(segue.identifier)")
+        log.verbose("identifier: \(segue.identifier)")
 
         if segue.identifier == "TipDetails" {
             let cell: TipCell = sender as! TipCell

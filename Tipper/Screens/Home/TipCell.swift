@@ -55,26 +55,28 @@ class TipCell: UITableViewCell {
     var favorite:Favorite! {
         set {
             _favorite = newValue
-            let twt = TWTRTweet(JSONDictionary: _favorite!.twitterJSON)
-            twt.author.profileImageLargeURL
+
             setupTipAmount()
-            log.verbose("favorite: \(favorite)")
-            print(" \(_favorite?.fromTwitterId)  == \(currentUser?.twitterUserId)")
+            
+            log.info(" \(_favorite?.fromTwitterId)  == \(currentUser?.twitterUserId)")
+            log.info("favorite: \(favorite)")
+            log.info("user: \(currentUser!)")
+
             if _favorite?.fromTwitterId  == currentUser?.twitterUserId {
-                if let urlString = twt.author.profileImageLargeURL, url = NSURL(string: urlString) {
+                if let urlString = favorite.toTwitterProfileImage, url = NSURL(string: urlString) {
                     userProfileImage.hnk_setImageFromURL(url)
                 }
                 usernameLabel.text = "@\(_favorite!.toTwitterUsername)"
                 if _favorite!.didLeaveTip {
                     tipArrow.hidden = false
                     tipArrow.image = UIImage(named: "down-arrow")
-                    tipActionLabel.text = "You tipped \(twt.author.name)"
+                    tipActionLabel.text = "You tipped \(favorite.toTwitterUsername)"
                     tipButton.hidden = true
                     tipAmount.hidden = false
                     tipAmountBTC.hidden = false
                 } else {
                     tipArrow.hidden = true
-                    tipActionLabel.text = "You favorited \(twt.author.name)"
+                    tipActionLabel.text = "You favorited \(favorite.toTwitterUsername)"
                     tipButton.hidden = false
                     tipAmount.hidden = true
                     tipAmountBTC.hidden = true
@@ -118,7 +120,7 @@ class TipCell: UITableViewCell {
     }
 
     @IBAction func userDidTip(sender: UIButton) {
-        print("\(className)::\(__FUNCTION__)", terminator: "")
+        log.verbose("")
         tipButton.backgroundColor = UIColor.grayColor()
         favorite.didLeaveTip = true
 
@@ -126,7 +128,7 @@ class TipCell: UITableViewCell {
         let request = AWSSQSSendMessageRequest()
 
         if let currentUser = currentUser {
-            let tipDict = ["TweetID": favorite.tweetId, "FromTwitterID": currentUser.uuid!, "ToTwitterID": favorite.toTwitterId ]
+            let tipDict = ["TweetID": favorite.tweetId, "FromTwitterID": currentUser.twitterUserId!, "ToTwitterID": favorite.toTwitterId ]
             let jsonTipDict = try? NSJSONSerialization.dataWithJSONObject(tipDict, options: [])
             let json: String = NSString(data: jsonTipDict!, encoding: NSUTF8StringEncoding) as! String
 
@@ -134,9 +136,9 @@ class TipCell: UITableViewCell {
             request.messageBody = json
             request.queueUrl = Config.get("SQS_NEW_TIP")
             sqs.sendMessage(request).continueWithBlock { (task) -> AnyObject! in
-                print("Result: \(task.result) Error \(task.error), Exception: \(task.exception)", terminator: "")
+                log.info("Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
                 if (task.error != nil) {
-                    print("ERROR: \(task.error)", terminator: "")
+                    log.error("ERROR: \(task.error)")
                 }
                 return nil
             }

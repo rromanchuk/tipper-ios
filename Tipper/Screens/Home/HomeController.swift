@@ -105,7 +105,7 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
     }
 
     @IBAction func done(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("\(className)::\(__FUNCTION__) identifier: \(segue.identifier) \(segue.sourceViewController)")
+        log.verbose("\(className)::\(__FUNCTION__) identifier: \(segue.identifier) \(segue.sourceViewController)")
         let vc = segue.sourceViewController
         if let header = vc as? HeaderContainer {
            header.refreshHeader()
@@ -113,7 +113,7 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
     }
     
     override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
-        print("\(className)::\(__FUNCTION__) toViewController: \(toViewController), fromViewController: \(fromViewController)")
+        log.verbose("\(className)::\(__FUNCTION__) toViewController: \(toViewController), fromViewController: \(fromViewController)")
         if let _ = fromViewController as? CustomSegueable {
             if identifier == "UnwindFromTipDetail" {
                 return TipDetailUnwindSegue(identifier: identifier, source: fromViewController, destination: toViewController, performHandler: { () -> Void in

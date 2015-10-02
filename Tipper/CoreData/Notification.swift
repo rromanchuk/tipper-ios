@@ -35,7 +35,7 @@ class Notification: NSManagedObject, CoreDataUpdatable {
     }
 
     func updateEntityWithDynamoModel(dynamoModel: DynamoUpdatable) {
-        print("\(className)::\(__FUNCTION__) model:\(dynamoModel)")
+        log.verbose("\(className)::\(__FUNCTION__) model:\(dynamoModel)")
         let notification                    = dynamoModel as! DynamoNotification
         self.userId                         = notification.UserID
         self.type                           = notification.NotificationType
@@ -61,7 +61,7 @@ class Notification: NSManagedObject, CoreDataUpdatable {
                 result.seenAt = NSDate()
             }
         } catch let error as NSError {
-            print("[ERROR] \(error)")
+            log.error("\(error)")
         }
     }
 

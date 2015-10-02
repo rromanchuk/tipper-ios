@@ -42,16 +42,16 @@ class OnboardPartOne: UIViewController, StandardViewController {
     @IBAction func unwindToSplash(unwindSegue: UIStoryboardSegue) {
         log.verbose("")
         if let _ = unwindSegue.sourceViewController as? HomeController {
-            print("Coming from HomeController")
+            log.verbose("Coming from HomeController")
         }
         else if let _ = unwindSegue.sourceViewController as? TipDetailsViewController {
-            print("Coming from TipDetailsViewController")
+            log.verbose("Coming from TipDetailsViewController")
         }
         (UIApplication.sharedApplication().delegate as! AppDelegate).setupFirstController()
     }
     
     @IBAction func done(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("\(className)::\(__FUNCTION__) identifier: \(segue.identifier) \(segue.sourceViewController)")
+        log.verbose("\(className)::\(__FUNCTION__) identifier: \(segue.identifier) \(segue.sourceViewController)")
         if segue.identifier == "ExitFromOnboarding" {
         }
     }
@@ -69,7 +69,7 @@ class OnboardPartOne: UIViewController, StandardViewController {
         log.verbose("")
         SwiftSpinner.show("Logging you in...")
         Twitter.sharedInstance().logInWithCompletion { (session, error) -> Void in
-            print("\(self.className)::\(__FUNCTION__) session:\(session), error: \(error)")
+            log.info("session:\(session), error: \(error)")
             if let session = session where error == nil {
                 self.provider.logins = ["api.twitter.com": "\(session.authToken);\(session.authTokenSecret)"]
                 self.currentUser.twitterAuthenticationWithTKSession(session)
@@ -88,7 +88,7 @@ class OnboardPartOne: UIViewController, StandardViewController {
     private func refreshProvider(twitterSession: TWTRAuthSession) {
         log.verbose("")
         provider.refresh().continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-            print("provider refresh() finished result: \(task.result) error? \(task.error)")
+            log.verbose("provider refresh() finished result: \(task.result) error? \(task.error)")
             if task.error == nil, let identifier = task.result as? String {
                 self.currentUser.cognitoIdentity = identifier
                 self.currentUser.save()
@@ -110,6 +110,7 @@ class OnboardPartOne: UIViewController, StandardViewController {
         TWTRAPIClient(userID: twitterUserId).loadUserWithID(twitterUserId, completion: { (user, error) -> Void in
             if let user = user where error == nil {
                 self.currentUser.profileImage = user.profileImageURL
+                self.currentUser.twitterUsername = user.screenName
                 self.authenticate()
             } else if let error = error {
                 SwiftSpinner.hide({ () -> Void in
@@ -124,8 +125,8 @@ class OnboardPartOne: UIViewController, StandardViewController {
     
     private func authenticate() {
         log.verbose("")
-        self.currentUser.authenticate(Twitter.sharedInstance().sessionStore.session()!) { () -> Void in
-            print("\(self.className)::\(__FUNCTION__) authenticate callback")
+        self.currentUser.authenticate() { () -> Void in
+            log.verbose("\(self.className)::\(__FUNCTION__) authenticate callback")
             Debug.isBlocking()
             SwiftSpinner.hide(nil)
             self.currentUser.registerForRemoteNotificationsIfNeeded()

@@ -24,11 +24,11 @@ class NotificationsController: UIViewController, ContainerDelegate, CustomSeguea
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("\(className)::\(__FUNCTION__) identifier: \(segue.identifier)")
+        log.verbose("identifier: \(segue.identifier)")
         
         if segue.identifier == "NotificationsEmbed" {
             let vc = segue.destinationViewController as! NotificationsTableController
@@ -46,7 +46,7 @@ class NotificationsController: UIViewController, ContainerDelegate, CustomSeguea
     }
     
     func prepareForSegueAnimation() {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         view.backgroundColor = UIColor.clearColor()
         headerContainer.hidden = true
     }
@@ -57,7 +57,7 @@ class NotificationsController: UIViewController, ContainerDelegate, CustomSeguea
     }
 
     @IBAction func didTapClose() {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         self.performSegueWithIdentifier(exitSegueIdentifier, sender: self)
     }
 

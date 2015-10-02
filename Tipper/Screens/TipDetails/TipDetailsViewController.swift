@@ -18,7 +18,7 @@ class TipDetailsViewController: UIViewController, Logoutable, CustomSegueable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
 
         // Do any additional setup after loading the view.
     }
@@ -29,13 +29,13 @@ class TipDetailsViewController: UIViewController, Logoutable, CustomSegueable {
     }
 
     func backToSplash() {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         currentUser.resetIdentifiers()
         performSegueWithIdentifier("BackToSplashFromTipDetails", sender: self)
     }
     
     @IBAction func done(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("\(className)::\(__FUNCTION__) identifier: \(segue.identifier) \(segue.sourceViewController)")
+        log.verbose("identifier: \(segue.identifier) \(segue.sourceViewController)")
         let vc = segue.sourceViewController
         if let header = vc as? HeaderContainer {
             header.refreshHeader()
@@ -43,7 +43,7 @@ class TipDetailsViewController: UIViewController, Logoutable, CustomSegueable {
     }
     
     override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
-        print("\(className)::\(__FUNCTION__) toViewController: \(toViewController), fromViewController: \(fromViewController)")
+        log.verbose("toViewController: \(toViewController), fromViewController: \(fromViewController)")
         if let _ = fromViewController as? CustomSegueable {
             
             let unwindSegue = CustomUnwindModalSegue(identifier: identifier, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
@@ -58,7 +58,7 @@ class TipDetailsViewController: UIViewController, Logoutable, CustomSegueable {
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("\(className)::\(__FUNCTION__) identifier: \(segue.identifier)")
+        log.verbose("identifier: \(segue.identifier)")
 
         if segue.identifier == "TipDetailEmbed" {
             let vc = segue.destinationViewController as! TipDetailContainer

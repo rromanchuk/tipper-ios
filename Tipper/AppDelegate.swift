@@ -19,9 +19,17 @@ import AWSSNS
 import TSMessages
 import XCGLogger
 
+
+//log.verbose("A verbose message, usually useful when working on a specific problem")
+//log.debug("A debug message")
+//log.info("An info message, probably useful to power users looking in console.app")
+//log.warning("A warning message, may indicate a possible error")
+//log.error("An error occurred, but it's recoverable, just info about what happened")
+//log.severe("A severe error occurred, we are likely about to crash now")
+
 let log: XCGLogger = {
     let log = XCGLogger.defaultInstance()
-    log.setup(.Verbose, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: nil, fileLogLevel: .Verbose)
+    log.setup(.Info, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: nil, fileLogLevel: .Verbose)
 
     let dateFormatter = NSDateFormatter()
     dateFormatter.dateFormat = "MM/dd/yyyy hh:mma"
@@ -65,10 +73,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Stripe.setDefaultPublishableKey(Config.get("STRIPE_PUBLISHABLE"))
         setupFirstController()
-
-
-        log.verbose("\(className)::\(__FUNCTION__) currentUser:\([currentUser])")
-
         
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "logout", name: "UNAUTHORIZED_USER", object: nil)
@@ -79,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func setupFirstController() {
         currentUser = CurrentUser.currentUser(managedObjectContext)
-        log.verbose("currentUser:\([currentUser])")
+        log.info("currentUser:\([currentUser])")
 
 
         provider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: Config.get("COGNITO_POOL"))
@@ -152,7 +156,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self?.currentUser.updateBTCBalance({ () -> Void in
                     self?.provider.getIdentityId().continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
                         if task.error == nil, let identity = task.result as? String {
-                            print("\(self?.className)::\(__FUNCTION__) Just fetched cognito identity and is \(identity)")
+                            log.verbose("\(self?.className)::\(__FUNCTION__) Just fetched cognito identity and is \(identity)")
                             self?.currentUser.cognitoIdentity = identity
                         }
                         self?.currentUser?.pushToDynamo()
@@ -187,15 +191,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let deviceTokenString = "\(deviceToken)"
             .stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString:"<>"))
             .stringByReplacingOccurrencesOfString(" ", withString: "")
-        print("deviceTokenString: \(deviceTokenString)")
+        log.verbose("deviceTokenString: \(deviceTokenString)")
         
         
         let deviceTokenSet = NSMutableSet(objects: deviceTokenString)
         if let deviceTokens = currentUser!.deviceTokens?.allObjects {
-            print("currentUser!.deviceTokens?: \(deviceTokens)")
+            log.verbose("currentUser!.deviceTokens?: \(deviceTokens)")
             deviceTokenSet.addObjectsFromArray(deviceTokens)
         }
-        print("deviceTokenSet: \(deviceTokenSet)")
+        log.verbose("deviceTokenSet: \(deviceTokenSet)")
         currentUser?.deviceTokens = deviceTokenSet
         
         registerTokens(currentUser.deviceTokens!.allObjects)
@@ -215,7 +219,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     log.error("Error: \(task.error)")
                 } else {
                     let createEndpointResponse = task.result as! AWSSNSCreateEndpointResponse
-                    print("endpointArn: \(createEndpointResponse.endpointArn)")
+                    log.verbose("endpointArn: \(createEndpointResponse.endpointArn)")
                     let endpointArnSet = NSMutableSet(objects: createEndpointResponse.endpointArn)
                     if let endPoints = self.currentUser.endpointArns?.allObjects {
                         endpointArnSet.addObjectsFromArray(endPoints)
@@ -223,7 +227,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.currentUser?.endpointArns = endpointArnSet
                     self.currentUser?.pushToDynamo()
                     self.gerneralSubscriptionChannel(task)
-                    print("admin? \(self.currentUser?.admin)")
+                    log.verbose("admin? \(self.currentUser?.admin)")
                     if let admin = self.currentUser?.admin where admin.boolValue {
                         self.adminSubscriptionChannel(task)
                     }
@@ -241,13 +245,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let sns = AWSSNS.defaultSNS()
 
         let createEndpointResponse = task.result as! AWSSNSCreateEndpointResponse
-        print("endpointArn: \(createEndpointResponse.endpointArn)")
+        log.verbose("endpointArn: \(createEndpointResponse.endpointArn)")
         let request = AWSSNSSubscribeInput()
         request.endpoint = createEndpointResponse.endpointArn
         request.protocols = "application"
         request.topicArn = Config.get("AWS_GENERAL_SNS")
         sns.subscribe(request).continueWithBlock({ (task) -> AnyObject! in
-            print("\(task.result) \(task.error)")
+            log.verbose("\(task.result) \(task.error)")
             return nil
         })
         
@@ -258,14 +262,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         log.verbose("")
         let sns = AWSSNS.defaultSNS()
         let createEndpointResponse = task.result as! AWSSNSCreateEndpointResponse
-        print("endpointArn: \(createEndpointResponse.endpointArn)")
+        log.verbose("endpointArn: \(createEndpointResponse.endpointArn)")
 
         let request = AWSSNSSubscribeInput()
         request.endpoint = createEndpointResponse.endpointArn
         request.protocols = "application"
         request.topicArn = Config.get("AWS_ADMIN_SNS")
         sns.subscribe(request).continueWithBlock({ (task) -> AnyObject! in
-            print("\(task.result) \(task.error)")
+            log.verbose("\(task.result) \(task.error)")
             return nil
         })
 
@@ -333,7 +337,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]?) -> Void)) {
-        print("\(className)::\(__FUNCTION__) userInfo:\(userInfo)")
+        log.verbose("\(className)::\(__FUNCTION__) userInfo:\(userInfo)")
         registerBackgroundTask()
         if currentUser != nil && currentUser.isTwitterAuthenticated {
             reply(["balance": currentUser.balanceAsUBTC])
@@ -346,7 +350,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 //    func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!) {
-//        println("\(className)::\(__FUNCTION__)")
+//        log.verboseln("\(className)::\(__FUNCTION__)")
 //        registerBackgroundTask()
 //        reply(["balance": self.currentUser.balanceAsUBTC])
 //        endBackgroundTask()
@@ -415,7 +419,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         log.verbose("")
         
         if let userInfo = notficiation.userInfo, identifier = userInfo[AWSCognitoNotificationNewId] as? String {
-            print("\(className)::\(__FUNCTION__) New cognito identifier: \(identifier)")
+            log.verbose("\(className)::\(__FUNCTION__) New cognito identifier: \(identifier)")
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.currentUser.cognitoIdentity = identifier
                 self.currentUser.pushToDynamo()

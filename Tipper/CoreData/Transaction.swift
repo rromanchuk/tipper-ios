@@ -31,9 +31,9 @@ class Transaction: NSManagedObject, CoreDataUpdatable {
     class func get(txid: String) {
 
         TIPPERTipperClient.defaultClient().transactionGet(txid).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-            print("Transaction fetch \(task.result), \(task.error) exception: \(task.exception)")
+            log.verbose("Transaction fetch \(task.result), \(task.error) exception: \(task.exception)")
             if let transaction = task.result as? TIPPERTransaction {
-                print("Transaction  \(transaction)")
+                log.verbose("Transaction  \(transaction)")
             }
 
             return nil;
@@ -64,12 +64,11 @@ class Transaction: NSManagedObject, CoreDataUpdatable {
     }
 
     func updateEntityWithJSON(json: JSON) {
-        print("\(className)::\(__FUNCTION__)", terminator: "")
+        log.verbose("")
     }
 
     func updateEntityWithDynamoModel(dynamoObject: DynamoUpdatable) {
-
-        print("\(className)::\(__FUNCTION__)", terminator: "")
+        log.verbose("")
         if let transaction = dynamoObject as? DynamoTransaction {
             self.txid = transaction.txid
             self.amount = transaction.amount

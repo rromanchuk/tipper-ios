@@ -33,7 +33,6 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
     @NSManaged var txid: String?
     @NSManaged var createdAt: NSDate
     @NSManaged var tippedAt: NSDate?
-    @NSManaged var twitterJSON: [String: AnyObject]?
     @NSManaged var didLeaveTip: Bool
     @NSManaged var daySectionString: String
 
@@ -64,25 +63,21 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
     }
 
     func updateEntityWithJSON(json: JSON) {
-        //println("\(className)::\(__FUNCTION__) \(json)")
         self.tweetId = json["id_str"].stringValue
-        self.twitterJSON = json.dictionaryObject
     }
 
     func updateEntityWithTWTR(tweet: TWTRTweet) {
-        //println("\(className)::\(__FUNCTION__) \(tweet)")
-        //self.twitterJSON = tweet
         self.tweetId = tweet.tweetID
     }
 
     func updateEntityWithDynamoModel(dynamoObject: DynamoUpdatable) {
-        //println("\(className)::\(__FUNCTION__) ")
         let dynamoFavorite = dynamoObject as! DynamoFavorite
         if let tweetId = dynamoFavorite.TweetID {
             self.tweetId = tweetId
         }
 
         self.objectId = dynamoFavorite.ObjectID!
+        self.tweetId = self.objectId
 
         if let fromUserId = dynamoFavorite.FromUserID {
             self.fromUserId = fromUserId
@@ -96,7 +91,7 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
             self.txid = txid
         }
 
-        if let didLeaveTip = dynamoFavorite.DidLeaveTip {
+        if let _ = dynamoFavorite.DidLeaveTip {
             self.didLeaveTip = true
         }
 
@@ -124,13 +119,6 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
         self.daySectionString = "\(components.year * 10000 + components.month * 100 + components.day)"
 
             //[NSString stringWithFormat:@"%d", [components year] * 10000 + [components month] * 100  + [components day]];
-
-
-        if let jsonString = dynamoFavorite.TweetJSON, data = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true) {
-            let json = JSON(data: data)
-            self.tweetId = json["id"].stringValue
-            self.twitterJSON = json.dictionaryObject
-        }
 
         if let toTwitterID = dynamoFavorite.ToTwitterID, fromTwitterID = dynamoFavorite.FromTwitterID {
             self.toTwitterId = toTwitterID

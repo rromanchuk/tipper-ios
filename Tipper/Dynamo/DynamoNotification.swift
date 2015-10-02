@@ -47,16 +47,14 @@ class DynamoNotification: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpd
 
         mapper.query(DynamoNotification.self, expression: expression).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             if let results = task.result as?  AWSDynamoDBPaginatedOutput where task.error == nil && task.exception == nil {
-                print("Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
+                log.verbose("Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
                 privateContext.performBlock({ () -> Void in
                     for result in results.items as! [DynamoNotification] {
                         let notification = Notification.entityWithDYNAMO(Notification.self, model: result, context: privateContext)
                         notification!.save()
-                        print("New notification entity \(notification)")
                     }
                     privateContext.saveMoc()
                     context.performBlock({ () -> Void in
-                        print("lastEvaluatedKey:\(results.lastEvaluatedKey)")
                         context.saveMoc()
                         if results.lastEvaluatedKey != nil {
                             expression.exclusiveStartKey = results.lastEvaluatedKey

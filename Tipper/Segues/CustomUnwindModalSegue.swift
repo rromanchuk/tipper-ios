@@ -12,7 +12,7 @@ class CustomUnwindModalSegue: UIStoryboardSegue {
     let className = "CustomUnwindModalSegue"
 
     override func perform() {
-        print("\(className)::\(__FUNCTION__) source: \(self.sourceViewController) destination: \(self.destinationViewController) ")
+        log.verbose("\(className)::\(__FUNCTION__) source: \(self.sourceViewController) destination: \(self.destinationViewController) ")
         // Assign the source and destination views to local variables.
         let viewOnScreen = self.sourceViewController.view as UIView!
         let viewAfterUnwind = self.destinationViewController.view as UIView!
@@ -36,8 +36,8 @@ class CustomUnwindModalSegue: UIStoryboardSegue {
         //window?.insertSubview(viewAfterUnwind, be: viewOnScreen)
         //window?.insertSubview(viewAfterUnwind, belowSubview: viewOnScreen)
         
-        print("viewOnScreen: \(NSStringFromCGRect(viewOnScreen.frame))")
-        print("viewAfterUnwind: \(NSStringFromCGRect(viewAfterUnwind.frame))")
+        log.verbose("viewOnScreen: \(NSStringFromCGRect(viewOnScreen.frame))")
+        log.verbose("viewAfterUnwind: \(NSStringFromCGRect(viewAfterUnwind.frame))")
         controllerOnScreen?.prepareForSegueAnimation()
         
         

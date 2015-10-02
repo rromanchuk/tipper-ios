@@ -23,7 +23,7 @@ class OnboardPartTwo: UIViewController, StandardViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(className)::\(__FUNCTION__) settings:\(Settings.sharedInstance)")
+        log.verbose("settings:\(Settings.sharedInstance)")
         setupLabel()
         // Do any additional setup after loading the view.
     }
@@ -35,7 +35,7 @@ class OnboardPartTwo: UIViewController, StandardViewController {
     
 
     func didTapButton(sender: UIButton) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         (self.parentViewController as! OnboardingPageControllerViewController).autoAdvance()
     }
 

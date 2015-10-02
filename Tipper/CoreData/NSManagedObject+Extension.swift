@@ -63,7 +63,6 @@ extension NSManagedObject  {
 
 
     class func entityWithDYNAMO<T: NSManagedObject where T: CoreDataUpdatable>(entity: T.Type, model: DynamoUpdatable, context: NSManagedObjectContext) -> T? {
-        //println("\(entity.className) \(model.lookupProperty()) \(model.lookupValue())")
         let request = NSFetchRequest(entityName: entity.className)
         request.predicate = NSPredicate(format: "%K == %@", model.lookupProperty(), model.lookupValue())
         var error: NSError? = nil
@@ -75,7 +74,7 @@ extension NSManagedObject  {
             results = nil
         }
         if let _error = error {
-            print("ERROR: \(_error)")
+            log.error("ERROR: \(_error)")
         }
 
         if (results == nil) {
@@ -93,32 +92,6 @@ extension NSManagedObject  {
     }
 
 
-
-    class func entityWithUUID<T: NSManagedObject where T: CoreDataUpdatable>(entity: T.Type, uuid: String, context: NSManagedObjectContext) -> T? {
-        let request = NSFetchRequest(entityName: entity.className)
-        request.predicate = NSPredicate(format: "uuid == %@", uuid)
-        var error: NSError? = nil
-        let results: [AnyObject]?
-        do {
-            results = try context.executeFetchRequest(request)
-        } catch let error1 as NSError {
-            error = error1
-            results = nil
-        }
-        if let _error = error {
-            print("ERROR: \(_error)")
-        }
-
-        if (results == nil) {
-            return nil
-        } else if (results?.count == 0) {
-            return nil
-        } else {
-            let entityObj = results?.last as? T
-            return entityObj
-        }
-    }
-
     var privateContext: NSManagedObjectContext {
         get {
             let privateContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
@@ -128,7 +101,7 @@ extension NSManagedObject  {
     }
 
     func destroy() {
-        print("NSManagedObject::\(__FUNCTION__)")
+        log.warning("")
         self.managedObjectContext?.deleteObject(self)
     }
 

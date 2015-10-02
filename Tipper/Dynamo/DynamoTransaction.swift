@@ -59,10 +59,10 @@ class DynamoTransaction: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpda
     }
 
     class func fetch(txid: String, context: NSManagedObjectContext, completion: (transaction: Transaction?) -> Void) {
-        print("DynamoTransaction::\(__FUNCTION__) txid: \(txid), context:\(context)")
+        log.verbose("DynamoTransaction::\(__FUNCTION__) txid: \(txid), context:\(context)")
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         mapper.load(DynamoTransaction.self, hashKey: txid, rangeKey: nil).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-            print("error \(task.error)")
+            log.verbose("error \(task.error)")
             var transaction: Transaction?
             if task.error == nil {
                 let dynamoTransaction = task.result as! DynamoTransaction

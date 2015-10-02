@@ -14,6 +14,7 @@ class TipDetailContainer: UITableViewController {
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
     var favorite: Favorite!
+    private var isLoaded = false
 
     @IBOutlet weak var tweetView: TWTRTweetView!
 
@@ -29,13 +30,46 @@ class TipDetailContainer: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         setupTipAmount()
 
-        let twt = TWTRTweet(JSONDictionary: favorite.twitterJSON)
-        tweetView.configureWithTweet(twt)
 
-        if favorite.fromTwitterId == currentUser.uuid {
+        let client = TWTRAPIClient()
+
+        client.loadTweetWithID(favorite.tweetId) { tweet, error in
+            SwiftSpinner.hide()
+            if let t = tweet {
+                self.tweetView.configureWithTweet(t)
+                self.setupTweetInfo(t)
+
+            } else if let error = error {
+                log.error("Failed to load Tweet: \(error.localizedDescription)")
+            }
+
+            if let txid = self.favorite.txid {
+                log.verbose("txid: \(txid)")
+                DynamoTransaction.fetch(txid, context: self.managedObjectContext) { (transaction) -> Void in
+                    self.isLoaded = true
+                    SwiftSpinner.hide()
+                    if let transaction = transaction {
+                        self.confirmationsLabel.text = transaction.confirmations?.stringValue
+                    }
+                }
+            }
+
+        }
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if !isLoaded {
+            SwiftSpinner.show("Loading tip...")
+        }
+    }
+
+    func setupTweetInfo(twt: TWTRTweet) {
+        Debug.isBlocking()
+        if favorite.fromTwitterId == currentUser.twitterUserId {
             usernameLabel.text = "@\(favorite.toTwitterUsername)"
             tipHeaderLabel.text = "You tipped \(twt.author.name)."
             if let profileImage = currentUser.profileImage, url = NSURL(string: profileImage) {
@@ -50,39 +84,22 @@ class TipDetailContainer: UITableViewController {
             }
         }
 
-
-        if let txid = favorite.txid {
-            transactionIdLabel.text = txid
-        } else {
-            transactionIdLabel.text = "Transaction pending..."
-        }
-
-        if let txid = favorite.txid {
-            print("\(className)::\(__FUNCTION__) txid: \(txid)")
-            DynamoTransaction.fetch(txid, context: managedObjectContext) { (transaction) -> Void in
-                if let transaction = transaction {
-                    self.confirmationsLabel.text = transaction.confirmations?.stringValue
-                }
-            }
-        }
-
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
     @IBAction func didTapBack(sender: UIButton) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         self.parentViewController?.performSegueWithIdentifier("UnwindFromTipDetail", sender: self)
     }
 
     @IBAction func didTapTxidLabel(sender: UITapGestureRecognizer) {
-        print("\(className)::\(__FUNCTION__)")
+        log.verbose("")
         if let txid = favorite.txid {
             UIApplication.sharedApplication().openURL(NSURL(string: "https://blockchain.info/tx/\(txid)")!)
         }
