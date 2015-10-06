@@ -14,6 +14,7 @@ PODS:
   - AWSSQS (2.2.6):
     - AWSCore (= 2.2.6)
   - HexColors (2.2.1)
+  - QRCode (0.5)
   - RBBAnimation (0.4.0)
   - SDCAlertView (2.5.4):
     - RBBAnimation (~> 0.3)
@@ -33,6 +34,7 @@ DEPENDENCIES:
   - AWSMobileAnalytics
   - AWSSNS
   - AWSSQS
+  - QRCode
   - SDCAlertView
   - SSKeychain
   - TSMessages
@@ -48,6 +50,7 @@ SPEC CHECKSUMS:
   AWSSNS: 0188eab8b808981c531bbcd4ef238325c71270ec
   AWSSQS: a2304d18086ce907aa7a8bba275861a69886a662
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
+  QRCode: a249ed747aeb0f4bf5f9c58b5b001b6b3bc80073
   RBBAnimation: 4b2d66f6d993febce63cd564da934985313b9c59
   SDCAlertView: 2e2b0ecc5f1ec367e45d83efa2e512688ca7fa55
   SDCAutoLayout: e6885bb39ab8e2ec2ff84d158f38035f025f7420

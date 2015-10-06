@@ -17,6 +17,7 @@ target 'Tipper' do
     pod 'XCGLogger'
     #pod 'Google/Analytics'
     #pod 'Reveal-iOS-SDK'
+    pod 'QRCode'
 end
 
 target 'TipperTests' do

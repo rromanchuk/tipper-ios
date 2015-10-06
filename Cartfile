@@ -1,5 +1,5 @@
-github "rromanchuk/QRCode" "swift2" 
-github "rromanchuk/SwiftyJSON" "swift-2.0"
+#github "aschuch/QRCode" 
+github "SwiftyJSON/SwiftyJSON"
 github "Alamofire/Alamofire" 
-github "meteochu/HanekeSwift" "swift-2.0"
+github "meteochu/HanekeSwift" 
 github "rromanchuk/stripe-ios" "4dd27b3b32ee35c2825504138f68634f4eab634e" 
