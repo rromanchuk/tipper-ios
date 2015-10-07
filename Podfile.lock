@@ -13,6 +13,7 @@ PODS:
     - AWSCore (= 2.2.6)
   - AWSSQS (2.2.6):
     - AWSCore (= 2.2.6)
+  - HanekeSwift (0.10.0)
   - HexColors (2.2.1)
   - QRCode (0.5)
   - RBBAnimation (0.4.0)
@@ -21,6 +22,7 @@ PODS:
     - SDCAutoLayout (~> 2.0)
   - SDCAutoLayout (2.0.3)
   - SSKeychain (1.2.3)
+  - SwiftyJSON (2.3.0)
   - TSMessages (0.9.12):
     - HexColors (~> 2.2.0)
   - XCGLogger (3.0)
@@ -34,9 +36,11 @@ DEPENDENCIES:
   - AWSMobileAnalytics
   - AWSSNS
   - AWSSQS
+  - HanekeSwift
   - QRCode
   - SDCAlertView
   - SSKeychain
+  - SwiftyJSON
   - TSMessages
   - XCGLogger
 
@@ -49,12 +53,14 @@ SPEC CHECKSUMS:
   AWSMobileAnalytics: 522b2bb4705f05e7a2eb9f86a085ddfce64f183a
   AWSSNS: 0188eab8b808981c531bbcd4ef238325c71270ec
   AWSSQS: a2304d18086ce907aa7a8bba275861a69886a662
+  HanekeSwift: d6f5bdf9dbdbbc09d59623b2c1d533e46463dd4d
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
   QRCode: a249ed747aeb0f4bf5f9c58b5b001b6b3bc80073
   RBBAnimation: 4b2d66f6d993febce63cd564da934985313b9c59
   SDCAlertView: 2e2b0ecc5f1ec367e45d83efa2e512688ca7fa55
   SDCAutoLayout: e6885bb39ab8e2ec2ff84d158f38035f025f7420
   SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d
+  SwiftyJSON: 8d6b61a70277ef2a5d710d372e06e7e2d87fb9e4
   TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
   XCGLogger: 5802533aff8bafc8b3b9776ab8972576f31d0a4e
 

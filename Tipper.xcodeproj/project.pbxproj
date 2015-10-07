@@ -87,7 +87,6 @@
 		94C5C0D31ABFF47A009E4B05 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C5C0D21ABFF47A009E4B05 /* Market.swift */; };
 		94D3FEB21BABB8E400A14EB4 /* NotificationSeenIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D3FEB11BABB8E400A14EB4 /* NotificationSeenIndicator.swift */; settings = {ASSET_TAGS = (); }; };
 		94D3FEB41BABD6C600A14EB4 /* NotficationBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D3FEB31BABD6C600A14EB4 /* NotficationBadge.swift */; settings = {ASSET_TAGS = (); }; };
-		94D9795E1B27696B0079F50C /* Haneke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 949841FC1B25E47A0079082C /* Haneke.framework */; };
 		94DA84B01B6D55E0005D4CD6 /* DynamoSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA84AF1B6D55E0005D4CD6 /* DynamoSettings.swift */; };
 		94EE8CF61AB16E7E000593CD /* TTTURLRequestFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EE8CF51AB16E7E000593CD /* TTTURLRequestFormatter.m */; };
 		94F5137C1B8D03BC002E0996 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F5137B1B8D03BC002E0996 /* SwiftSpinner.swift */; };
@@ -262,7 +261,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				94B026611BA6644400FC6A30 /* Stripe.framework in Frameworks */,
-				94D9795E1B27696B0079F50C /* Haneke.framework in Frameworks */,
 				9484185A1AB6525F001C633E /* Alamofire.framework in Frameworks */,
 				94C255131B0D825800A65B94 /* Fabric.framework in Frameworks */,
 				94C255161B0D825800A65B94 /* Crashlytics.framework in Frameworks */,

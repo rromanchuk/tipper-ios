@@ -1,4 +1,2 @@
 github "Alamofire/Alamofire" "2.0.2"
-github "meteochu/HanekeSwift" "0.10.0"
-github "SwiftyJSON/SwiftyJSON" "2.3.0"
 github "rromanchuk/stripe-ios" "4dd27b3b32ee35c2825504138f68634f4eab634e"
