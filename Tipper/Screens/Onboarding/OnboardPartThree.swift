@@ -121,7 +121,7 @@ class OnboardPartThree: UIViewController, PKPaymentAuthorizationViewControllerDe
     
     func paymentAuthorizationViewControllerDidFinish(controller: PKPaymentAuthorizationViewController) {
         log.verbose("")
-        self.parentViewController!.dismissViewControllerAnimated(true, completion: nil)
+        (parentViewController as! OnboardingPageControllerViewController).autoAdvance()
     }
     
     func checkoutController(controller: STPCheckoutViewController, didFinishWithStatus status: STPPaymentStatus, error: NSError?) {
@@ -132,6 +132,7 @@ class OnboardPartThree: UIViewController, PKPaymentAuthorizationViewControllerDe
                 return // just do nothing in this case
             case .Success:
                 log.info("great success!")
+                (self.parentViewController as! OnboardingPageControllerViewController).autoAdvance()
             case .Error:
                 log.error("oh no, an error: \(error?.localizedDescription)")
             }

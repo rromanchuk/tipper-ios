@@ -22,6 +22,9 @@ PODS:
     - SDCAutoLayout (~> 2.0)
   - SDCAutoLayout (2.0.3)
   - SSKeychain (1.2.3)
+  - Stripe (5.1.2):
+    - Stripe/Core (= 5.1.2)
+  - Stripe/Core (5.1.2)
   - SwiftyJSON (2.3.0)
   - TSMessages (0.9.12):
     - HexColors (~> 2.2.0)
@@ -40,9 +43,19 @@ DEPENDENCIES:
   - QRCode
   - SDCAlertView
   - SSKeychain
+  - Stripe (from `https://github.com/rromanchuk/stripe-ios`)
   - SwiftyJSON
   - TSMessages
   - XCGLogger
+
+EXTERNAL SOURCES:
+  Stripe:
+    :git: https://github.com/rromanchuk/stripe-ios
+
+CHECKOUT OPTIONS:
+  Stripe:
+    :commit: 4dd27b3b32ee35c2825504138f68634f4eab634e
+    :git: https://github.com/rromanchuk/stripe-ios
 
 SPEC CHECKSUMS:
   ApplePayStubs: 5dd63c36527d1117b2045939fb5b6581b4815433
@@ -60,6 +73,7 @@ SPEC CHECKSUMS:
   SDCAlertView: 2e2b0ecc5f1ec367e45d83efa2e512688ca7fa55
   SDCAutoLayout: e6885bb39ab8e2ec2ff84d158f38035f025f7420
   SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d
+  Stripe: 141b28d157f12db2e1624315cf19f1b6bd5af84d
   SwiftyJSON: 8d6b61a70277ef2a5d710d372e06e7e2d87fb9e4
   TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
   XCGLogger: 5802533aff8bafc8b3b9776ab8972576f31d0a4e

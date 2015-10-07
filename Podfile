@@ -1,5 +1,7 @@
 platform :ios, '9.0'
 use_frameworks!
+# ignore all warnings from all pods
+inhibit_all_warnings!
 
 target 'Tipper' do
     pod 'AWSCore'
@@ -10,7 +12,7 @@ target 'Tipper' do
     pod 'AWSMobileAnalytics'
     pod 'AWSAPIGateway'
     pod 'ApplePayStubs'
-    #pod 'Stripe', '4.0.3'
+    pod 'Stripe', :git => "https://github.com/rromanchuk/stripe-ios"
     pod 'SSKeychain'
     pod 'SDCAlertView'
     pod 'TSMessages'
