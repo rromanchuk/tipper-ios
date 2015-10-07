@@ -22,6 +22,7 @@ target 'Tipper' do
     pod 'SwiftyJSON'
     pod 'QRCode'
     pod 'HanekeSwift'
+    pod 'Alamofire'
 end
 
 target 'TipperTests' do

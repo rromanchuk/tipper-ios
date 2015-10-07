@@ -60,8 +60,6 @@
 		94723C751BB49F3F00C33210 /* TIPPERTipperClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 94723C741BB49F3F00C33210 /* TIPPERTipperClient.m */; settings = {ASSET_TAGS = (); }; };
 		94723C781BB49F6A00C33210 /* TIPPEREmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 94723C771BB49F6A00C33210 /* TIPPEREmpty.m */; settings = {ASSET_TAGS = (); }; };
 		94723C7B1BB507D100C33210 /* TIPPERSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 94723C7A1BB507D100C33210 /* TIPPERSettings.m */; settings = {ASSET_TAGS = (); }; };
-		9484185A1AB6525F001C633E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 948418581AB6525F001C633E /* Alamofire.framework */; };
-		9484185B1AB6525F001C633E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 948418591AB6525F001C633E /* SwiftyJSON.framework */; };
 		9484185E1AB6B2B8001C633E /* DynamoUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9484185D1AB6B2B8001C633E /* DynamoUser.swift */; };
 		949841FF1B25F5BC0079082C /* star-2-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 949841FE1B25F5BC0079082C /* star-2-icon.png */; };
 		949842021B25FC590079082C /* TipDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949842011B25FC590079082C /* TipDetailsViewController.swift */; };
@@ -76,7 +74,6 @@
 		94AF297A1AAEF2B600E16048 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94AF29781AAEF2B600E16048 /* Main.storyboard */; };
 		94AF297F1AAEF2B600E16048 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AF297D1AAEF2B600E16048 /* LaunchScreen.xib */; };
 		94AF298B1AAEF2B600E16048 /* TipperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AF298A1AAEF2B600E16048 /* TipperTests.swift */; };
-		94B026611BA6644400FC6A30 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9426B28E1B98D0FF001F996C /* Stripe.framework */; };
 		94C255131B0D825800A65B94 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C2550F1B0D825800A65B94 /* Fabric.framework */; };
 		94C255141B0D825800A65B94 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C255101B0D825800A65B94 /* TwitterKit.framework */; };
 		94C255151B0D825800A65B94 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C255111B0D825800A65B94 /* TwitterCore.framework */; };
@@ -260,12 +257,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94B026611BA6644400FC6A30 /* Stripe.framework in Frameworks */,
-				9484185A1AB6525F001C633E /* Alamofire.framework in Frameworks */,
 				94C255131B0D825800A65B94 /* Fabric.framework in Frameworks */,
 				94C255161B0D825800A65B94 /* Crashlytics.framework in Frameworks */,
 				94C255151B0D825800A65B94 /* TwitterCore.framework in Frameworks */,
-				9484185B1AB6525F001C633E /* SwiftyJSON.framework in Frameworks */,
 				94C255141B0D825800A65B94 /* TwitterKit.framework in Frameworks */,
 				6E39DE48C53BFCEA4855A132 /* Pods_Tipper.framework in Frameworks */,
 			);

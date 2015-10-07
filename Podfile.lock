@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (2.0.2)
   - ApplePayStubs (0.2)
   - AWSAPIGateway (2.2.6):
     - AWSCore (= 2.2.6)
@@ -31,6 +32,7 @@ PODS:
   - XCGLogger (3.0)
 
 DEPENDENCIES:
+  - Alamofire
   - ApplePayStubs
   - AWSAPIGateway
   - AWSCognito
@@ -58,6 +60,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/rromanchuk/stripe-ios
 
 SPEC CHECKSUMS:
+  Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
   ApplePayStubs: 5dd63c36527d1117b2045939fb5b6581b4815433
   AWSAPIGateway: 822612754602308c240774c6bfaa2c1b6a05a116
   AWSCognito: 4cb0bd389dedf6673048609408577bb6c871422b
