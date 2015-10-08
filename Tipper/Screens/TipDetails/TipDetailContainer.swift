@@ -32,7 +32,7 @@ class TipDetailContainer: UITableViewController {
         super.viewDidLoad()
         log.verbose("")
         setupTipAmount()
-
+        profileImageView.layer.cornerRadius = 20.0
 
         let client = TWTRAPIClient()
         client.loadTweetWithID(favorite.tweetId) { tweet, error in

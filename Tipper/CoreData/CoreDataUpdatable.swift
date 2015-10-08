@@ -35,9 +35,9 @@ protocol DynamoUpdatable {
 }
 
 
-protocol AWSModelUpdateable {
-    static func lookupProperty() -> String
-    func lookupProperty() -> String
-    func lookupValue() -> String
+protocol AWSModelUpdateable : DynamoUpdatable {
+//    static func lookupProperty() -> String
+//    func lookupProperty() -> String
+//    func lookupValue() -> String
     func asObject() -> AnyObject
 }
