@@ -43,26 +43,7 @@ extension NSManagedObject  {
         }
     }
 
-    class func entityWithJSON<T: NSManagedObject where T: CoreDataUpdatable>(entity: T.Type, json: JSON, context: NSManagedObjectContext) -> T? {
-        let request = NSFetchRequest(entityName: entity.className)
-        request.predicate = NSPredicate(format: "%K == %@", entity.lookupProperty, json[entity.lookupProperty].stringValue)
-        let results = try! context.executeFetchRequest(request)
-        
-        if (results.count == 0) {
-            let entityObj = self.create(entity, context: context)
-            entityObj.updateEntityWithModel(json)
-            return entityObj
-        } else {
-            let entityObj = results.last as? T
-            entityObj?.updateEntityWithModel(json)
-            return entityObj
-        }
-    }
-
-
-
-
-    class func entityWithDYNAMO<T: NSManagedObject where T: CoreDataUpdatable>(entity: T.Type, model: DynamoUpdatable, context: NSManagedObjectContext) -> T? {
+    class func entityWithModel<T: NSManagedObject where T: CoreDataUpdatable>(entity: T.Type, model: ModelCoredataMapable, context: NSManagedObjectContext) -> T? {
         let request = NSFetchRequest(entityName: entity.className)
         request.predicate = NSPredicate(format: "%K == %@", model.lookupProperty(), model.lookupValue())
         var error: NSError? = nil
@@ -90,36 +71,6 @@ extension NSManagedObject  {
             return entityObj
         }
     }
-
-    class func entityWithAWSGatewayModel<T: NSManagedObject where T: CoreDataUpdatable>(entity: T.Type, model: AWSModelUpdateable, context: NSManagedObjectContext) -> T? {
-        let request = NSFetchRequest(entityName: entity.className)
-        request.predicate = NSPredicate(format: "%K == %@", model.lookupProperty(), model.lookupValue())
-        var error: NSError? = nil
-        let results: [AnyObject]?
-        do {
-            results = try context.executeFetchRequest(request)
-        } catch let error1 as NSError {
-            error = error1
-            results = nil
-        }
-        if let _error = error {
-            log.error("ERROR: \(_error)")
-        }
-
-        if (results == nil) {
-            return nil
-        } else if (results?.count == 0) {
-            let entityObj = self.create(entity, context: context)
-
-            entityObj.updateEntityWithModel(model.asObject())
-            return entityObj
-        } else {
-            let entityObj = results?.last as? T
-            entityObj?.updateEntityWithModel(model.asObject())
-            return entityObj
-        }
-    }
-
 
 
     var privateContext: NSManagedObjectContext {

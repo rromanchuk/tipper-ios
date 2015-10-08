@@ -34,16 +34,16 @@ class Settings: NSManagedObject, CoreDataUpdatable {
         return Settings.className
     }
 
-    static var lookupProperty: String {
-        get {
-            return "version"
-        }
+    static func lookupProperty() -> String {
+        return Settings.lookupProperty()
     }
 
-    var lookupValue: String {
-        get {
-            return self.version!
-        }
+    func lookupProperty() -> String {
+        return "version"
+    }
+
+    func lookupValue() -> String {
+        return self.version!
     }
 
     class func dateForTwitterDate(date: String) -> NSDate {

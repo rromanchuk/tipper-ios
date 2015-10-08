@@ -18,10 +18,17 @@ class Notification: NSManagedObject, CoreDataUpdatable {
     @NSManaged var createdAt: NSDate!
     @NSManaged var seenAt: NSDate
 
-    static var lookupProperty: String {
-        get {
-            return "objectId"
-        }
+
+    static func lookupProperty() -> String {
+        return Notification.lookupProperty()
+    }
+
+    func lookupProperty() -> String {
+        return "objectId"
+    }
+
+    func lookupValue() -> String {
+        return self.objectId
     }
 
     class var className: String {
@@ -32,20 +39,6 @@ class Notification: NSManagedObject, CoreDataUpdatable {
 
     var className: String {
         return Notification.className
-    }
-
-    func updateEntityWithDynamoModel(dynamoModel: DynamoUpdatable) {
-        fatalError("This method is deprecated")
-//        let notification                    = dynamoModel as! DynamoNotification
-//        self.userId                         = notification.UserID
-//        self.type                           = notification.NotificationType
-//        self.text                           = notification.NotificationText
-//        self.objectId                       = notification.ObjectID
-//
-//        if let createdAt = notification.CreatedAt?.doubleValue {
-//            self.createdAt              = NSDate(timeIntervalSince1970: createdAt)
-//        }
-
     }
 
 

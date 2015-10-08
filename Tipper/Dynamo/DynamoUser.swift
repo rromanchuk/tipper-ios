@@ -19,7 +19,7 @@ import TwitterKit
 import SwiftyJSON
 import AWSDynamoDB
 
-class DynamoUser: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
+class DynamoUser: AWSDynamoDBObjectModel, AWSDynamoDBModeling, ModelCoredataMapable {
     var UserID: String?
     var TwitterUserID: String?
     var TwitterUsername: String?

@@ -11,7 +11,7 @@ import TwitterKit
 import SwiftyJSON
 import AWSDynamoDB
 
-class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
+class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, ModelCoredataMapable {
     var ObjectID: String?
     var FromUserID: String?
     var ToUserID: String?
@@ -146,7 +146,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
             if (task.result != nil) {
                 privateContext.performBlock({ () -> Void in
                     let favorite: DynamoFavorite = task.result as! DynamoFavorite
-                    Favorite.entityWithDYNAMO(Favorite.self, model: favorite, context: privateContext)
+                    Favorite.entityWithModel(Favorite.self, model: favorite, context: privateContext)
                     privateContext.saveMoc()
                     context.performBlock({ () -> Void in
                         completion()
@@ -171,7 +171,7 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatab
             if let results = task.result as?  AWSDynamoDBPaginatedOutput where task.error == nil && task.exception == nil {
                 privateContext.performBlock({ () -> Void in
                     for result in results.items as! [DynamoFavorite] {
-                        Favorite.entityWithDYNAMO(Favorite.self, model: result, context: privateContext)
+                        Favorite.entityWithModel(Favorite.self, model: result, context: privateContext)
                     }
                     privateContext.saveMoc()
                     context.performBlock({ () -> Void in

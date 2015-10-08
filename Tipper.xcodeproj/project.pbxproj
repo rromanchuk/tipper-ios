@@ -51,6 +51,7 @@
 		945065FD1B07CFB900AF34F6 /* Bariol.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 945065FA1B07CFB900AF34F6 /* Bariol.ttf */; };
 		9453A66C1B39FD8800D35E04 /* TipsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9453A66B1B39FD8800D35E04 /* TipsController.swift */; };
 		945400221BC5F1D700BD8994 /* TipperTransaction+Updateable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945400211BC5F1D700BD8994 /* TipperTransaction+Updateable.swift */; settings = {ASSET_TAGS = (); }; };
+		945400241BC6084000BD8994 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945400231BC6084000BD8994 /* ProfileImage.swift */; settings = {ASSET_TAGS = (); }; };
 		9462D75A1B35D108001C5083 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462D7591B35D108001C5083 /* InterfaceController.swift */; };
 		9462D75C1B35D108001C5083 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462D75B1B35D108001C5083 /* GlanceController.swift */; };
 		9462D75E1B35D108001C5083 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9462D75D1B35D108001C5083 /* Images.xcassets */; };
@@ -185,6 +186,7 @@
 		945065FA1B07CFB900AF34F6 /* Bariol.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol.ttf; sourceTree = "<group>"; };
 		9453A66B1B39FD8800D35E04 /* TipsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipsController.swift; path = TabController/TipsController.swift; sourceTree = "<group>"; };
 		945400211BC5F1D700BD8994 /* TipperTransaction+Updateable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TipperTransaction+Updateable.swift"; path = "Extensions/TipperTransaction+Updateable.swift"; sourceTree = "<group>"; };
+		945400231BC6084000BD8994 /* ProfileImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileImage.swift; path = Views/ProfileImage.swift; sourceTree = "<group>"; };
 		9462D7551B35D108001C5083 /* Tipper WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Tipper WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9462D7581B35D108001C5083 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9462D7591B35D108001C5083 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
@@ -502,6 +504,7 @@
 				94AB27921ACA3D2B005A433F /* TintedButton.swift */,
 				942780001B94CE70007CB713 /* BaseView.swift */,
 				9426B2991B9F6E6F001F996C /* TipperButton.swift */,
+				945400231BC6084000BD8994 /* ProfileImage.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -960,6 +963,7 @@
 				94723C751BB49F3F00C33210 /* TIPPERTipperClient.m in Sources */,
 				94416C151AAF989F00117AFC /* NSManagedObjectContext+Base.m in Sources */,
 				9453A66C1B39FD8800D35E04 /* TipsController.swift in Sources */,
+				945400241BC6084000BD8994 /* ProfileImage.swift in Sources */,
 				94098BAE1BB8739200394955 /* OnboardPartTwo.swift in Sources */,
 				94FA97DD1AB2EB71005B0C83 /* Favorite.swift in Sources */,
 				943243151B2D6C1300D1A1D6 /* HeaderContainer.swift in Sources */,

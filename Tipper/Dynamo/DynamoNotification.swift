@@ -9,7 +9,7 @@
 import Foundation
 import AWSDynamoDB
 
-class DynamoNotification: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
+class DynamoNotification: AWSDynamoDBObjectModel, AWSDynamoDBModeling, ModelCoredataMapable {
     var UserID: String?
     var ObjectID: String?
     var NotificationType: String?
@@ -50,7 +50,7 @@ class DynamoNotification: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpd
                 log.verbose("Result: \(task.result) Error \(task.error), Exception: \(task.exception)")
                 privateContext.performBlock({ () -> Void in
                     for result in results.items as! [DynamoNotification] {
-                        let notification = Notification.entityWithDYNAMO(Notification.self, model: result, context: privateContext)
+                        let notification = Notification.entityWithModel(Notification.self, model: result, context: privateContext)
                         notification!.save()
                     }
                     privateContext.saveMoc()

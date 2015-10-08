@@ -11,7 +11,7 @@ import TwitterKit
 import SwiftyJSON
 import AWSDynamoDB
 
-class DynamoSettings: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
+class DynamoSettings: AWSDynamoDBObjectModel, AWSDynamoDBModeling, ModelCoredataMapable {
     var FundAmount: String?
     var TipAmount: String?
     var FeeAmount: String?

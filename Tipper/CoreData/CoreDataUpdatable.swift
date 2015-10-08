@@ -13,8 +13,6 @@ protocol CoreDataUpdatable {
 
 
     // The CoreData column that should be used for lookup
-    static var lookupProperty: String { get }
-
     // Swift doesn't have very friendly introspection at the moment. NSManagedObject extension needs to ask itself what its entity string is
     //
     // :returns: String The NSManagedObject's entity name
@@ -22,7 +20,8 @@ protocol CoreDataUpdatable {
     func updateEntityWithModel(model: Any)
 }
 
-protocol DynamoUpdatable {
+
+protocol ModelCoredataMapable {
 
     // The CoreData column that should be used for lookup
     static func lookupProperty() -> String
@@ -34,8 +33,7 @@ protocol DynamoUpdatable {
     // :returns: String The NSManagedObject's entity name
 }
 
-
-protocol AWSModelUpdateable : DynamoUpdatable {
+protocol AWSModelUpdateable : ModelCoredataMapable {
 //    static func lookupProperty() -> String
 //    func lookupProperty() -> String
 //    func lookupValue() -> String

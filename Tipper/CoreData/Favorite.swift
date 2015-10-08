@@ -46,17 +46,18 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
         return Favorite.className
     }
 
-    static var lookupProperty: String {
-        get {
-            return "objectId"
-        }
+    static func lookupProperty() -> String {
+        return Favorite.lookupProperty()
     }
 
-    var lookupValue: String {
-        get {
-            return self.objectId
-        }
+    func lookupProperty() -> String {
+        return "objectId"
     }
+
+    func lookupValue() -> String {
+        return self.objectId
+    }
+
 
     class func dateForTwitterDate(date: String) -> NSDate {
         return TwitterDateFormatter.dateFromString(date)!

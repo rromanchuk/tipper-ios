@@ -3,7 +3,7 @@ import Foundation
 import CoreData
 import SwiftyJSON
 
-class Market: NSManagedObject, CoreDataUpdatable {
+class Market: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
 
     @NSManaged var amount: String?
     @NSManaged var amountCents: String?
@@ -21,24 +21,17 @@ class Market: NSManagedObject, CoreDataUpdatable {
         return Favorite.className
     }
 
-    static var lookupProperty: String {
-        get {
-            return "btc"
-        }
+
+    static func lookupProperty() -> String {
+        return Market.lookupProperty()
     }
 
-    var lookupValue: String {
-        get {
-            return self.btc!
-        }
+    func lookupProperty() -> String {
+        return "btc"
     }
 
-    func updateEntityWithJSON(json: JSON) {
-        fatalError("This method is deprecated")
-//        self.subtotalAmount = json["subtotal"].dictionaryValue["amount"]!.stringValue
-//        self.amount = json["total"].dictionaryValue["amount"]!.stringValue
-//        self.btc = json["btc"].dictionaryValue["amount"]!.stringValue
-//        self.updatedAt = NSDate()
+    func lookupValue() -> String {
+        return self.btc!
     }
 
     func updateEntityWithModel(model: Any) {
@@ -48,11 +41,6 @@ class Market: NSManagedObject, CoreDataUpdatable {
             self.btc = json["btc"].dictionaryValue["amount"]!.stringValue
             self.updatedAt = NSDate()
         }
-    }
-
-
-    func updateEntityWithDynamoModel(dynamoObject: DynamoUpdatable) {
-        fatalError("This method is deprecated")
     }
 
     class func market() -> Market {

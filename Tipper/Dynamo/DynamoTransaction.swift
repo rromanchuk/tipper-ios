@@ -11,7 +11,7 @@ import TwitterKit
 import SwiftyJSON
 import AWSDynamoDB
 
-class DynamoTransaction: AWSDynamoDBObjectModel, AWSDynamoDBModeling, DynamoUpdatable {
+class DynamoTransaction: AWSDynamoDBObjectModel, AWSDynamoDBModeling, ModelCoredataMapable {
     var amount: NSNumber?
     var category: String?
     var confirmations: NSNumber?

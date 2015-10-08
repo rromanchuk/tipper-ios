@@ -42,8 +42,6 @@ class TipCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        userProfileImage.layer.cornerRadius = 20
-        userProfileImage.layer.masksToBounds = true
         // Initialization code
     }
 

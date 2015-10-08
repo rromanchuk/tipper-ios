@@ -51,16 +51,16 @@ class Transaction: NSManagedObject, CoreDataUpdatable {
         return Transaction.className
     }
 
-    static var lookupProperty: String {
-        get {
-            return "txid"
-        }
+    static func lookupProperty() -> String {
+        return Transaction.lookupProperty()
     }
 
-    var lookupValue: String {
-        get {
-            return self.txid
-        }
+    func lookupProperty() -> String {
+        return "txid"
+    }
+
+    func lookupValue() -> String {
+        return self.txid
     }
 
     func updateEntityWithModel(model: Any) {

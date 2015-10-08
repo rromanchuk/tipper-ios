@@ -14,7 +14,7 @@ import AWSDynamoDB
 import SSKeychain
 import AWSSQS
 
-class CurrentUser: NSManagedObject, CoreDataUpdatable {
+class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
     let KeychainAccount: String = "tips.coinbit.tipper"
     let KeychainTwitterIDAccount: String = "tips.coinbit.tipper.twitterID"
     let KeychainTokenAccount: String = "tips.coinbit.tipper.token"
@@ -253,10 +253,17 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         return "CurrentUser"
     }
 
-    static var lookupProperty: String {
-        get {
-            return "userId"
-        }
+
+    static func lookupProperty() -> String {
+        return CurrentUser.lookupProperty()
+    }
+
+    func lookupProperty() -> String {
+        return "userId"
+    }
+
+    func lookupValue() -> String {
+        return self.uuid!
     }
 
     var className: String {
@@ -302,14 +309,14 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         if let btc = bitcoinBalanceBTC where btc > 0.0 {
             API.sharedInstance.market("\(btc)", completion: { (json, error) -> Void in
                 if let moc = self.managedObjectContext where error == nil {
-                    self.marketValue = Market.entityWithJSON(Market.self, json: json, context: moc)!
+                    self.marketValue = Market.entityWithModel(Market.self, json: json, context: moc)!
                 }
                 completion()
             })
         } else {
             let json = JSON(["total": ["amount": "0.00"], "subtotal": ["amount": "0.00"], "btc": ["amount": "0.00"]])
             if let moc = self.managedObjectContext {
-                self.marketValue = Market.entityWithJSON(Market.self, json: json, context: moc)
+                self.marketValue = Market.entityWithModel(Market.self, json: json, context: moc)
             }
             completion()
         }
