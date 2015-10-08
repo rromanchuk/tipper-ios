@@ -42,18 +42,18 @@ class TipDetailsViewController: UIViewController, Logoutable, CustomSegueable {
         }
     }
     
-    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
-        log.verbose("toViewController: \(toViewController), fromViewController: \(fromViewController)")
-        if let _ = fromViewController as? CustomSegueable {
-            
-            let unwindSegue = CustomUnwindModalSegue(identifier: identifier, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
-                
-            })
-            return unwindSegue
-        }
-        
-        return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)!
-    }
+//    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
+//        log.verbose("toViewController: \(toViewController), fromViewController: \(fromViewController)")
+//        if let _ = fromViewController as? CustomSegueable {
+//            
+//            let unwindSegue = CustomUnwindModalSegue(identifier: identifier, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
+//                
+//            })
+//            return unwindSegue
+//        }
+//        
+//        return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)!
+//    }
 
     // MARK: - Navigation
 

@@ -20,3 +20,4 @@
 //#import "ApplePayStubs.h"
 
 #import "TipperTipperClient.h"
+#import "TipperTransaction.h"

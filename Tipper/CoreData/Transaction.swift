@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import SwiftyJSON
 
-class Transaction: NSManagedObject, CoreDataUpdatable, APIGatewayUpdateable {
+class Transaction: NSManagedObject, CoreDataUpdatable {
 
 
     @NSManaged var txid: String!
@@ -29,10 +29,10 @@ class Transaction: NSManagedObject, CoreDataUpdatable, APIGatewayUpdateable {
     @NSManaged var time: NSDate
 
     class func get(txid: String) {
-
         TIPPERTipperClient.defaultClient().transactionGet(txid).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             log.verbose("Transaction fetch \(task.result), \(task.error) exception: \(task.exception)")
             if let transaction = task.result as? TIPPERTransaction {
+                
                 log.verbose("Transaction  \(transaction)")
             }
 
@@ -63,44 +63,26 @@ class Transaction: NSManagedObject, CoreDataUpdatable, APIGatewayUpdateable {
         }
     }
 
-    func updateEntityWithJSON(json: JSON) {
-        log.verbose("")
-    }
-
-    func updateAPIGateway(task: AWSTask) {
-        log.verbose("")
-        if let transaction = task.result as? TIPPERTransaction {
+    func updateEntityWithModel(model: Any) {
+        if let transaction = model as? TIPPERTransaction {
             log.verbose("Transaction  \(transaction)")
             self.txid = transaction.txid
             self.confirmations = transaction.confirmations
             self.fee = transaction.fee
+            self.amount = transaction.tip_amount
             self.fromUserId = transaction.FromUserID
             self.toUserId = transaction.ToUserID
-
-        }
-    }
-
-    func updateEntityWithDynamoModel(dynamoObject: DynamoUpdatable) {
-        log.verbose("")
-        if let transaction = dynamoObject as? DynamoTransaction {
-            self.txid = transaction.txid
-            self.amount = transaction.amount
-            self.fee = transaction.fee
-            self.confirmations = transaction.confirmations
-
             self.fromTwitterId = transaction.FromTwitterID
             self.toTwitterId = transaction.ToTwitterID
-
-            self.fromUserId = transaction.FromUserID
-            self.toUserId = transaction.ToUserID
-
-
-            self.fromTwitterUsername = transaction.FromTwitterUsername
-            self.toTwitterUsername = transaction.ToTwitterUsername
+//            self.fromTwitterUsername = transaction.F
+//            self.toTwitterUsername = transaction.ToTwitterUsername
 
             self.time = NSDate(timeIntervalSince1970: NSTimeInterval(transaction.time!.doubleValue))
+
         }
     }
+
+
 
     
 }

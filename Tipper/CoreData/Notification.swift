@@ -35,21 +35,37 @@ class Notification: NSManagedObject, CoreDataUpdatable {
     }
 
     func updateEntityWithDynamoModel(dynamoModel: DynamoUpdatable) {
-        log.verbose("\(className)::\(__FUNCTION__) model:\(dynamoModel)")
-        let notification                    = dynamoModel as! DynamoNotification
-        self.userId                         = notification.UserID
-        self.type                           = notification.NotificationType
-        self.text                           = notification.NotificationText
-        self.objectId                       = notification.ObjectID
-
-        if let createdAt = notification.CreatedAt?.doubleValue {
-            self.createdAt              = NSDate(timeIntervalSince1970: createdAt)
-        }
+        fatalError("This method is deprecated")
+//        let notification                    = dynamoModel as! DynamoNotification
+//        self.userId                         = notification.UserID
+//        self.type                           = notification.NotificationType
+//        self.text                           = notification.NotificationText
+//        self.objectId                       = notification.ObjectID
+//
+//        if let createdAt = notification.CreatedAt?.doubleValue {
+//            self.createdAt              = NSDate(timeIntervalSince1970: createdAt)
+//        }
 
     }
 
-    func updateEntityWithJSON(json: JSON) {
 
+    func updateEntityWithModel(model: Any) {
+        log.verbose("\(className)::\(__FUNCTION__) model:\(model)")
+        if let notification = model as? DynamoNotification {
+            self.userId                         = notification.UserID
+            self.type                           = notification.NotificationType
+            self.text                           = notification.NotificationText
+            self.objectId                       = notification.ObjectID
+
+            if let createdAt = notification.CreatedAt?.doubleValue {
+                self.createdAt              = NSDate(timeIntervalSince1970: createdAt)
+            }
+
+        }
+    }
+
+    func updateEntityWithJSON(json: JSON) {
+        fatalError("This method is deprecated")
     }
     
     class func markAllAsRead() {

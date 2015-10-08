@@ -70,76 +70,79 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
         self.tweetId = tweet.tweetID
     }
 
-    func updateEntityWithDynamoModel(dynamoObject: DynamoUpdatable) {
-        let dynamoFavorite = dynamoObject as! DynamoFavorite
-        if let tweetId = dynamoFavorite.TweetID {
-            self.tweetId = tweetId
-        }
 
-        self.objectId = dynamoFavorite.ObjectID!
-        self.tweetId = self.objectId
+    func updateEntityWithModel(model: Any) {
+        if let dynamoFavorite = model as? DynamoFavorite {
+            if let tweetId = dynamoFavorite.TweetID {
+                self.tweetId = tweetId
+            }
 
-        if let fromUserId = dynamoFavorite.FromUserID {
-            self.fromUserId = fromUserId
-        }
+            self.objectId = dynamoFavorite.ObjectID!
+            self.tweetId = self.objectId
 
-        if let toUserId = dynamoFavorite.ToUserID {
-            self.toUserId = toUserId
-        }
+            if let fromUserId = dynamoFavorite.FromUserID {
+                self.fromUserId = fromUserId
+            }
 
-        if let txid = dynamoFavorite.txid {
-            self.txid = txid
-        }
+            if let toUserId = dynamoFavorite.ToUserID {
+                self.toUserId = toUserId
+            }
 
-        if let _ = dynamoFavorite.DidLeaveTip {
-            self.didLeaveTip = true
-        }
+            if let txid = dynamoFavorite.txid {
+                self.txid = txid
+            }
 
-        self.createdAt = NSDate(timeIntervalSince1970: NSTimeInterval(dynamoFavorite.CreatedAt!.doubleValue))
+            if let _ = dynamoFavorite.DidLeaveTip {
+                self.didLeaveTip = true
+            }
 
-        if let tippedAt = dynamoFavorite.TippedAt {
-            self.tippedAt = NSDate(timeIntervalSince1970: NSTimeInterval(tippedAt))
-        } else {
-            self.tippedAt = self.createdAt
-        }
+            self.createdAt = NSDate(timeIntervalSince1970: NSTimeInterval(dynamoFavorite.CreatedAt!.doubleValue))
 
-        /*
-        Sections are organized by month and year. Create the section identifier
-        as a string representing the number (year * 10000 + month * 100 + day);
-        this way they will be correctly ordered chronologically regardless of
-        the actual name of the month.
-        */
-        let calendar = NSCalendar.currentCalendar()
-        let unitFlags: NSCalendarUnit = [.Year, .Month, .Day]
-        let components: NSDateComponents = calendar.components(unitFlags, fromDate: self.tippedAt!) //calendar.component(unitFlags, fromDate: self.createdAt)
+            if let tippedAt = dynamoFavorite.TippedAt {
+                self.tippedAt = NSDate(timeIntervalSince1970: NSTimeInterval(tippedAt))
+            } else {
+                self.tippedAt = self.createdAt
+            }
 
-        //calendar.components((.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay),
+            /*
+            Sections are organized by month and year. Create the section identifier
+            as a string representing the number (year * 10000 + month * 100 + day);
+            this way they will be correctly ordered chronologically regardless of
+            the actual name of the month.
+            */
+            let calendar = NSCalendar.currentCalendar()
+            let unitFlags: NSCalendarUnit = [.Year, .Month, .Day]
+            let components: NSDateComponents = calendar.components(unitFlags, fromDate: self.tippedAt!) //calendar.component(unitFlags, fromDate: self.createdAt)
+
+            //calendar.components((.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay),
             //fromDate:self.createdAt)
 
-        self.daySectionString = "\(components.year * 10000 + components.month * 100 + components.day)"
+            self.daySectionString = "\(components.year * 10000 + components.month * 100 + components.day)"
 
             //[NSString stringWithFormat:@"%d", [components year] * 10000 + [components month] * 100  + [components day]];
 
-        if let toTwitterID = dynamoFavorite.ToTwitterID, fromTwitterID = dynamoFavorite.FromTwitterID {
-            self.toTwitterId = toTwitterID
-            self.fromTwitterId = fromTwitterID
-        }
+            if let toTwitterID = dynamoFavorite.ToTwitterID, fromTwitterID = dynamoFavorite.FromTwitterID {
+                self.toTwitterId = toTwitterID
+                self.fromTwitterId = fromTwitterID
+            }
 
 
-        if let toTwitterUsername = dynamoFavorite.ToTwitterUsername {
-            self.toTwitterUsername = toTwitterUsername
-        }
+            if let toTwitterUsername = dynamoFavorite.ToTwitterUsername {
+                self.toTwitterUsername = toTwitterUsername
+            }
 
-        if let fromTwitterUsername = dynamoFavorite.FromTwitterUsername {
-            self.fromTwitterUsername = fromTwitterUsername
-        }
+            if let fromTwitterUsername = dynamoFavorite.FromTwitterUsername {
+                self.fromTwitterUsername = fromTwitterUsername
+            }
+            
+            if let fromTwitterProfileImage = dynamoFavorite.FromTwitterProfileImage {
+                self.fromTwitterProfileImage = fromTwitterProfileImage
+            }
+            
+            if let toTwitterProfileImage = dynamoFavorite.ToTwitterProfileImage {
+                self.toTwitterProfileImage = toTwitterProfileImage
+            }
 
-        if let fromTwitterProfileImage = dynamoFavorite.FromTwitterProfileImage {
-            self.fromTwitterProfileImage = fromTwitterProfileImage
-        }
-
-        if let toTwitterProfileImage = dynamoFavorite.ToTwitterProfileImage {
-            self.toTwitterProfileImage = toTwitterProfileImage
         }
     }
 

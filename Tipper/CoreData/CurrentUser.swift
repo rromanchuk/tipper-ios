@@ -179,7 +179,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         DynamoUser.findByTwitterId(twitterUserId!, completion: { (user) -> Void in
             Debug.isBlocking()
             if let dynamoUser = user {
-                self.updateEntityWithDynamoModel(dynamoUser)
+                self.updateEntityWithModel(dynamoUser)
                 self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
                     if let _automaticTippingEnabled = self.automaticTippingEnabled where _automaticTippingEnabled.boolValue {
                         API.sharedInstance.connect({ (json, error) -> Void in
@@ -196,7 +196,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                 dynamoUser.UserID = NSUUID().UUIDString
                 dynamoUser.CreatedAt = Int(NSDate().timeIntervalSince1970)
                 dynamoUser.AutomaticTippingEnabled = true
-                self.updateEntityWithDynamoModel(dynamoUser)
+                self.updateEntityWithModel(dynamoUser)
 
                 self.pushToDynamo(dynamoUser, completion: { () -> Void in
                     API.sharedInstance.address({ (json, error) -> Void in
@@ -207,7 +207,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
                         } else {
                             log.error("\(error)")
                         }
-                        self.updateEntityWithDynamoModel(dynamoUser)
+                        self.updateEntityWithModel(dynamoUser)
                         API.sharedInstance.connect({ (json, error) -> Void in
 
                         })
@@ -417,7 +417,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         mapper.load(DynamoUser.self, hashKey: self.userId, rangeKey: nil).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             if let dynamoUser: DynamoUser = task.result as? DynamoUser where task.error == nil  {
-                self.updateEntityWithDynamoModel(dynamoUser)
+                self.updateEntityWithModel(dynamoUser)
                 self.save()
             } else {
                 log.error("\(task.error)")
@@ -434,51 +434,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         return config
     }()
 
-    func updateEntityWithDynamoModel(dynamoModel: DynamoUpdatable) {
-        log.verbose("model:\(dynamoModel)")
-        let user                    = dynamoModel as! DynamoUser
-        self.userId                 = user.UserID
-        self.twitterUserId          = user.TwitterUserID
-        self.twitterUsername        = user.TwitterUsername
-        self.bitcoinAddress         = user.BitcoinAddress
-        self.profileImage           = user.ProfileImage
-        
-        
-        if let _admin = user.Admin {
-            self.automaticTippingEnabled = NSNumber(bool: _admin)
-        } else {
-            self.automaticTippingEnabled = NSNumber(bool: false)
-        }
-        
-        if let _automaticTippingEnabled = user.AutomaticTippingEnabled {
-            self.automaticTippingEnabled = NSNumber(bool: _automaticTippingEnabled)
-        } else {
-            self.automaticTippingEnabled = NSNumber(bool: true)
-        }
-        
-
-        self.bitcoinBalanceBTC      = user.BitcoinBalanceBTC
-        
-        if let createdAt = user.CreatedAt?.doubleValue {
-            self.createdAt              = NSDate(timeIntervalSince1970: createdAt)
-        }
-        
-        if let updatedAt = user.UpdatedAt?.doubleValue {
-            self.updatedAt              = NSDate(timeIntervalSince1970: updatedAt)
-        }
-        
-        if let _deviceTokens = user.DeviceTokens {
-            self.deviceTokens = _deviceTokens
-        }
-        
-        if let _endpointArns = user.EndpointArns {
-            self.endpointArns = _endpointArns
-        }
-    }
-
-    func updateEntityWithJSON(json: JSON) {
-        log.verbose("json:\(json)")
-    }
 
     func turnOffAutoTipping(completion: (error: NSError?) -> Void) {
         log.verbose("")
@@ -516,6 +471,49 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable {
         self.destroy()
         self.writeToDisk()
 
+    }
+
+    func updateEntityWithModel(model: Any) {
+        if let user = model as? DynamoUser {
+            self.userId                 = user.UserID
+            self.twitterUserId          = user.TwitterUserID
+            self.twitterUsername        = user.TwitterUsername
+            self.bitcoinAddress         = user.BitcoinAddress
+            self.profileImage           = user.ProfileImage
+
+
+            if let _admin = user.Admin {
+                self.automaticTippingEnabled = NSNumber(bool: _admin)
+            } else {
+                self.automaticTippingEnabled = NSNumber(bool: false)
+            }
+
+            if let _automaticTippingEnabled = user.AutomaticTippingEnabled {
+                self.automaticTippingEnabled = NSNumber(bool: _automaticTippingEnabled)
+            } else {
+                self.automaticTippingEnabled = NSNumber(bool: true)
+            }
+
+
+            self.bitcoinBalanceBTC      = user.BitcoinBalanceBTC
+
+            if let createdAt = user.CreatedAt?.doubleValue {
+                self.createdAt              = NSDate(timeIntervalSince1970: createdAt)
+            }
+
+            if let updatedAt = user.UpdatedAt?.doubleValue {
+                self.updatedAt              = NSDate(timeIntervalSince1970: updatedAt)
+            }
+
+            if let _deviceTokens = user.DeviceTokens {
+                self.deviceTokens = _deviceTokens
+            }
+            
+            if let _endpointArns = user.EndpointArns {
+                self.endpointArns = _endpointArns
+            }
+
+        }
     }
 
 

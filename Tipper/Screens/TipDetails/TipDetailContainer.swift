@@ -47,13 +47,13 @@ class TipDetailContainer: UITableViewController {
 
             if let txid = self.favorite.txid {
                 log.verbose("txid: \(txid)")
-                DynamoTransaction.fetch(txid, context: self.managedObjectContext) { (transaction) -> Void in
-                    self.isLoaded = true
-                    SwiftSpinner.hide()
-                    if let transaction = transaction {
-                        self.confirmationsLabel.text = transaction.confirmations?.stringValue
-                    }
-                }
+//                DynamoTransaction.fetch(txid, context: self.managedObjectContext) { (transaction) -> Void in
+//                    self.isLoaded = true
+//                    SwiftSpinner.hide()
+//                    if let transaction = transaction {
+//                        self.confirmationsLabel.text = transaction.confirmations?.stringValue
+//                    }
+//                }
             }
 
         }

@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import SwiftyJSON
 
-class Settings: NSManagedObject, CoreDataUpdatable, APIGatewayUpdateable {
+class Settings: NSManagedObject, CoreDataUpdatable {
     @NSManaged var fundAmount: String?
     @NSManaged var tipAmount: String?
     @NSManaged var feeAmount: String?
@@ -52,35 +52,22 @@ class Settings: NSManagedObject, CoreDataUpdatable, APIGatewayUpdateable {
 
     class func get(settingId: String = "1") {
 
-    TIPPERTipperClient.defaultClient().settingsGet(settingId).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+        TIPPERTipperClient.defaultClient().settingsGet(settingId).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             log.verbose("Settings fetch \(task.result), \(task.error) exception: \(task.exception)")
-            Settings.sharedInstance.updateAPIGateway(task)
+            if let settings = task.result as? TIPPERSettings {
+                Settings.sharedInstance.updateEntityWithModel(settings)
+            }
             return nil;
         })
     }
 
-    func updateEntityWithJSON(json: JSON) {
-        self.fundAmount = json["fund_amount"].stringValue
-        self.tipAmount = json["tip_amount"].stringValue
-        self.feeAmount = json["fee_amount"].string
-    }
-
-    func updateEntityWithDynamoModel(dynamoModel: DynamoUpdatable) {
-        let settings                    = dynamoModel as! DynamoSettings
-        self.version                    = settings.Version
-        self.fundAmount                 = settings.FeeAmount
-        self.tipAmount                  = settings.TipAmount
-        self.feeAmount                  = settings.FeeAmount
-    }
-
-    func updateAPIGateway(task: AWSTask) {
-        if let settings = task.result as? TIPPERSettings {
+    func updateEntityWithModel(model: Any) {
+        if let settings = model as? TIPPERSettings {
             self.version                    = settings.Version
             self.fundAmount                 = settings.FeeAmount
             self.tipAmount                  = settings.TipAmount
             self.feeAmount                  = settings.FeeAmount
         }
-
     }
 
 

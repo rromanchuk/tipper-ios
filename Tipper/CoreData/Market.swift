@@ -34,14 +34,25 @@ class Market: NSManagedObject, CoreDataUpdatable {
     }
 
     func updateEntityWithJSON(json: JSON) {
-        self.subtotalAmount = json["subtotal"].dictionaryValue["amount"]!.stringValue
-        self.amount = json["total"].dictionaryValue["amount"]!.stringValue
-        self.btc = json["btc"].dictionaryValue["amount"]!.stringValue
-        self.updatedAt = NSDate()
+        fatalError("This method is deprecated")
+//        self.subtotalAmount = json["subtotal"].dictionaryValue["amount"]!.stringValue
+//        self.amount = json["total"].dictionaryValue["amount"]!.stringValue
+//        self.btc = json["btc"].dictionaryValue["amount"]!.stringValue
+//        self.updatedAt = NSDate()
     }
 
-    func updateEntityWithDynamoModel(dynamoObject: DynamoUpdatable) {
+    func updateEntityWithModel(model: Any) {
+        if let json = model as? JSON {
+            self.subtotalAmount = json["subtotal"].dictionaryValue["amount"]!.stringValue
+            self.amount = json["total"].dictionaryValue["amount"]!.stringValue
+            self.btc = json["btc"].dictionaryValue["amount"]!.stringValue
+            self.updatedAt = NSDate()
+        }
+    }
 
+
+    func updateEntityWithDynamoModel(dynamoObject: DynamoUpdatable) {
+        fatalError("This method is deprecated")
     }
 
     class func market() -> Market {
@@ -51,7 +62,7 @@ class Market: NSManagedObject, CoreDataUpdatable {
     func update(completion: () ->Void) {
         API.sharedInstance.market("0.02") { (json, error) -> Void in
             if error == nil {
-                self.updateEntityWithJSON(json)
+                self.updateEntityWithModel(json)
             }
             completion()
         }
