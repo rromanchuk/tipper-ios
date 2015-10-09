@@ -20,6 +20,7 @@
 #import <AWSCore/AWSSynchronizedMutableDictionary.h>
 
 #import "TIPPEREmpty.h"
+#import "TIPPERMarket.h"
 #import "TIPPERSettings.h"
 #import "TIPPERTransaction.h"
 #import "TIPPERUser.h"
@@ -148,6 +149,28 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
                   headerParameters:headerParameters
                               body:nil
                      responseClass:[TIPPEREmpty class]];
+}
+
+- (AWSTask *)marketGet:(NSString *)qty {
+    NSDictionary *headerParameters = @{
+                                       @"Content-Type": @"application/json",
+                                       @"Accept": @"application/json",
+                                       
+                                       };
+    NSDictionary *queryParameters = @{
+                                      @"qty": qty
+                                      };
+    NSDictionary *pathParameters = @{
+                                     
+                                     };
+    
+    return [self invokeHTTPRequest:@"GET"
+                         URLString:@"/market"
+                    pathParameters:pathParameters
+                   queryParameters:queryParameters
+                  headerParameters:headerParameters
+                              body:nil
+                     responseClass:[TIPPERMarket class]];
 }
 
 - (AWSTask *)settingsGet:(NSString *)versionId {

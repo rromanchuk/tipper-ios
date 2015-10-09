@@ -35,10 +35,10 @@ class Market: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
     }
 
     func updateEntityWithModel(model: Any) {
-        if let json = model as? JSON {
-            self.subtotalAmount = json["subtotal"].dictionaryValue["amount"]!.stringValue
-            self.amount = json["total"].dictionaryValue["amount"]!.stringValue
-            self.btc = json["btc"].dictionaryValue["amount"]!.stringValue
+        if let market = model as? TIPPERMarket {
+            self.subtotalAmount = market.subtotalAmount
+            self.amount = market.amount
+            self.btc = market.btc
             self.updatedAt = NSDate()
         }
     }
@@ -48,11 +48,12 @@ class Market: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
     }
 
     func update(completion: () ->Void) {
-        API.sharedInstance.market("0.02") { (json, error) -> Void in
-            if error == nil {
-                self.updateEntityWithModel(json)
+        TIPPERTipperClient.defaultClient().marketGet("0.02").continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+            log.verbose("Settings fetch \(task.result), \(task.error) exception: \(task.exception)")
+            if let market = task.result as? TIPPERMarket {
+                self.updateEntityWithModel(market)
             }
-            completion()
-        }
+            return nil
+        })
     }
 }

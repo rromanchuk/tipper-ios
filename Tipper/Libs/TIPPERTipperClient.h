@@ -18,6 +18,7 @@
 #import <AWSAPIGateway/AWSAPIGateway.h>
 
 #import "TIPPEREmpty.h"
+#import "TIPPERMarket.h"
 #import "TIPPERSettings.h"
 #import "TIPPERTransaction.h"
 #import "TIPPERUser.h"
@@ -173,6 +174,15 @@
  return type: TIPPEREmpty *
  */
 - (AWSTask *)addressPost;
+
+/**
+ 
+ 
+ @param qty 
+ 
+ return type: TIPPERMarket *
+ */
+- (AWSTask *)marketGet:(NSString *)qty;
 
 /**
  

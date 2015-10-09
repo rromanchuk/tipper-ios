@@ -307,17 +307,23 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
 
     func updateBalanceUSD(completion: () ->Void) {
         if let btc = bitcoinBalanceBTC where btc > 0.0 {
-            API.sharedInstance.market("\(btc)", completion: { (json, error) -> Void in
-                if let moc = self.managedObjectContext where error == nil {
-                    self.marketValue = Market.entityWithModel(Market.self, json: json, context: moc)!
+            TIPPERTipperClient.defaultClient().marketGet("\(btc)").continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+                log.verbose("Market fetch \(task.result), \(task.error) exception: \(task.exception)")
+                if let market = task.result as? TIPPERMarket, moc = self.managedObjectContext {
+                    self.marketValue = Market.entityWithModel(Market.self, model: market, context: moc)
                 }
                 completion()
+                return nil
             })
         } else {
-            let json = JSON(["total": ["amount": "0.00"], "subtotal": ["amount": "0.00"], "btc": ["amount": "0.00"]])
-            if let moc = self.managedObjectContext {
-                self.marketValue = Market.entityWithModel(Market.self, json: json, context: moc)
+            let market = TIPPERMarket()
+            market.amount = "0.00"
+            market.btc = "0.00"
+            market.subtotalAmount = "0.00"
+            if let moc = managedObjectContext {
+                self.marketValue = Market.entityWithModel(Market.self, model: market, context: moc)
             }
+
             completion()
         }
     }

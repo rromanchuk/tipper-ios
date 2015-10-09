@@ -9,7 +9,7 @@
 import Foundation
 extension TIPPERTransaction: AWSModelUpdateable {
     func lookupProperty() -> String {
-        return DynamoTransaction.lookupProperty()
+        return TIPPERTransaction.lookupProperty()
     }
 
     class func lookupProperty() -> String {
@@ -24,4 +24,24 @@ extension TIPPERTransaction: AWSModelUpdateable {
         return self 
     }
 
+}
+
+
+extension TIPPERMarket: AWSModelUpdateable {
+    func lookupProperty() -> String {
+        return TIPPERMarket.lookupProperty()
+    }
+
+    class func lookupProperty() -> String {
+        return "btc"
+    }
+
+    func lookupValue() -> String {
+        return self.btc
+    }
+
+    func asObject() -> AnyObject {
+        return self
+    }
+    
 }

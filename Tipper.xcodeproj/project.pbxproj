@@ -52,6 +52,7 @@
 		9453A66C1B39FD8800D35E04 /* TipsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9453A66B1B39FD8800D35E04 /* TipsController.swift */; };
 		945400221BC5F1D700BD8994 /* TipperTransaction+Updateable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945400211BC5F1D700BD8994 /* TipperTransaction+Updateable.swift */; settings = {ASSET_TAGS = (); }; };
 		945400241BC6084000BD8994 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945400231BC6084000BD8994 /* ProfileImage.swift */; settings = {ASSET_TAGS = (); }; };
+		945400271BC736C300BD8994 /* TIPPERMarket.m in Sources */ = {isa = PBXBuildFile; fileRef = 945400261BC736C300BD8994 /* TIPPERMarket.m */; settings = {ASSET_TAGS = (); }; };
 		9462D75A1B35D108001C5083 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462D7591B35D108001C5083 /* InterfaceController.swift */; };
 		9462D75C1B35D108001C5083 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462D75B1B35D108001C5083 /* GlanceController.swift */; };
 		9462D75E1B35D108001C5083 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9462D75D1B35D108001C5083 /* Images.xcassets */; };
@@ -187,6 +188,8 @@
 		9453A66B1B39FD8800D35E04 /* TipsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipsController.swift; path = TabController/TipsController.swift; sourceTree = "<group>"; };
 		945400211BC5F1D700BD8994 /* TipperTransaction+Updateable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TipperTransaction+Updateable.swift"; path = "Extensions/TipperTransaction+Updateable.swift"; sourceTree = "<group>"; };
 		945400231BC6084000BD8994 /* ProfileImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileImage.swift; path = Views/ProfileImage.swift; sourceTree = "<group>"; };
+		945400251BC736C300BD8994 /* TIPPERMarket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIPPERMarket.h; sourceTree = "<group>"; };
+		945400261BC736C300BD8994 /* TIPPERMarket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIPPERMarket.m; sourceTree = "<group>"; };
 		9462D7551B35D108001C5083 /* Tipper WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Tipper WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9462D7581B35D108001C5083 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9462D7591B35D108001C5083 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
@@ -465,6 +468,8 @@
 		94723C661BB4939A00C33210 /* AWSGateway */ = {
 			isa = PBXGroup;
 			children = (
+				945400251BC736C300BD8994 /* TIPPERMarket.h */,
+				945400261BC736C300BD8994 /* TIPPERMarket.m */,
 				945400201BC5F1B600BD8994 /* Extensions */,
 				94A00F191BBD3FEA00658C4C /* TIPPERTransaction.h */,
 				94A00F1A1BBD3FEA00658C4C /* TIPPERTransaction.m */,
@@ -991,6 +996,7 @@
 				94A00F1E1BBD3FEA00658C4C /* TIPPERUser.m in Sources */,
 				94AF29751AAEF2B600E16048 /* Tipper.xcdatamodeld in Sources */,
 				94A00F1D1BBD3FEA00658C4C /* TIPPERTransaction.m in Sources */,
+				945400271BC736C300BD8994 /* TIPPERMarket.m in Sources */,
 				943F64321BAA04F30019D348 /* NotificationCell.swift in Sources */,
 				94098BB21BB8A32800394955 /* OnboardPartFour.swift in Sources */,
 				94EE8CF61AB16E7E000593CD /* TTTURLRequestFormatter.m in Sources */,
