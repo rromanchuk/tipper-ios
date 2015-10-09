@@ -301,7 +301,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
             if let _balance = task.result as? TIPPERBalance, satoshisString = _balance.balance, satoshis = Int(satoshisString) {
                 self.bitcoinBalanceBTC = Double(satoshis) / 0.00000001
                 self.save()
-                self.updateBalanceUSD { () -> Void in }
             }
             completion()
             return nil
@@ -311,21 +310,12 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
     func updateBalanceUSD(completion: () ->Void) {
         log.verbose("")
         if let btc = bitcoinBalanceBTC where btc > 0.0 {
-            TIPPERTipperClient.defaultClient().marketGet("\(btc)").continueWithBlock({ (task) -> AnyObject! in
+            TIPPERTipperClient.defaultClient().marketGet("\(btc)").continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
                 log.verbose("Market fetch \(task.result), \(task.error) exception: \(task.exception)")
-                if task.error != nil {
-                    completion()
-                    return nil
+                if let moc = self.managedObjectContext, _market = task.result as? TIPPERMarket where task.result != nil {
+                    self.marketValue = Market.entityWithModel(Market.self, model: _market, context: moc)
                 }
-                
-                if let moc = self.managedObjectContext where task.result != nil {
-                    let market = task.result as! TIPPERMarket
-                    let _market = Market.entityWithModel(Market.self, model: market, context: moc)
-                    self.marketValue = _market
-                    self.save()
-                    completion()
-
-                }
+                completion()
                 return nil
             })
             
