@@ -1129,11 +1129,11 @@ tipper will send a Bitcoin tip.</string>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TipDetailCell" rowHeight="430" id="Ve4-wX-jq0">
-                                        <rect key="frame" x="0.0" y="70" width="414" height="430"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TipDetailCell" rowHeight="615" id="Ve4-wX-jq0">
+                                        <rect key="frame" x="0.0" y="70" width="414" height="615"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ve4-wX-jq0" id="Kpc-ho-zf3">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="430"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="615"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JuM-IQ-xeF" customClass="TWTRTweetView">
@@ -1199,6 +1199,13 @@ tipper will send a Bitcoin tip.</string>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5hH-W7-UJ0">
+                                                    <rect key="frame" x="0.0" y="375" width="414" height="200"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="200" id="6d4-aJ-CxH"/>
+                                                    </constraints>
+                                                </mapView>
                                             </subviews>
                                             <animations/>
                                             <constraints>
@@ -1209,10 +1216,13 @@ tipper will send a Bitcoin tip.</string>
                                                 <constraint firstItem="I10-F2-2BU" firstAttribute="top" secondItem="JuM-IQ-xeF" secondAttribute="bottom" constant="29" id="88O-xH-PHG"/>
                                                 <constraint firstItem="JuM-IQ-xeF" firstAttribute="top" secondItem="Kpc-ho-zf3" secondAttribute="topMargin" constant="10" id="C2q-m2-L4I"/>
                                                 <constraint firstItem="I10-F2-2BU" firstAttribute="leading" secondItem="JuM-IQ-xeF" secondAttribute="leading" id="D6G-u3-UGh"/>
+                                                <constraint firstItem="5hH-W7-UJ0" firstAttribute="width" secondItem="Kpc-ho-zf3" secondAttribute="width" id="Dpi-jO-JEF"/>
                                                 <constraint firstItem="woc-14-0Cg" firstAttribute="top" secondItem="jZ2-ig-xqd" secondAttribute="bottom" constant="8" id="FF4-hR-GoT"/>
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="i3d-JV-ent" secondAttribute="trailing" constant="10" id="H4G-jU-7pD"/>
                                                 <constraint firstItem="woc-14-0Cg" firstAttribute="leading" secondItem="I10-F2-2BU" secondAttribute="leading" constant="-39" id="HQA-L6-giO"/>
                                                 <constraint firstItem="i3d-JV-ent" firstAttribute="leading" secondItem="JuM-IQ-xeF" secondAttribute="leading" id="IFN-yJ-se2"/>
+                                                <constraint firstItem="5hH-W7-UJ0" firstAttribute="centerX" secondItem="Kpc-ho-zf3" secondAttribute="centerX" id="Nwf-6l-soM"/>
+                                                <constraint firstItem="5hH-W7-UJ0" firstAttribute="top" secondItem="4SP-s5-x5r" secondAttribute="bottom" constant="30" id="aCb-yE-1RL"/>
                                                 <constraint firstItem="jZ2-ig-xqd" firstAttribute="leading" secondItem="Kpc-ho-zf3" secondAttribute="leadingMargin" constant="8" id="eUH-M7-z5z"/>
                                                 <constraint firstItem="JuM-IQ-xeF" firstAttribute="top" secondItem="jZ2-ig-xqd" secondAttribute="top" id="mOD-b2-WdB"/>
                                                 <constraint firstItem="jZ2-ig-xqd" firstAttribute="centerX" secondItem="woc-14-0Cg" secondAttribute="centerX" id="n15-UK-snt"/>

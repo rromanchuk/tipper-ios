@@ -153,11 +153,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/AWSAPIGateway/AWSAPIGateway/AWSAPIGatewayClient.m"
-            timestampString = "466107655.307116"
+            timestampString = "465389862.917752"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "-invokeHTTPRequest:URLString:pathParameters:queryParameters:headerParameters:body:responseClass:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/AWSAPIGateway/AWSAPIGateway/AWSAPIGatewayClient.m"
+            timestampString = "465393770.980259"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "-invokeHTTPRequest:URLString:pathParameters:queryParameters:headerParameters:body:responseClass:"
             landmarkType = "5">
          </BreakpointContent>
@@ -169,61 +185,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tipper/CoreData/Market.swift"
-            timestampString = "466064235.965171"
+            timestampString = "466042364.815455"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "lookupProperty()"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tipper/CoreData/CurrentUser.swift"
-            timestampString = "466108855.561618"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "302"
-            endingLineNumber = "302"
-            landmarkName = "updateBTCBalance(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Tipper.CurrentUser.(updateBTCBalance (Tipper.CurrentUser) -&gt; (() -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "Tipper"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ryan/tipper-ios/Tipper/CoreData/CurrentUser.swift"
-                  timestampString = "466108863.952515"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "302"
-                  endingLineNumber = "302"
-                  offsetFromSymbolStart = "812">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Tipper.CurrentUser.(updateBTCBalance (Tipper.CurrentUser) -&gt; (() -&gt; ()) -&gt; ()).(closure #1).(implicit closure #1)"
-                  moduleName = "Tipper"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ryan/tipper-ios/Tipper/CoreData/CurrentUser.swift"
-                  timestampString = "466108863.95265"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "302"
-                  endingLineNumber = "302"
-                  offsetFromSymbolStart = "58">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
