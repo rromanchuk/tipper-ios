@@ -299,7 +299,9 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
         log.verbose("")
         TIPPERTipperClient.defaultClient().addressBalanceGet(self.bitcoinAddress!).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             if let _balance = task.result as? TIPPERBalance, satoshisString = _balance.balance, satoshis = Int(satoshisString) {
-                self.bitcoinBalanceBTC = Double(satoshis) / 0.00000001
+                log.verbose("_balance: \(_balance), satoshisString: \(satoshisString), satoshis: \(satoshis)")
+                self.bitcoinBalanceBTC = Double(satoshis) * 0.00000001
+                log.verbose("Saving balance \(self.bitcoinBalanceBTC)")
                 self.save()
             }
             completion()
@@ -309,11 +311,16 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
 
     func updateBalanceUSD(completion: () ->Void) {
         log.verbose("")
-        if let btc = bitcoinBalanceBTC where btc > 0.0 {
-            TIPPERTipperClient.defaultClient().marketGet("\(btc)").continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-                log.verbose("Market fetch \(task.result), \(task.error) exception: \(task.exception)")
-                if let moc = self.managedObjectContext, _market = task.result as? TIPPERMarket where task.result != nil {
-                    self.marketValue = Market.entityWithModel(Market.self, model: _market, context: moc)
+        if let btc = bitcoinBalanceBTC where btc.doubleValue > 0.0 {
+            TIPPERTipperClient.defaultClient().marketGet("\(btc.doubleValue)").continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+                log.verbose("Market fetch \(btc) \(task.result), \(task.error) exception: \(task.exception)")
+                if let _market = task.result as? TIPPERMarket where task.result != nil {
+                    log.verbose("_market \(_market)")
+                    if let _marketEntity = Market.entityWithModel(Market.self, model: _market, context: self.managedObjectContext!) {
+                        _marketEntity.save()
+                        self.marketValue = _marketEntity
+                        self.save()
+                    }
                 }
                 completion()
                 return nil
