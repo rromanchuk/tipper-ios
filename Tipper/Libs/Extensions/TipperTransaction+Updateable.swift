@@ -7,6 +7,26 @@
 //
 
 import Foundation
+
+extension TIPPERSettings: AWSModelUpdateable {
+    func lookupProperty() -> String {
+        return TIPPERTransaction.lookupProperty()
+    }
+
+    class func lookupProperty() -> String {
+        return "version"
+    }
+
+    func lookupValue() -> String {
+        return self.Version
+    }
+
+    func asObject() -> AnyObject {
+        return self
+    }
+    
+}
+
 extension TIPPERTransaction: AWSModelUpdateable {
     func lookupProperty() -> String {
         return TIPPERTransaction.lookupProperty()

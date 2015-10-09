@@ -32,31 +32,8 @@ class TipDetailContainer: UITableViewController {
         super.viewDidLoad()
         log.verbose("")
         setupTipAmount()
-        
-
-        let client = TWTRAPIClient()
-        client.loadTweetWithID(favorite.tweetId) { tweet, error in
-            SwiftSpinner.hide()
-            if let t = tweet {
-                self.tweetView.configureWithTweet(t)
-                self.setupTweetInfo(t)
-
-            } else if let error = error {
-                log.error("Failed to load Tweet: \(error.localizedDescription)")
-            }
-
-            if let txid = self.favorite.txid {
-                log.verbose("txid: \(txid)")
-//                DynamoTransaction.fetch(txid, context: self.managedObjectContext) { (transaction) -> Void in
-//                    self.isLoaded = true
-//                    SwiftSpinner.hide()
-//                    if let transaction = transaction {
-//                        self.confirmationsLabel.text = transaction.confirmations?.stringValue
-//                    }
-//                }
-            }
-
-        }
+        refreshTransactionData()
+        loadTweet()
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -88,6 +65,31 @@ class TipDetailContainer: UITableViewController {
         super.didReceiveMemoryWarning()
         log.verbose("")
         // Dispose of any resources that can be recreated.
+    }
+
+    func refreshTransactionData() {
+        if let txid = self.favorite.txid {
+            Transaction.get(txid, context: managedObjectContext, callback: { (transaction) -> Void in
+                if let transaction = transaction {
+                    self.confirmationsLabel.text = transaction.confirmations?.stringValue
+                }
+            })
+        }
+    }
+
+    func loadTweet() {
+        let client = TWTRAPIClient()
+        client.loadTweetWithID(favorite.tweetId) { tweet, error in
+            SwiftSpinner.hide()
+            if let t = tweet {
+                self.tweetView.configureWithTweet(t)
+                self.setupTweetInfo(t)
+
+            } else if let error = error {
+                log.error("Failed to load Tweet: \(error.localizedDescription)")
+            }
+        }
+
     }
 
     // MARK: - Table view data source
