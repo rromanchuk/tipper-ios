@@ -14,7 +14,13 @@ class TipDetailContainer: UITableViewController {
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
     var favorite: Favorite!
+
     private var isLoaded = false
+    private var transactionRefreshedFromServer = false
+
+    lazy var transaction: Transaction? = {
+        return Transaction.entityWithId(Transaction.self, context: self.managedObjectContext, lookupProperty: "txid", lookupValue: self.favorite.txid!)
+    }()
 
     @IBOutlet weak var tweetView: TWTRTweetView!
 
@@ -32,8 +38,8 @@ class TipDetailContainer: UITableViewController {
         super.viewDidLoad()
         log.verbose("")
         setupTipAmount()
-        refreshTransactionData()
         loadTweet()
+        loadTransactionData()
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -67,11 +73,25 @@ class TipDetailContainer: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+
+    func loadTransactionData() {
+        if let transaction = self.transaction {
+            self.confirmationsLabel.text = transaction.confirmations?.stringValue
+        }
+
+        if !transactionRefreshedFromServer {
+            transactionRefreshedFromServer = true
+            refreshTransactionData()
+        }
+
+    }
+
     func refreshTransactionData() {
         if let txid = self.favorite.txid {
             Transaction.get(txid, context: managedObjectContext, callback: { (transaction) -> Void in
                 if let transaction = transaction {
-                    self.confirmationsLabel.text = transaction.confirmations?.stringValue
+                    self.transaction = transaction
+                    self.loadTransactionData()
                 }
             })
         }

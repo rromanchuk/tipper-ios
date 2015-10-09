@@ -29,7 +29,7 @@ class Transaction: NSManagedObject, CoreDataUpdatable {
     @NSManaged var time: NSDate
 
     class func get(txid: String, context: NSManagedObjectContext, callback: (transaction: Transaction?) -> Void) {
-        TIPPERTipperClient.defaultClient().transactionGet(txid).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+        TIPPERTipperClient.defaultClient().transactionPut(txid).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             log.verbose("Transaction fetch \(task.result), \(task.error) exception: \(task.exception)")
             if let transaction = task.result as? TIPPERTransaction {
                 let _t = Transaction.entityWithModel(Transaction.self, model: transaction, context: context)

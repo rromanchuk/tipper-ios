@@ -43,6 +43,13 @@ extension NSManagedObject  {
         }
     }
 
+    class func entityWithId<T: NSManagedObject where T: CoreDataUpdatable>(entity: T.Type, context: NSManagedObjectContext, lookupProperty: String, lookupValue: String) -> T? {
+        let request = NSFetchRequest(entityName: entity.className)
+
+        request.predicate = NSPredicate(format: "%K == %@", lookupProperty, lookupValue)
+        return try! context.executeFetchRequest(request).last as? T
+    }
+
     class func entityWithModel<T: NSManagedObject where T: CoreDataUpdatable>(entity: T.Type, model: ModelCoredataMapable, context: NSManagedObjectContext) -> T? {
         let request = NSFetchRequest(entityName: entity.className)
         request.predicate = NSPredicate(format: "%K == %@", model.lookupProperty(), model.lookupValue())
