@@ -17,12 +17,14 @@ class SplashViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        log.verbose("")
 
         // Do any additional setup after loading the view.
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        log.verbose("")
 
         if currentUser.isTwitterAuthenticated {
             self.performSegueWithIdentifier("Home", sender: self)

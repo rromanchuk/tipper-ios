@@ -76,7 +76,7 @@ class TipDetailContainer: UITableViewController {
 
     func loadTransactionData() {
         if let transaction = self.transaction {
-            self.confirmationsLabel.text = transaction.confirmations?.stringValue
+            self.confirmationsLabel.text = transaction.confirmations!
         }
 
         if !transactionRefreshedFromServer {

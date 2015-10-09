@@ -18,16 +18,12 @@
 #import <AWSCore/AWSCore.h>
 
  
-@interface TIPPERMarket : AWSModel
+@interface TIPPERLocation : AWSModel
 
-@property (nonatomic, strong) NSString *amount;
-
-
-@property (nonatomic, strong) NSString *btc;
+@property (nonatomic, strong) NSNumber *lat;
 
 
-@property (nonatomic, strong) NSString *subtotalAmount;
-
+@property (nonatomic, strong) NSNumber *lng;
 
 
 @end

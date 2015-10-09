@@ -44,7 +44,7 @@
 @property (nonatomic, strong) NSString *FromUserID;
 
 
-@property (nonatomic, strong) NSNumber *confirmations;
+@property (nonatomic, strong) NSString *confirmations;
 
 
 @property (nonatomic, strong) NSNumber *time;

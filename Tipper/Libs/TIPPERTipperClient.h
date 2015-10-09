@@ -18,6 +18,8 @@
 #import <AWSAPIGateway/AWSAPIGateway.h>
 
 #import "TIPPEREmpty.h"
+#import "TIPPERBalance.h"
+#import "TIPPERLocation.h"
 #import "TIPPERMarket.h"
 #import "TIPPERSettings.h"
 #import "TIPPERTransaction.h"
@@ -174,6 +176,24 @@
  return type: TIPPEREmpty *
  */
 - (AWSTask *)addressPost;
+
+/**
+ 
+ 
+ @param address 
+ 
+ return type: TIPPERBalance *
+ */
+- (AWSTask *)addressBalanceGet:(NSString *)address;
+
+/**
+ 
+ 
+ @param ip 
+ 
+ return type: TIPPERLocation *
+ */
+- (AWSTask *)locationGet:(NSString *)ip;
 
 /**
  

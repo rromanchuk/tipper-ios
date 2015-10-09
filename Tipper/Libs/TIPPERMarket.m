@@ -21,10 +21,8 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
              @"amount": @"amount",
-             @"amountCents": @"amountCents",
              @"btc": @"btc",
-             @"subtotalAmount": @"subtotalAmount",
-             @"updatedAt": @"updatedAt"
+             @"subtotalAmount": @"subtotalAmount"
              };
 }
 

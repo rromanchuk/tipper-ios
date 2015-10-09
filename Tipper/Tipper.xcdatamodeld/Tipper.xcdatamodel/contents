@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="15B22c" minimumToolsVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="15B30a" minimumToolsVersion="Automatic">
     <entity name="CurrentUser" representedClassName="Tipper.CurrentUser" syncable="YES">
         <attribute name="admin" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="automaticTippingEnabled" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
@@ -41,7 +41,6 @@
     </entity>
     <entity name="Market" representedClassName="Tipper.Market" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="amountCents" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="btc" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="subtotalAmount" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
@@ -63,7 +62,7 @@
     </entity>
     <entity name="Transaction" representedClassName="Tipper.Transaction" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
-        <attribute name="confirmations" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="confirmations" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fee" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="fromTwitterId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fromTwitterUsername" optional="YES" attributeType="String" syncable="YES"/>
@@ -77,7 +76,7 @@
     <elements>
         <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="330"/>
         <element name="Favorite" positionX="-63" positionY="54" width="128" height="285"/>
-        <element name="Market" positionX="-54" positionY="117" width="128" height="135"/>
+        <element name="Market" positionX="-54" positionY="117" width="128" height="120"/>
         <element name="Notification" positionX="-54" positionY="135" width="128" height="135"/>
         <element name="Settings" positionX="-54" positionY="99" width="128" height="105"/>
         <element name="Transaction" positionX="-54" positionY="108" width="128" height="210"/>

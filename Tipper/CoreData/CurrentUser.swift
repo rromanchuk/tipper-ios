@@ -243,7 +243,8 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
     var isTwitterAuthenticated: Bool {
         get {
             log.info("twitterUserId: \(self.twitterUserId), bitcoinAddress: \(self.bitcoinAddress), userId: \(userId)")
-            return self.twitterUserId != nil && self.bitcoinAddress != nil && self.userId != nil && Twitter.sharedInstance().sessionStore.sessionForUserID(twitterUserId!) != nil
+            // && self.bitcoinAddress != nil
+            return self.twitterUserId != nil && self.userId != nil && self.bitcoinAddress != nil && Twitter.sharedInstance().sessionStore.sessionForUserID(twitterUserId!) != nil
         }
     }
 
@@ -296,25 +297,38 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
 
     func updateBTCBalance(completion: ()->Void) {
         log.verbose("")
-        API.sharedInstance.balance { (json, error) -> Void in
-            if let satoshisString = json["balance"].string, satoshis = Int(satoshisString) {
+        TIPPERTipperClient.defaultClient().addressBalanceGet(self.bitcoinAddress!).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+            if let _balance = task.result as? TIPPERBalance, satoshisString = _balance.balance, satoshis = Int(satoshisString) {
                 self.bitcoinBalanceBTC = Double(satoshis) / 0.00000001
+                self.save()
                 self.updateBalanceUSD { () -> Void in }
             }
             completion()
-        }
+            return nil
+        })
     }
 
     func updateBalanceUSD(completion: () ->Void) {
+        log.verbose("")
         if let btc = bitcoinBalanceBTC where btc > 0.0 {
-            TIPPERTipperClient.defaultClient().marketGet("\(btc)").continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+            TIPPERTipperClient.defaultClient().marketGet("\(btc)").continueWithBlock({ (task) -> AnyObject! in
                 log.verbose("Market fetch \(task.result), \(task.error) exception: \(task.exception)")
-                if let market = task.result as? TIPPERMarket, moc = self.managedObjectContext {
-                    self.marketValue = Market.entityWithModel(Market.self, model: market, context: moc)
+                if task.error != nil {
+                    completion()
+                    return nil
                 }
-                completion()
+                
+                if let moc = self.managedObjectContext where task.result != nil {
+                    let market = task.result as! TIPPERMarket
+                    let _market = Market.entityWithModel(Market.self, model: market, context: moc)
+                    self.marketValue = _market
+                    self.save()
+                    completion()
+
+                }
                 return nil
             })
+            
         } else {
             let market = TIPPERMarket()
             market.amount = "0.00"
@@ -322,6 +336,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
             market.subtotalAmount = "0.00"
             if let moc = managedObjectContext {
                 self.marketValue = Market.entityWithModel(Market.self, model: market, context: moc)
+                self.save()
             }
 
             completion()
@@ -338,6 +353,9 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
                     self.pushToDynamo(user, completion: nil)
 
                 } else {
+                    if task.error.code == 10 {
+                        NSNotificationCenter.defaultCenter().postNotificationName("UNAUTHORIZED_USER", object: nil)
+                    }
                     log.error("error: \(task.error)")
                 }
                 return nil
@@ -398,47 +416,18 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
         }
     }
 
-    func refetchFeeds(completion: (error: NSError?) -> Void) {
-        log.verbose("")
-        completion(error: nil)
-
-        let sqs = AWSSQS.defaultSQS()
-        let request = AWSSQSSendMessageRequest()
-
-        let tipDict = ["TwitterUserID": self.twitterUserId!, "UserID": userId! ]
-        let jsonTipDict = try? NSJSONSerialization.dataWithJSONObject(tipDict, options: [])
-        let json: String = NSString(data: jsonTipDict!, encoding: NSUTF8StringEncoding) as! String
-
-
-        request.messageBody = json
-        request.queueUrl = Config.get("SQS_FETCH_FAVORITES")
-        sqs.sendMessage(request).continueWithBlock { (task) -> AnyObject! in
-            if (task.error != nil) {
-                log.error("ERROR: \(task.error)")
-                completion(error: task.error)
-            } else {
-                completion(error: nil)
-            }
-            return nil
-        }
-
-    }
-
-
     func refreshWithDynamo(completion: (error: NSError?) -> Void) {
         log.verbose("")
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
-        mapper.load(DynamoUser.self, hashKey: self.userId, rangeKey: nil).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-            if let dynamoUser: DynamoUser = task.result as? DynamoUser where task.error == nil  {
-                self.updateEntityWithModel(dynamoUser)
-                self.save()
-            } else {
-                log.error("\(task.error)")
-            }
-
-            completion(error: task.error)
-            return nil
-        })
+        let task = mapper.load(DynamoUser.self, hashKey: self.userId!, rangeKey: nil, configuration: self.defaultDynamoConfiguration)
+        log.verbose("taskResult: \(task.result)")
+        if let currentUser = task.result as? DynamoUser {
+            updateEntityWithModel(currentUser)
+            save()
+        } else {
+            log.error("\(task.error), \(task.exception)")
+        }
+        completion(error: task.error)
     }
 
     lazy var defaultDynamoConfiguration: AWSDynamoDBObjectMapperConfiguration = {
@@ -487,7 +476,9 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
     }
 
     func updateEntityWithModel(model: Any) {
+        
         if let user = model as? DynamoUser {
+            log.verbose("DynamoUser: \(user)")
             self.userId                 = user.UserID
             self.twitterUserId          = user.TwitterUserID
             self.twitterUsername        = user.TwitterUsername

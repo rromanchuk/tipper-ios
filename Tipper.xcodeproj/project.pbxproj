@@ -30,13 +30,14 @@
 		943243121B2D6BBE00D1A1D6 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943243111B2D6BBE00D1A1D6 /* TransitionManager.swift */; };
 		943243151B2D6C1300D1A1D6 /* HeaderContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943243131B2D6C1300D1A1D6 /* HeaderContainer.swift */; };
 		943243161B2D6C1300D1A1D6 /* HeaderDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943243141B2D6C1300D1A1D6 /* HeaderDetailCell.swift */; };
-		943243181B2E094A00D1A1D6 /* DynamoTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943243171B2E094A00D1A1D6 /* DynamoTransaction.swift */; };
 		9432431A1B2E0A0C00D1A1D6 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943243191B2E0A0C00D1A1D6 /* Transaction.swift */; };
 		9437D3DC1BA24C0C00FD5ECB /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9437D3DB1BA24C0C00FD5ECB /* Notification.swift */; settings = {ASSET_TAGS = (); }; };
 		9437D3DE1BA24C8F00FD5ECB /* DynamoNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9437D3DD1BA24C8F00FD5ECB /* DynamoNotification.swift */; settings = {ASSET_TAGS = (); }; };
 		943A6FE21B21F6B300D50D8A /* TipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943A6FE11B21F6B300D50D8A /* TipCell.swift */; };
 		943E93FD1B05C8DC007D98C7 /* WalletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943E93FC1B05C8DC007D98C7 /* WalletController.swift */; };
 		943F64321BAA04F30019D348 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943F64311BAA04F30019D348 /* NotificationCell.swift */; settings = {ASSET_TAGS = (); }; };
+		944014E41BC78B0C00A66E44 /* TIPPERBalance.m in Sources */ = {isa = PBXBuildFile; fileRef = 944014E11BC78B0C00A66E44 /* TIPPERBalance.m */; settings = {ASSET_TAGS = (); }; };
+		944014E51BC78B0C00A66E44 /* TIPPERLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 944014E31BC78B0C00A66E44 /* TIPPERLocation.m */; settings = {ASSET_TAGS = (); }; };
 		94416C0C1AAF989F00117AFC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF71AAF989F00117AFC /* API.swift */; };
 		94416C0D1AAF989F00117AFC /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BF81AAF989F00117AFC /* Router.swift */; };
 		94416C101AAF989F00117AFC /* UserSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416BFB1AAF989F00117AFC /* UserSync.swift */; };
@@ -163,13 +164,16 @@
 		943243111B2D6BBE00D1A1D6 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransitionManager.swift; path = Views/TransitionManager.swift; sourceTree = "<group>"; };
 		943243131B2D6C1300D1A1D6 /* HeaderContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderContainer.swift; path = Home/HeaderContainer.swift; sourceTree = "<group>"; };
 		943243141B2D6C1300D1A1D6 /* HeaderDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderDetailCell.swift; path = TipDetails/HeaderDetailCell.swift; sourceTree = "<group>"; };
-		943243171B2E094A00D1A1D6 /* DynamoTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoTransaction.swift; sourceTree = "<group>"; };
 		943243191B2E0A0C00D1A1D6 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		9437D3DB1BA24C0C00FD5ECB /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		9437D3DD1BA24C8F00FD5ECB /* DynamoNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoNotification.swift; sourceTree = "<group>"; };
 		943A6FE11B21F6B300D50D8A /* TipCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipCell.swift; path = Home/TipCell.swift; sourceTree = "<group>"; };
 		943E93FC1B05C8DC007D98C7 /* WalletController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletController.swift; sourceTree = "<group>"; };
 		943F64311BAA04F30019D348 /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationCell.swift; path = Notifcations/NotificationCell.swift; sourceTree = "<group>"; };
+		944014E01BC78B0C00A66E44 /* TIPPERBalance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIPPERBalance.h; sourceTree = "<group>"; };
+		944014E11BC78B0C00A66E44 /* TIPPERBalance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIPPERBalance.m; sourceTree = "<group>"; };
+		944014E21BC78B0C00A66E44 /* TIPPERLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIPPERLocation.h; sourceTree = "<group>"; };
+		944014E31BC78B0C00A66E44 /* TIPPERLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIPPERLocation.m; sourceTree = "<group>"; };
 		94416BED1AAF94C700117AFC /* Tipper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Tipper.entitlements; sourceTree = "<group>"; };
 		94416BF71AAF989F00117AFC /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		94416BF81AAF989F00117AFC /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -374,12 +378,12 @@
 				94416BFF1AAF989F00117AFC /* CurrentUser.swift */,
 				94FA97DC1AB2EB71005B0C83 /* Favorite.swift */,
 				94C5C0D21ABFF47A009E4B05 /* Market.swift */,
+				9437D3DB1BA24C0C00FD5ECB /* Notification.swift */,
 				94416C001AAF989F00117AFC /* NSManagedObject+Extension.swift */,
 				94416C011AAF989F00117AFC /* NSManagedObjectContext+Base.h */,
 				94416C021AAF989F00117AFC /* NSManagedObjectContext+Base.m */,
 				94C2551F1B12798900A65B94 /* Settings.swift */,
 				943243191B2E0A0C00D1A1D6 /* Transaction.swift */,
-				9437D3DB1BA24C0C00FD5ECB /* Notification.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -389,7 +393,6 @@
 			children = (
 				94FA97DA1AB2E691005B0C83 /* DynamoFavorite.swift */,
 				9484185D1AB6B2B8001C633E /* DynamoUser.swift */,
-				943243171B2E094A00D1A1D6 /* DynamoTransaction.swift */,
 				94DA84AF1B6D55E0005D4CD6 /* DynamoSettings.swift */,
 				9437D3DD1BA24C8F00FD5ECB /* DynamoNotification.swift */,
 			);
@@ -468,19 +471,23 @@
 		94723C661BB4939A00C33210 /* AWSGateway */ = {
 			isa = PBXGroup;
 			children = (
+				945400201BC5F1B600BD8994 /* Extensions */,
+				944014E01BC78B0C00A66E44 /* TIPPERBalance.h */,
+				944014E11BC78B0C00A66E44 /* TIPPERBalance.m */,
+				94723C761BB49F6A00C33210 /* TIPPEREmpty.h */,
+				94723C771BB49F6A00C33210 /* TIPPEREmpty.m */,
+				944014E21BC78B0C00A66E44 /* TIPPERLocation.h */,
+				944014E31BC78B0C00A66E44 /* TIPPERLocation.m */,
 				945400251BC736C300BD8994 /* TIPPERMarket.h */,
 				945400261BC736C300BD8994 /* TIPPERMarket.m */,
-				945400201BC5F1B600BD8994 /* Extensions */,
+				94723C791BB507D100C33210 /* TIPPERSettings.h */,
+				94723C7A1BB507D100C33210 /* TIPPERSettings.m */,
+				94723C731BB49F3F00C33210 /* TIPPERTipperClient.h */,
+				94723C741BB49F3F00C33210 /* TIPPERTipperClient.m */,
 				94A00F191BBD3FEA00658C4C /* TIPPERTransaction.h */,
 				94A00F1A1BBD3FEA00658C4C /* TIPPERTransaction.m */,
 				94A00F1B1BBD3FEA00658C4C /* TIPPERUser.h */,
 				94A00F1C1BBD3FEA00658C4C /* TIPPERUser.m */,
-				94723C791BB507D100C33210 /* TIPPERSettings.h */,
-				94723C7A1BB507D100C33210 /* TIPPERSettings.m */,
-				94723C761BB49F6A00C33210 /* TIPPEREmpty.h */,
-				94723C771BB49F6A00C33210 /* TIPPEREmpty.m */,
-				94723C731BB49F3F00C33210 /* TIPPERTipperClient.h */,
-				94723C741BB49F3F00C33210 /* TIPPERTipperClient.m */,
 			);
 			name = AWSGateway;
 			sourceTree = "<group>";
@@ -963,6 +970,7 @@
 				9426B28B1B97F177001F996C /* CustomUnwindModalSegue.swift in Sources */,
 				9437D3DC1BA24C0C00FD5ECB /* Notification.swift in Sources */,
 				94416C141AAF989F00117AFC /* NSManagedObject+Extension.swift in Sources */,
+				944014E51BC78B0C00A66E44 /* TIPPERLocation.m in Sources */,
 				9427800B1B97D294007CB713 /* NotificationsController.swift in Sources */,
 				94416C0D1AAF989F00117AFC /* Router.swift in Sources */,
 				94723C751BB49F3F00C33210 /* TIPPERTipperClient.m in Sources */,
@@ -972,7 +980,6 @@
 				94098BAE1BB8739200394955 /* OnboardPartTwo.swift in Sources */,
 				94FA97DD1AB2EB71005B0C83 /* Favorite.swift in Sources */,
 				943243151B2D6C1300D1A1D6 /* HeaderContainer.swift in Sources */,
-				943243181B2E094A00D1A1D6 /* DynamoTransaction.swift in Sources */,
 				9427800D1B97D33F007CB713 /* NotificationsTableController.swift in Sources */,
 				94416C181AAF989F00117AFC /* AppDelegate.swift in Sources */,
 				94A00F261BBE752300658C4C /* TipDetailSegue.swift in Sources */,
@@ -995,6 +1002,7 @@
 				9484185E1AB6B2B8001C633E /* DynamoUser.swift in Sources */,
 				94A00F1E1BBD3FEA00658C4C /* TIPPERUser.m in Sources */,
 				94AF29751AAEF2B600E16048 /* Tipper.xcdatamodeld in Sources */,
+				944014E41BC78B0C00A66E44 /* TIPPERBalance.m in Sources */,
 				94A00F1D1BBD3FEA00658C4C /* TIPPERTransaction.m in Sources */,
 				945400271BC736C300BD8994 /* TIPPERMarket.m in Sources */,
 				943F64321BAA04F30019D348 /* NotificationCell.swift in Sources */,

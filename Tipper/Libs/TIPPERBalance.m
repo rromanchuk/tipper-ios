@@ -14,20 +14,14 @@
  */
  
 
-#import <Foundation/Foundation.h>
-#import <AWSCore/AWSCore.h>
+#import "TIPPERBalance.h"
 
- 
-@interface TIPPERMarket : AWSModel
+@implementation TIPPERBalance
 
-@property (nonatomic, strong) NSString *amount;
-
-
-@property (nonatomic, strong) NSString *btc;
-
-
-@property (nonatomic, strong) NSString *subtotalAmount;
-
-
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"balance": @"balance"
+             };
+}
 
 @end

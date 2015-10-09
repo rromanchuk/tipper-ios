@@ -6,7 +6,6 @@ import SwiftyJSON
 class Market: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
 
     @NSManaged var amount: String?
-    @NSManaged var amountCents: String?
     @NSManaged var subtotalAmount: String?
     @NSManaged var btc: String?
     @NSManaged var updatedAt: NSDate
@@ -20,7 +19,6 @@ class Market: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
     var className: String {
         return Favorite.className
     }
-
 
     static func lookupProperty() -> String {
         return Market.lookupProperty()
@@ -48,8 +46,8 @@ class Market: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
     }
 
     func update(completion: () ->Void) {
+        log.verbose("")
         TIPPERTipperClient.defaultClient().marketGet("0.02").continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-            log.verbose("Settings fetch \(task.result), \(task.error) exception: \(task.exception)")
             if let market = task.result as? TIPPERMarket {
                 self.updateEntityWithModel(market)
             }

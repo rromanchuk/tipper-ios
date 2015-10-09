@@ -20,6 +20,8 @@
 #import <AWSCore/AWSSynchronizedMutableDictionary.h>
 
 #import "TIPPEREmpty.h"
+#import "TIPPERBalance.h"
+#import "TIPPERLocation.h"
 #import "TIPPERMarket.h"
 #import "TIPPERSettings.h"
 #import "TIPPERTransaction.h"
@@ -149,6 +151,50 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
                   headerParameters:headerParameters
                               body:nil
                      responseClass:[TIPPEREmpty class]];
+}
+
+- (AWSTask *)addressBalanceGet:(NSString *)address {
+    NSDictionary *headerParameters = @{
+                                       @"Content-Type": @"application/json",
+                                       @"Accept": @"application/json",
+                                       
+                                       };
+    NSDictionary *queryParameters = @{
+                                      @"address": address
+                                      };
+    NSDictionary *pathParameters = @{
+                                     
+                                     };
+    
+    return [self invokeHTTPRequest:@"GET"
+                         URLString:@"/address/balance"
+                    pathParameters:pathParameters
+                   queryParameters:queryParameters
+                  headerParameters:headerParameters
+                              body:nil
+                     responseClass:[TIPPERBalance class]];
+}
+
+- (AWSTask *)locationGet:(NSString *)ip {
+    NSDictionary *headerParameters = @{
+                                       @"Content-Type": @"application/json",
+                                       @"Accept": @"application/json",
+                                       
+                                       };
+    NSDictionary *queryParameters = @{
+                                      @"ip": ip
+                                      };
+    NSDictionary *pathParameters = @{
+                                     
+                                     };
+    
+    return [self invokeHTTPRequest:@"GET"
+                         URLString:@"/location"
+                    pathParameters:pathParameters
+                   queryParameters:queryParameters
+                  headerParameters:headerParameters
+                              body:nil
+                     responseClass:[TIPPERLocation class]];
 }
 
 - (AWSTask *)marketGet:(NSString *)qty {

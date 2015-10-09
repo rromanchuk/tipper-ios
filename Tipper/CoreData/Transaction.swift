@@ -17,7 +17,7 @@ class Transaction: NSManagedObject, CoreDataUpdatable {
     @NSManaged var amount: NSNumber?
     @NSManaged var category: String?
     @NSManaged var fee: NSNumber?
-    @NSManaged var confirmations: NSNumber?
+    @NSManaged var confirmations: String?
 
     @NSManaged var fromTwitterId: String?
     @NSManaged var toTwitterId: String?

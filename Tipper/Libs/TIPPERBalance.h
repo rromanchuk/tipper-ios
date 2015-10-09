@@ -18,16 +18,9 @@
 #import <AWSCore/AWSCore.h>
 
  
-@interface TIPPERMarket : AWSModel
+@interface TIPPERBalance : AWSModel
 
-@property (nonatomic, strong) NSString *amount;
-
-
-@property (nonatomic, strong) NSString *btc;
-
-
-@property (nonatomic, strong) NSString *subtotalAmount;
-
+@property (nonatomic, strong) NSString *balance;
 
 
 @end
