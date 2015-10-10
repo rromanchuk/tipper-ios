@@ -8,7 +8,7 @@
 
 import UIKit
 import TwitterKit
-
+import MapKit
 class TipDetailContainer: UITableViewController {
     let className = "TipDetailContainer"
     var managedObjectContext: NSManagedObjectContext!
@@ -32,6 +32,7 @@ class TipDetailContainer: UITableViewController {
     @IBOutlet weak var tipHeaderLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var mapView: MKMapView!
     
 
     override func viewDidLoad() {
@@ -67,6 +68,7 @@ class TipDetailContainer: UITableViewController {
         }
 
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         log.verbose("")
@@ -76,7 +78,7 @@ class TipDetailContainer: UITableViewController {
 
     func loadTransactionData() {
         if let transaction = self.transaction {
-            self.confirmationsLabel.text = transaction.confirmations!
+            self.confirmationsLabel.text = "\(transaction.confirmations!) Confirmations"
         }
 
         if !transactionRefreshedFromServer {

@@ -996,7 +996,7 @@ tipper will send a Bitcoin tip.</string>
             <objects>
                 <tableViewController id="3XR-c5-WyO" customClass="TipDetailContainer" customModule="Tipper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="430" sectionHeaderHeight="22" sectionFooterHeight="22" id="uhH-G5-ofv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="658"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1155,15 +1155,15 @@ tipper will send a Bitcoin tip.</string>
                                                         <outletCollection property="gestureRecognizers" destination="bcn-wg-Izh" appends="YES" id="O2m-Cn-dp7"/>
                                                     </connections>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirmations" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKH-Sa-iwv">
-                                                    <rect key="frame" x="47" y="310" width="84" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network Propogation:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKH-Sa-iwv">
+                                                    <rect key="frame" x="47" y="333" width="127" height="15"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I10-F2-2BU">
-                                                    <rect key="frame" x="47" y="260" width="84" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blockchain:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I10-F2-2BU">
+                                                    <rect key="frame" x="47" y="260" width="67" height="15"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1192,15 +1192,15 @@ tipper will send a Bitcoin tip.</string>
                                                         </mask>
                                                     </variation>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4SP-s5-x5r">
-                                                    <rect key="frame" x="47" y="333" width="21" height="12"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200 Confirmations" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4SP-s5-x5r">
+                                                    <rect key="frame" x="47" y="302" width="91" height="12"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5hH-W7-UJ0">
-                                                    <rect key="frame" x="0.0" y="375" width="414" height="200"/>
+                                                    <rect key="frame" x="0.0" y="369" width="414" height="200"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="200" id="6d4-aJ-CxH"/>
@@ -1208,7 +1208,9 @@ tipper will send a Bitcoin tip.</string>
                                                 </mapView>
                                             </subviews>
                                             <animations/>
+                                            <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="0.30315667229729731" colorSpace="calibratedRGB"/>
                                             <constraints>
+                                                <constraint firstItem="tKH-Sa-iwv" firstAttribute="top" secondItem="4SP-s5-x5r" secondAttribute="bottom" constant="19" id="0cF-cJ-nBf"/>
                                                 <constraint firstItem="tKH-Sa-iwv" firstAttribute="leading" secondItem="JuM-IQ-xeF" secondAttribute="leading" id="1ou-kh-1em"/>
                                                 <constraint firstItem="4SP-s5-x5r" firstAttribute="top" secondItem="tKH-Sa-iwv" secondAttribute="bottom" constant="8" id="2nR-sK-hwy"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="JuM-IQ-xeF" secondAttribute="trailing" constant="8" id="6aq-qc-kQU"/>
@@ -1221,6 +1223,7 @@ tipper will send a Bitcoin tip.</string>
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="i3d-JV-ent" secondAttribute="trailing" constant="10" id="H4G-jU-7pD"/>
                                                 <constraint firstItem="woc-14-0Cg" firstAttribute="leading" secondItem="I10-F2-2BU" secondAttribute="leading" constant="-39" id="HQA-L6-giO"/>
                                                 <constraint firstItem="i3d-JV-ent" firstAttribute="leading" secondItem="JuM-IQ-xeF" secondAttribute="leading" id="IFN-yJ-se2"/>
+                                                <constraint firstItem="4SP-s5-x5r" firstAttribute="top" secondItem="i3d-JV-ent" secondAttribute="bottom" constant="7" id="Lej-c5-eEX"/>
                                                 <constraint firstItem="5hH-W7-UJ0" firstAttribute="centerX" secondItem="Kpc-ho-zf3" secondAttribute="centerX" id="Nwf-6l-soM"/>
                                                 <constraint firstItem="5hH-W7-UJ0" firstAttribute="top" secondItem="4SP-s5-x5r" secondAttribute="bottom" constant="30" id="aCb-yE-1RL"/>
                                                 <constraint firstItem="jZ2-ig-xqd" firstAttribute="leading" secondItem="Kpc-ho-zf3" secondAttribute="leadingMargin" constant="8" id="eUH-M7-z5z"/>
@@ -1230,11 +1233,15 @@ tipper will send a Bitcoin tip.</string>
                                                 <constraint firstItem="tKH-Sa-iwv" firstAttribute="top" secondItem="i3d-JV-ent" secondAttribute="bottom" constant="15" id="tsF-6f-qno"/>
                                                 <constraint firstItem="JuM-IQ-xeF" firstAttribute="leading" secondItem="woc-14-0Cg" secondAttribute="trailing" constant="8" id="uOJ-M1-DZa"/>
                                                 <constraint firstItem="JuM-IQ-xeF" firstAttribute="leading" secondItem="4SP-s5-x5r" secondAttribute="leading" id="vea-Wy-75t"/>
+                                                <constraint firstItem="5hH-W7-UJ0" firstAttribute="top" secondItem="tKH-Sa-iwv" secondAttribute="bottom" constant="21" id="zTn-dw-zqF"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="uOJ-M1-DZa"/>
                                                     <exclude reference="D6G-u3-UGh"/>
+                                                    <exclude reference="2nR-sK-hwy"/>
+                                                    <exclude reference="tsF-6f-qno"/>
+                                                    <exclude reference="aCb-yE-1RL"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -1248,8 +1255,10 @@ tipper will send a Bitcoin tip.</string>
                             <outlet property="delegate" destination="3XR-c5-WyO" id="0of-gt-Zau"/>
                         </connections>
                     </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="confirmationsLabel" destination="4SP-s5-x5r" id="RxU-U8-RGP"/>
+                        <outlet property="mapView" destination="5hH-W7-UJ0" id="Q9J-Dc-GtN"/>
                         <outlet property="profileImageView" destination="ACe-lP-FW5" id="7fM-Bc-S1S"/>
                         <outlet property="tipHeaderLabel" destination="60G-HZ-To5" id="dxt-Cb-hsO"/>
                         <outlet property="tipLabel" destination="2WX-eU-6Uo" id="JLk-py-Sff"/>
@@ -1266,7 +1275,7 @@ tipper will send a Bitcoin tip.</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1738" y="63"/>
+            <point key="canvasLocation" x="1922" y="63"/>
         </scene>
         <!--Header Container-->
         <scene sceneID="4ed-D0-s7K">
@@ -1769,7 +1778,7 @@ tipper will send a Bitcoin tip.</string>
         <scene sceneID="MO9-aj-5ye">
             <objects>
                 <tableViewController id="RIO-dg-bBv" customClass="NotificationsTableController" customModule="Tipper" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="92" sectionHeaderHeight="22" sectionFooterHeight="22" id="daG-JR-lAQ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="92" sectionHeaderHeight="22" sectionFooterHeight="22" id="daG-JR-lAQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
@@ -1851,6 +1860,9 @@ tipper will send a Bitcoin tip.</string>
                         </connections>
                     </tableView>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <segue destination="qBg-iZ-CkH" kind="custom" identifier="TipDetails" customClass="TipDetailSegue" customModule="Tipper" customModuleProvider="target" id="cgI-Zo-dIW"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i5Y-cD-YnT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2312,6 +2324,7 @@ tipper will send a Bitcoin tip.</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Qgl-S3-h4Q"/>
+        <segue reference="cgI-Zo-dIW"/>
         <segue reference="LSM-VD-bA7"/>
         <segue reference="Qcf-N3-O5L"/>
     </inferredMetricsTieBreakers>

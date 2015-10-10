@@ -10,6 +10,8 @@ import Foundation
 import CoreData
 import SwiftyJSON
 import TwitterKit
+import AWSDynamoDB
+
 
 let TwitterDateFormatter: NSDateFormatter = {
     let df = NSDateFormatter()
@@ -40,6 +42,28 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
         get {
             return "Favorite"
         }
+    }
+
+    class func fetch(fromUserId: String, tipId: String) {
+        TIPPERTipperClient.defaultClient().tipGet(fromUserId, tipId: tipId).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+
+            return nil
+        })
+    }
+
+    class func fetchFromCoreData(objectId: String, fromUserId: String, context: NSManagedObjectContext) -> Favorite? {
+        let request = NSFetchRequest(entityName: Favorite.className)
+
+        request.predicate = NSPredicate(format: "objectId == %@ && fromUserId == %@", objectId, fromUserId)
+        return try! context.executeFetchRequest(request).last as? Favorite
+    }
+    
+    class func fetchFromDynamo(fromUserId: String, tipId: String, context: NSManagedObjectContext) -> Favorite? {
+        let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
+        if let task = mapper.load(DynamoFavorite.self, hashKey: tipId, rangeKey: fromUserId, configuration: AWSDynamoDBObjectMapperConfiguration()), dynamoFavorite = task.result as? DynamoFavorite {
+            return Favorite.entityWithModel(Favorite.self, model: dynamoFavorite, context: context)
+        }
+        return nil
     }
 
     var className: String {

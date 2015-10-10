@@ -24,6 +24,7 @@
 #import "TIPPERLocation.h"
 #import "TIPPERMarket.h"
 #import "TIPPERSettings.h"
+#import "TIPPERFavorite.h"
 #import "TIPPERTransaction.h"
 #import "TIPPERUser.h"
 
@@ -241,14 +242,15 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
                      responseClass:[TIPPERSettings class]];
 }
 
-- (AWSTask *)tipGet:(NSString *)tipId {
+- (AWSTask *)tipGet:(NSString *)fromUserId tipId:(NSString *)tipId {
     NSDictionary *headerParameters = @{
                                        @"Content-Type": @"application/json",
                                        @"Accept": @"application/json",
                                        
                                        };
     NSDictionary *queryParameters = @{
-                                      @"tipId": tipId
+                                      @"fromUserId": fromUserId,
+                                     @"tipId": tipId
                                       };
     NSDictionary *pathParameters = @{
                                      
@@ -260,7 +262,7 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
                    queryParameters:queryParameters
                   headerParameters:headerParameters
                               body:nil
-                     responseClass:[TIPPEREmpty class]];
+                     responseClass:[TIPPERFavorite class]];
 }
 
 - (AWSTask *)transactionGet:(NSString *)txid {

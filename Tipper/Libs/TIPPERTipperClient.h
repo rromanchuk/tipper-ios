@@ -22,6 +22,7 @@
 #import "TIPPERLocation.h"
 #import "TIPPERMarket.h"
 #import "TIPPERSettings.h"
+#import "TIPPERFavorite.h"
 #import "TIPPERTransaction.h"
 #import "TIPPERUser.h"
 
@@ -216,11 +217,12 @@
 /**
  
  
+ @param fromUserId 
  @param tipId 
  
- return type: TIPPEREmpty *
+ return type: TIPPERFavorite *
  */
-- (AWSTask *)tipGet:(NSString *)tipId;
+- (AWSTask *)tipGet:(NSString *)fromUserId tipId:(NSString *)tipId;
 
 /**
  

@@ -29,5 +29,4 @@
 @property (nonatomic, strong) NSString *subtotalAmount;
 
 
-
 @end

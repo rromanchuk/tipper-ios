@@ -62,7 +62,15 @@ class NotificationsTableController: UITableViewController {
         log.verbose("Setting cell with \(notification)")
         return cell
     }
-    
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //let trans
+        log.verbose("")
+        let notification = fetchedResultsController.objectAtIndexPath(indexPath)
+        log.verbose("notification: \(notification)")
+        performSegueWithIdentifier("TipDetails", sender: notification)
+    }
+
     func refresh(refreshControl: UIRefreshControl) {
         DynamoNotification.fetch(currentUser.userId!, context: managedObjectContext) { () -> Void in
             refreshControl.endRefreshing()
@@ -75,6 +83,23 @@ class NotificationsTableController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.sections![section].numberOfObjects
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "TipDetails" {
+            let vc = segue.destinationViewController as! TipDetailsViewController
+            vc.managedObjectContext = managedObjectContext
+            vc.currentUser = currentUser
+            if let notification = sender as? Notification, tipId = notification.tipId, tipFromUserId = notification.tipFromUserId where notification.type == "user_sent_tip" {
+                if let favorite = Favorite.fetchFromCoreData(tipId, fromUserId: tipFromUserId, context: managedObjectContext) {
+                    vc.favorite = favorite
+                } else if let favorite = Favorite.fetchFromDynamo(tipFromUserId, tipId: tipId, context: managedObjectContext){
+                    vc.favorite = favorite
+                }
+
+            }
+
+        }
     }
 
 }

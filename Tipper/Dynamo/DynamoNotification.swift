@@ -14,6 +14,8 @@ class DynamoNotification: AWSDynamoDBObjectModel, AWSDynamoDBModeling, ModelCore
     var ObjectID: String?
     var NotificationType: String?
     var NotificationText: String?
+    var TipID: String?
+    var TipFromUserID: String?
     var CreatedAt: NSNumber?
 
 

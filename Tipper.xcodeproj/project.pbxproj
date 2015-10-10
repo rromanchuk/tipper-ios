@@ -54,6 +54,7 @@
 		945400221BC5F1D700BD8994 /* TipperTransaction+Updateable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945400211BC5F1D700BD8994 /* TipperTransaction+Updateable.swift */; settings = {ASSET_TAGS = (); }; };
 		945400241BC6084000BD8994 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945400231BC6084000BD8994 /* ProfileImage.swift */; settings = {ASSET_TAGS = (); }; };
 		945400271BC736C300BD8994 /* TIPPERMarket.m in Sources */ = {isa = PBXBuildFile; fileRef = 945400261BC736C300BD8994 /* TIPPERMarket.m */; settings = {ASSET_TAGS = (); }; };
+		9454002A1BC8903C00BD8994 /* TIPPERFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 945400291BC8903C00BD8994 /* TIPPERFavorite.m */; settings = {ASSET_TAGS = (); }; };
 		9462D75A1B35D108001C5083 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462D7591B35D108001C5083 /* InterfaceController.swift */; };
 		9462D75C1B35D108001C5083 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462D75B1B35D108001C5083 /* GlanceController.swift */; };
 		9462D75E1B35D108001C5083 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9462D75D1B35D108001C5083 /* Images.xcassets */; };
@@ -194,6 +195,8 @@
 		945400231BC6084000BD8994 /* ProfileImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileImage.swift; path = Views/ProfileImage.swift; sourceTree = "<group>"; };
 		945400251BC736C300BD8994 /* TIPPERMarket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIPPERMarket.h; sourceTree = "<group>"; };
 		945400261BC736C300BD8994 /* TIPPERMarket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIPPERMarket.m; sourceTree = "<group>"; };
+		945400281BC8903C00BD8994 /* TIPPERFavorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIPPERFavorite.h; sourceTree = "<group>"; };
+		945400291BC8903C00BD8994 /* TIPPERFavorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIPPERFavorite.m; sourceTree = "<group>"; };
 		9462D7551B35D108001C5083 /* Tipper WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Tipper WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9462D7581B35D108001C5083 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9462D7591B35D108001C5083 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
@@ -471,6 +474,8 @@
 		94723C661BB4939A00C33210 /* AWSGateway */ = {
 			isa = PBXGroup;
 			children = (
+				945400281BC8903C00BD8994 /* TIPPERFavorite.h */,
+				945400291BC8903C00BD8994 /* TIPPERFavorite.m */,
 				945400201BC5F1B600BD8994 /* Extensions */,
 				944014E01BC78B0C00A66E44 /* TIPPERBalance.h */,
 				944014E11BC78B0C00A66E44 /* TIPPERBalance.m */,
@@ -995,6 +1000,7 @@
 				94416C0C1AAF989F00117AFC /* API.swift in Sources */,
 				94F5137C1B8D03BC002E0996 /* SwiftSpinner.swift in Sources */,
 				94C255201B12798900A65B94 /* Settings.swift in Sources */,
+				9454002A1BC8903C00BD8994 /* TIPPERFavorite.m in Sources */,
 				94AB27931ACA3D2B005A433F /* TintedButton.swift in Sources */,
 				94098BAC1BB7C2ED00394955 /* OnboardPartOne.swift in Sources */,
 				94FA97DF1AB356FB005B0C83 /* FavoriteCell.swift in Sources */,

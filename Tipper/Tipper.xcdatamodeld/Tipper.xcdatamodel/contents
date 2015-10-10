@@ -37,6 +37,7 @@
         <attribute name="toUserId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="tweetId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="txid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="notification" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favorite" inverseName="notification" inverseEntity="Favorite" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CurrentUser" inverseName="favorites" inverseEntity="CurrentUser" syncable="YES"/>
     </entity>
     <entity name="Market" representedClassName="Tipper.Market" syncable="YES">
@@ -48,11 +49,14 @@
     </entity>
     <entity name="Notification" representedClassName="Tipper.Notification" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
-        <attribute name="objectId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="objectId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="seenAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tipFromUserId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tipId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userId" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="favorite" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favorite" syncable="YES"/>
     </entity>
     <entity name="Settings" representedClassName="Tipper.Settings" syncable="YES">
         <attribute name="feeAmount" optional="YES" attributeType="String" defaultValueString="0.00001" syncable="YES"/>
@@ -75,9 +79,9 @@
     </entity>
     <elements>
         <element name="CurrentUser" positionX="-63" positionY="-18" width="128" height="330"/>
-        <element name="Favorite" positionX="-63" positionY="54" width="128" height="285"/>
+        <element name="Favorite" positionX="-63" positionY="54" width="128" height="300"/>
         <element name="Market" positionX="-54" positionY="117" width="128" height="120"/>
-        <element name="Notification" positionX="-54" positionY="135" width="128" height="135"/>
+        <element name="Notification" positionX="-54" positionY="135" width="128" height="180"/>
         <element name="Settings" positionX="-54" positionY="99" width="128" height="105"/>
         <element name="Transaction" positionX="-54" positionY="108" width="128" height="210"/>
     </elements>

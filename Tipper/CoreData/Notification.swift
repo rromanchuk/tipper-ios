@@ -13,11 +13,13 @@ import SwiftyJSON
 class Notification: NSManagedObject, CoreDataUpdatable {
     @NSManaged var objectId: String!
     @NSManaged var userId: String!
+    @NSManaged var tipId: String?
+    @NSManaged var tipFromUserId: String?
     @NSManaged var type: String!
     @NSManaged var text: String!
     @NSManaged var createdAt: NSDate!
     @NSManaged var seenAt: NSDate
-
+    @NSManaged var favorite: Favorite
 
     static func lookupProperty() -> String {
         return Notification.lookupProperty()
@@ -49,6 +51,19 @@ class Notification: NSManagedObject, CoreDataUpdatable {
             self.type                           = notification.NotificationType
             self.text                           = notification.NotificationText
             self.objectId                       = notification.ObjectID
+
+            if let tipId = notification.TipID, tipFromUserId = notification.TipFromUserID {
+                self.tipId = tipId
+                self.tipFromUserId = tipFromUserId
+            }
+
+            if let objectId = notification.ObjectID, moc = self.managedObjectContext {
+                if let favorite = Favorite.entityWithId(Favorite.self, context: moc, lookupProperty: "objectId", lookupValue: objectId) {
+                    self.favorite = favorite
+                } else {
+                    
+                }
+            }
 
             if let createdAt = notification.CreatedAt?.doubleValue {
                 self.createdAt              = NSDate(timeIntervalSince1970: createdAt)
