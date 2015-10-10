@@ -79,6 +79,10 @@ class TipDetailContainer: UITableViewController {
     func loadTransactionData() {
         if let transaction = self.transaction {
             self.confirmationsLabel.text = "\(transaction.confirmations!) Confirmations"
+            if let relayedBy = transaction.relayedBy {
+                self.fetchLocation(relayedBy)
+            }
+            
         }
 
         if !transactionRefreshedFromServer {
@@ -112,6 +116,16 @@ class TipDetailContainer: UITableViewController {
             }
         }
 
+    }
+    
+    func fetchLocation(ipAddress: String) {
+        TIPPERTipperClient.defaultClient().locationGet(ipAddress).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+            if let location = task.result as? TIPPERLocation {
+                let cord = CLLocationCoordinate2D(latitude: location.lat.doubleValue, longitude: location.lng.doubleValue)
+                self.mapView.setCenterCoordinate(cord, animated: true)
+            }
+            return nil
+        })
     }
 
     // MARK: - Table view data source

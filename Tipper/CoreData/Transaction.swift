@@ -25,7 +25,7 @@ class Transaction: NSManagedObject, CoreDataUpdatable {
     @NSManaged var toTwitterUsername: String?
     @NSManaged var toUserId: String?
     @NSManaged var fromUserId: String?
-
+    @NSManaged var relayedBy: String?
     @NSManaged var time: NSDate
 
     class func get(txid: String, context: NSManagedObjectContext, callback: (transaction: Transaction?) -> Void) {
@@ -78,7 +78,7 @@ class Transaction: NSManagedObject, CoreDataUpdatable {
             self.toTwitterId = transaction.ToTwitterID
 //            self.fromTwitterUsername = transaction.F
 //            self.toTwitterUsername = transaction.ToTwitterUsername
-
+            self.relayedBy = transaction.relayed_by
             self.time = NSDate(timeIntervalSince1970: NSTimeInterval(transaction.time!.doubleValue))
 
         }

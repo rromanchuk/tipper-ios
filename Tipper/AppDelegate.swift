@@ -413,6 +413,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func resetCognitoCredentials() {
         log.verbose("")
         self.provider.clearKeychain()
+        self.provider.logins = nil
     }
     
     func cognitoIdentityDidChange(notficiation: NSNotification) {
