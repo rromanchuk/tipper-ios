@@ -64,11 +64,18 @@ class NotificationsTableController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //let trans
-        log.verbose("")
-        let notification = fetchedResultsController.objectAtIndexPath(indexPath)
+        let notification = fetchedResultsController.objectAtIndexPath(indexPath) as! Notification
         log.verbose("notification: \(notification)")
-        performSegueWithIdentifier("TipDetails", sender: notification)
+        if let tipId = notification.tipId, tipFromUserId = notification.tipFromUserId where notification.type == "user_sent_tip" {
+            if let favorite = Favorite.fetchFromCoreData(tipId, fromUserId: tipFromUserId, context: managedObjectContext) {
+                self.performSegueWithIdentifier("TipDetail", sender: favorite)
+            } else if let favorite = Favorite.fetchFromDynamo(tipFromUserId, tipId: tipId, context: managedObjectContext){
+                self.performSegueWithIdentifier("TipDetail", sender: favorite)
+            }
+
+        }
+
+
     }
 
     func refresh(refreshControl: UIRefreshControl) {
@@ -90,15 +97,7 @@ class NotificationsTableController: UITableViewController {
             let vc = segue.destinationViewController as! TipDetailsViewController
             vc.managedObjectContext = managedObjectContext
             vc.currentUser = currentUser
-            if let notification = sender as? Notification, tipId = notification.tipId, tipFromUserId = notification.tipFromUserId where notification.type == "user_sent_tip" {
-                if let favorite = Favorite.fetchFromCoreData(tipId, fromUserId: tipFromUserId, context: managedObjectContext) {
-                    vc.favorite = favorite
-                } else if let favorite = Favorite.fetchFromDynamo(tipFromUserId, tipId: tipId, context: managedObjectContext){
-                    vc.favorite = favorite
-                }
-
-            }
-
+            vc.favorite = sender as! Favorite
         }
     }
 
