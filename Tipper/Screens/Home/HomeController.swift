@@ -112,24 +112,6 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
         }
     }
     
-//    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
-//        log.verbose("\(className)::\(__FUNCTION__) toViewController: \(toViewController), fromViewController: \(fromViewController)")
-//        if let _ = fromViewController as? CustomSegueable {
-//            if identifier == "UnwindFromTipDetail" {
-//                return TipDetailUnwindSegue(identifier: identifier, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
-//                    
-//                })
-//            } else {
-//                return CustomUnwindModalSegue(identifier: identifier, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
-//
-//                })
-//            }
-//        }
-//        
-//        return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)!
-//    }
-
-
 
 }
 

@@ -13,13 +13,14 @@ class TipDetailContainer: UITableViewController {
     let className = "TipDetailContainer"
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
-    var favorite: Favorite!
-
+    var favorite: Favorite?
+    var notification: Notification?
+    
     private var isLoaded = false
     private var transactionRefreshedFromServer = false
 
     lazy var transaction: Transaction? = {
-        return Transaction.entityWithId(Transaction.self, context: self.managedObjectContext, lookupProperty: "txid", lookupValue: self.favorite.txid!)
+        return Transaction.entityWithId(Transaction.self, context: self.managedObjectContext, lookupProperty: "txid", lookupValue: self.favorite!.txid!)
     }()
 
     @IBOutlet weak var tweetView: TWTRTweetView!
@@ -38,20 +39,41 @@ class TipDetailContainer: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         log.verbose("")
+        if let notification = notification {
+            loadFavoriteFromNotification(notification, callback: { () -> Void in
+                self.setup()
+            })
+        } else if let _ = favorite {
+            setup()
+        }
+    }
+    
+    func setup() {
+        log.verbose("")
+        SwiftSpinner.show("Loading tip...")
         setupTipAmount()
-        loadTweet()
-        loadTransactionData()
+        if let _favorite = favorite {
+            loadTweet(_favorite, callback: { () -> Void in
+                self.loadTransactionData()
+                SwiftSpinner.hide()
+            })
+        }
+        
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if !isLoaded {
-            SwiftSpinner.show("Loading tip...")
-        }
+//        if !isLoaded {
+//            SwiftSpinner.show("Loading tip...")
+//        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        SwiftSpinner.hide()
     }
 
-    func setupTweetInfo(twt: TWTRTweet) {
-        Debug.isBlocking()
+    func setupTweetInfo(twt: TWTRTweet, favorite: Favorite) {
         if favorite.fromTwitterId == currentUser.twitterUserId {
             usernameLabel.text = "@\(favorite.toTwitterUsername)"
             tipHeaderLabel.text = "You tipped \(twt.author.name)."
@@ -68,13 +90,6 @@ class TipDetailContainer: UITableViewController {
         }
 
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        log.verbose("")
-        // Dispose of any resources that can be recreated.
-    }
-
 
     func loadTransactionData() {
         if let transaction = self.transaction {
@@ -93,7 +108,7 @@ class TipDetailContainer: UITableViewController {
     }
 
     func refreshTransactionData() {
-        if let txid = self.favorite.txid {
+        if let txid = self.favorite?.txid {
             Transaction.get(txid, context: managedObjectContext, callback: { (transaction) -> Void in
                 if let transaction = transaction {
                     self.transaction = transaction
@@ -103,19 +118,34 @@ class TipDetailContainer: UITableViewController {
         }
     }
 
-    func loadTweet() {
+    func loadTweet(favorite: Favorite, callback: () -> Void) {
         let client = TWTRAPIClient()
         client.loadTweetWithID(favorite.tweetId) { tweet, error in
-            SwiftSpinner.hide()
+            
             if let t = tweet {
                 self.tweetView.configureWithTweet(t)
-                self.setupTweetInfo(t)
+                self.setupTweetInfo(t, favorite: favorite)
 
             } else if let error = error {
                 log.error("Failed to load Tweet: \(error.localizedDescription)")
             }
+            callback()
         }
 
+    }
+    
+    func loadFavoriteFromNotification(notification: Notification, callback: ()->Void) {
+        if let favorite = Favorite.fetchFromCoreData(notification.tipId!, fromUserId: notification.tipFromUserId!, context: managedObjectContext) {
+            self.favorite = favorite
+            callback()
+        } else {
+            Favorite.fetchFromDynamo(notification.tipFromUserId!, tipId: notification.tipId!, context: managedObjectContext, callback: { (favorite) -> Void in
+                if let favorite = favorite  {
+                    self.favorite = favorite
+                }
+                callback()
+            })
+        }
     }
     
     func fetchLocation(ipAddress: String) {
@@ -132,18 +162,23 @@ class TipDetailContainer: UITableViewController {
 
     @IBAction func didTapBack(sender: UIButton) {
         log.verbose("")
-        self.parentViewController?.performSegueWithIdentifier("UnwindFromTipDetail", sender: self)
+        if notification == nil {
+            self.parentViewController?.performSegueWithIdentifier("UnwindFromTipDetail", sender: self)
+        } else {
+            self.parentViewController?.performSegueWithIdentifier("ExitToNotificationsFromTipDetails", sender: self)
+        }
+        
     }
 
     @IBAction func didTapTxidLabel(sender: UITapGestureRecognizer) {
         log.verbose("")
-        if let txid = favorite.txid {
+        if let txid = favorite?.txid {
             UIApplication.sharedApplication().openURL(NSURL(string: "https://blockchain.info/tx/\(txid)")!)
         }
     }
 
     func setupTipAmount() {
-        if let currentUser = currentUser {
+        if let _ = currentUser {
             let string = "a\(Settings.sharedInstance.tipAmountUBTC!)"
             let labelAttributes = NSMutableAttributedString(string: string)
             labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "coiner", size: 18.0)!, range: NSMakeRange(0,1))

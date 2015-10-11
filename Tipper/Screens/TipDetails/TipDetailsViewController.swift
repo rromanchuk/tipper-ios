@@ -12,15 +12,13 @@ class TipDetailsViewController: UIViewController, Logoutable, CustomSegueable {
     let className = "TipDetailsViewController"
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
-    var favorite: Favorite!
+    var favorite: Favorite?
     var market: Market!
-
+    var notification: Notification?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         log.verbose("")
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,18 +40,6 @@ class TipDetailsViewController: UIViewController, Logoutable, CustomSegueable {
         }
     }
     
-//    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
-//        log.verbose("toViewController: \(toViewController), fromViewController: \(fromViewController)")
-//        if let _ = fromViewController as? CustomSegueable {
-//            
-//            let unwindSegue = CustomUnwindModalSegue(identifier: identifier, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
-//                
-//            })
-//            return unwindSegue
-//        }
-//        
-//        return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)!
-//    }
 
     // MARK: - Navigation
 
@@ -65,6 +51,7 @@ class TipDetailsViewController: UIViewController, Logoutable, CustomSegueable {
             vc.managedObjectContext = managedObjectContext
             vc.currentUser = currentUser
             vc.favorite = favorite
+            vc.notification = notification
         } else if segue.identifier == "TipDetailsHeaderEmbed" {
             let vc = segue.destinationViewController as! HeaderContainer
             vc.managedObjectContext = managedObjectContext

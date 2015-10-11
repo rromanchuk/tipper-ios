@@ -66,13 +66,8 @@ class NotificationsTableController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let notification = fetchedResultsController.objectAtIndexPath(indexPath) as! Notification
         log.verbose("notification: \(notification)")
-        if let tipId = notification.tipId, tipFromUserId = notification.tipFromUserId where notification.type == "user_sent_tip" {
-            if let favorite = Favorite.fetchFromCoreData(tipId, fromUserId: tipFromUserId, context: managedObjectContext) {
-                self.performSegueWithIdentifier("TipDetail", sender: favorite)
-            } else if let favorite = Favorite.fetchFromDynamo(tipFromUserId, tipId: tipId, context: managedObjectContext){
-                self.performSegueWithIdentifier("TipDetail", sender: favorite)
-            }
-
+        if let _ = notification.tipId, _ = notification.tipFromUserId where notification.type == "user_sent_tip" {
+            self.parentViewController?.performSegueWithIdentifier("TipDetails", sender: notification)
         }
 
 
@@ -90,15 +85,6 @@ class NotificationsTableController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.sections![section].numberOfObjects
-    }
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "TipDetails" {
-            let vc = segue.destinationViewController as! TipDetailsViewController
-            vc.managedObjectContext = managedObjectContext
-            vc.currentUser = currentUser
-            vc.favorite = sender as! Favorite
-        }
     }
 
 }

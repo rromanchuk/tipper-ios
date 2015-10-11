@@ -52,17 +52,28 @@ class Favorite: NSManagedObject, CoreDataUpdatable {
     }
 
     class func fetchFromCoreData(objectId: String, fromUserId: String, context: NSManagedObjectContext) -> Favorite? {
+        log.verbose("")
         let request = NSFetchRequest(entityName: Favorite.className)
 
         request.predicate = NSPredicate(format: "objectId == %@ && fromUserId == %@", objectId, fromUserId)
         return try! context.executeFetchRequest(request).last as? Favorite
     }
     
-    class func fetchFromDynamo(fromUserId: String, tipId: String, context: NSManagedObjectContext) -> Favorite? {
+    class func fetchFromDynamo(fromUserId: String, tipId: String, context: NSManagedObjectContext, callback: (Favorite?)->Void) -> Favorite? {
+        log.verbose("")
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
-        if let task = mapper.load(DynamoFavorite.self, hashKey: tipId, rangeKey: fromUserId, configuration: AWSDynamoDBObjectMapperConfiguration()), dynamoFavorite = task.result as? DynamoFavorite {
-            return Favorite.entityWithModel(Favorite.self, model: dynamoFavorite, context: context)
-        }
+        mapper.load(DynamoFavorite.self, hashKey: tipId, rangeKey: fromUserId).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+            log.verbose("awsTask: \(task), result:\(task.result), error: \(task.error), exception: \(task.exception)")
+            if let dynamoFavorite = task.result as? DynamoFavorite {
+                callback(Favorite.entityWithModel(Favorite.self, model: dynamoFavorite, context: context))
+            } else {
+                callback(nil)
+            }
+            return nil
+        })
+
+        
+        
         return nil
     }
 

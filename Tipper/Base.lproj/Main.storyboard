@@ -84,11 +84,11 @@
                         <viewControllerLayoutGuide type="bottom" id="sgu-5u-sT2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="q5O-aH-dgb" customClass="BaseView" customModule="Tipper" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TgD-8w-NDz">
-                                <rect key="frame" x="0.0" y="500" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="636" width="414" height="100"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -96,14 +96,14 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kDo-mX-IGi">
-                                <rect key="frame" x="0.0" y="20" width="600" height="460"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="596"/>
                                 <animations/>
                                 <connections>
                                     <segue destination="fBY-O3-Kr6" kind="embed" identifier="PageViewEmbed" id="Ztb-Sv-Byy"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bK-05-bG7">
-                                <rect key="frame" x="0.0" y="500" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="636" width="414" height="100"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="25"/>
                                 <state key="normal" title="  Sign in to Twitter" image="twitter-bird">
@@ -114,7 +114,7 @@
                                 </connections>
                             </button>
                             <pageControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="nxG-VK-NI4">
-                                <rect key="frame" x="273" y="467" width="55" height="37"/>
+                                <rect key="frame" x="180" y="603" width="55" height="37"/>
                                 <animations/>
                             </pageControl>
                         </subviews>
@@ -153,7 +153,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4g6-e3-hRf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="OKT-wf-h11" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-3040" y="-826"/>
+            <point key="canvasLocation" x="-3700" y="-750"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="WIC-ar-ZZk">
@@ -164,11 +164,12 @@
                         <viewControllerLayoutGuide type="bottom" id="lYf-Fl-TNK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KgP-uW-pDd" customClass="BaseView" customModule="Tipper" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" red="0.36078431370000003" green="0.74117647060000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <segue destination="sKB-ul-4gT" kind="presentation" identifier="Onboarding" animates="NO" id="4gL-Nz-vUQ"/>
                         <segue destination="JsD-Be-PS1" kind="presentation" identifier="Home" animates="NO" id="UI0-Jp-LeU"/>
@@ -177,7 +178,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KIO-XX-rfx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="SIw-pu-arB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-3040" y="5"/>
+            <point key="canvasLocation" x="-3700" y="203"/>
         </scene>
         <!--Onboarding Page Controller View Controller-->
         <scene sceneID="cHB-2Q-gDH">
@@ -185,7 +186,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="fBY-O3-Kr6" customClass="OnboardingPageControllerViewController" customModule="Tipper" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dfN-Ip-MBo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2198" y="-820"/>
+            <point key="canvasLocation" x="-3128" y="-784"/>
         </scene>
         <!--Onboard Part Two-->
         <scene sceneID="3Wy-wR-QZo">
@@ -323,7 +324,7 @@ tipper will send a Bitcoin tip.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EEn-UL-n3T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-879" y="-796"/>
+            <point key="canvasLocation" x="-1797" y="-782"/>
         </scene>
         <!--Account Controller-->
         <scene sceneID="QQm-cH-2fI">
@@ -390,7 +391,7 @@ tipper will send a Bitcoin tip.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cgb-fb-WEY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1011" y="1359"/>
+            <point key="canvasLocation" x="1279" y="1369"/>
         </scene>
         <!--Wallet Controller-->
         <scene sceneID="ehQ-m5-dqf">
@@ -871,7 +872,7 @@ tipper will send a Bitcoin tip.</string>
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1534" y="1359"/>
+            <point key="canvasLocation" x="1812" y="1359"/>
         </scene>
         <!--Home Controller-->
         <scene sceneID="o0I-3q-2Do">
@@ -927,7 +928,7 @@ tipper will send a Bitcoin tip.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="syl-PA-E4Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="nkS-N6-z7z" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-322" y="655"/>
+            <point key="canvasLocation" x="-1690" y="325"/>
         </scene>
         <!--Tip Details View Controller-->
         <scene sceneID="uXt-kZ-oaU">
@@ -984,12 +985,13 @@ tipper will send a Bitcoin tip.</string>
                         <segue destination="SFj-Ao-M2M" kind="custom" identifier="DidTapNotifications" customClass="CustomModalSegue" customModule="Tipper" customModuleProvider="target" id="LSM-VD-bA7"/>
                         <segue destination="AQK-kz-A32" kind="custom" identifier="DidTapAccountSegue" customClass="CustomModalSegue" customModule="Tipper" customModuleProvider="target" id="Qgl-S3-h4Q"/>
                         <segue destination="nkS-N6-z7z" kind="unwind" identifier="UnwindFromTipDetail" customClass="TipDetailUnwindSegue" customModule="Tipper" customModuleProvider="target" unwindAction="done:sender:" id="pTD-P2-gag"/>
+                        <segue destination="rIO-sn-ad2" kind="unwind" identifier="ExitToNotificationsFromTipDetails" customClass="TipDetailUnwindSegue" customModule="Tipper" customModuleProvider="target" unwindAction="done:sender:" id="al6-iZ-qAr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rca-90-DIA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Y7K-LD-5z7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1148" y="63"/>
+            <point key="canvasLocation" x="1268" y="145"/>
         </scene>
         <!--Tip Detail Container-->
         <scene sceneID="dG6-Mg-okg">
@@ -1199,7 +1201,7 @@ tipper will send a Bitcoin tip.</string>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5hH-W7-UJ0">
+                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" pitchEnabled="NO" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hH-W7-UJ0">
                                                     <rect key="frame" x="0.0" y="369" width="414" height="200"/>
                                                     <animations/>
                                                     <constraints>
@@ -1275,7 +1277,7 @@ tipper will send a Bitcoin tip.</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1922" y="63"/>
+            <point key="canvasLocation" x="1870" y="145"/>
         </scene>
         <!--Header Container-->
         <scene sceneID="4ed-D0-s7K">
@@ -1454,6 +1456,8 @@ tipper will send a Bitcoin tip.</string>
                         </constraints>
                     </view>
                     <toolbarItems/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="414" height="78"/>
                     <connections>
                         <outlet property="accountButton" destination="YCv-dq-4JX" id="Xq2-6B-4U7"/>
                         <outlet property="balanceLabel" destination="dAL-w9-cfz" id="Ran-bS-inU"/>
@@ -1768,11 +1772,13 @@ tipper will send a Bitcoin tip.</string>
                         <outlet property="headerContainer" destination="Wvi-RS-UTW" id="sMN-oG-DQa"/>
                         <segue destination="nkS-N6-z7z" kind="unwind" identifier="ExitToHomeFromNotifications" unwindAction="done:sender:" id="rDD-sO-4NU"/>
                         <segue destination="Y7K-LD-5z7" kind="unwind" identifier="ExitToTipDetailsFromNotifications" unwindAction="done:sender:" id="rA8-yU-kib"/>
+                        <segue destination="qBg-iZ-CkH" kind="custom" identifier="TipDetails" customClass="TipDetailSegue" customModule="Tipper" customModuleProvider="target" id="AzC-6K-ylY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wvb-BA-QJl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="rIO-sn-ad2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-34" y="1706"/>
+            <point key="canvasLocation" x="284" y="1668"/>
         </scene>
         <!--Notifications Table Controller-->
         <scene sceneID="MO9-aj-5ye">
@@ -1788,7 +1794,7 @@ tipper will send a Bitcoin tip.</string>
                                 <rect key="frame" x="0.0" y="22" width="414" height="92"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tl5-jp-ON5" id="8j9-Rb-sSN">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="91"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="91.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transaction-confirmed" translatesAutoresizingMaskIntoConstraints="NO" id="JYc-IW-cGt">
@@ -1860,9 +1866,6 @@ tipper will send a Bitcoin tip.</string>
                         </connections>
                     </tableView>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-                    <connections>
-                        <segue destination="qBg-iZ-CkH" kind="custom" identifier="TipDetails" customClass="TipDetailSegue" customModule="Tipper" customModuleProvider="target" id="cgI-Zo-dIW"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i5Y-cD-YnT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1937,7 +1940,7 @@ tipper will send a Bitcoin tip.</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1536" y="-796"/>
+            <point key="canvasLocation" x="-2520" y="-782"/>
         </scene>
         <!--Onboard Part Three-->
         <scene sceneID="UiY-j1-XhO">
@@ -2090,7 +2093,7 @@ tipper will send a Bitcoin tip.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1of-LJ-Qt5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-222" y="-796"/>
+            <point key="canvasLocation" x="-1156" y="-782"/>
         </scene>
         <!--Onboard Part Four-->
         <scene sceneID="IA1-XO-Z10">
@@ -2190,7 +2193,7 @@ tipper will send a Bitcoin tip.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cvg-cf-JRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="430" y="-796"/>
+            <point key="canvasLocation" x="-514" y="-782"/>
         </scene>
         <!--Onboard Part Five-->
         <scene sceneID="rEa-07-aZR">
@@ -2303,7 +2306,7 @@ tipper will send a Bitcoin tip.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H7a-C8-7LW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1104" y="-796"/>
+            <point key="canvasLocation" x="124" y="-782"/>
         </scene>
     </scenes>
     <resources>
@@ -2323,9 +2326,9 @@ tipper will send a Bitcoin tip.</string>
         <image name="up-arrow" width="27" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Qgl-S3-h4Q"/>
-        <segue reference="cgI-Zo-dIW"/>
+        <segue reference="AzC-6K-ylY"/>
         <segue reference="LSM-VD-bA7"/>
-        <segue reference="Qcf-N3-O5L"/>
+        <segue reference="Qgl-S3-h4Q"/>
+        <segue reference="ejE-aS-Apy"/>
     </inferredMetricsTieBreakers>
 </document>

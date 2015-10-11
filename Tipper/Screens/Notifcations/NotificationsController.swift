@@ -42,6 +42,12 @@ class NotificationsController: UIViewController, ContainerDelegate, CustomSeguea
             vc.market = market
             vc.activeScreenType = .NotificationsScreen
             vc.containerDelegate = self
+        } else if segue.identifier == "TipDetails" {
+            let vc = segue.destinationViewController as! TipDetailsViewController
+            vc.managedObjectContext = managedObjectContext
+            vc.currentUser = currentUser
+            vc.market = market
+            vc.notification = sender as? Notification
         }
     }
     
@@ -59,6 +65,11 @@ class NotificationsController: UIViewController, ContainerDelegate, CustomSeguea
     @IBAction func didTapClose() {
         log.verbose("")
         self.performSegueWithIdentifier(exitSegueIdentifier, sender: self)
+    }
+    
+    @IBAction func done(segue: UIStoryboardSegue, sender: AnyObject?) {
+        log.verbose("\(className)::\(__FUNCTION__) identifier: \(segue.identifier) \(segue.sourceViewController)")
+        
     }
 
 }
