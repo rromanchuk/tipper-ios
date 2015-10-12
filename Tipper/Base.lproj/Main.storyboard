@@ -339,7 +339,7 @@ tipper will send a Bitcoin tip.</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6dN-4r-PiX" userLabel="Header Container">
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6dN-4r-PiX" userLabel="Header Container">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
                                 <animations/>
                                 <constraints>
@@ -349,7 +349,7 @@ tipper will send a Bitcoin tip.</string>
                                     <segue destination="x99-hT-nup" kind="embed" identifier="AccountHeaderEmbed" id="ejE-aS-Apy"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dpK-my-TPF">
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dpK-my-TPF">
                                 <rect key="frame" x="0.0" y="78" width="414" height="658"/>
                                 <animations/>
                                 <connections>
@@ -943,14 +943,14 @@ tipper will send a Bitcoin tip.</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MNf-jn-wm0">
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MNf-jn-wm0">
                                 <rect key="frame" x="0.0" y="78" width="414" height="658"/>
                                 <animations/>
                                 <connections>
                                     <segue destination="3XR-c5-WyO" kind="embed" identifier="TipDetailEmbed" id="Vgs-Pv-FVS"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RYd-7d-GrV">
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RYd-7d-GrV">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
                                 <animations/>
                                 <constraints>
@@ -1724,7 +1724,7 @@ tipper will send a Bitcoin tip.</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wvi-RS-UTW" userLabel="Header Container">
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wvi-RS-UTW" userLabel="Header Container">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
                                 <animations/>
                                 <constraints>
@@ -1734,7 +1734,7 @@ tipper will send a Bitcoin tip.</string>
                                     <segue destination="x99-hT-nup" kind="embed" identifier="NotificationHeaderEmbed" id="Qcf-N3-O5L"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nA8-2f-hfA">
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nA8-2f-hfA">
                                 <rect key="frame" x="0.0" y="78" width="414" height="658"/>
                                 <animations/>
                                 <connections>
@@ -1795,7 +1795,7 @@ tipper will send a Bitcoin tip.</string>
                                 <rect key="frame" x="0.0" y="22" width="414" height="92"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tl5-jp-ON5" id="8j9-Rb-sSN">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="91.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="91"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transaction-confirmed" translatesAutoresizingMaskIntoConstraints="NO" id="JYc-IW-cGt">
@@ -2074,8 +2074,8 @@ tipper will send a Bitcoin tip.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lr4-JI-HUd">
-                                <rect key="frame" x="534" y="562" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lr4-JI-HUd">
+                                <rect key="frame" x="550" y="565" width="30" height="27"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
                                 <state key="normal" title="skip">
@@ -2095,6 +2095,7 @@ tipper will send a Bitcoin tip.</string>
                             <constraint firstItem="y84-Q6-1b2" firstAttribute="top" secondItem="Bkf-s0-mg8" secondAttribute="bottom" constant="25" id="BUy-B2-GHd"/>
                             <constraint firstItem="CNa-zf-sZE" firstAttribute="centerX" secondItem="Pv4-p2-Ql1" secondAttribute="centerX" id="a7V-Of-h1e"/>
                             <constraint firstItem="y84-Q6-1b2" firstAttribute="centerX" secondItem="Pv4-p2-Ql1" secondAttribute="centerX" id="dbM-uv-iR1"/>
+                            <constraint firstItem="AAH-2c-F4O" firstAttribute="top" secondItem="Lr4-JI-HUd" secondAttribute="bottom" constant="8" id="iA4-ca-er2"/>
                             <constraint firstItem="Bkf-s0-mg8" firstAttribute="top" secondItem="jUc-h1-qjU" secondAttribute="bottom" constant="12" id="s6R-BB-xGd"/>
                         </constraints>
                     </view>
