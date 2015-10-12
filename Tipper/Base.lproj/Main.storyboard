@@ -339,8 +339,8 @@ tipper will send a Bitcoin tip.</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6dN-4r-PiX" userLabel="Header Container">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6dN-4r-PiX" userLabel="Header Container">
+                                <rect key="frame" x="0.0" y="20" width="414" height="78"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="78" id="94b-nW-dQP"/>
@@ -349,8 +349,8 @@ tipper will send a Bitcoin tip.</string>
                                     <segue destination="x99-hT-nup" kind="embed" identifier="AccountHeaderEmbed" id="ejE-aS-Apy"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dpK-my-TPF">
-                                <rect key="frame" x="0.0" y="78" width="414" height="658"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dpK-my-TPF">
+                                <rect key="frame" x="0.0" y="98" width="414" height="638"/>
                                 <animations/>
                                 <connections>
                                     <segue destination="UEU-XD-8Ny" kind="embed" identifier="AccountEmbed" id="7dT-xN-NwC"/>
@@ -943,15 +943,15 @@ tipper will send a Bitcoin tip.</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MNf-jn-wm0">
-                                <rect key="frame" x="0.0" y="78" width="414" height="658"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MNf-jn-wm0">
+                                <rect key="frame" x="0.0" y="98" width="414" height="638"/>
                                 <animations/>
                                 <connections>
                                     <segue destination="3XR-c5-WyO" kind="embed" identifier="TipDetailEmbed" id="Vgs-Pv-FVS"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RYd-7d-GrV">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RYd-7d-GrV">
+                                <rect key="frame" x="0.0" y="20" width="414" height="78"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="78" id="sN8-5Z-SJ0"/>
@@ -1724,8 +1724,8 @@ tipper will send a Bitcoin tip.</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wvi-RS-UTW" userLabel="Header Container">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wvi-RS-UTW" userLabel="Header Container">
+                                <rect key="frame" x="0.0" y="20" width="414" height="78"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="78" id="igB-0r-dBY"/>
@@ -1734,8 +1734,8 @@ tipper will send a Bitcoin tip.</string>
                                     <segue destination="x99-hT-nup" kind="embed" identifier="NotificationHeaderEmbed" id="Qcf-N3-O5L"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nA8-2f-hfA">
-                                <rect key="frame" x="0.0" y="78" width="414" height="658"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nA8-2f-hfA">
+                                <rect key="frame" x="0.0" y="98" width="414" height="638"/>
                                 <animations/>
                                 <connections>
                                     <segue destination="RIO-dg-bBv" kind="embed" identifier="NotificationsEmbed" id="CPb-sV-Iyr"/>
@@ -2340,9 +2340,9 @@ tipper will send a Bitcoin tip.</string>
         <image name="up-arrow" width="27" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Qgl-S3-h4Q"/>
         <segue reference="AzC-6K-ylY"/>
         <segue reference="LSM-VD-bA7"/>
-        <segue reference="Qgl-S3-h4Q"/>
-        <segue reference="ejE-aS-Apy"/>
+        <segue reference="Qcf-N3-O5L"/>
     </inferredMetricsTieBreakers>
 </document>
