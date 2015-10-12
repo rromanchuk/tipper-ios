@@ -179,5 +179,10 @@ class OnboardPartThree: UIViewController, PKPaymentAuthorizationViewControllerDe
         log.verbose("")
         didTapPay(sender)
     }
+    
+    
+    @IBAction func didTapSkip(sender: UIButton) {
+        (parentViewController as! OnboardingPageControllerViewController).autoAdvance()
+    }
 
 }

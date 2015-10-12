@@ -43,6 +43,7 @@
             <string>Bariol-Regular</string>
             <string>Bariol-Regular</string>
             <string>Bariol-Regular</string>
+            <string>Bariol-Regular</string>
         </mutableArray>
         <mutableArray key="Bariol_Bold.otf">
             <string>Bariol-Bold</string>
@@ -2073,11 +2074,23 @@ tipper will send a Bitcoin tip.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lr4-JI-HUd">
+                                <rect key="frame" x="534" y="562" width="46" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
+                                <state key="normal" title="skip">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapSkip:" destination="gFe-5C-kEF" eventType="touchUpInside" id="WJl-7q-mbg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.35686274509999999" green="0.73725490199999999" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Bkf-s0-mg8" firstAttribute="centerX" secondItem="Pv4-p2-Ql1" secondAttribute="centerX" id="0Lw-E7-0RU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Lr4-JI-HUd" secondAttribute="trailing" id="4ye-9h-LAO"/>
                             <constraint firstItem="CNa-zf-sZE" firstAttribute="centerY" secondItem="Pv4-p2-Ql1" secondAttribute="centerY" constant="100" id="A2g-7H-LBH"/>
                             <constraint firstItem="y84-Q6-1b2" firstAttribute="top" secondItem="Bkf-s0-mg8" secondAttribute="bottom" constant="25" id="BUy-B2-GHd"/>
                             <constraint firstItem="CNa-zf-sZE" firstAttribute="centerX" secondItem="Pv4-p2-Ql1" secondAttribute="centerX" id="a7V-Of-h1e"/>
