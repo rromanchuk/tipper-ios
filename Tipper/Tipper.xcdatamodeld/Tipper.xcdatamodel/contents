@@ -37,7 +37,7 @@
         <attribute name="toUserId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="tweetId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="txid" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="notification" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favorite" inverseName="notification" inverseEntity="Favorite" syncable="YES"/>
+        <relationship name="notification" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Notification" inverseName="favorite" inverseEntity="Notification" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CurrentUser" inverseName="favorites" inverseEntity="CurrentUser" syncable="YES"/>
     </entity>
     <entity name="Market" representedClassName="Tipper.Market" syncable="YES">
@@ -56,7 +56,7 @@
         <attribute name="tipId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userId" attributeType="String" indexed="YES" syncable="YES"/>
-        <relationship name="favorite" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favorite" syncable="YES"/>
+        <relationship name="favorite" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favorite" inverseName="notification" inverseEntity="Favorite" syncable="YES"/>
     </entity>
     <entity name="Settings" representedClassName="Tipper.Settings" syncable="YES">
         <attribute name="feeAmount" optional="YES" attributeType="String" defaultValueString="0.00001" syncable="YES"/>

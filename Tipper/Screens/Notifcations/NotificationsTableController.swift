@@ -66,7 +66,7 @@ class NotificationsTableController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let notification = fetchedResultsController.objectAtIndexPath(indexPath) as! Notification
         log.verbose("notification: \(notification)")
-        if let _ = notification.tipId, _ = notification.tipFromUserId where notification.type == "user_sent_tip" {
+        if let _ = notification.tipId, _ = notification.tipFromUserId where notification.type == "user_sent_tip" || notification.type == "user_received_tip" {
             self.parentViewController?.performSegueWithIdentifier("TipDetails", sender: notification)
         }
 
