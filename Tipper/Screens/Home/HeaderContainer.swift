@@ -23,7 +23,6 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
     var market: Market!
-    var showBalanceBTC = false
     var activeScreenType: ActiveScreenType = .Unknown
     weak var containerDelegate : ContainerDelegate?
 

@@ -17,11 +17,9 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
     var market: Market!
-    var showBalanceBTC = false
 
     let className = "HomeController"
     let tweetTableReuseIdentifier = "TipCell"
-    let transitionManager = TransitionManager()
     var headerContainerController: HeaderContainer!
 
     weak var refreshDelegate: RefreshControlDelegate?
@@ -74,7 +72,6 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
             vc.activeScreenType = .Unknown
             refreshDelegate = vc
             self.headerContainerController = vc
-            //vc.favorite = favorite
         } else if segue.identifier == "FeedEmbed" {
             let vc = segue.destinationViewController as! TipsController
             vc.managedObjectContext = managedObjectContext
@@ -94,8 +91,6 @@ class HomeController: UIViewController, NotificationMessagesDelegate, UITableVie
             vc.exitSegueIdentifier = "ExitToHomeFromAccount"
         }
     }
-    
-
 
     func backToSplash() {
         log.verbose("")

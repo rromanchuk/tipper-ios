@@ -40,6 +40,7 @@ class CustomModalSegue: UIStoryboardSegue {
             sourceVc?.headerContainerController.setHeaderTitle("Notifications")
         } else if identifier == "DidTapAccountSegue" {
             sourceVc?.headerContainerController.setHeaderTitle("Account")
+            sourceVc?.headerContainerController.notificationBadge.hidden = true
         }
         
         
