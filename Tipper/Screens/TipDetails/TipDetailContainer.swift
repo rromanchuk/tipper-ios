@@ -63,9 +63,6 @@ class TipDetailContainer: UITableViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-//        if !isLoaded {
-//            SwiftSpinner.show("Loading tip...")
-//        }
     }
     
     override func viewWillDisappear(animated: Bool) {
