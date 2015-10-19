@@ -1000,7 +1000,7 @@ tipper will send a Bitcoin tip.</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="QOW-BQ-MA6">
                                 <cells>
@@ -1130,23 +1130,47 @@ tipper will send a Bitcoin tip.</string>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TipDetailCell" rowHeight="680" id="Ve4-wX-jq0">
-                                        <rect key="frame" x="0.0" y="70" width="414" height="680"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="253" id="3eV-VW-5yp">
+                                        <rect key="frame" x="0.0" y="70" width="414" height="253"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ve4-wX-jq0" id="Kpc-ho-zf3">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="680"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3eV-VW-5yp" id="Xum-DS-U4J">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="253"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JuM-IQ-xeF" customClass="TWTRTweetView">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AFS-eT-BMR" customClass="TWTRTweetView">
                                                     <rect key="frame" x="16" y="18" width="382" height="213"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="213" id="E9V-gc-Xbs"/>
+                                                        <constraint firstAttribute="height" constant="213" id="X2x-ND-DTd"/>
                                                     </constraints>
                                                 </view>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="AFS-eT-BMR" firstAttribute="top" secondItem="Xum-DS-U4J" secondAttribute="topMargin" constant="10" id="El8-mb-ukF"/>
+                                                <constraint firstItem="AFS-eT-BMR" firstAttribute="leading" secondItem="Xum-DS-U4J" secondAttribute="leadingMargin" constant="8" id="Th2-bP-lOc"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="AFS-eT-BMR" secondAttribute="trailing" constant="8" id="Zhi-Z0-P3D"/>
+                                                <constraint firstItem="AFS-eT-BMR" firstAttribute="leading" secondItem="Xum-DS-U4J" secondAttribute="leadingMargin" constant="39" id="zHQ-w3-HuT"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="zHQ-w3-HuT"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TipDetailCell" rowHeight="327" id="Ve4-wX-jq0">
+                                        <rect key="frame" x="0.0" y="323" width="414" height="327"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ve4-wX-jq0" id="Kpc-ho-zf3">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="327"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WZJ-Mn-tTe">
-                                                    <rect key="frame" x="16" y="261" width="382" height="290"/>
+                                                    <rect key="frame" x="16" y="38" width="382" height="290"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DZN-dH-Qw6">
                                                             <rect key="frame" x="8" y="8" width="366" height="90"/>
@@ -1213,19 +1237,10 @@ tipper will send a Bitcoin tip.</string>
                                             <animations/>
                                             <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="JuM-IQ-xeF" secondAttribute="trailing" constant="8" id="6aq-qc-kQU"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="WZJ-Mn-tTe" secondAttribute="trailing" constant="8" id="7Hv-dO-bGt"/>
-                                                <constraint firstItem="JuM-IQ-xeF" firstAttribute="leading" secondItem="Kpc-ho-zf3" secondAttribute="leadingMargin" constant="39" id="7TC-Uz-EFq"/>
-                                                <constraint firstItem="WZJ-Mn-tTe" firstAttribute="top" secondItem="JuM-IQ-xeF" secondAttribute="bottom" constant="30" id="8Pi-yQ-Qib"/>
-                                                <constraint firstItem="JuM-IQ-xeF" firstAttribute="top" secondItem="Kpc-ho-zf3" secondAttribute="topMargin" constant="10" id="C2q-m2-L4I"/>
                                                 <constraint firstItem="WZJ-Mn-tTe" firstAttribute="leading" secondItem="Kpc-ho-zf3" secondAttribute="leadingMargin" constant="8" id="ORI-4h-FCp"/>
-                                                <constraint firstItem="JuM-IQ-xeF" firstAttribute="leading" secondItem="Kpc-ho-zf3" secondAttribute="leadingMargin" constant="8" id="emk-7v-lbe"/>
+                                                <constraint firstItem="WZJ-Mn-tTe" firstAttribute="top" secondItem="Kpc-ho-zf3" secondAttribute="topMargin" constant="30" id="fVF-bd-j9m"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="7TC-Uz-EFq"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
@@ -1246,7 +1261,7 @@ tipper will send a Bitcoin tip.</string>
                         <outlet property="tipHeaderLabel" destination="60G-HZ-To5" id="dxt-Cb-hsO"/>
                         <outlet property="tipLabel" destination="2WX-eU-6Uo" id="JLk-py-Sff"/>
                         <outlet property="transactionIdLabel" destination="XxU-eD-4LF" id="C0c-KC-kWu"/>
-                        <outlet property="tweetView" destination="JuM-IQ-xeF" id="giq-Tn-sF1"/>
+                        <outlet property="tweetView" destination="AFS-eT-BMR" id="ixg-CH-Pxp"/>
                         <outlet property="usernameLabel" destination="VrX-Dy-Zto" id="kBQ-ty-iMZ"/>
                     </connections>
                 </tableViewController>
