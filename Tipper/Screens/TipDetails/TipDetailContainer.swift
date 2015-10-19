@@ -18,6 +18,7 @@ class TipDetailContainer: UITableViewController {
     
     private var isLoaded = false
     private var transactionRefreshedFromServer = false
+    private var tweet: TWTRTweet?
 
     lazy var transaction: Transaction? = {
         return Transaction.entityWithId(Transaction.self, context: self.managedObjectContext, lookupProperty: "txid", lookupValue: self.favorite!.txid!)
@@ -39,6 +40,10 @@ class TipDetailContainer: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 290
+        
+
         log.verbose("")
         if let notification = notification {
             loadFavoriteFromNotification(notification, callback: { () -> Void in
@@ -67,6 +72,7 @@ class TipDetailContainer: UITableViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        self.tableView.reloadData()
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -124,6 +130,7 @@ class TipDetailContainer: UITableViewController {
         client.loadTweetWithID(favorite.tweetId) { tweet, error in
             
             if let t = tweet {
+                self.tweet = t
                 self.tweetView.configureWithTweet(t)
                 self.setupTweetInfo(t, favorite: favorite)
 
@@ -173,9 +180,7 @@ class TipDetailContainer: UITableViewController {
 
     @IBAction func didTapTxidLabel(sender: UITapGestureRecognizer) {
         log.verbose("")
-        if let txid = favorite?.txid {
-            UIApplication.sharedApplication().openURL(NSURL(string: "https://blockchain.info/tx/\(txid)")!)
-        }
+
     }
 
     func setupTipAmount() {
@@ -187,6 +192,33 @@ class TipDetailContainer: UITableViewController {
             labelAttributes.addAttribute(NSKernAttributeName, value:-5.0, range: NSMakeRange(0, 1))
             labelAttributes.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSMakeRange(0, string.characters.count))
             tipLabel.attributedText = labelAttributes;
+        }
+    }
+
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+
+        if indexPath.row == 0 {
+            return 70
+        } else if indexPath.row == 2 {
+            return 290
+        } else {
+            return UITableViewAutomaticDimension
+        }
+
+    }
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        log.verbose("tweet: \(tweet), userId:\(tweet?.author.userID)")
+        if let tweetId = favorite?.tweetId where indexPath.row == 1 {
+            if UIApplication.sharedApplication().canOpenURL(NSURL(string: "twitter://")!) {
+                UIApplication.sharedApplication().openURL(NSURL(string: "twitter://status?id=\(tweetId)")!)
+            } else if let tweet = tweet {
+                UIApplication.sharedApplication().openURL(tweet.permalink)
+            }
+        } else if indexPath.row == 2 {
+            if let txid = favorite?.txid {
+                UIApplication.sharedApplication().openURL(NSURL(string: "https://blockchain.info/tx/\(txid)")!)
+            }
         }
     }
 

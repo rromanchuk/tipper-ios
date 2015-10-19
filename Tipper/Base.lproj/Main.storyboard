@@ -1152,6 +1152,7 @@ tipper will send a Bitcoin tip.</string>
                                                 <constraint firstItem="AFS-eT-BMR" firstAttribute="top" secondItem="Xum-DS-U4J" secondAttribute="topMargin" constant="10" id="El8-mb-ukF"/>
                                                 <constraint firstItem="AFS-eT-BMR" firstAttribute="leading" secondItem="Xum-DS-U4J" secondAttribute="leadingMargin" constant="8" id="Th2-bP-lOc"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="AFS-eT-BMR" secondAttribute="trailing" constant="8" id="Zhi-Z0-P3D"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="AFS-eT-BMR" secondAttribute="bottom" constant="14" id="pEC-Vr-Smu"/>
                                                 <constraint firstItem="AFS-eT-BMR" firstAttribute="leading" secondItem="Xum-DS-U4J" secondAttribute="leadingMargin" constant="39" id="zHQ-w3-HuT"/>
                                             </constraints>
                                             <variation key="default">
@@ -1162,7 +1163,7 @@ tipper will send a Bitcoin tip.</string>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TipDetailCell" rowHeight="327" id="Ve4-wX-jq0">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TipDetailCell" rowHeight="327" id="Ve4-wX-jq0">
                                         <rect key="frame" x="0.0" y="323" width="414" height="327"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ve4-wX-jq0" id="Kpc-ho-zf3">
@@ -1170,7 +1171,7 @@ tipper will send a Bitcoin tip.</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WZJ-Mn-tTe">
-                                                    <rect key="frame" x="16" y="38" width="382" height="290"/>
+                                                    <rect key="frame" x="16" y="16" width="382" height="290"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DZN-dH-Qw6">
                                                             <rect key="frame" x="8" y="8" width="366" height="90"/>
@@ -1239,7 +1240,7 @@ tipper will send a Bitcoin tip.</string>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="WZJ-Mn-tTe" secondAttribute="trailing" constant="8" id="7Hv-dO-bGt"/>
                                                 <constraint firstItem="WZJ-Mn-tTe" firstAttribute="leading" secondItem="Kpc-ho-zf3" secondAttribute="leadingMargin" constant="8" id="ORI-4h-FCp"/>
-                                                <constraint firstItem="WZJ-Mn-tTe" firstAttribute="top" secondItem="Kpc-ho-zf3" secondAttribute="topMargin" constant="30" id="fVF-bd-j9m"/>
+                                                <constraint firstItem="WZJ-Mn-tTe" firstAttribute="top" secondItem="Kpc-ho-zf3" secondAttribute="topMargin" constant="8" id="fVF-bd-j9m"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
@@ -1266,12 +1267,6 @@ tipper will send a Bitcoin tip.</string>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zvh-p8-0CT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="bcn-wg-Izh">
-                    <connections>
-                        <action selector="didTapTxidLabel:" destination="3XR-c5-WyO" id="FNL-ik-sWW"/>
-                        <outlet property="delegate" destination="3XR-c5-WyO" id="6YA-PC-nh1"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1870" y="145"/>
         </scene>
