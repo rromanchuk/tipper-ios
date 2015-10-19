@@ -35,6 +35,7 @@ class TipDetailContainer: UITableViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     
+    @IBOutlet weak var blockchainContainer: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,9 @@ class TipDetailContainer: UITableViewController {
         } else if let _ = favorite {
             setup()
         }
+
+        blockchainContainer.layer.cornerRadius = 5
+        blockchainContainer.layer.masksToBounds = true
     }
     
     func setup() {
@@ -64,7 +68,7 @@ class TipDetailContainer: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
     }
-    
+
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         SwiftSpinner.hide()

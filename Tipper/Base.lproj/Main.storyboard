@@ -42,10 +42,6 @@
             <string>Bariol-Regular</string>
             <string>Bariol-Regular</string>
             <string>Bariol-Regular</string>
-            <string>Bariol-Regular</string>
-            <string>Bariol-Regular</string>
-            <string>Bariol-Regular</string>
-            <string>Bariol-Regular</string>
         </mutableArray>
         <mutableArray key="Bariol_Bold.otf">
             <string>Bariol-Bold</string>
@@ -1152,8 +1148,8 @@ tipper will send a Bitcoin tip.</string>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WZJ-Mn-tTe">
                                                     <rect key="frame" x="16" y="261" width="382" height="290"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="DZN-dH-Qw6">
-                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="66"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DZN-dH-Qw6">
+                                                            <rect key="frame" x="8" y="8" width="366" height="90"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blockchain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TwU-b5-mAY">
                                                                     <rect key="frame" x="0.0" y="0.0" width="84" height="21"/>
@@ -1163,31 +1159,31 @@ tipper will send a Bitcoin tip.</string>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17uSiLnLUXUMKuQFNbdLQQQfaAWQhFHcM9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XxU-eD-4LF">
-                                                                    <rect key="frame" x="0.0" y="21" width="282" height="15"/>
+                                                                    <rect key="frame" x="0.0" y="29" width="282" height="15"/>
                                                                     <animations/>
                                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
-                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200 Confirmations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKn-ZR-9v4">
-                                                                    <rect key="frame" x="0.0" y="36" width="114" height="15"/>
+                                                                    <rect key="frame" x="0.0" y="52" width="114" height="15"/>
                                                                     <animations/>
                                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
-                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network propogation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="moi-sS-M98">
-                                                                    <rect key="frame" x="0.0" y="51" width="124" height="15"/>
+                                                                    <rect key="frame" x="0.0" y="75" width="124" height="15"/>
                                                                     <animations/>
                                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
-                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                             <animations/>
                                                         </stackView>
                                                         <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lm5-8H-fiq">
-                                                            <rect key="frame" x="0.0" y="66" width="382" height="224"/>
+                                                            <rect key="frame" x="0.0" y="98" width="382" height="192"/>
                                                             <animations/>
                                                         </mapView>
                                                     </subviews>
@@ -1197,15 +1193,18 @@ tipper will send a Bitcoin tip.</string>
                                                         <constraint firstItem="DZN-dH-Qw6" firstAttribute="width" secondItem="WZJ-Mn-tTe" secondAttribute="width" id="AGb-BZ-roA"/>
                                                         <constraint firstAttribute="bottom" secondItem="Lm5-8H-fiq" secondAttribute="bottom" id="BdW-Bd-Z8F"/>
                                                         <constraint firstItem="Lm5-8H-fiq" firstAttribute="top" secondItem="DZN-dH-Qw6" secondAttribute="bottom" id="FWW-VC-M2Z"/>
+                                                        <constraint firstItem="DZN-dH-Qw6" firstAttribute="leading" secondItem="WZJ-Mn-tTe" secondAttribute="leading" constant="8" id="TBw-Cs-PIv"/>
                                                         <constraint firstItem="Lm5-8H-fiq" firstAttribute="centerX" secondItem="WZJ-Mn-tTe" secondAttribute="centerX" id="Y8o-RK-Bgk"/>
                                                         <constraint firstAttribute="bottom" secondItem="DZN-dH-Qw6" secondAttribute="bottom" id="Z7w-6I-KEn"/>
-                                                        <constraint firstItem="DZN-dH-Qw6" firstAttribute="top" secondItem="WZJ-Mn-tTe" secondAttribute="top" id="ftl-wK-m2J"/>
+                                                        <constraint firstItem="DZN-dH-Qw6" firstAttribute="top" secondItem="WZJ-Mn-tTe" secondAttribute="top" constant="8" id="ftl-wK-m2J"/>
+                                                        <constraint firstAttribute="trailing" secondItem="DZN-dH-Qw6" secondAttribute="trailing" constant="8" id="odk-7q-1SO"/>
                                                         <constraint firstAttribute="height" constant="290" id="utJ-0S-wI6"/>
                                                         <constraint firstItem="Lm5-8H-fiq" firstAttribute="width" secondItem="WZJ-Mn-tTe" secondAttribute="width" id="yRs-7O-bPv"/>
                                                         <constraint firstItem="DZN-dH-Qw6" firstAttribute="centerX" secondItem="WZJ-Mn-tTe" secondAttribute="centerX" id="yUW-x0-V8f"/>
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="constraints">
+                                                            <exclude reference="AGb-BZ-roA"/>
                                                             <exclude reference="Z7w-6I-KEn"/>
                                                         </mask>
                                                     </variation>
@@ -1240,9 +1239,13 @@ tipper will send a Bitcoin tip.</string>
                     </tableView>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="blockchainContainer" destination="WZJ-Mn-tTe" id="Nfo-Zn-GGN"/>
+                        <outlet property="confirmationsLabel" destination="jKn-ZR-9v4" id="iZE-kc-blc"/>
+                        <outlet property="mapView" destination="Lm5-8H-fiq" id="62X-Qs-rCC"/>
                         <outlet property="profileImageView" destination="ACe-lP-FW5" id="7fM-Bc-S1S"/>
                         <outlet property="tipHeaderLabel" destination="60G-HZ-To5" id="dxt-Cb-hsO"/>
                         <outlet property="tipLabel" destination="2WX-eU-6Uo" id="JLk-py-Sff"/>
+                        <outlet property="transactionIdLabel" destination="XxU-eD-4LF" id="C0c-KC-kWu"/>
                         <outlet property="tweetView" destination="JuM-IQ-xeF" id="giq-Tn-sF1"/>
                         <outlet property="usernameLabel" destination="VrX-Dy-Zto" id="kBQ-ty-iMZ"/>
                     </connections>
@@ -1256,102 +1259,6 @@ tipper will send a Bitcoin tip.</string>
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1870" y="145"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="8aQ-mC-fsH">
-            <objects>
-                <viewController id="sw6-NI-blD" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3O7-Xa-PuF"/>
-                        <viewControllerLayoutGuide type="bottom" id="aG0-ta-JMa"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="TqT-TF-3Ls">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="5Gq-gy-YVs">
-                                <rect key="frame" x="20" y="61" width="374" height="225"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blockchain:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6TI-K5-zcm">
-                                        <rect key="frame" x="0.0" y="0.0" width="67" height="27"/>
-                                        <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="27" id="6bf-f0-Q5C"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="251" text="17uSiLnLUXUMKuQFNbdLQQQfaAWQhFHcM9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1TW-ie-uEs">
-                                        <rect key="frame" x="0.0" y="33" width="226" height="22"/>
-                                        <animations/>
-                                        <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="22" id="een-ht-olV"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="12"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200 Confirmations" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dmh-vQ-e08">
-                                        <rect key="frame" x="0.0" y="61" width="91" height="21"/>
-                                        <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="Hs3-KG-sax"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="12"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network Propogation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LN-tl-4HW">
-                                        <rect key="frame" x="0.0" y="88" width="99" height="0.0"/>
-                                        <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" id="5Pk-ad-NyU"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="12"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="tV7-tr-wTc">
-                                        <rect key="frame" x="0.0" y="94" width="374" height="131"/>
-                                        <animations/>
-                                    </mapView>
-                                </subviews>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="tV7-tr-wTc" secondAttribute="trailing" constant="54" id="MVh-Av-1EQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="tV7-tr-wTc" secondAttribute="trailing" constant="54" id="Yw3-wG-XGI"/>
-                                    <constraint firstItem="tV7-tr-wTc" firstAttribute="width" secondItem="5Gq-gy-YVs" secondAttribute="width" id="egn-HT-F4E"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="MVh-Av-1EQ"/>
-                                        <exclude reference="Yw3-wG-XGI"/>
-                                    </mask>
-                                </variation>
-                            </stackView>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="5Gq-gy-YVs" firstAttribute="leading" secondItem="TqT-TF-3Ls" secondAttribute="leadingMargin" id="21Q-LP-xvy"/>
-                            <constraint firstItem="aG0-ta-JMa" firstAttribute="top" secondItem="5Gq-gy-YVs" secondAttribute="bottom" constant="472" id="3pR-Tu-ZAS"/>
-                            <constraint firstItem="5Gq-gy-YVs" firstAttribute="trailing" secondItem="TqT-TF-3Ls" secondAttribute="trailingMargin" id="ENl-1M-p8D"/>
-                            <constraint firstItem="5Gq-gy-YVs" firstAttribute="top" secondItem="3O7-Xa-PuF" secondAttribute="bottom" constant="41" id="EY4-IR-jjt"/>
-                            <constraint firstItem="aG0-ta-JMa" firstAttribute="top" secondItem="5Gq-gy-YVs" secondAttribute="bottom" constant="450" id="wFZ-HE-rBJ"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="3pR-Tu-ZAS"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zlT-rc-Fb4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2407" y="131"/>
         </scene>
         <!--Header Container-->
         <scene sceneID="4ed-D0-s7K">
