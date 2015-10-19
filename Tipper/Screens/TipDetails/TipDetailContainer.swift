@@ -9,7 +9,7 @@
 import UIKit
 import TwitterKit
 import MapKit
-class TipDetailContainer: UITableViewController {
+class TipDetailContainer: UITableViewController, TWTRTweetViewDelegate {
     let className = "TipDetailContainer"
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
@@ -42,6 +42,7 @@ class TipDetailContainer: UITableViewController {
         super.viewDidLoad()
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 290
+        tweetView.delegate = self
         
 
         log.verbose("")
@@ -222,5 +223,11 @@ class TipDetailContainer: UITableViewController {
         }
     }
 
+
+    // PRAGMA MARK: TWTRTweetViewDelegate methods
+
+    func tweetView(tweetView: TWTRTweetView, didSelectTweet tweet: TWTRTweet) {
+        tableView(tableView, didSelectRowAtIndexPath: NSIndexPath(forRow: 1, inSection: 0))
+    }
 
 }
