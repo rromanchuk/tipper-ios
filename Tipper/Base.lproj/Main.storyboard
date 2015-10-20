@@ -1171,10 +1171,10 @@ tipper will send a Bitcoin tip.</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WZJ-Mn-tTe">
-                                                    <rect key="frame" x="16" y="16" width="382" height="290"/>
+                                                    <rect key="frame" x="16" y="8" width="382" height="290"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DZN-dH-Qw6">
-                                                            <rect key="frame" x="8" y="8" width="366" height="90"/>
+                                                            <rect key="frame" x="8" y="8" width="366" height="99"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blockchain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TwU-b5-mAY">
                                                                     <rect key="frame" x="0.0" y="0.0" width="84" height="21"/>
@@ -1184,21 +1184,21 @@ tipper will send a Bitcoin tip.</string>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17uSiLnLUXUMKuQFNbdLQQQfaAWQhFHcM9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XxU-eD-4LF">
-                                                                    <rect key="frame" x="0.0" y="29" width="282" height="15"/>
+                                                                    <rect key="frame" x="0.0" y="29" width="321" height="18"/>
                                                                     <animations/>
                                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
                                                                     <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200 Confirmations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKn-ZR-9v4">
-                                                                    <rect key="frame" x="0.0" y="52" width="114" height="15"/>
+                                                                    <rect key="frame" x="0.0" y="55" width="124" height="18"/>
                                                                     <animations/>
                                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
                                                                     <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network propogation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="moi-sS-M98">
-                                                                    <rect key="frame" x="0.0" y="75" width="124" height="15"/>
+                                                                    <rect key="frame" x="0.0" y="81" width="142" height="18"/>
                                                                     <animations/>
                                                                     <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="15"/>
                                                                     <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
@@ -1208,7 +1208,7 @@ tipper will send a Bitcoin tip.</string>
                                                             <animations/>
                                                         </stackView>
                                                         <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lm5-8H-fiq">
-                                                            <rect key="frame" x="0.0" y="98" width="382" height="192"/>
+                                                            <rect key="frame" x="0.0" y="107" width="382" height="183"/>
                                                             <animations/>
                                                         </mapView>
                                                     </subviews>
@@ -1240,7 +1240,7 @@ tipper will send a Bitcoin tip.</string>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="WZJ-Mn-tTe" secondAttribute="trailing" constant="8" id="7Hv-dO-bGt"/>
                                                 <constraint firstItem="WZJ-Mn-tTe" firstAttribute="leading" secondItem="Kpc-ho-zf3" secondAttribute="leadingMargin" constant="8" id="ORI-4h-FCp"/>
-                                                <constraint firstItem="WZJ-Mn-tTe" firstAttribute="top" secondItem="Kpc-ho-zf3" secondAttribute="topMargin" constant="8" id="fVF-bd-j9m"/>
+                                                <constraint firstItem="WZJ-Mn-tTe" firstAttribute="top" secondItem="Kpc-ho-zf3" secondAttribute="topMargin" id="fVF-bd-j9m"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
