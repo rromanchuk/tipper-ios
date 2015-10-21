@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6E39DE48C53BFCEA4855A132 /* Pods_Tipper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940BDA98A503E461460E1E7C /* Pods_Tipper.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		6E39DE48C53BFCEA4855A132 /* Pods_Tipper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940BDA98A503E461460E1E7C /* Pods_Tipper.framework */; };
 		94098BA81BB7BDE300394955 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94098BA71BB7BDE300394955 /* OnboardingViewController.swift */; };
 		94098BAA1BB7C10200394955 /* OnboardingPageControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94098BA91BB7C10200394955 /* OnboardingPageControllerViewController.swift */; };
 		94098BAC1BB7C2ED00394955 /* OnboardPartOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94098BAB1BB7C2ED00394955 /* OnboardPartOne.swift */; };
@@ -698,11 +698,10 @@
 				94AF29681AAEF2B600E16048 /* Sources */,
 				94AF29691AAEF2B600E16048 /* Frameworks */,
 				94AF296A1AAEF2B600E16048 /* Resources */,
-				89D8CA061E9079FA926B2957 /* Copy Pods Resources */,
 				94AF29BE1AAF032500E16048 /* Fabric */,
 				9484185C1AB65411001C633E /* ShellScript */,
 				9462D7761B35D108001C5083 /* Embed App Extensions */,
-				1144D7115C8D2B6E8C632AB0 /* Embed Pods Frameworks */,
+				B36A18EE20F479352293801A /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -840,21 +839,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1144D7115C8D2B6E8C632AB0 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tipper/Pods-Tipper-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4A8E3E1574F03FDE6EC51855 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -868,21 +852,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		89D8CA061E9079FA926B2957 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tipper/Pods-Tipper-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9484185C1AB65411001C633E /* ShellScript */ = {
@@ -930,6 +899,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run ***REMOVED*** c639698419df54a6f2023c1a8805bf95dfd647c8af39fc327fe76fb6da7c24c4";
+		};
+		B36A18EE20F479352293801A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tipper/Pods-Tipper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
