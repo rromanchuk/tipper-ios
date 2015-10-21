@@ -39,6 +39,9 @@ class OnboardPartThree: UIViewController, PKPaymentAuthorizationViewControllerDe
         super.viewDidLoad()
         updateBTCSpotPrice()
         updateMarketData()
+
+
+        
         // Do any additional setup after loading the view.
     }
 

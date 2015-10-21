@@ -226,5 +226,66 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tipper/Screens/Onboarding/OnboardPartThree.swift"
+            timestampString = "467143202.972146"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tipper.OnboardPartThree.__deallocating_deinit"
+                  moduleName = "Tipper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ryan/dev/Tipper/Tipper/Screens/Onboarding/OnboardPartThree.swift"
+                  timestampString = "467143203.176821"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tipper.OnboardPartThree.init (Tipper.OnboardPartThree.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;ObjectiveC.NSBundle&gt;) -&gt; Tipper.OnboardPartThree"
+                  moduleName = "Tipper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ryan/dev/Tipper/Tipper/Screens/Onboarding/OnboardPartThree.swift"
+                  timestampString = "467143203.178156"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tipper.OnboardPartThree.init (Tipper.OnboardPartThree.Type)(coder : ObjectiveC.NSCoder) -&gt; Swift.Optional&lt;Tipper.OnboardPartThree&gt;"
+                  moduleName = "Tipper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ryan/dev/Tipper/Tipper/Screens/Onboarding/OnboardPartThree.swift"
+                  timestampString = "467143203.178303"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "30">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

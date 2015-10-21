@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import PassKit
+import Stripe
+import ApplePayStubs
 
 class OnboardingPageControllerViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource, OnboardingDelegate {
     var provider: AWSCognitoCredentialsProvider!
@@ -14,6 +17,10 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
     var className = "OnboardingPageControllerViewController"
     var managedObjectContext: NSManagedObjectContext?
     var market: Market?
+    let ApplePayMerchantID = Config.get("APPLE_PAY_MERCHANT")
+    let SupportedPaymentNetworks = [PKPaymentNetworkVisa, PKPaymentNetworkMasterCard, PKPaymentNetworkAmex]
+
+
     weak var containerController: OnboardingViewController?
     weak var onboardingDelegate: OnboardingDelegate?
     
@@ -80,7 +87,16 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
         } else if let _ = pendingViewControllers as? OnboardPartThree {
             containerController?.pageControl.hidden = false
             containerController?.pageControl.currentPage = 1
-            containerController?.twitterLoginButton.setTitle("Buy with Pay", forState: .Normal)
+            let paymentRequest = Stripe.paymentRequestWithMerchantIdentifier(ApplePayMerchantID)
+
+            if PKPaymentAuthorizationViewController.canMakePaymentsUsingNetworks(SupportedPaymentNetworks) && Stripe.canSubmitPaymentRequest(paymentRequest) {
+                containerController?.twitterLoginButton.setTitle("Buy with Pay", forState: .Normal)
+            } else {
+                log.verbose("ApplePay not supported")
+                containerController?.twitterLoginButton.setTitle("Buy with Credit Card", forState: .Normal)
+            }
+
+
         } else if let _ = pendingViewControllers as? OnboardPartFour {
             containerController?.pageControl.currentPage = 2
             containerController?.twitterLoginButton.setTitle("Allow Notifications", forState: .Normal)
