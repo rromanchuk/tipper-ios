@@ -106,6 +106,7 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
 
 
         } else if let _ = pendingViewControllers as? OnboardPartFour {
+            containerController?.twitterLoginButton.setImage(nil, forState: .Normal)
             containerController?.pageControl.currentPage = 2
             containerController?.twitterLoginButton.setTitle("Allow Notifications", forState: .Normal)
         } else if let _ = pendingViewControllers as? OnboardPartFive {

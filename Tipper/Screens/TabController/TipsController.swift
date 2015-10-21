@@ -20,6 +20,7 @@ class TipsController: UIViewController {
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!
     var market: Market!
+    private var loading = false
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -39,6 +40,17 @@ class TipsController: UIViewController {
         return [NSSortDescriptor(key: "tippedAt", ascending: false)]
     }()
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if !loading {
+            loading = true
+            DynamoFavorite.updateTips(currentUser, context: managedObjectContext) { () -> Void in
+                self.loading = false
+            }
+        }
+
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,13 +63,19 @@ class TipsController: UIViewController {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
         tableView.addSubview(refreshControl)
-        
+
+        loading = true
         if currentUser.deepCrawledAt == nil {
             SwiftSpinner.show("Loading your tips...", animated: true)
             DynamoFavorite.fetchAllFavoritesFromUser(currentUser, context: managedObjectContext, completion: { () -> Void in
                 SwiftSpinner.hide(nil)
                 self.tableView.reloadData()
+                self.loading = false
             })
+        } else {
+            DynamoFavorite.updateTips(currentUser, context: managedObjectContext) { () -> Void in
+                self.loading = false
+            }
         }
         
     }
