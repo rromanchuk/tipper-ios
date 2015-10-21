@@ -90,9 +90,17 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
             let paymentRequest = Stripe.paymentRequestWithMerchantIdentifier(ApplePayMerchantID)
 
             if PKPaymentAuthorizationViewController.canMakePaymentsUsingNetworks(SupportedPaymentNetworks) && Stripe.canSubmitPaymentRequest(paymentRequest) {
-                containerController?.twitterLoginButton.setTitle("Buy with Pay", forState: .Normal)
+                if currentUser.twitterUsername == "TipperDemoApple" {
+                    containerController?.twitterLoginButton.setImage(UIImage(named: "apple-pay-temp"), forState: .Normal)
+                    containerController?.twitterLoginButton.setTitle(nil, forState: .Normal)
+                } else {
+                    containerController?.twitterLoginButton.setTitle("Buy with Pay", forState: .Normal)
+                }
             } else {
                 log.verbose("ApplePay not supported")
+                if currentUser.twitterUsername == "TipperDemoApple" {
+                    containerController?.twitterLoginButton.setImage(nil, forState: .Normal)
+                }
                 containerController?.twitterLoginButton.setTitle("Buy with Credit Card", forState: .Normal)
             }
 
