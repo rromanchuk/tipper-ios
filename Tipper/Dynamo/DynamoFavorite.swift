@@ -115,23 +115,32 @@ class DynamoFavorite: AWSDynamoDBObjectModel, AWSDynamoDBModeling, ModelCoredata
        log.verbose("")
         let exp = AWSDynamoDBQueryExpression()
 
-        exp.hashKeyValues      = currentUser.userId!
-        exp.indexName = "ToUserID-TippedAt-index"
-        exp.hashKeyAttribute = "ToUserID"
-        self.query(exp, context: context) { () -> Void in
+        if let userId = currentUser.userId {
+            exp.hashKeyValues      = userId
+            exp.indexName = "ToUserID-TippedAt-index"
+            exp.hashKeyAttribute = "ToUserID"
+            self.query(exp, context: context) { () -> Void in
+                completion()
+            }
+        } else {
             completion()
         }
+
     }
 
     class func updateSentTips(currentUser: CurrentUser, context: NSManagedObjectContext, completion: () -> Void) {
         log.verbose("")
 
         let exp = AWSDynamoDBQueryExpression()
+        if let userId = currentUser.userId {
+            exp.hashKeyValues      = userId
+            exp.indexName = "FromUserID-TippedAt-index"
+            exp.hashKeyAttribute = "FromUserID"
+            self.query(exp, context: context) { () -> Void in
+                completion()
+            }
 
-        exp.hashKeyValues      = currentUser.userId!
-        exp.indexName = "FromUserID-TippedAt-index"
-        exp.hashKeyAttribute = "FromUserID"
-        self.query(exp, context: context) { () -> Void in
+        } else {
             completion()
         }
 

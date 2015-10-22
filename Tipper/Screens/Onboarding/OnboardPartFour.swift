@@ -41,7 +41,7 @@ class OnboardPartFour: UIViewController, StandardViewController {
     
     func remoteRegistrationComplete() {
         log.verbose("")
-        (parentViewController as! OnboardingPageControllerViewController).autoAdvance()
+        (parentViewController as? OnboardingPageControllerViewController)?.autoAdvance()
     }
 
 }
