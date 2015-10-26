@@ -17,7 +17,7 @@ target 'Tipper' do
     pod 'SDCAlertView'
     pod 'TSMessages'
     pod 'XCGLogger'
-    #pod 'Google/Analytics'
+    pod 'Google/Analytics'
     #pod 'Reveal-iOS-SDK'
     pod 'SwiftyJSON'
     pod 'QRCode'
