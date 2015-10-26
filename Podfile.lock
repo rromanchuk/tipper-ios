@@ -1,43 +1,23 @@
 PODS:
   - Alamofire (2.0.2)
   - ApplePayStubs (0.2)
-  - AWSAPIGateway (2.2.6):
-    - AWSCore (= 2.2.6)
-  - AWSCognito (2.2.6):
-    - AWSCore (= 2.2.6)
-  - AWSCore (2.2.6)
-  - AWSDynamoDB (2.2.6):
-    - AWSCore (= 2.2.6)
-  - AWSMobileAnalytics (2.2.6):
-    - AWSCore (= 2.2.6)
-  - AWSSNS (2.2.6):
-    - AWSCore (= 2.2.6)
-  - AWSSQS (2.2.6):
-    - AWSCore (= 2.2.6)
-  - Google/Analytics (1.1.1):
-    - Google/Core
-    - GoogleAnalytics (~> 3.12)
-  - Google/Core (1.1.1):
-    - GoogleInterchangeUtilities (~> 1.0)
-    - GoogleNetworkingUtilities (~> 1.0)
-    - GoogleSymbolUtilities (~> 1.0)
-    - GoogleUtilities (~> 1.1)
-  - GoogleAnalytics (3.13.0)
-  - GoogleInterchangeUtilities (1.0.0):
-    - GoogleSymbolUtilities (~> 1.0)
-  - GoogleNetworkingUtilities (1.0.0):
-    - GoogleSymbolUtilities (~> 1.0)
-  - GoogleSymbolUtilities (1.0.0)
-  - GoogleUtilities (1.1.0):
-    - GoogleSymbolUtilities (~> 1.0.0)
+  - AWSAPIGateway (2.2.7):
+    - AWSCore (= 2.2.7)
+  - AWSCognito (2.2.7):
+    - AWSCore (= 2.2.7)
+  - AWSCore (2.2.7)
+  - AWSDynamoDB (2.2.7):
+    - AWSCore (= 2.2.7)
+  - AWSMobileAnalytics (2.2.7):
+    - AWSCore (= 2.2.7)
+  - AWSSNS (2.2.7):
+    - AWSCore (= 2.2.7)
+  - AWSSQS (2.2.7):
+    - AWSCore (= 2.2.7)
   - HanekeSwift (0.10.0)
   - HexColors (2.2.1)
   - QRCode (0.5)
-  - RBBAnimation (0.4.0)
-  - SDCAlertView (2.5.4):
-    - RBBAnimation (~> 0.3)
-    - SDCAutoLayout (~> 2.0)
-  - SDCAutoLayout (2.0.3)
+  - SDCAlertView (3.0.2)
   - SSKeychain (1.2.3)
   - Stripe (5.1.2):
     - Stripe/Core (= 5.1.2)
@@ -48,7 +28,7 @@ PODS:
   - XCGLogger (3.0)
 
 DEPENDENCIES:
-  - Alamofire
+  - Alamofire (= 2.0.2)
   - ApplePayStubs
   - AWSAPIGateway
   - AWSCognito
@@ -57,7 +37,6 @@ DEPENDENCIES:
   - AWSMobileAnalytics
   - AWSSNS
   - AWSSQS
-  - Google/Analytics
   - HanekeSwift
   - QRCode
   - SDCAlertView
@@ -79,25 +58,17 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
   ApplePayStubs: 5dd63c36527d1117b2045939fb5b6581b4815433
-  AWSAPIGateway: 822612754602308c240774c6bfaa2c1b6a05a116
-  AWSCognito: 4cb0bd389dedf6673048609408577bb6c871422b
-  AWSCore: dd05203bf44d45b58b7667754ce4fa6f1bdb1c3e
-  AWSDynamoDB: d0eb38a6bcaaee5931e5168478c409a39b0a9066
-  AWSMobileAnalytics: 522b2bb4705f05e7a2eb9f86a085ddfce64f183a
-  AWSSNS: 0188eab8b808981c531bbcd4ef238325c71270ec
-  AWSSQS: a2304d18086ce907aa7a8bba275861a69886a662
-  Google: 529a5d8719dff90ea2e7cba5f45302cd359b5456
-  GoogleAnalytics: fcf1f1cad57ae1a9a53520018f0f680ceeeb8b49
-  GoogleInterchangeUtilities: fe088bea8c936218e52324a004d279c4491b9d65
-  GoogleNetworkingUtilities: 292992ab31b7b4ba32809a0e8b40e324cdfb2c0c
-  GoogleSymbolUtilities: a7b0feed1fe667c8d5e647177938d0ecd62d6948
-  GoogleUtilities: 8ed9134debe11719097881711464752900668f10
+  AWSAPIGateway: fc857fd9c532ff6e081f52c5d6b9a2e7e402262d
+  AWSCognito: f88aa1b969dafc6208d417ebfa18b0f3b3746093
+  AWSCore: d81e1e534040780deb0f3877aaa207d297e54b4c
+  AWSDynamoDB: 211c266505513a57be42af255e2363bbbcdd2a1d
+  AWSMobileAnalytics: ee66bd427dcfa264088804776e94d82932ad07f5
+  AWSSNS: 6f526c50d4013eacd4c35af4b9b35eb415d202ec
+  AWSSQS: 0def5dfc1385564d88ebf88a0bdf7227f5f855e1
   HanekeSwift: d6f5bdf9dbdbbc09d59623b2c1d533e46463dd4d
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
   QRCode: a249ed747aeb0f4bf5f9c58b5b001b6b3bc80073
-  RBBAnimation: 4b2d66f6d993febce63cd564da934985313b9c59
-  SDCAlertView: 2e2b0ecc5f1ec367e45d83efa2e512688ca7fa55
-  SDCAutoLayout: e6885bb39ab8e2ec2ff84d158f38035f025f7420
+  SDCAlertView: aaf402f582b1c323fd64ea0fbc043688c10eb4ff
   SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d
   Stripe: 141b28d157f12db2e1624315cf19f1b6bd5af84d
   SwiftyJSON: 8d6b61a70277ef2a5d710d372e06e7e2d87fb9e4

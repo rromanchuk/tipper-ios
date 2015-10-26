@@ -63,9 +63,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let _ = AWSMobileAnalytics(forAppId: Config.get("AWS_ANALYTICS_ID"))
         
         // Configure tracker from GoogleService-Info.plist.
-        var configureError:NSError?
-        GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+//        var configureError:NSError?
+//        GGLContext.sharedInstance().configureWithError(&configureError)
+//        assert(configureError == nil, "Error configuring Google services: \(configureError)")
 
 
         NSUbiquitousKeyValueStore.defaultStore().synchronize()

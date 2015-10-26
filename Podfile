@@ -17,12 +17,12 @@ target 'Tipper' do
     pod 'SDCAlertView'
     pod 'TSMessages'
     pod 'XCGLogger'
-    pod 'Google/Analytics'
     #pod 'Reveal-iOS-SDK'
     pod 'SwiftyJSON'
     pod 'QRCode'
     pod 'HanekeSwift'
-    pod 'Alamofire'
+    pod 'Alamofire', '2.0.2'
+    #pod 'Google/Analytics'
 end
 
 target 'TipperTests' do
