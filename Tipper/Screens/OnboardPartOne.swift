@@ -50,12 +50,6 @@ class OnboardPartOne: UIViewController, StandardViewController {
         (UIApplication.sharedApplication().delegate as! AppDelegate).setupFirstController()
     }
     
-    @IBAction func done(segue: UIStoryboardSegue, sender: AnyObject?) {
-        log.verbose("\(className)::\(__FUNCTION__) identifier: \(segue.identifier) \(segue.sourceViewController)")
-        if segue.identifier == "ExitFromOnboarding" {
-        }
-    }
-
     
     // MARK: Application lifecycle
     
@@ -132,6 +126,7 @@ class OnboardPartOne: UIViewController, StandardViewController {
             self.currentUser.registerForRemoteNotificationsIfNeeded()
             self.currentUser.writeToDisk()
             (self.parentViewController as! OnboardingPageControllerViewController).autoAdvance()
+            
         }
     }
 

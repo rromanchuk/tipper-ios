@@ -69,6 +69,11 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
         let vc = viewControllers![0]
         let idx = pages.indexOf(vc)!
         
+        if let userId = currentUser.userId where userId == "4efe5374-bb7a-40af-b1b1-c543ff81caad" {
+            containerController?.performSegueWithIdentifier("ExitToSplash", sender: self)
+            return
+        }
+        
         if (idx + 1) < pages.count {
             let newController = pages[idx + 1]
             setupLabels(newController)
@@ -90,7 +95,7 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
             let paymentRequest = Stripe.paymentRequestWithMerchantIdentifier(ApplePayMerchantID)
 
             if PKPaymentAuthorizationViewController.canMakePaymentsUsingNetworks(SupportedPaymentNetworks) && Stripe.canSubmitPaymentRequest(paymentRequest) {
-                if currentUser.twitterUsername == "TipperDemoApple" {
+                if let userId = currentUser.userId where userId == "4efe5374-bb7a-40af-b1b1-c543ff81caad" {
                     containerController?.twitterLoginButton.setImage(UIImage(named: "apple-pay-temp"), forState: .Normal)
                     containerController?.twitterLoginButton.setTitle(nil, forState: .Normal)
                 } else {
@@ -98,7 +103,7 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
                 }
             } else {
                 log.verbose("ApplePay not supported")
-                if currentUser.twitterUsername == "TipperDemoApple" {
+                if let userId = currentUser.userId where userId == "4efe5374-bb7a-40af-b1b1-c543ff81caad" {
                     containerController?.twitterLoginButton.setImage(nil, forState: .Normal)
                 }
                 containerController?.twitterLoginButton.setTitle("Buy with Credit Card", forState: .Normal)
