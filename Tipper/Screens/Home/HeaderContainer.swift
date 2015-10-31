@@ -153,9 +153,10 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
    
     @IBAction func didTapBalance(sender: UITapGestureRecognizer) {
         log.verbose("")
-        displayUSD = !displayUSD
-        setBalance()
-
+        if activeScreenType == .Unknown {
+            displayUSD = !displayUSD
+            setBalance()
+        }
     }
 
     @IBAction func didTapNotifications(sender: UIButton) {
