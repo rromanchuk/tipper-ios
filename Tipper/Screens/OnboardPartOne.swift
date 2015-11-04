@@ -8,6 +8,7 @@
 
 import UIKit
 import TwitterKit
+import Crashlytics
 
 class OnboardPartOne: UIViewController, StandardViewController {
     
@@ -139,6 +140,7 @@ class OnboardPartOne: UIViewController, StandardViewController {
  
             } else {
                 log.verbose("\(self.className)::\(__FUNCTION__) authenticate callback")
+                
                 Debug.isBlocking()
                 SwiftSpinner.hide(nil)
                 self.currentUser.registerForRemoteNotificationsIfNeeded()

@@ -13,6 +13,7 @@ import SwiftyJSON
 import AWSDynamoDB
 import SSKeychain
 import AWSSQS
+import Crashlytics
 
 class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
     let KeychainAccount: String = "tips.coinbit.tipper"
@@ -182,7 +183,9 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
                 self.updateEntityWithModel(dynamoUser)
                 self.pushTokens()
                 
-                
+                Answers.logLoginWithMethod("Twitter",
+                    success: true,
+                    customAttributes: nil)
                 completion(errorMessage: nil)
 ////                self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
 ////                    log.verbose("DynamoUser save")
@@ -201,6 +204,9 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
 //                })
             } else  {
                 self.register({ (errorMessage) -> Void in
+                    Answers.logSignUpWithMethod("Twitter",
+                        success: errorMessage == nil,
+                        customAttributes: nil)
                     completion(errorMessage: errorMessage)
                 })
             }
