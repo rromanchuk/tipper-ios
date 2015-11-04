@@ -63,12 +63,13 @@ class OnboardPartOne: UIViewController, StandardViewController {
         log.verbose("")
         SwiftSpinner.show("Logging you in...")
         Twitter.sharedInstance().logInWithCompletion { (session, error) -> Void in
-            log.info("session:\(session), error: \(error)")
             if let session = session where error == nil {
+                log.info("Twitter login complete:\(session)")
                 self.provider.logins = ["api.twitter.com": "\(session.authToken);\(session.authTokenSecret)"]
                 self.currentUser.twitterAuthenticationWithTKSession(session)
                 self.refreshProvider(session)
             } else {
+                log.warning("[ERROR] Twitter login failed \(error)")
                 SwiftSpinner.hide({ () -> Void in
                     let alert = UIAlertController(title: "Opps", message: "Something went wrong connecting to your Twitter account. Please verify your Twitter account is properly connected in iOS settings.", preferredStyle: .Alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
@@ -78,17 +79,20 @@ class OnboardPartOne: UIViewController, StandardViewController {
             }
         }
     }
-    
+
+    // Update cognito with updated twitter tokens
     private func refreshProvider(twitterSession: TWTRAuthSession) {
         log.verbose("")
         provider.refresh().continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-            log.verbose("provider refresh() finished result: \(task.result) error? \(task.error)")
+
             if task.error == nil, let identifier = task.result as? String {
+                log.info("Cognito refresh() finished")
                 self.currentUser.cognitoIdentity = identifier
                 self.currentUser.save()
                 self.loadUser(self.currentUser.twitterUserId!)
             } else {
                 SwiftSpinner.hide({ () -> Void in
+                    log.verbose("[ERROR] provider refresh() failed: \(task.error)")
                     let alert = UIAlertController(title: "Opps", message: "Something bad happened. Try again?", preferredStyle: .Alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
                     alert.addAction(defaultAction)
@@ -98,7 +102,8 @@ class OnboardPartOne: UIViewController, StandardViewController {
             return nil
         })
     }
-    
+
+    // Load the social information from twitter
     private func loadUser(twitterUserId: String) {
         log.verbose("")
         TWTRAPIClient(userID: twitterUserId).loadUserWithID(twitterUserId, completion: { (user, error) -> Void in
@@ -108,7 +113,7 @@ class OnboardPartOne: UIViewController, StandardViewController {
                 self.currentUser.twitterUsername = user.screenName
                 self.authenticate()
             } else if let error = error {
-                log.verbose("error loading twitter information")
+                log.warning("[ERROR] Could not load twitter information. \(error)")
                 SwiftSpinner.hide({ () -> Void in
                     let alert = UIAlertController(title: "Opps", message: error.localizedDescription, preferredStyle: .Alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
@@ -118,7 +123,8 @@ class OnboardPartOne: UIViewController, StandardViewController {
             }
         })
     }
-    
+
+    // Find or create or dynamo user
     private func authenticate() {
         log.verbose("")
         self.currentUser.authenticate() { (errorMessage) -> Void in

@@ -378,13 +378,14 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
         if let btc = bitcoinBalanceBTC where btc.doubleValue > 0.0 {
             TIPPERTipperClient.defaultClient().marketGet("\(btc.doubleValue)").continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
                 log.verbose("Market fetch \(btc) \(task.result), \(task.error) exception: \(task.exception)")
-                if let _market = task.result as? TIPPERMarket where task.result != nil {
-                    log.verbose("_market \(_market)")
-                    if let _marketEntity = Market.entityWithModel(Market.self, model: _market, context: self.managedObjectContext!) {
+                if let moc = self.managedObjectContext, _market = task.result as? TIPPERMarket where task.error == nil {
+                    if let _marketEntity = Market.entityWithModel(Market.self, model: _market, context: moc) where _market.btc != nil {
                         _marketEntity.save()
                         self.marketValue = _marketEntity
                         self.save()
                     }
+                } else {
+                    log.warning("[ERROR] Failed to fetch market data \(task.error)")
                 }
                 completion()
                 return nil
@@ -436,6 +437,8 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
         user.EndpointArns               = self.endpointArns
         user.IsActive                   = "X"
         user.ProfileImage               = self.profileImage
+
+
         if let _bitcoinAddress = self.bitcoinAddress {
             user.BitcoinAddress = _bitcoinAddress
         }
@@ -447,10 +450,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
             completion?()
             return nil
         })
-
-
     }
-
 
     func withdrawBalance(toAddress: NSString, completion: (error: NSError?) -> Void) {
         log.verbose("")

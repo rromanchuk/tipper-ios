@@ -29,10 +29,10 @@ import XCGLogger
 
 let log: XCGLogger = {
     let log = XCGLogger.defaultInstance()
-    log.setup(.Verbose, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: nil, fileLogLevel: .Verbose)
+    log.setup(.Info, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: nil, fileLogLevel: .Verbose)
 
     let dateFormatter = NSDateFormatter()
-    dateFormatter.dateFormat = "MM/dd/yyyy hh:mma"
+    dateFormatter.dateFormat = "hh:mma"
     dateFormatter.locale = NSLocale.currentLocale()
     log.dateFormatter = dateFormatter
 
@@ -150,6 +150,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         if currentUser.isTwitterAuthenticated {
+            Crashlytics.sharedInstance().setUserIdentifier(currentUser.userId)
+            Crashlytics.sharedInstance().setUserName(currentUser.twitterUsername)
             DynamoNotification.refresh(currentUser.userId!)
             provider.logins = ["api.twitter.com": "\(currentUser.twitterAuthToken);\(currentUser.twitterAuthSecret)"]
             currentUser.refreshWithDynamo { [weak self] (error) -> Void in
