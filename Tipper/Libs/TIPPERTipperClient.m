@@ -331,6 +331,29 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
                      responseClass:[TIPPERUser class]];
 }
 
+- (AWSTask *)userPost:(NSString *)userId body:(TIPPERUser *)body {
+    NSDictionary *headerParameters = @{
+                                       @"Content-Type": @"application/json",
+                                       @"Accept": @"application/json",
+                                       
+                                       };
+    NSDictionary *queryParameters = @{
+                                      @"userId": userId,
+                                     
+                                      };
+    NSDictionary *pathParameters = @{
+                                     
+                                     };
+    
+    return [self invokeHTTPRequest:@"POST"
+                         URLString:@"/user"
+                    pathParameters:pathParameters
+                   queryParameters:queryParameters
+                  headerParameters:headerParameters
+                              body:body
+                     responseClass:[TIPPEREmpty class]];
+}
+
 
 
 @end

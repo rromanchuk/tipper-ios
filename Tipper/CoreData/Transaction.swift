@@ -71,14 +71,14 @@ class Transaction: NSManagedObject, CoreDataUpdatable {
             self.txid = transaction.txid
             self.confirmations = transaction.confirmations
             self.fee = transaction.fee
-            self.amount = transaction.tip_amount
-            self.fromUserId = transaction.FromUserID
-            self.toUserId = transaction.ToUserID
-            self.fromTwitterId = transaction.FromTwitterID
-            self.toTwitterId = transaction.ToTwitterID
+            self.amount = transaction.tipAmount
+            self.fromUserId = transaction.fromTwitterID
+            self.toUserId = transaction.toUserID
+            self.fromTwitterId = transaction.fromTwitterID
+            self.toTwitterId = transaction.toUserID
 //            self.fromTwitterUsername = transaction.F
 //            self.toTwitterUsername = transaction.ToTwitterUsername
-            self.relayedBy = transaction.relayed_by
+            self.relayedBy = transaction.relayedBy
             self.time = NSDate(timeIntervalSince1970: NSTimeInterval(transaction.time!.doubleValue))
 
         }

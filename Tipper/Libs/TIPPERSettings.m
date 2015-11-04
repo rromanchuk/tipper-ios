@@ -20,10 +20,10 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
-             @"Version": @"Version",
-             @"FundAmount": @"FundAmount",
-             @"FeeAmount": @"FeeAmount",
-             @"TipAmount": @"TipAmount"
+             @"version": @"Version",
+             @"fundAmount": @"FundAmount",
+             @"feeAmount": @"FeeAmount",
+             @"tipAmount": @"TipAmount"
              };
 }
 

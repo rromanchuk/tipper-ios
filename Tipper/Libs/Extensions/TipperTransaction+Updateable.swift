@@ -18,7 +18,7 @@ extension TIPPERSettings: AWSModelUpdateable {
     }
 
     func lookupValue() -> String {
-        return self.Version
+        return self.version
     }
 
     func asObject() -> AnyObject {

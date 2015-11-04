@@ -185,11 +185,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tipper/CoreData/CurrentUser.swift"
-            timestampString = "466108855.561618"
+            timestampString = "468290858.629772"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "302"
-            endingLineNumber = "302"
+            startingLineNumber = "367"
+            endingLineNumber = "367"
             landmarkName = "updateBTCBalance(_:)"
             landmarkType = "5">
             <Locations>

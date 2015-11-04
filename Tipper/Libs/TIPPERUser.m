@@ -20,15 +20,15 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
-             @"UserID": @"UserID",
-             @"BitcoinAddress": @"BitcoinAddress",
-             @"ProfileImage": @"ProfileImage",
-             @"IsActive": @"IsActive",
-             @"TwitterUsername": @"TwitterUsername",
-             @"TwitterUserID": @"TwitterUserID",
-             @"CreatedAt": @"CreatedAt",
-             @"UpdatedAt": @"UpdatedAt",
-             @"TippedFromUsAt": @"TippedFromUsAt"
+             @"userID": @"UserID",
+             @"bitcoinAddress": @"BitcoinAddress",
+             @"profileImage": @"ProfileImage",
+             @"isActive": @"IsActive",
+             @"twitterUsername": @"TwitterUsername",
+             @"twitterUserID": @"TwitterUserID",
+             @"createdAt": @"CreatedAt",
+             @"updatedAt": @"UpdatedAt",
+             @"tippedFromUsAt": @"TippedFromUsAt"
              };
 }
 

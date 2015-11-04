@@ -20,16 +20,16 @@
  
 @interface TIPPERSettings : AWSModel
 
-@property (nonatomic, strong) NSString *Version;
+@property (nonatomic, strong) NSString *version;
 
 
-@property (nonatomic, strong) NSString *FundAmount;
+@property (nonatomic, strong) NSString *fundAmount;
 
 
-@property (nonatomic, strong) NSString *FeeAmount;
+@property (nonatomic, strong) NSString *feeAmount;
 
 
-@property (nonatomic, strong) NSString *TipAmount;
+@property (nonatomic, strong) NSString *tipAmount;
 
 
 @end

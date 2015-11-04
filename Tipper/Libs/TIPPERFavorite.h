@@ -20,37 +20,37 @@
  
 @interface TIPPERFavorite : AWSModel
 
-@property (nonatomic, strong) NSNumber *CreatedAt;
+@property (nonatomic, strong) NSNumber *createdAt;
 
 
-@property (nonatomic, strong) NSString *FromTwitterID;
+@property (nonatomic, strong) NSString *fromTwitterID;
 
 
-@property (nonatomic, strong) NSString *FromTwitterProfileImage;
+@property (nonatomic, strong) NSString *fromTwitterProfileImage;
 
 
-@property (nonatomic, strong) NSString *FromTwitterUsername;
+@property (nonatomic, strong) NSString *fromTwitterUsername;
 
 
-@property (nonatomic, strong) NSString *FromUserID;
+@property (nonatomic, strong) NSString *fromUserID;
 
 
-@property (nonatomic, strong) NSString *ObjectID;
+@property (nonatomic, strong) NSString *objectID;
 
 
-@property (nonatomic, strong) NSString *Provider;
+@property (nonatomic, strong) NSString *provider;
 
 
-@property (nonatomic, strong) NSString *ToTwitterID;
+@property (nonatomic, strong) NSString *toTwitterID;
 
 
-@property (nonatomic, strong) NSString *ToTwitterUsername;
+@property (nonatomic, strong) NSString *toTwitterUsername;
 
 
-@property (nonatomic, strong) NSString *TweetID;
+@property (nonatomic, strong) NSString *tweetID;
 
 
-@property (nonatomic, strong) NSString *TweetJSON;
+@property (nonatomic, strong) NSString *tweetJSON;
 
 
 @end

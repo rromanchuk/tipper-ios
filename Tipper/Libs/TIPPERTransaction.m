@@ -21,18 +21,18 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
              @"txid": @"txid",
-             @"relayed_by": @"relayed_by",
-             @"ToBitcoinAddress": @"ToBitcoinAddress",
-             @"FromBitcoinAddress": @"FromBitcoinAddress",
-             @"ToTwitterID": @"ToTwitterID",
-             @"FromTwitterID": @"FromTwitterID",
-             @"ToUserID": @"ToUserID",
-             @"FromUserID": @"FromUserID",
+             @"relayedBy": @"relayed_by",
+             @"toBitcoinAddress": @"ToBitcoinAddress",
+             @"fromBitcoinAddress": @"FromBitcoinAddress",
+             @"toTwitterID": @"ToTwitterID",
+             @"fromTwitterID": @"FromTwitterID",
+             @"toUserID": @"ToUserID",
+             @"fromUserID": @"FromUserID",
              @"confirmations": @"confirmations",
              @"time": @"time",
              @"size": @"size",
              @"fee": @"fee",
-             @"tip_amount": @"tip_amount",
+             @"tipAmount": @"tip_amount",
              @"category": @"category"
              };
 }

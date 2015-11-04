@@ -63,10 +63,10 @@ class Settings: NSManagedObject, CoreDataUpdatable {
 
     func updateEntityWithModel(model: Any) {
         if let settings = model as? TIPPERSettings {
-            self.version                    = settings.Version
-            self.fundAmount                 = settings.FundAmount
-            self.tipAmount                  = settings.TipAmount
-            self.feeAmount                  = settings.FeeAmount
+            self.version                    = settings.version
+            self.fundAmount                 = settings.fundAmount
+            self.tipAmount                  = settings.tipAmount
+            self.feeAmount                  = settings.feeAmount
         }
     }
 

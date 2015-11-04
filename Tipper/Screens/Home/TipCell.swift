@@ -101,8 +101,8 @@ class TipCell: UITableViewCell {
     }
 
     func setupTipAmount() {
-        if let _ = currentUser {
-            let string = "a\(Settings.sharedInstance.tipAmountUBTC!)"
+        if let _ = currentUser, tipAmountString = Settings.sharedInstance.tipAmountUBTC {
+            let string = "a\(tipAmountString)"
             let labelAttributes = NSMutableAttributedString(string: string)
             labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "coiner", size: 18.0)!, range: NSMakeRange(0,1))
             labelAttributes.addAttribute(NSFontAttributeName, value: UIFont(name: "Bariol", size: 18.0)!, range: NSMakeRange(1, string.characters.count - 1))

@@ -137,7 +137,7 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
     }
     
     func updateMarkets() {
-        log.verbose("")
+        //log.verbose("")
         market.update { [weak self] () -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self?.refreshHeader()
@@ -210,7 +210,7 @@ class HeaderContainer: UIViewController, MFMailComposeViewControllerDelegate, Re
     }
 
     func applicationDidBecomeActive(aNotification: NSNotification) {
-        log.verbose("")
+        //log.verbose("")
         updateMarkets()
         currentUser.refreshWithDynamo { [weak self] (error) -> Void in
             if (error == nil) {

@@ -174,50 +174,113 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
     }
 
 
-    func authenticate(completion: (() ->Void))  {
+    func authenticate(completion: ((errorMessage: String?) ->Void))  {
         log.verbose("")
         DynamoUser.findByTwitterId(twitterUserId!, completion: { (user) -> Void in
             Debug.isBlocking()
             if let dynamoUser = user {
                 self.updateEntityWithModel(dynamoUser)
-                self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
-                    if let _automaticTippingEnabled = self.automaticTippingEnabled where _automaticTippingEnabled.boolValue {
-                        API.sharedInstance.connect({ (json, error) -> Void in
-                            completion()
-                        })
-                    } else {
-                       completion()
-                    }
-                    
-                    return nil
-                })
+                self.pushTokens()
+                
+                
+                completion(errorMessage: nil)
+////                self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
+////                    log.verbose("DynamoUser save")
+////                    if let _automaticTippingEnabled = self.automaticTippingEnabled where _automaticTippingEnabled.boolValue {
+////                        API.sharedInstance.connect({ (json, error) -> Void in
+////                            log.verbose("calling completion")
+////                            Debug.isBlocking()
+////                            completion()
+////                        })
+////                    } else {
+////                        log.verbose("calling completion")
+////                       completion()
+////                    }
+//                
+//                    return nil
+//                })
             } else  {
-                let dynamoUser = DynamoUser()
-                dynamoUser.UserID = NSUUID().UUIDString
-                dynamoUser.CreatedAt = Int(NSDate().timeIntervalSince1970)
-                dynamoUser.AutomaticTippingEnabled = true
-                self.updateEntityWithModel(dynamoUser)
-
-                self.pushToDynamo(dynamoUser, completion: { () -> Void in
-                    API.sharedInstance.address({ (json, error) -> Void in
-                        if error == nil {
-                            dynamoUser.BitcoinAddress     = json["BitcoinAddress"].string
-                            self.bitcoinAddress  = json["BitcoinAddress"].string
-                            self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration)
-                        } else {
-                            log.error("\(error)")
-                        }
-                        self.updateEntityWithModel(dynamoUser)
-                        API.sharedInstance.connect({ (json, error) -> Void in
-
-                        })
-                        completion()
-
-                    })
+                self.register({ (errorMessage) -> Void in
+                    completion(errorMessage: errorMessage)
                 })
             }
         })
 
+    }
+    
+    func register(completion: ((errorMessage: String?) ->Void)) {
+        log.verbose("")
+        userId = NSUUID().UUIDString
+        createdAt = NSDate()
+        automaticTippingEnabled = NSNumber(bool: true)
+        writeToDisk()
+        API.sharedInstance.address({ (json, error) -> Void in
+            log.verbose("Setting Address: \(json)")
+            if error == nil {
+                self.bitcoinAddress     = json["BitcoinAddress"].string
+                self.writeToDisk()
+                self.pushLocal({ (errorMessage) -> Void in
+                    API.sharedInstance.connect({ (json, error) -> Void in
+                        
+                    })
+                    completion(errorMessage: nil)
+                })
+            } else {
+                log.error("\(error)")
+            }
+        })
+
+    }
+    
+    
+    func pushTokens() {
+        let dynamoUser = DynamoUser()
+        dynamoUser.UserID = userId
+        dynamoUser.TwitterAuthSecret = twitterAuthSecret
+        dynamoUser.TwitterAuthToken = twitterAuthToken
+        dynamoUser.AutomaticTippingEnabled = automaticTippingEnabled?.boolValue
+        
+        self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
+            if task.error == nil {
+            
+            } else {
+                
+            }
+            return nil
+        })
+
+    }
+    
+    func pushLocal(completion: ((errorMessage: String?) ->Void)) {
+        log.verbose("")
+        let dynamoUser = DynamoUser()
+        dynamoUser.UserID = userId
+        dynamoUser.TwitterAuthSecret = twitterAuthSecret
+        dynamoUser.TwitterAuthToken = twitterAuthToken
+        dynamoUser.AutomaticTippingEnabled = automaticTippingEnabled?.boolValue
+        dynamoUser.BitcoinAddress = bitcoinAddress
+        dynamoUser.CognitoIdentity = cognitoIdentity
+        
+        
+        if let createdAt = createdAt {
+            dynamoUser.CreatedAt = Int(createdAt.timeIntervalSince1970)
+        }
+        
+        
+        if let updatedAt = updatedAt {
+            dynamoUser.UpdatedAt = Int(updatedAt.timeIntervalSince1970)
+        }
+        
+        
+        self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
+            if task.error == nil {
+                completion(errorMessage: nil)
+            } else {
+                completion(errorMessage: "Problem saving local data to dynamo")
+            }
+            return nil
+        })
+        
     }
 
     func registerForRemoteNotificationsIfNeeded() {
@@ -231,12 +294,13 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
 
 
     func twitterAuthenticationWithTKSession(session: TWTRSession) {
+        
         self.twitterUserId = session.userID
         self.twitterUsername = session.userName
         self.twitterAuthToken = session.authToken
         self.twitterAuthSecret = session.authTokenSecret
-        log.info("session.userID: \(session.userID), session.userName: \(session.userName)")
         log.info("currentUser: \(self)")
+        self.save()
         writeToDisk()
     }
 

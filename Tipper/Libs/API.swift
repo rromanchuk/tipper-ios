@@ -27,7 +27,7 @@ public class API {
     }()
 
     func call(req: Request, completion: ((json: JSON, error: NSError?) -> Void)?) {
-        
+        debugPrint(req)
         req.responseJSON { (request, response, json) -> Void in
             
             if let response = response where response == 401 {

@@ -103,10 +103,12 @@ class OnboardPartOne: UIViewController, StandardViewController {
         log.verbose("")
         TWTRAPIClient(userID: twitterUserId).loadUserWithID(twitterUserId, completion: { (user, error) -> Void in
             if let user = user where error == nil {
+                log.verbose("twitter user loaded: \(user)")
                 self.currentUser.profileImage = user.profileImageURL
                 self.currentUser.twitterUsername = user.screenName
                 self.authenticate()
             } else if let error = error {
+                log.verbose("error loading twitter information")
                 SwiftSpinner.hide({ () -> Void in
                     let alert = UIAlertController(title: "Opps", message: error.localizedDescription, preferredStyle: .Alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
@@ -119,14 +121,24 @@ class OnboardPartOne: UIViewController, StandardViewController {
     
     private func authenticate() {
         log.verbose("")
-        self.currentUser.authenticate() { () -> Void in
-            log.verbose("\(self.className)::\(__FUNCTION__) authenticate callback")
-            Debug.isBlocking()
-            SwiftSpinner.hide(nil)
-            self.currentUser.registerForRemoteNotificationsIfNeeded()
-            self.currentUser.writeToDisk()
-            (self.parentViewController as! OnboardingPageControllerViewController).autoAdvance()
-            
+        self.currentUser.authenticate() { (errorMessage) -> Void in
+            if let errorMessage = errorMessage {
+                log.warning("[ERROR]")
+                SwiftSpinner.hide({ () -> Void in
+                    let alert = UIAlertController(title: "Opps", message: errorMessage, preferredStyle: .Alert)
+                    let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                    alert.addAction(defaultAction)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                })
+ 
+            } else {
+                log.verbose("\(self.className)::\(__FUNCTION__) authenticate callback")
+                Debug.isBlocking()
+                SwiftSpinner.hide(nil)
+                self.currentUser.registerForRemoteNotificationsIfNeeded()
+                self.currentUser.writeToDisk()
+                (self.parentViewController as! OnboardingPageControllerViewController).autoAdvance()
+            }
         }
     }
 

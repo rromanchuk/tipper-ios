@@ -23,25 +23,25 @@
 @property (nonatomic, strong) NSString *txid;
 
 
-@property (nonatomic, strong) NSString *relayed_by;
+@property (nonatomic, strong) NSString *relayedBy;
 
 
-@property (nonatomic, strong) NSString *ToBitcoinAddress;
+@property (nonatomic, strong) NSString *toBitcoinAddress;
 
 
-@property (nonatomic, strong) NSString *FromBitcoinAddress;
+@property (nonatomic, strong) NSString *fromBitcoinAddress;
 
 
-@property (nonatomic, strong) NSString *ToTwitterID;
+@property (nonatomic, strong) NSString *toTwitterID;
 
 
-@property (nonatomic, strong) NSString *FromTwitterID;
+@property (nonatomic, strong) NSString *fromTwitterID;
 
 
-@property (nonatomic, strong) NSString *ToUserID;
+@property (nonatomic, strong) NSString *toUserID;
 
 
-@property (nonatomic, strong) NSString *FromUserID;
+@property (nonatomic, strong) NSString *fromUserID;
 
 
 @property (nonatomic, strong) NSString *confirmations;
@@ -56,7 +56,7 @@
 @property (nonatomic, strong) NSNumber *fee;
 
 
-@property (nonatomic, strong) NSNumber *tip_amount;
+@property (nonatomic, strong) NSNumber *tipAmount;
 
 
 @property (nonatomic, strong) NSString *category;

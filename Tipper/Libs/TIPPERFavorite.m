@@ -20,17 +20,17 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
-             @"CreatedAt": @"CreatedAt",
-             @"FromTwitterID": @"FromTwitterID",
-             @"FromTwitterProfileImage": @"FromTwitterProfileImage",
-             @"FromTwitterUsername": @"FromTwitterUsername",
-             @"FromUserID": @"FromUserID",
-             @"ObjectID": @"ObjectID",
-             @"Provider": @"Provider",
-             @"ToTwitterID": @"ToTwitterID",
-             @"ToTwitterUsername": @"ToTwitterUsername",
-             @"TweetID": @"TweetID",
-             @"TweetJSON": @"TweetJSON"
+             @"createdAt": @"CreatedAt",
+             @"fromTwitterID": @"FromTwitterID",
+             @"fromTwitterProfileImage": @"FromTwitterProfileImage",
+             @"fromTwitterUsername": @"FromTwitterUsername",
+             @"fromUserID": @"FromUserID",
+             @"objectID": @"ObjectID",
+             @"provider": @"Provider",
+             @"toTwitterID": @"ToTwitterID",
+             @"toTwitterUsername": @"ToTwitterUsername",
+             @"tweetID": @"TweetID",
+             @"tweetJSON": @"TweetJSON"
              };
 }
 

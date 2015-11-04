@@ -251,4 +251,14 @@
  */
 - (AWSTask *)userGet:(NSString *)userId;
 
+/**
+ 
+ 
+ @param userId 
+ @param body 
+ 
+ return type: TIPPEREmpty *
+ */
+- (AWSTask *)userPost:(NSString *)userId body:(TIPPERUser *)body;
+
 @end

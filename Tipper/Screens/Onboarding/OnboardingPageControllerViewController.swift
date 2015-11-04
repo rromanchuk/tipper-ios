@@ -124,7 +124,7 @@ class OnboardingPageControllerViewController: UIPageViewController, UIPageViewCo
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        log.verbose("\(className)::\(__FUNCTION__) currentIndex: \(pages.indexOf(viewController)!),  allPages: \(self.pages.count)")
+        //log.verbose("\(className)::\(__FUNCTION__) currentIndex: \(pages.indexOf(viewController)!),  allPages: \(self.pages.count)")
         if let currentIndex = pages.indexOf(viewController) {
             let newIndex = currentIndex - 1
             if newIndex == 0 {

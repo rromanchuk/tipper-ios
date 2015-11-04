@@ -20,31 +20,31 @@
  
 @interface TIPPERUser : AWSModel
 
-@property (nonatomic, strong) NSString *UserID;
+@property (nonatomic, strong) NSString *userID;
 
 
-@property (nonatomic, strong) NSString *BitcoinAddress;
+@property (nonatomic, strong) NSString *bitcoinAddress;
 
 
-@property (nonatomic, strong) NSString *ProfileImage;
+@property (nonatomic, strong) NSString *profileImage;
 
 
-@property (nonatomic, strong) NSString *IsActive;
+@property (nonatomic, strong) NSString *isActive;
 
 
-@property (nonatomic, strong) NSString *TwitterUsername;
+@property (nonatomic, strong) NSString *twitterUsername;
 
 
-@property (nonatomic, strong) NSString *TwitterUserID;
+@property (nonatomic, strong) NSString *twitterUserID;
 
 
-@property (nonatomic, strong) NSNumber *CreatedAt;
+@property (nonatomic, strong) NSNumber *createdAt;
 
 
-@property (nonatomic, strong) NSNumber *UpdatedAt;
+@property (nonatomic, strong) NSNumber *updatedAt;
 
 
-@property (nonatomic, strong) NSNumber *TippedFromUsAt;
+@property (nonatomic, strong) NSNumber *tippedFromUsAt;
 
 
 @end
