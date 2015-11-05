@@ -19,7 +19,7 @@
 #import <AWSCore/AWSSignature.h>
 #import <AWSCore/AWSSynchronizedMutableDictionary.h>
 
-#import "TIPPEREmpty.h"
+#import "TIPPERAddress.h"
 #import "TIPPERBalance.h"
 #import "TIPPERLocation.h"
 #import "TIPPERMarket.h"
@@ -27,6 +27,7 @@
 #import "TIPPERFavorite.h"
 #import "TIPPERTransaction.h"
 #import "TIPPERUser.h"
+#import "TIPPEREmpty.h"
 
 @interface AWSAPIGatewayClient()
 
@@ -151,7 +152,7 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
                    queryParameters:queryParameters
                   headerParameters:headerParameters
                               body:nil
-                     responseClass:[TIPPEREmpty class]];
+                     responseClass:[TIPPERAddress class]];
 }
 
 - (AWSTask *)addressBalanceGet:(NSString *)address {

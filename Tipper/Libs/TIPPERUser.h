@@ -47,4 +47,22 @@
 @property (nonatomic, strong) NSNumber *tippedFromUsAt;
 
 
+@property (nonatomic, strong) NSString *twitterAuthToken;
+
+
+@property (nonatomic, strong) NSString *twitterAuthSecret;
+
+
+@property (nonatomic, strong) NSString *cognitoIdentity;
+
+
+@property (nonatomic, strong) NSNumber *automaticTippingEnabled;
+
+
+@property (nonatomic, strong) NSNumber *twittterDeepCrawledAt;
+
+
+@property (nonatomic, strong) NSNumber *bitcoinBalanceBTC;
+
+
 @end

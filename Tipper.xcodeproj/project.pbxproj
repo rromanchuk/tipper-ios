@@ -62,6 +62,7 @@
 		9462D76A1B35D108001C5083 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9462D7681B35D108001C5083 /* Interface.storyboard */; };
 		9462D76C1B35D108001C5083 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9462D76B1B35D108001C5083 /* Images.xcassets */; };
 		9462D76F1B35D108001C5083 /* Tipper WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9462D7551B35D108001C5083 /* Tipper WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		946799E71BEBDB8000D420CE /* TIPPERAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 946799E61BEBDB8000D420CE /* TIPPERAddress.m */; };
 		94723C751BB49F3F00C33210 /* TIPPERTipperClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 94723C741BB49F3F00C33210 /* TIPPERTipperClient.m */; };
 		94723C781BB49F6A00C33210 /* TIPPEREmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 94723C771BB49F6A00C33210 /* TIPPEREmpty.m */; };
 		94723C7B1BB507D100C33210 /* TIPPERSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 94723C7A1BB507D100C33210 /* TIPPERSettings.m */; };
@@ -206,6 +207,8 @@
 		9462D7671B35D108001C5083 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9462D7691B35D108001C5083 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		9462D76B1B35D108001C5083 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		946799E51BEBDB8000D420CE /* TIPPERAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIPPERAddress.h; sourceTree = "<group>"; };
+		946799E61BEBDB8000D420CE /* TIPPERAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIPPERAddress.m; sourceTree = "<group>"; };
 		94723C731BB49F3F00C33210 /* TIPPERTipperClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIPPERTipperClient.h; sourceTree = "<group>"; };
 		94723C741BB49F3F00C33210 /* TIPPERTipperClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIPPERTipperClient.m; sourceTree = "<group>"; };
 		94723C761BB49F6A00C33210 /* TIPPEREmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIPPEREmpty.h; sourceTree = "<group>"; };
@@ -474,6 +477,8 @@
 		94723C661BB4939A00C33210 /* AWSGateway */ = {
 			isa = PBXGroup;
 			children = (
+				946799E51BEBDB8000D420CE /* TIPPERAddress.h */,
+				946799E61BEBDB8000D420CE /* TIPPERAddress.m */,
 				945400281BC8903C00BD8994 /* TIPPERFavorite.h */,
 				945400291BC8903C00BD8994 /* TIPPERFavorite.m */,
 				945400201BC5F1B600BD8994 /* Extensions */,
@@ -943,6 +948,7 @@
 				94FDE9BD1AB42079006B6454 /* NSFetchedResultsControllerExtension.swift in Sources */,
 				942780011B94CE70007CB713 /* BaseView.swift in Sources */,
 				94FA97DB1AB2E691005B0C83 /* DynamoFavorite.swift in Sources */,
+				946799E71BEBDB8000D420CE /* TIPPERAddress.m in Sources */,
 				94D3FEB41BABD6C600A14EB4 /* NotficationBadge.swift in Sources */,
 				94098BA81BB7BDE300394955 /* OnboardingViewController.swift in Sources */,
 				949842061B260FB80079082C /* TipDetailContainer.swift in Sources */,

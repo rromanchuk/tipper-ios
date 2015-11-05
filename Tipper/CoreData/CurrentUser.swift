@@ -220,10 +220,11 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
         createdAt = NSDate()
         automaticTippingEnabled = NSNumber(bool: true)
         writeToDisk()
-        API.sharedInstance.address({ (json, error) -> Void in
-            log.verbose("Setting Address: \(json)")
-            if error == nil {
-                self.bitcoinAddress     = json["BitcoinAddress"].string
+        
+        TIPPERTipperClient.defaultClient().addressPost().continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
+            log.info("Aquiring a bitcoin address for new user")
+            if let address = task.result as? TIPPERAddress {
+                self.bitcoinAddress = address.bitcoinAddress
                 self.writeToDisk()
                 self.pushLocal({ (errorMessage) -> Void in
                     API.sharedInstance.connect({ (json, error) -> Void in
@@ -232,25 +233,29 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
                     completion(errorMessage: nil)
                 })
             } else {
-                log.error("\(error)")
+                log.error("\(task.error)")
+                completion(errorMessage: "There was a problem obtaining a bitcoin address :(  Try again?")
             }
+            return nil
         })
-
     }
     
     
     func pushTokens() {
+        log.info("")
         let dynamoUser = DynamoUser()
         dynamoUser.UserID = userId
         dynamoUser.TwitterAuthSecret = twitterAuthSecret
         dynamoUser.TwitterAuthToken = twitterAuthToken
-        dynamoUser.AutomaticTippingEnabled = automaticTippingEnabled?.boolValue
+        if let profileImage = self.profileImage {
+            dynamoUser.ProfileImage = profileImage
+        }
         
         self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
             if task.error == nil {
             
             } else {
-                
+                log.warning("[ERROR]: Pushing updated tokens to dynamo failed. \(task.error)")
             }
             return nil
         })
@@ -300,7 +305,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
 
 
     func twitterAuthenticationWithTKSession(session: TWTRSession) {
-        
         self.twitterUserId = session.userID
         self.twitterUsername = session.userName
         self.twitterAuthToken = session.authToken

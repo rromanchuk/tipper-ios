@@ -28,7 +28,13 @@
              @"twitterUserID": @"TwitterUserID",
              @"createdAt": @"CreatedAt",
              @"updatedAt": @"UpdatedAt",
-             @"tippedFromUsAt": @"TippedFromUsAt"
+             @"tippedFromUsAt": @"TippedFromUsAt",
+             @"twitterAuthToken": @"TwitterAuthToken",
+             @"twitterAuthSecret": @"TwitterAuthSecret",
+             @"cognitoIdentity": @"CognitoIdentity",
+             @"automaticTippingEnabled": @"AutomaticTippingEnabled",
+             @"twittterDeepCrawledAt": @"TwittterDeepCrawledAt",
+             @"bitcoinBalanceBTC": @"BitcoinBalanceBTC"
              };
 }
 

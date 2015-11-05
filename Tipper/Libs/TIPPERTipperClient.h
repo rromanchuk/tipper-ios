@@ -17,7 +17,7 @@
 #import <Foundation/Foundation.h>
 #import <AWSAPIGateway/AWSAPIGateway.h>
 
-#import "TIPPEREmpty.h"
+#import "TIPPERAddress.h"
 #import "TIPPERBalance.h"
 #import "TIPPERLocation.h"
 #import "TIPPERMarket.h"
@@ -25,6 +25,7 @@
 #import "TIPPERFavorite.h"
 #import "TIPPERTransaction.h"
 #import "TIPPERUser.h"
+#import "TIPPEREmpty.h"
 
 /**
  The service client object.
@@ -174,7 +175,7 @@
  
  
  
- return type: TIPPEREmpty *
+ return type: TIPPERAddress *
  */
 - (AWSTask *)addressPost;
 
