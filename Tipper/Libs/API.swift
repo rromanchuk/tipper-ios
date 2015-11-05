@@ -57,11 +57,6 @@ public class API {
         self.call(self.manager.request(Router.Connect), completion: completion)
     }
 
-    func address(completion: ((json: JSON, error: NSError?) -> Void)!) {
-        log.verbose("")
-        self.call(self.manager.request(Router.Address), completion: completion)
-    }
-
     func charge(token: String, amount: String, completion: ((json: JSON, error: NSError?) -> Void)!) {
         log.verbose("")
         self.call(self.manager.request(Router.Charge(token, amount)), completion: completion)
