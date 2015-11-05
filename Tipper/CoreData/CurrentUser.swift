@@ -241,59 +241,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
     }
     
     
-    func pushTokens() {
-        log.info("")
-        let dynamoUser = DynamoUser()
-        dynamoUser.UserID = userId
-        dynamoUser.TwitterAuthSecret = twitterAuthSecret
-        dynamoUser.TwitterAuthToken = twitterAuthToken
-        if let profileImage = self.profileImage {
-            dynamoUser.ProfileImage = profileImage
-        }
-        
-        self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
-            if task.error == nil {
-            
-            } else {
-                log.warning("[ERROR]: Pushing updated tokens to dynamo failed. \(task.error)")
-            }
-            return nil
-        })
-
-    }
     
-    func pushLocal(completion: ((errorMessage: String?) ->Void)) {
-        log.verbose("")
-        let dynamoUser = DynamoUser()
-        dynamoUser.UserID = userId
-        dynamoUser.TwitterAuthSecret = twitterAuthSecret
-        dynamoUser.TwitterAuthToken = twitterAuthToken
-        dynamoUser.AutomaticTippingEnabled = automaticTippingEnabled?.boolValue
-        dynamoUser.BitcoinAddress = bitcoinAddress
-        dynamoUser.CognitoIdentity = cognitoIdentity
-        
-        
-        if let createdAt = createdAt {
-            dynamoUser.CreatedAt = Int(createdAt.timeIntervalSince1970)
-        }
-        
-        
-        if let updatedAt = updatedAt {
-            dynamoUser.UpdatedAt = Int(updatedAt.timeIntervalSince1970)
-        }
-        
-        
-        self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
-            if task.error == nil {
-                completion(errorMessage: nil)
-            } else {
-                completion(errorMessage: "Problem saving local data to dynamo")
-            }
-            return nil
-        })
-        
-    }
-
     func registerForRemoteNotificationsIfNeeded() {
         log.verbose("")
         let types: UIUserNotificationType = [UIUserNotificationType.Badge, UIUserNotificationType.Sound, UIUserNotificationType.Alert]
@@ -447,6 +395,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
         user.EndpointArns               = self.endpointArns
         user.IsActive                   = "X"
         user.ProfileImage               = self.profileImage
+        user.TwitterUsername            = self.twitterUsername
 
 
         if let _bitcoinAddress = self.bitcoinAddress {
@@ -461,6 +410,65 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
             return nil
         })
     }
+    
+    func pushTokens() {
+        log.info("")
+        let dynamoUser = DynamoUser()
+        dynamoUser.UserID = userId
+        dynamoUser.TwitterAuthSecret = twitterAuthSecret
+        dynamoUser.TwitterAuthToken = twitterAuthToken
+        dynamoUser.ProfileImage = profileImage
+        dynamoUser.TwitterUsername = twitterUsername
+        if let profileImage = self.profileImage {
+            dynamoUser.ProfileImage = profileImage
+        }
+        
+        self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
+            if task.error == nil {
+                
+            } else {
+                log.warning("[ERROR]: Pushing updated tokens to dynamo failed. \(task.error)")
+            }
+            return nil
+        })
+        
+    }
+    
+    func pushLocal(completion: ((errorMessage: String?) ->Void)) {
+        log.verbose("")
+        let dynamoUser = DynamoUser()
+        dynamoUser.UserID = userId
+        dynamoUser.TwitterAuthSecret = twitterAuthSecret
+        dynamoUser.TwitterAuthToken = twitterAuthToken
+        dynamoUser.AutomaticTippingEnabled = automaticTippingEnabled?.boolValue
+        dynamoUser.BitcoinAddress = bitcoinAddress
+        dynamoUser.CognitoIdentity = cognitoIdentity
+        dynamoUser.ProfileImage = profileImage
+        dynamoUser.TwitterUsername = twitterUsername
+        
+        
+        if let createdAt = createdAt {
+            dynamoUser.CreatedAt = Int(createdAt.timeIntervalSince1970)
+        }
+        
+        
+        if let updatedAt = updatedAt {
+            dynamoUser.UpdatedAt = Int(updatedAt.timeIntervalSince1970)
+        }
+        
+        
+        self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
+            if task.error == nil {
+                completion(errorMessage: nil)
+            } else {
+                log.warning("[ERROR]: Problem saying local data to dynamo \(task.error)")
+                completion(errorMessage: "There was a problem logging in :(")
+            }
+            return nil
+        })
+        
+    }
+
 
     func withdrawBalance(toAddress: NSString, completion: (error: NSError?) -> Void) {
         log.verbose("")
