@@ -434,6 +434,22 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
         
     }
     
+    func pushDeviceTokens() {
+        let dynamoUser = DynamoUser()
+        dynamoUser.UserID = userId
+        dynamoUser.DeviceTokens               = self.deviceTokens
+        
+        self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+            if task.error == nil {
+                log.info("Device tokens pushed to dynamo")
+            } else {
+                log.warning("[ERROR]: Pushing updated device tokens to dynamo failed. \(task.error)")
+            }
+            return nil
+        })
+
+    }
+    
     func pushLocal(completion: ((errorMessage: String?) ->Void)) {
         log.verbose("")
         let dynamoUser = DynamoUser()
@@ -462,7 +478,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
             if task.error == nil {
                 completion(errorMessage: nil)
             } else {
-                log.warning("[ERROR]: Problem saying local data to dynamo \(task.error)")
+                log.warning("[ERROR]: Problem saving local data to dynamo \(task.error)")
                 completion(errorMessage: "There was a problem logging in :(")
             }
             return nil

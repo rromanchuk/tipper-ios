@@ -219,7 +219,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             request.token = token as! String 
             sns.createPlatformEndpoint(request).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task:AWSTask!) -> AnyObject! in
                 if task.error != nil {
-                    log.error("Error: \(task.error)")
+                    log.error("[ERROR]: createPlatformEndpoint failed \(task.error)")
                 } else {
                     let createEndpointResponse = task.result as! AWSSNSCreateEndpointResponse
                     log.verbose("endpointArn: \(createEndpointResponse.endpointArn)")
