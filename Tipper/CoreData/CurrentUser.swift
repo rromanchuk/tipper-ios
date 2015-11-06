@@ -423,7 +423,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
             dynamoUser.ProfileImage = profileImage
         }
         
-        self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
+        self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             if task.error == nil {
                 
             } else {
