@@ -170,8 +170,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
 
-        market.update { () -> Void in }
-        Settings.get("1")
+        Settings.get("1") { () -> Void in
+            self.market.update { () -> Void in }
+        }
     }
 
 

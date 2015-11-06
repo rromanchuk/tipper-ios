@@ -50,13 +50,14 @@ class Settings: NSManagedObject, CoreDataUpdatable {
         return TwitterDateFormatter.dateFromString(date)!
     }
 
-    class func get(settingId: String = "1") {
+    class func get(settingId: String = "1", completion: (() ->Void)?) {
 
         TIPPERTipperClient.defaultClient().settingsGet(settingId).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             log.verbose("Settings fetch \(task.result), \(task.error) exception: \(task.exception)")
             if let settings = task.result as? TIPPERSettings {
                 Settings.sharedInstance.updateEntityWithModel(settings)
             }
+            completion?()
             return nil;
         })
     }
