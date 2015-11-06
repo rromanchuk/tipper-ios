@@ -447,7 +447,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
             }
             return nil
         })
-
     }
     
     func pushLocal(completion: ((errorMessage: String?) ->Void)) {
@@ -589,7 +588,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
             }
 
             if let _automaticTippingEnabled = user.AutomaticTippingEnabled {
-                self.automaticTippingEnabled = NSNumber(bool: _automaticTippingEnabled)
+                self.automaticTippingEnabled = NSNumber(bool: _automaticTippingEnabled.boolValue)
             } else {
                 self.automaticTippingEnabled = NSNumber(bool: true)
             }
