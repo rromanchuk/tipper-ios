@@ -42,6 +42,7 @@
             <string>Bariol-Regular</string>
             <string>Bariol-Regular</string>
             <string>Bariol-Regular</string>
+            <string>Bariol-Regular</string>
         </mutableArray>
         <mutableArray key="Bariol_Bold.otf">
             <string>Bariol-Bold</string>
@@ -199,7 +200,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-logo" translatesAutoresizingMaskIntoConstraints="NO" id="440-7i-Yoi">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-exchange" translatesAutoresizingMaskIntoConstraints="NO" id="440-7i-Yoi">
                                 <rect key="frame" x="212" y="260" width="175" height="80"/>
                                 <animations/>
                                 <constraints>
@@ -257,36 +258,15 @@
                                     <constraint firstItem="Iqg-Za-lgt" firstAttribute="centerY" secondItem="WtI-RW-Whf" secondAttribute="centerY" id="lnF-D7-xF4"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kL-90-Vwz">
-                                <rect key="frame" x="181" y="407" width="238" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tips are worth 10¢" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kL-90-Vwz">
+                                <rect key="frame" x="220" y="407" width="159" height="22"/>
                                 <animations/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Tips are ">
-                                        <attributes>
-                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="22" name="Bariol-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="a">
-                                        <attributes>
-                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="22" name="coiner"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="500 (about 10¢)">
-                                        <attributes>
-                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="22" name="Bariol-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                                <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uih-ZP-BKy">
-                                <rect key="frame" x="180" y="179" width="239" height="44"/>
+                                <rect key="frame" x="180.5" y="179" width="239" height="44"/>
                                 <animations/>
                                 <string key="text">When you like a Tweet, 
 tipper will send a Bitcoin tip.</string>
@@ -1875,11 +1855,11 @@ tipper will send a Bitcoin tip.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-logo" translatesAutoresizingMaskIntoConstraints="NO" id="i8Z-hK-wdf">
-                                <rect key="frame" x="167" y="238" width="265" height="123"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-exchange" translatesAutoresizingMaskIntoConstraints="NO" id="i8Z-hK-wdf">
+                                <rect key="frame" x="167" y="238" width="267" height="123"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="265" id="LIL-mz-hXQ"/>
+                                    <constraint firstAttribute="width" constant="267" id="LIL-mz-hXQ"/>
                                     <constraint firstAttribute="height" constant="123" id="ydP-oe-s7w"/>
                                 </constraints>
                             </imageView>
@@ -2148,7 +2128,7 @@ tipper will send a Bitcoin tip.</string>
                                     </mask>
                                 </variation>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-logo" translatesAutoresizingMaskIntoConstraints="NO" id="dIA-Cl-gap">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-exchange" translatesAutoresizingMaskIntoConstraints="NO" id="dIA-Cl-gap">
                                 <rect key="frame" x="212" y="272" width="175" height="80"/>
                                 <animations/>
                                 <constraints>
@@ -2165,7 +2145,7 @@ tipper will send a Bitcoin tip.</string>
                                 </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="These can be configured in Settings. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQU-EG-8Zk">
-                                <rect key="frame" x="142" y="477" width="317" height="22"/>
+                                <rect key="frame" x="142.5" y="392" width="316.5" height="22"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Bariol-Regular" family="Bariol" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2186,7 +2166,7 @@ tipper will send a Bitcoin tip.</string>
                         <color key="backgroundColor" red="0.35686274509999999" green="0.73725490199999999" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="eQU-EG-8Zk" firstAttribute="centerX" secondItem="keA-n6-WbM" secondAttribute="centerX" id="QlC-iN-f0b"/>
-                            <constraint firstItem="eQU-EG-8Zk" firstAttribute="top" secondItem="dIA-Cl-gap" secondAttribute="bottom" constant="125" id="RqB-dx-Tkc"/>
+                            <constraint firstItem="eQU-EG-8Zk" firstAttribute="top" secondItem="dIA-Cl-gap" secondAttribute="bottom" constant="40" id="RqB-dx-Tkc"/>
                             <constraint firstItem="66A-wd-Nct" firstAttribute="centerX" secondItem="keA-n6-WbM" secondAttribute="centerX" id="d67-RD-mOg"/>
                             <constraint firstItem="dIA-Cl-gap" firstAttribute="top" secondItem="y7e-Lm-uCV" secondAttribute="bottom" constant="40" id="dnR-nd-74U"/>
                             <constraint firstItem="66A-wd-Nct" firstAttribute="top" secondItem="V86-5s-bTZ" secondAttribute="bottom" constant="12" id="iaa-pq-Upi"/>
@@ -2323,8 +2303,8 @@ tipper will send a Bitcoin tip.</string>
         <image name="demo-tip" width="363" height="67"/>
         <image name="heart" width="17" height="15"/>
         <image name="notifications" width="25" height="31"/>
+        <image name="onboarding-exchange" width="269" height="129"/>
         <image name="profile-image-placeholder.png" width="240" height="240"/>
-        <image name="splash-logo" width="268" height="129"/>
         <image name="tippy" width="124" height="110"/>
         <image name="transaction-confirmed" width="35" height="35"/>
         <image name="twitter-bird" width="26" height="22"/>
