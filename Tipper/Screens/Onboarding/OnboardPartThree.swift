@@ -83,7 +83,7 @@ class OnboardPartThree: UIViewController, PKPaymentAuthorizationViewControllerDe
         request.countryCode = "US"
         request.currencyCode = "USD"
         let amount = (market.amount! as NSString).doubleValue
-        request.paymentSummaryItems = [PKPaymentSummaryItem(label: "Tipper 0.02BTC deposit", amount: NSDecimalNumber(double: amount))]
+        request.paymentSummaryItems = [PKPaymentSummaryItem(label: "Tipper \(Settings.sharedInstance.fundAmount)BTC deposit", amount: NSDecimalNumber(double: amount))]
         if Stripe.canSubmitPaymentRequest(request) {
             #if DEBUG
                 log.info("in debug mode")
@@ -106,7 +106,7 @@ class OnboardPartThree: UIViewController, PKPaymentAuthorizationViewControllerDe
         //default to Stripe's PaymentKit Form
         let options = STPCheckoutOptions()
         let amount = (market.amount! as NSString).doubleValue
-        options.purchaseDescription = "Tipper 0.02BTC deposit";
+        options.purchaseDescription = "Tipper \(Settings.sharedInstance.fundAmount) deposit";
         options.purchaseAmount = UInt(amount * 100)
         options.companyName = "Tipper"
         let checkoutViewController = STPCheckoutViewController(options: options)

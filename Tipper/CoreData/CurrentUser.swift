@@ -221,7 +221,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
         automaticTippingEnabled = NSNumber(bool: true)
         writeToDisk()
         
-        TIPPERTipperClient.defaultClient().addressPost().continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
+        TIPPERTipperClient.defaultClient().addressPost().continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             log.info("Aquiring a bitcoin address for new user")
             if let address = task.result as? TIPPERAddress {
                 self.bitcoinAddress = address.bitcoinAddress

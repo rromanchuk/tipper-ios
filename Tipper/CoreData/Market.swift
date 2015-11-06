@@ -47,7 +47,7 @@ class Market: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
 
     func update(completion: () ->Void) {
         log.verbose("")
-        TIPPERTipperClient.defaultClient().marketGet("0.02").continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+        TIPPERTipperClient.defaultClient().marketGet(Settings.sharedInstance.fundAmount).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             if let market = task.result as? TIPPERMarket {
                 self.updateEntityWithModel(market)
             }

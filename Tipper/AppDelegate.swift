@@ -29,7 +29,7 @@ import XCGLogger
 
 let log: XCGLogger = {
     let log = XCGLogger.defaultInstance()
-    log.setup(.Info, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: nil, fileLogLevel: .Verbose)
+    log.setup(.Verbose, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: nil, fileLogLevel: .Verbose)
 
     let dateFormatter = NSDateFormatter()
     dateFormatter.dateFormat = "hh:mma"
