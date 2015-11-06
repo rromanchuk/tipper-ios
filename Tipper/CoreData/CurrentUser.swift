@@ -230,7 +230,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
                     API.sharedInstance.connect({ (json, error) -> Void in
                         
                     })
-                    completion(errorMessage: nil)
+                    completion(errorMessage: errorMessage)
                 })
             } else {
                 log.error("\(task.error)")
@@ -419,13 +419,13 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
         dynamoUser.TwitterAuthToken = twitterAuthToken
         dynamoUser.ProfileImage = profileImage
         dynamoUser.TwitterUsername = twitterUsername
-        if let profileImage = self.profileImage {
-            dynamoUser.ProfileImage = profileImage
-        }
+        dynamoUser.CognitoIdentity = cognitoIdentity
+        dynamoUser.ProfileImage = profileImage
+
         
         self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             if task.error == nil {
-                
+                log.info("User tokens pushed to dynamo")
             } else {
                 log.warning("[ERROR]: Pushing updated tokens to dynamo failed. \(task.error)")
             }
@@ -445,6 +445,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
         dynamoUser.CognitoIdentity = cognitoIdentity
         dynamoUser.ProfileImage = profileImage
         dynamoUser.TwitterUsername = twitterUsername
+        dynamoUser.CognitoIdentity = cognitoIdentity
         
         
         if let createdAt = createdAt {
@@ -457,7 +458,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
         }
         
         
-        self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
+        self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             if task.error == nil {
                 completion(errorMessage: nil)
             } else {

@@ -53,7 +53,7 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
 
 
         if let fundAmount = Settings.sharedInstance.fundAmount, fundAmountUBTC = Settings.sharedInstance.fundAmountUBTC {
-           btcConversionLabel.text = "(\(fundAmount) Bitcoin)"
+            btcConversionLabel.text = "(\(fundAmount) Bitcoin)"
             ubtcExchangeLabel.text = fundAmountUBTC
         }
         
