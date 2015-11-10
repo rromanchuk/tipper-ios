@@ -26,6 +26,7 @@ class TipDetailContainer: UITableViewController, TWTRTweetViewDelegate {
 
     @IBOutlet weak var tweetView: TWTRTweetView!
 
+    @IBOutlet weak var tipBTCLabel: UILabel!
     @IBOutlet weak var tipLabel: UILabel!
 
     @IBOutlet weak var transactionIdLabel: UILabel!
@@ -193,6 +194,11 @@ class TipDetailContainer: UITableViewController, TWTRTweetViewDelegate {
             labelAttributes.addAttribute(NSKernAttributeName, value:-5.0, range: NSMakeRange(0, 1))
             labelAttributes.addAttribute(NSForegroundColorAttributeName, value: UIColor.blackColor(), range: NSMakeRange(0, string.characters.count))
             tipLabel.attributedText = labelAttributes;
+            
+            if let tipAmount = Settings.sharedInstance.tipAmount {
+                tipBTCLabel.text = tipAmount
+            }
+            
         }
     }
 

@@ -1240,6 +1240,7 @@ tipper will send a Bitcoin tip.</string>
                         <outlet property="confirmationsLabel" destination="jKn-ZR-9v4" id="iZE-kc-blc"/>
                         <outlet property="mapView" destination="Lm5-8H-fiq" id="62X-Qs-rCC"/>
                         <outlet property="profileImageView" destination="ACe-lP-FW5" id="7fM-Bc-S1S"/>
+                        <outlet property="tipBTCLabel" destination="nNi-GN-KiE" id="bdf-7O-JuF"/>
                         <outlet property="tipHeaderLabel" destination="60G-HZ-To5" id="dxt-Cb-hsO"/>
                         <outlet property="tipLabel" destination="2WX-eU-6Uo" id="JLk-py-Sff"/>
                         <outlet property="transactionIdLabel" destination="XxU-eD-4LF" id="C0c-KC-kWu"/>
