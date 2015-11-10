@@ -124,7 +124,7 @@ class OnboardPartThree: UIViewController, PKPaymentAuthorizationViewControllerDe
     
     func paymentAuthorizationViewControllerDidFinish(controller: PKPaymentAuthorizationViewController) {
         log.verbose("")
-        (parentViewController as! OnboardingPageControllerViewController).autoAdvance()
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func checkoutController(controller: STPCheckoutViewController, didFinishWithStatus status: STPPaymentStatus, error: NSError?) {
