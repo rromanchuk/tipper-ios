@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TipDetailsViewController: UIViewController, Logoutable, CustomSegueable {
+class TipDetailsViewController: GAITrackedViewController, Logoutable, CustomSegueable {
     let className = "TipDetailsViewController"
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!

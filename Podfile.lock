@@ -14,22 +14,7 @@ PODS:
     - AWSCore (= 2.3.0)
   - AWSSQS (2.3.0):
     - AWSCore (= 2.3.0)
-  - Google/Analytics (1.2.1):
-    - Google/Core
-    - GoogleAnalytics (~> 3.12)
-  - Google/Core (1.2.1):
-    - GoogleInterchangeUtilities (~> 1.0)
-    - GoogleNetworkingUtilities (~> 1.0)
-    - GoogleSymbolUtilities (~> 1.0)
-    - GoogleUtilities (~> 1.1)
   - GoogleAnalytics (3.14.0)
-  - GoogleInterchangeUtilities (1.1.0):
-    - GoogleSymbolUtilities (~> 1.0)
-  - GoogleNetworkingUtilities (1.0.0):
-    - GoogleSymbolUtilities (~> 1.0)
-  - GoogleSymbolUtilities (1.0.3)
-  - GoogleUtilities (1.1.0):
-    - GoogleSymbolUtilities (~> 1.0.0)
   - HanekeSwift (0.10.0)
   - HexColors (2.2.1)
   - QRCode (0.5)
@@ -53,7 +38,7 @@ DEPENDENCIES:
   - AWSMobileAnalytics
   - AWSSNS
   - AWSSQS
-  - Google/Analytics
+  - GoogleAnalytics
   - HanekeSwift
   - QRCode
   - SDCAlertView
@@ -82,12 +67,7 @@ SPEC CHECKSUMS:
   AWSMobileAnalytics: 5e6809e6339a228bd096fadfb8ccc5491b168b11
   AWSSNS: 44257e7fbb51d9dea04994b39ff01dda61822643
   AWSSQS: 260ffd6da0d2ab255b903b377f2baa1e7390b3ba
-  Google: fd33b5fa40fa3aaee5176de49c873a74e3d11dce
   GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
-  GoogleInterchangeUtilities: d7f7174176fbcf9710f696f1acebad4dbd98ac03
-  GoogleNetworkingUtilities: 292992ab31b7b4ba32809a0e8b40e324cdfb2c0c
-  GoogleSymbolUtilities: 82ad9f93d3615244b3f4ce440f5ab2515e8b4f56
-  GoogleUtilities: 8ed9134debe11719097881711464752900668f10
   HanekeSwift: d6f5bdf9dbdbbc09d59623b2c1d533e46463dd4d
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
   QRCode: a249ed747aeb0f4bf5f9c58b5b001b6b3bc80073

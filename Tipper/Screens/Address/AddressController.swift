@@ -10,7 +10,7 @@ import UIKit
 import QRCode
 
 
-class AddressController: UIViewController {
+class AddressController: GAITrackedViewController {
 
     var managedObjectContext: NSManagedObjectContext?
     var currentUser: CurrentUser!

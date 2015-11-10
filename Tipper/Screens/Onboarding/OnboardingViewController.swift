@@ -9,7 +9,7 @@
 import UIKit
 import TwitterKit
 
-class OnboardingViewController: UIViewController {
+class OnboardingViewController: GAITrackedViewController {
     
     var provider: AWSCognitoCredentialsProvider!
     var currentUser: CurrentUser!

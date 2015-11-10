@@ -12,7 +12,7 @@ import SwiftyJSON
 import TSMessages
 
 
-class HomeController: UIViewController, NotificationMessagesDelegate, UITableViewDelegate, Logoutable {
+class HomeController: GAITrackedViewController, NotificationMessagesDelegate, UITableViewDelegate, Logoutable {
 
     var managedObjectContext: NSManagedObjectContext!
     var currentUser: CurrentUser!

@@ -22,7 +22,7 @@ target 'Tipper' do
     pod 'QRCode'
     pod 'HanekeSwift'
     pod 'Alamofire', '2.0.2'
-    pod 'Google/Analytics'
+    pod 'GoogleAnalytics'
 end
 
 target 'TipperTests' do

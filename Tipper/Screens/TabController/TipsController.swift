@@ -13,7 +13,7 @@ import SwiftyJSON
 
 
 
-class TipsController: UIViewController {
+class TipsController: GAITrackedViewController {
     let className = "SentTips"
     let transitionManager = TransitionManager()
 

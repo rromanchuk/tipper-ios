@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OnboardPartFive: UIViewController, StandardViewController {
+class OnboardPartFive: GAITrackedViewController, StandardViewController {
     var provider: AWSCognitoCredentialsProvider!
     var currentUser: CurrentUser!
     var className = "OnboardPartFive"

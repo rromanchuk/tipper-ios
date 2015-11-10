@@ -10,7 +10,7 @@ import UIKit
 import TwitterKit
 import Crashlytics
 
-class OnboardPartOne: UIViewController, StandardViewController {
+class OnboardPartOne: GAITrackedViewController, StandardViewController {
     
     var provider: AWSCognitoCredentialsProvider!
     var currentUser: CurrentUser!

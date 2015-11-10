@@ -11,7 +11,7 @@ import PassKit
 import Stripe
 import ApplePayStubs
 
-class OnboardPartThree: UIViewController, PKPaymentAuthorizationViewControllerDelegate, STPCheckoutViewControllerDelegate, UINavigationControllerDelegate, StandardViewController {
+class OnboardPartThree: GAITrackedViewController, PKPaymentAuthorizationViewControllerDelegate, STPCheckoutViewControllerDelegate, UINavigationControllerDelegate, StandardViewController {
     var provider: AWSCognitoCredentialsProvider!
     var currentUser: CurrentUser!
     var className = "OnboardPartThree"

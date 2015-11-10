@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OnboardPartTwo: UIViewController, StandardViewController {
+class OnboardPartTwo: GAITrackedViewController, StandardViewController {
     
     var provider: AWSCognitoCredentialsProvider!
     var currentUser: CurrentUser!

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AccountController: UIViewController, ContainerDelegate, CustomSegueable {
+class AccountController: GAITrackedViewController, ContainerDelegate, CustomSegueable {
     var managedObjectContext: NSManagedObjectContext?
     var currentUser: CurrentUser!
     var market: Market!
