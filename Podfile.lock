@@ -1,19 +1,35 @@
 PODS:
   - Alamofire (2.0.2)
   - ApplePayStubs (0.2)
-  - AWSAPIGateway (2.2.7):
-    - AWSCore (= 2.2.7)
-  - AWSCognito (2.2.7):
-    - AWSCore (= 2.2.7)
-  - AWSCore (2.2.7)
-  - AWSDynamoDB (2.2.7):
-    - AWSCore (= 2.2.7)
-  - AWSMobileAnalytics (2.2.7):
-    - AWSCore (= 2.2.7)
-  - AWSSNS (2.2.7):
-    - AWSCore (= 2.2.7)
-  - AWSSQS (2.2.7):
-    - AWSCore (= 2.2.7)
+  - AWSAPIGateway (2.3.0):
+    - AWSCore (= 2.3.0)
+  - AWSCognito (2.3.0):
+    - AWSCore (= 2.3.0)
+  - AWSCore (2.3.0)
+  - AWSDynamoDB (2.3.0):
+    - AWSCore (= 2.3.0)
+  - AWSMobileAnalytics (2.3.0):
+    - AWSCore (= 2.3.0)
+  - AWSSNS (2.3.0):
+    - AWSCore (= 2.3.0)
+  - AWSSQS (2.3.0):
+    - AWSCore (= 2.3.0)
+  - Google/Analytics (1.2.1):
+    - Google/Core
+    - GoogleAnalytics (~> 3.12)
+  - Google/Core (1.2.1):
+    - GoogleInterchangeUtilities (~> 1.0)
+    - GoogleNetworkingUtilities (~> 1.0)
+    - GoogleSymbolUtilities (~> 1.0)
+    - GoogleUtilities (~> 1.1)
+  - GoogleAnalytics (3.14.0)
+  - GoogleInterchangeUtilities (1.1.0):
+    - GoogleSymbolUtilities (~> 1.0)
+  - GoogleNetworkingUtilities (1.0.0):
+    - GoogleSymbolUtilities (~> 1.0)
+  - GoogleSymbolUtilities (1.0.3)
+  - GoogleUtilities (1.1.0):
+    - GoogleSymbolUtilities (~> 1.0.0)
   - HanekeSwift (0.10.0)
   - HexColors (2.2.1)
   - QRCode (0.5)
@@ -37,6 +53,7 @@ DEPENDENCIES:
   - AWSMobileAnalytics
   - AWSSNS
   - AWSSQS
+  - Google/Analytics
   - HanekeSwift
   - QRCode
   - SDCAlertView
@@ -58,13 +75,19 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
   ApplePayStubs: 5dd63c36527d1117b2045939fb5b6581b4815433
-  AWSAPIGateway: fc857fd9c532ff6e081f52c5d6b9a2e7e402262d
-  AWSCognito: f88aa1b969dafc6208d417ebfa18b0f3b3746093
-  AWSCore: d81e1e534040780deb0f3877aaa207d297e54b4c
-  AWSDynamoDB: 211c266505513a57be42af255e2363bbbcdd2a1d
-  AWSMobileAnalytics: ee66bd427dcfa264088804776e94d82932ad07f5
-  AWSSNS: 6f526c50d4013eacd4c35af4b9b35eb415d202ec
-  AWSSQS: 0def5dfc1385564d88ebf88a0bdf7227f5f855e1
+  AWSAPIGateway: 282343104e7c26bc7f4c58b85241057e0b9b0f8c
+  AWSCognito: 71454ddf2b631005292aa2cbbdcc6d079b1b65cb
+  AWSCore: dc200c885c9799f9f5d3ab9ec38a9c4b44d680f9
+  AWSDynamoDB: 015092431c25616fdc519186caa7a8802c053f42
+  AWSMobileAnalytics: 5e6809e6339a228bd096fadfb8ccc5491b168b11
+  AWSSNS: 44257e7fbb51d9dea04994b39ff01dda61822643
+  AWSSQS: 260ffd6da0d2ab255b903b377f2baa1e7390b3ba
+  Google: fd33b5fa40fa3aaee5176de49c873a74e3d11dce
+  GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
+  GoogleInterchangeUtilities: d7f7174176fbcf9710f696f1acebad4dbd98ac03
+  GoogleNetworkingUtilities: 292992ab31b7b4ba32809a0e8b40e324cdfb2c0c
+  GoogleSymbolUtilities: 82ad9f93d3615244b3f4ce440f5ab2515e8b4f56
+  GoogleUtilities: 8ed9134debe11719097881711464752900668f10
   HanekeSwift: d6f5bdf9dbdbbc09d59623b2c1d533e46463dd4d
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
   QRCode: a249ed747aeb0f4bf5f9c58b5b001b6b3bc80073

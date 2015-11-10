@@ -30,9 +30,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
         return _formatter
     }()
 
-    lazy var mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
-
-
     @NSManaged var twitterUsername: String!
     @NSManaged var twitterAuthToken: String!
     @NSManaged var twitterAuthSecret: String!
@@ -187,21 +184,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
                     success: true,
                     customAttributes: nil)
                 completion(errorMessage: nil)
-////                self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withSuccessBlock: { (task) -> AnyObject! in
-////                    log.verbose("DynamoUser save")
-////                    if let _automaticTippingEnabled = self.automaticTippingEnabled where _automaticTippingEnabled.boolValue {
-////                        API.sharedInstance.connect({ (json, error) -> Void in
-////                            log.verbose("calling completion")
-////                            Debug.isBlocking()
-////                            completion()
-////                        })
-////                    } else {
-////                        log.verbose("calling completion")
-////                       completion()
-////                    }
-//                
-//                    return nil
-//                })
             } else  {
                 self.register({ (errorMessage) -> Void in
                     Answers.logSignUpWithMethod("Twitter",
@@ -366,7 +348,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
     func pushToDynamo() {
         if isTwitterAuthenticated {
             log.verbose("self:\(self)")
-            mapper.load(DynamoUser.self, hashKey: userId, rangeKey: nil).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+            AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper().load(DynamoUser.self, hashKey: userId, rangeKey: nil).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
                 log.verbose("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
                 if (task.error == nil) {
                     let user:DynamoUser = task.result as! DynamoUser
@@ -404,7 +386,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
         user.UpdatedAt                  = Int(NSDate().timeIntervalSince1970)
 
 
-        self.mapper.save(user, configuration: self.defaultDynamoConfiguration).continueWithBlock({ (task) -> AnyObject! in
+        AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper().save(user, configuration: self.defaultDynamoConfiguration).continueWithBlock({ (task) -> AnyObject! in
             log.verbose("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
             completion?()
             return nil
@@ -423,7 +405,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
         dynamoUser.ProfileImage = profileImage
 
         
-        self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+        AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper().save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             if task.error == nil {
                 log.info("User tokens pushed to dynamo")
             } else {
@@ -439,7 +421,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
         dynamoUser.UserID = userId
         dynamoUser.DeviceTokens               = self.deviceTokens
         
-        self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+        AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper().save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             if task.error == nil {
                 log.info("Device tokens pushed to dynamo")
             } else {
@@ -473,7 +455,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
         }
         
         
-        self.mapper.save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+        AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper().save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             if task.error == nil {
                 completion(errorMessage: nil)
             } else {
@@ -554,7 +536,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
     func resetIdentifiers() {
         log.verbose("")
         Twitter.sharedInstance().sessionStore.logOutUserID(twitterUserId!)
-        (UIApplication.sharedApplication().delegate as! AppDelegate).resetCognitoCredentials()
         SSKeychain.deletePasswordForService(KeychainTwitterIDAccount, account: KeychainAccount)
         SSKeychain.deletePasswordForService(KeychainTokenAccount, account: KeychainAccount)
         SSKeychain.deletePasswordForService(KeychainBitcoinAccount, account: KeychainAccount)
@@ -565,9 +546,11 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
         NSUbiquitousKeyValueStore.defaultStore().removeObjectForKey(KeychainBitcoinAccount)
         NSUbiquitousKeyValueStore.defaultStore().removeObjectForKey(KeychainUserIDAccount)
         NSUbiquitousKeyValueStore.defaultStore().synchronize()
+        
+        (UIApplication.sharedApplication().delegate as! AppDelegate).resetCognitoCredentials()
+        
         self.destroy()
         self.writeToDisk()
-
     }
 
     func updateEntityWithModel(model: Any) {

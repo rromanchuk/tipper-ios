@@ -140,11 +140,9 @@ class OnboardPartOne: UIViewController, StandardViewController {
  
             } else {
                 log.verbose("\(self.className)::\(__FUNCTION__) authenticate callback")
-                
                 Debug.isBlocking()
                 SwiftSpinner.hide(nil)
                 self.currentUser.registerForRemoteNotificationsIfNeeded()
-                self.currentUser.writeToDisk()
                 (self.parentViewController as! OnboardingPageControllerViewController).autoAdvance()
             }
         }
