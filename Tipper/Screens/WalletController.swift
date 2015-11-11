@@ -15,16 +15,17 @@ import Haneke
 import TSMessages
 import ApplePayStubs
 
-class WalletController: UITableViewController, PKPaymentAuthorizationViewControllerDelegate, STPCheckoutViewControllerDelegate, UITextFieldDelegate, UINavigationControllerDelegate {
+class WalletController: UITableViewController, UITextFieldDelegate, UINavigationControllerDelegate {
     var managedObjectContext: NSManagedObjectContext?
     var currentUser: CurrentUser!
     var market: Market!
 
-    let stripeCheckout = STPCheckoutViewController()
     let regularExpression = try! NSRegularExpression(pattern: "^[13][a-km-zA-HJ-NP-Z1-9]{25,34}$", options: [])
-    let ApplePayMerchantID = Config.get("APPLE_PAY_MERCHANT")
-    let SupportedPaymentNetworks = [PKPaymentNetworkVisa, PKPaymentNetworkMasterCard, PKPaymentNetworkAmex]
     let className = "WalletController"
+    
+    lazy var paymentController : PaymentController = {
+        PaymentController(withMarket: self.market)
+    }()
 
     @IBOutlet weak var btcConversionLabel: UILabel!
     @IBOutlet weak var ubtcExchangeLabel: UILabel!
@@ -50,7 +51,7 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
         self.tableView.estimatedRowHeight = 1300;
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         //applePayButton = PKPaymentButton(type: .Buy, style: .Black)
-
+        paymentController.walletDelegate = self
 
         if let fundAmount = Settings.sharedInstance.fundAmount, fundAmountUBTC = Settings.sharedInstance.fundAmountUBTC {
             btcConversionLabel.text = "(\(fundAmount) Bitcoin)"
@@ -65,9 +66,7 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
             usdExchangeLabel.text = amount
         }
 
-        let paymentRequest = Stripe.paymentRequestWithMerchantIdentifier(ApplePayMerchantID)
-
-        if PKPaymentAuthorizationViewController.canMakePaymentsUsingNetworks(SupportedPaymentNetworks) && Stripe.canSubmitPaymentRequest(paymentRequest) {
+        if paymentController.applePaySupported {
             log.verbose("ApplePay supported")
             self.applePayButton.hidden = false
             self.stripeButton.hidden = true
@@ -146,18 +145,6 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
 
     }
 
-    // MARK: Stripe
-    func checkoutController(controller: STPCheckoutViewController, didCreateToken token: STPToken, completion: STPTokenSubmissionHandler) {
-        log.verbose("")
-        createBackendChargeWithToken(token, completion: completion)
-    }
-
-
-    func paymentAuthorizationViewControllerDidFinish(controller: PKPaymentAuthorizationViewController!) {
-        log.verbose("")
-        self.parentViewController!.dismissViewControllerAnimated(true, completion: nil)
-    }
-
     func checkoutController(controller: STPCheckoutViewController, didFinishWithStatus status: STPPaymentStatus, error: NSError?) {
         log.error("error:\(error)")
         self.parentViewController!.dismissViewControllerAnimated(true, completion: {
@@ -189,7 +176,7 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
     @IBAction func didLongPressPayButton(sender: UILongPressGestureRecognizer) {
         log.info("\(currentUser.admin)")
         if let admin = currentUser.admin where admin.boolValue {
-            launchStripeFlow()
+            //launchStripeFlow()
         }
     }
 
@@ -201,85 +188,9 @@ class WalletController: UITableViewController, PKPaymentAuthorizationViewControl
 
     @IBAction func didTapPay(sender: UIButton) {
         log.verbose("")
-        let request = PKPaymentRequest()
-        request.merchantIdentifier = ApplePayMerchantID
-        request.supportedNetworks = SupportedPaymentNetworks
-        request.merchantCapabilities = PKMerchantCapability.Capability3DS
-        request.countryCode = "US"
-        request.currencyCode = "USD"
-        let amount = (market.amount! as NSString).doubleValue
-        request.paymentSummaryItems = [PKPaymentSummaryItem(label: "Tipper 0.02BTC deposit", amount: NSDecimalNumber(double: amount))]
-        if Stripe.canSubmitPaymentRequest(request) {
-            #if DEBUG
-                let applePayController = STPTestPaymentAuthorizationViewController(paymentRequest: request)
-                applePayController.delegate = self
-                self.parentViewController!.presentViewController(applePayController, animated: true, completion: nil)
-                #else
-                let applePayController = PKPaymentAuthorizationViewController(paymentRequest: request)
-                applePayController.delegate = self
-                self.parentViewController!.presentViewController(applePayController, animated: true, completion: nil)
-            #endif
-        } else {
-            //default to Stripe's PaymentKit Form
-            let options = STPCheckoutOptions()
-            let amount = (market.amount! as NSString).doubleValue
-            options.purchaseDescription = "Tipper 0.02BTC deposit";
-            options.purchaseAmount = UInt(amount * 100)
-            options.companyName = "Tipper"
-            let checkoutViewController = STPCheckoutViewController(options: options)
-            checkoutViewController.checkoutDelegate = self
-            self.parentViewController!.presentViewController(checkoutViewController, animated: true, completion: nil)
-
-        }
-
+        paymentController.pay()
     }
     
-    func launchStripeFlow() {
-        //default to Stripe's PaymentKit Form
-        let options = STPCheckoutOptions()
-        let amount = (market.amount! as NSString).doubleValue
-        options.purchaseDescription = "Tipper 0.02BTC deposit";
-        options.purchaseAmount = UInt(amount * 100)
-        options.companyName = "Tipper"
-        let checkoutViewController = STPCheckoutViewController(options: options)
-        checkoutViewController.checkoutDelegate = self
-        self.parentViewController!.presentViewController(checkoutViewController, animated: true, completion: nil)
-    }
-
-    func createBackendChargeWithToken(token: STPToken, completion: STPTokenSubmissionHandler) {
-        log.verbose("")
-        API.sharedInstance.charge(token.tokenId, amount:self.market.amount!, completion: { [weak self] (json, error) -> Void in
-            if (error != nil) {
-                completion(STPBackendChargeResult.Failure, error)
-            } else {
-                //self?.currentUser.updateEntityWithJSON(json)
-                completion(STPBackendChargeResult.Success, nil)
-                TSMessage.showNotificationInViewController(self?.parentViewController!, title: "Payment complete", subtitle: "Your bitcoin will arrive shortly.", type: .Success, duration: 5.0)
-            }
-        })
-    }
-
-    func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: ((PKPaymentAuthorizationStatus) -> Void)) {
-        log.verbose("")
-        STPAPIClient.sharedClient().createTokenWithPayment(payment, completion: { [weak self] (token, error) -> Void in
-            log.verbose("error:\(error), token: \(token)")
-            if error == nil {
-                if let token = token {
-                    self?.createBackendChargeWithToken(token, completion: { (result, error) -> Void in
-                        log.verbose("\(self!.className)::\(__FUNCTION__) error:\(error), result: \(result)")
-                        if result == STPBackendChargeResult.Success {
-                            completion(PKPaymentAuthorizationStatus.Success)
-                            return
-                        }
-                    })
-                }
-            } else {
-                completion(PKPaymentAuthorizationStatus.Failure)
-            }
-
-        })
-    }
-
 
     @IBAction func textFieldChanged(sender: UITextField) {
         if (addressToPayTextField.text!.characters.count > 24) {

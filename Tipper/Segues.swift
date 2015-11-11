@@ -8,11 +8,15 @@
 
 import Foundation
 enum CustomModalSegues: String {
-    case GoThere     = "go-via-this-segue"
-    case GoSomewhere = "go-via-that-segue"
+    case Notifications        = "DidTapNotifications"
+    case Account              = "DidTapAccountSegue"
 }
 
 enum CustomPushSegues: String {
-    case GoThere     = "go-via-this-segue"
-    case GoSomewhere = "go-via-that-segue"
+    case TipDetails     = "TipDetails"
+}
+
+enum ExitSegues: String {
+    case ToHomeFromAccount = "ExitToHomeFromAccount"
+    case ToSplash = "BackToSplash"
 }
