@@ -21,8 +21,7 @@ class WalletController: UITableViewController, UITextFieldDelegate, UINavigation
     var market: Market!
 
     let regularExpression = try! NSRegularExpression(pattern: "^[13][a-km-zA-HJ-NP-Z1-9]{25,34}$", options: [])
-    let className = "WalletController"
-    
+
     lazy var paymentController : PaymentController = {
         PaymentController(withMarket: self.market)
     }()

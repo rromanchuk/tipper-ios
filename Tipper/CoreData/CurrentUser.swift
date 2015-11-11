@@ -397,12 +397,13 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
         log.info("")
         let dynamoUser = DynamoUser()
         dynamoUser.UserID = userId
-        dynamoUser.TwitterAuthSecret = twitterAuthSecret
-        dynamoUser.TwitterAuthToken = twitterAuthToken
-        dynamoUser.ProfileImage = profileImage
-        dynamoUser.TwitterUsername = twitterUsername
-        dynamoUser.CognitoIdentity = cognitoIdentity
-        dynamoUser.ProfileImage = profileImage
+        dynamoUser.TwitterAuthSecret    = twitterAuthSecret
+        dynamoUser.TwitterAuthToken     = twitterAuthToken
+        dynamoUser.ProfileImage         = profileImage
+        dynamoUser.TwitterUsername      = twitterUsername
+        dynamoUser.CognitoIdentity      = cognitoIdentity
+        dynamoUser.ProfileImage         = profileImage
+        
 
         
         AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper().save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in

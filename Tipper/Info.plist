@@ -35,7 +35,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>342</string>
+	<string>343</string>
 	<key>COGNITO_POOL</key>
 	<string>$(COGNITO_POOL)</string>
 	<key>Configuration</key>
@@ -65,6 +65,8 @@
 			</dict>
 		</array>
 	</dict>
+	<key>GA_ID</key>
+	<string>UA-67166716-2</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>twitter</string>

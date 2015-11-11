@@ -11,10 +11,9 @@ import PassKit
 import Stripe
 import ApplePayStubs
 
-class OnboardPartThree: GAITrackedViewController, UINavigationControllerDelegate, StandardViewController { //PKPaymentAuthorizationViewControllerDelegate, STPCheckoutViewControllerDelegate
+class OnboardPartThree: GAITrackedViewController, UINavigationControllerDelegate, StandardViewController {
     var provider: AWSCognitoCredentialsProvider!
     var currentUser: CurrentUser!
-    var className = "OnboardPartThree"
     var managedObjectContext: NSManagedObjectContext?
     var market: Market!
     weak var onboardingDelegate: OnboardingViewController?
@@ -41,13 +40,10 @@ class OnboardPartThree: GAITrackedViewController, UINavigationControllerDelegate
         updateMarketData()
         paymentController.walletDelegate = self
 
-        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func updateMarketData() {
@@ -72,8 +68,7 @@ class OnboardPartThree: GAITrackedViewController, UINavigationControllerDelegate
         }
     }
 
-    
-    
+
     @IBAction func didTapPay(sender: UIButton) {
         log.verbose("")
         paymentController.pay()
@@ -84,8 +79,7 @@ class OnboardPartThree: GAITrackedViewController, UINavigationControllerDelegate
         log.verbose("")
         didTapPay(sender)
     }
-    
-    
+
     @IBAction func didTapSkip(sender: UIButton) {
         (parentViewController as! OnboardingPageControllerViewController).autoAdvance()
     }

@@ -29,7 +29,7 @@ import XCGLogger
 
 let log: XCGLogger = {
     let log = XCGLogger.defaultInstance()
-    log.setup(.Verbose, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: nil, fileLogLevel: .Verbose)
+    log.setup(.Info, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: nil, fileLogLevel: .Verbose)
 
     let dateFormatter = NSDateFormatter()
     dateFormatter.dateFormat = "hh:mma"
@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        GGLContext.sharedInstance().configureWithError(&configureError)
 //        assert(configureError == nil, "Error configuring Google services: \(configureError)")
 //
-        GAI.sharedInstance().trackerWithTrackingId("UA-67166716-2")
+        GAI.sharedInstance().trackerWithTrackingId(Config.get("GA_ID"))
         NSUbiquitousKeyValueStore.defaultStore().synchronize()
         
 
@@ -91,7 +91,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = configuration
 
         TIPPERTipperClient.defaultClient().APIKey = Config.get("AWS_API_GATEWAY_KEY")
-
 
         
         market = NSEntityDescription.insertNewObjectForEntityForName("Market", inManagedObjectContext: managedObjectContext) as! Market
@@ -280,7 +279,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject: AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
 
-        log.verbose("\(className)::\(__FUNCTION__) userInfo:\(userInfo)")
+        log.verbose("userInfo:\(userInfo)")
         var messageJSON: JSON?
 
         if let message = userInfo["message"] as? [String: AnyObject]  {
@@ -423,10 +422,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         log.verbose("")
         
         if let userInfo = notficiation.userInfo, identifier = userInfo[AWSCognitoNotificationNewId] as? String {
-            log.verbose("\(className)::\(__FUNCTION__) New cognito identifier: \(identifier)")
+            log.warning("New cognito identifier \(identifier)")
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.currentUser.cognitoIdentity = identifier
-                self.currentUser.pushToDynamo()
+                self.currentUser.pushTokens()
             })
         }
     }
