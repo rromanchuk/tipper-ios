@@ -160,7 +160,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             log.verbose("\(self?.className)::\(__FUNCTION__) Just fetched cognito identity and is \(identity)")
                             self?.currentUser.cognitoIdentity = identity
                         }
-                        self?.currentUser?.pushToDynamo()
+                        self?.currentUser?.pushTokens()
                         return nil
                     })
                 })
@@ -196,50 +196,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         log.verbose("deviceTokenString: \(deviceTokenString)")
         
         
-        let deviceTokenSet = NSMutableSet(objects: deviceTokenString)
-        if let deviceTokens = currentUser!.deviceTokens?.allObjects {
-            log.verbose("currentUser!.deviceTokens?: \(deviceTokens)")
-            deviceTokenSet.addObjectsFromArray(deviceTokens)
-        }
-        log.verbose("deviceTokenSet: \(deviceTokenSet)")
-        currentUser?.deviceTokens = deviceTokenSet
-        
-        registerTokens(currentUser.deviceTokens!.allObjects)
+
+        registerToken(deviceTokenString)
     }
     
     
-    func registerTokens(tokens: NSArray) {
-        log.verbose("\(className)::\(__FUNCTION__) tokens:\(tokens)")
+    func registerToken(token: String) {
+        log.verbose("token:\(token)")
         let sns = AWSSNS.defaultSNS()
         let request = AWSSNSCreatePlatformEndpointInput()
         request.platformApplicationArn = Config.get("SNS_ENDPOINT")
-        
-        for token in tokens {
-            request.token = token as! String 
-            sns.createPlatformEndpoint(request).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task:AWSTask!) -> AnyObject! in
-                if task.error != nil {
-                    log.error("[ERROR]: createPlatformEndpoint failed \(task.error)")
-                } else {
-                    let createEndpointResponse = task.result as! AWSSNSCreateEndpointResponse
-                    log.verbose("endpointArn: \(createEndpointResponse.endpointArn)")
-                    let endpointArnSet = NSMutableSet(objects: createEndpointResponse.endpointArn)
-                    if let endPoints = self.currentUser.endpointArns?.allObjects {
-                        endpointArnSet.addObjectsFromArray(endPoints)
-                    }
-                    self.currentUser?.endpointArns = endpointArnSet
-                    self.currentUser?.pushToDynamo()
-                    self.gerneralSubscriptionChannel(task)
-                    log.verbose("admin? \(self.currentUser?.admin)")
-                    if let admin = self.currentUser?.admin where admin.boolValue {
-                        self.adminSubscriptionChannel(task)
-                    }
-                    
+        request.token = token
+        sns.createPlatformEndpoint(request).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task:AWSTask!) -> AnyObject! in
+            if task.error != nil {
+                log.error("[ERROR]: createPlatformEndpoint failed \(task.error)")
+            } else {
+                let createEndpointResponse = task.result as! AWSSNSCreateEndpointResponse
+                log.verbose("endpointArn: \(createEndpointResponse.endpointArn)")
+                let endpointArnSet = NSMutableSet(objects: createEndpointResponse.endpointArn)
+                if let endPoints = self.currentUser.endpointArns?.allObjects {
+                    endpointArnSet.addObjectsFromArray(endPoints)
                 }
-                
-                return nil
-            })
-
-        }
+                self.currentUser?.endpointArns = endpointArnSet
+                self.gerneralSubscriptionChannel(task)
+                log.verbose("admin? \(self.currentUser?.admin)")
+                if let admin = self.currentUser?.admin where admin.boolValue {
+                    self.adminSubscriptionChannel(task)
+                }
+            }
+            
+            return nil
+        })
     }
 
     func gerneralSubscriptionChannel(task: AWSTask!) {

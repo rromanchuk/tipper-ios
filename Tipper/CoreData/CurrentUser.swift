@@ -208,7 +208,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
             if let address = task.result as? TIPPERAddress {
                 self.bitcoinAddress = address.bitcoinAddress
                 self.writeToDisk()
-                self.pushLocal({ (errorMessage) -> Void in
+                self.pushRegistration({ (errorMessage) -> Void in
                     API.sharedInstance.connect({ (json, error) -> Void in
                         
                     })
@@ -345,54 +345,55 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
         }
     }
 
-    func pushToDynamo() {
-        if isTwitterAuthenticated {
-            log.verbose("self:\(self)")
-            AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper().load(DynamoUser.self, hashKey: userId, rangeKey: nil).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
-                log.verbose("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
-                if (task.error == nil) {
-                    let user:DynamoUser = task.result as! DynamoUser
-                    self.pushToDynamo(user, completion: nil)
+//    func pushToDynamo() {
+//        if isTwitterAuthenticated {
+//            log.verbose("self:\(self)")
+//            AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper().load(DynamoUser.self, hashKey: userId, rangeKey: nil).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
+//                log.verbose("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
+//                if (task.error == nil) {
+//                    let user:DynamoUser = task.result as! DynamoUser
+//                    self.pushToDynamo(user, completion: nil)
+//
+//                } else {
+//                    if task.error.code == 10 {
+//                        NSNotificationCenter.defaultCenter().postNotificationName("UNAUTHORIZED_USER", object: nil)
+//                    }
+//                    log.error("error: \(task.error)")
+//                }
+//                return nil
+//            })
+//
+//        }
+//    }
 
-                } else {
-                    if task.error.code == 10 {
-                        NSNotificationCenter.defaultCenter().postNotificationName("UNAUTHORIZED_USER", object: nil)
-                    }
-                    log.error("error: \(task.error)")
-                }
-                return nil
-            })
+//    func pushToDynamo(user:DynamoUser, completion: (()->Void)?) {
+//        user.TwitterUserID              = self.twitterUserId
+//        user.TwitterAuthToken           = self.twitterAuthToken
+//        user.TwitterAuthSecret          = self.twitterAuthSecret
+//        user.BitcoinBalanceBTC          = self.bitcoinBalanceBTC
+//        user.CognitoIdentity            = self.cognitoIdentity
+//        user.AutomaticTippingEnabled    = self.automaticTippingEnabled?.boolValue
+//        user.IsActive                   = "X"
+//        user.ProfileImage               = self.profileImage
+//        user.TwitterUsername            = self.twitterUsername
+//
+//
+//        if let _bitcoinAddress = self.bitcoinAddress {
+//            user.BitcoinAddress = _bitcoinAddress
+//        }
+//        user.UpdatedAt                  = Int(NSDate().timeIntervalSince1970)
+//
+//        if let _endpointArns = endpointArns {
+//            dynamoUser.EndpointArns = _endpointArns
+//        }
+//
+//        AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper().save(user, configuration: self.defaultDynamoConfiguration).continueWithBlock({ (task) -> AnyObject! in
+//            log.verbose("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
+//            completion?()
+//            return nil
+//        })
+//    }
 
-        }
-    }
-
-    func pushToDynamo(user:DynamoUser, completion: (()->Void)?) {
-        user.TwitterUserID              = self.twitterUserId
-        user.TwitterAuthToken           = self.twitterAuthToken
-        user.TwitterAuthSecret          = self.twitterAuthSecret
-        user.BitcoinBalanceBTC          = self.bitcoinBalanceBTC
-        user.CognitoIdentity            = self.cognitoIdentity
-        user.AutomaticTippingEnabled    = self.automaticTippingEnabled?.boolValue
-        user.DeviceTokens               = self.deviceTokens
-        user.EndpointArns               = self.endpointArns
-        user.IsActive                   = "X"
-        user.ProfileImage               = self.profileImage
-        user.TwitterUsername            = self.twitterUsername
-
-
-        if let _bitcoinAddress = self.bitcoinAddress {
-            user.BitcoinAddress = _bitcoinAddress
-        }
-        user.UpdatedAt                  = Int(NSDate().timeIntervalSince1970)
-
-
-        AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper().save(user, configuration: self.defaultDynamoConfiguration).continueWithBlock({ (task) -> AnyObject! in
-            log.verbose("\(self.className)::\(__FUNCTION__) error:\(task.error), exception:\(task.exception)")
-            completion?()
-            return nil
-        })
-    }
-    
     func pushTokens() {
         log.info("")
         let dynamoUser = DynamoUser()
@@ -403,9 +404,17 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
         dynamoUser.TwitterUsername      = twitterUsername
         dynamoUser.CognitoIdentity      = cognitoIdentity
         dynamoUser.ProfileImage         = profileImage
+        dynamoUser.IsActive             = "X"
+
+        if let _endpointArns = endpointArns {
+            dynamoUser.EndpointArns = _endpointArns
+        }
+
+        if let _bitcoinBalanceBTC = bitcoinBalanceBTC {
+            dynamoUser.BitcoinBalanceBTC = _bitcoinBalanceBTC
+        }
         
 
-        
         AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper().save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             if task.error == nil {
                 log.info("User tokens pushed to dynamo")
@@ -420,7 +429,10 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
     func pushDeviceTokens() {
         let dynamoUser = DynamoUser()
         dynamoUser.UserID = userId
-        dynamoUser.DeviceTokens               = self.deviceTokens
+
+        if let _endpointArns = endpointArns {
+            dynamoUser.EndpointArns = _endpointArns
+        }
         
         AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper().save(dynamoUser, configuration: self.defaultDynamoConfiguration).continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task) -> AnyObject! in
             if task.error == nil {
@@ -432,7 +444,7 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
         })
     }
     
-    func pushLocal(completion: ((errorMessage: String?) ->Void)) {
+    func pushRegistration(completion: ((errorMessage: String?) ->Void)) {
         log.verbose("")
         let dynamoUser = DynamoUser()
         dynamoUser.UserID = userId
@@ -444,6 +456,10 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
         dynamoUser.ProfileImage = profileImage
         dynamoUser.TwitterUsername = twitterUsername
         dynamoUser.CognitoIdentity = cognitoIdentity
+
+        if let _endpointArns = endpointArns {
+            dynamoUser.EndpointArns = _endpointArns
+        }
         
         
         if let createdAt = createdAt {
@@ -588,10 +604,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
                 self.updatedAt              = NSDate(timeIntervalSince1970: updatedAt)
             }
 
-            if let _deviceTokens = user.DeviceTokens {
-                self.deviceTokens = _deviceTokens
-            }
-            
             if let _endpointArns = user.EndpointArns {
                 self.endpointArns = _endpointArns
             }

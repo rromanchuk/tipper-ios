@@ -47,7 +47,6 @@ class NotificationsTableController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -65,15 +64,13 @@ class NotificationsTableController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let notification = fetchedResultsController.objectAtIndexPath(indexPath) as! Notification
         log.verbose("notification: \(notification)")
-        if let _ = notification.tipId, _ = notification.tipFromUserId where notification.type == "user_sent_tip" || notification.type == "user_received_tip" {
+        if let _ = notification.tipId, _ = notification.tipFromUserId where notification.type == NotificationCellType.TipSent.rawValue || notification.type == NotificationCellType.TipReceived.rawValue {
             self.parentViewController?.performSegueWithIdentifier("TipDetails", sender: notification)
         } else if notification.type == "low_balance" || notification.type == "problem" {
             self.parentViewController?.performSegueWithIdentifier("AccountScreen", sender: notification)
         } else if notification.type == "" {
             
         }
-
-
     }
 
     func refresh(refreshControl: UIRefreshControl) {
