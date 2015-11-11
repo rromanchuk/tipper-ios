@@ -65,7 +65,7 @@
 		946799E71BEBDB8000D420CE /* TIPPERAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 946799E61BEBDB8000D420CE /* TIPPERAddress.m */; };
 		946799EC1BF38BD000D420CE /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946799EB1BF38BD000D420CE /* Segues.swift */; };
 		946799EE1BF3A46700D420CE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946799ED1BF3A46700D420CE /* Constants.swift */; };
-		946799F11BF3A50E00D420CE /* WalletDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946799F01BF3A50E00D420CE /* WalletDelegate.swift */; };
+		946799F11BF3A50E00D420CE /* PaymentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946799F01BF3A50E00D420CE /* PaymentController.swift */; };
 		94723C751BB49F3F00C33210 /* TIPPERTipperClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 94723C741BB49F3F00C33210 /* TIPPERTipperClient.m */; };
 		94723C781BB49F6A00C33210 /* TIPPEREmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 94723C771BB49F6A00C33210 /* TIPPEREmpty.m */; };
 		94723C7B1BB507D100C33210 /* TIPPERSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 94723C7A1BB507D100C33210 /* TIPPERSettings.m */; };
@@ -213,7 +213,7 @@
 		946799E61BEBDB8000D420CE /* TIPPERAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIPPERAddress.m; sourceTree = "<group>"; };
 		946799EB1BF38BD000D420CE /* Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
 		946799ED1BF3A46700D420CE /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		946799F01BF3A50E00D420CE /* WalletDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletDelegate.swift; path = Wallet/WalletDelegate.swift; sourceTree = "<group>"; };
+		946799F01BF3A50E00D420CE /* PaymentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentController.swift; path = Wallet/PaymentController.swift; sourceTree = "<group>"; };
 		94723C731BB49F3F00C33210 /* TIPPERTipperClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIPPERTipperClient.h; sourceTree = "<group>"; };
 		94723C741BB49F3F00C33210 /* TIPPERTipperClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIPPERTipperClient.m; sourceTree = "<group>"; };
 		94723C761BB49F6A00C33210 /* TIPPEREmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIPPEREmpty.h; sourceTree = "<group>"; };
@@ -412,7 +412,7 @@
 		94416C051AAF989F00117AFC /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				946799EF1BF3A4F300D420CE /* Wallet */,
+				946799EF1BF3A4F300D420CE /* Payment */,
 				94A00F1F1BBE6C2B00658C4C /* Splash */,
 				9426B2921B9F67D0001F996C /* Onboarding */,
 				942780021B97AE9A007CB713 /* Accounts */,
@@ -479,12 +479,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		946799EF1BF3A4F300D420CE /* Wallet */ = {
+		946799EF1BF3A4F300D420CE /* Payment */ = {
 			isa = PBXGroup;
 			children = (
-				946799F01BF3A50E00D420CE /* WalletDelegate.swift */,
+				946799F01BF3A50E00D420CE /* PaymentController.swift */,
 			);
-			name = Wallet;
+			name = Payment;
 			sourceTree = "<group>";
 		};
 		94723C661BB4939A00C33210 /* AWSGateway */ = {
@@ -1012,7 +1012,7 @@
 				9484185E1AB6B2B8001C633E /* DynamoUser.swift in Sources */,
 				94A00F1E1BBD3FEA00658C4C /* TIPPERUser.m in Sources */,
 				94AF29751AAEF2B600E16048 /* Tipper.xcdatamodeld in Sources */,
-				946799F11BF3A50E00D420CE /* WalletDelegate.swift in Sources */,
+				946799F11BF3A50E00D420CE /* PaymentController.swift in Sources */,
 				944014E41BC78B0C00A66E44 /* TIPPERBalance.m in Sources */,
 				94A00F1D1BBD3FEA00658C4C /* TIPPERTransaction.m in Sources */,
 				946799EC1BF38BD000D420CE /* Segues.swift in Sources */,
