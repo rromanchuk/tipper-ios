@@ -67,6 +67,10 @@ class NotificationsTableController: UITableViewController {
         log.verbose("notification: \(notification)")
         if let _ = notification.tipId, _ = notification.tipFromUserId where notification.type == "user_sent_tip" || notification.type == "user_received_tip" {
             self.parentViewController?.performSegueWithIdentifier("TipDetails", sender: notification)
+        } else if notification.type == "low_balance" || notification.type == "problem" {
+            self.parentViewController?.performSegueWithIdentifier("AccountScreen", sender: notification)
+        } else if notification.type == "" {
+            
         }
 
 

@@ -48,6 +48,12 @@ class NotificationsController: GAITrackedViewController, ContainerDelegate, Cust
             vc.currentUser = currentUser
             vc.market = market
             vc.notification = sender as? Notification
+        } else if segue.identifier == "AccountScreen" {
+            let vc = segue.destinationViewController as! AccountController
+            vc.managedObjectContext = managedObjectContext
+            vc.currentUser = currentUser
+            vc.market = market
+            vc.exitSegueIdentifier = "ExitToNotifications"
         }
     }
     

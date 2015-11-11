@@ -105,10 +105,9 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
 }
 
 - (instancetype)init {
-//    @throw [NSException exceptionWithName:NSInternalInconsistencyException
-//                                   reason:@"`- init` is not a valid initializer. Use `+ defaultClient` or `+ clientForKey:` instead."
-//                                 userInfo:nil];
-    return self;
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                   reason:@"`- init` is not a valid initializer. Use `+ defaultClient` or `+ clientForKey:` instead."
+                                 userInfo:nil];
 }
 
 - (instancetype)initWithConfiguration:(AWSServiceConfiguration *)configuration {

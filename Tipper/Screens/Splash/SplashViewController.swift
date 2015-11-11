@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SplashViewController: UIViewController {
+class SplashViewController: GAITrackedViewController {
     var provider: AWSCognitoCredentialsProvider!
     var currentUser: CurrentUser!
     var className = "OnboardingViewController"
