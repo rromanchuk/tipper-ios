@@ -36,7 +36,6 @@ class DynamoUser: AWSDynamoDBObjectModel, AWSDynamoDBModeling, ModelCoredataMapa
     var IsActive: String?
     var ProfileImage: String?
     var AutomaticTippingEnabled: Bool?
-    var DeviceTokens: NSSet?
 
     class func findByTwitterId(twitterId:String, completion: (user:DynamoUser?) -> Void) {
         let mapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()

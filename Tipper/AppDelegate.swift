@@ -194,9 +194,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString:"<>"))
             .stringByReplacingOccurrencesOfString(" ", withString: "")
         log.verbose("deviceTokenString: \(deviceTokenString)")
-        
-        
-
         registerToken(deviceTokenString)
     }
     

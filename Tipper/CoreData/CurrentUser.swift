@@ -47,7 +47,6 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
     @NSManaged var admin: NSNumber?
     @NSManaged var lastReceivedEvaluatedKey: NSNumber?
     @NSManaged var automaticTippingEnabled: NSNumber?
-    @NSManaged var deviceTokens: NSSet?
 
     class func currentUser(context: NSManagedObjectContext) -> CurrentUser {
         if let _currentUser = CurrentUser.first(CurrentUser.self, context: context) {
