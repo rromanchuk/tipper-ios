@@ -209,7 +209,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 log.error("[ERROR]: createPlatformEndpoint failed \(task.error)")
             } else {
                 let createEndpointResponse = task.result as! AWSSNSCreateEndpointResponse
-                log.verbose("endpointArn: \(createEndpointResponse.endpointArn)")
+                log.info("Just registered endpointArn: \(createEndpointResponse), \(createEndpointResponse.endpointArn)")
                 let endpointArnSet = NSMutableSet(objects: createEndpointResponse.endpointArn)
                 if let endPoints = self.currentUser.endpointArns?.allObjects {
                     endpointArnSet.addObjectsFromArray(endPoints)

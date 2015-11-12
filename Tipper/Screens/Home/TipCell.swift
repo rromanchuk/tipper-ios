@@ -56,9 +56,9 @@ class TipCell: UITableViewCell {
 
             setupTipAmount()
             
-            log.info(" \(_favorite?.fromTwitterId)  == \(currentUser?.twitterUserId)")
-            log.info("favorite: \(favorite)")
-            log.info("user: \(currentUser!)")
+            log.verbose(" \(_favorite?.fromTwitterId)  == \(currentUser?.twitterUserId)")
+//            log.verbose("favorite: \(favorite)")
+//            log.verbose("user: \(currentUser!)")
 
             if _favorite?.fromTwitterId  == currentUser?.twitterUserId {
                 if let urlString = favorite.toTwitterProfileImage, url = NSURL(string: urlString) {
