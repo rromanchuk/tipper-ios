@@ -139,9 +139,11 @@ class OnboardPartOne: GAITrackedViewController, StandardViewController {
                 })
  
             } else {
-                log.verbose("\(self.className)::\(__FUNCTION__) authenticate callback")
+                log.verbose("authenticate callback")
                 Debug.isBlocking()
                 SwiftSpinner.hide(nil)
+                Crashlytics.sharedInstance().setUserIdentifier(self.currentUser.userId!)
+                Crashlytics.sharedInstance().setUserName(session.userName)
                 self.currentUser.registerForRemoteNotificationsIfNeeded()
                 (self.parentViewController as! OnboardingPageControllerViewController).autoAdvance()
             }
