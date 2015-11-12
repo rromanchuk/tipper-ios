@@ -35,7 +35,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>350</string>
+	<string>351</string>
 	<key>COGNITO_POOL</key>
 	<string>$(COGNITO_POOL)</string>
 	<key>Configuration</key>

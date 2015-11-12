@@ -185,11 +185,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tipper/CoreData/CurrentUser.swift"
-            timestampString = "469055861.353584"
+            timestampString = "469056700.137171"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "247"
-            endingLineNumber = "247"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
             landmarkName = "twitterAuthenticationWithTKSession(_:)"
             landmarkType = "5">
             <Locations>
