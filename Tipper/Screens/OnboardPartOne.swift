@@ -143,7 +143,7 @@ class OnboardPartOne: GAITrackedViewController, StandardViewController {
                 Debug.isBlocking()
                 SwiftSpinner.hide(nil)
                 Crashlytics.sharedInstance().setUserIdentifier(self.currentUser.userId!)
-                Crashlytics.sharedInstance().setUserName(session.userName)
+                Crashlytics.sharedInstance().setUserName(self.currentUser.twitterUsername)
                 self.currentUser.registerForRemoteNotificationsIfNeeded()
                 (self.parentViewController as! OnboardingPageControllerViewController).autoAdvance()
             }
