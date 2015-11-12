@@ -238,6 +238,11 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
         self.twitterUsername = session.userName
         self.twitterAuthToken = session.authToken
         self.twitterAuthSecret = session.authTokenSecret
+            // TODO: Use the current user's information
+            // You can call any combination of these three methods
+        Crashlytics.sharedInstance().setUserIdentifier(userId!)
+        Crashlytics.sharedInstance().setUserName(session.userName)
+
         log.info("currentUser: \(self)")
         self.save()
         writeToDisk()
