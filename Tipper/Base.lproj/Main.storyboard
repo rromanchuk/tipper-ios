@@ -703,7 +703,7 @@ tipper will send a Bitcoin tip.</string>
                                                         <constraint firstAttribute="height" constant="1" id="b35-KC-TA1"/>
                                                     </constraints>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-image-placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="0RF-kJ-poF">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default-profile" translatesAutoresizingMaskIntoConstraints="NO" id="0RF-kJ-poF">
                                                     <rect key="frame" x="23" y="144" width="40" height="40"/>
                                                     <animations/>
                                                     <constraints>
@@ -1009,7 +1009,7 @@ tipper will send a Bitcoin tip.</string>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-image-placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="ACe-lP-FW5" customClass="ProfileImage" customModule="Tipper" customModuleProvider="target">
+                                                <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default-profile" translatesAutoresizingMaskIntoConstraints="NO" id="ACe-lP-FW5" customClass="ProfileImage" customModule="Tipper" customModuleProvider="target">
                                                     <rect key="frame" x="48" y="15" width="40" height="40"/>
                                                     <animations/>
                                                     <constraints>
@@ -2316,7 +2316,6 @@ tipper will send a Bitcoin tip.</string>
         <image name="heart" width="17" height="15"/>
         <image name="notifications" width="25" height="31"/>
         <image name="onboarding-exchange" width="269" height="129"/>
-        <image name="profile-image-placeholder.png" width="240" height="240"/>
         <image name="tippy" width="124" height="110"/>
         <image name="transaction-confirmed" width="35" height="35"/>
         <image name="twitter-bird" width="26" height="22"/>

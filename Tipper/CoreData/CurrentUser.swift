@@ -401,12 +401,14 @@ class CurrentUser: NSManagedObject, CoreDataUpdatable, ModelCoredataMapable {
         dynamoUser.UserID = userId
         dynamoUser.TwitterAuthSecret    = twitterAuthSecret
         dynamoUser.TwitterAuthToken     = twitterAuthToken
-        dynamoUser.ProfileImage         = profileImage
         dynamoUser.TwitterUsername      = twitterUsername
         dynamoUser.CognitoIdentity      = cognitoIdentity
-        dynamoUser.ProfileImage         = profileImage
         dynamoUser.IsActive             = "X"
+        
+        if let _profileImage = profileImage {
+            dynamoUser.ProfileImage         = _profileImage
 
+        }
         if let _endpointArns = endpointArns {
             dynamoUser.EndpointArns = _endpointArns
         }

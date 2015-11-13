@@ -86,15 +86,32 @@ class TipDetailContainer: UITableViewController, TWTRTweetViewDelegate {
         if favorite.fromTwitterId == currentUser.twitterUserId {
             usernameLabel.text = "@\(favorite.toTwitterUsername)"
             tipHeaderLabel.text = "You tipped \(twt.author.name)."
-            if let profileImage = currentUser.profileImage, url = NSURL(string: profileImage) {
-                profileImageView.hnk_setImageFromURL(url)
+            log.info("Loading image \(currentUser.profileImage)")
+            if let urlString = currentUser.profileImage, url = NSURL(string: urlString) {
+                //profileImageView.hnk_setImageFromURL(url)
+                profileImageView.hnk_setImageFromURL(url, placeholder: nil, format: nil, failure: { (error) -> () in
+                    log.error("[ERROR] Could not load image \(urlString) \(error)")
+                    self.profileImageView.image = UIImage(named: "default-profile")
+                    }, success: { (image) -> () in
+                        log.info("Loading image \(urlString)")
+                        self.profileImageView.image = image
+                })
+
             }
 
         } else {
             tipHeaderLabel.text = "\(favorite.fromTwitterUsername) tipped you."
             usernameLabel.text = "@\(favorite.fromTwitterUsername)"
+            log.info("Loading image \(favorite.fromTwitterProfileImage)")
             if let urlString = favorite.fromTwitterProfileImage, url = NSURL(string: urlString) {
-                profileImageView.hnk_setImageFromURL(url)
+                //profileImageView.hnk_setImageFromURL(url)
+                profileImageView.hnk_setImageFromURL(url, placeholder: nil, format: nil, failure: { (error) -> () in
+                    log.error("[ERROR] Could not load image \(urlString) \(error)")
+                    self.profileImageView.image = UIImage(named: "default-profile")
+                    }, success: { (image) -> () in
+                        
+                        self.profileImageView.image = image
+                })
             }
         }
 
