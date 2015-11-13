@@ -62,7 +62,13 @@ class TipCell: UITableViewCell {
 
             if _favorite?.fromTwitterId  == currentUser?.twitterUserId {
                 if let urlString = favorite.toTwitterProfileImage, url = NSURL(string: urlString) {
-                    userProfileImage.hnk_setImageFromURL(url)
+                    //userProfileImage.hnk_setImageFromURL(url)
+                    userProfileImage.hnk_setImageFromURL(url, placeholder: nil, format: nil, failure: { (error) -> () in
+                        log.error("[ERROR] Could not load image \(urlString) \(error)")
+                        self.userProfileImage.image = UIImage(named: "default-profile")
+                        }, success: { (image) -> () in
+                           self.userProfileImage.image = image
+                    })
                 }
                 usernameLabel.text = "@\(_favorite!.toTwitterUsername)"
                 if _favorite!.didLeaveTip {
@@ -74,7 +80,7 @@ class TipCell: UITableViewCell {
                     tipAmountBTC.hidden = false
                 } else {
                     tipArrow.hidden = true
-                    tipActionLabel.text = "You favorited \(favorite.toTwitterUsername)"
+                    tipActionLabel.text = "You liked \(favorite.toTwitterUsername)"
                     tipButton.hidden = false
                     tipAmount.hidden = true
                     tipAmountBTC.hidden = true
