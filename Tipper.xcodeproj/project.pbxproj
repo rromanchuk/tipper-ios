@@ -54,13 +54,6 @@
 		945400241BC6084000BD8994 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945400231BC6084000BD8994 /* ProfileImage.swift */; };
 		945400271BC736C300BD8994 /* TIPPERMarket.m in Sources */ = {isa = PBXBuildFile; fileRef = 945400261BC736C300BD8994 /* TIPPERMarket.m */; };
 		9454002A1BC8903C00BD8994 /* TIPPERFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 945400291BC8903C00BD8994 /* TIPPERFavorite.m */; };
-		9462D75A1B35D108001C5083 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462D7591B35D108001C5083 /* InterfaceController.swift */; };
-		9462D75C1B35D108001C5083 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462D75B1B35D108001C5083 /* GlanceController.swift */; };
-		9462D75E1B35D108001C5083 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9462D75D1B35D108001C5083 /* Images.xcassets */; };
-		9462D7621B35D108001C5083 /* Tipper WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = 9462D7611B35D108001C5083 /* Tipper WatchKit App.app */; };
-		9462D76A1B35D108001C5083 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9462D7681B35D108001C5083 /* Interface.storyboard */; };
-		9462D76C1B35D108001C5083 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9462D76B1B35D108001C5083 /* Images.xcassets */; };
-		9462D76F1B35D108001C5083 /* Tipper WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9462D7551B35D108001C5083 /* Tipper WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		946799E71BEBDB8000D420CE /* TIPPERAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 946799E61BEBDB8000D420CE /* TIPPERAddress.m */; };
 		946799EC1BF38BD000D420CE /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946799EB1BF38BD000D420CE /* Segues.swift */; };
 		946799EE1BF3A46700D420CE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946799ED1BF3A46700D420CE /* Constants.swift */; };
@@ -102,20 +95,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		9462D7631B35D108001C5083 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 94AF29641AAEF2B600E16048 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9462D7601B35D108001C5083;
-			remoteInfo = "Tipper WatchKit App";
-		};
-		9462D76D1B35D108001C5083 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 94AF29641AAEF2B600E16048 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9462D7541B35D108001C5083;
-			remoteInfo = "Tipper WatchKit Extension";
-		};
 		94AF29851AAEF2B600E16048 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 94AF29641AAEF2B600E16048 /* Project object */;
@@ -132,7 +111,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				9462D76F1B35D108001C5083 /* Tipper WatchKit Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,12 +175,10 @@
 		945400261BC736C300BD8994 /* TIPPERMarket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIPPERMarket.m; sourceTree = "<group>"; };
 		945400281BC8903C00BD8994 /* TIPPERFavorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIPPERFavorite.h; sourceTree = "<group>"; };
 		945400291BC8903C00BD8994 /* TIPPERFavorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIPPERFavorite.m; sourceTree = "<group>"; };
-		9462D7551B35D108001C5083 /* Tipper WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Tipper WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9462D7581B35D108001C5083 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9462D7591B35D108001C5083 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		9462D75B1B35D108001C5083 /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
 		9462D75D1B35D108001C5083 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		9462D7611B35D108001C5083 /* Tipper WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tipper WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9462D7671B35D108001C5083 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9462D7691B35D108001C5083 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		9462D76B1B35D108001C5083 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -263,13 +239,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9462D7521B35D108001C5083 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		94AF29691AAEF2B600E16048 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -549,8 +518,6 @@
 			children = (
 				94AF296C1AAEF2B600E16048 /* Tipper.app */,
 				94AF29841AAEF2B600E16048 /* TipperTests.xctest */,
-				9462D7551B35D108001C5083 /* Tipper WatchKit Extension.appex */,
-				9462D7611B35D108001C5083 /* Tipper WatchKit App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -661,39 +628,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9462D7541B35D108001C5083 /* Tipper WatchKit Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9462D7731B35D108001C5083 /* Build configuration list for PBXNativeTarget "Tipper WatchKit Extension" */;
-			buildPhases = (
-				9462D7511B35D108001C5083 /* Sources */,
-				9462D7521B35D108001C5083 /* Frameworks */,
-				9462D7531B35D108001C5083 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9462D7641B35D108001C5083 /* PBXTargetDependency */,
-			);
-			name = "Tipper WatchKit Extension";
-			productName = "Tipper WatchKit Extension";
-			productReference = 9462D7551B35D108001C5083 /* Tipper WatchKit Extension.appex */;
-			productType = "com.apple.product-type.watchkit-extension";
-		};
-		9462D7601B35D108001C5083 /* Tipper WatchKit App */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9462D7701B35D108001C5083 /* Build configuration list for PBXNativeTarget "Tipper WatchKit App" */;
-			buildPhases = (
-				9462D75F1B35D108001C5083 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Tipper WatchKit App";
-			productName = "Tipper WatchKit App";
-			productReference = 9462D7611B35D108001C5083 /* Tipper WatchKit App.app */;
-			productType = "com.apple.product-type.application.watchapp";
-		};
 		94AF296B1AAEF2B600E16048 /* Tipper */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 94AF298E1AAEF2B600E16048 /* Build configuration list for PBXNativeTarget "Tipper" */;
@@ -711,7 +645,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				9462D76E1B35D108001C5083 /* PBXTargetDependency */,
 			);
 			name = Tipper;
 			productName = Tipper;
@@ -747,14 +680,6 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Ryan Romanchuk";
 				TargetAttributes = {
-					9462D7541B35D108001C5083 = {
-						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = 42CWSV3Q78;
-					};
-					9462D7601B35D108001C5083 = {
-						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = 42CWSV3Q78;
-					};
 					94AF296B1AAEF2B600E16048 = {
 						CreatedOnToolsVersion = 6.3;
 						DevelopmentTeam = 42CWSV3Q78;
@@ -791,31 +716,11 @@
 			targets = (
 				94AF296B1AAEF2B600E16048 /* Tipper */,
 				94AF29831AAEF2B600E16048 /* TipperTests */,
-				9462D7541B35D108001C5083 /* Tipper WatchKit Extension */,
-				9462D7601B35D108001C5083 /* Tipper WatchKit App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		9462D7531B35D108001C5083 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9462D7621B35D108001C5083 /* Tipper WatchKit App.app in Resources */,
-				9462D75E1B35D108001C5083 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9462D75F1B35D108001C5083 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9462D76A1B35D108001C5083 /* Interface.storyboard in Resources */,
-				9462D76C1B35D108001C5083 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		94AF296A1AAEF2B600E16048 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -921,15 +826,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9462D7511B35D108001C5083 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9462D75A1B35D108001C5083 /* InterfaceController.swift in Sources */,
-				9462D75C1B35D108001C5083 /* GlanceController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		94AF29681AAEF2B600E16048 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1018,16 +914,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9462D7641B35D108001C5083 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9462D7601B35D108001C5083 /* Tipper WatchKit App */;
-			targetProxy = 9462D7631B35D108001C5083 /* PBXContainerItemProxy */;
-		};
-		9462D76E1B35D108001C5083 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9462D7541B35D108001C5083 /* Tipper WatchKit Extension */;
-			targetProxy = 9462D76D1B35D108001C5083 /* PBXContainerItemProxy */;
-		};
 		94AF29861AAEF2B600E16048 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 94AF296B1AAEF2B600E16048 /* Tipper */;
@@ -1063,78 +949,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		9462D7711B35D108001C5083 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				ENABLE_BITCODE = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				IBSC_MODULE = Tipper_WatchKit_Extension;
-				INFOPLIST_FILE = "Tipper WatchKit App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
-			};
-			name = Debug;
-		};
-		9462D7721B35D108001C5083 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				ENABLE_BITCODE = YES;
-				IBSC_MODULE = Tipper_WatchKit_Extension;
-				INFOPLIST_FILE = "Tipper WatchKit App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
-			};
-			name = Release;
-		};
-		9462D7741B35D108001C5083 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				ENABLE_BITCODE = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Tipper WatchKit Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		9462D7751B35D108001C5083 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				ENABLE_BITCODE = YES;
-				INFOPLIST_FILE = "Tipper WatchKit Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 		94AF298C1AAEF2B600E16048 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1360,24 +1174,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9462D7701B35D108001C5083 /* Build configuration list for PBXNativeTarget "Tipper WatchKit App" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9462D7711B35D108001C5083 /* Debug */,
-				9462D7721B35D108001C5083 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9462D7731B35D108001C5083 /* Build configuration list for PBXNativeTarget "Tipper WatchKit Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9462D7741B35D108001C5083 /* Debug */,
-				9462D7751B35D108001C5083 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		94AF29671AAEF2B600E16048 /* Build configuration list for PBXProject "Tipper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
