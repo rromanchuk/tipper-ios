@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15C40a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="v60-FX-pd0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15C48a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="v60-FX-pd0">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -962,6 +962,7 @@ tipper will send a Bitcoin tip.</string>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="headerContainer" destination="RYd-7d-GrV" id="SfR-Zb-MQl"/>
                         <segue destination="SFj-Ao-M2M" kind="custom" identifier="DidTapNotifications" customClass="CustomModalSegue" customModule="Tipper" customModuleProvider="target" id="LSM-VD-bA7"/>
                         <segue destination="AQK-kz-A32" kind="custom" identifier="DidTapAccountSegue" customClass="CustomModalSegue" customModule="Tipper" customModuleProvider="target" id="Qgl-S3-h4Q"/>
                         <segue destination="nkS-N6-z7z" kind="unwind" identifier="UnwindFromTipDetail" customClass="TipDetailUnwindSegue" customModule="Tipper" customModuleProvider="target" unwindAction="done:sender:" id="pTD-P2-gag"/>
@@ -2322,9 +2323,9 @@ tipper will send a Bitcoin tip.</string>
         <image name="up-arrow" width="27" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PoE-I8-dAr"/>
-        <segue reference="ob3-em-GWf"/>
-        <segue reference="Qcf-N3-O5L"/>
         <segue reference="tr9-s8-h7f"/>
+        <segue reference="LSM-VD-bA7"/>
+        <segue reference="Qgl-S3-h4Q"/>
+        <segue reference="7dQ-p7-IX8"/>
     </inferredMetricsTieBreakers>
 </document>

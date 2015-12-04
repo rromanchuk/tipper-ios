@@ -16,6 +16,7 @@ class TipDetailsViewController: GAITrackedViewController, Logoutable, CustomSegu
     var market: Market!
     var notification: Notification?
 
+    @IBOutlet weak var headerContainer: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         log.verbose("")
@@ -73,10 +74,16 @@ class TipDetailsViewController: GAITrackedViewController, Logoutable, CustomSegu
     }
 
     func prepareForSegueAnimation() {
-        
+        log.verbose("")
+        view.backgroundColor = UIColor.clearColor()
+        headerContainer.hidden = true
     }
 
     func segueAnimationComplete() {
+        log.verbose("")
+        view.backgroundColor = UIColor.brandColor()
+        headerContainer.hidden = false
+
 
     }
 

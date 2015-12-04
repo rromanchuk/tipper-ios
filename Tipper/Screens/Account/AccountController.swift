@@ -48,6 +48,7 @@ class AccountController: GAITrackedViewController, ContainerDelegate, CustomSegu
     }
     
     func segueAnimationComplete() {
+        log.verbose("")
         view.backgroundColor = UIColor.brandColor()
         headerContainer.hidden = false
     }
