@@ -13,7 +13,7 @@
 	<key>AWS_ANALYTICS_ID</key>
 	<string>$(AWS_ANALYTICS_ID)</string>
 	<key>AWS_API_GATEWAY_KEY</key>
-	<string>***REMOVED***</string>
+	<string></string>
 	<key>AWS_GENERAL_SNS</key>
 	<string>$(AWS_GENERAL_SNS)</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -43,7 +43,7 @@
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
-		<string>***REMOVED***</string>
+		<string></string>
 		<key>Kits</key>
 		<array>
 			<dict>
@@ -56,9 +56,9 @@
 				<key>KitInfo</key>
 				<dict>
 					<key>consumerKey</key>
-					<string>***REMOVED***</string>
+					<string></string>
 					<key>consumerSecret</key>
-					<string>***REMOVED***</string>
+					<string></string>
 				</dict>
 				<key>KitName</key>
 				<string>Twitter</string>
@@ -66,7 +66,7 @@
 		</array>
 	</dict>
 	<key>GA_ID</key>
-	<string>UA-67166716-2</string>
+	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>twitter</string>
@@ -98,11 +98,11 @@
 	<key>SNS_ENDPOINT</key>
 	<string>$(SNS_ENDPOINT)</string>
 	<key>SQS_FETCH_FAVORITES</key>
-	<string>***REMOVED***</string>
+	<string></string>
 	<key>SQS_NEW_TIP</key>
 	<string>$(SQS_NEW_TIP)</string>
 	<key>SQS_TRANSFER_OUT</key>
-	<string>***REMOVED***e</string>
+	<string>e</string>
 	<key>STRIPE_PUBLISHABLE</key>
 	<string>$(STRIPE_PUBLISHABLE)</string>
 	<key>UIAppFonts</key>
